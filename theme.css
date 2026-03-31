@@ -1,4 +1,4 @@
-/* ===== CSS 변수 (다크모드 기본) ===== */
+Copy/* ===== CSS 변수 (다크모드 기본) ===== */
 :root {
   --bg-base:       #0d1117;
   --bg-surface:    #161b22;
@@ -42,60 +42,35 @@
   --footer-bg:     #ffffff;
 }
 
-/* ===== 토글 버튼 ===== */
-.theme-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  transition: all var(--transition);
-  white-space: nowrap;
-  flex-shrink: 0;
+/* ===== 기본 설정 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.theme-toggle:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding-top: 70px;
 }
-.toggle-track {
-  width: 36px;
-  height: 20px;
-  background: var(--border-default);
-  border-radius: 20px;
-  position: relative;
-  transition: background var(--transition);
-  flex-shrink: 0;
+
+/* ===== 기존 네비 숨김 ===== */
+.nav {
+  display: none !important;
 }
-[data-theme="light"] .toggle-track {
-  background: var(--orange);
-}
-.toggle-thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background: #fff;
-  border-radius: 50%;
-  transition: transform var(--transition);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
-[data-theme="light"] .toggle-thumb {
-  transform: translateX(16px);
-}
-/* ===== 모바일 헤더 ===== */
+
+/* ===== 헤더 ===== */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-default);
   z-index: 1000;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .header .container {
@@ -104,6 +79,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .logo {
@@ -111,15 +87,63 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--orange);
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
+.logo span {
+  color: var(--text-primary);
+}
+
+/* ===== 데스크톱 네비 ===== */
+.desktop-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.desktop-nav a:hover {
+  color: var(--orange);
+}
+
+/* ===== 토글 버튼 ===== */
+.theme-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.desktop-only {
+  display: flex;
+}
+
+/* ===== 햄버거 메뉴 ===== */
 .hamburger-menu {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
@@ -127,27 +151,26 @@
 }
 
 .hamburger-menu span {
-  width: 25px;
+  width: 28px;
   height: 3px;
   background: var(--text-primary);
-  border-radius: 2px;
+  border-radius: 3px;
   transition: var(--transition);
 }
 
+/* ===== 모바일 메뉴 ===== */
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 280px;
+  right: -320px;
+  width: 300px;
   height: 100vh;
   background: var(--bg-surface);
   border-left: 1px solid var(--border-default);
-  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
-  transition: right 0.3s;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.6);
+  transition: right 0.3s ease;
   z-index: 2000;
   padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
   overflow-y: auto;
 }
 
@@ -157,39 +180,88 @@
 
 .mobile-menu button:first-child {
   align-self: flex-end;
-  margin: 0 1.5rem 1rem;
+  margin: 0 1.5rem 2rem;
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--text-primary);
   cursor: pointer;
+  line-height: 1;
 }
 
 .mobile-menu a {
-  padding: 1rem 1.5rem;
+  display: block;
+  padding: 1.2rem 1.5rem;
   text-decoration: none;
   color: var(--text-primary);
   border-bottom: 1px solid var(--border-default);
   transition: var(--transition);
+  font-size: 1.05rem;
 }
 
 .mobile-menu a:hover {
   background: var(--orange-dim);
   color: var(--orange);
+  border-left: 3px solid var(--orange);
 }
 
 .mobile-menu button:last-child {
-  margin: 1rem 1.5rem;
-  padding: 0.75rem;
+  margin: 1.5rem 1.5rem 0;
+  padding: 1rem;
+  width: calc(100% - 3rem);
   background: var(--bg-elevated);
   border: 1px solid var(--border-default);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--text-primary);
   cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.mobile-menu button:last-child:hover {
+  background: var(--orange-dim);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ===== 오버레이 ===== */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 1500;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 1024px) {
+  .desktop-nav,
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .hamburger-menu {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 768px) {
-  .hamburger-menu {
-    display: flex !important;
+  .header .container {
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  body {
+    padding-top: 60px;
   }
 }
