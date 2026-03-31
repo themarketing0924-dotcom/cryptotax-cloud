@@ -35,7 +35,15 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- 도구 페이지 (핵심 트래픽 유입처) -->
+  <!-- 도구 허브 페이지 ✅ 신규 추가 -->
+  <url>
+    <loc>https://cryptotax.cloud/tools/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 도구 페이지들 -->
   <url>
     <loc>https://cryptotax.cloud/tools/csv-tax-calculator.html</loc>
     <lastmod>2026-03-31</lastmod>
@@ -60,8 +68,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://cryptotax.cloud/tools/roi-calculator.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cryptotax.cloud/tools/multa-calculator.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cryptotax.cloud/tools/dca-calculator.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cryptotax.cloud/tools/satoshi-calculator.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- 블로그 허브 -->
+  <!-- 시장 지수 대시보드 ✅ 신규 추가 -->
+  <url>
+    <loc>https://cryptotax.cloud/tools/market-index.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 블로그 허브 ✅ 신규 추가 -->
   <url>
     <loc>https://cryptotax.cloud/blog/</loc>
     <lastmod>2026-03-31</lastmod>
@@ -76,10 +116,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://cryptotax.cloud/tools/</loc><lastmod>2026-03-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://cryptotax.cloud/tools/market-index.html</loc><lastmod>2026-03-31</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://cryptotax.cloud/tools/roi-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://cryptotax.cloud/tools/multa-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://cryptotax.cloud/tools/dca-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://cryptotax.cloud/tools/satoshi-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
 </urlset>
