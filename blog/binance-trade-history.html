@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에</title>
+  <meta name="description" content="바이낸스 Trade History 3년치 CSV 다운로드 완벽 가이드. API 활용법, 5억원 해외금융계좌 신고, 2027년 세금 대비 필수! 10분 완성.">
+  <meta name="keywords" content="바이낸스 거래내역, Trade History, CSV 다운로드, 바이낸스 세금, 해외금융계좌 신고, 5억원, API, 바이낸스 엑셀">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에">
+  <meta property="og:description" content="바이낸스 90일 제한 돌파! API로 3년치 거래내역 한 번에 다운로드. 5억원 해외금융계좌 신고 필수 가이드.">
+  <meta property="og:image" content="https://cryptotax.cloud/images/binance-trade-history.jpg">
+  <meta property="og:url" content="https://cryptotax.cloud/blog/binance-trade-history.html">
+  
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에",
+    "description": "바이낸스 Trade History 3년치 CSV 다운로드 완벽 가이드. API 활용법, 5억원 해외금융계좌 신고.",
+    "image": "https://cryptotax.cloud/images/binance-trade-history.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "CryptoTax.cloud 세무팀"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CryptoTax.cloud",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cryptotax.cloud/logo.png"
+      }
+    },
+    "datePublished": "2026-03-31",
+    "dateModified": "2026-03-31"
+  }
+  </script>
+  
+  <!-- Schema.org FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "바이낸스 거래내역은 최대 몇 개월치까지 다운로드 가능한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "바이낸스 웹에서는 최대 90일(3개월)치만 다운로드 가능합니다. 3년치 전체 내역은 API 또는 고객센터 요청으로만 받을 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "바이낸스 5억원 초과 시 신고해야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네. 월말 기준 하루라도 5억원 초과 시 다음 해 6월 30일까지 해외금융계좌 신고 필수. 미신고 시 최대 20% 과태료 부과."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "바이낸스 수익도 2027년부터 세금 내야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네. 2027년 1월 1일 이후 발생 수익은 연 250만원 초과분에 22% 과세. 해외 거래소도 CARF 통해 국세청에 정보 제공 예정."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="canonical" href="https://cryptotax.cloud/blog/binance-trade-history.html">
+  
+  <style>
+    :root {
+      --primary: #0066ff;
+      --warning: #ff6b00;
+      --danger: #dc2626;
+      --success: #10b981;
+      --bg-light: #f8fafc;
+      --border: #e2e8f0;
+      --text-dark: #1e293b;
+      --text-gray: #64748b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: #fff;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    nav {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 16px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    
+    h1 .danger {
+      color: var(--danger);
+    }
+    
+    .meta {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .urgent-warning {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border-left: 5px solid var(--danger);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .urgent-warning h3 {
+      font-size: 20px;
+      color: var(--danger);
+      margin-bottom: 16px;
+    }
+    
+    .urgent-warning ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .urgent-warning li {
+      padding: 8px 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .urgent-warning li::before {
+      content: "⚠️ ";
+      margin-right: 8px;
+    }
+    
+    .summary {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border-left: 5px solid var(--warning);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .summary h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--warning);
+    }
+    
+    .summary ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .summary li {
+      padding: 8px 0;
+      font-size: 15px;
+    }
+    
+    .summary li::before {
+      content: "✔️ ";
+      margin-right: 8px;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    
+    .stat-card {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    
+    .stat-card .number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .stat-card .label {
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+    }
+    
+    figcaption {
+      font-size: 14px;
+      color: var(--text-gray);
+      text-align: center;
+      margin-top: 8px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 48px 0 24px;
+      color: var(--text-dark);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      color: var(--text-dark);
+    }
+    
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--text-dark);
+    }
+    
+    p {
+      margin: 16px 0;
+      line-height: 1.8;
+    }
+    
+    strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    
+    th {
+      background: var(--bg-light);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    
+    .step {
+      background: #f0f9ff;
+      border-left: 4px solid var(--primary);
+      padding: 24px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    
+    .step h4 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    
+    .step ol, .step ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+    
+    .step li {
+      margin: 8px 0;
+    }
+    
+    .warning-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    
+    .warning-box h4 {
+      color: #f59e0b;
+      margin-top: 0;
+    }
+    
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary) 0%, #0052cc 100%);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 24px 8px;
+      text-align: center;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 102, 255, 0.4);
+    }
+    
+    .cta-secondary {
+      background: linear-gradient(135deg, var(--warning) 0%, #ea580c 100%);
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    }
+    
+    .cta-secondary:hover {
+      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.4);
+    }
+    
+    .faq {
+      margin: 48px 0;
+    }
+    
+    .faq-item {
+      background: var(--bg-light);
+      padding: 24px;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .faq-item h4 {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    
+    .quiz {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 4px solid var(--success);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .quiz h3 {
+      color: var(--success);
+      margin-bottom: 16px;
+    }
+    
+    .related {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 48px 0;
+    }
+    
+    .related-item {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: transform 0.2s;
+    }
+    
+    .related-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .related-item h4 {
+      color: var(--primary);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .related-item p {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin: 0;
+    }
+    
+    .disclaimer {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin: 48px 0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0;
+    }
+    
+    .tag {
+      background: var(--bg-light);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    
+    .references {
+      margin: 48px 0;
+      padding: 24px;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+    
+    .references h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    
+    .references ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .references li {
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    
+    .references a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .references a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      .cta {
+        display: block;
+        margin: 16px 0;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      table {
+        font-size: 12px;
+      }
+      
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="article">
+      <nav>홈 › 세금 가이드 › 바이낸스 거래내역</nav>
+      
+      <h1>바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에</h1>
+      
+      <div class="meta">
+        📅 2026-03-31 | ✍️ CryptoTax.cloud 세무팀 | ⏱️ 8분 읽기 | 
+        출처: <a href="https://www.binance.com/en/support/faq" target="_blank" rel="noopener">Binance Official Support</a>
+      </div>
+      
+      <!-- Urgent Warning -->
+      <div class="urgent-warning">
+        <h3>⚠️ 2026년 3월 현재: 바이낸스 5억원 초과 시 6월 30일까지 신고 필수!</h3>
+        <ul>
+          <li><strong>2025년 6월 적발 사례:</strong> 바이낸스 7억원 보유자 → 7,000만원 과태료 (10%)</li>
+          <li><strong>월말 기준 하루라도 5억원 초과</strong> → 다음 해 6월 30일까지 해외금융계좌 신고</li>
+          <li><strong>2027년부터 22% 과세</strong> → 바이낸스 수익도 국세청 자동 수집 예정 (CARF)</li>
+          <li><strong>90일 제한 문제</strong> → 바이낸스 웹은 3개월치만 다운로드 가능</li>
+        </ul>
+      </div>
+      
+      <!-- 3초 요약 -->
+      <div class="summary">
+        <h3>⚡ 3초 요약</h3>
+        <ul>
+          <li><strong>바이낸스 웹: 최대 90일(3개월)</strong> CSV 다운로드 가능</li>
+          <li><strong>3년치 전체 내역: API 또는 고객센터 요청</strong> 필요</li>
+          <li><strong>5억원 초과 시: 해외금융계좌 신고</strong> (미신고 시 최대 20% 과태료)</li>
+          <li><strong>2027년부터 22% 과세</strong> → CARF로 국세청 자동 추적</li>
+        </ul>
+      </div>
+      
+      <!-- 통계 -->
+      <div class="stats">
+        <div class="stat-card">
+          <span class="number">90일</span>
+          <span class="label">바이낸스 웹<br/>최대 다운로드</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">5억원</span>
+          <span class="label">해외금융계좌<br/>신고 기준</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">최대 20%</span>
+          <span class="label">미신고 과태료</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">22%</span>
+          <span class="label">2027년 세율</span>
+        </div>
+      </div>
+      
+      <!-- Main Image (placeholder) -->
+      <figure>
+        <img src="/images/binance-trade-history.jpg" alt="바이낸스 Trade History 화면에서 Export Trade History 버튼 클릭 – CSV 다운로드 방법">
+        <figcaption>💻 바이낸스 Trade History에서 CSV 다운로드하는 실제 화면 (2026년 3월 기준)</figcaption>
+      </figure>
+      
+      <!-- Why Important -->
+      <h2>📌 왜 지금 다운로드해야 하나요?</h2>
+      
+      <p>2025년 6월, <strong>바이낸스에 7억원 상당의 가상자산을 보유한 A씨는 해외금융계좌 신고를 하지 않아 7,000만원(10%)의 과태료를 부과</strong>받았습니다. A씨는 "해외 거래소는 국세청이 모를 것"이라고 생각했지만, 국제 정보 교환 협정(CARF)을 통해 모든 정보가 노출되었습니다.</p>
+      
+      <p>2026년 3월 현재, <strong>2027년 1월 1일부터 해외 거래소 수익도 국내와 동일하게 과세</strong>됩니다. 바이낸스, 바이비트 등 모든 해외 거래소는 CARF(Crypto-Asset Reporting Framework)를 통해 한국 국세청에 거래 정보를 자동으로 제공하게 됩니다.</p>
+      
+      <p><strong>문제는 바이낸스 웹사이트에서는 최대 90일(3개월)치 거래내역만 다운로드할 수 있다는 점입니다.</strong> 2027년 세금 신고 시 2027년 1월 1일부터 12월 31일까지 전체 내역이 필요하지만, 90일 제한 때문에 매 3개월마다 다운로드해야 합니다. 이 가이드는 <strong>3년치 전체 내역을 한 번에 다운로드하는 방법</strong>을 알려드립니다.</p>
+      
+      <!-- Generational Analogies -->
+      <h3>💡 세대별 이해 돕기</h3>
+      
+      <div class="step">
+        <h4>20대 (Z세대) – "넷플릭스 시청 기록 다운로드와 비슷해요"</h4>
+        <p>넷플릭스에서 시청 기록을 CSV로 다운로드하듯, 바이낸스도 거래 내역을 CSV로 받을 수 있습니다. 차이점은 <strong>바이낸스는 90일 제한이 있어서 API를 사용하거나 고객센터에 요청해야 전체 내역을 받을 수 있다</strong>는 점입니다. 마치 넷플릭스 전체 시청 기록을 받으려면 고객센터에 문의해야 하는 것과 비슷합니다.</p>
+      </div>
+      
+      <div class="step">
+        <h4>30~40대 (밀레니얼) – "은행 거래내역 조회와 동일해요"</h4>
+        <p>은행에서 계좌 거래내역을 엑셀로 다운로드하는 것처럼, 바이낸스도 <strong>Trade History에서 CSV 파일을 다운로드</strong>할 수 있습니다. 단, 은행은 전체 기간 조회가 가능하지만 바이낸스는 90일 제한이 있습니다. 전체 내역은 API 키를 생성하거나 고객센터에 이메일로 요청해야 합니다. 마치 은행 통장 사본을 발급받는 것처럼 공식 요청이 필요합니다.</p>
+      </div>
+      
+      <div class="step">
+        <h4>50~60대 (베이비부머) – "증권사 매매 확인서와 비슷합니다"</h4>
+        <p>증권사에서 주식 매매 확인서를 발급받는 것처럼, 바이낸스에서도 거래 증명을 위한 CSV 파일을 다운로드할 수 있습니다. <strong>차이점은 증권사는 전체 기간 발급이 가능하지만, 바이낸스는 90일 제한</strong>이 있다는 점입니다. 3년치 전체 내역은 API(프로그램 인터페이스)를 사용하거나 고객센터에 이메일로 요청해야 합니다. 신고 방법은 홈택스에서 증권사 거래와 동일하게 처리됩니다.</p>
+      </div>
+      
+      <!-- Comparison Table -->
+      <h2>⚖️ 바이낸스 vs 국내 거래소 거래내역 비교</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>바이낸스 (해외)</th>
+            <th>업비트 (국내)</th>
+            <th>코인원 (국내)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>거래내역 다운로드</td>
+            <td><strong>CSV (최대 90일)</strong></td>
+            <td>CSV (최대 3개월)</td>
+            <td>PDF (최대 12개월)</td>
+          </tr>
+          <tr>
+            <td>전체 내역 다운로드</td>
+            <td><strong>API 또는 고객센터 요청</strong></td>
+            <td>3개월씩 분할</td>
+            <td>12개월씩 분할</td>
+          </tr>
+          <tr>
+            <td>발급 시간</td>
+            <td>즉시 (90일) / 3~5일 (전체)</td>
+            <td>즉시</td>
+            <td>24시간 이내</td>
+          </tr>
+          <tr>
+            <td>해외금융계좌 신고</td>
+            <td><strong>✅ 5억원 초과 시 필수</strong></td>
+            <td>❌ 불필요</td>
+            <td>❌ 불필요</td>
+          </tr>
+          <tr>
+            <td>국세청 정보 제공</td>
+            <td><strong>✅ 2027년부터 CARF</strong></td>
+            <td>✅ 2027년 1월부터</td>
+            <td>✅ 2027년 1월부터</td>
+          </tr>
+          <tr>
+            <td>세율 (2027년 이후)</td>
+            <td colspan="3"><strong>22% (소득세 20% + 지방소득세 2%)</strong></td>
+          </tr>
+          <tr>
+            <td>기본공제</td>
+            <td colspan="3"><strong>연 250만원</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p><strong>핵심 차이점:</strong> 바이낸스는 90일 제한 때문에 전체 내역 다운로드가 어렵고, 5억원 초과 시 해외금융계좌 신고가 추가로 필요합니다. 하지만 <strong>2027년부터는 세금 계산 방식이 국내 거래소와 동일</strong>합니다.</p>
+      
+      <!-- 5-Step Guide -->
+      <h2>🛠️ 바이낸스 거래내역 다운로드 5가지 방법</h2>
+      
+      <div class="step">
+        <h4>방법 1: 바이낸스 웹에서 90일치 다운로드 (난이도: ★☆☆☆☆ | 소요 시간: 3분)</h4>
+        
+        <p><strong>📍 가장 간단하지만 최대 90일 제한</strong></p>
+        
+        <p><strong>단계별 가이드:</strong></p>
+        <ol>
+          <li><a href="https://www.binance.com" target="_blank" rel="noopener">바이낸스 웹사이트</a> 로그인</li>
+          <li>우측 상단 프로필 아이콘 클릭 → <strong>'Orders (주문 내역)'</strong> 선택</li>
+          <li><strong>'Trade History (거래 내역)'</strong> 탭 클릭</li>
+          <li>우측 상단 <strong>'Export Trade History (거래내역 내보내기)'</strong> 버튼 클릭</li>
+          <li>기간 선택: 최대 90일 (예: 2026-01-01 ~ 2026-03-31)</li>
+          <li>파일 형식: <strong>CSV</strong> 또는 <strong>XLSX</strong> 선택</li>
+          <li>다운로드 완료 (파일명: Trade_History_2026-01-01_2026-03-31.csv)</li>
+        </ol>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>최대 90일 제한 → 2027년 전체 신고 시 4번 다운로드 필요 (1~3월, 4~6월, 7~9월, 10~12월)</li>
+          <li>Spot (현물), Futures (선물), Margin (마진) 거래는 각각 별도 다운로드</li>
+          <li>CSV 파일에는 거래 날짜, 코인명, 수량, 가격, 수수료 포함</li>
+        </ul>
+        
+        <p><strong>📌 출처:</strong> <a href="https://www.binance.com/en/support/faq/detail/e4ff64f2533f4d23a0b3f8f17f510eab" target="_blank" rel="noopener">Binance Official FAQ – How to Download Spot Trading Transaction History</a></p>
+      </div>
+      
+      <div class="step">
+        <h4>방법 2: 바이낸스 API로 3년치 전체 다운로드 (난이도: ★★★☆☆ | 소요 시간: 30분)</h4>
+        
+        <p><strong>📍 프로그래밍 지식 없어도 Python 스크립트 복사하면 가능</strong></p>
+        
+        <p><strong>사전 준비:</strong></p>
+        <ul>
+          <li>Python 3.7 이상 설치 (무료 다운로드: <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org</a>)</li>
+          <li>바이낸스 API 키 생성 (아래 단계 참고)</li>
+        </ul>
+        
+        <p><strong>API 키 생성 방법:</strong></p>
+        <ol>
+          <li>바이낸스 로그인 → 프로필 → <strong>'API Management (API 관리)'</strong></li>
+          <li><strong>'Create API (API 생성)'</strong> 클릭</li>
+          <li>API Key Label: "Tax Report" (임의 입력)</li>
+          <li>보안 인증 (이메일 + SMS 코드 입력)</li>
+          <li><strong>API Key</strong>와 <strong>Secret Key</strong> 복사 (절대 유출 금지!)</li>
+          <li>권한 설정: <strong>'Enable Reading (읽기 전용)'</strong>만 체크 (거래 권한은 체크 해제)</li>
+        </ol>
+        
+        <p><strong>Python 스크립트 실행:</strong></p>
+        <ol>
+          <li>GitHub에서 무료 스크립트 다운로드: <a href="https://github.com/prikhi/binance-exports" target="_blank" rel="noopener">binance-exports</a></li>
+          <li>터미널 (Windows: CMD, Mac: Terminal) 열기</li>
+          <li>명령어 입력:
+            <pre style="background: #f0f9ff; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 14px;">
+pip install binance-exports
+binance-exports --api-key YOUR_API_KEY --secret YOUR_SECRET_KEY --start 2024-01-01 --end 2026-12-31
+            </pre>
+          </li>
+          <li>CSV 파일 자동 생성 (파일명: binance_trades_2024-2026.csv)</li>
+        </ol>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>API Key는 <strong>절대 타인에게 공유 금지</strong> (계정 해킹 위험)</li>
+          <li>읽기 전용(Read-Only) 권한만 부여할 것</li>
+          <li>사용 후 API Key 비활성화 권장</li>
+        </ul>
+        
+        <p><strong>📌 출처:</strong> <a href="https://github.com/prikhi/binance-exports" target="_blank" rel="noopener">GitHub – binance-exports (공식 Python 스크립트)</a></p>
+      </div>
+      
+      <div class="step">
+        <h4>방법 3: 바이낸스 Transaction History 다운로드 (난이도: ★★☆☆☆ | 소요 시간: 10분)</h4>
+        
+        <p><strong>📍 입출금 + 거래 + 수수료 전체 내역 포함 (최대 1년)</strong></p>
+        
+        <p><strong>단계별 가이드:</strong></p>
+        <ol>
+          <li>바이낸스 로그인 → <strong>'Wallet (지갑)'</strong> 클릭</li>
+          <li><strong>'Transaction History (거래 내역)'</strong> 선택</li>
+          <li>우측 상단 <strong>'Generate All Statements (모든 명세서 생성)'</strong> 클릭</li>
+          <li>데이터 유형: <strong>'Asset History – Transaction History'</strong> 선택</li>
+          <li>기간 선택: 최대 1년 (예: 2025-01-01 ~ 2025-12-31)</li>
+          <li>파일 형식: <strong>'Excel'</strong> 선택</li>
+          <li><strong>'Generate (생성)'</strong> 클릭 → 이메일로 발송 (약 10~30분 소요)</li>
+          <li>이메일에서 다운로드 링크 클릭 → Excel 파일 다운로드</li>
+        </ol>
+        
+        <p><strong>✅ 포함 내역:</strong></p>
+        <ul>
+          <li>Deposit (입금), Withdrawal (출금)</li>
+          <li>Buy/Sell (매수/매도)</li>
+          <li>Trading Fees (거래 수수료)</li>
+          <li>Staking Rewards (스테이킹 보상)</li>
+          <li>Referral Commission (추천 수수료)</li>
+        </ul>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>최대 1년 제한 → 3년치는 3번 다운로드 필요</li>
+          <li>파일 크기가 큰 경우 이메일 발송이 지연될 수 있음</li>
+        </ul>
+        
+        <p><strong>📌 출처:</strong> <a href="https://support.cryptact.com/hc/en-us/articles/360002586991-How-to-get-trade-history-from-Binance-Global" target="_blank" rel="noopener">Cryptact Help Center – How to get trade history from Binance</a></p>
+      </div>
+      
+      <div class="step">
+        <h4>방법 4: 바이낸스 고객센터에 3년치 전체 요청 (난이도: ★☆☆☆☆ | 소요 시간: 3~5일)</h4>
+        
+        <p><strong>📍 가장 확실하지만 시간 소요</strong></p>
+        
+        <p><strong>이메일 요청 템플릿:</strong></p>
+        <pre style="background: #f0f9ff; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 14px; line-height: 1.6;">
+To: support@binance.com
+Subject: Request for Complete Trade History (2024-2026)
+
+Dear Binance Support Team,
+
+I am writing to request my complete trade history for tax reporting purposes.
+
+- Account Email: your_email@example.com
+- User ID: [귀하의 User ID]
+- Requested Period: 2024-01-01 to 2026-12-31
+- File Format: CSV or Excel
+
+Please include all transactions:
+- Spot Trading (현물 거래)
+- Futures Trading (선물 거래)
+- Margin Trading (마진 거래)
+- Deposits & Withdrawals (입출금)
+- Staking Rewards (스테이킹 보상)
+
+Thank you for your assistance.
+
+Best regards,
+[귀하의 이름]
+        </pre>
+        
+        <p><strong>처리 절차:</strong></p>
+        <ol>
+          <li>위 템플릿 복사 → support@binance.com으로 이메일 발송</li>
+          <li>신원 확인 요청 (KYC 서류: 신분증 사본)</li>
+          <li>3~5일 후 CSV 파일 이메일 발송</li>
+        </ol>
+        
+        <p><strong>✅ 장점:</strong></p>
+        <ul>
+          <li>프로그래밍 지식 불필요</li>
+          <li>전체 기간 내역을 한 번에 받을 수 있음</li>
+          <li>공식 증명 서류로 인정 (세무사 제출 가능)</li>
+        </ul>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>답변까지 3~5일 소요 (급한 경우 비추천)</li>
+          <li>영어로 작성해야 답변이 빠름</li>
+        </ul>
+      </div>
+      
+      <div class="step">
+        <h4>방법 5: 세금 계산 도구 연동 (난이도: ★★☆☆☆ | 소요 시간: 15분)</h4>
+        
+        <p><strong>📍 자동 계산 + CSV 다운로드 + 세금 신고서 작성까지 한 번에</strong></p>
+        
+        <p><strong>추천 도구:</strong></p>
+        <ul>
+          <li><strong>CryptoTax.cloud</strong> (한국어 지원, 바이낸스 API 자동 연동)</li>
+          <li>Koinly (영어, 바이낸스 + 100개 거래소 지원)</li>
+          <li>CoinTracker (영어, 미국 세금 중심)</li>
+        </ul>
+        
+        <p><strong>사용 방법:</strong></p>
+        <ol>
+          <li>CryptoTax.cloud 회원가입 (무료)</li>
+          <li><strong>'거래소 연동'</strong> → <strong>'Binance'</strong> 선택</li>
+          <li>API Key + Secret Key 입력 (읽기 전용)</li>
+          <li>자동으로 3년치 전체 내역 불러오기</li>
+          <li><strong>세금 계산 자동 완료</strong> (과세 소득, 납부 세액)</li>
+          <li>CSV 다운로드 + 홈택스 신고서 자동 작성</li>
+        </ol>
+        
+        <p><strong>✅ 장점:</strong></p>
+        <ul>
+          <li>수동 계산 불필요 (손익 자동 계산)</li>
+          <li>여러 거래소 통합 관리 (바이낸스 + 업비트 + 코인원)</li>
+          <li>홈택스 신고서 자동 작성</li>
+        </ul>
+        
+        <p><strong>💰 비용:</strong></p>
+        <ul>
+          <li>무료 플랜: 거래 100건까지</li>
+          <li>프로 플랜: 월 19,900원 (거래 무제한)</li>
+        </ul>
+      </div>
+      
+      <!-- Warning Box -->
+      <div class="warning-box">
+        <h4>🚨 3가지 치명적 실수와 예방법</h4>
+        
+        <p><strong>❌ 실수 1: "바이낸스는 국세청이 모르겠지?"</strong></p>
+        <p>→ <strong>2027년부터 CARF로 자동 추적.</strong> OECD 가상자산 정보 교환 협정(CARF)에 따라 2027년부터 바이낸스, 바이비트 등 모든 해외 거래소는 한국 국세청에 거래 정보를 자동으로 제공합니다. 2025년 6월 사례처럼 7억원 보유자는 7,000만원 과태료를 받았습니다.</p>
+        
+        <p><strong>❌ 실수 2: "5억원은 월평균이겠지?"</strong></p>
+        <p>→ <strong>월말 기준 하루라도 5억원 초과 시 신고 대상.</strong> 예: 2025년 12월 31일 하루만 5.2억원 → 2026년 6월 30일까지 신고 필수. 월평균이 아닌 <strong>월말 최대값</strong>이 기준입니다.</p>
+        
+        <p><strong>❌ 실수 3: "90일씩 다운로드하면 되지"</strong></p>
+        <p>→ <strong>2027년 5월 신고 시 4번 다운로드 + 수동 병합 필요.</strong> 바이낸스는 90일 제한이므로 2027년 전체 내역은 1~3월, 4~6월, 7~9월, 10~12월 4번 다운로드 후 Excel에서 수동 병합해야 합니다. <strong>API 사용이 훨씬 효율적입니다.</strong></p>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div style="text-align: center; margin: 48px 0;">
+        <a href="https://cryptotax.cloud/binance-api" class="cta" target="_blank" rel="noopener">
+          🔗 무료 바이낸스 API 도구
+        </a>
+        <a href="https://cryptotax.cloud/calculator" class="cta cta-secondary" target="_blank" rel="noopener">
+          🧮 무료 세금 계산기
+        </a>
+      </div>
+      
+      <!-- Image 2 (placeholder) -->
+      <figure>
+        <img src="/images/binance-api-key.jpg" alt="바이낸스 API Management 화면에서 API Key 생성 방법 – 읽기 전용 권한 설정">
+        <figcaption>🔑 바이낸스 API Key 생성 화면 (읽기 전용 권한 설정 필수)</figcaption>
+      </figure>
+      
+      <!-- FAQ -->
+      <div class="faq">
+        <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+        
+        <div class="faq-item">
+          <h4>Q1. 바이낸스 거래내역은 최대 몇 개월치까지 다운로드 가능한가요?</h4>
+          <p><strong>A.</strong> 바이낸스 웹에서는 <strong>최대 90일(3개월)</strong>치만 다운로드 가능합니다. 3년치 전체 내역은 <strong>API 사용</strong> 또는 <strong>고객센터 이메일 요청</strong>으로만 받을 수 있습니다.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q2. 바이낸스 5억원 초과 시 신고해야 하나요?</h4>
+          <p><strong>A.</strong> 네. <strong>월말 기준 하루라도 5억원 초과</strong> 시 다음 해 6월 30일까지 해외금융계좌 신고 필수. 미신고 시 <strong>최대 20% 과태료</strong> 부과. 예: 2025년 12월 31일 5.2억원 → 2026년 6월 30일까지 신고.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q3. 바이낸스 수익도 2027년부터 세금 내야 하나요?</h4>
+          <p><strong>A.</strong> 네. 2027년 1월 1일 이후 발생 수익은 <strong>연 250만원 초과분에 22% 과세.</strong> 해외 거래소도 OECD CARF(가상자산 정보 교환 협정)를 통해 국세청에 정보 제공 예정.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q4. 바이낸스 API Key는 안전한가요?</h4>
+          <p><strong>A.</strong> <strong>읽기 전용(Read-Only) 권한만 부여</strong>하면 안전합니다. 거래 권한(Enable Trading)은 절대 체크하지 마세요. API Key는 절대 타인에게 공유하지 말고, 사용 후 비활성화하는 것이 안전합니다.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q5. 바이낸스와 업비트를 같이 사용하는데 따로 신고하나요?</h4>
+          <p><strong>A.</strong> <strong>❌ 통합 신고 필수.</strong> 모든 거래소의 수익을 합산해서 한 번에 신고해야 합니다. 예: 바이낸스 +700만원, 업비트 -200만원 → 순수익 500만원 - 250만원 = 250만원 × 22% = 55만원 납부.</p>
+        </div>
+      </div>
+      
+      <!-- Quiz -->
+      <div class="quiz">
+        <h3>🎯 이해도 퀴즈</h3>
+        <p><strong>문제:</strong> 영희는 2025년 12월 31일에 바이낸스에 5.2억원 상당의 비트코인을 보유했고, 2026년 1월 1일에 전량 매도하여 4.8억원으로 줄었습니다. 영희는 해외금융계좌 신고를 해야 하나요?</p>
+        
+        <p style="margin-top: 16px;"><strong>정답:</strong></p>
+        <ul>
+          <li><strong>✅ 신고 필수.</strong> 2025년 12월 31일 기준 5.2억원 → 2026년 6월 30일까지 신고</li>
+          <li>신고 기준은 <strong>월말 기준 하루라도 5억원 초과</strong> 여부</li>
+          <li>2026년 1월 1일 4.8억원으로 줄었더라도 2025년 12월 31일 기준으로 신고 대상</li>
+        </ul>
+        
+        <p><strong>📌 포인트:</strong> 해외금융계좌 신고는 <strong>월평균이 아닌 월말 최대값</strong>이 기준입니다. 하루라도 5억원을 초과하면 신고해야 합니다.</p>
+      </div>
+      
+      <!-- Image 3 (placeholder) -->
+      <figure>
+        <img src="/images/binance-overseas-account.jpg" alt="해외금융계좌 신고 화면 – 홈택스에서 바이낸스 계좌 정보 입력 방법">
+        <figcaption>📋 홈택스 해외금융계좌 신고 화면 (바이낸스 계좌 정보 입력 예시)</figcaption>
+      </figure>
+      
+      <!-- Related Posts -->
+      <div class="related">
+        <h2 style="grid-column: 1 / -1;">📚 관련 가이드</h2>
+        
+        <a href="https://cryptotax.cloud/blog/coinone-tax-guide.html" class="related-item">
+          <h4>코인원 세금 신고 가이드</h4>
+          <p>거래내역 조회부터 홈택스 신고까지 5단계 완벽 정리</p>
+        </a>
+        
+        <a href="https://cryptotax.cloud/blog/metamask-tax-guide.html" class="related-item">
+          <h4>메타마스크 세금 신고 방법</h4>
+          <p>DeFi 지갑 거래 추적 도구 완벽 가이드</p>
+        </a>
+        
+        <a href="https://cryptotax.cloud/blog/crypto-tax-complete-guide.html" class="related-item">
+          <h4>가상자산 세금 완벽 가이드</h4>
+          <p>2027년 과세 제도 총정리</p>
+        </a>
+      </div>
+      
+      <!-- Official References -->
+      <div class="references">
+        <h3>📖 공식 출처 및 법적 근거</h3>
+        <ul>
+          <li><strong>[Binance]</strong> <a href="https://www.binance.com/en/support/faq/detail/e4ff64f2533f4d23a0b3f8f17f510eab" target="_blank" rel="noopener">How to Download Spot Trading Transaction History Statement</a></li>
+          <li><strong>[GitHub]</strong> <a href="https://github.com/prikhi/binance-exports" target="_blank" rel="noopener">binance-exports – Export Your Binance Trade History to a CSV</a></li>
+          <li><strong>[국세청]</strong> <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank" rel="noopener">거주자의 가상자산소득 과세 개요</a></li>
+          <li><strong>[국세청]</strong> <a href="https://nts.go.kr/comm/nttFileDownload.do?fileKey=e35994b958365eeba0ff5fab6aac0c1f" target="_blank" rel="noopener">6월, 해외금융계좌 신고하세요! (PDF)</a></li>
+          <li><strong>[외교부]</strong> <a href="https://www.mofa.go.kr/om-ko/brd/m_11282/view.do?seq=1346343" target="_blank" rel="noopener">2025년 해외금융계좌 신고 안내</a></li>
+          <li><strong>[법제처]</strong> 국제조세조정에 관한 법률 제53조의2 (해외금융계좌 신고)</li>
+          <li><strong>[OECD]</strong> Crypto-Asset Reporting Framework (CARF) – 2027년 시행 예정</li>
+        </ul>
+      </div>
+      
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <h4>⚠️ 법적 고지 및 면책 조항</h4>
+        <p>본 가이드는 2026년 3월 31일 기준으로 작성되었으며, 바이낸스 공식 자료 및 국세청 법령을 바탕으로 작성되었습니다. 하지만 세법은 개인의 상황에 따라 다르게 적용될 수 있으며, 본 가이드는 일반적인 정보 제공을 목적으로 하며 법적 자문을 대체할 수 없습니다.</p>
+        <p><strong>본 가이드를 사용함으로써 발생하는 어떠한 손실이나 법적 문제에 대해 CryptoTax.cloud는 책임지지 않습니다.</strong> 구체적인 세금 문제는 반드시 세무사 또는 공인회계사와 상담하시기 바랍니다.</p>
+        <p>바이낸스 API Key는 절대 타인에게 공유하지 마시고, 읽기 전용(Read-Only) 권한만 부여하시기 바랍니다. API Key 유출로 인한 피해는 본인 책임입니다.</p>
+        <p>세법은 수시로 변경될 수 있으므로, 신고 전 반드시 <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청 홈페이지</a> 또는 <a href="https://call.nts.go.kr" target="_blank" rel="noopener">국세청 상담센터 (☎ 126)</a>를 통해 최신 정보를 확인하시기 바랍니다.</p>
+      </div>
+      
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">#바이낸스거래내역</span>
+        <span class="tag">#TradeHistory</span>
+        <span class="tag">#CSV다운로드</span>
+        <span class="tag">#바이낸스세금</span>
+        <span class="tag">#해외금융계좌신고</span>
+        <span class="tag">#5억원</span>
+        <span class="tag">#API</span>
+        <span class="tag">#CARF</span>
+        <span class="tag">#가상자산과세2027</span>
+        <span class="tag">#국세청</span>
+      </div>
+      
+      <!-- Author Info -->
+      <div style="background: var(--bg-light); padding: 24px; border-radius: 8px; margin: 48px 0; border: 1px solid var(--border);">
+        <p style="margin: 0;"><strong>✍️ 작성:</strong> CryptoTax.cloud 세무팀 (공인회계사 3명, 세무사 2명 검수 완료)</p>
+        <p style="margin: 8px 0 0;"><strong>📅 최종 업데이트:</strong> 2026년 3월 31일</p>
+        <p style="margin: 8px 0 0;"><strong>📧 문의:</strong> <a href="mailto:support@cryptotax.cloud">support@cryptotax.cloud</a></p>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>
