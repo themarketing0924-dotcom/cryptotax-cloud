@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== 여기만 바꾸세요 (각 페이지별) ===== -->
+<title>업비트·빗썸·바이낸스 CSV 세금 계산기 2027 | 자동 파싱 무료 — CryptoTax.cloud</title>
+<meta name="description" content="업비트·빗썸·코인원·바이낸스 거래내역 CSV를 드래그&드롭하면 2027년 가상자산 세금을 자동 계산합니다. 개인정보 수집 없음, 완전 무료.">
+<meta name="keywords" content="업비트 CSV 세금 계산기, 빗썸 거래내역 세금, 코인 세금 자동 계산, 가상자산 양도소득세 CSV, 바이낸스 세금 계산">
+<link rel="canonical" href="https://cryptotax.cloud/tools/csv-tax-calculator.html">
+<!-- ===== 여기까지 ===== -->
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="업비트·빗썸 CSV 세금 자동 계산기 2027 | CryptoTax.cloud">
+<meta property="og:description" content="CSV 파일 하나로 2027년 코인 세금 즉시 계산. 서버 전송 없음, 완전 무료.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/csv-tax-calculator.html">
+<meta property="og:image" content="https://cryptotax.cloud/images/og-csv-calculator.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "업비트·빗썸 CSV 가상자산 세금 계산기",
+  "url": "https://cryptotax.cloud/tools/csv-tax-calculator.html",
+  "description": "업비트·빗썸·코인원·바이낸스 거래내역 CSV 파일을 자동 파싱하여 2027년 가상자산 세금을 계산합니다.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+  "inLanguage": "ko-KR",
+  "publisher": { "@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "업비트 CSV 파일은 어디서 받나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "업비트 앱 → 더보기 → 거래내역 → 내보내기(CSV/엑셀)에서 다운로드하거나, PC 웹사이트 거래내역 페이지에서 CSV 다운로드 버튼을 클릭하세요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "개인정보가 서버로 전송되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. 모든 계산은 브라우저(JavaScript)에서만 처리되며, CSV 데이터는 서버로 전송되지 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2027년 코인 세금 계산 공식은?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "과세표준 = (총매도금액 - 총취득원가 - 수수료) - 250만원 기본공제. 납부세액 = 과세표준 × 22% (소득세 20% + 지방소득세 2%). 과세표준이 0 이하면 세금 없음."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ===== CSS 변수 (다크/라이트 모드) ===== */
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #21262d;
+  --card: #1c2128;
+  --border: #30363d;
+  --accent: #f7931a;
+  --accent2: #00c896;
+  --danger: #f85149;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --shadow: 0 4px 24px rgba(0,0,0,.4);
+  --radius: 12px;
+  --transition: .25s ease;
+}
+[data-theme="light"] {
+  --bg: #f6f8fa;
+  --bg2: #ffffff;
+  --bg3: #f0f2f5;
+  --card: #ffffff;
+  --border: #d0d7de;
+  --text: #1f2328;
+  --text2: #57606a;
+  --text3: #8c959f;
+  --shadow: 0 4px 24px rgba(0,0,0,.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== 네비게이션 ===== */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,17,23,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+[data-theme="light"] nav { background: rgba(246,248,250,.92); }
+.nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+.nav-links { display: flex; gap: 1.2rem; list-style: none; }
+.nav-links a { color: var(--text2); text-decoration: none; font-size: .88rem; transition: color var(--transition); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: .8rem; }
+.theme-btn {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); border-radius: 8px;
+  padding: .35rem .7rem; font-size: .85rem; cursor: pointer;
+  transition: all var(--transition);
+}
+.theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ===== 히어로 ===== */
+.hero {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2332 100%);
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="light"] .hero { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%); }
+.hero-badge {
+  display: inline-block;
+  background: rgba(247,147,26,.15); color: var(--accent);
+  border: 1px solid rgba(247,147,26,.3);
+  border-radius: 20px; padding: .3rem .9rem;
+  font-size: .78rem; font-weight: 600; letter-spacing: .05em;
+  margin-bottom: 1rem;
+}
+.hero h1 { font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 800; line-height: 1.3; margin-bottom: .8rem; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--text2); font-size: 1rem; max-width: 560px; margin: 0 auto 1.5rem; }
+.privacy-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(0,200,150,.1); color: var(--accent2);
+  border: 1px solid rgba(0,200,150,.25);
+  border-radius: 8px; padding: .45rem 1rem; font-size: .82rem; font-weight: 600;
+}
+
+/* ===== 광고 슬롯 ===== */
+.ad-slot {
+  background: var(--bg3); border: 1px dashed var(--border);
+  border-radius: var(--radius); padding: 1rem;
+  text-align: center; color: var(--text3); font-size: .8rem;
+  margin: 1.5rem auto; max-width: 728px;
+}
+.ad-slot-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .3rem; }
+
+/* ===== 메인 레이아웃 ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  padding: 2rem 0 4rem;
+}
+@media(max-width:900px) { .main-grid { grid-template-columns: 1fr; } }
+
+/* ===== 카드 공통 ===== */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem;
+  box-shadow: var(--shadow); margin-bottom: 1.5rem;
+}
+.card-title {
+  font-size: 1.05rem; font-weight: 700;
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1.2rem; padding-bottom: .8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== 거래소 탭 ===== */
+.exchange-tabs {
+  display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+}
+.ex-tab {
+  padding: .5rem 1.1rem; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg3);
+  color: var(--text2); font-size: .88rem; font-weight: 600; cursor: pointer;
+  transition: all var(--transition);
+  display: flex; align-items: center; gap: .4rem;
+}
+.ex-tab:hover { border-color: var(--accent); color: var(--accent); }
+.ex-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.ex-tab img { width: 18px; height: 18px; border-radius: 4px; object-fit: contain; }
+
+/* ===== CSV 안내 박스 ===== */
+.csv-guide {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem; font-size: .84rem; color: var(--text2);
+}
+.csv-guide strong { color: var(--text); }
+.csv-guide code {
+  background: var(--bg2); border: 1px solid var(--border);
+  padding: .1rem .4rem; border-radius: 4px;
+  font-family: 'Courier New', monospace; font-size: .8rem; color: var(--accent2);
+}
+
+/* ===== 드래그&드롭 존 ===== */
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius); padding: 2.5rem 1.5rem;
+  text-align: center; cursor: pointer;
+  transition: all var(--transition); position: relative;
+  background: var(--bg3);
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(247,147,26,.05);
+}
+.drop-zone .drop-icon { font-size: 2.5rem; margin-bottom: .8rem; display: block; }
+.drop-zone h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+.drop-zone p { color: var(--text2); font-size: .85rem; }
+.drop-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.file-name {
+  margin-top: .8rem; font-size: .82rem; color: var(--accent2);
+  font-weight: 600; display: none;
+}
+
+/* ===== 날짜 범위 & 옵션 ===== */
+.options-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin: 1.2rem 0;
+}
+@media(max-width:600px) { .options-grid { grid-template-columns: 1fr; } }
+.form-group label {
+  display: block; font-size: .82rem; color: var(--text2);
+  margin-bottom: .4rem; font-weight: 600;
+}
+.form-group input, .form-group select {
+  width: 100%; padding: .65rem .9rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: .9rem;
+  transition: border-color var(--transition);
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none; border-color: var(--accent);
+}
+
+/* ===== 계산 버튼 ===== */
+.calc-btn {
+  width: 100%; padding: .9rem;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 10px;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  transition: all var(--transition); margin-top: .8rem;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+}
+.calc-btn:hover { background: #e8860f; transform: translateY(-1px); }
+.calc-btn:disabled { background: var(--bg3); color: var(--text3); cursor: not-allowed; transform: none; }
+
+/* ===== 결과 박스 ===== */
+#resultSection { display: none; }
+.result-summary {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.result-stat {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.1rem;
+  text-align: center;
+}
+.result-stat .label { font-size: .78rem; color: var(--text2); margin-bottom: .4rem; }
+.result-stat .value { font-size: 1.2rem; font-weight: 800; }
+.result-stat .value.tax { color: var(--danger); }
+.result-stat .value.profit { color: var(--accent2); }
+.result-stat .value.neutral { color: var(--accent); }
+
+/* ===== 세금 계산 공식 박스 ===== */
+.formula-box {
+  background: linear-gradient(135deg, rgba(247,147,26,.08), rgba(0,200,150,.05));
+  border: 1px solid rgba(247,147,26,.25);
+  border-radius: 10px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem;
+}
+.formula-box .formula-title { font-size: .82rem; color: var(--accent); font-weight: 700; margin-bottom: .6rem; }
+.formula-line { font-size: .88rem; color: var(--text2); margin: .2rem 0; }
+.formula-line strong { color: var(--text); }
+.formula-result { font-size: 1rem; font-weight: 800; color: var(--accent); margin-top: .6rem; padding-top: .6rem; border-top: 1px solid var(--border); }
+
+/* ===== 거래 테이블 ===== */
+.table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+th {
+  background: var(--bg3); color: var(--text2);
+  padding: .65rem .9rem; text-align: left;
+  border-bottom: 1px solid var(--border); font-weight: 600;
+  white-space: nowrap;
+}
+td {
+  padding: .6rem .9rem; border-bottom: 1px solid var(--border);
+  color: var(--text); white-space: nowrap;
+}
+tr:hover td { background: var(--bg3); }
+.badge {
+  padding: .2rem .55rem; border-radius: 5px;
+  font-size: .75rem; font-weight: 700;
+}
+.badge-buy { background: rgba(0,200,150,.15); color: var(--accent2); }
+.badge-sell { background: rgba(248,81,73,.15); color: var(--danger); }
+.badge-fee { background: rgba(139,148,158,.15); color: var(--text2); }
+
+/* ===== 오류/경고 알림 ===== */
+.alert {
+  padding: .9rem 1.2rem; border-radius: 8px;
+  font-size: .88rem; margin-bottom: 1rem;
+  display: flex; align-items: flex-start; gap: .6rem;
+}
+.alert-warn { background: rgba(247,147,26,.1); border: 1px solid rgba(247,147,26,.3); color: #e8960f; }
+.alert-error { background: rgba(248,81,73,.1); border: 1px solid rgba(248,81,73,.3); color: var(--danger); }
+.alert-success { background: rgba(0,200,150,.1); border: 1px solid rgba(0,200,150,.3); color: var(--accent2); }
+
+/* ===== 다운로드 버튼 ===== */
+.download-btns { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1rem; }
+.dl-btn {
+  padding: .65rem 1.2rem; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg3);
+  color: var(--text); font-size: .88rem; font-weight: 600; cursor: pointer;
+  transition: all var(--transition);
+  display: flex; align-items: center; gap: .4rem;
+}
+.dl-btn:hover { border-color: var(--accent); color: var(--accent); }
+.dl-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.dl-btn.primary:hover { background: #e8860f; }
+
+/* ===== 사이드바 ===== */
+.sidebar { position: sticky; top: 76px; height: fit-content; }
+.sidebar-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem;
+  margin-bottom: 1.2rem; box-shadow: var(--shadow);
+}
+.sidebar-title {
+  font-size: .9rem; font-weight: 700;
+  display: flex; align-items: center; gap: .4rem;
+  margin-bottom: 1rem; padding-bottom: .7rem;
+  border-bottom: 1px solid var(--border);
+}
+.quick-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem .7rem; border-radius: 8px;
+  text-decoration: none; color: var(--text); font-size: .85rem;
+  transition: background var(--transition); margin-bottom: .3rem;
+}
+.quick-link:hover { background: var(--bg3); color: var(--accent); }
+.quick-link .icon { font-size: 1rem; }
+.dday-box { text-align: center; padding: .5rem; }
+.dday-count { font-size: 2rem; font-weight: 900; color: var(--accent); line-height: 1.1; }
+.dday-label { font-size: .78rem; color: var(--text2); margin-top: .3rem; }
+.cta-box {
+  background: linear-gradient(135deg, rgba(247,147,26,.12), rgba(0,200,150,.08));
+  border: 1px solid rgba(247,147,26,.25);
+  border-radius: 10px; padding: 1.2rem; text-align: center;
+}
+.cta-box h4 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+.cta-box p { font-size: .8rem; color: var(--text2); margin-bottom: .9rem; }
+.cta-link {
+  display: block; padding: .6rem 1rem;
+  background: var(--accent); color: #fff; border-radius: 8px;
+  text-decoration: none; font-size: .85rem; font-weight: 700;
+  transition: background var(--transition);
+}
+.cta-link:hover { background: #e8860f; }
+
+/* ===== FAQ ===== */
+.faq-section { padding: 3rem 0; }
+.faq-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; }
+.faq-item { margin-bottom: .8rem; }
+.faq-q {
+  width: 100%; text-align: left; padding: 1rem 1.2rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: .9rem; font-weight: 600;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  transition: all var(--transition);
+}
+.faq-q:hover { border-color: var(--accent); }
+.faq-q.open { border-color: var(--accent); color: var(--accent); border-radius: 8px 8px 0 0; }
+.faq-a {
+  display: none; padding: 1rem 1.2rem;
+  background: var(--bg3); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 8px 8px; font-size: .88rem; color: var(--text2); line-height: 1.7;
+}
+.faq-a.open { display: block; }
+
+/* ===== 푸터 ===== */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 2.5rem 1.5rem; text-align: center;
+}
+footer p { color: var(--text3); font-size: .82rem; line-height: 1.8; }
+footer a { color: var(--text2); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+
+/* ===== 로딩 스피너 ===== */
+.spinner { display: none; width: 22px; height: 22px; }
+.spinner.show { display: block; }
+.spinner-ring {
+  width: 22px; height: 22px; border: 3px solid rgba(255,255,255,.3);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== 진행 바 ===== */
+.progress-bar {
+  height: 3px; background: var(--bg3); border-radius: 3px;
+  margin-bottom: 1.2rem; display: none;
+}
+.progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width .3s; }
+
+/* ===== 반응형 ===== */
+@media(max-width:600px) {
+  .hero h1 { font-size: 1.4rem; }
+  .card { padding: 1.2rem; }
+  .result-summary { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 네비게이션 ===== -->
+<nav>
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/#calculator">💰 세금계산기</a></li>
+    <li><a href="/#tools">🧰 도구모음</a></li>
+    <li><a href="/market/">📊 시장데이터</a></li>
+    <li><a href="/blog/">📰 블로그</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+  </div>
+</nav>
+
+<!-- ===== 히어로 ===== -->
+<section class="hero">
+  <div class="hero-badge">🆕 2027 세금 자동 계산 · 완전 무료</div>
+  <h1>업비트·빗썸·코인원·바이낸스<br><span>CSV 세금 계산기</span></h1>
+  <p>거래내역 CSV 파일을 올리면 2027년 가상자산 양도소득세를 자동으로 계산합니다.<br>서버 전송 없음 — 모든 처리는 브라우저에서만 이루어집니다.</p>
+  <div class="privacy-badge">🔒 개인정보 수집 없음 · 브라우저 전용 처리</div>
+</section>
+
+<!-- ===== 상단 광고 ===== -->
+<div class="container">
+  <div class="ad-slot" style="min-height:90px;">
+    <div class="ad-slot-label">Advertisement</div>
+    <!-- Google AdSense: 728x90 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<!-- ===== 메인 콘텐츠 ===== -->
+<div class="container">
+  <div class="main-grid">
+
+    <!-- 왼쪽: 계산기 영역 -->
+    <main>
+
+      <!-- STEP 1: 거래소 선택 -->
+      <div class="card">
+        <div class="card-title">📁 STEP 1 — 거래소 선택</div>
+
+        <div class="exchange-tabs">
+          <button class="ex-tab active" onclick="selectExchange('upbit')" id="tab-upbit">
+            <img src="https://cryptologos.cc/logos/upbit-upbit-logo.png" onerror="this.style.display='none'" alt="">
+            업비트
+          </button>
+          <button class="ex-tab" onclick="selectExchange('bithumb')" id="tab-bithumb">
+            <img src="https://cryptologos.cc/logos/bithumb-bithumb-logo.png" onerror="this.style.display='none'" alt="">
+            빗썸
+          </button>
+          <button class="ex-tab" onclick="selectExchange('coinone')" id="tab-coinone">
+            <img src="https://cryptologos.cc/logos/coinone-coinone-logo.png" onerror="this.style.display='none'" alt="">
+            코인원
+          </button>
+          <button class="ex-tab" onclick="selectExchange('binance')" id="tab-binance">
+            <img src="https://cryptologos.cc/logos/binance-bnb-logo.png" onerror="this.style.display='none'" alt="">
+            바이낸스
+          </button>
+          <button class="ex-tab" onclick="selectExchange('manual')" id="tab-manual">
+            ✏️ 직접입력
+          </button>
+        </div>
+
+        <!-- CSV 다운로드 안내 (거래소별 동적 변경) -->
+        <div class="csv-guide" id="csvGuide">
+          <strong>📥 업비트 CSV 다운로드 방법:</strong><br>
+          앱: 더보기 → 거래내역 → 내보내기 → CSV 다운로드<br>
+          PC: 거래내역 페이지 → <code>거래내역 내보내기</code> 버튼 클릭<br>
+          <strong>컬럼 형식:</strong> <code>체결시간, 마켓, 종류(매수/매도), 거래수량, 거래단가, 거래금액, 수수료, 정산금액</code>
+        </div>
+
+        <!-- 드래그&드롭 -->
+        <div class="drop-zone" id="dropZone">
+          <span class="drop-icon">📂</span>
+          <h3>CSV 파일을 여기에 드래그하거나 클릭하세요</h3>
+          <p>지원 형식: .csv, .txt (최대 10MB)</p>
+          <div class="file-name" id="fileName"></div>
+          <input type="file" accept=".csv,.txt" id="csvInput" onchange="handleFileSelect(event)">
+        </div>
+
+        <!-- 진행 바 -->
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: 계산 옵션 -->
+      <div class="card">
+        <div class="card-title">⚙️ STEP 2 — 계산 옵션 설정</div>
+
+        <div class="options-grid">
+          <div class="form-group">
+            <label>📅 과세 기간 시작</label>
+            <input type="date" id="dateFrom" value="2027-01-01">
+          </div>
+          <div class="form-group">
+            <label>📅 과세 기간 종료</label>
+            <input type="date" id="dateTo" value="2027-12-31">
+          </div>
+          <div class="form-group">
+            <label>💸 기본공제 금액 (원)</label>
+            <input type="number" id="deduction" value="2500000" min="0" step="100000">
+          </div>
+          <div class="form-group">
+            <label>📊 세율 (%)</label>
+            <input type="number" id="taxRate" value="22" min="0" max="100" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>🔢 원가 계산 방식</label>
+            <select id="costMethod">
+              <option value="avg">총평균법 (2027년 기본)</option>
+              <option value="fifo">선입선출법 (FIFO)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>💱 통화 기준</label>
+            <select id="currency">
+              <option value="KRW">KRW (원화)</option>
+              <option value="USDT">USDT (테더)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn" onclick="calculateTax()" disabled>
+          <div class="spinner" id="spinner"><div class="spinner-ring"></div></div>
+          <span id="calcBtnText">📁 파일을 먼저 업로드하세요</span>
+        </button>
+      </div>
+
+      <!-- STEP 3: 결과 -->
+      <div id="resultSection">
+        <div class="card">
+          <div class="card-title">📊 STEP 3 — 세금 계산 결과</div>
+
+          <div id="alertBox"></div>
+
+          <div class="result-summary" id="resultSummary"></div>
+
+          <div class="formula-box" id="formulaBox"></div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;">
+            <strong style="font-size:.95rem;">📋 거래 내역 파싱 결과</strong>
+            <span id="txCount" style="font-size:.82rem;color:var(--text2)"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>날짜</th>
+                  <th>코인</th>
+                  <th>구분</th>
+                  <th>수량</th>
+                  <th>단가(원)</th>
+                  <th>금액(원)</th>
+                  <th>수수료(원)</th>
+                  <th>손익(원)</th>
+                </tr>
+              </thead>
+              <tbody id="txTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="download-btns">
+            <button class="dl-btn primary" onclick="downloadReport()">📥 세금 보고서 다운로드 (CSV)</button>
+            <button class="dl-btn" onclick="downloadSummary()">📄 요약 PDF 저장</button>
+            <button class="dl-btn" onclick="shareResult()">🔗 결과 공유</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 직접입력 폼 (manual 탭 선택 시) -->
+      <div class="card" id="manualSection" style="display:none;">
+        <div class="card-title">✏️ 거래 내역 직접 입력</div>
+        <div id="manualRows">
+          <div class="manual-row" style="display:grid;grid-template-columns:1fr 1fr 100px 1fr 1fr 80px;gap:.5rem;margin-bottom:.5rem;">
+            <input placeholder="날짜 (YYYY-MM-DD)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input placeholder="코인 (예: BTC)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <select style="padding:.55rem .5rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+              <option value="buy">매수</option>
+              <option value="sell">매도</option>
+            </select>
+            <input type="number" placeholder="수량" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input type="number" placeholder="단가(원)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input type="number" placeholder="수수료" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+          </div>
+        </div>
+        <button class="dl-btn" onclick="addManualRow()" style="margin-top:.5rem;">+ 행 추가</button>
+        <button class="calc-btn" onclick="calculateManual()" style="margin-top:.8rem;">💰 세금 계산하기</button>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2>❓ 자주 묻는 질문</h2>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">업비트 CSV 파일은 어디서 받나요? <span>＋</span></button>
+          <div class="faq-a">업비트 앱: 더보기 → 거래내역 → 오른쪽 상단 내보내기 버튼 → CSV 선택.<br>PC 웹: upbit.com → 거래내역 탭 → 우측 상단 '내보내기' → CSV 다운로드. 기간은 최대 1년 단위로 선택 가능합니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">내 거래 데이터가 서버로 전송되나요? <span>＋</span></button>
+          <div class="faq-a">아니요. 모든 파싱과 계산은 브라우저의 JavaScript에서만 처리됩니다. CSV 파일 내용은 서버로 전송되지 않으며, 페이지를 닫으면 데이터가 삭제됩니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">총평균법과 선입선출법의 차이는? <span>＋</span></button>
+          <div class="faq-a"><strong>총평균법:</strong> 해당 연도에 보유한 전체 코인의 평균 취득단가를 기준으로 계산. 2027년 한국 세법 기본 방식.<br><strong>선입선출법(FIFO):</strong> 먼저 산 코인을 먼저 판 것으로 간주. 상승장에서 세금이 더 많이 나올 수 있습니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">손실이 났을 때도 신고해야 하나요? <span>＋</span></button>
+          <div class="faq-a">과세표준이 0원 이하(손실 또는 250만원 이하 수익)이면 세금이 발생하지 않습니다. 단, 손실을 다음 해로 이월 공제받으려면 신고가 필요합니다. 정확한 판단은 세무사 상담을 권장합니다.</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 오른쪽: 사이드바 -->
+    <aside class="sidebar">
+
+      <!-- D-day 카운트다운 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">⏰ 세금 신고 D-day</div>
+        <div class="dday-box">
+          <div class="dday-count" id="ddayCount">—</div>
+          <div class="dday-label">2028년 5월 신고 마감까지</div>
+        </div>
+      </div>
+
+      <!-- 관련 도구 빠른 링크 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">🧰 관련 도구</div>
+        <a class="quick-link" href="/tools/tax-calculator.html"><span class="icon">💰</span> 세금 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/tax-loss-harvesting.html"><span class="icon">📉</span> 절세 하베스팅 <span>→</span></a>
+        <a class="quick-link" href="/tools/staking-calculator.html"><span class="icon">🥩</span> 스테이킹 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/dca-calculator.html"><span class="icon">📈</span> DCA 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/kimchi-premium.html"><span class="icon">🌶️</span> 김치프리미엄 <span>→</span></a>
+        <a class="quick-link" href="/tools/portfolio-tracker.html"><span class="icon">💼</span> 포트폴리오 추적 <span>→</span></a>
+      </div>
+
+      <!-- 사이드바 광고 -->
+      <div class="sidebar-card" style="padding:0;overflow:hidden;">
+        <div class="ad-slot" style="margin:0;border-radius:var(--radius);min-height:250px;">
+          <div class="ad-slot-label">Advertisement</div>
+          <!-- AdSense 300x250 -->
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0987654321" data-ad-format="rectangle"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- 세무사 상담 CTA -->
+      <div class="sidebar-card">
+        <div class="cta-box">
+          <h4>💼 세무사 무료 상담</h4>
+          <p>복잡한 거래내역은<br>전문 세무사에게 맡기세요</p>
+          <a href="/consultation" class="cta-link">무료 상담 신청하기 →</a>
+        </div>
+      </div>
+
+      <!-- 추천 블로그 글 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">📰 관련 블로그 글</div>
+        <a class="quick-link" href="/blog/virtual-asset-tax-2027-guide.html"><span class="icon">📖</span> 2027 세금 완벽 가이드 <span>→</span></a>
+        <a class="quick-link" href="/blog/coin-tax-calculation-5-steps.html"><span class="icon">🔢</span> 세금 계산 5단계 <span>→</span></a>
+        <a class="quick-link" href="/blog/upbit-tax-report-guide.html"><span class="icon">📋</span> 업비트 세금신고 방법 <span>→</span></a>
+        <a class="quick-link" href="/blog/coin-250-deduction-zero-tax.html"><span class="icon">🎁</span> 250만원 공제 절세법 <span>→</span></a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===== 푸터 ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="/">홈</a>
+    <a href="/blog/">블로그</a>
+    <a href="/tools/tax-calculator.html">세금계산기</a>
+    <a href="/market/">시장데이터</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+  </div>
+  <p>
+    © 2026 CryptoTax.cloud · 본 계산 결과는 참고용이며 법적 효력이 없습니다.<br>
+    정확한 세금 신고는 세무사 또는 국세청 홈택스(hometax.go.kr)를 이용하세요.<br>
+    문의: <a href="mailto:hello@cryptotax.cloud">hello@cryptotax.cloud</a>
+  </p>
+</footer>
+
+<!-- ===== JavaScript ===== -->
+<script>
+/* ===================================================
+   거래소별 CSV 컬럼 파싱 설정 (실제 포맷 기반)
+   =================================================== */
+const EXCHANGE_CONFIG = {
+  upbit: {
+    name: '업비트',
+    encoding: 'UTF-8',
+    // 업비트 실제 CSV 컬럼: 체결시간, 마켓, 종류, 거래수량, 거래단가, 거래금액, 수수료, 정산금액
+    colMap: {
+      date:     ['체결시간', '거래시간', 'date', 'time'],
+      market:   ['마켓', '코인', 'market', 'coin'],
+      type:     ['종류', '거래종류', 'type', 'side'],
+      qty:      ['거래수량', '수량', 'volume', 'quantity'],
+      price:    ['거래단가', '단가', 'price', 'unitPrice'],
+      amount:   ['거래금액', '금액', 'amount', 'total'],
+      fee:      ['수수료', 'fee'],
+      net:      ['정산금액', 'net']
+    },
+    buyKeywords:  ['매수', 'BUY', 'buy'],
+    sellKeywords: ['매도', 'SELL', 'sell'],
+    guide: `<strong>📥 업비트 CSV 다운로드:</strong><br>
+앱: 더보기 → 거래내역 → 내보내기 → CSV<br>
+PC: upbit.com → 거래내역 → 내보내기 버튼<br>
+<strong>컬럼:</strong> <code>체결시간, 마켓, 종류, 거래수량, 거래단가, 거래금액, 수수료, 정산금액</code>`
+  },
+  bithumb: {
+    name: '빗썸',
+    encoding: 'EUC-KR',
+    // 빗썸 실제 CSV 컬럼: 거래일시, 거래종류, 가상자산, 거래수량, 거래단가, 거래금액, 수수료, 정산금액
+    colMap: {
+      date:     ['거래일시', '거래시간', '일시', 'date'],
+      market:   ['가상자산', '코인', 'coin', 'asset'],
+      type:     ['거래종류', '종류', 'type'],
+      qty:      ['거래수량', '수량', 'volume'],
+      price:    ['거래단가', '단가', 'price'],
+      amount:   ['거래금액', '금액', 'amount'],
+      fee:      ['수수료', 'fee'],
+      net:      ['정산금액', 'net']
+    },
+    buyKeywords:  ['매수', 'BUY', 'buy', '구매'],
+    sellKeywords: ['매도', 'SELL', 'sell', '판매'],
+    guide: `<strong>📥 빗썸 CSV 다운로드:</strong><br>
+PC: bithumb.com → 마이페이지 → 거래내역 → 엑셀 다운로드<br>
+앱: 자산 → 거래내역 → 다운로드 (인증 필요)<br>
+<strong>컬럼:</strong> <code>거래일시, 거래종류, 가상자산, 거래수량, 거래단가, 거래금액, 수수료</code>`
+  },
+  coinone: {
+    name: '코인원',
+    encoding: 'UTF-8',
+    // 코인원 실제 CSV 컬럼: 날짜, 구분, 코인, 수량, 단가, 금액, 수수료
+    colMap: {
+      date:     ['날짜', '거래일시', '시간', 'date'],
+      market:   ['코인', '가상자산', 'coin'],
+      type:     ['구분', '거래유형', 'type'],
+      qty:      ['수량', '거래수량', 'qty', 'amount'],
+      price:    ['단가', '거래단가', 'price'],
+      amount:   ['금액', '거래금액', 'total'],
+      fee:      ['수수료', 'fee'],
+      net:      ['정산금액', 'net']
+    },
+    buyKeywords:  ['매수', 'BUY', 'buy'],
+    sellKeywords: ['매도', 'SELL', 'sell'],
+    guide: `<strong>📥 코인원 CSV 다운로드:</strong><br>
+PC: coinone.co.kr → 마이페이지 → 거래내역 → 엑셀 다운로드<br>
+<strong>컬럼:</strong> <code>날짜, 구분, 코인, 수량, 단가, 금액, 수수료</code>`
+  },
+  binance: {
+    name: '바이낸스',
+    encoding: 'UTF-8',
+    // 바이낸스 실제 CSV 컬럼: User_ID, UTC_Time, Account, Operation, Coin, Change, Remark
+    colMap: {
+      date:     ['UTC_Time', 'Date(UTC)', 'Date', 'Time'],
+      market:   ['Coin', 'Asset', 'Symbol'],
+      type:     ['Operation', 'Type', 'Side'],
+      qty:      ['Change', 'Qty', 'Quantity', 'Amount'],
+      price:    ['Price', 'unit_price', 'Unit_Price'],
+      amount:   ['Total', 'USDT_Amount', 'Amount'],
+      fee:      ['Fee', 'Commission'],
+      net:      ['Realized_Profit', 'net']
+    },
+    buyKeywords:  ['Buy', 'buy', 'BUY', 'Purchase'],
+    sellKeywords: ['Sell', 'sell', 'SELL'],
+    guide: `<strong>📥 바이낸스 CSV 다운로드:</strong><br>
+PC: binance.com → 지갑 → 거래 내역 → 내보내기 → CSV 다운로드<br>
+<strong>컬럼:</strong> <code>User_ID, UTC_Time, Account, Operation, Coin, Change, Remark</code>`
+  },
+  manual: {
+    name: '직접입력',
+    guide: `<strong>✏️ 직접 입력 모드:</strong><br>
+아래 양식에 거래 내역을 직접 입력하세요.<br>
+거래소가 없거나 CSV 파일이 없을 때 사용합니다.`
+  }
+};
+
+/* ===================================================
+   전역 상태
+   =================================================== */
+let currentExchange = 'upbit';
+let parsedTransactions = [];
+let calcResults = null;
+
+/* ===================================================
+   테마 토글
+   =================================================== */
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌞 라이트' : '🌙 다크';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+(function() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = saved === 'dark' ? '🌙 다크' : '🌞 라이트';
+  });
+})();
+
+/* ===================================================
+   거래소 선택
+   =================================================== */
+function selectExchange(ex) {
+  currentExchange = ex;
+  document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + ex).classList.add('active');
+
+  const config = EXCHANGE_CONFIG[ex];
+  if (config && config.guide) {
+    document.getElementById('csvGuide').innerHTML = config.guide;
+  }
+
+  const manualSection = document.getElementById('manualSection');
+  const dropZone = document.getElementById('dropZone');
+  if (ex === 'manual') {
+    manualSection.style.display = 'block';
+    dropZone.style.display = 'none';
+  } else {
+    manualSection.style.display = 'none';
+    dropZone.style.display = 'block';
+  }
+}
+
+/* ===================================================
+   드래그 & 드롭 이벤트
+   =================================================== */
+const dropZone = document.getElementById('dropZone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) processFile(file);
+});
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) processFile(file);
+}
+
+function processFile(file) {
+  if (file.size > 10 * 1024 * 1024) {
+    showAlert('파일 크기가 10MB를 초과합니다.', 'error');
+    return;
+  }
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (!['csv', 'txt'].includes(ext)) {
+    showAlert('CSV 또는 TXT 파일만 지원합니다.', 'error');
+    return;
+  }
+
+  document.getElementById('fileName').textContent = `✅ ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+  document.getElementById('fileName').style.display = 'block';
+
+  // EUC-KR (빗썸) vs UTF-8 처리
+  const encoding = EXCHANGE_CONFIG[currentExchange]?.encoding || 'UTF-8';
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      parseCSV(e.target.result);
+    } catch(err) {
+      showAlert('파일 파싱 오류: ' + err.message, 'error');
+    }
+  };
+
+  if (encoding === 'EUC-KR') {
+    reader.readAsText(file, 'EUC-KR');
+  } else {
+    reader.readAsText(file, 'UTF-8');
+  }
+}
+
+/* ===================================================
+   CSV 파싱 (범용 헤더 감지)
+   =================================================== */
+function parseCSV(text) {
+  // BOM 제거
+  text = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+  const lines = text.split('\n').filter(l => l.trim().length > 0);
+  if (lines.length < 2) {
+    showAlert('CSV 데이터가 부족합니다. 파일을 확인해주세요.', 'error');
+    return;
+  }
+
+  // 헤더 파싱 (따옴표 처리 포함)
+  const headers = parseCSVLine(lines[0]);
+  const config = EXCHANGE_CONFIG[currentExchange];
+
+  // 컬럼 인덱스 매핑
+  const idxMap = {};
+  for (const [key, candidates] of Object.entries(config.colMap)) {
+    for (const c of candidates) {
+      const idx = headers.findIndex(h => h.trim().replace(/"/g,'').toLowerCase() === c.toLowerCase());
+      if (idx !== -1) { idxMap[key] = idx; break; }
+    }
+  }
+
+  // 최소 필수 컬럼 확인
+  if (idxMap.date === undefined || idxMap.type === undefined || idxMap.qty === undefined) {
+    showAlert(
+      `컬럼 인식 실패. 감지된 헤더: [${headers.join(', ')}]<br>
+      거래소 선택이 올바른지 확인하거나, 직접입력 모드를 사용하세요.`,
+      'error'
+    );
+    return;
+  }
+
+  parsedTransactions = [];
+  let parseErrors = 0;
+
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCSVLine(lines[i]);
+    if (cols.length < 3) continue;
+
+    try {
+      const rawDate = cols[idxMap.date] || '';
+      const rawType = cols[idxMap.type] || '';
+      const rawMarket = idxMap.market !== undefined ? cols[idxMap.market] : '';
+      const rawQty = idxMap.qty !== undefined ? cols[idxMap.qty] : '0';
+      const rawPrice = idxMap.price !== undefined ? cols[idxMap.price] : '0';
+      const rawAmount = idxMap.amount !== undefined ? cols[idxMap.amount] : '0';
+      const rawFee = idxMap.fee !== undefined ? cols[idxMap.fee] : '0';
+
+      // 코인명 정규화
+      let coin = rawMarket.replace(/KRW-|\/KRW|\/USDT|\/BTC/gi, '').trim().toUpperCase();
+      if (!coin || coin === '') coin = 'UNKNOWN';
+
+      // 거래 유형 판별
+      let type = 'unknown';
+      const typeStr = rawType.trim();
+      if (config.buyKeywords.some(k => typeStr.includes(k))) type = 'buy';
+      else if (config.sellKeywords.some(k => typeStr.includes(k))) type = 'sell';
+
+      // 숫자 변환 (콤마, 공백 제거)
+      const qty = parseFloat(rawQty.replace(/[,\s]/g, '')) || 0;
+      const price = parseFloat(rawPrice.replace(/[,\s]/g, '')) || 0;
+      const fee = parseFloat(rawFee.replace(/[,\s]/g, '')) || 0;
+      let amount = parseFloat(rawAmount.replace(/[,\s]/g, '')) || 0;
+      if (amount === 0 && qty > 0 && price > 0) amount = qty * price;
+
+      // 바이낸스: Change 컬럼이 음수면 매도
+      if (currentExchange === 'binance' && type === 'unknown') {
+        const change = parseFloat(rawQty.replace(/[,\s]/g, ''));
+        if (change < 0) type = 'sell';
+        else if (change > 0) type = 'buy';
+      }
+
+      if (qty === 0 && amount === 0) continue;
+
+      parsedTransactions.push({
+        date: normalizeDate(rawDate),
+        coin,
+        type,
+        qty: Math.abs(qty),
+        price,
+        amount: Math.abs(amount),
+        fee: Math.abs(fee)
+      });
+    } catch(e) {
+      parseErrors++;
+    }
+  }
+
+  if (parsedTransactions.length === 0) {
+    showAlert('파싱된 거래 내역이 없습니다. 거래소 선택을 확인하거나 직접입력 모드를 이용하세요.', 'error');
+    return;
+  }
+
+  // 계산 버튼 활성화
+  document.getElementById('calcBtn').disabled = false;
+  document.getElementById('calcBtnText').textContent = `💰 세금 계산하기 (${parsedTransactions.length}건)`;
+
+  if (parseErrors > 0) {
+    showAlertInline(`⚠️ ${parseErrors}건의 행을 읽지 못했습니다. 나머지 ${parsedTransactions.length}건은 정상 파싱되었습니다.`, 'warn');
+  } else {
+    showAlertInline(`✅ ${parsedTransactions.length}건의 거래 내역이 파싱되었습니다. 이제 세금 계산하기를 클릭하세요.`, 'success');
+  }
+}
+
+function parseCSVLine(line) {
+  const result = []; let cur = ''; let inQuote = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQuote = !inQuote; }
+    else if (ch === ',' && !inQuote) { result.push(cur.trim()); cur = ''; }
+    else { cur += ch; }
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function normalizeDate(str) {
+  if (!str) return '날짜없음';
+  str = str.replace(/"/g, '').trim();
+  // YYYY-MM-DD HH:mm:ss → YYYY-MM-DD
+  const m = str.match(/(\d{4}[-./]\d{1,2}[-./]\d{1,2})/);
+  return m ? m[1].replace(/\./g, '-').replace(/\//g, '-') : str.substring(0, 10);
+}
+
+/* ===================================================
+   세금 계산 (총평균법 / FIFO)
+   =================================================== */
+function calculateTax() {
+  if (parsedTransactions.length === 0) return;
+
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('calcBtnText');
+  const progressBar = document.getElementById('progressBar');
+  const progressFill = document.getElementById('progressFill');
+
+  spinner.classList.add('show');
+  btnText.textContent = '계산 중...';
+  progressBar.style.display = 'block';
+  progressFill.style.width = '30%';
+
+  setTimeout(() => {
+    const dateFrom = new Date(document.getElementById('dateFrom').value);
+    const dateTo   = new Date(document.getElementById('dateTo').value);
+    dateTo.setHours(23,59,59);
+
+    const deduction = parseFloat(document.getElementById('deduction').value) || 2500000;
+    const taxRate   = parseFloat(document.getElementById('taxRate').value) / 100 || 0.22;
+    const method    = document.getElementById('costMethod').value;
+
+    // 기간 필터
+    const filtered = parsedTransactions.filter(tx => {
+      if (tx.date === '날짜없음') return true;
+      const d = new Date(tx.date);
+      return d >= dateFrom && d <= dateTo;
+    });
+
+    progressFill.style.width = '60%';
+
+    // 코인별 집계
+    const coinMap = {}; // { BTC: { buyAmount:0, buyQty:0, sellAmount:0, sellFee:0, txList:[] } }
+    for (const tx of filtered) {
+      if (!coinMap[tx.coin]) coinMap[tx.coin] = { buyAmount:0, buyQty:0, sellAmount:0, sellFee:0, txList:[], avgCost:0, fifoQueue:[] };
+      const c = coinMap[tx.coin];
+
+      if (tx.type === 'buy') {
+        c.buyAmount += tx.amount;
+        c.buyQty    += tx.qty;
+        if (method === 'fifo') c.fifoQueue.push({ qty: tx.qty, unitCost: tx.price || (tx.amount / tx.qty) });
+      } else if (tx.type === 'sell') {
+        c.sellAmount += tx.amount;
+        c.sellFee    += tx.fee;
+      }
+      c.txList.push(tx);
+    }
+
+    // 총평균법 원가 계산
+    let totalBuy = 0, totalSell = 0, totalFee = 0, totalGain = 0;
+    const coinResults = [];
+
+    for (const [coin, c] of Object.entries(coinMap)) {
+      const avgUnitCost = c.buyQty > 0 ? c.buyAmount / c.buyQty : 0;
+      const sellTxs = c.txList.filter(t => t.type === 'sell');
+      let coinGain = 0;
+
+      if (method === 'avg') {
+        // 총평균법: 매도금액 - (매도수량 × 평균단가) - 수수료
+        const sellQty = sellTxs.reduce((s, t) => s + t.qty, 0);
+        const costBasis = sellQty * avgUnitCost;
+        coinGain = c.sellAmount - costBasis - c.sellFee;
+      } else {
+        // FIFO: 선입선출법
+        const queue = [...c.fifoQueue];
+        for (const tx of sellTxs) {
+          let remaining = tx.qty;
+          let costBasis = 0;
+          while (remaining > 0 && queue.length > 0) {
+            const first = queue[0];
+            if (first.qty <= remaining) {
+              costBasis += first.qty * first.unitCost;
+              remaining -= first.qty;
+              queue.shift();
+            } else {
+              costBasis += remaining * first.unitCost;
+              first.qty -= remaining;
+              remaining = 0;
+            }
+          }
+          coinGain += tx.amount - costBasis - tx.fee;
+        }
+      }
+
+      totalBuy  += c.buyAmount;
+      totalSell += c.sellAmount;
+      totalFee  += c.sellFee;
+      totalGain += coinGain;
+
+      coinResults.push({ coin, buyAmount: c.buyAmount, sellAmount: c.sellAmount, fee: c.sellFee, gain: coinGain, txCount: c.txList.length });
+    }
+
+    // 과세표준 및 세액
+    const taxBase = Math.max(0, totalGain - deduction);
+    const taxAmt  = Math.floor(taxBase * taxRate);
+    const afterTaxProfit = totalGain - taxAmt;
+
+    progressFill.style.width = '100%';
+    spinner.classList.remove('show');
+    btnText.textContent = `✅ 계산 완료 (${filtered.length}건)`;
+
+    calcResults = { totalBuy, totalSell, totalFee, totalGain, deduction, taxBase, taxAmt, afterTaxProfit, taxRate, filtered, coinResults };
+    renderResults(calcResults);
+
+    setTimeout(() => { progressBar.style.display = 'none'; }, 800);
+  }, 300);
+}
+
+/* ===================================================
+   결과 렌더링
+   =================================================== */
+function renderResults(r) {
+  const section = document.getElementById('resultSection');
+  section.style.display = 'block';
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // 요약 통계
+  document.getElementById('resultSummary').innerHTML = `
+    <div class="result-stat">
+      <div class="label">총 매수금액</div>
+      <div class="value neutral">${fmtKRW(r.totalBuy)}원</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">총 매도금액</div>
+      <div class="value neutral">${fmtKRW(r.totalSell)}원</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">총 수익</div>
+      <div class="value ${r.totalGain >= 0 ? 'profit' : 'tax'}">${fmtKRW(r.totalGain)}원</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">기본공제</div>
+      <div class="value neutral">-${fmtKRW(r.deduction)}원</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">과세표준</div>
+      <div class="value ${r.taxBase > 0 ? 'tax' : 'profit'}">${fmtKRW(r.taxBase)}원</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">납부세액 (${(r.taxRate*100).toFixed(1)}%)</div>
+      <div class="value tax">${fmtKRW(r.taxAmt)}원</div>
+    </div>
+  `;
+
+  // 공식 박스
+  document.getElementById('formulaBox').innerHTML = `
+    <div class="formula-title">📐 세금 계산 공식 (총평균법 기준)</div>
+    <div class="formula-line">매도금액 <strong>${fmtKRW(r.totalSell)}원</strong></div>
+    <div class="formula-line">- 취득원가 <strong>${fmtKRW(r.totalBuy)}원</strong></div>
+    <div class="formula-line">- 수수료 <strong>${fmtKRW(r.totalFee)}원</strong></div>
+    <div class="formula-line">= 실현손익 <strong>${fmtKRW(r.totalGain)}원</strong></div>
+    <div class="formula-line">- 기본공제 <strong>${fmtKRW(r.deduction)}원</strong></div>
+    <div class="formula-line">= 과세표준 <strong>${fmtKRW(r.taxBase)}원</strong></div>
+    <div class="formula-result">× 세율 ${(r.taxRate*100).toFixed(1)}% = <strong>납부세액 ${fmtKRW(r.taxAmt)}원</strong></div>
+  `;
+
+  // 경고 메시지
+  let alertHtml = '';
+  if (r.taxAmt === 0 && r.totalGain > 0) {
+    alertHtml = `<div class="alert alert-success">🎉 수익이 기본공제(${fmtKRW(r.deduction)}원) 이하여서 납부할 세금이 없습니다!</div>`;
+  } else if (r.totalGain < 0) {
+    alertHtml = `<div class="alert alert-warn">📉 손실이 발생했습니다. 과세표준이 0원으로 납부 세금 없음. 손실 이월 공제를 위해 신고를 고려하세요.</div>`;
+  } else if (r.taxAmt > 0) {
+    alertHtml = `<div class="alert alert-warn">⚠️ 2028년 5월 종합소득세 신고 기간에 홈택스(hometax.go.kr)에서 신고·납부하세요. 무신고 시 가산세 최대 40%.</div>`;
+  }
+  document.getElementById('alertBox').innerHTML = alertHtml;
+
+  // 거래 내역 테이블 (최대 100건 표시)
+  document.getElementById('txCount').textContent = `총 ${r.filtered.length}건 (최대 100건 표시)`;
+  const tbody = document.getElementById('txTableBody');
+  tbody.innerHTML = '';
+  const display = r.filtered.slice(0, 100);
+  for (const tx of display) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${tx.date}</td>
+      <td><strong>${tx.coin}</strong></td>
+      <td><span class="badge badge-${tx.type}">${tx.type === 'buy' ? '매수' : tx.type === 'sell' ? '매도' : '기타'}</span></td>
+      <td>${tx.qty.toFixed(6)}</td>
+      <td>${fmtKRW(tx.price)}</td>
+      <td>${fmtKRW(tx.amount)}</td>
+      <td>${fmtKRW(tx.fee)}</td>
+      <td style="color:${tx.type === 'sell' ? 'var(--accent2)' : 'var(--text2)'}">—</td>
+    `;
+    tbody.appendChild(row);
+  }
+}
+
+/* ===================================================
+   보고서 CSV 다운로드
+   =================================================== */
+function downloadReport() {
+  if (!calcResults) return;
+  const rows = [
+    ['CryptoTax.cloud 세금 계산 보고서'],
+    ['생성일', new Date().toLocaleDateString('ko-KR')],
+    [''],
+    ['=== 요약 ==='],
+    ['총 매수금액', calcResults.totalBuy + '원'],
+    ['총 매도금액', calcResults.totalSell + '원'],
+    ['총 수수료', calcResults.totalFee + '원'],
+    ['실현손익', calcResults.totalGain + '원'],
+    ['기본공제', calcResults.deduction + '원'],
+    ['과세표준', calcResults.taxBase + '원'],
+    ['세율', (calcResults.taxRate * 100).toFixed(1) + '%'],
+    ['납부세액', calcResults.taxAmt + '원'],
+    [''],
+    ['=== 거래 내역 ==='],
+    ['날짜', '코인', '구분', '수량', '단가(원)', '금액(원)', '수수료(원)'],
+    ...calcResults.filtered.map(tx => [tx.date, tx.coin, tx.type === 'buy' ? '매수' : '매도', tx.qty, tx.price, tx.amount, tx.fee])
+  ];
+
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cryptotax_report_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadSummary() {
+  window.print();
+}
+
+function shareResult() {
+  const url = window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => alert('링크가 복사되었습니다!'));
+  } else {
+    alert('링크: ' + url);
+  }
+}
+
+/* ===================================================
+   직접입력 모드
+   =================================================== */
+let manualRowCount = 1;
+function addManualRow() {
+  manualRowCount++;
+  const div = document.createElement('div');
+  div.className = 'manual-row';
+  div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 100px 1fr 1fr 80px;gap:.5rem;margin-bottom:.5rem;';
+  div.innerHTML = `
+    <input placeholder="날짜 (YYYY-MM-DD)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input placeholder="코인 (예: BTC)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <select style="padding:.55rem .5rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+      <option value="buy">매수</option>
+      <option value="sell">매도</option>
+    </select>
+    <input type="number" placeholder="수량" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input type="number" placeholder="단가(원)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input type="number" placeholder="수수료" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+  `;
+  document.getElementById('manualRows').appendChild(div);
+}
+
+function calculateManual() {
+  const rows = document.querySelectorAll('.manual-row');
+  parsedTransactions = [];
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('input, select');
+    const date = inputs[0].value || '2027-01-01';
+    const coin = (inputs[1].value || 'BTC').toUpperCase();
+    const type = inputs[2].value;
+    const qty = parseFloat(inputs[3].value) || 0;
+    const price = parseFloat(inputs[4].value) || 0;
+    const fee = parseFloat(inputs[5].value) || 0;
+    if (qty > 0 && price > 0) {
+      parsedTransactions.push({ date, coin, type, qty, price, amount: qty * price, fee });
+    }
+  });
+  if (parsedTransactions.length > 0) {
+    document.getElementById('calcBtn').disabled = false;
+    calculateTax();
+  }
+}
+
+/* ===================================================
+   FAQ 토글
+   =================================================== */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.querySelector('span').textContent = '＋'; });
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  if (!isOpen) {
+    btn.classList.add('open');
+    btn.querySelector('span').textContent = '－';
+    answer.classList.add('open');
+  }
+}
+
+/* ===================================================
+   D-day 카운트다운 (2028-05-31 신고 마감)
+   =================================================== */
+function updateDday() {
+  const target = new Date('2028-05-31');
+  const now = new Date();
+  const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+  const el = document.getElementById('ddayCount');
+  if (el) el.textContent = diff > 0 ? `D-${diff.toLocaleString()}` : '마감';
+}
+updateDday();
+
+/* ===================================================
+   알림 헬퍼
+   =================================================== */
+function showAlert(msg, type) {
+  const icons = { warn: '⚠️', error: '❌', success: '✅' };
+  const box = document.getElementById('alertBox');
+  box.innerHTML = `<div class="alert alert-${type}">${icons[type]} ${msg}</div>`;
+  document.getElementById('resultSection').style.display = 'block';
+}
+function showAlertInline(msg, type) {
+  const icons = { warn: '⚠️', error: '❌', success: '✅' };
+  const prog = document.getElementById('progressBar');
+  const div = document.createElement('div');
+  div.className = `alert alert-${type}`;
+  div.innerHTML = `${icons[type]} ${msg}`;
+  prog.after(div);
+  setTimeout(() => div.remove(), 5000);
+}
+
+/* ===================================================
+   숫자 포맷 (KRW)
+   =================================================== */
+function fmtKRW(n) {
+  if (!n && n !== 0) return '—';
+  return Math.round(n).toLocaleString('ko-KR');
+}
+</script>
+
+</body>
+</html>
