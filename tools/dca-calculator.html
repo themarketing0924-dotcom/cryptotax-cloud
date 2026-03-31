@@ -1,0 +1,293 @@
+Copy<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 DCA 적립식 계산기 2027 | 정기 매수 평균단가 계산 — CryptoTax.cloud</title>
+<meta name="description" content="코인 DCA(달러 비용 평균법) 적립식 매수의 평균단가와 수익률을 계산하세요. 매월·매주 정기 매수 시 평균단가·총 투자금·예상 수익 자동 계산.">
+<meta name="keywords" content="코인 DCA 계산기, 적립식 매수 계산기, 달러 비용 평균법, 업비트 DCA, 코인 정기 매수">
+<link rel="canonical" href="https://cryptotax.cloud/tools/dca-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"코인 DCA 적립식 계산기","url":"https://cryptotax.cloud/tools/dca-calculator.html","description":"정기 매수 평균단가·수익률 계산기","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<style>
+  :root{--bg:#f8f9fa;--card:#ffffff;--text:#1a1a2e;--sub:#6c757d;--primary:#f7931a;--primary-dark:#e07b0e;--border:#e9ecef;--success:#28a745;--danger:#dc3545;--info:#17a2b8;--shadow:0 2px 12px rgba(0,0,0,0.08);}
+  [data-theme="dark"]{--bg:#0d0d1a;--card:#1a1a2e;--text:#e8e8f0;--sub:#9999bb;--border:#2a2a4a;--shadow:0 2px 12px rgba(0,0,0,0.4);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:all .3s;}
+  nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+  .nav-logo{font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;}
+  .nav-links{display:flex;gap:20px;align-items:center;}
+  .nav-links a{color:var(--sub);text-decoration:none;font-size:.9rem;}
+  .nav-links a:hover{color:var(--primary);}
+  .theme-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.85rem;}
+  .breadcrumb{padding:12px 24px;font-size:.82rem;color:var(--sub);max-width:800px;margin:0 auto;}
+  .breadcrumb a{color:var(--sub);text-decoration:none;}
+  .hero{text-align:center;padding:40px 24px 20px;}
+  .hero-badge{display:inline-block;background:rgba(247,147,26,.12);color:var(--primary);border:1px solid rgba(247,147,26,.3);border-radius:20px;padding:4px 16px;font-size:.82rem;font-weight:600;margin-bottom:16px;}
+  .hero h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;}
+  .hero h1 span{color:var(--primary);}
+  .hero p{color:var(--sub);font-size:.95rem;}
+  .container{max-width:800px;margin:0 auto;padding:0 24px 60px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);}
+  .card-title{font-size:1rem;font-weight:700;margin-bottom:20px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group label{font-size:.85rem;font-weight:600;color:var(--sub);}
+  .form-group input,.form-group select{padding:12px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:1rem;font-family:inherit;transition:border .2s;}
+  .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary);}
+  .form-group .hint{font-size:.78rem;color:var(--sub);}
+  .calc-btn{width:100%;padding:16px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s;}
+  .calc-btn:hover{background:var(--primary-dark);transform:translateY(-1px);}
+  .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;}
+  @media(max-width:500px){.result-grid{grid-template-columns:1fr;}}
+  .result-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;}
+  .result-item .label{font-size:.8rem;color:var(--sub);margin-bottom:4px;}
+  .result-item .value{font-size:1.3rem;font-weight:800;}
+  .value.up{color:var(--success);}.value.down{color:var(--danger);}.value.primary{color:var(--primary);}
+  .formula-box{background:rgba(247,147,26,.06);border:1px solid rgba(247,147,26,.2);border-radius:10px;padding:16px;font-size:.85rem;line-height:1.8;}
+  .formula-box strong{color:var(--primary);}
+  .alert{padding:14px 18px;border-radius:10px;font-size:.9rem;margin-top:12px;display:none;}
+  .alert.success{background:rgba(40,167,69,.1);border:1px solid rgba(40,167,69,.3);color:var(--success);}
+  .alert.info{background:rgba(23,162,184,.1);border:1px solid rgba(23,162,184,.3);color:var(--info);}
+  .table-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:.85rem;}
+  th{background:var(--bg);padding:10px 12px;text-align:right;font-weight:600;color:var(--sub);border-bottom:2px solid var(--border);}
+  th:first-child{text-align:center;}
+  td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);}
+  td:first-child{text-align:center;font-weight:600;}
+  tr:hover{background:rgba(247,147,26,.04);}
+  .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:600px){.tool-links{grid-template-columns:1fr 1fr;}}
+  .tool-link{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);font-size:.82rem;font-weight:600;text-align:center;transition:all .2s;}
+  .tool-link:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);}
+  .tool-link .icon{font-size:1.5rem;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{padding:16px 0;cursor:pointer;font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;}
+  .faq-q:hover{color:var(--primary);}
+  .faq-a{padding:0 0 16px;color:var(--sub);font-size:.9rem;line-height:1.7;display:none;}
+  footer{background:var(--card);border-top:1px solid var(--border);padding:32px 24px;text-align:center;}
+  .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+  .footer-links a{color:var(--sub);text-decoration:none;font-size:.85rem;}
+  .footer-links a:hover{color:var(--primary);}
+  .footer-copy{font-size:.8rem;color:var(--sub);}
+  .ad-slot{background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:20px;text-align:center;color:var(--sub);font-size:.8rem;margin:16px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV계산기</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="https://cryptotax.cloud/">홈</a> › <a href="https://cryptotax.cloud/">계산기</a> › DCA 적립식 계산기</div>
+<div class="hero">
+  <div class="hero-badge">📅 무료 계산기</div>
+  <h1>코인 <span>DCA</span> 적립식 계산기</h1>
+  <p>정기 매수 횟수·금액 입력 → 평균단가 · 총 투자금 · 현재 수익률 즉시 계산</p>
+</div>
+<div class="container">
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<div class="card">
+  <div class="card-title">📅 DCA 설정</div>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>코인 선택</label>
+      <select id="coin">
+        <option value="BTC">비트코인 (BTC)</option>
+        <option value="ETH">이더리움 (ETH)</option>
+        <option value="XRP">리플 (XRP)</option>
+        <option value="SOL">솔라나 (SOL)</option>
+        <option value="기타">기타 코인</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>매수 주기</label>
+      <select id="period">
+        <option value="매월">매월 1회</option>
+        <option value="매주">매주 1회</option>
+        <option value="매일">매일 1회</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>1회 매수금액 (원)</label>
+      <input type="number" id="perAmt" placeholder="예: 100000">
+      <span class="hint">회당 투자금액</span>
+    </div>
+    <div class="form-group">
+      <label>총 매수 횟수</label>
+      <input type="number" id="times" placeholder="예: 12" min="1" max="120">
+      <span class="hint">최대 120회</span>
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:16px;background:var(--bg);border-radius:10px;border:1px solid var(--border);">
+    <div style="font-size:.85rem;font-weight:600;color:var(--sub);margin-bottom:12px;">📈 회차별 매수단가 입력 (선택사항)</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>최저 매수단가 (원)</label>
+        <input type="number" id="minPrice" placeholder="예: 40000000">
+      </div>
+      <div class="form-group">
+        <label>최고 매수단가 (원)</label>
+        <input type="number" id="maxPrice" placeholder="예: 80000000">
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:12px;">
+      <label>현재가 (원)</label>
+      <input type="number" id="nowPrice" placeholder="예: 120000000">
+    </div>
+  </div>
+  <button class="calc-btn" onclick="calculate()">📊 DCA 계산하기</button>
+</div>
+
+<div class="card" id="resultCard" style="display:none">
+  <div class="card-title">📊 DCA 계산 결과</div>
+  <div class="result-grid">
+    <div class="result-item"><div class="label">총 투자금액</div><div class="value primary" id="totalInvest">—</div></div>
+    <div class="result-item"><div class="label">평균 매수단가</div><div class="value" id="avgPrice">—</div></div>
+    <div class="result-item"><div class="label">현재 평가금액</div><div class="value" id="nowVal">—</div></div>
+    <div class="result-item"><div class="label">총 수익률 (ROI)</div><div class="value" id="roi">—</div></div>
+  </div>
+  <div class="formula-box" id="formulaBox"></div>
+  <div class="alert success" id="alertSuccess"></div>
+  <div class="alert info" id="alertInfo"></div>
+
+  <div style="margin-top:20px;">
+    <div class="card-title">📋 회차별 내역</div>
+    <div class="table-wrap">
+      <table id="dcaTable">
+        <thead>
+          <tr><th>회차</th><th>매수단가</th><th>매수수량</th><th>누적투자</th><th>평균단가</th></tr>
+        </thead>
+        <tbody id="dcaBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (계산 결과 하단)</div>
+
+<div class="card">
+  <div class="card-title">🧰 다른 무료 계산기</div>
+  <div class="tool-links">
+    <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>세금 계산기</a>
+    <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-link"><span class="icon">📈</span>수익률 계산기</a>
+    <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="tool-link"><span class="icon">📊</span>물타기 계산기</a>
+    <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-link"><span class="icon">🏦</span>스테이킹 계산기</a>
+    <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-link"><span class="icon">⚡</span>사토시 환산기</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="tool-link"><span class="icon">📁</span>CSV 세금계산기</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">❓ 자주 묻는 질문</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA란 무엇인가요? <span>▼</span></div>
+    <div class="faq-a">DCA(Dollar Cost Averaging, 달러 비용 평균법)는 가격 변동과 무관하게 일정 금액을 정기적으로 매수하는 방법입니다. 가격이 높을 때 적게 사고 낮을 때 많이 사게 되어 장기적으로 평균 매수단가를 낮추는 효과가 있습니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">업비트에서 DCA 어떻게 하나요? <span>▼</span></div>
+    <div class="faq-a">업비트 앱에서 '코인모으기' 기능을 사용하면 매일 자동으로 일정 금액을 매수할 수 있습니다. 매주·매월 단위로도 설정 가능하며, 수수료는 일반 거래와 동일하게 적용됩니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA 수익에도 세금이 붙나요? <span>▼</span></div>
+    <div class="faq-a">네. 2027년부터 DCA로 매수한 코인을 매도할 때 발생하는 수익도 가상자산 양도소득세(22%) 과세 대상입니다. 연간 250만원 기본공제 후 초과분에 세금이 부과됩니다.</div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+<div class="card">
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <a href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📖 2027 가상자산 세금 완벽 가이드 →</a>
+    <a href="https://cryptotax.cloud/blog/" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📰 코인 투자 가이드 블로그 →</a>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/about.html">소개</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
+    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+  </div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--sub)">contact@cryptotax.cloud</a></div>
+</footer>
+
+<script>
+const root=document.documentElement;
+const saved=localStorage.getItem('ctc-theme')||'light';
+root.setAttribute('data-theme',saved);
+document.getElementById('themeBtn').textContent=saved==='dark'?'☀️ 라이트':'🌙 다크';
+function toggleTheme(){const c=root.getAttribute('data-theme'),n=c==='dark'?'light':'dark';root.setAttribute('data-theme',n);localStorage.setItem('ctc-theme',n);document.getElementById('themeBtn').textContent=n==='dark'?'☀️ 라이트':'🌙 다크';}
+
+function calculate(){
+  const perAmt=parseFloat(document.getElementById('perAmt').value)||0;
+  const times=parseInt(document.getElementById('times').value)||0;
+  const minP=parseFloat(document.getElementById('minPrice').value)||0;
+  const maxP=parseFloat(document.getElementById('maxPrice').value)||0;
+  const nowP=parseFloat(document.getElementById('nowPrice').value)||0;
+  const coin=document.getElementById('coin').value;
+  const period=document.getElementById('period').value;
+  if(perAmt<=0||times<=0){alert('매수금액과 횟수를 입력해주세요.');return;}
+
+  const totalInvest=perAmt*times;
+  let prices=[];
+  if(minP>0&&maxP>0&&maxP>=minP){
+    for(let i=0;i<times;i++) prices.push(minP+(maxP-minP)*(i/(times-1||1)));
+  } else {
+    const defaultP=minP>0?minP:(maxP>0?maxP:50000000);
+    for(let i=0;i<times;i++) prices.push(defaultP);
+  }
+
+  let totalQty=0;
+  let rows=[];
+  let cumInvest=0,cumQty=0;
+  prices.forEach((p,i)=>{
+    const qty=perAmt/p;
+    totalQty+=qty;
+    cumInvest+=perAmt;
+    cumQty+=qty;
+    rows.push({n:i+1,price:Math.round(p),qty:qty.toFixed(6),cumInvest:Math.round(cumInvest),avgP:Math.round(cumInvest/cumQty)});
+  });
+
+  const avgPrice=totalInvest/totalQty;
+  const nowVal=nowP>0?nowP*totalQty:0;
+  const roi=nowP>0?((nowVal-totalInvest)/totalInvest*100):0;
+
+  document.getElementById('resultCard').style.display='block';
+  document.getElementById('totalInvest').textContent=totalInvest.toLocaleString()+'원';
+  document.getElementById('avgPrice').textContent=Math.round(avgPrice).toLocaleString()+'원';
+  document.getElementById('nowVal').textContent=nowP>0?Math.round(nowVal).toLocaleString()+'원':'현재가 미입력';
+  const roiEl=document.getElementById('roi');
+  roiEl.textContent=nowP>0?roi.toFixed(2)+'%':'—';
+  roiEl.className='value '+(roi>=0?'up':'down');
+
+  document.getElementById('formulaBox').innerHTML=`<strong>계산 공식</strong><br>총 투자금 = ${perAmt.toLocaleString()}원 × ${times}회 = <strong>${totalInvest.toLocaleString()}원</strong><br>평균단가 = ${totalInvest.toLocaleString()} ÷ ${totalQty.toFixed(6)} = <strong>${Math.round(avgPrice).toLocaleString()}원</strong>${nowP>0?`<br>현재 평가금액 = ${Math.round(nowVal).toLocaleString()}원<br>수익률 = <strong>${roi.toFixed(2)}%</strong>`:''}<br><small style="color:var(--sub)">※ 결과는 참고용 추정치입니다.</small>`;
+
+  const aS=document.getElementById('alertSuccess'),aI=document.getElementById('alertInfo');
+  aS.style.display=aI.style.display='none';
+  if(nowP>0&&roi>=0){aS.style.display='block';aS.textContent=`✅ ${period} ${perAmt.toLocaleString()}원 DCA ${times}회 → 수익률 ${roi.toFixed(2)}%`;}
+  else if(nowP>0){aI.style.display='block';aI.textContent=`📊 평균단가 ${Math.round(avgPrice).toLocaleString()}원까지 회복되면 본전입니다.`;}
+
+  const tbody=document.getElementById('dcaBody');
+  tbody.innerHTML='';
+  rows.slice(0,20).forEach(r=>{
+    tbody.innerHTML+=`<tr><td>${r.n}</td><td>${r.price.toLocaleString()}</td><td>${r.qty}</td><td>${r.cumInvest.toLocaleString()}</td><td>${r.avgP.toLocaleString()}</td></tr>`;
+  });
+  if(rows.length>20) tbody.innerHTML+=`<tr><td colspan="5" style="text-align:center;color:var(--sub)">... 외 ${rows.length-20}회 생략</td></tr>`;
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth'});
+}
+function toggleFaq(el){const a=el.nextElementSibling,isOpen=a.style.display==='block';document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-q span').forEach(x=>x.textContent='▼');if(!isOpen){a.style.display='block';el.querySelector('span').textContent='▲';}}
+</script>
+</body>
+</html>
