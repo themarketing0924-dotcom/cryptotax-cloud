@@ -2,32 +2,42 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/theme.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이용약관 — CryptoTax.cloud</title>
 <link rel="canonical" href="https://cryptotax.cloud/terms.html">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.8}
-a{text-decoration:none;color:#f7931a}
-.nav{background:rgba(22,27,34,0.95);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #30363d;position:sticky;top:0;z-index:1000}
-.nav-logo{color:#f7931a;font-weight:800;font-size:1.15rem}
-.nav-links a{color:#c9d1d9;font-size:0.85rem;padding:5px 10px;border-radius:6px;margin-left:8px}
+body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.8;transition:background var(--transition),color var(--transition)}
+a{text-decoration:none;color:var(--orange)}
+.nav{background:var(--bg-overlay);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-default);position:sticky;top:0;z-index:1000;transition:background var(--transition)}
+.nav-logo{color:var(--orange);font-weight:800;font-size:1.15rem}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--text-secondary);font-size:0.85rem;padding:5px 10px;border-radius:6px}
+.nav-links a:hover{color:var(--orange)}
 .container{max-width:800px;margin:0 auto;padding:48px 20px}
-h1{font-size:1.8rem;font-weight:900;color:#f7931a;margin-bottom:8px}
-.updated{font-size:0.82rem;color:#484f58;margin-bottom:32px}
-h2{font-size:1.1rem;font-weight:700;color:#e6edf3;margin:28px 0 10px;padding-left:12px;border-left:3px solid #f7931a}
-p,li{color:#8b949e;font-size:0.92rem;margin-bottom:10px}
+h1{font-size:1.8rem;font-weight:900;color:var(--orange);margin-bottom:8px}
+.updated{font-size:0.82rem;color:var(--text-muted);margin-bottom:32px}
+h2{font-size:1.1rem;font-weight:700;color:var(--text-primary);margin:28px 0 10px;padding-left:12px;border-left:3px solid var(--orange)}
+p,li{color:var(--text-secondary);font-size:0.92rem;margin-bottom:10px}
 ul{padding-left:20px}
-.footer{background:#161b22;border-top:1px solid #30363d;padding:24px 20px;text-align:center;color:#484f58;font-size:0.8rem;margin-top:48px}
-.footer a{color:#8b949e;margin:0 8px}
+.footer{background:var(--bg-surface);border-top:1px solid var(--border-default);padding:24px 20px;text-align:center;color:var(--text-muted);font-size:0.8rem;margin-top:48px;transition:background var(--transition)}
+.footer a{color:var(--text-secondary);margin:0 8px}
 </style>
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-logo" href="/">₿ CryptoTax<span style="color:#58a6ff">.cloud</span></a>
+  <a class="nav-logo" href="/">₿ CryptoTax<span style="color:var(--blue)">.cloud</span></a>
   <div class="nav-links">
     <a href="/">홈</a>
     <a href="/#tools">계산기</a>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="themeIcon">☀️</span>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span id="themeLabel">라이트</span>
+    </button>
   </div>
 </nav>
 
@@ -46,7 +56,7 @@ ul{padding-left:20px}
   </ul>
 
   <h2>3. 계산 결과의 한계</h2>
-  <p>본 사이트의 모든 계산 결과는 <strong style="color:#ffd700">참고용 추정치</strong>입니다. 실제 세금 신고에는 거래소별 취득가액 산정 방식, 기타 소득 합산 여부 등 복잡한 요소가 포함됩니다. 정확한 세금 계산 및 신고는 반드시 세무사 또는 국세청 공식 채널을 이용하시기 바랍니다.</p>
+  <p>본 사이트의 모든 계산 결과는 <strong style="color:var(--orange)">참고용 추정치</strong>입니다. 실제 세금 신고에는 거래소별 취득가액 산정 방식, 기타 소득 합산 여부 등 복잡한 요소가 포함됩니다. 정확한 세금 계산 및 신고는 반드시 세무사 또는 국세청 공식 채널을 이용하시기 바랍니다.</p>
 
   <h2>4. 세율 기준</h2>
   <p>본 사이트는 현행 법률 기준(소득세 20% + 지방소득세 2% = 22%, 기본공제 250만원)을 적용합니다. 법률 변경 시 업데이트가 지연될 수 있으며, 최신 세율은 국세청 공식 사이트를 확인하시기 바랍니다.</p>
@@ -74,5 +84,31 @@ ul{padding-left:20px}
     <a href="/disclaimer.html">면책조항</a>
   </p>
 </footer>
+
+<script>
+(function(){
+  const saved = localStorage.getItem('ctc-theme') || 'dark';
+  applyTheme(saved, false);
+})();
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(current === 'dark' ? 'light' : 'dark', true);
+}
+
+function applyTheme(theme, save) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(theme === 'light') {
+    if(icon)  icon.textContent  = '🌙';
+    if(label) label.textContent = '다크';
+  } else {
+    if(icon)  icon.textContent  = '☀️';
+    if(label) label.textContent = '라이트';
+  }
+  if(save) localStorage.setItem('ctc-theme', theme);
+}
+</script>
 </body>
 </html>
