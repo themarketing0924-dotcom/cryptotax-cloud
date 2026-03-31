@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 절세 하베스팅 계산기 2027 | 손실 코인으로 세금 줄이기 — CryptoTax.cloud</title>
+<meta name="description" content="평가손실 난 코인을 팔면 세금을 얼마나 줄일 수 있는지 즉시 계산. 2027년 가상자산 절세 전략 무료 시뮬레이터.">
+<meta name="keywords" content="코인 절세, 가상자산 세금 줄이기, 손실 코인 매도 절세, 택스 로스 하베스팅, 코인 세금 절약">
+<link rel="canonical" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="코인 절세 하베스팅 계산기 | CryptoTax.cloud">
+<meta property="og:description" content="손실 코인을 팔아 세금을 줄이는 절세 전략 시뮬레이터. 2027년 과세 전 필수 도구.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/tax-loss-harvesting.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"코인 절세 하베스팅 계산기","url":"https://cryptotax.cloud/tools/tax-loss-harvesting.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"inLanguage":"ko-KR"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"절세 하베스팅이란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"평가손실이 발생한 코인을 연말 전에 매도해 손실을 실현시키면, 다른 코인의 수익에서 손실분을 차감해 과세표준을 낮추는 절세 전략입니다."}},{"@type":"Question","name":"손실 코인을 팔면 나중에 다시 살 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 매도 후 즉시 재매수도 가능합니다(한국 세법상 wash-sale rule 없음). 단, 재매수 단가가 취득원가로 새로 계산됩니다."}},{"@type":"Question","name":"절세 하베스팅은 언제 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"과세 기간 종료 전(12월 31일 이전)에 손실 코인을 매도해야 합니다. 2027년 첫 과세는 2027년 12월 31일까지 매도분이 해당됩니다."}}]}
+</script>
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--card:#1c2128;--border:#30363d;--accent:#f7931a;--accent2:#00c896;--danger:#f85149;--warn:#f0b429;--text:#e6edf3;--text2:#8b949e;--text3:#6e7681;--shadow:0 4px 24px rgba(0,0,0,.4);--radius:12px;--tr:.25s ease}
+[data-theme="light"]{--bg:#f6f8fa;--bg2:#fff;--bg3:#f0f2f5;--card:#fff;--border:#d0d7de;--text:#1f2328;--text2:#57606a;--text3:#8c959f;--shadow:0 4px 24px rgba(0,0,0,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+[data-theme="light"] nav{background:rgba(246,248,250,.92)}
+.nav-logo{font-size:1.1rem;font-weight:700;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:1.2rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.88rem;transition:color var(--tr)}
+.nav-links a:hover{color:var(--accent)}
+.theme-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.35rem .7rem;font-size:.85rem;cursor:pointer;transition:all var(--tr)}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0d1117,#161b22 50%,#1a2332);padding:3rem 1.5rem 2.5rem;text-align:center;border-bottom:1px solid var(--border)}
+[data-theme="light"] .hero{background:linear-gradient(135deg,#f0fff4,#e8f4fd)}
+.hero-badge{display:inline-block;background:rgba(0,200,150,.12);color:var(--accent2);border:1px solid rgba(0,200,150,.3);border-radius:20px;padding:.3rem .9rem;font-size:.78rem;font-weight:600;letter-spacing:.05em;margin-bottom:.8rem}
+.hero h1{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.3;margin-bottom:.7rem}
+.hero h1 span{color:var(--accent2)}
+.hero p{color:var(--text2);font-size:.95rem;max-width:540px;margin:0 auto 1.2rem}
+.hero-stats{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.4rem;font-weight:800;color:var(--accent)}
+.hero-stat .lbl{font-size:.75rem;color:var(--text2)}
+
+/* CONTAINER & GRID */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:2rem;padding:2rem 0 4rem}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);margin-bottom:1.5rem}
+.card-title{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:.5rem;margin-bottom:1.4rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.card-title .step-badge{background:var(--accent);color:#fff;border-radius:6px;padding:.15rem .55rem;font-size:.78rem;font-weight:700}
+
+/* PROFIT ROW */
+.profit-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 80px;gap:.7rem;align-items:center;padding:.5rem .7rem;background:var(--bg3);border-radius:8px;font-size:.78rem;color:var(--text3);font-weight:600;margin-bottom:.5rem}
+.profit-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 80px;gap:.7rem;align-items:center;padding:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--card);margin-bottom:.5rem;transition:border-color var(--tr)}
+.profit-row:hover{border-color:var(--accent)}
+@media(max-width:700px){.profit-header,.profit-row{grid-template-columns:1fr 1fr;}}
+
+/* LOSS ROW */
+.loss-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 80px;gap:.7rem;align-items:center;padding:.5rem .7rem;background:var(--bg3);border-radius:8px;font-size:.78rem;color:var(--text3);font-weight:600;margin-bottom:.5rem}
+.loss-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 80px;gap:.7rem;align-items:center;padding:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--card);margin-bottom:.5rem;transition:border-color var(--tr)}
+.loss-row:hover{border-color:var(--danger)}
+.loss-row.selected{border-color:var(--accent2);background:rgba(0,200,150,.05)}
+@media(max-width:700px){.loss-header,.loss-row{grid-template-columns:1fr 1fr;}}
+
+/* INPUT */
+input[type="text"],input[type="number"],select{width:100%;padding:.55rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.88rem;transition:border-color var(--tr)}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+label{font-size:.78rem;color:var(--text2);font-weight:600;display:block;margin-bottom:.3rem}
+
+/* BUTTONS */
+.btn{padding:.6rem 1.2rem;border-radius:8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:.88rem;font-weight:600;cursor:pointer;transition:all var(--tr);display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:#e8860f;color:#fff}
+.btn-success{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.btn-danger{background:var(--danger);color:#fff;border-color:var(--danger);padding:.35rem .7rem;font-size:.8rem}
+.btn-sm{padding:.35rem .7rem;font-size:.8rem}
+.btn-add{width:100%;padding:.65rem;border:1px dashed var(--border);border-radius:8px;background:transparent;color:var(--text2);font-size:.88rem;cursor:pointer;transition:all var(--tr);margin-top:.5rem}
+.btn-add:hover{border-color:var(--accent);color:var(--accent)}
+
+/* RESULT BOX */
+.result-box{background:linear-gradient(135deg,rgba(0,200,150,.08),rgba(247,147,26,.05));border:1px solid rgba(0,200,150,.25);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.2rem}
+.result-stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.result-stat .r-label{font-size:.75rem;color:var(--text2);margin-bottom:.3rem}
+.result-stat .r-value{font-size:1.15rem;font-weight:800}
+.r-green{color:var(--accent2)}
+.r-red{color:var(--danger)}
+.r-orange{color:var(--accent)}
+.r-blue{color:#58a6ff}
+
+/* STRATEGY BOX */
+.strategy-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:1rem}
+.strategy-box h4{font-size:.9rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.strategy-step{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.6rem;font-size:.85rem;color:var(--text2)}
+.strategy-step .num{background:var(--accent);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+.compare-table th{background:var(--bg3);color:var(--text2);padding:.65rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:600}
+.compare-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);color:var(--text)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table .highlight{color:var(--accent2);font-weight:700}
+.compare-table .dimmed{color:var(--text3)}
+
+/* AD SLOT */
+.ad-slot{background:var(--bg3);border:1px dashed var(--border);border-radius:var(--radius);padding:1rem;text-align:center;color:var(--text3);font-size:.8rem;margin-bottom:1.2rem}
+.ad-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:76px;height:fit-content}
+.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.2rem;box-shadow:var(--shadow)}
+.sidebar-title{font-size:.9rem;font-weight:700;display:flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.quick-link{display:flex;align-items:center;justify-content:space-between;padding:.55rem .6rem;border-radius:7px;text-decoration:none;color:var(--text);font-size:.84rem;transition:background var(--tr);margin-bottom:.2rem}
+.quick-link:hover{background:var(--bg3);color:var(--accent)}
+.cta-box{background:linear-gradient(135deg,rgba(247,147,26,.12),rgba(0,200,150,.08));border:1px solid rgba(247,147,26,.25);border-radius:10px;padding:1.2rem;text-align:center}
+.cta-box h4{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+.cta-box p{font-size:.8rem;color:var(--text2);margin-bottom:.9rem}
+.cta-link{display:block;padding:.6rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:700;transition:background var(--tr)}
+.cta-link:hover{background:#e8860f}
+.dday-box{text-align:center;padding:.5rem}
+.dday-count{font-size:2rem;font-weight:900;color:var(--accent);line-height:1.1}
+.dday-label{font-size:.78rem;color:var(--text2);margin-top:.3rem}
+.tip-item{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.83rem;color:var(--text2)}
+.tip-item:last-child{border-bottom:none}
+.tip-icon{font-size:1rem;flex-shrink:0}
+
+/* FAQ */
+.faq-section{padding:2.5rem 0 4rem}
+.faq-section h2{font-size:1.3rem;font-weight:800;margin-bottom:1.2rem}
+.faq-item{margin-bottom:.7rem}
+.faq-q{width:100%;text-align:left;padding:.9rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all var(--tr)}
+.faq-q:hover,.faq-q.open{border-color:var(--accent2);color:var(--accent2)}
+.faq-q.open{border-radius:8px 8px 0 0}
+.faq-a{display:none;padding:1rem 1.2rem;background:var(--bg3);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;font-size:.87rem;color:var(--text2);line-height:1.75}
+.faq-a.open{display:block}
+
+/* ALERT */
+.alert{padding:.85rem 1.1rem;border-radius:8px;font-size:.87rem;margin-bottom:1rem;display:flex;gap:.6rem;align-items:flex-start}
+.alert-info{background:rgba(88,166,255,.1);border:1px solid rgba(88,166,255,.25);color:#58a6ff}
+.alert-warn{background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.3);color:var(--warn)}
+.alert-success{background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.25);color:var(--accent2)}
+
+/* BADGE */
+.badge{padding:.18rem .5rem;border-radius:5px;font-size:.74rem;font-weight:700}
+.badge-profit{background:rgba(0,200,150,.15);color:var(--accent2)}
+.badge-loss{background:rgba(248,81,73,.15);color:var(--danger)}
+
+/* PROGRESS */
+.savings-bar{margin-top:1rem}
+.savings-bar-label{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text2);margin-bottom:.4rem}
+.savings-bar-track{height:10px;background:var(--bg3);border-radius:10px;overflow:hidden}
+.savings-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:10px;transition:width .6s ease}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center}
+footer p{color:var(--text3);font-size:.82rem;line-height:1.8}
+footer a{color:var(--text2);text-decoration:none}
+footer a:hover{color:var(--accent)}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <ul class="nav-links">
+    <li><a href="/#calculator">💰 세금계산기</a></li>
+    <li><a href="/#tools">🧰 도구모음</a></li>
+    <li><a href="/market/">📊 시장데이터</a></li>
+    <li><a href="/blog/">📰 블로그</a></li>
+  </ul>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">💡 2027 과세 대비 핵심 절세 전략</div>
+  <h1>손실 코인으로<br><span>세금을 줄이는 방법</span></h1>
+  <p>평가손실 중인 코인을 연말 전에 팔면 세금이 줄어듭니다.<br>얼마나 줄일 수 있는지 지금 바로 계산하세요.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">22%</div><div class="lbl">2027년 세율</div></div>
+    <div class="hero-stat"><div class="num">250만원</div><div class="lbl">기본공제</div></div>
+    <div class="hero-stat"><div class="num">0원</div><div class="lbl">서비스 이용료</div></div>
+  </div>
+</section>
+
+<!-- TOP AD -->
+<div class="container" style="padding-top:1.5rem">
+  <div class="ad-slot" style="min-height:90px">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+<div class="main-grid">
+<main>
+
+<!-- STEP 1: 수익 코인 입력 -->
+<div class="card">
+  <div class="card-title"><span class="step-badge">STEP 1</span> 📈 수익 난 코인 입력</div>
+  <div class="alert alert-info">💡 올해 수익이 발생한 코인을 입력하세요. 이 수익에서 손실을 차감해 세금을 줄입니다.</div>
+  <div class="profit-header">
+    <div>코인명</div><div>매수금액(원)</div><div>매도금액(원)</div><div>수익(원)</div><div>삭제</div>
+  </div>
+  <div id="profitRows"></div>
+  <button class="btn-add" onclick="addProfitRow()">＋ 수익 코인 추가</button>
+</div>
+
+<!-- STEP 2: 손실 코인 입력 -->
+<div class="card">
+  <div class="card-title"><span class="step-badge" style="background:var(--danger)">STEP 2</span> 📉 손실 중인 코인 입력</div>
+  <div class="alert alert-warn">⚠️ 현재 평가손실 중인 코인을 입력하세요. 이 코인을 팔아서 손실을 확정하면 수익에서 차감됩니다.</div>
+  <div class="loss-header">
+    <div>코인명</div><div>매수금액(원)</div><div>현재평가(원)</div><div>평가손실(원)</div><div>절세금액(원)</div><div>선택</div>
+  </div>
+  <div id="lossRows"></div>
+  <button class="btn-add" onclick="addLossRow()">＋ 손실 코인 추가</button>
+</div>
+
+<!-- STEP 3: 결과 -->
+<div class="card" id="resultCard">
+  <div class="card-title"><span class="step-badge" style="background:var(--accent2)">결과</span> 💰 절세 시뮬레이션 결과</div>
+
+  <div class="result-grid" id="resultGrid">
+    <div class="result-stat"><div class="r-label">총 실현 수익</div><div class="r-value r-orange" id="r-totalProfit">—</div></div>
+    <div class="result-stat"><div class="r-label">선택 손실 합계</div><div class="r-value r-red" id="r-totalLoss">—</div></div>
+    <div class="result-stat"><div class="r-label">절세 전 세금</div><div class="r-value r-red" id="r-taxBefore">—</div></div>
+    <div class="result-stat"><div class="r-label">절세 후 세금</div><div class="r-value r-green" id="r-taxAfter">—</div></div>
+    <div class="result-stat"><div class="r-label">절감 세액 💚</div><div class="r-value r-green" id="r-taxSaved">—</div></div>
+    <div class="result-stat"><div class="r-label">절세율</div><div class="r-value r-blue" id="r-saveRate">—</div></div>
+  </div>
+
+  <div class="savings-bar" id="savingsBar" style="display:none">
+    <div class="savings-bar-label">
+      <span>절세 전 세금</span><span>절세 후 세금</span>
+    </div>
+    <div class="savings-bar-track">
+      <div class="savings-bar-fill" id="savingsFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div id="compareSection" style="display:none;margin-top:1.2rem">
+    <h4 style="font-size:.92rem;font-weight:700;margin-bottom:.7rem">📊 Before / After 비교표</h4>
+    <table class="compare-table">
+      <thead><tr><th>항목</th><th>절세 전</th><th>절세 후</th><th>차이</th></tr></thead>
+      <tbody id="compareBody"></tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
+    <button class="btn btn-primary" onclick="calculate()">🔄 다시 계산</button>
+    <button class="btn" onclick="downloadReport()">📥 결과 저장 (CSV)</button>
+  </div>
+</div>
+
+<!-- STRATEGY GUIDE -->
+<div class="card">
+  <div class="card-title">📖 절세 하베스팅 전략 가이드</div>
+  <div class="strategy-box">
+    <h4>🎯 기본 원리: 손실로 수익 상쇄하기</h4>
+    <div class="strategy-step"><div class="num">1</div><div>수익이 난 코인 A로 <strong>+1,000만원</strong> 실현 (과세 대상)</div></div>
+    <div class="strategy-step"><div class="num">2</div><div>손실 중인 코인 B를 팔아 <strong>-400만원</strong> 손실 확정</div></div>
+    <div class="strategy-step"><div class="num">3</div><div>과세표준 = 1,000만원 - 400만원 - 250만원(공제) = <strong>350만원</strong></div></div>
+    <div class="strategy-step"><div class="num">4</div><div>납부세액 = 350만원 × 22% = <strong>77만원</strong> (원래 165만원 → <span style="color:var(--accent2)">88만원 절약!</span>)</div></div>
+  </div>
+  <div class="strategy-box" style="margin-top:.8rem">
+    <h4>⚠️ 반드시 알아야 할 주의사항</h4>
+    <div class="tip-item"><span class="tip-icon">📅</span><span>손실 확정은 <strong>12월 31일 이전</strong>에 매도 체결이 완료되어야 합니다.</span></div>
+    <div class="tip-item"><span class="tip-icon">🔄</span><span>한국은 미국과 달리 <strong>Wash-Sale Rule이 없어</strong> 매도 후 즉시 재매수 가능합니다.</span></div>
+    <div class="tip-item"><span class="tip-icon">💱</span><span>재매수하면 <strong>새 취득원가로 재설정</strong>됩니다. 향후 세금 계산에 반영됩니다.</span></div>
+    <div class="tip-item"><span class="tip-icon">🔢</span><span>손실이 수익보다 크면 과세표준이 0원 → 세금 없음. 단 다음해 이월은 안됩니다.</span></div>
+    <div class="tip-item"><span class="tip-icon">👨‍💼</span><span>복잡한 경우(여러 거래소, 해외 거래)는 <strong>세무사 상담을 권장</strong>합니다.</span></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>❓ 절세 하베스팅 자주 묻는 질문</h2>
+  <div class="faq-item">
+    <button class="faq-q" onclick="faqToggle(this)">절세 하베스팅이란 정확히 무엇인가요? <span>＋</span></button>
+    <div class="faq-a">평가손실(아직 팔지 않은 손실)이 발생한 코인을 실제로 매도해 손실을 '확정'시키는 전략입니다. 확정된 손실은 같은 해 발생한 수익에서 차감되어 과세표준이 줄고, 결과적으로 납부 세금이 낮아집니다. 미국 월가에서는 오래전부터 사용하던 합법적 절세 전략입니다.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="faqToggle(this)">손실 코인을 팔고 바로 다시 사도 되나요? <span>＋</span></button>
+    <div class="faq-a">네, 가능합니다. 한국 가상자산 세법에는 미국의 'Wash-Sale Rule'(손실 매도 후 30일 내 재매수 시 손실 인정 안됨)이 없습니다. 따라서 손실 확정을 위해 매도한 뒤 즉시 재매수해도 세법상 문제없습니다. 다만 재매수 시 새로운 취득단가로 계산되므로 이 점을 고려하세요.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="faqToggle(this)">손실이 수익보다 크면 어떻게 되나요? <span>＋</span></button>
+    <div class="faq-a">수익보다 손실이 크면 과세표준이 0원 이하가 되어 세금이 전혀 없습니다. 단, 2027년 현행 세법상 초과 손실액은 다음 연도로 이월 공제가 되지 않습니다. 따라서 무작정 손실을 크게 만들기보다는 '세금이 0이 될 만큼만' 전략적으로 조절하는 게 최적입니다.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="faqToggle(this)">여러 거래소에서 거래했을 때도 손익을 합산하나요? <span>＋</span></button>
+    <div class="faq-a">네. 업비트, 빗썸, 코인원, 바이낸스 등 모든 거래소의 손익을 합산해서 과세표준을 계산합니다. 따라서 한 거래소에서 수익이 났더라도 다른 거래소에서 손실이 있다면 전체 합산 기준으로 세금이 줄어듭니다. 이 계산기에 여러 거래소의 코인을 모두 입력해 시뮬레이션 해보세요.</div>
+  </div>
+</div>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-title">⏰ 2027 과세 D-day</div>
+    <div class="dday-box">
+      <div class="dday-count" id="ddayCount">—</div>
+      <div class="dday-label">2027년 1월 1일 과세 시작까지</div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">🧮 세율 계산기</div>
+    <div style="margin-bottom:.7rem">
+      <label>예상 연간 수익 (원)</label>
+      <input type="number" id="quickProfit" placeholder="예: 5000000" oninput="quickCalc()" style="margin-bottom:.5rem">
+      <label>선택 손실 합계 (원)</label>
+      <input type="number" id="quickLoss" placeholder="예: 2000000" oninput="quickCalc()">
+    </div>
+    <div id="quickResult" style="font-size:.85rem;color:var(--text2)">금액을 입력하면 즉시 계산됩니다.</div>
+  </div>
+
+  <div class="sidebar-card" style="padding:0;overflow:hidden">
+    <div class="ad-slot" style="margin:0;border-radius:var(--radius);min-height:250px">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="2222222222" data-ad-format="rectangle"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="cta-box">
+      <h4>🧑‍💼 세무사 무료 상담</h4>
+      <p>복잡한 절세 전략은<br>전문가에게 맡기세요</p>
+      <a href="/consultation" class="cta-link">무료 상담 신청 →</a>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">🧰 관련 도구</div>
+    <a class="quick-link" href="/tools/tax-calculator.html"><span>💰</span> 세금 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/csv-tax-calculator.html"><span>📁</span> CSV 자동 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/portfolio-tracker.html"><span>💼</span> 포트폴리오 추적기 <span>→</span></a>
+    <a class="quick-link" href="/tools/staking-calculator.html"><span>🥩</span> 스테이킹 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/dca-calculator.html"><span>📈</span> DCA 계산기 <span>→</span></a>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">📰 절세 관련 글</div>
+    <a class="quick-link" href="/blog/coin-250-deduction-zero-tax.html"><span>🎁</span> 250만원 공제 전략 <span>→</span></a>
+    <a class="quick-link" href="/blog/virtual-asset-tax-2027-guide.html"><span>📖</span> 2027 세금 완벽 가이드 <span>→</span></a>
+    <a class="quick-link" href="/blog/coin-tax-calculation-5-steps.html"><span>🔢</span> 세금 계산 5단계 <span>→</span></a>
+  </div>
+</aside>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="/">홈</a><a href="/blog/">블로그</a>
+    <a href="/tools/tax-calculator.html">세금계산기</a>
+    <a href="/market/">시장데이터</a>
+    <a href="/privacy">개인정보처리방침</a>
+  </div>
+  <p>© 2026 CryptoTax.cloud · 본 계산 결과는 참고용이며 법적 효력이 없습니다.<br>
+  정확한 세금 신고는 세무사 또는 국세청 홈택스(hometax.go.kr)를 이용하세요.</p>
+</footer>
+
+<script>
+/* ── 테마 ── */
+function toggleTheme(){
+  const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeBtn').textContent=d?'🌞 라이트':'🌙 다크';
+  localStorage.setItem('theme',d?'light':'dark');
+}
+(()=>{
+  const s=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',s);
+  window.addEventListener('DOMContentLoaded',()=>{
+    const b=document.getElementById('themeBtn');
+    if(b)b.textContent=s==='dark'?'🌙 다크':'🌞 라이트';
+  });
+})();
+
+/* ── D-day ── */
+function updateDday(){
+  const t=new Date('2027-01-01'),n=new Date();
+  const d=Math.ceil((t-n)/(864e5));
+  const el=document.getElementById('ddayCount');
+  if(el)el.textContent=d>0?`D-${d.toLocaleString()}`:'과세 시작!';
+}
+updateDday();
+
+/* ── 수익 코인 행 ── */
+let profitId=0, lossId=0;
+
+function addProfitRow(coin='',buy=0,sell=0){
+  profitId++;
+  const id=profitId;
+  const div=document.createElement('div');
+  div.className='profit-row'; div.id='pr-'+id;
+  div.innerHTML=`
+    <input type="text" placeholder="BTC, ETH, XRP …" value="${coin}" id="pc-${id}" oninput="recalcProfit(${id})" style="font-weight:600">
+    <input type="number" placeholder="취득금액" value="${buy||''}" id="pb-${id}" oninput="recalcProfit(${id})">
+    <input type="number" placeholder="매도금액" value="${sell||''}" id="ps-${id}" oninput="recalcProfit(${id})">
+    <div id="pp-${id}" style="font-weight:700;color:var(--accent2)">—</div>
+    <button class="btn-danger" onclick="removeRow('pr-${id}');calculate()">✕</button>
+  `;
+  document.getElementById('profitRows').appendChild(div);
+  if(buy&&sell)recalcProfit(id);
+}
+
+function recalcProfit(id){
+  const b=parseFloat(document.getElementById('pb-'+id).value)||0;
+  const s=parseFloat(document.getElementById('ps-'+id).value)||0;
+  const p=s-b;
+  const el=document.getElementById('pp-'+id);
+  el.textContent=p>=0?'+'+fmt(p)+'원':fmt(p)+'원';
+  el.style.color=p>=0?'var(--accent2)':'var(--danger)';
+  calculate();
+}
+
+/* ── 손실 코인 행 ── */
+function addLossRow(coin='',buy=0,cur=0){
+  lossId++;
+  const id=lossId;
+  const div=document.createElement('div');
+  div.className='loss-row'; div.id='lr-'+id;
+  div.innerHTML=`
+    <input type="text" placeholder="BTC, ETH, XRP …" value="${coin}" id="lc-${id}" oninput="recalcLoss(${id})" style="font-weight:600">
+    <input type="number" placeholder="취득금액" value="${buy||''}" id="lb-${id}" oninput="recalcLoss(${id})">
+    <input type="number" placeholder="현재평가액" value="${cur||''}" id="lv-${id}" oninput="recalcLoss(${id})">
+    <div id="ll-${id}" style="font-weight:700;color:var(--danger)">—</div>
+    <div id="ls-${id}" style="font-weight:700;color:var(--accent2)">—</div>
+    <div style="display:flex;gap:.4rem;align-items:center">
+      <input type="checkbox" id="lx-${id}" onchange="calculate()" style="width:18px;height:18px;accent-color:var(--accent2);cursor:pointer">
+      <button class="btn-danger" onclick="removeRow('lr-${id}');calculate()">✕</button>
+    </div>
+  `;
+  document.getElementById('lossRows').appendChild(div);
+  if(buy&&cur)recalcLoss(id);
+}
+
+function recalcLoss(id){
+  const b=parseFloat(document.getElementById('lb-'+id).value)||0;
+  const v=parseFloat(document.getElementById('lv-'+id).value)||0;
+  const loss=v-b; // 음수가 손실
+  const saved=Math.max(0,-loss)*0.22;
+  document.getElementById('ll-'+id).textContent=loss<0?fmt(loss)+'원':'손실없음';
+  document.getElementById('ls-'+id).textContent=saved>0?'+'+fmt(saved)+'원':'—';
+  calculate();
+}
+
+function removeRow(id){document.getElementById(id)?.remove();}
+
+/* ── 핵심 계산 ── */
+function calculate(){
+  const DEDUCTION=2500000, TAX_RATE=0.22;
+
+  // 수익 합산
+  let totalProfit=0;
+  document.querySelectorAll('.profit-row').forEach(r=>{
+    const id=r.id.replace('pr-','');
+    const b=parseFloat(document.getElementById('pb-'+id)?.value)||0;
+    const s=parseFloat(document.getElementById('ps-'+id)?.value)||0;
+    totalProfit+=(s-b);
+  });
+
+  // 선택된 손실 합산
+  let totalLoss=0;
+  document.querySelectorAll('.loss-row').forEach(r=>{
+    const id=r.id.replace('lr-','');
+    const chk=document.getElementById('lx-'+id);
+    if(chk?.checked){
+      const b=parseFloat(document.getElementById('lb-'+id)?.value)||0;
+      const v=parseFloat(document.getElementById('lv-'+id)?.value)||0;
+      totalLoss+=Math.max(0,b-v); // 손실액(양수)
+    }
+  });
+
+  // 세금 계산
+  const netBefore=Math.max(0,totalProfit-DEDUCTION);
+  const taxBefore=Math.floor(netBefore*TAX_RATE);
+  const netAfter=Math.max(0,totalProfit-totalLoss-DEDUCTION);
+  const taxAfter=Math.floor(netAfter*TAX_RATE);
+  const taxSaved=taxBefore-taxAfter;
+  const saveRate=taxBefore>0?((taxSaved/taxBefore)*100).toFixed(1):0;
+
+  // 결과 표시
+  document.getElementById('r-totalProfit').textContent=fmt(totalProfit)+'원';
+  document.getElementById('r-totalLoss').textContent=totalLoss>0?'-'+fmt(totalLoss)+'원':'—';
+  document.getElementById('r-taxBefore').textContent=fmt(taxBefore)+'원';
+  document.getElementById('r-taxAfter').textContent=fmt(taxAfter)+'원';
+  document.getElementById('r-taxSaved').textContent=taxSaved>0?'+'+fmt(taxSaved)+'원 절약':'—';
+  document.getElementById('r-saveRate').textContent=taxSaved>0?saveRate+'%':'—';
+
+  // 진행 바
+  if(taxBefore>0){
+    const pct=((taxAfter/taxBefore)*100).toFixed(1);
+    document.getElementById('savingsBar').style.display='block';
+    document.getElementById('savingsFill').style.width=(100-pct)+'%';
+  }
+
+  // 비교표
+  if(totalProfit>0){
+    document.getElementById('compareSection').style.display='block';
+    document.getElementById('compareBody').innerHTML=`
+      <tr><td>총 수익</td><td>${fmt(totalProfit)}원</td><td>${fmt(totalProfit)}원</td><td>—</td></tr>
+      <tr><td>확정 손실</td><td class="dimmed">0원</td><td class="highlight">-${fmt(totalLoss)}원</td><td class="highlight">-${fmt(totalLoss)}원</td></tr>
+      <tr><td>기본공제</td><td>-${fmt(DEDUCTION)}원</td><td>-${fmt(DEDUCTION)}원</td><td>—</td></tr>
+      <tr><td>과세표준</td><td>${fmt(netBefore)}원</td><td class="highlight">${fmt(netAfter)}원</td><td class="highlight">-${fmt(netBefore-netAfter)}원</td></tr>
+      <tr><td><strong>납부세액</strong></td><td><strong>${fmt(taxBefore)}원</strong></td><td class="highlight"><strong>${fmt(taxAfter)}원</strong></td><td class="highlight"><strong style="color:var(--accent2)">-${fmt(taxSaved)}원 절약</strong></td></tr>
+    `;
+  }
+
+  // 손실 행 하이라이트
+  document.querySelectorAll('.loss-row').forEach(r=>{
+    const id=r.id.replace('lr-','');
+    const chk=document.getElementById('lx-'+id);
+    r.classList.toggle('selected',chk?.checked||false);
+  });
+}
+
+/* ── 사이드바 빠른 계산 ── */
+function quickCalc(){
+  const p=parseFloat(document.getElementById('quickProfit').value)||0;
+  const l=parseFloat(document.getElementById('quickLoss').value)||0;
+  const D=2500000, R=0.22;
+  const t1=Math.max(0,p-D)*R;
+  const t2=Math.max(0,p-l-D)*R;
+  const saved=t1-t2;
+  document.getElementById('quickResult').innerHTML=`
+    <div style="color:var(--danger)">절세 전: <strong>${fmt(Math.floor(t1))}원</strong></div>
+    <div style="color:var(--accent2)">절세 후: <strong>${fmt(Math.floor(t2))}원</strong></div>
+    <div style="color:var(--accent);margin-top:.3rem;font-weight:700">💚 절약: ${fmt(Math.floor(saved))}원</div>
+  `;
+}
+
+/* ── CSV 다운로드 ── */
+function downloadReport(){
+  const rows=[
+    ['CryptoTax.cloud 절세 하베스팅 리포트'],
+    ['생성일', new Date().toLocaleDateString('ko-KR')],
+    [''],
+    ['=== 수익 코인 ==='],
+    ['코인명','매수금액','매도금액','수익'],
+  ];
+  document.querySelectorAll('.profit-row').forEach(r=>{
+    const id=r.id.replace('pr-','');
+    rows.push([
+      document.getElementById('pc-'+id)?.value||'',
+      document.getElementById('pb-'+id)?.value||0,
+      document.getElementById('ps-'+id)?.value||0,
+      (parseFloat(document.getElementById('ps-'+id)?.value||0)-parseFloat(document.getElementById('pb-'+id)?.value||0))
+    ]);
+  });
+  rows.push([''],['=== 손실 코인 ==='],['코인명','취득금액','현재평가','평가손실','선택여부']);
+  document.querySelectorAll('.loss-row').forEach(r=>{
+    const id=r.id.replace('lr-','');
+    const chk=document.getElementById('lx-'+id)?.checked;
+    rows.push([
+      document.getElementById('lc-'+id)?.value||'',
+      document.getElementById('lb-'+id)?.value||0,
+      document.getElementById('lv-'+id)?.value||0,
+      (parseFloat(document.getElementById('lv-'+id)?.value||0)-parseFloat(document.getElementById('lb-'+id)?.value||0)),
+      chk?'선택':'미선택'
+    ]);
+  });
+  const csv=rows.map(r=>r.join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`tax-loss-harvesting-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+/* ── FAQ ── */
+function faqToggle(btn){
+  const a=btn.nextElementSibling,o=a.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(b=>{b.classList.remove('open');b.querySelector('span').textContent='＋';});
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+  if(!o){btn.classList.add('open');btn.querySelector('span').textContent='－';a.classList.add('open');}
+}
+
+/* ── 숫자 포맷 ── */
+function fmt(n){return Math.round(n).toLocaleString('ko-KR');}
+
+/* ── 예시 데이터로 초기화 ── */
+window.addEventListener('DOMContentLoaded',()=>{
+  addProfitRow('BTC',10000000,18000000);
+  addProfitRow('ETH',5000000,7000000);
+  addLossRow('XRP',3000000,1800000);
+  addLossRow('DOGE',1000000,400000);
+  // XRP 체크박스 자동 선택 (예시)
+  setTimeout(()=>{
+    const cb=document.getElementById('lx-1');
+    if(cb){cb.checked=true;calculate();}
+  },100);
+});
+</script>
+</body>
+</html>
