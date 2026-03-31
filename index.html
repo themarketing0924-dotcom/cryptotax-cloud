@@ -219,7 +219,28 @@ a{text-decoration:none;color:inherit}
 </style>
 </head>
 <body>
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">
+      <span>₿ CryptoTax.cloud</span>
+    </a>
+    <button class="hamburger-menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()">✕</button>
+  <a href="#calculator">💰 세금계산기</a>
+  <a href="#tools">🛠️ 도구모음</a>
+  <a href="#market">📊 시장데이터</a>
+  <a href="#blog">📰 블로그</a>
+  <a href="#faq">❓ FAQ</a>
+  <button onclick="toggleTheme()">🌙 다크모드</button>
+</div>
 <!-- ===== 상단 네비게이션 ===== -->
 <nav class="nav">
   <a class="nav-logo" href="/">₿ CryptoTax<span style="color:#58a6ff">.cloud</span></a>
