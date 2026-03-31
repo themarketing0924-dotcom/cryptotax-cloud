@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 수익률 계산기 2027 | 매수·매도가 입력 → ROI 즉시 계산 — CryptoTax.cloud</title>
+<meta name="description" content="코인 수익률을 즉시 계산하세요. 매수금액·매도금액 입력 시 ROI%, 수익금, 세후 순수익까지 자동 계산. 업비트·빗썸 투자자 무료 제공.">
+<meta name="keywords" content="코인 수익률 계산기, ROI 계산기, 가상자산 수익률, 업비트 수익률, 코인 투자 수익">
+<link rel="canonical" href="https://cryptotax.cloud/tools/roi-calculator.html">
+<meta property="og:title" content="코인 수익률 계산기 — CryptoTax.cloud">
+<meta property="og:description" content="매수·매도가 입력만으로 ROI·세후수익 즉시 계산">
+<meta property="og:url" content="https://cryptotax.cloud/tools/roi-calculator.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "코인 수익률 계산기",
+  "url": "https://cryptotax.cloud/tools/roi-calculator.html",
+  "description": "코인 매수·매도 금액으로 ROI, 수익금, 세후 순수익을 즉시 계산",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"}
+}
+</script>
+<style>
+  :root {
+    --bg: #f8f9fa; --card: #ffffff; --text: #1a1a2e; --sub: #6c757d;
+    --primary: #f7931a; --primary-dark: #e07b0e; --border: #e9ecef;
+    --success: #28a745; --danger: #dc3545; --info: #17a2b8;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"] {
+    --bg: #0d0d1a; --card: #1a1a2e; --text: #e8e8f0; --sub: #9999bb;
+    --border: #2a2a4a; --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; transition:all .3s; }
+
+  /* NAV */
+  nav { background:var(--card); border-bottom:1px solid var(--border); padding:0 24px; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:var(--shadow); }
+  .nav-logo { font-size:1.2rem; font-weight:700; color:var(--primary); text-decoration:none; }
+  .nav-links { display:flex; gap:20px; align-items:center; }
+  .nav-links a { color:var(--sub); text-decoration:none; font-size:.9rem; transition:color .2s; }
+  .nav-links a:hover { color:var(--primary); }
+  .theme-btn { background:none; border:1px solid var(--border); border-radius:20px; padding:4px 12px; cursor:pointer; color:var(--text); font-size:.85rem; }
+
+  /* BREADCRUMB */
+  .breadcrumb { padding:12px 24px; font-size:.82rem; color:var(--sub); max-width:800px; margin:0 auto; }
+  .breadcrumb a { color:var(--sub); text-decoration:none; }
+  .breadcrumb a:hover { color:var(--primary); }
+
+  /* HERO */
+  .hero { text-align:center; padding:40px 24px 20px; }
+  .hero-badge { display:inline-block; background:rgba(247,147,26,.12); color:var(--primary); border:1px solid rgba(247,147,26,.3); border-radius:20px; padding:4px 16px; font-size:.82rem; font-weight:600; margin-bottom:16px; }
+  .hero h1 { font-size:1.8rem; font-weight:800; margin-bottom:8px; }
+  .hero h1 span { color:var(--primary); }
+  .hero p { color:var(--sub); font-size:.95rem; }
+
+  /* CARD */
+  .container { max-width:800px; margin:0 auto; padding:0 24px 60px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; margin-bottom:20px; box-shadow:var(--shadow); }
+  .card-title { font-size:1rem; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+
+  /* FORM */
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+  .form-group { display:flex; flex-direction:column; gap:6px; }
+  .form-group label { font-size:.85rem; font-weight:600; color:var(--sub); }
+  .form-group input, .form-group select {
+    padding:12px 16px; border:1px solid var(--border); border-radius:10px;
+    background:var(--bg); color:var(--text); font-size:1rem; font-family:inherit;
+    transition:border .2s;
+  }
+  .form-group input:focus, .form-group select:focus { outline:none; border-color:var(--primary); }
+  .form-group .hint { font-size:.78rem; color:var(--sub); }
+
+  /* BUTTON */
+  .calc-btn {
+    width:100%; padding:16px; background:var(--primary); color:#fff;
+    border:none; border-radius:12px; font-size:1.05rem; font-weight:700;
+    cursor:pointer; margin-top:8px; transition:all .2s; letter-spacing:.5px;
+  }
+  .calc-btn:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 16px rgba(247,147,26,.4); }
+
+  /* RESULT */
+  .result-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:16px; }
+  @media(max-width:500px){ .result-grid { grid-template-columns:1fr; } }
+  .result-item { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:16px; text-align:center; }
+  .result-item .label { font-size:.8rem; color:var(--sub); margin-bottom:4px; }
+  .result-item .value { font-size:1.3rem; font-weight:800; }
+  .result-item .value.up { color:var(--success); }
+  .result-item .value.down { color:var(--danger); }
+  .result-item .value.primary { color:var(--primary); }
+
+  .formula-box { background:rgba(247,147,26,.06); border:1px solid rgba(247,147,26,.2); border-radius:10px; padding:16px; font-size:.85rem; line-height:1.8; }
+  .formula-box strong { color:var(--primary); }
+
+  /* ALERT */
+  .alert { padding:14px 18px; border-radius:10px; font-size:.9rem; margin-top:12px; display:none; }
+  .alert.success { background:rgba(40,167,69,.1); border:1px solid rgba(40,167,69,.3); color:var(--success); }
+  .alert.danger  { background:rgba(220,53,69,.1);  border:1px solid rgba(220,53,69,.3);  color:var(--danger); }
+  .alert.info    { background:rgba(23,162,184,.1); border:1px solid rgba(23,162,184,.3); color:var(--info); }
+
+  /* LINKS */
+  .tool-links { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  @media(max-width:600px){ .tool-links { grid-template-columns:1fr 1fr; } }
+  .tool-link { display:flex; flex-direction:column; align-items:center; gap:6px; padding:16px 8px; background:var(--bg); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--text); font-size:.82rem; font-weight:600; text-align:center; transition:all .2s; }
+  .tool-link:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-2px); }
+  .tool-link .icon { font-size:1.5rem; }
+
+  /* FAQ */
+  .faq-item { border-bottom:1px solid var(--border); }
+  .faq-q { padding:16px 0; cursor:pointer; font-weight:600; font-size:.95rem; display:flex; justify-content:space-between; align-items:center; }
+  .faq-q:hover { color:var(--primary); }
+  .faq-a { padding:0 0 16px; color:var(--sub); font-size:.9rem; line-height:1.7; display:none; }
+
+  /* FOOTER */
+  footer { background:var(--card); border-top:1px solid var(--border); padding:32px 24px; text-align:center; }
+  .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:12px; }
+  .footer-links a { color:var(--sub); text-decoration:none; font-size:.85rem; }
+  .footer-links a:hover { color:var(--primary); }
+  .footer-copy { font-size:.8rem; color:var(--sub); }
+
+  /* AD SLOT */
+  .ad-slot { background:var(--card); border:1px dashed var(--border); border-radius:10px; padding:20px; text-align:center; color:var(--sub); font-size:.8rem; margin:16px 0; min-height:90px; display:flex; align-items:center; justify-content:center; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV계산기</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://cryptotax.cloud/">홈</a> &rsaquo;
+  <a href="https://cryptotax.cloud/">계산기</a> &rsaquo;
+  수익률 계산기
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📈 무료 계산기</div>
+  <h1>코인 <span>수익률</span> 계산기</h1>
+  <p>매수·매도 금액 입력 → ROI% · 수익금 · 세후 순수익 즉시 계산</p>
+</div>
+
+<!-- AD TOP -->
+<div class="container">
+<div class="ad-slot">
+  <!-- Google AdSense 상단 광고 -->
+  📢 광고 영역 (728×90)
+</div>
+
+<!-- CALCULATOR -->
+<div class="card">
+  <div class="card-title">💰 수익률 계산</div>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>총 매수금액 (원)</label>
+      <input type="number" id="buyAmt" placeholder="예: 1000000" oninput="formatInput(this)">
+      <span class="hint">취득 당시 총 투자금액</span>
+    </div>
+    <div class="form-group">
+      <label>총 매도금액 (원)</label>
+      <input type="number" id="sellAmt" placeholder="예: 1500000" oninput="formatInput(this)">
+      <span class="hint">현재가 또는 매도 금액</span>
+    </div>
+    <div class="form-group">
+      <label>수수료 합계 (원)</label>
+      <input type="number" id="feeAmt" placeholder="예: 5000" value="0">
+      <span class="hint">매수+매도 수수료 합산</span>
+    </div>
+    <div class="form-group">
+      <label>세금 계산 포함</label>
+      <select id="taxCalc">
+        <option value="yes">포함 (22% · 250만원 공제)</option>
+        <option value="no">제외 (순수 수익률만)</option>
+      </select>
+    </div>
+  </div>
+  <button class="calc-btn" onclick="calculate()">📊 수익률 계산하기</button>
+</div>
+
+<!-- RESULT -->
+<div class="card" id="resultCard" style="display:none">
+  <div class="card-title">📊 계산 결과</div>
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="label">수익률 (ROI)</div>
+      <div class="value primary" id="roi">—</div>
+    </div>
+    <div class="result-item">
+      <div class="label">순 수익금</div>
+      <div class="value" id="profit">—</div>
+    </div>
+    <div class="result-item">
+      <div class="label">예상 세금 (22%)</div>
+      <div class="value" id="tax">—</div>
+    </div>
+    <div class="result-item">
+      <div class="label">세후 순수익</div>
+      <div class="value" id="afterTax">—</div>
+    </div>
+  </div>
+
+  <div class="formula-box" id="formulaBox"></div>
+  <div class="alert success" id="alertSuccess"></div>
+  <div class="alert danger"  id="alertDanger"></div>
+  <div class="alert info"   id="alertInfo"></div>
+</div>
+
+<!-- AD MID -->
+<div class="ad-slot">📢 광고 영역 (계산 결과 하단 — CTR 최고)</div>
+
+<!-- OTHER TOOLS -->
+<div class="card">
+  <div class="card-title">🧰 다른 무료 계산기</div>
+  <div class="tool-links">
+    <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>세금 계산기</a>
+    <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 계산기</a>
+    <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="tool-link"><span class="icon">📊</span>물타기 계산기</a>
+    <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-link"><span class="icon">🏦</span>스테이킹 계산기</a>
+    <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-link"><span class="icon">⚡</span>사토시 환산기</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="tool-link"><span class="icon">📁</span>CSV 세금계산기</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="card">
+  <div class="card-title">❓ 자주 묻는 질문</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">ROI(수익률)는 어떻게 계산되나요? <span>▼</span></div>
+    <div class="faq-a">ROI = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100 으로 계산됩니다. 예를 들어 100만원에 사서 150만원에 팔면 ROI = 50%입니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">세금은 왜 수익률에서 빼나요? <span>▼</span></div>
+    <div class="faq-a">2027년부터 가상자산 양도소득세(22%)가 부과됩니다. 연간 250만원 기본공제 후 초과분에 세금이 부과되므로, 실제 손에 남는 금액은 세후 기준으로 계산해야 정확합니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">수수료는 어떻게 확인하나요? <span>▼</span></div>
+    <div class="faq-a">업비트 기준 거래 수수료는 0.05%입니다. 100만원 매수 시 500원, 150만원 매도 시 750원으로 총 1,250원입니다. 거래내역에서 정확한 수수료를 확인할 수 있습니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">손실이 났을 때 세금은? <span>▼</span></div>
+    <div class="faq-a">손실이 발생한 경우 세금은 0원입니다. 다만 손실을 다음 해로 이월 공제받으려면 신고가 필요합니다. 정확한 판단은 세무사 상담을 권장합니다.</div>
+  </div>
+</div>
+
+<!-- AD BOTTOM -->
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+
+<!-- RELATED BLOG -->
+<div class="card">
+  <div class="card-title">📰 관련 가이드</div>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <a href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">
+      📖 2027 가상자산 세금 완벽 가이드 →
+    </a>
+    <a href="https://cryptotax.cloud/blog/" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">
+      📰 코인 투자 가이드 블로그 전체보기 →
+    </a>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/about.html">소개</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
+    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+  </div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용이며 실제 세금과 다를 수 있습니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--sub)">contact@cryptotax.cloud</a></div>
+</footer>
+
+<script>
+// THEME
+const root = document.documentElement;
+const saved = localStorage.getItem('ctc-theme') || 'light';
+root.setAttribute('data-theme', saved);
+document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
+
+function toggleTheme(){
+  const cur = root.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('ctc-theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️ 라이트' : '🌙 다크';
+}
+
+// FORMAT
+function formatInput(el){ el.value = el.value.replace(/[^0-9.]/g,''); }
+
+function krw(n){ return Math.abs(n) >= 10000 ? (n/10000).toFixed(1)+'만원' : n.toLocaleString()+'원'; }
+
+// CALCULATE
+function calculate(){
+  const buy  = parseFloat(document.getElementById('buyAmt').value)  || 0;
+  const sell = parseFloat(document.getElementById('sellAmt').value) || 0;
+  const fee  = parseFloat(document.getElementById('feeAmt').value)  || 0;
+  const withTax = document.getElementById('taxCalc').value === 'yes';
+
+  if(buy <= 0 || sell <= 0){ alert('매수금액과 매도금액을 입력해주세요.'); return; }
+
+  const profit = sell - buy - fee;
+  const roi    = (profit / buy * 100);
+  const DEDUCT = 2500000;
+  const RATE   = 0.22;
+  const taxBase = Math.max(0, profit - DEDUCT);
+  const taxAmt  = withTax ? Math.floor(taxBase * RATE) : 0;
+  const afterTax = profit - taxAmt;
+
+  // UI
+  const rc = document.getElementById('resultCard');
+  rc.style.display = 'block';
+
+  const roiEl = document.getElementById('roi');
+  roiEl.textContent = roi.toFixed(2) + '%';
+  roiEl.className = 'value ' + (roi >= 0 ? 'up' : 'down');
+
+  const profitEl = document.getElementById('profit');
+  profitEl.textContent = (profit >= 0 ? '+' : '') + profit.toLocaleString() + '원';
+  profitEl.className = 'value ' + (profit >= 0 ? 'up' : 'down');
+
+  document.getElementById('tax').textContent = withTax ? taxAmt.toLocaleString()+'원' : '계산 제외';
+  document.getElementById('tax').className = 'value ' + (taxAmt > 0 ? 'danger' : 'sub');
+
+  const atEl = document.getElementById('afterTax');
+  atEl.textContent = (afterTax >= 0 ? '+' : '') + afterTax.toLocaleString() + '원';
+  atEl.className = 'value ' + (afterTax >= 0 ? 'up' : 'down');
+
+  document.getElementById('formulaBox').innerHTML =
+    `<strong>계산 공식</strong><br>
+     수익금 = ${sell.toLocaleString()} − ${buy.toLocaleString()} − ${fee.toLocaleString()} = <strong>${profit.toLocaleString()}원</strong><br>
+     ROI = ${profit.toLocaleString()} ÷ ${buy.toLocaleString()} × 100 = <strong>${roi.toFixed(2)}%</strong><br>
+     ${withTax ? `과세표준 = MAX(0, ${profit.toLocaleString()} − 2,500,000) = ${taxBase.toLocaleString()}원<br>예상 세금 = ${taxBase.toLocaleString()} × 22% = <strong>${taxAmt.toLocaleString()}원</strong>` : ''}
+     <br><small style="color:var(--sub)">※ 결과는 참고용 추정치입니다. 정확한 세금은 세무사 상담을 권장합니다.</small>`;
+
+  // ALERTS
+  const aS = document.getElementById('alertSuccess');
+  const aD = document.getElementById('alertDanger');
+  const aI = document.getElementById('alertInfo');
+  aS.style.display = aD.style.display = aI.style.display = 'none';
+
+  if(profit < 0){
+    aD.style.display='block'; aD.textContent='📉 손실 구간입니다. 세금은 발생하지 않습니다.';
+  } else if(taxAmt === 0 && withTax){
+    aS.style.display='block'; aS.textContent='✅ 수익이 250만원 공제 이하로 세금이 없습니다!';
+  } else if(taxAmt > 0){
+    aI.style.display='block'; aI.textContent=`💡 예상 세금 ${taxAmt.toLocaleString()}원 — 절세 전략이 필요하다면 세금 손실 하베스팅 계산기를 확인해보세요.`;
+  }
+  rc.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// FAQ
+function toggleFaq(el){
+  const a = el.nextElementSibling;
+  const isOpen = a.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');
+  document.querySelectorAll('.faq-q span').forEach(x=>x.textContent='▼');
+  if(!isOpen){ a.style.display='block'; el.querySelector('span').textContent='▲'; }
+}
+</script>
+</body>
+</html>
