@@ -1080,6 +1080,23 @@ window.addEventListener('scroll', () => {
   btn.style.display = window.scrollY > 400 ? 'block' : 'none';
 });
 </script>
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
 
+function toggleTheme() {
+  const html = document.documentElement;
+  const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// 페이지 로드시 저장된 테마 적용
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+});
+</script>
 </body>
 </html>
