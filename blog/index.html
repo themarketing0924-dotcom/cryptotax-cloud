@@ -1,565 +1,820 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/theme.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>암호화폐 세금·투자 블로그 2026 | 40개 무료 가이드 — CryptoTax.cloud</title>
-<meta name="description" content="코인 세금 신고, 업비트 스테이킹, DCA 투자전략, 입문 가이드까지. 2026 최신 가상자산 정보 40개 무료 글 모음. 검색으로 바로 찾으세요.">
-<meta name="keywords" content="코인 세금, 업비트 스테이킹, 가상자산 세금 신고, 비트코인 투자, DCA 전략, 코인 입문">
+
+<!-- ===== SEO 핵심 메타 ===== -->
+<title>코인 세금·투자 블로그 2027 | 업비트 스테이킹·DCA·사기예방 무료 가이드 — CryptoTax.cloud</title>
+<meta name="description" content="2027년 가상자산 세금 신고부터 업비트 스테이킹, DCA 전략, 코인 사기 예방까지. 대한민국 코인 투자자를 위한 무료 블로그 40개+.">
+<meta name="keywords" content="코인 세금 신고, 가상자산 양도소득세, 업비트 스테이킹, DCA 전략, 코린이 입문, 코인 사기 예방, 비트코인 세금 2027">
 <link rel="canonical" href="https://cryptotax.cloud/blog/">
-<meta property="og:title" content="암호화폐 세금·투자 블로그 | CryptoTax.cloud">
-<meta property="og:description" content="코인 세금·투자전략·입문가이드 40개 무료 아티클">
-<meta property="og:url" content="https://cryptotax.cloud/blog/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="CryptoTax.cloud">
+
+<!-- ===== Open Graph ===== -->
 <meta property="og:type" content="website">
+<meta property="og:title" content="코인 세금·투자 블로그 2027 | CryptoTax.cloud">
+<meta property="og:description" content="가상자산 세금 신고, 스테이킹, DCA, 사기예방 무료 가이드 40개+. 대한민국 코인 투자자 필독.">
+<meta property="og:url" content="https://cryptotax.cloud/blog/">
+<meta property="og:image" content="https://cryptotax.cloud/images/og-blog.png">
+<meta property="og:site_name" content="CryptoTax.cloud">
+<meta property="og:locale" content="ko_KR">
+
+<!-- ===== Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="코인 세금·투자 블로그 2027 | CryptoTax.cloud">
+<meta name="twitter:description" content="가상자산 세금 신고, 스테이킹, DCA, 사기예방 무료 가이드 40개+.">
+<meta name="twitter:image" content="https://cryptotax.cloud/images/og-blog.png">
+
+<!-- ===== Naver 사이트 인증 ===== -->
+<meta name="naver-site-verification" content="YOUR_NAVER_CODE_HERE">
+
+<!-- ===== JSON-LD Schema ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "CryptoTax.cloud 블로그",
   "url": "https://cryptotax.cloud/blog/",
-  "description": "가상자산 세금·투자·스테이킹 정보 블로그",
-  "publisher": { "@type": "Organization", "name": "CryptoTax.cloud" }
+  "description": "대한민국 코인 투자자를 위한 세금·투자전략·스테이킹·사기예방 정보 블로그",
+  "inLanguage": "ko-KR",
+  "publisher": {
+    "@type": "Organization",
+    "name": "CryptoTax.cloud",
+    "url": "https://cryptotax.cloud",
+    "logo": { "@type": "ImageObject", "url": "https://cryptotax.cloud/images/logo.png" }
+  }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://cryptotax.cloud/" },
+    { "@type": "ListItem", "position": 2, "name": "블로그", "item": "https://cryptotax.cloud/blog/" }
+  ]
+}
+</script>
+
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ══════════════════════════════════════
+   CSS 변수 — 다크 / 라이트 완전 내장
+══════════════════════════════════════ */
+:root {
+  --bg:       #0d1117;
+  --bg2:      #161b22;
+  --bg3:      #21262d;
+  --card:     #1c2128;
+  --border:   #30363d;
+  --accent:   #f7931a;
+  --accent2:  #00c896;
+  --blue:     #58a6ff;
+  --purple:   #bc8cff;
+  --danger:   #f85149;
+  --text:     #e6edf3;
+  --text2:    #8b949e;
+  --text3:    #6e7681;
+  --shadow:   0 4px 24px rgba(0,0,0,.4);
+  --radius:   12px;
+  --tr:       .25s ease;
+}
+[data-theme="light"] {
+  --bg:       #f6f8fa;
+  --bg2:      #ffffff;
+  --bg3:      #f0f2f5;
+  --card:     #ffffff;
+  --border:   #d0d7de;
+  --text:     #1f2328;
+  --text2:    #57606a;
+  --text3:    #8c959f;
+  --shadow:   0 4px 24px rgba(0,0,0,.08);
+}
+
+/* ══ 기본 리셋 ══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--bg-base);
-  color: var(--text-primary);
-  font-family: 'Segoe UI', sans-serif;
-  transition: background var(--transition), color var(--transition);
+  font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background var(--tr), color var(--tr);
 }
 
-/* NAV */
+/* ══ 네비게이션 ══ */
 nav {
-  background: var(--bg-overlay);
-  border-bottom: 1px solid var(--border-default);
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  transition: background var(--transition);
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,17,23,.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  height: 62px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem;
+  transition: background var(--tr);
 }
-.nav-logo { font-size: 1.2rem; font-weight: 700; color: var(--orange); text-decoration: none; }
-.nav-links { display: flex; gap: 8px; align-items: center; }
-.nav-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  transition: all 0.2s;
+[data-theme="light"] nav { background: rgba(246,248,250,.95); }
+.nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--accent); text-decoration: none; letter-spacing: -.02em; }
+.nav-center { display: flex; gap: .3rem; align-items: center; }
+.nav-center a {
+  color: var(--text2); text-decoration: none;
+  padding: .45rem .85rem; border-radius: 7px;
+  font-size: .85rem; font-weight: 500;
+  transition: all var(--tr);
 }
-.nav-links a:hover, .nav-links a.active {
-  background: var(--bg-surface);
-  color: var(--text-primary);
-}
+.nav-center a:hover, .nav-center a.active { background: var(--bg3); color: var(--text); }
+.nav-center a.active { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: .7rem; }
 
-/* HERO */
-.blog-hero {
-  background: var(--bg-elevated);
-  padding: 60px 24px 40px;
+/* 토글 스위치 (완전 독립 스타일) */
+.theme-toggle-wrap {
+  display: flex; align-items: center; gap: .5rem;
+  cursor: pointer; font-size: .82rem; color: var(--text2);
+  user-select: none;
+}
+.toggle-switch {
+  width: 40px; height: 22px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 11px; position: relative;
+  transition: background var(--tr);
+}
+.toggle-switch::after {
+  content: '';
+  position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  background: var(--text2);
+  border-radius: 50%;
+  transition: transform var(--tr), background var(--tr);
+}
+[data-theme="light"] .toggle-switch { background: var(--accent); }
+[data-theme="light"] .toggle-switch::after { transform: translateX(18px); background: #fff; }
+@media(max-width:768px) { .nav-center { display: none; } }
+
+/* ══ 히어로 섹션 ══ */
+.hero {
+  background: linear-gradient(160deg, #0d1117 0%, #161b22 50%, #1a2332 100%);
+  padding: 4rem 1.5rem 3rem;
   text-align: center;
-  border-bottom: 1px solid var(--border-default);
-  transition: background var(--transition);
-}
-.blog-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-.blog-hero h1 span { color: var(--orange); }
-.blog-hero p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 28px; }
-
-/* SEARCH */
-.search-wrap { max-width: 540px; margin: 0 auto; position: relative; }
-.search-wrap input {
-  width: 100%;
-  padding: 14px 50px 14px 18px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
-  color: var(--text-primary);
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s, background var(--transition);
-}
-.search-wrap input:focus { border-color: var(--orange); }
-.search-wrap input::placeholder { color: var(--text-muted); }
-.search-wrap .search-icon {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-}
-
-/* CATEGORY TABS */
-.category-wrap {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 24px 24px 0;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.cat-btn {
-  padding: 8px 18px;
-  border-radius: 20px;
-  border: 1px solid var(--border-default);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-}
-.cat-btn:hover { border-color: var(--orange); color: var(--orange); }
-.cat-btn.active { background: var(--orange); border-color: var(--orange); color: #000; font-weight: 700; }
-
-/* STATS BAR */
-.stats-bar {
-  max-width: 900px;
-  margin: 16px auto 0;
-  padding: 0 24px;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-}
-.stats-bar span { color: var(--orange); font-weight: 600; }
-
-/* MAIN LAYOUT */
-.main-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 28px 24px;
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 32px;
-}
-
-/* AD */
-.ad-top { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
-.ad-slot {
-  background: var(--bg-surface);
-  border: 1px dashed var(--border-default);
-  border-radius: 8px;
-  padding: 16px;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  text-align: center;
-  transition: background var(--transition);
-}
-
-/* BLOG GRID */
-.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.blog-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.2s;
+}
+[data-theme="light"] .hero { background: linear-gradient(160deg, #f0f7ff 0%, #e8f4fd 60%, #f0fff8 100%); }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(247,147,26,.07), transparent);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(247,147,26,.12); color: var(--accent);
+  border: 1px solid rgba(247,147,26,.25);
+  border-radius: 20px; padding: .3rem 1rem;
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-weight: 900; line-height: 1.25;
+  margin-bottom: .8rem; letter-spacing: -.02em;
+}
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero p { color: var(--text2); font-size: 1rem; max-width: 520px; margin: 0 auto 2rem; }
+
+/* 검색바 */
+.search-box {
+  max-width: 560px; margin: 0 auto 1.5rem;
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  padding: .9rem 3.2rem .9rem 1.2rem;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text); font-size: .95rem;
+  outline: none;
+  transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.search-box input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(247,147,26,.15);
+}
+.search-box input::placeholder { color: var(--text3); }
+.search-icon {
+  position: absolute; right: 1rem; top: 50%;
+  transform: translateY(-50%); font-size: 1.1rem;
+  pointer-events: none;
+}
+
+/* 히어로 통계 */
+.hero-stats {
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 1.5rem; font-weight: 900; color: var(--accent); line-height: 1; }
+.hero-stat .lbl { font-size: .72rem; color: var(--text2); margin-top: .2rem; letter-spacing: .04em; }
+
+/* ══ 카테고리 필터 ══ */
+.filter-bar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 1.5rem;
+  position: sticky; top: 62px; z-index: 100;
+  transition: background var(--tr);
+}
+.filter-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.cat-tabs { display: flex; gap: .45rem; flex-wrap: wrap; }
+.cat-btn {
+  padding: .45rem 1rem; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--text2);
+  cursor: pointer; font-size: .82rem; font-weight: 600;
+  transition: all var(--tr); white-space: nowrap;
+}
+.cat-btn:hover { border-color: var(--accent); color: var(--accent); }
+.cat-btn.active { background: var(--accent); border-color: var(--accent); color: #000; }
+.result-info { font-size: .8rem; color: var(--text2); white-space: nowrap; }
+.result-info strong { color: var(--accent); }
+
+/* ══ 광고 슬롯 ══ */
+.ad-wrap { max-width: 1140px; margin: 1.5rem auto 0; padding: 0 1.5rem; }
+.ad-slot {
+  background: var(--bg3); border: 1px dashed var(--border);
+  border-radius: var(--radius); padding: .8rem;
+  text-align: center; color: var(--text3); font-size: .75rem;
+}
+.ad-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .2rem; }
+
+/* ══ 본문 레이아웃 ══ */
+.layout {
+  max-width: 1140px; margin: 2rem auto 4rem; padding: 0 1.5rem;
+  display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem;
+}
+@media(max-width:960px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+/* ══ 블로그 그리드 ══ */
+.blog-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem;
+}
+@media(max-width:780px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:480px) { .blog-grid { grid-template-columns: 1fr; } }
+
+/* 블로그 카드 */
+.blog-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
   text-decoration: none;
   display: block;
+  transition: transform var(--tr), border-color var(--tr), box-shadow var(--tr);
 }
 .blog-card:hover {
-  border-color: var(--orange);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(247,147,26,0.1);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px rgba(247,147,26,.12);
 }
 .card-thumb {
-  background: var(--bg-elevated);
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  border-bottom: 1px solid var(--border-default);
-  transition: background var(--transition);
+  background: var(--bg3);
+  height: 100px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.6rem;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--tr);
+  position: relative;
 }
-.card-body { padding: 16px; }
-.card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-.tag { padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
-.tag-tax      { background: rgba(247,147,26,0.15); color: var(--orange); }
-.tag-strategy { background: rgba(63,185,80,0.15);  color: var(--green); }
-.tag-beginner { background: rgba(88,166,255,0.15); color: var(--blue); }
-.tag-staking  { background: rgba(188,140,255,0.15); color: #bc8cff; }
-.tag-scam     { background: rgba(248,81,73,0.15);  color: #f85149; }
-.card-title { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; line-height: 1.4; }
-.card-desc  { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; }
-.card-meta  { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
+.card-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.15));
+}
+.card-body { padding: 1rem; }
+.card-tags { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .55rem; }
+.tag {
+  padding: .18rem .55rem; border-radius: 4px;
+  font-size: .7rem; font-weight: 700;
+}
+.tag-tax      { background: rgba(247,147,26,.15); color: var(--accent); }
+.tag-strategy { background: rgba(0,200,150,.15);  color: var(--accent2); }
+.tag-beginner { background: rgba(88,166,255,.15);  color: var(--blue); }
+.tag-staking  { background: rgba(188,140,255,.15); color: var(--purple); }
+.tag-scam     { background: rgba(248,81,73,.15);   color: var(--danger); }
+.card-title {
+  font-size: .9rem; font-weight: 700; color: var(--text);
+  margin-bottom: .4rem; line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-desc {
+  font-size: .77rem; color: var(--text2); line-height: 1.5; margin-bottom: .7rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-meta { display: flex; justify-content: space-between; font-size: .72rem; color: var(--text3); }
 
-/* PAGINATION */
-.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
-.page-btn {
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  border: 1px solid var(--border-default);
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-.page-btn:hover, .page-btn.active {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: #000;
-  font-weight: 700;
-}
-
-/* SIDEBAR */
-.sidebar { display: flex; flex-direction: column; gap: 20px; }
-.sidebar-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
-  padding: 20px;
-  transition: background var(--transition);
-}
-.sidebar-card h3 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-default);
-  color: var(--orange);
-}
-.popular-list { list-style: none; }
-.popular-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border-default);
-  font-size: 0.82rem;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-.popular-list li:last-child { border-bottom: none; }
-.popular-rank {
-  min-width: 22px; height: 22px;
-  background: var(--orange);
-  color: #000;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.popular-list a { color: var(--text-primary); text-decoration: none; line-height: 1.4; }
-.popular-list a:hover { color: var(--orange); }
-.tool-link-list { list-style: none; }
-.tool-link-list li { padding: 6px 0; border-bottom: 1px solid var(--border-default); }
-.tool-link-list li:last-child { border-bottom: none; }
-.tool-link-list a {
-  color: var(--blue);
-  text-decoration: none;
-  font-size: 0.82rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.tool-link-list a:hover { color: var(--orange); }
-
-/* NO RESULT */
+/* 빈 결과 */
 .no-result {
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 60px 0;
-  color: var(--text-secondary);
+  grid-column: 1/-1; text-align: center;
+  padding: 4rem 0; color: var(--text2);
   display: none;
 }
+.no-result span { font-size: 3rem; display: block; margin-bottom: .8rem; }
 
-/* FOOTER */
+/* ══ 페이지네이션 ══ */
+.pagination {
+  display: flex; justify-content: center; align-items: center;
+  gap: .5rem; margin-top: 2rem; flex-wrap: wrap;
+}
+.page-btn {
+  min-width: 40px; height: 40px; padding: 0 .6rem;
+  border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text2);
+  cursor: pointer; font-size: .88rem; font-weight: 600;
+  transition: all var(--tr);
+}
+.page-btn:hover { border-color: var(--accent); color: var(--accent); }
+.page-btn.active { background: var(--accent); border-color: var(--accent); color: #000; }
+.page-btn:disabled { opacity: .4; cursor: not-allowed; }
+.page-btn.prev-next { font-size: .8rem; padding: 0 .9rem; }
+
+/* ══ 사이드바 ══ */
+.sidebar { display: flex; flex-direction: column; gap: 1.3rem; position: sticky; top: 110px; height: fit-content; }
+.sidebar-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.3rem;
+  box-shadow: var(--shadow);
+  transition: background var(--tr);
+}
+.sidebar-title {
+  font-size: .88rem; font-weight: 700; color: var(--accent);
+  margin-bottom: .9rem; padding-bottom: .7rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: .4rem;
+}
+/* 인기글 */
+.popular-list { list-style: none; }
+.popular-list li {
+  display: flex; gap: .6rem; align-items: flex-start;
+  padding: .6rem 0; border-bottom: 1px solid var(--border);
+  font-size: .8rem;
+}
+.popular-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.rank-badge {
+  min-width: 22px; height: 22px;
+  background: var(--accent); color: #000;
+  border-radius: 5px; font-weight: 800; font-size: .72rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.rank-badge.r2 { background: var(--text2); color: var(--bg); }
+.rank-badge.r3 { background: #cd7f32; color: #fff; }
+.popular-list a { color: var(--text); text-decoration: none; line-height: 1.4; }
+.popular-list a:hover { color: var(--accent); }
+/* 빠른 도구 */
+.tool-links { list-style: none; }
+.tool-links li { border-bottom: 1px solid var(--border); }
+.tool-links li:last-child { border-bottom: none; }
+.tool-links a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem .3rem; color: var(--text2);
+  text-decoration: none; font-size: .82rem;
+  transition: color var(--tr);
+}
+.tool-links a:hover { color: var(--accent); }
+/* D-Day */
+.dday-box { text-align: center; padding: .3rem; }
+.dday-num { font-size: 2.2rem; font-weight: 900; color: var(--accent); line-height: 1.1; }
+.dday-sub { font-size: .72rem; color: var(--text2); margin-top: .3rem; }
+/* CTA */
+.cta-box {
+  background: linear-gradient(135deg, rgba(247,147,26,.1), rgba(0,200,150,.07));
+  border: 1px solid rgba(247,147,26,.2);
+  border-radius: 10px; padding: 1.1rem; text-align: center;
+}
+.cta-box h4 { font-size: .92rem; font-weight: 700; margin-bottom: .4rem; }
+.cta-box p { font-size: .77rem; color: var(--text2); margin-bottom: .8rem; }
+.cta-btn {
+  display: block; padding: .6rem 1rem;
+  background: var(--accent); color: #000;
+  border-radius: 8px; text-decoration: none;
+  font-size: .84rem; font-weight: 700;
+  transition: background var(--tr);
+}
+.cta-btn:hover { background: #e8860f; }
+
+/* ══ 푸터 ══ */
 footer {
-  background: var(--bg-surface);
-  border-top: 1px solid var(--border-default);
-  padding: 40px 24px;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  margin-top: 60px;
-  transition: background var(--transition);
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 2.5rem 1.5rem; text-align: center;
+  transition: background var(--tr);
 }
-footer a { color: var(--text-secondary); text-decoration: none; }
-footer a:hover { color: var(--orange); }
-.footer-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .main-wrap { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .blog-hero h1 { font-size: 1.5rem; }
-}
+.footer-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+.footer-links a { color: var(--text2); text-decoration: none; font-size: .82rem; }
+.footer-links a:hover { color: var(--accent); }
+footer p { color: var(--text3); font-size: .8rem; line-height: 1.8; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ 네비게이션 ══ -->
 <nav>
   <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
-  <div class="nav-links">
+  <div class="nav-center">
     <a href="/#calculator">💰 세금계산기</a>
     <a href="/#tools">🧰 도구모음</a>
     <a href="/market/">📊 시장데이터</a>
     <a href="/blog/" class="active">📰 블로그</a>
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <span id="themeIcon">☀️</span>
-      <div class="toggle-track">
-        <div class="toggle-thumb"></div>
-      </div>
-      <span id="themeLabel">라이트</span>
-    </button>
+  </div>
+  <div class="nav-right">
+    <div class="theme-toggle-wrap" onclick="toggleTheme()" role="button" aria-label="테마 전환">
+      <span id="themeEmoji">🌙</span>
+      <div class="toggle-switch"></div>
+      <span id="themeLabel">다크</span>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="blog-hero">
-  <h1>가상자산 <span>세금·투자</span> 가이드</h1>
-  <p>코인 세금 신고부터 스테이킹, 투자전략까지 — 40개 무료 아티클</p>
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="🔍  예: 코인 세금 신고, 업비트 스테이킹, DCA 전략..." oninput="filterPosts()">
+<!-- ══ 히어로 ══ -->
+<section class="hero">
+  <div class="hero-eyebrow">📚 2027 과세 대비 필독 · 매주 업데이트</div>
+  <h1>대한민국 코인 투자자를 위한<br><em>세금·투자 블로그</em></h1>
+  <p>세금 신고부터 절세 전략, 스테이킹, 사기 예방까지<br>코린이도 이해하는 무료 가이드 40개+</p>
+
+  <div class="search-box">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="예: 코인 세금, 업비트 스테이킹, DCA 전략..."
+      oninput="onSearch()"
+      autocomplete="off"
+      aria-label="블로그 검색"
+    >
     <span class="search-icon">🔍</span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" id="totalCount">40</div><div class="lbl">무료 아티클</div></div>
+    <div class="hero-stat"><div class="num">22%</div><div class="lbl">2027 세율</div></div>
+    <div class="hero-stat"><div class="num">250만</div><div class="lbl">기본공제(원)</div></div>
+    <div class="hero-stat"><div class="num" id="heroDay">—</div><div class="lbl">과세 D-day</div></div>
   </div>
 </section>
 
-<!-- CATEGORY -->
-<div class="category-wrap">
-  <button class="cat-btn active" onclick="setCategory('all', this)">📋 전체</button>
-  <button class="cat-btn" onclick="setCategory('tax', this)">💰 세금·신고</button>
-  <button class="cat-btn" onclick="setCategory('strategy', this)">📈 투자전략</button>
-  <button class="cat-btn" onclick="setCategory('beginner', this)">🎓 입문가이드</button>
-  <button class="cat-btn" onclick="setCategory('staking', this)">🏦 스테이킹</button>
-  <button class="cat-btn" onclick="setCategory('scam', this)">🚨 사기예방</button>
-</div>
-<div class="stats-bar">
-  <span id="resultCount">40</span>개 아티클 · 매주 업데이트
-</div>
-
-<!-- AD TOP -->
-<div class="ad-top" style="margin-top:16px;">
-  <div class="ad-slot" style="height:90px;line-height:90px;">
-    광고 영역 (728×90) — Google AdSense
+<!-- ══ 카테고리 필터 ══ -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-btn active" data-cat="all"   onclick="setCategory('all',this)">📋 전체</button>
+      <button class="cat-btn"        data-cat="tax"      onclick="setCategory('tax',this)">💰 세금·신고</button>
+      <button class="cat-btn"        data-cat="strategy" onclick="setCategory('strategy',this)">📈 투자전략</button>
+      <button class="cat-btn"        data-cat="beginner" onclick="setCategory('beginner',this)">🎓 입문가이드</button>
+      <button class="cat-btn"        data-cat="staking"  onclick="setCategory('staking',this)">🏦 스테이킹</button>
+      <button class="cat-btn"        data-cat="scam"     onclick="setCategory('scam',this)">🚨 사기예방</button>
+    </div>
+    <div class="result-info">
+      <strong id="resultCount">40</strong>개 아티클
+    </div>
   </div>
 </div>
 
-<!-- MAIN -->
-<div class="main-wrap">
-  <div>
+<!-- ══ 상단 광고 ══ -->
+<div class="ad-wrap">
+  <div class="ad-slot" style="min-height:90px">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="5555555555"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<!-- ══ 본문 레이아웃 ══ -->
+<div class="layout">
+
+  <!-- 좌측: 그리드 + 페이지네이션 -->
+  <main>
     <div class="blog-grid" id="blogGrid"></div>
-    <div class="no-result" id="noResult">😢 검색 결과가 없습니다. 다른 키워드로 검색해보세요.</div>
+    <div class="no-result" id="noResult">
+      <span>😢</span>
+      검색 결과가 없습니다.<br>다른 키워드로 검색해보세요.
+    </div>
     <div class="pagination" id="pagination"></div>
-  </div>
+  </main>
 
-  <!-- SIDEBAR -->
+  <!-- 우측: 사이드바 -->
   <aside class="sidebar">
+
+    <!-- D-Day -->
     <div class="sidebar-card">
-      <h3>🔥 인기 글 TOP 5</h3>
+      <div class="sidebar-title">⏰ 과세 시행 D-day</div>
+      <div class="dday-box">
+        <div class="dday-num" id="ddayNum">—</div>
+        <div class="dday-sub">2027년 1월 1일 과세 시작</div>
+      </div>
+    </div>
+
+    <!-- 인기 글 TOP 5 -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">🔥 인기 글 TOP 5</div>
       <ul class="popular-list" id="popularList"></ul>
     </div>
-    <div class="sidebar-card">
-      <div class="ad-slot" style="height:250px;line-height:250px;">광고 300×250</div>
+
+    <!-- 사이드바 광고 -->
+    <div class="sidebar-card" style="padding:0;overflow:hidden;">
+      <div class="ad-slot" style="margin:0;border-radius:var(--radius);min-height:250px">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="6666666666"
+          data-ad-format="rectangle"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+      </div>
     </div>
+
+    <!-- 빠른 도구 링크 -->
     <div class="sidebar-card">
-      <h3>🧰 빠른 도구</h3>
-      <ul class="tool-link-list">
-        <li><a href="/tools/tax-calculator.html">💰 코인 세금 계산기</a></li>
-        <li><a href="/tools/staking-calculator.html">🏦 스테이킹 이자 계산기</a></li>
-        <li><a href="/tools/roi-calculator.html">📊 ROI 수익률 계산기</a></li>
-        <li><a href="/tools/dca-calculator.html">📅 DCA 적립식 계산기</a></li>
-        <li><a href="/tools/kimchi-premium.html">🌶️ 김치프리미엄 계산기</a></li>
-        <li><a href="/tools/fee-calculator.html">💸 수수료 계산기</a></li>
+      <div class="sidebar-title">🧰 무료 계산기 도구</div>
+      <ul class="tool-links">
+        <li><a href="/tools/tax-calculator.html"><span>💰 세금 계산기</span><span>→</span></a></li>
+        <li><a href="/tools/csv-tax-calculator.html"><span>📁 CSV 자동 계산기</span><span>→</span></a></li>
+        <li><a href="/tools/tax-loss-harvesting.html"><span>📉 절세 하베스팅</span><span>→</span></a></li>
+        <li><a href="/tools/portfolio-tracker.html"><span>💼 포트폴리오 추적기</span><span>→</span></a></li>
+        <li><a href="/tools/staking-calculator.html"><span>🏦 스테이킹 계산기</span><span>→</span></a></li>
+        <li><a href="/tools/dca-calculator.html"><span>📈 DCA 계산기</span><span>→</span></a></li>
+        <li><a href="/tools/kimchi-premium.html"><span>🌶️ 김치프리미엄</span><span>→</span></a></li>
       </ul>
     </div>
+
+    <!-- 세무사 상담 CTA -->
     <div class="sidebar-card">
-      <h3>⚠️ 세금 D-day</h3>
-      <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:8px;">2027년 1월 1일 시행</p>
-      <div style="font-size:1.8rem;font-weight:800;color:var(--orange);text-align:center;" id="sidebarCountdown">계산중...</div>
-      <p style="font-size:0.75rem;color:var(--text-secondary);text-align:center;margin-top:4px;">일 남았습니다</p>
+      <div class="cta-box">
+        <h4>💼 세무사 무료 상담</h4>
+        <p>복잡한 세금 신고는<br>전문가에게 맡기세요</p>
+        <a href="/consultation" class="cta-btn">무료 상담 신청 →</a>
+      </div>
     </div>
+
   </aside>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ 푸터 ══ -->
 <footer>
   <div class="footer-links">
     <a href="/">홈</a>
     <a href="/blog/">블로그</a>
     <a href="/#tools">도구모음</a>
+    <a href="/market/">시장데이터</a>
     <a href="/about.html">소개</a>
     <a href="/privacy-policy.html">개인정보처리방침</a>
     <a href="/terms.html">이용약관</a>
-    <a href="/disclaimer.html">면책조항</a>
     <a href="/sitemap.xml">사이트맵</a>
   </div>
-  <p>© 2026 CryptoTax.cloud — 본 사이트의 정보는 참고용이며 세무 상담을 대체하지 않습니다.</p>
+  <p>© 2026 CryptoTax.cloud — 본 사이트의 정보는 참고용이며 세무 상담을 대체하지 않습니다.<br>
+  가상자산 세금은 <a href="https://www.hometax.go.kr" target="_blank" rel="noopener">국세청 홈택스</a>를 통해 신고하세요.</p>
 </footer>
 
+<!-- ══ JavaScript ══ -->
 <script>
-// ── 테마 ──
+/* ────────────────────────────────
+   1. 테마 시스템
+──────────────────────────────── */
 (function(){
   const saved = localStorage.getItem('ctc-theme') || 'dark';
-  applyTheme(saved, false);
+  applyTheme(saved);
 })();
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  applyTheme(current === 'dark' ? 'light' : 'dark', true);
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme');
+  applyTheme(cur === 'dark' ? 'light' : 'dark');
+  localStorage.setItem('ctc-theme', document.documentElement.getAttribute('data-theme'));
 }
 
-function applyTheme(theme, save) {
-  document.documentElement.setAttribute('data-theme', theme);
-  const icon  = document.getElementById('themeIcon');
-  const label = document.getElementById('themeLabel');
-  if(theme === 'light') {
-    if(icon)  icon.textContent  = '🌙';
-    if(label) label.textContent = '다크';
-  } else {
-    if(icon)  icon.textContent  = '☀️';
-    if(label) label.textContent = '라이트';
-  }
-  if(save) localStorage.setItem('ctc-theme', theme);
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  const e = document.getElementById('themeEmoji');
+  const l = document.getElementById('themeLabel');
+  if(e) e.textContent = t === 'dark' ? '🌙' : '🌞';
+  if(l) l.textContent = t === 'dark' ? '다크' : '라이트';
 }
 
-// ── 블로그 데이터 ──
-const posts = [
-  { id:1,  emoji:"💰", title:"코인 세금 신고 완벽 가이드 2027", desc:"2027년 1월 시행 가상자산 양도소득세, 신고 방법과 절세 전략을 총정리합니다.", tags:["tax"], date:"2026-03-25", read:8, slug:"tax-guide-2027", views:4821 },
-  { id:2,  emoji:"📋", title:"업비트 코인 세금 얼마나 내나? 계산법", desc:"업비트 거래 수익에서 22% 세금이 어떻게 계산되는지 실제 예시로 설명합니다.", tags:["tax"], date:"2026-03-20", read:6, slug:"upbit-tax-calculation", views:3210 },
-  { id:3,  emoji:"📉", title:"코인 손실 공제로 세금 줄이는 법", desc:"손실 코인을 활용해 합법적으로 세금을 절감하는 손익통산 전략을 알아봅니다.", tags:["tax"], date:"2026-03-18", read:7, slug:"loss-deduction-strategy", views:2890 },
-  { id:4,  emoji:"🏦", title:"스테이킹 이자 세금 신고 방법", desc:"스테이킹으로 받은 코인 이자는 어떻게 세금 신고를 해야 할까요?", tags:["tax","staking"], date:"2026-03-15", read:5, slug:"staking-tax-guide", views:2540 },
-  { id:5,  emoji:"💱", title:"해외거래소 코인 세금 신고 의무", desc:"바이낸스 등 해외 거래소에서 발생한 수익도 신고해야 합니다.", tags:["tax"], date:"2026-03-12", read:6, slug:"overseas-exchange-tax", views:2100 },
-  { id:6,  emoji:"🎁", title:"에어드랍·이벤트 코인 세금 처리 방법", desc:"무료로 받은 에어드랍 코인도 과세 대상? 취득가액 산정 방법을 설명합니다.", tags:["tax"], date:"2026-03-10", read:5, slug:"airdrop-tax-guide", views:1850 },
-  { id:7,  emoji:"👨‍👩‍👧", title:"가족 간 코인 증여 세금 완벽 정리", desc:"배우자·자녀에게 코인을 증여할 때 발생하는 세금과 절세 한도를 안내합니다.", tags:["tax"], date:"2026-03-08", read:6, slug:"gift-tax-crypto", views:1620 },
-  { id:8,  emoji:"📅", title:"코인 세금 신고 기간과 납부 일정 2027", desc:"2027년 첫 가상자산 세금 신고 기간은 언제인지, 납부 절차를 정리합니다.", tags:["tax"], date:"2026-03-05", read:4, slug:"tax-deadline-2027", views:1440 },
-  { id:9,  emoji:"🔄", title:"코인 스왑·교환 시 세금 발생하나요?", desc:"BTC를 ETH로 교환할 때 세금이 부과되는지 국세청 기준으로 알아봅니다.", tags:["tax"], date:"2026-03-03", read:5, slug:"swap-tax-guide", views:1320 },
-  { id:10, emoji:"📊", title:"코인 세금 줄이는 5가지 합법적 방법", desc:"250만원 기본공제 활용, 손실 상계, 장기보유 전략 등 합법적 절세 방법 5가지.", tags:["tax"], date:"2026-03-01", read:7, slug:"tax-saving-5-methods", views:1200 },
-  { id:11, emoji:"📈", title:"DCA 적립식 투자 전략 완벽 가이드", desc:"매달 일정 금액을 투자하는 DCA 전략으로 변동성 리스크를 줄이는 방법.", tags:["strategy"], date:"2026-03-22", read:7, slug:"dca-strategy", views:3102 },
-  { id:12, emoji:"💧", title:"코인 물타기 전략, 언제 해야 할까?", desc:"하락장에서 추가 매수하는 물타기 전략의 장단점과 올바른 활용법.", tags:["strategy"], date:"2026-03-19", read:6, slug:"averaging-strategy", views:2780 },
-  { id:13, emoji:"🌶️", title:"김치프리미엄 활용 차익거래 전략", desc:"국내외 코인 가격 차이(김치프리미엄)를 활용한 차익거래 방법과 주의사항.", tags:["strategy"], date:"2026-03-16", read:8, slug:"kimchi-premium-guide", views:2450 },
-  { id:14, emoji:"⚖️", title:"비트코인 vs 알트코인 포트폴리오 배분", desc:"BTC와 알트코인의 비율을 어떻게 배분해야 리스크를 줄일 수 있는지 알아봅니다.", tags:["strategy"], date:"2026-03-14", read:7, slug:"btc-alt-portfolio", views:2100 },
-  { id:15, emoji:"🎯", title:"코인 목표가 설정과 익절 전략", desc:"감정 없이 수익을 실현하는 목표가 설정 방법과 분할 매도 전략을 소개합니다.", tags:["strategy"], date:"2026-03-11", read:6, slug:"target-price-strategy", views:1870 },
-  { id:16, emoji:"📉", title:"손절 기준 정하는 법 — 코인 투자 리스크 관리", desc:"얼마나 손실이 나면 팔아야 할지, 손절 기준을 정하는 실전 방법.", tags:["strategy"], date:"2026-03-09", read:5, slug:"stop-loss-strategy", views:1650 },
-  { id:17, emoji:"🔁", title:"리밸런싱 전략으로 코인 수익 극대화", desc:"포트폴리오 비율이 무너질 때 리밸런싱해서 수익을 극대화하는 방법.", tags:["strategy"], date:"2026-03-07", read:6, slug:"rebalancing-strategy", views:1420 },
-  { id:18, emoji:"🌙", title:"반감기 전후 비트코인 투자 전략", desc:"비트코인 반감기가 가격에 미치는 영향과 최적의 매수 타이밍 전략.", tags:["strategy"], date:"2026-03-04", read:8, slug:"halving-strategy", views:1280 },
-  { id:19, emoji:"💼", title:"코인 장기투자 vs 단기투자 수익 비교", desc:"HODL 전략과 단기 트레이딩 중 어느 쪽이 더 유리한지 데이터로 비교합니다.", tags:["strategy"], date:"2026-03-02", read:6, slug:"long-vs-short-investment", views:1140 },
-  { id:20, emoji:"🛡️", title:"하락장에서 살아남는 코인 투자 원칙", desc:"베어마켓에서 손실을 최소화하고 다음 상승장을 준비하는 투자 원칙 7가지.", tags:["strategy"], date:"2026-02-28", read:7, slug:"bear-market-survival", views:1050 },
-  { id:21, emoji:"🎓", title:"코인 투자 완전 입문 — 처음 시작하는 법", desc:"코인이 뭔지도 모르는 초보자를 위한 비트코인·업비트 가입부터 첫 매수까지.", tags:["beginner"], date:"2026-03-23", read:10, slug:"beginner-guide", views:5200 },
-  { id:22, emoji:"📱", title:"업비트 가입·인증·첫 매수 방법 2026", desc:"업비트 회원가입, 본인인증, KRW 입금, 비트코인 첫 매수까지 스텝별 안내.", tags:["beginner"], date:"2026-03-21", read:8, slug:"upbit-signup-guide", views:4100 },
-  { id:23, emoji:"₿",  title:"비트코인이란 무엇인가 — 쉬운 설명", desc:"비트코인의 탄생 배경, 작동 원리, 왜 가치가 있는지 쉽게 설명합니다.", tags:["beginner"], date:"2026-03-17", read:7, slug:"what-is-bitcoin", views:3800 },
-  { id:24, emoji:"🔐", title:"코인 지갑 종류와 안전하게 보관하는 법", desc:"거래소 지갑, 소프트웨어 지갑, 하드웨어 지갑의 차이와 선택 기준.", tags:["beginner"], date:"2026-03-13", read:6, slug:"crypto-wallet-guide", views:2900 },
-  { id:25, emoji:"⚡", title:"사토시 단위 완벽 이해 — 0.00000001 BTC", desc:"비트코인의 최소 단위 사토시(satoshi)가 얼마인지, 왜 중요한지 알아봅니다.", tags:["beginner"], date:"2026-03-10", read:4, slug:"what-is-satoshi", views:2200 },
-  { id:26, emoji:"🌐", title:"블록체인 기술 쉽게 이해하기", desc:"블록체인이 어떻게 작동하는지 비유와 그림으로 쉽게 설명합니다.", tags:["beginner"], date:"2026-03-06", read:7, slug:"blockchain-basics", views:1900 },
-  { id:27, emoji:"💎", title:"NFT란 무엇인가 — 2026 최신 가이드", desc:"NFT의 개념, 활용 사례, 투자 주의사항을 초보자 눈높이로 설명합니다.", tags:["beginner"], date:"2026-03-03", read:6, slug:"what-is-nft", views:1700 },
-  { id:28, emoji:"🔗", title:"디파이(DeFi)란 무엇인가 — 탈중앙 금융 입문", desc:"은행 없이 돈을 빌리고 이자를 받는 디파이 서비스의 개념과 위험성.", tags:["beginner"], date:"2026-02-28", read:7, slug:"what-is-defi", views:1500 },
-  { id:29, emoji:"📊", title:"코인 시가총액과 가격의 관계 이해하기", desc:"시가총액이 높다고 좋은 코인일까? 시총과 가격의 차이를 설명합니다.", tags:["beginner"], date:"2026-02-25", read:5, slug:"market-cap-explained", views:1300 },
-  { id:30, emoji:"🔄", title:"업비트·빗썸·코인원 거래소 비교 2026", desc:"수수료, 상장 코인 수, 스테이킹 서비스 기준으로 국내 3대 거래소를 비교합니다.", tags:["beginner"], date:"2026-02-22", read:6, slug:"exchange-comparison", views:1150 },
-  { id:31, emoji:"🏦", title:"업비트 ETH 스테이킹 방법과 수익 계산", desc:"업비트에서 ETH 스테이킹을 시작하는 방법과 연 2.90% APY 수익을 계산해봅니다.", tags:["staking"], date:"2026-03-24", read:6, slug:"upbit-staking-guide", views:3500 },
-  { id:32, emoji:"🌞", title:"SOL 솔라나 스테이킹 — APY 5.93% 수익 분석", desc:"솔라나 스테이킹 수익률 5.93%의 실제 수익을 계산하고 세금까지 알아봅니다.", tags:["staking"], date:"2026-03-18", read:5, slug:"sol-staking-guide", views:2600 },
-  { id:33, emoji:"🔵", title:"ATOM 코스모스 스테이킹 20% APY 완벽 가이드", desc:"높은 수익률 20%를 제공하는 ATOM 스테이킹의 리스크와 수익을 분석합니다.", tags:["staking"], date:"2026-03-13", read:6, slug:"atom-staking-guide", views:2200 },
-  { id:34, emoji:"💵", title:"USDT·USDC 스테이블코인 스테이킹으로 이자 받기", desc:"원화 가치를 유지하면서 연 4.5~5% 이자를 받는 스테이블코인 스테이킹 방법.", tags:["staking"], date:"2026-03-08", read:5, slug:"stablecoin-staking", views:1900 },
-  { id:35, emoji:"⚖️", title:"스테이킹 vs 트레이딩 — 어느 쪽이 더 유리할까?", desc:"장기 스테이킹 이자 수익과 단기 트레이딩 수익을 시뮬레이션으로 비교합니다.", tags:["staking","strategy"], date:"2026-03-02", read:7, slug:"staking-vs-trading", views:1700 },
-  { id:36, emoji:"🚨", title:"코인 리딩방 사기 유형 완벽 정리 2026", desc:"텔레그램·카카오톡 코인 리딩방 사기 수법과 피해 예방 방법을 알아봅니다.", tags:["scam"], date:"2026-03-26", read:8, slug:"trading-room-scam", views:4200 },
-  { id:37, emoji:"🎣", title:"코인 피싱 사이트 구별하는 법", desc:"가짜 업비트·바이낸스 사이트를 구별하는 방법과 피해 신고 절차.", tags:["scam"], date:"2026-03-20", read:6, slug:"phishing-site-guide", views:3100 },
-  { id:38, emoji:"💸", title:"해외거래소 출금 안될 때 대처법", desc:"바이낸스·OKX 등 해외 거래소에서 출금이 막혔을 때 확인해야 할 5가지.", tags:["scam"], date:"2026-03-15", read:7, slug:"withdrawal-blocked-guide", views:2800 },
-  { id:39, emoji:"⚠️", title:"코인 폰지·다단계 사기 구별 체크리스트", desc:"고수익을 보장한다고 유혹하는 폰지 사기를 구별하는 10가지 체크포인트.", tags:["scam"], date:"2026-03-10", read:6, slug:"ponzi-scam-checklist", views:2400 },
-  { id:40, emoji:"🛡️", title:"코인 사기 피해 신고 방법과 구제 절차", desc:"금융감독원, 경찰청 사이버수사대에 코인 사기를 신고하는 방법과 피해 구제 절차.", tags:["scam"], date:"2026-03-05", read:7, slug:"scam-report-guide", views:2100 }
+/* ────────────────────────────────
+   2. 포스트 데이터 (40개 롱테일 SEO 최적화)
+──────────────────────────────── */
+const POSTS = [
+  /* ── 세금·신고 10개 ── */
+  {id:1,  e:"💰", title:"가상자산 세금 2027 완벽 가이드 — 22% 계산·신고 방법",       desc:"2027년 1월 시행 가상자산 양도소득세. 22% 세율, 250만원 공제, 홈택스 신고 절차를 총정리.",              tags:["tax"],           date:"2026-03-28", read:8,  slug:"virtual-asset-tax-2027-guide",       views:6821},
+  {id:2,  e:"📋", title:"업비트 세금 얼마나 내나? 실제 계산 예시",                   desc:"업비트 거래 수익 1,000만원 기준 실제 세금 계산 예시. 수수료 공제, 손익통산 방법 포함.",            tags:["tax"],           date:"2026-03-25", read:6,  slug:"upbit-tax-calculation",              views:4210},
+  {id:3,  e:"📉", title:"손실 코인으로 세금 줄이는 법 — 절세 하베스팅",              desc:"평가손실 코인을 팔아 합법적으로 세금을 절감하는 Tax-Loss Harvesting 전략.",                       tags:["tax"],           date:"2026-03-22", read:7,  slug:"tax-loss-harvesting-guide",          views:3890},
+  {id:4,  e:"📊", title:"코인 250만원 공제 초과 시 세금 계산하는 법",               desc:"기본공제 250만원을 초과하는 수익에 대한 세금 계산 방법. 실제 시뮬레이션 예시 포함.",               tags:["tax"],           date:"2026-03-20", read:5,  slug:"coin-250-deduction-zero-tax",        views:3400},
+  {id:5,  e:"🏦", title:"스테이킹 이자 세금 신고 방법 2027",                       desc:"업비트·빗썸 스테이킹으로 받은 코인 이자의 세금 처리 방법. 취득가액 산정 기준 포함.",                tags:["tax","staking"], date:"2026-03-18", read:5,  slug:"staking-tax-guide",                  views:2940},
+  {id:6,  e:"💱", title:"해외거래소 바이낸스 수익 세금 신고 의무",                   desc:"바이낸스 등 해외 거래소에서 발생한 수익도 한국 세금 신고 의무 있음. 방법과 주의사항.",              tags:["tax"],           date:"2026-03-15", read:6,  slug:"overseas-exchange-tax",              views:2700},
+  {id:7,  e:"🎁", title:"에어드랍 코인 세금 처리 방법 — 취득가액 계산",              desc:"무료로 받은 에어드랍, 이벤트 보상 코인도 과세 대상. 취득가액 산정과 신고 방법 안내.",              tags:["tax"],           date:"2026-03-12", read:5,  slug:"airdrop-tax-guide",                  views:2100},
+  {id:8,  e:"👨‍👩‍👧", title:"가족 간 코인 증여 절세 전략 — 배우자 6억·자녀 5천",     desc:"배우자에게 6억, 성인 자녀에게 5천만원까지 증여 공제. 코인 증여로 세금 줄이는 법.",                 tags:["tax"],           date:"2026-03-10", read:6,  slug:"gift-tax-crypto",                    views:1920},
+  {id:9,  e:"🔄", title:"코인 스왑·교환 시 세금 발생하나요?",                       desc:"BTC→ETH 교환 시 세금 발생 여부. 국세청 기준으로 코인-코인 거래 과세 여부를 정리합니다.",           tags:["tax"],           date:"2026-03-08", read:5,  slug:"swap-tax-guide",                     views:1720},
+  {id:10, e:"📅", title:"2027 코인 세금 신고 기간·납부 일정 총정리",                desc:"2028년 5월 종합소득세 신고 기간. 가상자산 세금 납부 방법과 무신고 가산세 안내.",                   tags:["tax"],           date:"2026-03-05", read:4,  slug:"tax-deadline-2027",                  views:1540},
+
+  /* ── 투자전략 10개 ── */
+  {id:11, e:"📈", title:"코인 DCA 적립식 투자 전략 완벽 가이드",                    desc:"매달 일정 금액 투자하는 DCA 전략으로 변동성을 낮추는 방법. 10만원부터 시작하는 실전 가이드.",       tags:["strategy"],      date:"2026-03-26", read:7,  slug:"dca-strategy",                       views:4102},
+  {id:12, e:"💧", title:"코인 물타기 전략 — 언제 해야 하고 언제 하면 안 될까?",     desc:"하락장 추가 매수(물타기)의 장단점과 올바른 기준. 무한 물타기 함정 피하는 법.",                    tags:["strategy"],      date:"2026-03-23", read:6,  slug:"averaging-down-strategy",            views:3580},
+  {id:13, e:"🌶️", title:"김치프리미엄 활용 차익거래 전략 2026",                    desc:"국내외 코인 가격 차이(김치프리미엄)를 활용한 차익거래 방법과 현실적 주의사항.",                    tags:["strategy"],      date:"2026-03-20", read:8,  slug:"kimchi-premium-guide",               views:3250},
+  {id:14, e:"⚖️", title:"비트코인 vs 알트코인 포트폴리오 비율 추천",                desc:"BTC와 알트코인 비중을 어떻게 배분해야 리스크를 줄일 수 있는지 데이터로 분석합니다.",                tags:["strategy"],      date:"2026-03-17", read:7,  slug:"btc-alt-portfolio",                  views:2850},
+  {id:15, e:"🎯", title:"코인 익절·손절 기준 정하는 법 — 감정 없이 수익 실현",       desc:"목표가 설정, 분할 매도, 손절 기준을 미리 정해서 감정적 판단 실수를 없애는 방법.",                  tags:["strategy"],      date:"2026-03-14", read:6,  slug:"target-price-strategy",              views:2550},
+  {id:16, e:"🌙", title:"비트코인 반감기 전후 투자 전략 — 역대 데이터 분석",         desc:"2012·2016·2020·2024년 반감기 전후 가격 변화 데이터로 최적 투자 타이밍을 분석합니다.",             tags:["strategy"],      date:"2026-03-11", read:8,  slug:"halving-strategy",                   views:2280},
+  {id:17, e:"🔁", title:"코인 리밸런싱 전략으로 수익 극대화하는 방법",               desc:"포트폴리오 비율이 무너질 때 리밸런싱으로 자동 저가 매수·고가 매도 효과를 내는 방법.",               tags:["strategy"],      date:"2026-03-08", read:6,  slug:"rebalancing-strategy",               views:1920},
+  {id:18, e:"💼", title:"코인 장기투자 HODL vs 단기트레이딩 수익 비교",             desc:"5년간 HODL 전략과 단기 트레이딩 수익률을 비교. 세금까지 고려한 순이익 계산 포함.",               tags:["strategy"],      date:"2026-03-05", read:6,  slug:"hodl-vs-trading",                    views:1740},
+  {id:19, e:"🛡️", title:"하락장(베어마켓)에서 코인 손실 최소화 전략 7가지",          desc:"베어마켓에서 포트폴리오를 지키는 7가지 원칙. 스테이블코인 비중 조절, 손절 기준 포함.",             tags:["strategy"],      date:"2026-03-02", read:7,  slug:"bear-market-strategy",               views:1560},
+  {id:20, e:"📉", title:"코인 손절 기준 정하는 법 — -10% -20% -30% 어디서?",       desc:"투자 금액·종목·리스크 허용도에 따른 손절 기준 설정 방법. 실제 수익률에 미치는 영향 분석.",         tags:["strategy"],      date:"2026-02-28", read:5,  slug:"stop-loss-guide",                    views:1380},
+
+  /* ── 입문가이드 10개 ── */
+  {id:21, e:"🎓", title:"코인 투자 완전 입문 — 처음 시작하는 법 2026",              desc:"코인이 뭔지 몰라도 OK. 비트코인 개념, 업비트 가입, 첫 매수까지 10분 만에 이해하는 가이드.",       tags:["beginner"],      date:"2026-03-27", read:10, slug:"beginner-guide",                     views:7200},
+  {id:22, e:"📱", title:"업비트 가입·인증·첫 매수 방법 2026 최신판",                desc:"업비트 앱 설치부터 본인인증, 원화 입금, 비트코인 첫 매수까지 스크린샷 없이 글로 설명.",             tags:["beginner"],      date:"2026-03-24", read:8,  slug:"upbit-signup-guide",                 views:5100},
+  {id:23, e:"₿",  title:"비트코인이란 무엇인가 — 코린이도 5분에 이해하는 설명",       desc:"비트코인 탄생 배경, 작동 원리, 왜 1개가 1억이 넘는지 쉬운 비유로 설명합니다.",                   tags:["beginner"],      date:"2026-03-21", read:7,  slug:"what-is-bitcoin",                    views:4800},
+  {id:24, e:"🔐", title:"코인 지갑 종류 비교 — 거래소·소프트웨어·하드웨어",          desc:"거래소 지갑, MetaMask 같은 소프트웨어 지갑, 레저 같은 하드웨어 지갑의 차이와 선택 기준.",        tags:["beginner"],      date:"2026-03-18", read:6,  slug:"crypto-wallet-guide",                views:3600},
+  {id:25, e:"⚡", title:"사토시(Satoshi)란? 비트코인 최소 단위 완벽 이해",           desc:"0.00000001 BTC = 1 사토시. 사토시의 의미, 원화 환산, 왜 중요한지 쉽게 설명합니다.",           tags:["beginner"],      date:"2026-03-15", read:4,  slug:"what-is-satoshi",                    views:2900},
+  {id:26, e:"🌐", title:"블록체인 기술 쉽게 이해하기 — 분산원장 작동 원리",           desc:"블록체인이 어떻게 해킹이 불가능한지, 왜 탈중앙화인지 비유로 5분 만에 이해하는 설명.",             tags:["beginner"],      date:"2026-03-12", read:7,  slug:"blockchain-basics",                  views:2500},
+  {id:27, e:"💎", title:"NFT란 무엇인가 — 2026 현재 가치와 전망",                  desc:"NFT 개념, 활용 사례, 실제로 돈이 되는 방법, 사기 주의사항을 초보자 눈높이로 설명.",               tags:["beginner"],      date:"2026-03-09", read:6,  slug:"what-is-nft",                        views:2200},
+  {id:28, e:"🔗", title:"디파이(DeFi) 입문 — 은행 없이 이자 받는 방법",             desc:"탈중앙화 금융 서비스 개념, 대표 플랫폼, 수익률, 리스크를 입문자 눈높이로 정리합니다.",             tags:["beginner"],      date:"2026-03-06", read:7,  slug:"what-is-defi",                       views:2000},
+  {id:29, e:"📊", title:"코인 시가총액과 가격의 관계 — 1원 코인이 싼 게 아닌 이유",  desc:"시가총액이 높다고 좋은 코인일까? 시가총액, 유통량, 가격의 관계를 쉽게 설명합니다.",               tags:["beginner"],      date:"2026-03-03", read:5,  slug:"market-cap-explained",               views:1800},
+  {id:30, e:"🔄", title:"업비트·빗썸·코인원 거래소 비교 2026 — 수수료·코인 수",     desc:"국내 3대 거래소 수수료, 상장 코인 수, 스테이킹 서비스, 보안 비교표.",                           tags:["beginner"],      date:"2026-02-28", read:6,  slug:"exchange-comparison-2026",           views:1600},
+
+  /* ── 스테이킹 5개 ── */
+  {id:31, e:"🏦", title:"업비트 ETH 스테이킹 방법과 연 2.90% 수익 계산",            desc:"업비트 ETH 스테이킹 신청 방법, 언스테이킹 기간, 실제 수익과 세금 계산까지 완전 정리.",             tags:["staking"],       date:"2026-03-29", read:6,  slug:"upbit-eth-staking-guide",            views:4500},
+  {id:32, e:"🌞", title:"솔라나(SOL) 스테이킹 APY 5.93% 수익 분석",               desc:"SOL 스테이킹 연 5.93% 수익률의 실제 원화 환산과 세금 계산. 업비트 vs 직접 스테이킹 비교.",      tags:["staking"],       date:"2026-03-23", read:5,  slug:"sol-staking-apy-guide",              views:3200},
+  {id:33, e:"🔵", title:"코스모스(ATOM) 스테이킹 20% APY — 리스크와 수익 분석",     desc:"높은 수익률 20% ATOM 스테이킹의 실제 수익, 슬래싱 리스크, 세금 처리 방법을 분석합니다.",          tags:["staking"],       date:"2026-03-17", read:6,  slug:"atom-staking-guide",                 views:2600},
+  {id:34, e:"💵", title:"USDT·USDC 스테이블코인 스테이킹으로 연 4.5% 이자 받기",    desc:"원화 가치 유지하면서 연 4~5% 이자를 받는 스테이블코인 스테이킹 방법과 플랫폼 비교.",              tags:["staking"],       date:"2026-03-11", read:5,  slug:"stablecoin-staking-guide",           views:2200},
+  {id:35, e:"⚖️", title:"스테이킹 vs 트레이딩 — 1년 후 수익률 시뮬레이션",          desc:"ETH 스테이킹 2.90% vs 단기 트레이딩 수익률을 1년 시뮬레이션으로 비교. 세금 차이 포함.",          tags:["staking","strategy"], date:"2026-03-05", read:7, slug:"staking-vs-trading",               views:1900},
+
+  /* ── 사기예방 5개 ── */
+  {id:36, e:"🚨", title:"코인 리딩방 사기 유형 완벽 정리 2026 — 피해 예방법",        desc:"텔레그램·카카오톡 코인 리딩방 7가지 사기 수법과 공통 패턴. 피해 신고 방법.",                      tags:["scam"],          date:"2026-03-30", read:8,  slug:"trading-room-scam-2026",             views:5200},
+  {id:37, e:"🎣", title:"가짜 업비트·바이낸스 피싱 사이트 구별하는 법",              desc:"도메인 확인, SSL 인증서, URL 패턴으로 피싱 사이트를 구별하는 방법과 피해 신고 절차.",              tags:["scam"],          date:"2026-03-24", read:6,  slug:"phishing-site-guide",                views:3800},
+  {id:38, e:"💸", title:"해외거래소 출금 막혔을 때 대처법 — 먹튀 확인 방법",         desc:"바이낸스·OKX 출금 지연·차단 시 확인해야 할 5가지와 실제 먹튀 거래소 구별법.",                    tags:["scam"],          date:"2026-03-18", read:7,  slug:"withdrawal-blocked-guide",           views:3400},
+  {id:39, e:"⚠️", title:"코인 다단계·폰지 사기 구별 체크리스트 10가지",              desc:"'확정 수익 보장', '추천인 보상' 등 폰지 사기 패턴 10가지 체크포인트. 실제 사기 사례 포함.",        tags:["scam"],          date:"2026-03-12", read:6,  slug:"ponzi-scam-checklist",               views:2900},
+  {id:40, e:"🛡️", title:"코인 사기 피해 신고 방법 — 금감원·경찰청·거래소",           desc:"코인 사기 피해 발생 시 금융감독원, 경찰청 사이버수사대, 거래소에 신고하는 방법과 구제 절차.",      tags:["scam"],          date:"2026-03-06", read:7,  slug:"scam-report-guide",                  views:2600}
 ];
 
-let currentCategory = 'all';
-let currentPage = 1;
-const POSTS_PER_PAGE = 10;
-let filteredPosts = [...posts];
+/* ────────────────────────────────
+   3. 상태 관리
+──────────────────────────────── */
+const PER_PAGE = 9; // 페이지당 9개
+let state = {
+  cat: 'all',
+  query: '',
+  page: 1,
+  filtered: [...POSTS]
+};
 
+/* ────────────────────────────────
+   4. 필터 & 렌더링
+──────────────────────────────── */
 function setCategory(cat, btn) {
-  currentCategory = cat;
-  currentPage = 1;
+  state.cat = cat;
+  state.page = 1;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   applyFilter();
 }
 
-function filterPosts() { currentPage = 1; applyFilter(); }
+function onSearch() {
+  state.query = document.getElementById('searchInput').value.toLowerCase().trim();
+  state.page = 1;
+  applyFilter();
+}
 
 function applyFilter() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  filteredPosts = posts.filter(p => {
-    const matchCat = currentCategory === 'all' || p.tags.includes(currentCategory);
-    const matchQ = !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
-    return matchCat && matchQ;
+  const q = state.query;
+  state.filtered = POSTS.filter(p => {
+    const catOk  = state.cat === 'all' || p.tags.includes(state.cat);
+    const queryOk = !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+    return catOk && queryOk;
   });
-  document.getElementById('resultCount').textContent = filteredPosts.length;
+  document.getElementById('resultCount').textContent = state.filtered.length;
   renderGrid();
   renderPagination();
 }
 
 function renderGrid() {
-  const grid = document.getElementById('blogGrid');
-  const noResult = document.getElementById('noResult');
-  const start = (currentPage - 1) * POSTS_PER_PAGE;
-  const pagePosts = filteredPosts.slice(start, start + POSTS_PER_PAGE);
-  if (pagePosts.length === 0) { grid.innerHTML = ''; noResult.style.display = 'block'; return; }
-  noResult.style.display = 'none';
-  grid.innerHTML = pagePosts.map(p => {
-    const tagHTML = p.tags.map(t => `<span class="tag tag-${t}">${tagLabel(t)}</span>`).join('');
+  const grid   = document.getElementById('blogGrid');
+  const noRes  = document.getElementById('noResult');
+  const start  = (state.page - 1) * PER_PAGE;
+  const slice  = state.filtered.slice(start, start + PER_PAGE);
+
+  if (!slice.length) {
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+    return;
+  }
+  noRes.style.display = 'none';
+
+  grid.innerHTML = slice.map(p => {
+    const tagsHtml = p.tags.map(t =>
+      `<span class="tag tag-${t}">${TAG_LABEL[t]||t}</span>`
+    ).join('');
     return `
-      <a class="blog-card" href="/blog/${p.slug}.html">
-        <div class="card-thumb">${p.emoji}</div>
+      <a class="blog-card" href="/blog/${p.slug}.html"
+         aria-label="${p.title}">
+        <div class="card-thumb">${p.e}</div>
         <div class="card-body">
-          <div class="card-tags">${tagHTML}</div>
+          <div class="card-tags">${tagsHtml}</div>
           <div class="card-title">${p.title}</div>
           <div class="card-desc">${p.desc}</div>
-          <div class="card-meta"><span>📅 ${p.date}</span><span>⏱️ ${p.read}분 읽기</span></div>
+          <div class="card-meta">
+            <span>📅 ${p.date}</span>
+            <span>⏱ ${p.read}분 읽기</span>
+          </div>
         </div>
       </a>`;
   }).join('');
 }
 
-function tagLabel(t) {
-  const map = { tax:'💰 세금', strategy:'📈 전략', beginner:'🎓 입문', staking:'🏦 스테이킹', scam:'🚨 사기예방' };
-  return map[t] || t;
-}
+const TAG_LABEL = {
+  tax:'💰 세금', strategy:'📈 전략',
+  beginner:'🎓 입문', staking:'🏦 스테이킹', scam:'🚨 사기예방'
+};
 
+/* ────────────────────────────────
+   5. 페이지네이션
+──────────────────────────────── */
 function renderPagination() {
-  const total = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-  const pg = document.getElementById('pagination');
+  const total = Math.ceil(state.filtered.length / PER_PAGE);
+  const pg    = document.getElementById('pagination');
   if (total <= 1) { pg.innerHTML = ''; return; }
-  pg.innerHTML = Array.from({length: total}, (_, i) => i + 1).map(n =>
-    `<button class="page-btn ${n === currentPage ? 'active' : ''}" onclick="goPage(${n})">${n}</button>`
-  ).join('');
+
+  const cur = state.page;
+  let html = `<button class="page-btn prev-next" onclick="goPage(${cur-1})" ${cur===1?'disabled':''}>← 이전</button>`;
+
+  // 최대 7개 페이지 번호 표시
+  let start = Math.max(1, cur - 3);
+  let end   = Math.min(total, start + 6);
+  if (end - start < 6) start = Math.max(1, end - 6);
+
+  if (start > 1) html += `<button class="page-btn" onclick="goPage(1)">1</button><span style="color:var(--text3);padding:0 .3rem">…</span>`;
+  for (let i = start; i <= end; i++) {
+    html += `<button class="page-btn ${i===cur?'active':''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  if (end < total) html += `<span style="color:var(--text3);padding:0 .3rem">…</span><button class="page-btn" onclick="goPage(${total})">${total}</button>`;
+
+  html += `<button class="page-btn prev-next" onclick="goPage(${cur+1})" ${cur===total?'disabled':''}>다음 →</button>`;
+  pg.innerHTML = html;
 }
 
 function goPage(n) {
-  currentPage = n;
+  const total = Math.ceil(state.filtered.length / PER_PAGE);
+  if (n < 1 || n > total) return;
+  state.page = n;
   renderGrid();
   renderPagination();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/* ────────────────────────────────
+   6. 사이드바 인기글 (조회수 정렬)
+──────────────────────────────── */
 function renderPopular() {
-  const top5 = [...posts].sort((a, b) => b.views - a.views).slice(0, 5);
-  document.getElementById('popularList').innerHTML = top5.map((p, i) =>
-    `<li><span class="popular-rank">${i+1}</span><a href="/blog/${p.slug}.html">${p.title}</a></li>`
-  ).join('');
+  const top5 = [...POSTS].sort((a, b) => b.views - a.views).slice(0, 5);
+  document.getElementById('popularList').innerHTML = top5.map((p, i) => {
+    const rankClass = i === 0 ? '' : i === 1 ? 'r2' : i === 2 ? 'r3' : '';
+    return `
+      <li>
+        <span class="rank-badge ${rankClass}">${i+1}</span>
+        <a href="/blog/${p.slug}.html">${p.title}</a>
+      </li>`;
+  }).join('');
 }
 
-function updateCountdown() {
+/* ────────────────────────────────
+   7. D-Day 카운트다운
+──────────────────────────────── */
+function updateDday() {
   const target = new Date('2027-01-01T00:00:00+09:00');
-  const diff = Math.ceil((target - new Date()) / (1000 * 60 * 60 * 24));
-  const el = document.getElementById('sidebarCountdown');
-  if (el) el.textContent = diff > 0 ? diff.toLocaleString() : '시행됨';
+  const now    = new Date();
+  const diff   = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+  const txt    = diff > 0 ? `D-${diff.toLocaleString()}` : '과세 시행중';
+
+  const n1 = document.getElementById('ddayNum');
+  const n2 = document.getElementById('heroDay');
+  if (n1) n1.textContent = txt;
+  if (n2) n2.textContent = txt;
 }
 
-applyFilter();
-renderPopular();
-updateCountdown();
+/* ────────────────────────────────
+   8. 초기화
+──────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('totalCount').textContent = POSTS.length;
+  applyFilter();
+  renderPopular();
+  updateDday();
+  setInterval(updateDday, 3600000); // 1시간마다 갱신
+});
 </script>
 </body>
 </html>
