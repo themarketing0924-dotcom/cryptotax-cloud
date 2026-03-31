@@ -1,535 +1,1165 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <title>가상자산 세금 2027 완벽 가이드 | 22% 계산부터 홈택스 신고까지 — CryptoTax</title>
-  <meta name="description" content="2027년부터 시작되는 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제 적용, 홈택스 신고 방법까지 한 페이지로 끝내세요.">
-  <meta name="keywords" content="가상자산 세금 2027, 코인 세금, 가상자산 22% 세율, 홈택스 코인 신고, 250만원 공제">
-  <link rel="canonical" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">
-  <meta name="naver-site-verification" content="613a26a59443ccd3c399436ccc8a3349fcf7ce89" />
+<!-- =============================================
+     ✅ SEO 핵심 3종 (이 블록만 글마다 교체)
+============================================= -->
+<title>가상자산 세금 2027 완벽 가이드 | 22% 계산·250만원 공제·홈택스 신고까지 — CryptoTax.cloud</title>
+<meta name="description" content="2027년 1월 시행 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제, 홈택스 신고 방법, 무신고 가산세까지 한 페이지로 끝내세요. 무료 세금 계산기 제공.">
+<meta name="keywords" content="가상자산 세금 2027,코인 세금,가상자산 22% 세율,홈택스 코인 신고,250만원 공제,코인 양도소득세,비트코인 세금 계산,업비트 세금 신고">
+<link rel="canonical" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">
 
-  <!-- OG 태그 -->
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="가상자산 세금 2027 완벽 가이드 | CryptoTax">
-  <meta property="og:description" content="2027년 코인 세금 22% 계산법, 250만원 공제, 홈택스 신고까지 완벽 정리">
-  <meta property="og:url" content="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">
-  <meta property="og:image" content="https://cryptotax.cloud/og-default.png">
-  <meta property="og:site_name" content="CryptoTax.cloud">
-  <meta property="og:locale" content="ko_KR">
-  <meta name="twitter:card" content="summary_large_image">
+<!-- 네이버 서치어드바이저 -->
+<meta name="naver-site-verification" content="613a26a59443ccd3c399436ccc8a3349fcf7ce89">
 
-  <!-- Schema: Article (GEO) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "가상자산 세금 2027 완벽 가이드 | 22% 계산부터 홈택스 신고까지",
-    "description": "2027년부터 시작되는 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제 적용, 홈택스 신고 방법까지 한 페이지로 끝내세요.",
-    "datePublished": "2026-03-31",
-    "dateModified": "2026-03-31",
-    "author": {"@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud"},
-    "publisher": {"@type": "Organization", "name": "CryptoTax.cloud", "logo": {"@type": "ImageObject", "url": "https://cryptotax.cloud/og-default.png"}},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html"},
-    "inLanguage": "ko-KR",
-    "keywords": "가상자산 세금, 코인 세금 2027, 22% 세율, 홈택스 신고"
-  }
-  </script>
+<!-- =============================================
+     ✅ OG 태그 (카카오·네이버·라인 공유)
+============================================= -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="가상자산 세금 2027 완벽 가이드 | 22% 계산·홈택스 신고 — CryptoTax.cloud">
+<meta property="og:description" content="2027년 1월 시행 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제, 홈택스 신고 방법까지.">
+<meta property="og:url" content="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">
+<meta property="og:image" content="https://cryptotax.cloud/images/og-tax-2027.png">
+<meta property="og:site_name" content="CryptoTax.cloud">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-03-31T09:00:00+09:00">
+<meta property="article:modified_time" content="2026-03-31T09:00:00+09:00">
+<meta property="article:section" content="세금 가이드">
+<meta property="article:tag" content="가상자산 세금">
 
-  <!-- Schema: FAQ (AEO — AI가 질문/답변 인용) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "가상자산 세금은 언제부터 시작되나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "2027년 1월 1일부터 가상자산 양도·대여 소득에 22% 세율이 적용됩니다. 연간 250만원 기본공제가 적용되며, 초과분에만 과세됩니다."}
-      },
-      {
-        "@type": "Question",
-        "name": "코인 세금 22%는 어떻게 계산하나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "(매도금액 - 매수금액 - 수수료 - 250만원 기본공제) × 22% = 납부세액입니다. 예를 들어 1,000만원 수익이면 (1,000만원 - 250만원) × 22% = 165만원을 납부합니다."}
-      },
-      {
-        "@type": "Question",
-        "name": "코인 세금을 신고 안 하면 어떻게 되나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "무신고 가산세 20%와 납부 불성실 가산세가 추가로 부과됩니다. 국세청은 거래소로부터 거래내역을 직접 수집하므로 반드시 신고해야 합니다."}
-      },
-      {
-        "@type": "Question",
-        "name": "250만원 이하 수익은 세금이 없나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "네, 연간 수익이 250만원 이하라면 기본공제로 세금이 0원입니다. 단, 여러 거래소의 수익을 합산한 연간 총 수익 기준입니다."}
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="가상자산 세금 2027 완벽 가이드 | CryptoTax.cloud">
+<meta name="twitter:description" content="2027년 코인 22% 세금, 250만원 공제, 홈택스 신고까지 완벽 정리">
+<meta name="twitter:image" content="https://cryptotax.cloud/images/og-tax-2027.png">
+
+<!-- =============================================
+     ✅ GEO — Article Schema (E-E-A-T 최대화)
+     ChatGPT·Perplexity·Google AI·클로바X가 읽음
+============================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "가상자산 세금 2027 완벽 가이드 | 22% 계산부터 홈택스 신고까지",
+  "description": "2027년 1월 시행 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제, 홈택스 신고 방법까지 한 페이지로.",
+  "datePublished": "2026-03-31",
+  "dateModified": "2026-03-31",
+  "author": {
+    "@type": "Organization",
+    "name": "CryptoTax.cloud 편집팀",
+    "url": "https://cryptotax.cloud/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CryptoTax.cloud",
+    "url": "https://cryptotax.cloud",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cryptotax.cloud/images/logo.png",
+      "width": 200,
+      "height": 60
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html"
+  },
+  "inLanguage": "ko-KR",
+  "keywords": "가상자산 세금, 코인 세금 2027, 22% 세율, 홈택스 신고, 250만원 공제",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".summary-box", ".article-title", ".faq-answer"]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "가상자산 양도소득세",
+    "description": "2027년 1월 1일부터 시행되는 한국 가상자산 세금 제도"
+  },
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "국세청 가상자산 과세 안내",
+      "url": "https://www.nts.go.kr"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "소득세법 개정안 (2027년 시행)",
+      "url": "https://www.moef.go.kr"
+    }
+  ]
+}
+</script>
+
+<!-- =============================================
+     ✅ AEO — FAQ Schema (AI 질문응답 인용 최적화)
+============================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "가상자산 세금은 언제부터 시작되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027년 1월 1일부터 가상자산 양도·대여 소득에 22% 세율이 적용됩니다(소득세 20% + 지방소득세 2%). 연간 250만원 기본공제가 적용되며, 초과분에만 과세됩니다. 신고는 2028년 5월 종합소득세 신고 기간에 홈택스에서 진행합니다."
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Question",
+      "name": "코인 세금 22%는 어떻게 계산하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "공식: (매도금액 - 매수금액 - 수수료 - 250만원 기본공제) × 22% = 납부세액. 예시: 1,000만원 수익 - 250만원 공제 = 750만원 × 22% = 165만원 납부."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "코인 250만원 이하 수익은 세금이 없나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 연간 총 수익이 250만원 이하라면 기본공제로 세금이 0원입니다. 단, 업비트·빗썸 등 모든 거래소의 수익을 합산한 기준입니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "코인 세금을 신고 안 하면 어떻게 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "무신고 가산세 20%와 납부 불성실 가산세가 추가 부과됩니다. 국세청은 거래소로부터 거래내역을 직접 수집하므로 누락 없이 반드시 신고해야 합니다. 세금의 42%까지 추가 납부할 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "손실이 났을 때도 신고해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "손실로 수익이 250만원 이하라면 신고 의무가 없습니다. 하지만 손실 내역을 기록해두면 같은 해 다른 코인 수익과 손익통산이 가능해 세금을 줄일 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "업비트 스테이킹 이자에도 세금이 붙나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 2027년부터 스테이킹 이자 수익도 가상자산 기타소득으로 분류되어 22% 세율이 적용됩니다. 양도 수익과 합산하여 연 250만원 공제 후 과세됩니다."
+      }
+    }
+  ]
+}
+</script>
 
-  <style>
-    /* ── 기본 리셋 & 공통 ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: #0f0f1a;
-      color: #e0e0e0;
-      font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-      font-size: 16px;
-      line-height: 1.85;
+<!-- =============================================
+     ✅ AEO — HowTo Schema (단계별 신고 방법)
+============================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "코인 세금 홈택스 신고 방법",
+  "description": "2028년 5월 홈택스에서 가상자산 세금을 신고하는 방법",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "거래내역 다운로드",
+      "text": "업비트·빗썸 등 이용 중인 거래소 앱에서 2027년 전체 거래내역을 CSV 파일로 다운로드합니다."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "수익 계산",
+      "text": "매도금액에서 매수금액과 수수료를 차감하여 연간 총 수익을 계산합니다. cryptotax.cloud/tools/tax-calculator.html 무료 계산기를 활용하세요."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "홈택스 신고",
+      "text": "2028년 5월 1일~31일 홈택스(hometax.go.kr) 접속 → 종합소득세 신고 → 기타소득 → 가상자산 항목 입력."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "세금 납부",
+      "text": "계산된 납부세액을 홈택스 또는 가상계좌로 납부합니다. 250만원 공제 후 초과분의 22%를 납부합니다."
     }
+  ]
+}
+</script>
 
-    /* ── 헤더 ── */
-    .blog-header {
-      position: sticky; top: 0; z-index: 999;
-      background: rgba(15,15,26,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #1e1e2e;
-      padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .header-logo { color: #00d4ff; text-decoration: none; font-size: 18px; font-weight: 800; }
-    .header-back {
-      color: #aaa; text-decoration: none; font-size: 13px;
-      border: 1px solid #2a2a3a; padding: 6px 16px; border-radius: 20px;
-      transition: all .2s;
-    }
-    .header-back:hover { color: #00d4ff; border-color: #00d4ff; }
+<!-- =============================================
+     ✅ BreadcrumbList Schema
+============================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},
+    {"@type":"ListItem","position":2,"name":"블로그","item":"https://cryptotax.cloud/blog/"},
+    {"@type":"ListItem","position":3,"name":"가상자산 세금 2027 완벽 가이드","item":"https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html"}
+  ]
+}
+</script>
 
-    /* ── 레이아웃 ── */
-    .blog-wrap {
-      max-width: 820px; margin: 0 auto;
-      padding: 48px 24px 100px;
-    }
+<style>
+/* ═══════════════════════════════════════
+   CSS 변수 — 다크 / 라이트 테마
+═══════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg:        #0d1117;
+  --bg2:       #010409;
+  --bg3:       #0f0f1a;
+  --card:      #161b22;
+  --card2:     #1a1f2e;
+  --border:    #21262d;
+  --border2:   #30363d;
+  --accent:    #f7931a;
+  --accent2:   #e07b0e;
+  --blue:      #00d4ff;
+  --blue2:     #58a6ff;
+  --text:      #e6edf3;
+  --text2:     #c9d1d9;
+  --muted:     #8b949e;
+  --green:     #3fb950;
+  --yellow:    #e3b341;
+  --red:       #f85149;
+  --code-bg:   #1a1a2e;
+  --summary-bg:rgba(0,212,255,.05);
+  --summary-b: rgba(0,212,255,.2);
+  --warn-bg:   rgba(255,193,7,.07);
+  --warn-b:    rgba(255,193,7,.3);
+  --cta-grad:  linear-gradient(135deg,rgba(0,212,255,.1),rgba(99,102,241,.1));
+}
+[data-theme="light"] {
+  --bg:        #f6f8fa;
+  --bg2:       #ffffff;
+  --bg3:       #f0f4f8;
+  --card:      #ffffff;
+  --card2:     #f6f8fa;
+  --border:    #d0d7de;
+  --border2:   #c6cdd5;
+  --accent:    #d4730a;
+  --accent2:   #b85e05;
+  --blue:      #0969da;
+  --blue2:     #0969da;
+  --text:      #1f2328;
+  --text2:     #2d333b;
+  --muted:     #57606a;
+  --green:     #1a7f37;
+  --yellow:    #9a6700;
+  --red:       #cf222e;
+  --code-bg:   #f6f8fa;
+  --summary-bg:rgba(9,105,218,.05);
+  --summary-b: rgba(9,105,218,.2);
+  --warn-bg:   rgba(154,103,0,.06);
+  --warn-b:    rgba(154,103,0,.3);
+  --cta-grad:  linear-gradient(135deg,rgba(9,105,218,.07),rgba(99,102,241,.07));
+}
 
-    /* ── 카테고리 뱃지 ── */
-    .badge {
-      display: inline-block;
-      background: rgba(0,212,255,.12);
-      color: #00d4ff;
-      border: 1px solid rgba(0,212,255,.3);
-      padding: 4px 14px; border-radius: 20px;
-      font-size: 13px; font-weight: 600;
-      margin-bottom: 20px;
-    }
+/* ═══ RESET & BASE ═══ */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Segoe UI',sans-serif;
+  line-height:1.8;
+  transition:background .25s,color .25s;
+}
 
-    /* ── 제목 ── */
-    .article-h1 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 900; line-height: 1.3;
-      color: #fff; margin-bottom: 20px;
-      word-break: keep-all;
-    }
+/* ═══ READING PROGRESS BAR ═══ */
+#progress-bar{
+  position:fixed; top:0; left:0; height:3px;
+  background:var(--accent); width:0%;
+  z-index:9999; transition:width .1s linear;
+}
 
-    /* ── 메타 정보 ── */
-    .article-meta {
-      display: flex; flex-wrap: wrap; gap: 14px;
-      color: #777; font-size: 13px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid #1e1e2e;
-      margin-bottom: 36px;
-    }
+/* ═══ NAV ═══ */
+.site-nav{
+  background:var(--bg2);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+  height:56px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:200;
+  transition:background .25s;
+}
+.nav-logo{ font-size:1.1rem; font-weight:800; color:var(--accent); text-decoration:none; }
+.nav-logo span{ color:var(--text); font-weight:400; }
+.nav-links{ display:flex; gap:4px; }
+.nav-links a{
+  color:var(--muted); text-decoration:none;
+  padding:5px 10px; border-radius:6px;
+  font-size:0.82rem; font-weight:500; transition:all .2s;
+}
+.nav-links a:hover{ background:var(--card2); color:var(--text); }
+.nav-right{ display:flex; align-items:center; gap:8px; }
+.back-btn{
+  color:var(--muted); text-decoration:none;
+  font-size:0.8rem; border:1px solid var(--border2);
+  padding:5px 12px; border-radius:16px; transition:all .2s;
+}
+.back-btn:hover{ color:var(--blue); border-color:var(--blue); }
+.theme-btn{
+  background:var(--card2); border:1px solid var(--border2);
+  border-radius:16px; padding:4px 10px 4px 7px;
+  cursor:pointer; font-size:0.78rem; color:var(--muted);
+  display:flex; align-items:center; gap:5px; transition:all .2s;
+}
+.theme-btn:hover{ border-color:var(--accent); color:var(--text); }
 
-    /* ── 핵심요약 박스 (AEO 핵심) ── */
-    .summary-box {
-      background: rgba(0,212,255,.06);
-      border: 1px solid rgba(0,212,255,.25);
-      border-left: 4px solid #00d4ff;
-      border-radius: 10px;
-      padding: 22px 26px;
-      margin-bottom: 44px;
-    }
-    .summary-box .sb-title {
-      color: #00d4ff; font-weight: 700;
-      font-size: 14px; margin-bottom: 12px;
-      letter-spacing: .5px;
-    }
-    .summary-box ul { padding-left: 18px; }
-    .summary-box ul li { color: #ccc; margin-bottom: 7px; font-size: 15px; }
-    .summary-box ul li strong { color: #fff; }
+/* ═══ LAYOUT ═══ */
+.page-outer{
+  max-width:1100px; margin:0 auto;
+  padding:32px 24px 80px;
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:40px;
+  align-items:start;
+}
 
-    /* ── 본문 h2 / h3 ── */
-    .blog-wrap h2 {
-      font-size: 1.35rem; font-weight: 800;
-      color: #fff; margin: 52px 0 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #1e1e2e;
-    }
-    .blog-wrap h3 {
-      font-size: 1.05rem; font-weight: 700;
-      color: #e0e0e0; margin: 32px 0 10px;
-    }
-    .blog-wrap p { color: #bbb; margin-bottom: 18px; word-break: keep-all; }
-    .blog-wrap strong { color: #fff; }
-    .blog-wrap a { color: #00d4ff; }
+/* ═══ BREADCRUMB ═══ */
+.breadcrumb{
+  max-width:1100px; margin:16px auto 0;
+  padding:0 24px;
+  font-size:0.77rem; color:var(--muted);
+  display:flex; gap:6px; align-items:center; flex-wrap:wrap;
+}
+.breadcrumb a{ color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover{ color:var(--accent); }
+.breadcrumb span{ color:var(--text2); }
 
-    /* ── 계산 박스 ── */
-    .calc-box {
-      background: #13131f;
-      border: 1px solid #2a2a4a;
-      border-radius: 10px;
-      padding: 24px 28px;
-      margin: 28px 0;
-      font-family: 'Courier New', monospace;
-    }
-    .calc-row {
-      display: flex; justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px dashed #2a2a3a;
-      color: #bbb; font-size: 15px;
-    }
-    .calc-row:last-child {
-      border-bottom: none;
-      color: #00d4ff; font-weight: 700;
-      font-size: 1.1rem; margin-top: 6px;
-      padding-top: 14px;
-    }
-    .calc-row .minus { color: #ff6b6b; }
-    .calc-row .result { color: #00d4ff; }
+/* ═══ ARTICLE ═══ */
+article{ min-width:0; }
 
-    /* ── 표 ── */
-    .blog-table {
-      width: 100%; border-collapse: collapse;
-      margin: 28px 0; font-size: 15px;
-    }
-    .blog-table th {
-      background: rgba(0,212,255,.1);
-      color: #00d4ff; padding: 12px 16px;
-      text-align: left; border: 1px solid #1e1e2e;
-      font-weight: 700;
-    }
-    .blog-table td {
-      padding: 12px 16px;
-      border: 1px solid #1e1e2e; color: #bbb;
-    }
-    .blog-table tr:hover td { background: rgba(255,255,255,.025); }
+.cat-badge{
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--summary-bg);
+  border:1px solid var(--summary-b);
+  color:var(--blue); border-radius:20px;
+  padding:4px 13px; font-size:0.75rem; font-weight:700;
+  margin-bottom:14px;
+}
+.article-title{
+  font-size:clamp(1.5rem,4vw,2.1rem);
+  font-weight:800; line-height:1.3;
+  color:var(--text); margin-bottom:16px;
+  letter-spacing:-0.5px;
+}
+.article-meta{
+  display:flex; flex-wrap:wrap; gap:14px;
+  color:var(--muted); font-size:0.8rem;
+  margin-bottom:24px; padding-bottom:22px;
+  border-bottom:1px solid var(--border);
+}
+.article-meta span{ display:flex; align-items:center; gap:4px; }
 
-    /* ── 경고 박스 ── */
-    .warn-box {
-      background: rgba(255,193,7,.07);
-      border: 1px solid rgba(255,193,7,.3);
-      border-left: 4px solid #ffc107;
-      border-radius: 8px;
-      padding: 16px 20px; margin: 28px 0;
-      color: #d4a800; font-size: 14px; line-height: 1.7;
-    }
+/* 공유 버튼 */
+.share-bar{
+  display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap;
+}
+.share-btn{
+  display:flex; align-items:center; gap:6px;
+  padding:7px 14px; border-radius:8px;
+  border:1px solid var(--border2);
+  background:var(--card2); color:var(--text2);
+  font-size:0.78rem; font-weight:600; cursor:pointer;
+  text-decoration:none; transition:all .2s;
+}
+.share-btn:hover{ border-color:var(--accent); color:var(--accent); }
+.share-btn.kakao{ background:#FEE500; border-color:#FEE500; color:#3A1D1D; }
+.share-btn.kakao:hover{ opacity:.85; }
 
-    /* ── 정보 박스 ── */
-    .info-box {
-      background: rgba(99,102,241,.07);
-      border: 1px solid rgba(99,102,241,.3);
-      border-left: 4px solid #6366f1;
-      border-radius: 8px;
-      padding: 16px 20px; margin: 28px 0;
-      color: #a5b4fc; font-size: 14px; line-height: 1.7;
-    }
+/* ─── 핵심 요약 박스 (AEO 핵심 — AI 인용 포인트) ─── */
+.summary-box{
+  background:var(--summary-bg);
+  border:1px solid var(--summary-b);
+  border-left:4px solid var(--blue);
+  border-radius:10px; padding:20px 24px; margin:28px 0;
+}
+.summary-box h3{
+  color:var(--blue); font-size:0.9rem;
+  margin-bottom:12px; display:flex; align-items:center; gap:6px;
+}
+.summary-box ul{ padding-left:18px; color:var(--text2); }
+.summary-box ul li{ margin-bottom:7px; font-size:0.9rem; line-height:1.6; }
+.summary-box ul li strong{ color:var(--text); }
 
-    /* ── 스텝 카드 ── */
-    .step-list { list-style: none; padding: 0; margin: 24px 0; }
-    .step-list li {
-      display: flex; gap: 16px; align-items: flex-start;
-      background: #13131f; border: 1px solid #2a2a3a;
-      border-radius: 10px; padding: 18px 20px;
-      margin-bottom: 12px;
-    }
-    .step-num {
-      min-width: 32px; height: 32px;
-      background: #00d4ff; color: #000;
-      border-radius: 50%; display: flex;
-      align-items: center; justify-content: center;
-      font-weight: 900; font-size: 14px; flex-shrink: 0;
-    }
-    .step-content .step-title { color: #fff; font-weight: 700; margin-bottom: 4px; }
-    .step-content .step-desc { color: #999; font-size: 14px; }
+/* ─── 본문 타이포 ─── */
+.article-body h2{
+  font-size:1.25rem; font-weight:700; color:var(--text);
+  margin:44px 0 14px; padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:8px;
+}
+.article-body h3{
+  font-size:1.05rem; font-weight:700; color:var(--text2);
+  margin:28px 0 10px;
+}
+.article-body p{ color:var(--text2); margin-bottom:16px; font-size:0.95rem; }
+.article-body strong{ color:var(--text); }
+.article-body a{ color:var(--blue2); }
+.article-body a:hover{ color:var(--accent); }
 
-    /* ── FAQ 섹션 (AEO 핵심) ── */
-    .faq-wrap { margin: 48px 0; }
-    .faq-item {
-      border: 1px solid #1e1e2e; border-radius: 10px;
-      margin-bottom: 10px; overflow: hidden;
-    }
-    .faq-q {
-      background: #13131f; padding: 18px 20px;
-      color: #fff; font-weight: 700; font-size: 15px;
-      display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; user-select: none;
-    }
-    .faq-q::after { content: '＋'; color: #00d4ff; font-size: 18px; }
-    .faq-a {
-      padding: 18px 20px; background: #0f0f1a;
-      color: #bbb; font-size: 15px; line-height: 1.75;
-      border-top: 1px solid #1e1e2e;
-    }
+/* ─── 계산 박스 ─── */
+.calc-box{
+  background:var(--code-bg); border:1px solid var(--border2);
+  border-radius:10px; padding:22px; margin:22px 0;
+  font-size:0.9rem;
+}
+.calc-row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:9px 0; border-bottom:1px solid var(--border);
+  color:var(--text2);
+}
+.calc-row:last-child{
+  border-bottom:none; margin-top:6px; padding-top:12px;
+  color:var(--blue); font-weight:700; font-size:1.05rem;
+}
+.calc-row .label{ font-weight:500; }
+.calc-row .value{ font-family:monospace; font-weight:600; }
 
-    /* ── CTA 박스 ── */
-    .cta-box {
-      background: linear-gradient(135deg, rgba(0,212,255,.1), rgba(99,102,241,.1));
-      border: 1px solid rgba(0,212,255,.3);
-      border-radius: 14px; padding: 36px 32px;
-      text-align: center; margin: 56px 0;
-    }
-    .cta-box h3 { color: #fff; font-size: 1.2rem; margin-bottom: 8px; }
-    .cta-box p { color: #999; font-size: 14px; margin-bottom: 24px; }
-    .cta-btn {
-      display: inline-block;
-      background: #00d4ff; color: #000;
-      padding: 13px 36px; border-radius: 8px;
-      font-weight: 800; font-size: 15px;
-      text-decoration: none; transition: opacity .2s;
-    }
-    .cta-btn:hover { opacity: .85; }
+/* ─── 표 ─── */
+.blog-table{
+  width:100%; border-collapse:collapse;
+  margin:22px 0; font-size:0.88rem;
+  border:1px solid var(--border2); border-radius:10px; overflow:hidden;
+}
+.blog-table th{
+  background:var(--card2); color:var(--blue);
+  padding:11px 16px; text-align:left;
+  border-bottom:1px solid var(--border2); font-weight:700;
+}
+.blog-table td{
+  padding:11px 16px; border-bottom:1px solid var(--border);
+  color:var(--text2); vertical-align:top;
+}
+.blog-table tr:last-child td{ border-bottom:none; }
+.blog-table tr:hover td{ background:var(--card2); }
 
-    /* ── 관련 아티클 ── */
-    .related-wrap { margin-top: 64px; padding-top: 36px; border-top: 1px solid #1e1e2e; }
-    .related-wrap h2 { font-size: 1.1rem; color: #fff; margin-bottom: 20px; border: none; padding: 0; margin-top: 0; }
-    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-    .related-card {
-      background: #13131f; border: 1px solid #2a2a3a;
-      border-radius: 10px; padding: 18px; text-decoration: none;
-      transition: all .2s;
-    }
-    .related-card:hover { border-color: #00d4ff; transform: translateY(-3px); }
-    .rc-cat { font-size: 12px; color: #00d4ff; margin-bottom: 8px; }
-    .rc-title { font-size: 14px; color: #ddd; line-height: 1.5; }
+/* ─── 경고 박스 ─── */
+.warning-box{
+  background:var(--warn-bg); border:1px solid var(--warn-b);
+  border-left:4px solid var(--yellow); border-radius:10px;
+  padding:15px 20px; margin:22px 0;
+  color:var(--yellow); font-size:0.87rem; line-height:1.7;
+}
+.warning-box strong{ color:var(--yellow); }
 
-    /* ── 푸터 ── */
-    .blog-footer {
-      background: #09090f; border-top: 1px solid #1a1a2e;
-      padding: 32px 24px; text-align: center;
-      color: #444; font-size: 13px; line-height: 1.8;
-    }
-    .blog-footer a { color: #555; text-decoration: none; }
-    .blog-footer a:hover { color: #00d4ff; }
+/* ─── 성공/정보 박스 ─── */
+.info-box{
+  background:rgba(63,185,80,.07); border:1px solid rgba(63,185,80,.25);
+  border-left:4px solid var(--green); border-radius:10px;
+  padding:15px 20px; margin:22px 0;
+  color:var(--green); font-size:0.87rem; line-height:1.7;
+}
 
-    /* ── 모바일 ── */
-    @media (max-width: 640px) {
-      .blog-wrap { padding: 28px 16px 80px; }
-      .article-h1 { font-size: 1.4rem; }
-      .calc-row { font-size: 13px; }
-    }
-  </style>
+/* ─── CTA 박스 ─── */
+.cta-box{
+  background:var(--cta-grad); border:1px solid var(--summary-b);
+  border-radius:14px; padding:30px 28px; text-align:center;
+  margin:40px 0;
+}
+.cta-box h3{ color:var(--text); font-size:1.1rem; margin-bottom:8px; }
+.cta-box p{ color:var(--muted); font-size:0.85rem; margin-bottom:18px; }
+.cta-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--accent); color:#fff; border:none;
+  padding:12px 28px; border-radius:10px; font-weight:700;
+  font-size:0.9rem; text-decoration:none; cursor:pointer;
+  transition:background .2s; border:none;
+}
+.cta-btn:hover{ background:var(--accent2); }
+.cta-btn-secondary{
+  display:inline-flex; align-items:center; gap:6px;
+  background:transparent; color:var(--blue2);
+  border:1px solid var(--blue2); padding:11px 22px;
+  border-radius:10px; font-weight:600; font-size:0.88rem;
+  text-decoration:none; margin-left:10px; transition:all .2s;
+}
+.cta-btn-secondary:hover{ background:var(--blue2); color:#fff; }
+
+/* ─── FAQ ─── */
+.faq-section{ margin:44px 0; }
+.faq-item{
+  border:1px solid var(--border2); border-radius:10px;
+  margin-bottom:10px; overflow:hidden;
+  transition:border-color .2s;
+}
+.faq-item.open{ border-color:var(--blue); }
+.faq-q{
+  background:var(--card2); padding:15px 20px;
+  color:var(--text); font-weight:600; cursor:pointer;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:0.93rem; transition:background .2s;
+}
+.faq-q:hover{ background:var(--card); }
+.faq-arrow{ color:var(--blue); font-size:0.75rem; transition:transform .3s; flex-shrink:0; }
+.faq-item.open .faq-arrow{ transform:rotate(180deg); }
+.faq-a{
+  padding:0 20px; max-height:0; overflow:hidden;
+  transition:max-height .35s ease, padding .35s ease;
+  background:var(--bg);
+  color:var(--text2); font-size:0.88rem; line-height:1.75;
+}
+.faq-item.open .faq-a{ padding:16px 20px; max-height:400px; }
+
+/* ─── 관련 아티클 ─── */
+.related-section{
+  margin-top:56px; padding-top:28px;
+  border-top:1px solid var(--border);
+}
+.related-section h2{
+  font-size:1rem; font-weight:700; color:var(--text);
+  margin-bottom:18px;
+}
+.related-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+}
+.related-card{
+  background:var(--card); border:1px solid var(--border2);
+  border-radius:10px; padding:16px; text-decoration:none;
+  transition:all .2s; display:block;
+}
+.related-card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+.rc-cat{ font-size:0.72rem; color:var(--blue); font-weight:700; margin-bottom:7px; }
+.rc-title{ font-size:0.83rem; color:var(--text2); line-height:1.5; }
+
+/* ═══ SIDEBAR (TOC + 도구 + 광고) ═══ */
+.sidebar{ display:flex; flex-direction:column; gap:18px; position:sticky; top:72px; }
+.s-card{
+  background:var(--card); border:1px solid var(--border2);
+  border-radius:12px; padding:18px 20px; transition:background .25s;
+}
+.s-card h4{
+  font-size:0.82rem; font-weight:700; color:var(--accent);
+  margin-bottom:12px; padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:6px;
+}
+
+/* TOC */
+.toc-list{ list-style:none; }
+.toc-list li{ padding:5px 0; border-bottom:1px solid var(--border); }
+.toc-list li:last-child{ border-bottom:none; }
+.toc-list a{
+  color:var(--muted); text-decoration:none;
+  font-size:0.79rem; display:flex; align-items:center; gap:6px;
+  transition:color .2s;
+}
+.toc-list a:hover,.toc-list a.active{ color:var(--accent); }
+.toc-list a .toc-num{ font-size:0.68rem; color:var(--border2); min-width:16px; }
+
+/* 빠른 계산기 링크 */
+.tool-list{ list-style:none; }
+.tool-list li{ padding:5px 0; border-bottom:1px solid var(--border); }
+.tool-list li:last-child{ border-bottom:none; }
+.tool-list a{
+  color:var(--blue2); text-decoration:none; font-size:0.79rem;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:color .2s;
+}
+.tool-list a:hover{ color:var(--accent); }
+
+/* 세금 미니 계산기 in sidebar */
+.mini-calc input{
+  width:100%; padding:8px 10px; margin-bottom:7px;
+  background:var(--bg); border:1px solid var(--border2);
+  border-radius:7px; color:var(--text); font-size:0.82rem; outline:none;
+}
+.mini-calc input:focus{ border-color:var(--accent); }
+.mini-calc-btn{
+  width:100%; padding:8px; background:var(--accent); border:none;
+  border-radius:7px; color:#fff; font-weight:700; font-size:0.82rem;
+  cursor:pointer; transition:background .2s;
+}
+.mini-calc-btn:hover{ background:var(--accent2); }
+.mini-calc-result{
+  margin-top:8px; padding:8px 10px;
+  background:var(--card2); border-radius:7px;
+  font-size:0.8rem; color:var(--blue); font-weight:600;
+  display:none;
+}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:var(--bg2); border-top:1px solid var(--border);
+  padding:36px 24px 24px; margin-top:60px;
+  transition:background .25s;
+}
+.footer-inner{ max-width:1100px; margin:0 auto; }
+.footer-grid{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:28px; margin-bottom:28px;
+}
+.footer-col h5{ font-size:0.8rem; font-weight:700; color:var(--text); margin-bottom:8px; }
+.footer-col a{
+  display:block; color:var(--muted); text-decoration:none;
+  font-size:0.76rem; padding:3px 0; transition:color .2s;
+}
+.footer-col a:hover{ color:var(--accent); }
+.footer-bottom{
+  border-top:1px solid var(--border); padding-top:18px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:10px; font-size:0.73rem; color:var(--muted);
+}
+.footer-bottom a{ color:var(--muted); text-decoration:none; }
+.footer-bottom a:hover{ color:var(--accent); }
+
+/* ═══ SCROLL TOP ═══ */
+#scrollTop{
+  position:fixed; bottom:26px; right:22px;
+  width:42px; height:42px; border-radius:10px;
+  background:var(--accent); border:none; color:#fff;
+  font-size:1rem; cursor:pointer;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 14px rgba(247,147,26,.35);
+}
+#scrollTop.show{ opacity:1; pointer-events:all; }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:960px){
+  .page-outer{ grid-template-columns:1fr; }
+  .sidebar{ display:none; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media(max-width:600px){
+  .nav-links{ display:none; }
+  .article-title{ font-size:1.4rem; }
+  .page-outer{ padding:20px 16px 60px; }
+  .footer-grid{ grid-template-columns:1fr; gap:16px; }
+  .share-bar{ gap:6px; }
+  .cta-btn-secondary{ margin-left:0; margin-top:8px; }
+}
+</style>
 </head>
 <body>
 
-<!-- ✅ 헤더 -->
-<header class="blog-header">
-  <a href="../index.html" class="header-logo">₿ CryptoTax</a>
-  <a href="../index.html" class="header-back">← 메인으로</a>
-</header>
+<!-- 읽기 진행 바 -->
+<div id="progress-bar"></div>
 
-<main class="blog-wrap">
-
-  <!-- 카테고리 뱃지 -->
-  <span class="badge">📋 세금 기초</span>
-
-  <!-- H1 제목 (페이지당 반드시 1개) -->
-  <h1 class="article-h1">
-    가상자산 세금 2027 완벽 가이드 — 22% 계산부터 홈택스 신고까지
-  </h1>
-
-  <!-- 메타 정보 -->
-  <div class="article-meta">
-    <span>📅 2026년 3월 31일</span>
-    <span>⏱️ 읽기 약 8분</span>
-    <span>✍️ CryptoTax 편집팀</span>
-    <span>🔄 최신 세법 반영</span>
+<!-- ═══ NAV ═══ -->
+<nav class="site-nav">
+  <a href="/" class="nav-logo">₿ Crypto<span>Tax</span>.cloud</a>
+  <div class="nav-links">
+    <a href="/#calculator">💰 세금계산기</a>
+    <a href="/#tools">🧰 도구모음</a>
+    <a href="/market/">📊 시장데이터</a>
+    <a href="/blog/" class="active">📰 블로그</a>
   </div>
-
-  <!-- ✅ 핵심 요약 박스 (AEO/GEO — AI가 이 부분을 가장 먼저 인용) -->
-  <div class="summary-box">
-    <div class="sb-title">💡 핵심 요약 — 읽기 전에 먼저 확인하세요</div>
-    <ul>
-      <li>📅 <strong>2027년 1월 1일</strong>부터 모든 가상자산 수익에 세금 부과</li>
-      <li>💰 세율: <strong>22%</strong> (소득세 20% + 지방소득세 2%)</li>
-      <li>🎁 연간 <strong>250만원 기본공제</strong> — 초과분에만 과세</li>
-      <li>📝 신고 기간: <strong>2028년 5월</strong> 종합소득세 신고</li>
-      <li>⚠️ 무신고 시 <strong>가산세 20%</strong> 추가 부과</li>
-    </ul>
+  <div class="nav-right">
+    <a href="/blog/" class="back-btn">← 블로그</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
+      <span id="themeIcon">🌙</span><span id="themeText">다크</span>
+    </button>
   </div>
+</nav>
 
-  <!-- ===== 본문 시작 ===== -->
+<!-- ═══ BREADCRUMB ═══ -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="/">홈</a> ›
+  <a href="/blog/">블로그</a> ›
+  <span>가상자산 세금 2027 완벽 가이드</span>
+</nav>
 
-  <h2>1. 가상자산 세금이란?</h2>
-  <p>
-    2027년 1월 1일부터 비트코인(BTC), 이더리움(ETH) 등 모든 가상자산의
-    <strong>양도·대여 수익에 22% 세율</strong>이 적용됩니다.
-    이는 소득세 20%와 지방소득세 2%를 합한 수치로,
-    연간 수익에서 250만원 기본공제를 차감한 금액에만 부과됩니다.
-  </p>
-  <p>
-    쉽게 말해, 1년 동안 코인으로 <strong>250만원 이하</strong>를 벌었다면
-    세금이 전혀 없습니다. 250만원을 초과하는 순간부터 22%가 적용됩니다.
-  </p>
+<!-- ═══ MAIN LAYOUT ═══ -->
+<div class="page-outer">
 
-  <div class="info-box">
-    📌 <strong>적용 대상:</strong> 업비트·빗썸·코인원 등 국내 거래소는 물론,
-    바이낸스·코인베이스 등 해외 거래소 수익도 모두 포함됩니다.
-    한국 거주자라면 전 세계 어디서 번 코인 수익이든 신고 의무가 있습니다.
-  </div>
+  <!-- ────────── ARTICLE ────────── -->
+  <article itemscope itemtype="https://schema.org/Article">
 
-  <h2>2. 세금 계산 방법 — 실제 예시</h2>
-  <p>계산 공식은 간단합니다:</p>
-  <p style="text-align:center; font-size:1.05rem; color:#fff; background:#13131f; padding:16px; border-radius:8px; font-weight:700;">
-    ( 매도금액 − 매수금액 − 수수료 − 250만원 ) × 22% = 납부세액
-  </p>
+    <!-- 카테고리 뱃지 -->
+    <span class="cat-badge">📋 세금 기초</span>
 
-  <h3>📊 1,000만원 수익 실제 계산</h3>
-  <div class="calc-box">
-    <div class="calc-row"><span>매도금액</span><span>20,000,000원</span></div>
-    <div class="calc-row"><span class="minus">— 매수금액</span><span class="minus">10,000,000원</span></div>
-    <div class="calc-row"><span class="minus">— 수수료</span><span class="minus">50,000원</span></div>
-    <div class="calc-row"><span class="minus">— 기본공제</span><span class="minus">2,500,000원</span></div>
-    <div class="calc-row"><span>= 과세표준</span><span>7,450,000원</span></div>
-    <div class="calc-row"><span class="result">💰 납부세액 (×22%)</span><span class="result">1,639,000원</span></div>
-  </div>
+    <!-- 제목 (여기만 교체) -->
+    <h1 class="article-title" itemprop="headline">
+      가상자산 세금 2027 완벽 가이드 —<br>
+      22% 계산부터 홈택스 신고까지
+    </h1>
 
-  <h3>📊 수익별 납부세액 비교표</h3>
-  <table class="blog-table">
-    <thead>
-      <tr><th>연간 수익</th><th>과세표준</th><th>납부세액 (22%)</th><th>실효세율</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>250만원 이하</td><td>0원</td><td><strong style="color:#00d4ff">0원 (비과세)</strong></td><td>0%</td></tr>
-      <tr><td>500만원</td><td>250만원</td><td>55만원</td><td>11%</td></tr>
-      <tr><td>1,000만원</td><td>750만원</td><td>165만원</td><td>16.5%</td></tr>
-      <tr><td>5,000만원</td><td>4,750만원</td><td>1,045만원</td><td>20.9%</td></tr>
-      <tr><td>1억원</td><td>9,750만원</td><td>2,145만원</td><td>21.45%</td></tr>
-      <tr><td>10억원</td><td>9억 9,750만원</td><td>2억 1,945만원</td><td>21.9%</td></tr>
-    </tbody>
-  </table>
+    <!-- 메타 정보 -->
+    <div class="article-meta">
+      <span>📅 <time itemprop="datePublished" datetime="2026-03-31">2026년 3월 31일</time></span>
+      <span>🔄 최종 수정: 2026-03-31</span>
+      <span>⏱️ 읽기 약 8분</span>
+      <span>✍️ CryptoTax.cloud 편집팀</span>
+    </div>
 
-  <h2>3. 홈택스 신고 방법 — 5단계</h2>
-  <ul class="step-list">
-    <li>
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">거래내역 다운로드</div>
-        <div class="step-desc">업비트·빗썸 등 이용한 모든 거래소에서 연간 거래내역 CSV 파일을 다운로드하세요.</div>
+    <!-- 공유 버튼 -->
+    <div class="share-bar">
+      <button class="share-btn kakao" onclick="shareKakao()">💬 카카오 공유</button>
+      <button class="share-btn" onclick="copyLink()">🔗 링크 복사</button>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=가상자산 세금 2027 완벽 가이드&url=https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html" target="_blank" rel="noopener">𝕏 공유</a>
+    </div>
+
+    <!-- ✅ 핵심 요약 박스 (GEO/AEO — AI가 이 블록을 인용) -->
+    <div class="summary-box" id="summary">
+      <h3>💡 이 글의 핵심 요약 (30초 버전)</h3>
+      <ul>
+        <li><strong>시행일:</strong> 2027년 1월 1일부터 모든 가상자산 수익 과세</li>
+        <li><strong>세율:</strong> 22% (소득세 20% + 지방소득세 2%)</li>
+        <li><strong>기본공제:</strong> 연간 <strong>250만원</strong> — 초과분에만 세금</li>
+        <li><strong>신고 기간:</strong> 2028년 5월 종합소득세 신고</li>
+        <li><strong>무신고 가산세:</strong> 20% 추가 — 최대 42%까지 납부</li>
+        <li><strong>출처:</strong> <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청 공식 안내</a> 기준</li>
+      </ul>
+    </div>
+
+    <!-- ════ 본문 시작 ════ -->
+    <div class="article-body" itemprop="articleBody">
+
+      <h2 id="s1">1️⃣ 가상자산 세금이란 무엇인가?</h2>
+      <p>
+        2027년 1월 1일부터 비트코인·이더리움·솔라나 등 모든 가상자산의
+        <strong>양도·대여 수익에 22% 세율</strong>이 적용됩니다.
+        소득세 20%와 지방소득세 2%를 합친 세율입니다.
+        연간 <strong>250만원을 초과하는 수익</strong>에 대해서만 과세되며,
+        250만원까지는 기본공제로 세금이 0원입니다.
+      </p>
+      <p>
+        가상자산 소득은 기존 주식·부동산 양도소득과 별도로 <strong>기타소득</strong>으로 분류되어
+        분리과세됩니다. 즉, 근로소득이 많아도 코인 세금에는 영향이 없습니다.
+      </p>
+
+      <div class="info-box">
+        ✅ <strong>핵심:</strong> 업비트·빗썸·코인원 등 모든 거래소의 연간 수익을 합산하여
+        250만원 초과분에만 22% 세율이 적용됩니다. 거래소별로 따로 계산하지 않습니다.
       </div>
-    </li>
-    <li>
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">손익 계산</div>
-        <div class="step-desc">매수금액·매도금액·수수료를 정리해 연간 총 수익을 계산하세요. 위 계산기를 활용하면 편합니다.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">홈택스 접속</div>
-        <div class="step-desc">hometax.go.kr 접속 → 공동인증서 로그인 → 종합소득세 신고 메뉴로 이동하세요.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <div class="step-title">가상자산 소득 입력</div>
-        <div class="step-desc">기타소득 → 가상자산 항목에 과세표준(수익 − 250만원)을 입력하세요.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">5</div>
-      <div class="step-content">
-        <div class="step-title">납부</div>
-        <div class="step-desc">2028년 5월 31일까지 신고·납부를 완료하세요. 기한을 넘기면 가산세가 붙습니다.</div>
-      </div>
-    </li>
-  </ul>
 
-  <h2>4. 과세 기준 핵심 정리</h2>
-  <table class="blog-table">
-    <thead><tr><th>항목</th><th>내용</th></tr></thead>
-    <tbody>
-      <tr><td>과세 시작일</td><td>2027년 1월 1일</td></tr>
-      <tr><td>세율</td><td>22% (소득세 20% + 지방소득세 2%)</td></tr>
-      <tr><td>기본공제</td><td>연간 250만원</td></tr>
-      <tr><td>소득 분류</td><td>기타소득 (분리과세)</td></tr>
-      <tr><td>신고 기간</td><td>2028년 5월 1일 ~ 31일</td></tr>
-      <tr><td>신고 방법</td><td>홈택스 종합소득세 신고</td></tr>
-      <tr><td>무신고 가산세</td><td>납부세액의 20%</td></tr>
-      <tr><td>해외 거래소</td><td>동일 적용 (한국 거주자 전체)</td></tr>
-    </tbody>
-  </table>
+      <h2 id="s2">2️⃣ 세금 계산 방법 — 단계별 실제 예시</h2>
+      <p>계산 공식은 다음과 같습니다:</p>
+      <p><strong>(매도금액 − 매수금액 − 수수료 − 250만원 기본공제) × 22% = 납부세액</strong></p>
 
-  <div class="warn-box">
-    ⚠️ <strong>2026년 3월 현재 중요 공지:</strong> 국민의힘 송언석 의원이 가상자산 과세
-    <strong>전면 폐지법</strong>을 발의했습니다. 단, 아직 국회 통과 전이므로
-    현재 법적으로 유효한 세율은 22%입니다. 폐지 여부와 무관하게 반드시 대비하세요.
+      <div class="calc-box">
+        <div class="calc-row">
+          <span class="label">매도금액 (양도가액)</span>
+          <span class="value">20,000,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">− 매수금액 (취득가액)</span>
+          <span class="value">10,000,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">− 수수료 등 필요경비</span>
+          <span class="value">50,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">= 수익금</span>
+          <span class="value">9,950,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">− 기본공제</span>
+          <span class="value">2,500,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">= 과세표준</span>
+          <span class="value">7,450,000원</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">× 세율</span>
+          <span class="value">22%</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">💰 최종 납부세액</span>
+          <span class="value">1,639,000원</span>
+        </div>
+      </div>
+
+      <h3>수익 구간별 세금 비교</h3>
+      <table class="blog-table">
+        <thead>
+          <tr>
+            <th>연간 수익</th>
+            <th>과세표준 (공제 후)</th>
+            <th>납부세액</th>
+            <th>세후 실수령</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>250만원 이하</td><td>0원</td><td><strong>0원 (비과세)</strong></td><td>수익 전액</td></tr>
+          <tr><td>500만원</td><td>250만원</td><td>55만원</td><td>445만원</td></tr>
+          <tr><td>1,000만원</td><td>750만원</td><td>165만원</td><td>835만원</td></tr>
+          <tr><td>3,000만원</td><td>2,750만원</td><td>605만원</td><td>2,395만원</td></tr>
+          <tr><td>5,000만원</td><td>4,750만원</td><td>1,045만원</td><td>3,955만원</td></tr>
+          <tr><td>1억원</td><td>9,750만원</td><td>2,145만원</td><td>7,855만원</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s3">3️⃣ 과세 기준 한눈에 보기</h2>
+      <table class="blog-table">
+        <thead><tr><th>항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>과세 시작일</td><td><strong>2027년 1월 1일</strong></td></tr>
+          <tr><td>세율</td><td>22% (소득세 20% + 지방소득세 2%)</td></tr>
+          <tr><td>소득 분류</td><td>기타소득 (분리과세)</td></tr>
+          <tr><td>기본공제</td><td>연간 250만원</td></tr>
+          <tr><td>과세 대상</td><td>양도·대여 수익 (스테이킹 이자 포함)</td></tr>
+          <tr><td>손익통산</td><td>동일 연도 내 코인 간 손익 합산 가능</td></tr>
+          <tr><td>신고 기간</td><td>2028년 5월 1일~31일</td></tr>
+          <tr><td>신고 방법</td><td>홈택스 종합소득세 → 기타소득 → 가상자산</td></tr>
+          <tr><td>무신고 가산세</td><td>납부세액의 20% 추가</td></tr>
+          <tr><td>적용 거래소</td><td>국내·해외 모든 거래소 (합산)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        ⚠️ <strong>현재 상황:</strong> 국민의힘 송언석 원내대표가 2026년 3월 '가상자산소득세 폐지법'을 발의했습니다.
+        그러나 <strong>국회 통과 전까지는 22% 세율이 법적으로 유효</strong>합니다.
+        폐지 또는 수정 통과 시 본 페이지에서 즉시 업데이트합니다.
+      </div>
+
+      <h2 id="s4">4️⃣ 홈택스 신고 방법 — 4단계</h2>
+
+      <h3>① 거래내역 다운로드</h3>
+      <p>
+        이용 중인 거래소 앱에서 <strong>2027년 1월 1일~12월 31일</strong> 전체 거래내역을
+        CSV 파일로 다운로드합니다. 업비트는 <em>앱 → 더보기 → 거래내역</em>에서 가능합니다.
+        여러 거래소를 이용했다면 <strong>모두 다운로드</strong>해야 합니다.
+      </p>
+
+      <h3>② 수익 계산</h3>
+      <p>
+        각 거래소의 수익을 합산하고, 수수료·취득가액을 차감합니다.
+        복잡한 계산은 아래 무료 세금 계산기를 활용하세요.
+      </p>
+
+      <h3>③ 홈택스 신고</h3>
+      <p>
+        2028년 5월 홈택스(hometax.go.kr) 접속 → <strong>종합소득세 신고
+        → 기타소득 → 가상자산 소득</strong> 항목에 입력합니다.
+      </p>
+
+      <h3>④ 세금 납부</h3>
+      <p>
+        계산된 납부세액을 홈택스 내 전자납부 또는 가상계좌로 납부합니다.
+        분납 신청도 가능합니다.
+      </p>
+
+      <!-- CTA 박스 -->
+      <div class="cta-box">
+        <h3>🔢 지금 바로 세금을 계산해보세요</h3>
+        <p>매수·매도 금액만 입력하면 예상 세금이 즉시 계산됩니다 — 무료, 회원가입 불필요</p>
+        <a href="/tools/tax-calculator.html" class="cta-btn">💰 무료 세금 계산기 바로 사용</a>
+        <a href="/tools/staking-calculator.html" class="cta-btn-secondary">🏦 스테이킹 계산기</a>
+      </div>
+
+      <h2 id="s5">5️⃣ 합법적 절세 전략 5가지</h2>
+
+      <h3>① 연내 손실 코인 매도 (손익통산)</h3>
+      <p>
+        12월 말 이전에 손실 중인 코인을 매도하면 수익과 손실을 합산해 세금을 줄일 수 있습니다.
+        예: 비트코인 +1,000만원, 알트코인 −500만원이면 순수익 500만원 기준 과세.
+      </p>
+
+      <h3>② 배우자·가족 증여 활용</h3>
+      <p>
+        배우자에게는 6억원, 성인 자녀에게는 5,000만원까지 10년간 증여세 없이 코인을 이전할 수 있습니다.
+        증여 후 매도하면 취득가액이 증여 시점 시세로 재설정되어 절세 효과가 있습니다.
+      </p>
+
+      <h3>③ 250만원 공제 분할 활용</h3>
+      <p>
+        매년 250만원 공제를 활용해 수익을 분산 매도합니다.
+        예: 2027년 250만원, 2028년 250만원씩 이익 실현하면 2년간 세금 0원.
+      </p>
+
+      <h3>④ 취득가액 의제 적용</h3>
+      <p>
+        2026년 12월 31일까지 보유한 코인의 취득가액을 2027년 1월 1일 시세로 의제 적용 신청 가능.
+        오래전에 싸게 산 코인의 세금 부담을 크게 줄일 수 있습니다.
+      </p>
+
+      <h3>⑤ 기부를 통한 세액공제</h3>
+      <p>
+        코인을 직접 기부하면 기부금 세액공제(15~30%)를 받을 수 있습니다.
+        양도 후 현금 기부보다 유리한 경우가 있습니다.
+      </p>
+
+    </div><!-- /article-body -->
+
+    <!-- ═══ FAQ 섹션 (AEO 핵심) ═══ -->
+    <section class="faq-section" id="faq">
+      <h2 id="s6">❓ 자주 묻는 질문 (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          가상자산 세금은 언제부터 시작되나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          2027년 1월 1일부터 가상자산 양도·대여 소득에 22% 세율이 적용됩니다
+          (소득세 20% + 지방소득세 2%). 연간 250만원 기본공제가 적용되며,
+          초과분에만 과세됩니다. 신고는 2028년 5월 종합소득세 신고 기간에 홈택스에서 진행합니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          코인 세금 22%는 어떻게 계산하나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          공식: (매도금액 − 매수금액 − 수수료 − 250만원 기본공제) × 22% = 납부세액.<br>
+          예시: 1,000만원 수익 − 250만원 공제 = 750만원 × 22% = <strong>165만원 납부</strong>.
+          무료 계산기: <a href="/tools/tax-calculator.html">cryptotax.cloud/tools/tax-calculator.html</a>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          250만원 이하 수익은 세금이 없나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          네, 연간 총 수익이 250만원 이하라면 기본공제로 세금이 0원입니다.
+          단, <strong>업비트·빗썸·코인원·해외거래소 등 모든 거래소의 수익을 합산</strong>한 기준입니다.
+          거래소별로 따로 250만원이 공제되지 않습니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          코인 세금을 신고 안 하면 어떻게 되나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          무신고 가산세 20%와 납부 불성실 가산세가 추가 부과됩니다.
+          국세청은 거래소로부터 거래내역을 직접 수집하며, 해외거래소도 추적 가능합니다.
+          세금 원금의 최대 42%까지 추가 납부할 수 있으므로 반드시 신고해야 합니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          손실이 났을 때도 신고해야 하나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          총 수익이 250만원 이하라면 신고 의무가 없습니다.
+          하지만 손실 내역을 기록해두면 <strong>같은 해 다른 코인 수익과 손익통산</strong>이 가능해
+          세금을 줄일 수 있습니다. 손실 증빙 자료는 최소 5년간 보관하세요.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          업비트 스테이킹 이자에도 세금이 붙나요?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          네, 2027년부터 스테이킹·이자 수익도 가상자산 기타소득에 포함되어 22% 세율이 적용됩니다.
+          양도 수익과 합산하여 연 250만원 공제 후 과세됩니다.
+          스테이킹 수익 계산은 <a href="/tools/staking-calculator.html">스테이킹 계산기</a>를 이용하세요.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 관련 아티클 -->
+    <section class="related-section">
+      <h2>📚 관련 아티클</h2>
+      <div class="related-grid">
+        <a href="/blog/loss-deduction-strategy.html" class="related-card">
+          <div class="rc-cat">📉 절세 전략</div>
+          <div class="rc-title">코인 손실 공제로 세금 줄이는 법 — 손익통산 전략</div>
+        </a>
+        <a href="/blog/upbit-staking-guide.html" class="related-card">
+          <div class="rc-cat">🏦 스테이킹</div>
+          <div class="rc-title">업비트 ETH 스테이킹 방법과 수익·세금 계산</div>
+        </a>
+        <a href="/blog/tax-saving-5-methods.html" class="related-card">
+          <div class="rc-cat">💰 절세</div>
+          <div class="rc-title">코인 세금 줄이는 5가지 합법적 방법</div>
+        </a>
+        <a href="/blog/staking-tax-guide.html" class="related-card">
+          <div class="rc-cat">📋 세금 기초</div>
+          <div class="rc-title">스테이킹 이자 세금 신고 방법</div>
+        </a>
+      </div>
+    </section>
+
+  </article>
+
+  <!-- ────────── SIDEBAR ────────── -->
+  <aside class="sidebar">
+
+    <!-- 목차 -->
+    <div class="s-card">
+      <h4>📑 목차</h4>
+      <ul class="toc-list">
+        <li><a href="#s1"><span class="toc-num">1</span>가상자산 세금이란?</a></li>
+        <li><a href="#s2"><span class="toc-num">2</span>세금 계산 방법</a></li>
+        <li><a href="#s3"><span class="toc-num">3</span>과세 기준 정리</a></li>
+        <li><a href="#s4"><span class="toc-num">4</span>홈택스 신고 방법</a></li>
+        <li><a href="#s5"><span class="toc-num">5</span>절세 전략 5가지</a></li>
+        <li><a href="#faq"><span class="toc-num">Q</span>자주 묻는 질문</a></li>
+      </ul>
+    </div>
+
+    <!-- 미니 세금 계산기 -->
+    <div class="s-card">
+      <h4>⚡ 빠른 세금 계산</h4>
+      <div class="mini-calc">
+        <input type="number" id="mc-buy" placeholder="매수금액 (원)" oninput="miniCalc()">
+        <input type="number" id="mc-sell" placeholder="매도금액 (원)" oninput="miniCalc()">
+        <div class="mini-calc-result" id="mc-result"></div>
+        <a href="/tools/tax-calculator.html" class="mini-calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:4px;">상세 계산기 →</a>
+      </div>
+    </div>
+
+    <!-- 사이드 광고 -->
+    <div class="s-card" style="padding:0;overflow:hidden;">
+      <div style="background:var(--card2);border:1px dashed var(--border2);border-radius:12px;height:250px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.75rem;">
+        광고 영역 300×250
+      </div>
+    </div>
+
+    <!-- 빠른 도구 -->
+    <div class="s-card">
+      <h4>🧰 빠른 도구</h4>
+      <ul class="tool-list">
+        <li><a href="/tools/tax-calculator.html">💰 코인 세금 계산기 <span>›</span></a></li>
+        <li><a href="/tools/staking-calculator.html">🏦 스테이킹 계산기 <span>›</span></a></li>
+        <li><a href="/tools/roi-calculator.html">📊 ROI 계산기 <span>›</span></a></li>
+        <li><a href="/tools/dca-calculator.html">📅 DCA 계산기 <span>›</span></a></li>
+        <li><a href="/tools/loss-recovery.html">📉 손실회복 계산기 <span>›</span></a></li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div><!-- /page-outer -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>💰 계산기</h5>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/staking-calculator.html">스테이킹 이자</a>
+        <a href="/tools/roi-calculator.html">ROI 수익률</a>
+        <a href="/tools/dca-calculator.html">DCA 계산기</a>
+      </div>
+      <div class="footer-col">
+        <h5>📊 시장 데이터</h5>
+        <a href="/market/prices.html">실시간 가격</a>
+        <a href="/market/fear-greed.html">공포탐욕지수</a>
+        <a href="/market/heatmap.html">시장 히트맵</a>
+        <a href="/market/dominance.html">BTC 도미넌스</a>
+      </div>
+      <div class="footer-col">
+        <h5>📰 블로그</h5>
+        <a href="/blog/">전체 글 보기</a>
+        <a href="/blog/beginner-guide.html">코린이 입문</a>
+        <a href="/blog/trading-room-scam.html">리딩방 사기 주의</a>
+        <a href="/blog/dca-strategy.html">DCA 전략</a>
+      </div>
+      <div class="footer-col">
+        <h5>🔗 사이트 정보</h5>
+        <a href="/about.html">소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="/disclaimer.html">면책조항</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CryptoTax.cloud — 본 콘텐츠는 정보 제공 목적이며, 정확한 세금 신고는 <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청</a> 또는 세무사와 상담하세요.</span>
+      <span><a href="/sitemap.xml">사이트맵</a> | <a href="/disclaimer.html">면책조항</a></span>
+    </div>
   </div>
-
-  <!-- CTA -->
-  <div class="cta-box">
-    <h3>💰 내 코인 세금, 직접 계산해보세요</h3>
-    <p>업비트·빗썸 200개 코인 지원 · 250만원 공제 자동 적용 · 무료</p>
-    <a href="../index.html#calculator" class="cta-btn">🔢 무료 세금 계산기 바로 사용하기</a>
-  </div>
-
-  <!-- ✅ FAQ (AEO 핵심 — AI 인용 최적화) -->
-  <section class="faq-wrap">
-    <h2>❓ 자주 묻는 질문 (FAQ)</h2>
-
-    <div class="faq-item">
-      <div class="faq-q">가상자산 세금은 언제부터 시작되나요?</div>
-      <div class="faq-a">2027년 1월 1일부터 가상자산 양도·대여 소득에 22% 세율이 적용됩니다. 연간 250만원 기본공제가 적용되며, 초과분에만 과세됩니다. 신고는 2028년 5월 종합소득세 신고 기간에 합니다.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">250만원 이하 수익은 세금이 없나요?</div>
-      <div class="faq-a">네, 연간 수익이 250만원 이하라면 기본공제로 세금이 0원입니다. 단, 업비트·빗썸 등 여러 거래소의 수익을 합산한 연간 총 수익 기준입니다.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">코인 세금을 신고 안 하면 어떻게 되나요?</div>
-      <div class="faq-a">무신고 가산세 20%와 납부 불성실 가산세가 추가로 부과됩니다. 국세청은 거래소로부터 거래내역을 직접 수집하므로 반드시 신고해야 합니다.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">손실이 났을 때도 신고해야 하나요?</div>
-      <div class="faq-a">손실로 인해 연간 수익이 250만원 이하라면 신고 의무가 없습니다. 하지만 같은 해 다른 코인 수익과 손익통산이 가능하므로 거래내역은 반드시 보관하세요.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">해외 거래소(바이낸스) 수익도 신고해야 하나요?</div>
-      <div class="faq-a">네, 한국 거주자라면 해외 거래소 수익도 동일하게 신고 의무가 있습니다. 국세청은 해외 거래소 정보도 수집하고 있으며, 미신고 시 동일한 가산세가 부과됩니다.</div>
-    </div>
-  </section>
-
-  <!-- 관련 아티클 -->
-  <section class="related-wrap">
-    <h2>📚 함께 읽으면 좋은 글</h2>
-    <div class="related-grid">
-      <a href="coin-tax-calculation-5-steps.html" class="related-card">
-        <div class="rc-cat">💰 계산 가이드</div>
-        <div class="rc-title">코인 세금 계산 방법 5단계 | 자동 계산기</div>
-      </a>
-      <a href="upbit-tax-report-guide.html" class="related-card">
-        <div class="rc-cat">📋 실무 가이드</div>
-        <div class="rc-title">업비트 세금 신고 완벽 가이드</div>
-      </a>
-      <a href="coin-250-deduction-zero-tax-strategy.html" class="related-card">
-        <div class="rc-cat">🛡️ 절세 전략</div>
-        <div class="rc-title">250만원 공제로 세금 0원 만드는 법</div>
-      </a>
-      <a href="virtual-asset-tax-abolition-bill.html" class="related-card">
-        <div class="rc-cat">⚖️ 최신 이슈</div>
-        <div class="rc-title">가상자산 과세 폐지법 분석 2026</div>
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<!-- 푸터 -->
-<footer class="blog-footer">
-  <p>© 2026 <a href="../index.html">CryptoTax.cloud</a> — 코인 세금 정보 허브</p>
-  <p style="margin-top:8px;">
-    <a href="../index.html">홈</a> &nbsp;·&nbsp;
-    <a href="../index.html#calculator">세금 계산기</a> &nbsp;·&nbsp;
-    <a href="../index.html#blog">블로그 목록</a>
-  </p>
-  <p style="margin-top:12px; font-size:12px; color:#333;">
-    본 콘텐츠는 정보 제공 목적이며, 정확한 세금 신고는 세무사와 상담하세요.
-    공식 정보: <a href="https://www.nts.go.kr" target="_blank">국세청 (nts.go.kr)</a>
-  </p>
 </footer>
 
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ── 테마 토글 ── */
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  document.getElementById('themeIcon').textContent=next==='dark'?'🌙':'☀️';
+  document.getElementById('themeText').textContent=next==='dark'?'다크':'라이트';
+  localStorage.setItem('ct_theme',next);
+}
+(function(){
+  const s=localStorage.getItem('ct_theme')||'dark';
+  document.documentElement.setAttribute('data-theme',s);
+  const icon=document.getElementById('themeIcon');
+  const text=document.getElementById('themeText');
+  if(icon) icon.textContent=s==='dark'?'🌙':'☀️';
+  if(text) text.textContent=s==='dark'?'다크':'라이트';
+})();
+
+/* ── 읽기 진행 바 ── */
+window.addEventListener('scroll',()=>{
+  const scrollTop=window.scrollY;
+  const docHeight=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progress-bar').style.width=(scrollTop/docHeight*100)+'%';
+  document.getElementById('scrollTop').classList.toggle('show',scrollTop>400);
+
+  /* TOC 활성화 */
+  document.querySelectorAll('.article-body h2[id]').forEach(h=>{
+    const link=document.querySelector(`.toc-list a[href="#${h.id}"]`);
+    if(!link) return;
+    const rect=h.getBoundingClientRect();
+    if(rect.top<=80&&rect.top>-200){
+      document.querySelectorAll('.toc-list a').forEach(a=>a.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+});
+
+/* ── FAQ 토글 ── */
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    if(i!==item) i.classList.remove('open');
+  });
+  item.classList.toggle('open',!isOpen);
+}
+
+/* ── 미니 세금 계산기 ── */
+function miniCalc(){
+  const buy=parseFloat(document.getElementById('mc-buy').value)||0;
+  const sell=parseFloat(document.getElementById('mc-sell').value)||0;
+  const r=document.getElementById('mc-result');
+  if(!buy||!sell){r.style.display='none';return;}
+  const profit=sell-buy;
+  const taxBase=Math.max(0,profit-2500000);
+  const tax=Math.round(taxBase*0.22);
+  r.style.display='block';
+  if(profit<=0){r.style.color='var(--red)';r.textContent='손실 — 세금 없음';}
+  else if(taxBase<=0){r.style.color='var(--green)';r.textContent='세금 0원 (250만원 이하)';}
+  else{r.style.color='var(--blue)';r.textContent='예상 세금: '+tax.toLocaleString()+'원';}
+}
+
+/* ── 링크 복사 ── */
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    alert('링크가 복사되었습니다!');
+  });
+}
+
+/* ── 카카오 공유 (SDK 없이 URL 방식) ── */
+function shareKakao(){
+  const url='https://sharer.kakao.com/talk/friends/picker/link'
+    +'?app_key=YOUR_KAKAO_KEY'
+    +'&validation_action=default'
+    +'&validation_params=%7B%7D';
+  /* SDK 미설치 시 카카오톡 앱으로 직접 공유 유도 */
+  const text=encodeURIComponent('가상자산 세금 2027 완벽 가이드\n'+window.location.href);
+  window.open('https://twitter.com/intent/tweet?text='+text,'_blank','width=600,height=400');
+}
+</script>
 </body>
 </html>
