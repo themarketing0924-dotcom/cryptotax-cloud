@@ -1,0 +1,274 @@
+Copy<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사토시 환산기 2027 | BTC ↔ 사토시 ↔ 원화 즉시 변환 — CryptoTax.cloud</title>
+<meta name="description" content="비트코인 사토시를 원화로, 원화를 사토시로 즉시 환산하세요. 1만원으로 살 수 있는 사토시 수량, BTC·사토시·원화 3방향 실시간 변환 계산기.">
+<meta name="keywords" content="사토시 환산기, 사토시 계산기, 비트코인 사토시, 사토시 원화 환산, 1사토시 원화">
+<link rel="canonical" href="https://cryptotax.cloud/tools/satoshi-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"사토시 환산기","url":"https://cryptotax.cloud/tools/satoshi-calculator.html","description":"비트코인 사토시 ↔ BTC ↔ 원화 3방향 즉시 환산","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<style>
+  :root{--bg:#f8f9fa;--card:#ffffff;--text:#1a1a2e;--sub:#6c757d;--primary:#f7931a;--primary-dark:#e07b0e;--border:#e9ecef;--success:#28a745;--danger:#dc3545;--info:#17a2b8;--shadow:0 2px 12px rgba(0,0,0,0.08);}
+  [data-theme="dark"]{--bg:#0d0d1a;--card:#1a1a2e;--text:#e8e8f0;--sub:#9999bb;--border:#2a2a4a;--shadow:0 2px 12px rgba(0,0,0,0.4);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:all .3s;}
+  nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+  .nav-logo{font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;}
+  .nav-links{display:flex;gap:20px;align-items:center;}
+  .nav-links a{color:var(--sub);text-decoration:none;font-size:.9rem;}
+  .nav-links a:hover{color:var(--primary);}
+  .theme-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.85rem;}
+  .breadcrumb{padding:12px 24px;font-size:.82rem;color:var(--sub);max-width:800px;margin:0 auto;}
+  .breadcrumb a{color:var(--sub);text-decoration:none;}
+  .hero{text-align:center;padding:40px 24px 20px;}
+  .hero-badge{display:inline-block;background:rgba(247,147,26,.12);color:var(--primary);border:1px solid rgba(247,147,26,.3);border-radius:20px;padding:4px 16px;font-size:.82rem;font-weight:600;margin-bottom:16px;}
+  .hero h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;}
+  .hero h1 span{color:var(--primary);}
+  .hero p{color:var(--sub);font-size:.95rem;}
+  .container{max-width:800px;margin:0 auto;padding:0 24px 60px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);}
+  .card-title{font-size:1rem;font-weight:700;margin-bottom:20px;}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .form-group label{font-size:.85rem;font-weight:600;color:var(--sub);}
+  .input-wrap{position:relative;}
+  .input-wrap input{width:100%;padding:14px 60px 14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:1.1rem;font-family:inherit;transition:border .2s;}
+  .input-wrap input:focus{outline:none;border-color:var(--primary);}
+  .input-unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:.85rem;font-weight:700;color:var(--sub);}
+  .divider{text-align:center;color:var(--sub);font-size:1.5rem;margin:8px 0;}
+  .btc-price-row{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;}
+  .btc-price-row label{font-size:.85rem;font-weight:600;color:var(--sub);white-space:nowrap;}
+  .btc-price-row input{flex:1;border:none;background:transparent;color:var(--text);font-size:1rem;font-family:inherit;outline:none;}
+  .fetch-btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:.82rem;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .fetch-btn:hover{background:var(--primary-dark);}
+  .result-big{background:linear-gradient(135deg,rgba(247,147,26,.1),rgba(247,147,26,.05));border:2px solid rgba(247,147,26,.3);border-radius:16px;padding:24px;text-align:center;margin-bottom:16px;}
+  .result-big .label{font-size:.9rem;color:var(--sub);margin-bottom:8px;}
+  .result-big .value{font-size:2rem;font-weight:800;color:var(--primary);}
+  .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+  @media(max-width:500px){.result-grid{grid-template-columns:1fr;}}
+  .result-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+  .result-item .label{font-size:.78rem;color:var(--sub);margin-bottom:4px;}
+  .result-item .value{font-size:1rem;font-weight:700;color:var(--text);}
+  .ref-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+  .ref-table th{background:var(--bg);padding:10px 12px;text-align:right;font-weight:600;color:var(--sub);border-bottom:2px solid var(--border);}
+  .ref-table th:first-child{text-align:left;}
+  .ref-table td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);}
+  .ref-table td:first-child{text-align:left;font-weight:600;color:var(--primary);}
+  .ref-table tr:hover{background:rgba(247,147,26,.04);}
+  .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:600px){.tool-links{grid-template-columns:1fr 1fr;}}
+  .tool-link{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);font-size:.82rem;font-weight:600;text-align:center;transition:all .2s;}
+  .tool-link:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);}
+  .tool-link .icon{font-size:1.5rem;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{padding:16px 0;cursor:pointer;font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;}
+  .faq-q:hover{color:var(--primary);}
+  .faq-a{padding:0 0 16px;color:var(--sub);font-size:.9rem;line-height:1.7;display:none;}
+  footer{background:var(--card);border-top:1px solid var(--border);padding:32px 24px;text-align:center;}
+  .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+  .footer-links a{color:var(--sub);text-decoration:none;font-size:.85rem;}
+  .footer-links a:hover{color:var(--primary);}
+  .footer-copy{font-size:.8rem;color:var(--sub);}
+  .ad-slot{background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:20px;text-align:center;color:var(--sub);font-size:.8rem;margin:16px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+  .price-status{font-size:.78rem;color:var(--sub);margin-top:4px;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV계산기</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="https://cryptotax.cloud/">홈</a> › <a href="https://cryptotax.cloud/">계산기</a> › 사토시 환산기</div>
+<div class="hero">
+  <div class="hero-badge">⚡ 무료 계산기</div>
+  <h1><span>사토시</span> 환산기</h1>
+  <p>BTC ↔ 사토시 ↔ 원화 3방향 즉시 변환 · 실시간 비트코인 시세 적용</p>
+</div>
+<div class="container">
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<div class="card">
+  <div class="card-title">⚡ 사토시 ↔ 원화 즉시 환산</div>
+
+  <div class="btc-price-row">
+    <label>₿ BTC 현재가</label>
+    <input type="number" id="btcKrw" value="130000000" onchange="updateAll('btc')">
+    <span style="font-size:.85rem;color:var(--sub);margin-right:8px;">원</span>
+    <button class="fetch-btn" onclick="fetchBtcPrice()">🔄 시세 불러오기</button>
+  </div>
+  <div class="price-status" id="priceStatus">💡 직접 입력하거나 '시세 불러오기'를 눌러 실시간 가격을 적용하세요</div>
+
+  <div style="margin-top:20px;">
+    <div class="form-group">
+      <label>사토시 (Satoshi)</label>
+      <div class="input-wrap">
+        <input type="number" id="satInput" placeholder="예: 10000" oninput="updateAll('sat')">
+        <span class="input-unit">SAT</span>
+      </div>
+    </div>
+    <div class="divider">⇅</div>
+    <div class="form-group">
+      <label>비트코인 (BTC)</label>
+      <div class="input-wrap">
+        <input type="number" id="btcInput" placeholder="예: 0.0001" oninput="updateAll('btcAmt')" step="0.00000001">
+        <span class="input-unit">BTC</span>
+      </div>
+    </div>
+    <div class="divider">⇅</div>
+    <div class="form-group">
+      <label>한국 원화 (KRW)</label>
+      <div class="input-wrap">
+        <input type="number" id="krwInput" placeholder="예: 10000" oninput="updateAll('krw')">
+        <span class="input-unit">원</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-big" id="resultBig" style="display:none">
+    <div class="label" id="resultLabel">계산 결과</div>
+    <div class="value" id="resultValue">—</div>
+  </div>
+
+  <div class="result-grid" id="resultGrid" style="display:none">
+    <div class="result-item"><div class="label">사토시</div><div class="value" id="rSat">—</div></div>
+    <div class="result-item"><div class="label">BTC</div><div class="value" id="rBtc">—</div></div>
+    <div class="result-item"><div class="label">원화</div><div class="value" id="rKrw">—</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📊 사토시 단위 빠른 참조표</div>
+  <div style="overflow-x:auto;">
+    <table class="ref-table" id="refTable">
+      <thead><tr><th>금액</th><th>사토시 (SAT)</th><th>BTC</th></tr></thead>
+      <tbody id="refBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (계산 결과 하단)</div>
+
+<div class="card">
+  <div class="card-title">🧰 다른 무료 계산기</div>
+  <div class="tool-links">
+    <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>세금 계산기</a>
+    <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-link"><span class="icon">📈</span>수익률 계산기</a>
+    <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="tool-link"><span class="icon">📊</span>물타기 계산기</a>
+    <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 계산기</a>
+    <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-link"><span class="icon">🏦</span>스테이킹 계산기</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="tool-link"><span class="icon">📁</span>CSV 세금계산기</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">❓ 자주 묻는 질문</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">사토시(Satoshi)란 무엇인가요? <span>▼</span></div>
+    <div class="faq-a">사토시는 비트코인의 최소 단위로, 비트코인 창시자 사토시 나카모토의 이름에서 유래했습니다. 1 BTC = 1억(100,000,000) 사토시입니다. 비트코인이 고가여도 소액으로 구매할 수 있는 이유가 바로 사토시 단위 덕분입니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">1만원으로 비트코인을 살 수 있나요? <span>▼</span></div>
+    <div class="faq-a">네. 업비트 기준 최소 5,000원부터 매수 가능합니다. BTC가 1억 3천만원이라면 1만원으로 약 7,692 사토시(0.00007692 BTC)를 구매할 수 있습니다. 정확한 수량은 위 환산기로 확인하세요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">사토시에도 세금이 붙나요? <span>▼</span></div>
+    <div class="faq-a">네. 사토시 단위로 거래해도 동일하게 가상자산 양도소득세(2027년부터 22%) 과세 대상입니다. 연간 250만원 이하 수익은 세금이 없습니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">밀리사토시, 비트(bit)란? <span>▼</span></div>
+    <div class="faq-a">1 BTC = 1,000,000 비트(μBTC) = 100,000,000 사토시입니다. 밀리비트코인(mBTC)은 0.001 BTC = 100,000 사토시입니다. 일반적으로 거래소에서는 BTC 단위와 사토시 단위를 주로 사용합니다.</div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+<div class="card">
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <a href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📖 2027 가상자산 세금 완벽 가이드 →</a>
+    <a href="https://cryptotax.cloud/blog/" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📰 코인 투자 가이드 블로그 →</a>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/about.html">소개</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
+    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+  </div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--sub)">contact@cryptotax.cloud</a></div>
+</footer>
+
+<script>
+const root=document.documentElement;
+const saved=localStorage.getItem('ctc-theme')||'light';
+root.setAttribute('data-theme',saved);
+document.getElementById('themeBtn').textContent=saved==='dark'?'☀️ 라이트':'🌙 다크';
+function toggleTheme(){const c=root.getAttribute('data-theme'),n=c==='dark'?'light':'dark';root.setAttribute('data-theme',n);localStorage.setItem('ctc-theme',n);document.getElementById('themeBtn').textContent=n==='dark'?'☀️ 라이트':'🌙 다크';}
+
+let btcKrwPrice=130000000;
+
+async function fetchBtcPrice(){
+  document.getElementById('priceStatus').textContent='⏳ 시세 불러오는 중...';
+  try{
+    const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw');
+    const d=await r.json();
+    btcKrwPrice=d.bitcoin.krw;
+    document.getElementById('btcKrw').value=btcKrwPrice;
+    document.getElementById('priceStatus').textContent=`✅ 실시간 시세 적용됨: ${btcKrwPrice.toLocaleString()}원 (CoinGecko)`;
+    buildRefTable();
+    updateAll('btc');
+  }catch(e){document.getElementById('priceStatus').textContent='❌ 시세 불러오기 실패. 직접 입력해주세요.';}
+}
+
+function updateAll(from){
+  btcKrwPrice=parseFloat(document.getElementById('btcKrw').value)||130000000;
+  let sat=0,btc=0,krw=0;
+  if(from==='sat'){sat=parseFloat(document.getElementById('satInput').value)||0;btc=sat/1e8;krw=btc*btcKrwPrice;}
+  else if(from==='btcAmt'){btc=parseFloat(document.getElementById('btcInput').value)||0;sat=btc*1e8;krw=btc*btcKrwPrice;}
+  else if(from==='krw'){krw=parseFloat(document.getElementById('krwInput').value)||0;btc=krw/btcKrwPrice;sat=btc*1e8;}
+  else if(from==='btc'){buildRefTable();return;}
+  if(from!=='sat') document.getElementById('satInput').value=sat>0?Math.round(sat):'';
+  if(from!=='btcAmt') document.getElementById('btcInput').value=btc>0?btc.toFixed(8):'';
+  if(from!=='krw') document.getElementById('krwInput').value=krw>0?Math.round(krw):'';
+  if(sat>0||btc>0||krw>0){
+    document.getElementById('resultBig').style.display='block';
+    document.getElementById('resultGrid').style.display='grid';
+    document.getElementById('resultLabel').textContent=from==='krw'?`${Math.round(krw).toLocaleString()}원으로 살 수 있는 비트코인`:from==='sat'?`${Math.round(sat).toLocaleString()} 사토시의 원화 가치`:`${btc.toFixed(8)} BTC의 원화 가치`;
+    document.getElementById('resultValue').textContent=from==='krw'?`${Math.round(sat).toLocaleString()} SAT`:from==='sat'?`${Math.round(krw).toLocaleString()}원`:`${Math.round(krw).toLocaleString()}원`;
+    document.getElementById('rSat').textContent=Math.round(sat).toLocaleString();
+    document.getElementById('rBtc').textContent=btc.toFixed(8);
+    document.getElementById('rKrw').textContent=Math.round(krw).toLocaleString()+'원';
+  }
+  buildRefTable();
+}
+
+function buildRefTable(){
+  btcKrwPrice=parseFloat(document.getElementById('btcKrw').value)||130000000;
+  const amts=[1000,5000,10000,50000,100000,500000,1000000,10000000];
+  const tbody=document.getElementById('refBody');
+  tbody.innerHTML='';
+  amts.forEach(a=>{
+    const btc=a/btcKrwPrice;
+    const sat=Math.round(btc*1e8);
+    tbody.innerHTML+=`<tr><td>${a.toLocaleString()}원</td><td>${sat.toLocaleString()}</td><td>${btc.toFixed(8)}</td></tr>`;
+  });
+}
+
+buildRefTable();
+fetchBtcPrice();
+
+function toggleFaq(el){const a=el.nextElementSibling,isOpen=a.style.display==='block';document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-q span').forEach(x=>x.textContent='▼');if(!isOpen){a.style.display='block';el.querySelector('span').textContent='▲';}}
+</script>
+</body>
+</html>
