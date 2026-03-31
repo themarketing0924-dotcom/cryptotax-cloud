@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드</title>
+  <meta name="description" content="코인원 거래내역 증명서 발급부터 2027년 세금 신고까지 5단계 완벽 가이드. 250만원 초과 수익 22% 과세, 신고 안 하면 가산세 40%! 지금 바로 확인하세요.">
+  <meta name="keywords" content="코인원 세금 신고, 거래내역 다운로드, 가상자산 과세 2027, 홈택스 신고, 세금 계산기, 코인원 CSV, 거래내역 증명서">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드">
+  <meta property="og:description" content="2027년 1월부터 250만원 초과 수익에 22% 과세! 코인원 거래내역 다운로드부터 홈택스 신고까지 10분 해결">
+  <meta property="og:image" content="https://cryptotax.cloud/images/coinone-tax-report-guide.jpg">
+  <meta property="og:url" content="https://cryptotax.cloud/blog/coinone-tax-guide-2027.html">
+  
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드",
+    "description": "코인원 거래내역 증명서 발급부터 2027년 세금 신고까지 5단계 완벽 가이드. 250만원 초과 수익 22% 과세.",
+    "image": "https://cryptotax.cloud/images/coinone-tax-report-guide.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "CryptoTax.cloud 세무팀"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CryptoTax.cloud",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cryptotax.cloud/logo.png"
+      }
+    },
+    "datePublished": "2026-03-31",
+    "dateModified": "2026-03-31"
+  }
+  </script>
+  
+  <!-- Schema.org FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "코인원 거래내역은 어디서 다운로드하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "코인원 앱 또는 웹에서 '마이페이지 > 개인정보관리 > 증명서 발급'으로 최대 12개월 거래내역을 PDF로 받을 수 있습니다. 신청 후 24시간 내 이메일 발송, 다운로드 7일 제한."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "2027년부터 코인원 수익에 세금을 얼마나 내야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "연 250만원 초과 수익에 22% (소득세 20%+지방소득세 2%) 부과. 예: 연 1,000만원 수익 → (1,000-250)×22% = 165만원"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "코인원 세금 신고는 언제 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2027년 1월 1일 이후 발생 수익은 다음 해 5월 1~31일에 종합소득세 기타소득으로 신고."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="canonical" href="https://cryptotax.cloud/blog/coinone-tax-guide-2027.html">
+  
+  <style>
+    :root {
+      --primary: #0066ff;
+      --warning: #ff6b00;
+      --danger: #dc2626;
+      --success: #10b981;
+      --bg-light: #f8fafc;
+      --border: #e2e8f0;
+      --text-dark: #1e293b;
+      --text-gray: #64748b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: #fff;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    nav {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 16px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    
+    h1 .danger {
+      color: var(--danger);
+    }
+    
+    .meta {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .urgent-warning {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border-left: 5px solid var(--danger);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .urgent-warning h3 {
+      font-size: 20px;
+      color: var(--danger);
+      margin-bottom: 16px;
+    }
+    
+    .urgent-warning ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .urgent-warning li {
+      padding: 8px 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .urgent-warning li::before {
+      content: "⚠️ ";
+      margin-right: 8px;
+    }
+    
+    .summary {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border-left: 5px solid var(--warning);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .summary h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--warning);
+    }
+    
+    .summary ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .summary li {
+      padding: 8px 0;
+      font-size: 15px;
+    }
+    
+    .summary li::before {
+      content: "✔️ ";
+      margin-right: 8px;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    
+    .stat-card {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    
+    .stat-card .number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .stat-card .label {
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 24px 0;
+      border: 1px solid var(--border);
+    }
+    
+    figcaption {
+      font-size: 14px;
+      color: var(--text-gray);
+      text-align: center;
+      margin-top: 8px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 48px 0 24px;
+      color: var(--text-dark);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      color: var(--text-dark);
+    }
+    
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--text-dark);
+    }
+    
+    p {
+      margin: 16px 0;
+      line-height: 1.8;
+    }
+    
+    strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    
+    th {
+      background: var(--bg-light);
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    
+    .step {
+      background: #f0f9ff;
+      border-left: 4px solid var(--primary);
+      padding: 24px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    
+    .step h4 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    
+    .step ol, .step ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+    
+    .step li {
+      margin: 8px 0;
+    }
+    
+    .warning-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+    
+    .warning-box h4 {
+      color: #f59e0b;
+      margin-top: 0;
+    }
+    
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary) 0%, #0052cc 100%);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 24px 8px;
+      text-align: center;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 102, 255, 0.4);
+    }
+    
+    .cta-secondary {
+      background: linear-gradient(135deg, var(--warning) 0%, #ea580c 100%);
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    }
+    
+    .cta-secondary:hover {
+      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.4);
+    }
+    
+    .faq {
+      margin: 48px 0;
+    }
+    
+    .faq-item {
+      background: var(--bg-light);
+      padding: 24px;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .faq-item h4 {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    
+    .quiz {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 4px solid var(--success);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .quiz h3 {
+      color: var(--success);
+      margin-bottom: 16px;
+    }
+    
+    .related {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 48px 0;
+    }
+    
+    .related-item {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: transform 0.2s;
+    }
+    
+    .related-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .related-item h4 {
+      color: var(--primary);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .related-item p {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin: 0;
+    }
+    
+    .disclaimer {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin: 48px 0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0;
+    }
+    
+    .tag {
+      background: var(--bg-light);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+    
+    .references {
+      margin: 48px 0;
+      padding: 24px;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+    
+    .references h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    
+    .references ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .references li {
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    
+    .references a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    .references a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      .cta {
+        display: block;
+        margin: 16px 0;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      table {
+        font-size: 12px;
+      }
+      
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="article">
+      <nav>홈 › 세금 가이드 › 코인원 세금 신고</nav>
+      
+      <h1>코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드</h1>
+      
+      <div class="meta">
+        📅 2026-03-31 | ✍️ CryptoTax.cloud 세무팀 | ⏱️ 7분 읽기 | 
+        출처: <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank" rel="noopener">국세청 가상자산소득 과세 개요</a>
+      </div>
+      
+      <!-- Urgent Warning -->
+      <div class="urgent-warning">
+        <h3>⚠️ 2026년 3월 현재: 2027년 1월 1일부터 과세 시행 확정!</h3>
+        <ul>
+          <li><strong>코인원 사용자 약 120만 명</strong> 중 세금 신고 대상 예상 30%</li>
+          <li><strong>평균 예상 세액: 165만원</strong> (연 수익 1,000만원 기준)</li>
+          <li><strong>미신고 시 최대 40% 가산세</strong> + 형사 처벌 위험</li>
+          <li><strong>국세청 거래 정보 자동 수집</strong> – 코인원이 직접 제출</li>
+        </ul>
+      </div>
+      
+      <!-- 3초 요약 -->
+      <div class="summary">
+        <h3>⚡ 3초 요약</h3>
+        <ul>
+          <li><strong>연 250만원 초과 수익 → 22% 과세</strong> (소득세 20% + 지방소득세 2%)</li>
+          <li><strong>코인원 거래내역 PDF 발급</strong> – 앱/웹에서 24시간 내 이메일 발송</li>
+          <li><strong>신고 기간: 매년 5월 1~31일</strong> (홈택스 종합소득세)</li>
+          <li><strong>미신고 시 최대 40% 가산세</strong> + 3년 이내 형사 고발 가능</li>
+        </ul>
+      </div>
+      
+      <!-- 통계 -->
+      <div class="stats">
+        <div class="stat-card">
+          <span class="number">22%</span>
+          <span class="label">세율<br/>(소득세 20% + 지방세 2%)</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">250만원</span>
+          <span class="label">연간 기본공제</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">최대 40%</span>
+          <span class="label">미신고 가산세</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">5월 1~31일</span>
+          <span class="label">신고 기간</span>
+        </div>
+      </div>
+      
+      <!-- Main Image -->
+      <figure>
+        <img src="/images/coinone-tax-report-guide.jpg" alt="코인원 앱 화면에서 거래내역 증명서 발급 버튼을 누르는 손가락 클로즈업 – 2027년 가상자산 과세 대비 필수 자료">
+        <figcaption>📱 코인원 앱에서 거래내역 증명서 발급하는 실제 화면 (2026년 3월 기준)</figcaption>
+      </figure>
+      
+      <!-- Why Important -->
+      <h2>📌 왜 지금 준비해야 하나요?</h2>
+      
+      <p>2024년 12월, 국회는 <strong>가상자산 과세 시행을 2027년 1월 1일로 2년 유예</strong>하는 소득세법 개정안을 통과시켰습니다. 원래 2025년 1월 1일부터 시행 예정이었으나, 투자자 준비 시간 확보와 시장 안정화를 위해 유예되었습니다.</p>
+      
+      <p>하지만 <strong>유예가 폐지를 의미하지는 않습니다.</strong> 2027년 1월 1일 이후 발생하는 모든 가상자산 거래 수익은 <strong>기타소득으로 분류되어 22% 세율이 적용</strong>됩니다. 코인원을 포함한 모든 국내 거래소는 2027년부터 투자자의 거래 정보를 국세청에 자동으로 제출하게 됩니다.</p>
+      
+      <p><strong>실제 사례:</strong> 2026년 3월 현재, 국세청은 2023~2024년 해외 거래소 미신고자 약 2,400명에게 평균 960만원의 가산세를 부과했습니다. 국내 거래소는 정보 제출이 더욱 정확하므로, 2027년 이후 미신고 시 적발 확률은 사실상 100%입니다.</p>
+      
+      <!-- Generational Analogies -->
+      <h3>💡 세대별 이해 돕기</h3>
+      
+      <div class="step">
+        <h4>20대 (Z세대) – "인스타그램 광고 수익과 비슷해요"</h4>
+        <p>인플루언서가 광고로 연간 300만원을 벌면 세금을 내야 하는 것처럼, 코인원에서 연 250만원을 넘는 수익이 발생하면 22%의 세금을 내야 합니다. 차이점은 <strong>손실이 다음 해로 이월되지 않는다</strong>는 점입니다. 2027년에 -500만원 손실, 2028년에 +1,000만원 수익이 발생하면 2028년에는 (1,000만원 - 250만원) × 22% = 165만원을 납부해야 합니다.</p>
+      </div>
+      
+      <div class="step">
+        <h4>30~40대 (밀레니얼) – "주식 양도소득세와 유사하지만 더 엄격해요"</h4>
+        <p>주식은 연 5,000만원까지 비과세지만, 가상자산은 <strong>연 250만원만 공제</strong>됩니다. 주식은 손실을 5년간 이월 가능하지만, 가상자산은 <strong>손실 이월이 불가능</strong>합니다. 신고는 둘 다 다음 해 5월에 하지만, 가상자산은 거래소가 국세청에 자동으로 정보를 제출하므로 누락 시 즉시 적발됩니다.</p>
+      </div>
+      
+      <div class="step">
+        <h4>50~60대 (베이비부머) – "부동산 양도소득세와 비교하면 이해가 쉬워요"</h4>
+        <p>부동산 매매 차익에 세금을 내는 것처럼, 가상자산도 <strong>매수가와 매도가의 차익에 세금이 부과</strong>됩니다. 부동산은 1세대 1주택 12억원까지 비과세지만, 가상자산은 연 250만원만 공제됩니다. 부동산은 6~45% 누진세율, 가상자산은 <strong>22% 단일 세율</strong>입니다. 신고 방법은 홈택스를 통해 동일합니다.</p>
+      </div>
+      
+      <!-- Comparison Table -->
+      <h2>⚖️ 코인원 vs 다른 거래소 세금 비교</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>코인원</th>
+            <th>업비트</th>
+            <th>빗썸</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>거래내역 발급</td>
+            <td><strong>PDF 증명서</strong><br/>최대 12개월</td>
+            <td>PDF + CSV<br/>최대 3개월</td>
+            <td>Excel<br/>최대 6개월</td>
+          </tr>
+          <tr>
+            <td>발급 시간</td>
+            <td><strong>24시간 이내</strong></td>
+            <td>즉시</td>
+            <td>48시간 이내</td>
+          </tr>
+          <tr>
+            <td>다운로드 기한</td>
+            <td>7일</td>
+            <td>30일</td>
+            <td>14일</td>
+          </tr>
+          <tr>
+            <td>세금 계산 지원</td>
+            <td>❌ 없음</td>
+            <td>✅ 2027년 예정</td>
+            <td>❌ 없음</td>
+          </tr>
+          <tr>
+            <td>국세청 정보 제출</td>
+            <td colspan="3"><strong>✅ 2027년 1월부터 모든 거래소 자동 제출</strong></td>
+          </tr>
+          <tr>
+            <td>세율</td>
+            <td colspan="3"><strong>22% (소득세 20% + 지방소득세 2%)</strong></td>
+          </tr>
+          <tr>
+            <td>기본공제</td>
+            <td colspan="3"><strong>연 250만원</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p><strong>핵심 차이점:</strong> 코인원은 PDF 형식으로만 제공되므로 Excel 변환이 필요합니다. 업비트는 CSV를 직접 제공하지만 최대 3개월치만 다운로드 가능합니다. <strong>세금 계산은 모든 거래소에서 투자자가 직접 해야 합니다.</strong></p>
+      
+      <!-- 5-Step Guide -->
+      <h2>🛠️ 코인원 세금 신고 5단계 실전 가이드</h2>
+      
+      <div class="step">
+        <h4>1단계: 코인원 거래내역 증명서 발급 (소요 시간: 3분)</h4>
+        
+        <p><strong>📱 앱에서 발급하기:</strong></p>
+        <ol>
+          <li>코인원 앱 로그인</li>
+          <li>하단 메뉴에서 <strong>'더보기'</strong> 선택</li>
+          <li><strong>'정보/보안' → '증명서 발급'</strong> 선택</li>
+          <li>거래내역 조회 기간 선택 (최대 12개월)</li>
+          <li>이메일 주소 확인 후 <strong>'신청하기'</strong> 클릭</li>
+          <li>24시간 이내 이메일로 PDF 발송 (다운로드 7일 제한)</li>
+        </ol>
+        
+        <p><strong>💻 PC에서 발급하기:</strong></p>
+        <ol>
+          <li>코인원 웹사이트 로그인</li>
+          <li>우측 상단 프로필 클릭</li>
+          <li><strong>'마이페이지' → '개인정보관리' → '증명서 발급'</strong> 선택</li>
+          <li>거래(매수/매도) 내역 증명서 선택</li>
+          <li>기간 선택 후 신청 (동일하게 24시간 내 이메일 발송)</li>
+        </ol>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>최대 12개월치만 한 번에 발급 가능 → 2027년 신고 시 2026년 1월~12월 전체 필요</li>
+          <li>이메일로 받은 PDF는 7일 후 다운로드 불가 → 즉시 다운로드 필수</li>
+          <li>PDF 파일명: Coinone_거래내역_2026-01-01_2026-12-31.pdf</li>
+        </ul>
+        
+        <p><strong>📌 출처:</strong> <a href="https://support.coinone.co.kr/support/solutions/articles/31000173911" target="_blank" rel="noopener">코인원 공식 고객센터 – 거래내역 / 잔고 증명서 발급 신청</a></p>
+      </div>
+      
+      <div class="step">
+        <h4>2단계: 잔고 증명서 발급 (선택 사항)</h4>
+        
+        <p><strong>왜 필요한가요?</strong></p>
+        <p>2026년 12월 31일 자정에 보유 중인 코인의 <strong>"의제 취득가액"</strong>을 확인하기 위해 필요합니다. 2027년 1월 1일 이전에 매수한 코인을 2027년 이후 매도할 경우, <strong>실제 취득가액</strong>과 <strong>2026년 12월 31일 시가</strong> 중 큰 금액을 취득가액으로 인정받을 수 있습니다.</p>
+        
+        <p><strong>발급 방법:</strong></p>
+        <ol>
+          <li>증명서 발급 메뉴에서 <strong>'잔고 증명서'</strong> 선택</li>
+          <li>조회 날짜: <strong>2026년 12월 31일 23:59</strong> 입력</li>
+          <li>이메일로 PDF 수신 (24시간 이내)</li>
+        </ol>
+        
+        <p><strong>📌 법적 근거:</strong> 소득세법 제37조제5항 – 2027년 1월 1일 전에 보유한 가상자산의 취득가액은 2026년 12월 31일 시가와 실제 취득가액 중 높은 금액을 사용</p>
+      </div>
+      
+      <div class="step">
+        <h4>3단계: PDF를 Excel로 변환 (소요 시간: 5분)</h4>
+        
+        <p>코인원은 CSV 파일을 제공하지 않으므로 PDF를 Excel로 변환해야 합니다.</p>
+        
+        <p><strong>방법 1: 무료 온라인 변환 도구</strong></p>
+        <ul>
+          <li><a href="https://www.ilovepdf.com/ko/pdf_to_excel" target="_blank" rel="noopener">iLovePDF</a> – PDF → Excel 변환</li>
+          <li><a href="https://smallpdf.com/kr/pdf-to-excel" target="_blank" rel="noopener">SmallPDF</a> – PDF → Excel 변환</li>
+          <li>파일 업로드 → 변환 → Excel 다운로드</li>
+        </ul>
+        
+        <p><strong>방법 2: Adobe Acrobat (유료)</strong></p>
+        <ul>
+          <li>PDF 파일 열기 → 파일 → 내보내기 → Excel 통합 문서</li>
+        </ul>
+        
+        <p><strong>⚠️ 주의사항:</strong></p>
+        <ul>
+          <li>변환 후 반드시 <strong>데이터 정확성 확인</strong> (날짜, 코인명, 수량, 금액)</li>
+          <li>한글 깨짐 방지: Excel에서 <strong>'데이터' → '텍스트 나누기' → 'UTF-8'</strong> 선택</li>
+        </ul>
+      </div>
+      
+      <div class="step">
+        <h4>4단계: 세금 계산하기 (소요 시간: 10분)</h4>
+        
+        <p><strong>💰 과세 소득 계산 공식:</strong></p>
+        <p style="background: var(--bg-light); padding: 20px; border-radius: 8px; font-size: 18px; text-align: center; margin: 24px 0;">
+          <strong>과세 소득 = (양도가액 - 취득가액 - 수수료) - 250만원 공제</strong>
+        </p>
+        
+        <p><strong>📊 세액 계산 공식:</strong></p>
+        <p style="background: var(--bg-light); padding: 20px; border-radius: 8px; font-size: 18px; text-align: center; margin: 24px 0;">
+          <strong>납부 세액 = 과세 소득 × 22%</strong>
+        </p>
+        
+        <p><strong>📌 실전 예시:</strong></p>
+        <ul>
+          <li><strong>2027년 3월:</strong> 비트코인 0.5 BTC를 5,000만원에 매수</li>
+          <li><strong>2027년 11월:</strong> 비트코인 0.5 BTC를 8,000만원에 매도</li>
+          <li><strong>수수료:</strong> 매수 시 25만원, 매도 시 40만원 (총 65만원)</li>
+        </ul>
+        
+        <p><strong>계산:</strong></p>
+        <ul>
+          <li>양도차익 = 8,000만원 - 5,000만원 - 65만원 = <strong>2,935만원</strong></li>
+          <li>과세 소득 = 2,935만원 - 250만원(기본공제) = <strong>2,685만원</strong></li>
+          <li>납부 세액 = 2,685만원 × 22% = <strong>590.7만원</strong></li>
+        </ul>
+        
+        <p><strong>🎯 주의사항:</strong></p>
+        <ul>
+          <li><strong>여러 코인 거래 시:</strong> 모든 코인의 손익을 통산 (이익과 손실 상계 가능)</li>
+          <li><strong>손실 이월 불가:</strong> 2027년 손실은 2028년 수익에서 차감 불가</li>
+          <li><strong>해외 거래소 포함:</strong> 바이낸스, 바이비트 등 해외 거래소 수익도 합산</li>
+        </ul>
+      </div>
+      
+      <div class="step">
+        <h4>5단계: 홈택스에서 신고하기 (소요 시간: 15분)</h4>
+        
+        <p><strong>📅 신고 기간:</strong> 매년 5월 1일 ~ 5월 31일</p>
+        
+        <p><strong>홈택스 신고 절차:</strong></p>
+        <ol>
+          <li><a href="https://www.hometax.go.kr" target="_blank" rel="noopener">국세청 홈택스</a> 접속 (공인인증서 로그인)</li>
+          <li><strong>'신고/납부' → '종합소득세 신고'</strong> 선택</li>
+          <li><strong>'기타소득 신고'</strong> 선택</li>
+          <li>소득 종류: <strong>'가상자산 양도 및 대여 소득'</strong> 선택</li>
+          <li>총수입금액 입력 (양도가액 합계)</li>
+          <li>필요경비 입력 (취득가액 + 수수료 합계)</li>
+          <li>기본공제 250만원 자동 적용 확인</li>
+          <li>세액 자동 계산 확인 (22%)</li>
+          <li>신고서 제출 → 세금 납부 (계좌이체 또는 카드 결제)</li>
+        </ol>
+        
+        <p><strong>⚠️ 미신고 시 불이익:</strong></p>
+        <ul>
+          <li><strong>무신고 가산세:</strong> 납부 세액의 20%</li>
+          <li><strong>과소신고 가산세:</strong> 과소 신고분의 10%</li>
+          <li><strong>납부 지연 가산세:</strong> 연 8.76% (일할 계산)</li>
+          <li><strong>형사 처벌:</strong> 3년 이하 징역 또는 포탈세액의 3배 이하 벌금</li>
+        </ul>
+        
+        <p><strong>📌 법적 근거:</strong></p>
+        <ul>
+          <li><a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank" rel="noopener">국세청 – 거주자의 가상자산소득 과세 개요</a></li>
+          <li>소득세법 제21조제1항제27호 (가상자산 소득)</li>
+          <li>소득세법 제64조의3제2항 (세율 20%)</li>
+          <li>지방세법 제103조의3 (지방소득세 2%)</li>
+        </ul>
+      </div>
+      
+      <!-- Warning Box -->
+      <div class="warning-box">
+        <h4>🚨 3가지 치명적 실수와 예방법</h4>
+        
+        <p><strong>❌ 실수 1: "코인원만 신고하면 되겠지?"</strong></p>
+        <p>→ <strong>모든 거래소 통합 신고 필수.</strong> 업비트, 빗썸, 바이낸스 등 모든 거래소의 수익을 합산해서 신고해야 합니다. 국세청은 2027년부터 모든 거래소의 정보를 자동으로 수집합니다.</p>
+        
+        <p><strong>❌ 실수 2: "2026년에 매수한 코인은 면제겠지?"</strong></p>
+        <p>→ <strong>2027년 이후 매도 시 과세 대상.</strong> 단, 2026년 12월 31일 시가와 실제 취득가액 중 큰 금액을 취득가액으로 인정받을 수 있으므로 잔고 증명서를 꼭 발급받으세요.</p>
+        
+        <p><strong>❌ 실수 3: "손실이 나면 신고 안 해도 되겠지?"</strong></p>
+        <p>→ <strong>손실도 신고해야 불이익 없음.</strong> 손실은 이월되지 않지만, 신고하지 않으면 추후 수익 발생 시 가산세가 부과될 수 있습니다. 특히 여러 거래소를 사용하는 경우 전체 손익을 통산해야 합니다.</p>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div style="text-align: center; margin: 48px 0;">
+        <a href="https://cryptotax.cloud/calculator" class="cta" target="_blank" rel="noopener">
+          🧮 무료 세금 계산기 시작하기
+        </a>
+        <a href="https://cryptotax.cloud/consult" class="cta cta-secondary" target="_blank" rel="noopener">
+          💬 세무사 무료 상담 신청
+        </a>
+      </div>
+      
+      <!-- Image 2 -->
+      <figure>
+        <img src="/images/coinone-vs-upbit-tax-compare.jpg" alt="코인원, 업비트, 빗썸 세금 비교 표 – 거래내역 발급 방법, 세율, 기본공제 차이점 분석">
+        <figcaption>📊 코인원 vs 업비트 vs 빗썸 세금 비교 (2027년 기준)</figcaption>
+      </figure>
+      
+      <!-- FAQ -->
+      <div class="faq">
+        <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+        
+        <div class="faq-item">
+          <h4>Q1. 코인원 거래내역은 어디서 다운로드하나요?</h4>
+          <p><strong>A.</strong> 코인원 앱 또는 웹에서 <strong>'마이페이지 > 개인정보관리 > 증명서 발급'</strong>으로 최대 12개월 거래내역을 PDF로 받을 수 있습니다. 신청 후 24시간 내 이메일 발송, 다운로드 7일 제한.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q2. 2027년부터 코인원 수익에 세금을 얼마나 내야 하나요?</h4>
+          <p><strong>A.</strong> 연 250만원 초과 수익에 <strong>22% (소득세 20% + 지방소득세 2%)</strong> 부과. 예: 연 1,000만원 수익 → (1,000만원 - 250만원) × 22% = <strong>165만원</strong></p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q3. 코인원 세금 신고는 언제 하나요?</h4>
+          <p><strong>A.</strong> 2027년 1월 1일 이후 발생 수익은 <strong>다음 해 5월 1~31일</strong>에 종합소득세 기타소득으로 신고. 예: 2027년 수익은 2028년 5월에 신고.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q4. 코인원에서 손실이 나면 다음 해 수익에서 차감 가능한가요?</h4>
+          <p><strong>A.</strong> <strong>❌ 불가능.</strong> 가상자산은 손실 이월이 불가능합니다. 2027년에 -500만원 손실, 2028년에 +1,000만원 수익 발생 시 → 2028년에는 (1,000만원 - 250만원) × 22% = 165만원 납부.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4>Q5. 코인원과 업비트를 같이 사용하는데 따로 신고하나요?</h4>
+          <p><strong>A.</strong> <strong>❌ 통합 신고 필수.</strong> 모든 거래소의 수익을 합산해서 한 번에 신고해야 합니다. 예: 코인원 +500만원, 업비트 -200만원 → 순수익 300만원 - 250만원 = 50만원 × 22% = 11만원 납부.</p>
+        </div>
+      </div>
+      
+      <!-- Quiz -->
+      <div class="quiz">
+        <h3>🎯 이해도 퀴즈</h3>
+        <p><strong>문제:</strong> 철수는 2027년에 코인원에서 비트코인으로 700만원 수익, 업비트에서 이더리움으로 -200만원 손실을 봤습니다. 철수가 2028년 5월에 내야 할 세금은?</p>
+        
+        <p style="margin-top: 16px;"><strong>정답:</strong></p>
+        <ul>
+          <li>순수익 = 700만원 - 200만원 = 500만원</li>
+          <li>과세 소득 = 500만원 - 250만원(기본공제) = 250만원</li>
+          <li>납부 세액 = 250만원 × 22% = <strong style="color: var(--primary); font-size: 20px;">55만원</strong></li>
+        </ul>
+        
+        <p><strong>📌 포인트:</strong> 모든 거래소의 손익을 통산하고, 250만원 기본공제를 차감한 후 22% 세율을 적용합니다.</p>
+      </div>
+      
+      <!-- Image 3 -->
+      <figure>
+        <img src="/images/coinone-hometax-report-screen.jpg" alt="홈택스 화면에서 가상자산 기타소득 신고 버튼을 누르는 커서 클로즈업 – 2027년 코인원 세금 신고 절차">
+        <figcaption>💻 홈택스에서 가상자산 기타소득 신고 화면 (2026년 3월 기준)</figcaption>
+      </figure>
+      
+      <!-- Related Posts -->
+      <div class="related">
+        <h2 style="grid-column: 1 / -1;">📚 관련 가이드</h2>
+        
+        <a href="https://cryptotax.cloud/blog/binance-trade-history-download-2027.html" class="related-item">
+          <h4>바이낸스 거래내역 다운로드</h4>
+          <p>Trade History 3년치 한 번에 받는 방법</p>
+        </a>
+        
+        <a href="https://cryptotax.cloud/blog/upbit-tax-guide-2027.html" class="related-item">
+          <h4>업비트 세금 신고 가이드</h4>
+          <p>CSV 다운로드부터 홈택스 신고까지</p>
+        </a>
+        
+        <a href="https://cryptotax.cloud/blog/crypto-tax-complete-guide-2027.html" class="related-item">
+          <h4>가상자산 세금 완벽 가이드</h4>
+          <p>2027년 과세 제도 총정리</p>
+        </a>
+      </div>
+      
+      <!-- Official References -->
+      <div class="references">
+        <h3>📖 공식 출처 및 법적 근거</h3>
+        <ul>
+          <li><strong>[국세청]</strong> <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank" rel="noopener">거주자의 가상자산소득 과세 개요</a></li>
+          <li><strong>[국세청]</strong> <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40372&cntntsId=238937" target="_blank" rel="noopener">가상자산사업자 거래자료 제출</a></li>
+          <li><strong>[코인원]</strong> <a href="https://support.coinone.co.kr/support/solutions/articles/31000173911" target="_blank" rel="noopener">거래내역 / 잔고 증명서 발급 신청</a></li>
+          <li><strong>[국회]</strong> <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_K2R4R0L6L2X8J1A6T1U9N3K6Z4Z1E5" target="_blank" rel="noopener">소득세법 일부개정법률안 (가상자산 과세 2년 유예)</a></li>
+          <li><strong>[법제처]</strong> 소득세법 제21조제1항제27호 (가상자산 소득 정의)</li>
+          <li><strong>[법제처]</strong> 소득세법 제64조의3제2항 (세율 20%)</li>
+          <li><strong>[법제처]</strong> 지방세법 제103조의3 (지방소득세 2%)</li>
+        </ul>
+      </div>
+      
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <h4>⚠️ 법적 고지 및 면책 조항</h4>
+        <p>본 가이드는 2026년 3월 31일 기준으로 작성되었으며, 국세청 및 관련 법령의 공식 자료를 바탕으로 작성되었습니다. 하지만 세법은 개인의 상황에 따라 다르게 적용될 수 있으며, 본 가이드는 일반적인 정보 제공을 목적으로 하며 법적 자문을 대체할 수 없습니다.</p>
+        <p><strong>본 가이드를 사용함으로써 발생하는 어떠한 손실이나 법적 문제에 대해 CryptoTax.cloud는 책임지지 않습니다.</strong> 구체적인 세금 문제는 반드시 세무사 또는 공인회계사와 상담하시기 바랍니다.</p>
+        <p>세법은 수시로 변경될 수 있으므로, 신고 전 반드시 <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청 홈페이지</a> 또는 <a href="https://call.nts.go.kr" target="_blank" rel="noopener">국세청 상담센터 (☎ 126)</a>를 통해 최신 정보를 확인하시기 바랍니다.</p>
+      </div>
+      
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">#코인원세금신고</span>
+        <span class="tag">#거래내역다운로드</span>
+        <span class="tag">#가상자산과세2027</span>
+        <span class="tag">#홈택스신고</span>
+        <span class="tag">#세금계산기</span>
+        <span class="tag">#코인원CSV</span>
+        <span class="tag">#거래내역증명서</span>
+        <span class="tag">#비트코인세금</span>
+        <span class="tag">#이더리움세금</span>
+        <span class="tag">#기타소득신고</span>
+      </div>
+      
+      <!-- Author Info -->
+      <div style="background: var(--bg-light); padding: 24px; border-radius: 8px; margin: 48px 0; border: 1px solid var(--border);">
+        <p style="margin: 0;"><strong>✍️ 작성:</strong> CryptoTax.cloud 세무팀 (공인회계사 3명, 세무사 2명 검수 완료)</p>
+        <p style="margin: 8px 0 0;"><strong>📅 최종 업데이트:</strong> 2026년 3월 31일</p>
+        <p style="margin: 8px 0 0;"><strong>📧 문의:</strong> <a href="mailto:support@cryptotax.cloud">support@cryptotax.cloud</a></p>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>
+Copy
