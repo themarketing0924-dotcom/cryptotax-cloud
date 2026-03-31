@@ -437,6 +437,7 @@ footer a:hover { color: var(--accent); }
   .result-summary { grid-template-columns: 1fr 1fr; }
 }
 </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
@@ -450,7 +451,13 @@ footer a:hover { color: var(--accent); }
     <li><a href="/blog/">📰 블로그</a></li>
   </ul>
   <div class="nav-right">
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+    <button class="theme-toggle" onclick="toggleTheme()">
+  <span id="themeIcon">☀️</span>
+  <div class="toggle-track">
+    <div class="toggle-thumb"></div>
+  </div>
+  <span id="themeLabel">라이트</span>
+</button>
   </div>
 </nav>
 
