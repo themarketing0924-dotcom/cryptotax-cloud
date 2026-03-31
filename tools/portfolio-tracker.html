@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 포트폴리오 수익률 계산기 | 업비트·빗썸 통합 — CryptoTax.cloud</title>
+<meta name="description" content="업비트·빗썸·코인원·바이낸스 보유 코인을 입력하면 실시간 수익률·평가금액·예상 세금까지 한눈에 확인. 완전 무료, 개인정보 수집 없음.">
+<meta name="keywords" content="코인 포트폴리오 수익률, 가상자산 수익 계산기, 업비트 수익률, 코인 평가금액, 코인 손익계산">
+<link rel="canonical" href="https://cryptotax.cloud/tools/portfolio-tracker.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="코인 포트폴리오 수익률 계산기 | CryptoTax.cloud">
+<meta property="og:description" content="보유 코인 수익률·평가금액·예상 세금 한눈에 확인. 실시간 가격 연동, 완전 무료.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/portfolio-tracker.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"코인 포트폴리오 수익률 계산기","url":"https://cryptotax.cloud/tools/portfolio-tracker.html","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"inLanguage":"ko-KR"}
+</script>
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--card:#1c2128;--border:#30363d;--accent:#f7931a;--accent2:#00c896;--danger:#f85149;--warn:#f0b429;--text:#e6edf3;--text2:#8b949e;--text3:#6e7681;--shadow:0 4px 24px rgba(0,0,0,.4);--radius:12px;--tr:.25s ease}
+[data-theme="light"]{--bg:#f6f8fa;--bg2:#fff;--bg3:#f0f2f5;--card:#fff;--border:#d0d7de;--text:#1f2328;--text2:#57606a;--text3:#8c959f;--shadow:0 4px 24px rgba(0,0,0,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+[data-theme="light"] nav{background:rgba(246,248,250,.92)}
+.nav-logo{font-size:1.1rem;font-weight:700;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:1.2rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.88rem;transition:color var(--tr)}
+.nav-links a:hover{color:var(--accent)}
+.theme-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.35rem .7rem;font-size:.85rem;cursor:pointer;transition:all var(--tr)}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.hero{background:linear-gradient(135deg,#0d1117,#161b22 50%,#1a2332);padding:3rem 1.5rem 2.5rem;text-align:center;border-bottom:1px solid var(--border)}
+[data-theme="light"] .hero{background:linear-gradient(135deg,#fff8f0,#e8f4fd)}
+.hero-badge{display:inline-block;background:rgba(247,147,26,.12);color:var(--accent);border:1px solid rgba(247,147,26,.3);border-radius:20px;padding:.3rem .9rem;font-size:.78rem;font-weight:600;letter-spacing:.05em;margin-bottom:.8rem}
+.hero h1{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.3;margin-bottom:.7rem}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--text2);font-size:.95rem;max-width:540px;margin:0 auto 1.2rem}
+.privacy-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,200,150,.1);color:var(--accent2);border:1px solid rgba(0,200,150,.25);border-radius:8px;padding:.4rem .9rem;font-size:.82rem;font-weight:600}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:2rem;padding:2rem 0 4rem}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);margin-bottom:1.5rem}
+.card-title{font-size:1.05rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:1.4rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+
+/* SUMMARY CARDS */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem}
+.summary-stat{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center}
+.summary-stat .s-label{font-size:.75rem;color:var(--text2);margin-bottom:.3rem}
+.summary-stat .s-value{font-size:1.15rem;font-weight:800}
+.s-green{color:var(--accent2)} .s-red{color:var(--danger)} .s-orange{color:var(--accent)} .s-blue{color:#58a6ff}
+
+/* COIN INPUT TABLE */
+.coin-table-wrap{overflow-x:auto}
+.coin-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.coin-table th{background:var(--bg3);color:var(--text2);padding:.65rem .8rem;text-align:left;border-bottom:1px solid var(--border);font-weight:600;white-space:nowrap}
+.coin-table td{padding:.6rem .8rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.coin-table tr:last-child td{border-bottom:none}
+.coin-table tr:hover td{background:var(--bg3)}
+.coin-icon{width:24px;height:24px;border-radius:50%;object-fit:contain;margin-right:.4rem;vertical-align:middle}
+.coin-name-cell{display:flex;align-items:center;gap:.4rem;font-weight:600}
+.pct-badge{padding:.2rem .55rem;border-radius:5px;font-size:.75rem;font-weight:700}
+.pct-pos{background:rgba(0,200,150,.15);color:var(--accent2)}
+.pct-neg{background:rgba(248,81,73,.15);color:var(--danger)}
+.pct-zero{background:var(--bg3);color:var(--text3)}
+
+/* INPUT CONTROLS */
+input[type="text"],input[type="number"],select{padding:.52rem .7rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.86rem;transition:border-color var(--tr);width:100%}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+.btn{padding:.55rem 1rem;border-radius:8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:.86rem;font-weight:600;cursor:pointer;transition:all var(--tr);display:inline-flex;align-items:center;gap:.35rem}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:#e8860f;color:#fff}
+.btn-danger{background:transparent;border:1px solid var(--border);color:var(--danger);padding:.3rem .55rem;font-size:.78rem;border-radius:6px;cursor:pointer;transition:all var(--tr)}
+.btn-danger:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
+.btn-add{width:100%;padding:.65rem;border:1px dashed var(--border);border-radius:8px;background:transparent;color:var(--text2);font-size:.88rem;cursor:pointer;transition:all var(--tr);margin-top:.6rem}
+.btn-add:hover{border-color:var(--accent);color:var(--accent)}
+
+/* PRICE REFRESH */
+.price-refresh{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--text3)}
+.refresh-dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* DONUT CHART */
+.chart-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem}
+canvas#donutChart{max-width:200px}
+.chart-legend{width:100%;font-size:.82rem}
+.legend-item{display:flex;align-items:center;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid var(--border)}
+.legend-item:last-child{border-bottom:none}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-right:.4rem}
+
+/* TAX PREVIEW */
+.tax-preview{background:linear-gradient(135deg,rgba(247,147,26,.08),rgba(248,81,73,.05));border:1px solid rgba(247,147,26,.2);border-radius:10px;padding:1.2rem}
+.tax-preview h4{font-size:.9rem;font-weight:700;margin-bottom:.8rem}
+.tax-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--text2);padding:.3rem 0}
+.tax-row strong{color:var(--text)}
+.tax-total{font-size:1rem;font-weight:800;color:var(--danger);padding-top:.6rem;margin-top:.3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:76px;height:fit-content}
+.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.2rem;box-shadow:var(--shadow)}
+.sidebar-title{font-size:.9rem;font-weight:700;display:flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.quick-link{display:flex;align-items:center;justify-content:space-between;padding:.55rem .6rem;border-radius:7px;text-decoration:none;color:var(--text);font-size:.84rem;transition:background var(--tr);margin-bottom:.2rem}
+.quick-link:hover{background:var(--bg3);color:var(--accent)}
+.dday-box{text-align:center;padding:.5rem}
+.dday-count{font-size:2rem;font-weight:900;color:var(--accent);line-height:1.1}
+.dday-label{font-size:.78rem;color:var(--text2);margin-top:.3rem}
+.cta-box{background:linear-gradient(135deg,rgba(247,147,26,.12),rgba(0,200,150,.08));border:1px solid rgba(247,147,26,.25);border-radius:10px;padding:1.2rem;text-align:center}
+.cta-box h4{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+.cta-box p{font-size:.8rem;color:var(--text2);margin-bottom:.9rem}
+.cta-link{display:block;padding:.6rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:700;transition:background var(--tr)}
+.cta-link:hover{background:#e8860f}
+.ad-slot{background:var(--bg3);border:1px dashed var(--border);border-radius:var(--radius);padding:1rem;text-align:center;color:var(--text3);font-size:.8rem;margin-bottom:1.2rem}
+.ad-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center}
+footer p{color:var(--text3);font-size:.82rem;line-height:1.8}
+footer a{color:var(--text2);text-decoration:none}
+footer a:hover{color:var(--accent)}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:1rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <ul class="nav-links">
+    <li><a href="/#calculator">💰 세금계산기</a></li>
+    <li><a href="/#tools">🧰 도구모음</a></li>
+    <li><a href="/market/">📊 시장데이터</a></li>
+    <li><a href="/blog/">📰 블로그</a></li>
+  </ul>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">📊 실시간 가격 연동 · 세금 예측 포함</div>
+  <h1>내 코인 포트폴리오<br><span>수익률 한눈에 보기</span></h1>
+  <p>보유 코인과 매수 단가를 입력하면<br>현재 수익률, 평가금액, 2027년 예상 세금까지 자동 계산.</p>
+  <div class="privacy-badge">🔒 데이터 서버 저장 없음 · 브라우저에서만 처리</div>
+</section>
+
+<div class="container" style="padding-top:1.5rem">
+  <div class="ad-slot" style="min-height:90px">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  </div>
+</div>
+
+<div class="container">
+<div class="main-grid">
+<main>
+
+<!-- 요약 통계 -->
+<div class="card">
+  <div class="card-title">
+    📊 포트폴리오 요약
+    <div class="price-refresh">
+      <div class="refresh-dot"></div>
+      <span id="lastUpdate">가격 로딩 중…</span>
+      <button class="btn" style="padding:.3rem .6rem;font-size:.75rem" onclick="fetchPrices()">🔄 새로고침</button>
+    </div>
+  </div>
+  <div class="summary-grid">
+    <div class="summary-stat"><div class="s-label">총 투자금액</div><div class="s-value s-orange" id="s-invest">—</div></div>
+    <div class="summary-stat"><div class="s-label">현재 평가금액</div><div class="s-value s-blue" id="s-current">—</div></div>
+    <div class="summary-stat"><div class="s-label">총 손익</div><div class="s-value" id="s-pnl">—</div></div>
+    <div class="summary-stat"><div class="s-label">수익률</div><div class="s-value" id="s-pct">—</div></div>
+    <div class="summary-stat"><div class="s-label">2027 예상 세금</div><div class="s-value s-red" id="s-tax">—</div></div>
+    <div class="summary-stat"><div class="s-label">세후 실수령</div><div class="s-value s-green" id="s-aftertax">—</div></div>
+  </div>
+</div>
+
+<!-- 코인 입력 -->
+<div class="card">
+  <div class="card-title">
+    💼 보유 코인 입력
+    <div style="display:flex;gap:.5rem">
+      <button class="btn" style="font-size:.78rem;padding:.35rem .7rem" onclick="savePortfolio()">💾 저장</button>
+      <button class="btn" style="font-size:.78rem;padding:.35rem .7rem" onclick="loadPortfolio()">📂 불러오기</button>
+    </div>
+  </div>
+  <div class="coin-table-wrap">
+    <table class="coin-table">
+      <thead>
+        <tr>
+          <th>코인</th>
+          <th>보유수량</th>
+          <th>평균매수가(원)</th>
+          <th>현재가(원)</th>
+          <th>투자금액</th>
+          <th>평가금액</th>
+          <th>손익</th>
+          <th>수익률</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="coinTableBody"></tbody>
+    </table>
+  </div>
+  <button class="btn-add" onclick="addCoinRow()">＋ 코인 추가</button>
+</div>
+
+<!-- 세금 미리보기 -->
+<div class="card">
+  <div class="card-title">💰 2027년 세금 미리보기</div>
+  <div class="tax-preview">
+    <h4>📐 현재 수익 기준 예상 세금</h4>
+    <div class="tax-row"><span>총 평가수익</span><strong id="tp-profit">—</strong></div>
+    <div class="tax-row"><span>기본공제</span><strong>-2,500,000원</strong></div>
+    <div class="tax-row"><span>과세표준</span><strong id="tp-base">—</strong></div>
+    <div class="tax-row"><span>세율</span><strong>22% (소득세 20% + 지방세 2%)</strong></div>
+    <div class="tax-total"><span>예상 납부세액</span><span id="tp-tax">—</span></div>
+  </div>
+  <p style="font-size:.78rem;color:var(--text3);margin-top:.8rem">※ 현재 평가금액을 기준으로 계산한 추정치입니다. 실제 과세는 2027년 1월~12월 매도분에 적용됩니다. <a href="/tools/tax-calculator.html" style="color:var(--accent)">정확한 계산 →</a></p>
+</div>
+
+<!-- 비중 차트 -->
+<div class="card">
+  <div class="card-title">🍩 코인별 비중</div>
+  <div class="chart-wrap">
+    <canvas id="donutChart" width="200" height="200"></canvas>
+    <div class="chart-legend" id="chartLegend"></div>
+  </div>
+</div>
+
+</main>
+
+<aside class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-title">⏰ 절세 D-day</div>
+    <div class="dday-box">
+      <div class="dday-count" id="ddayCount">—</div>
+      <div class="dday-label">2027년 1월 1일 과세 시작</div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">🌶️ 실시간 김치프리미엄</div>
+    <div id="kimchiBox" style="font-size:.88rem;color:var(--text2)">로딩 중…</div>
+  </div>
+
+  <div class="sidebar-card" style="padding:0;overflow:hidden">
+    <div class="ad-slot" style="margin:0;border-radius:var(--radius);min-height:250px">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="4444444444" data-ad-format="rectangle"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="cta-box">
+      <h4>📉 절세 전략 계산</h4>
+      <p>손실 코인으로 세금을<br>얼마나 줄일 수 있는지 계산하세요</p>
+      <a href="/tools/tax-loss-harvesting.html" class="cta-link">절세 계산기 →</a>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">🧰 관련 도구</div>
+    <a class="quick-link" href="/tools/tax-calculator.html"><span>💰</span> 세금 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/csv-tax-calculator.html"><span>📁</span> CSV 세금 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/tax-loss-harvesting.html"><span>📉</span> 절세 하베스팅 <span>→</span></a>
+    <a class="quick-link" href="/tools/staking-calculator.html"><span>🥩</span> 스테이킹 계산기 <span>→</span></a>
+    <a class="quick-link" href="/tools/dca-calculator.html"><span>📈</span> DCA 계산기 <span>→</span></a>
+  </div>
+</aside>
+</div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">홈</a><a href="/blog/">블로그</a>
+    <a href="/tools/tax-calculator.html">세금계산기</a>
+    <a href="/market/">시장데이터</a>
+    <a href="/privacy">개인정보처리방침</a>
+  </div>
+  <p>© 2026 CryptoTax.cloud · 실시간 가격은 CoinGecko API를 통해 제공됩니다. 투자 손익은 참고용입니다.</p>
+</footer>
+
+<script>
+/* ── 테마 ── */
+function toggleTheme(){
+  const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeBtn').textContent=d?'🌞 라이트':'🌙 다크';
+  localStorage.setItem('theme',d?'light':'dark');
+}
+(()=>{
+  const s=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',s);
+  window.addEventListener('DOMContentLoaded',()=>{
+    const b=document.getElementById('themeBtn');
+    if(b)b.textContent=s==='dark'?'🌙 다크':'🌞 라이트';
+  });
+})();
+
+/* ── 코인 목록 (CoinGecko ID 매핑) ── */
+const COIN_LIST = {
+  'BTC':  {id:'bitcoin',      name:'비트코인',   icon:'https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png'},
+  'ETH':  {id:'ethereum',     name:'이더리움',   icon:'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png'},
+  'XRP':  {id:'ripple',       name:'리플',       icon:'https://assets.coingecko.com/coins/images/44/thumb/xrp-symbol-white-128.png'},
+  'SOL':  {id:'solana',       name:'솔라나',     icon:'https://assets.coingecko.com/coins/images/4128/thumb/solana.png'},
+  'BNB':  {id:'binancecoin',  name:'바이낸스',   icon:'https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png'},
+  'ADA':  {id:'cardano',      name:'카르다노',   icon:'https://assets.coingecko.com/coins/images/975/thumb/cardano.png'},
+  'DOGE': {id:'dogecoin',     name:'도지코인',   icon:'https://assets.coingecko.com/coins/images/5/thumb/dogecoin.png'},
+  'TRX':  {id:'tron',         name:'트론',       icon:'https://assets.coingecko.com/coins/images/1094/thumb/tron-logo.png'},
+  'AVAX': {id:'avalanche-2',  name:'아발란체',   icon:'https://assets.coingecko.com/coins/images/12559/thumb/Avalanche_Circle_RedWhite_Trans.png'},
+  'DOT':  {id:'polkadot',     name:'폴카닷',     icon:'https://assets.coingecko.com/coins/images/12171/thumb/polkadot.png'},
+  'MATIC':{id:'matic-network',name:'폴리곤',     icon:'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png'},
+  'LINK': {id:'chainlink',    name:'체인링크',   icon:'https://assets.coingecko.com/coins/images/877/thumb/chainlink-new-logo.png'},
+  'UNI':  {id:'uniswap',      name:'유니스왑',   icon:'https://assets.coingecko.com/coins/images/12504/thumb/uni.jpg'},
+  'LTC':  {id:'litecoin',     name:'라이트코인', icon:'https://assets.coingecko.com/coins/images/2/thumb/litecoin.png'},
+  'BCH':  {id:'bitcoin-cash', name:'비트코인캐시',icon:'https://assets.coingecko.com/coins/images/780/thumb/bitcoin-cash-circle.png'},
+  'ATOM': {id:'cosmos',       name:'코스모스',   icon:'https://assets.coingecko.com/coins/images/1481/thumb/cosmos_hub.png'},
+  'NEAR': {id:'near',         name:'니어',       icon:'https://assets.coingecko.com/coins/images/10365/thumb/near.jpg'},
+  'APT':  {id:'aptos',        name:'앱토스',     icon:'https://assets.coingecko.com/coins/images/26455/thumb/aptos_round.png'},
+  'SUI':  {id:'sui',          name:'수이',       icon:'https://assets.coingecko.com/coins/images/26375/thumb/sui_asset.jpeg'},
+  'SAND': {id:'the-sandbox',  name:'샌드박스',   icon:'https://assets.coingecko.com/coins/images/12129/thumb/sandbox_logo.jpg'},
+};
+
+let priceCache = {};
+let coinRows = [];
+let rowId = 0;
+
+/* ── CoinGecko 가격 조회 ── */
+async function fetchPrices() {
+  const ids = [...new Set(coinRows.map(r => {
+    const sym = document.getElementById('sym-'+r)?.value?.toUpperCase();
+    return COIN_LIST[sym]?.id;
+  }).filter(Boolean))];
+  if (!ids.length) return;
+
+  document.getElementById('lastUpdate').textContent = '가격 업데이트 중…';
+  try {
+    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids.join(',')}&vs_currencies=krw`;
+    const res = await fetch(url);
+    const data = await res.json();
+    priceCache = data;
+    updateAllRows();
+    document.getElementById('lastUpdate').textContent = '업데이트: ' + new Date().toLocaleTimeString('ko-KR');
+    fetchKimchi();
+  } catch(e) {
+    document.getElementById('lastUpdate').textContent = '가격 로딩 실패 (수동 입력 가능)';
+  }
+}
+
+/* ── 김치프리미엄 (업비트 BTC vs Binance BTC) ── */
+async function fetchKimchi() {
+  try {
+    const upbitRes = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC');
+    const upbitData = await upbitRes.json();
+    const upbitPrice = upbitData[0]?.trade_price;
+    const binanceKrw = (priceCache['bitcoin']?.krw) || 0;
+    if (upbitPrice && binanceKrw) {
+      const premium = ((upbitPrice - binanceKrw) / binanceKrw * 100).toFixed(2);
+      const sign = premium >= 0 ? '+' : '';
+      document.getElementById('kimchiBox').innerHTML = `
+        <div style="font-size:1.3rem;font-weight:800;color:${premium>=0?'var(--accent2)':'var(--danger)'}">
+          ${sign}${premium}%
+        </div>
+        <div style="font-size:.78rem;color:var(--text3);margin-top:.3rem">
+          업비트 ₩${fmt(upbitPrice)} vs 글로벌 ₩${fmt(binanceKrw)}
+        </div>
+      `;
+    }
+  } catch(e) {
+    document.getElementById('kimchiBox').textContent = '데이터 로딩 실패';
+  }
+}
+
+/* ── 코인 행 추가 ── */
+function addCoinRow(sym='', qty='', buyPrice='') {
+  rowId++;
+  const id = rowId;
+  coinRows.push(id);
+
+  const symbolOptions = Object.entries(COIN_LIST).map(([k,v]) =>
+    `<option value="${k}" ${k===sym?'selected':''}>${k} - ${v.name}</option>`
+  ).join('');
+
+  const tr = document.createElement('tr');
+  tr.id = 'row-' + id;
+  tr.innerHTML = `
+    <td>
+      <div class="coin-name-cell">
+        <img id="icon-${id}" src="${COIN_LIST[sym]?.icon||''}" class="coin-icon" onerror="this.style.display='none'" alt="">
+        <select id="sym-${id}" onchange="onSymChange(${id})" style="width:140px">
+          ${symbolOptions}
+          <option value="OTHER" ${!COIN_LIST[sym]&&sym?'selected':''}>기타 직접입력</option>
+        </select>
+      </div>
+    </td>
+    <td><input type="number" id="qty-${id}" value="${qty}" placeholder="0" oninput="updateRow(${id})" style="width:100px"></td>
+    <td><input type="number" id="buy-${id}" value="${buyPrice}" placeholder="0" oninput="updateRow(${id})" style="width:110px"></td>
+    <td><div id="cur-${id}" style="font-size:.85rem;color:var(--text2)">—</div></td>
+    <td><div id="invest-${id}" style="font-weight:600">—</div></td>
+    <td><div id="eval-${id}" style="font-weight:600">—</div></td>
+    <td><div id="pnl-${id}">—</div></td>
+    <td><div id="pct-${id}">—</div></td>
+    <td><button class="btn-danger" onclick="removeRow(${id})">✕</button></td>
+  `;
+  document.getElementById('coinTableBody').appendChild(tr);
+  if (qty && buyPrice) updateRow(id);
+}
+
+function onSymChange(id) {
+  const sym = document.getElementById('sym-'+id).value;
+  const icon = document.getElementById('icon-'+id);
+  if (COIN_LIST[sym]) {
+    icon.src = COIN_LIST[sym].icon;
+    icon.style.display = 'inline';
+  } else {
+    icon.style.display = 'none';
+  }
+  fetchPrices();
+}
+
+function removeRow(id) {
+  document.getElementById('row-'+id)?.remove();
+  coinRows = coinRows.filter(r => r !== id);
+  updateSummary();
+  drawDonut();
+}
+
+/* ── 행 업데이트 ── */
+function updateRow(id) {
+  const sym = document.getElementById('sym-'+id)?.value?.toUpperCase();
+  const qty = parseFloat(document.getElementById('qty-'+id)?.value) || 0;
+  const buyP = parseFloat(document.getElementById('buy-'+id)?.value) || 0;
+  const cgId = COIN_LIST[sym]?.id;
+  const curP = cgId && priceCache[cgId]?.krw ? priceCache[cgId].krw : 0;
+
+  const invest = qty * buyP;
+  const evalV = qty * curP;
+  const pnl = evalV - invest;
+  const pct = invest > 0 ? ((pnl / invest) * 100).toFixed(2) : 0;
+
+  document.getElementById('cur-'+id).textContent = curP ? '₩' + fmt(curP) : '수동입력';
+  document.getElementById('invest-'+id).textContent = invest ? fmt(invest) + '원' : '—';
+  document.getElementById('eval-'+id).textContent = evalV ? fmt(evalV) + '원' : '—';
+
+  const pnlEl = document.getElementById('pnl-'+id);
+  if (pnl !== 0) {
+    pnlEl.textContent = (pnl >= 0 ? '+' : '') + fmt(pnl) + '원';
+    pnlEl.style.color = pnl >= 0 ? 'var(--accent2)' : 'var(--danger)';
+  } else {
+    pnlEl.textContent = '—';
+    pnlEl.style.color = 'var(--text3)';
+  }
+
+  const pctEl = document.getElementById('pct-'+id);
+  if (pct != 0) {
+    pctEl.innerHTML = `<span class="pct-badge ${pct>=0?'pct-pos':'pct-neg'}">${pct>=0?'+':''}${pct}%</span>`;
+  } else {
+    pctEl.innerHTML = '<span class="pct-badge pct-zero">—</span>';
+  }
+
+  updateSummary();
+  drawDonut();
+}
+
+function updateAllRows() {
+  coinRows.forEach(id => updateRow(id));
+}
+
+/* ── 요약 계산 ── */
+function updateSummary() {
+  let totalInvest = 0, totalEval = 0;
+  coinRows.forEach(id => {
+    const qty = parseFloat(document.getElementById('qty-'+id)?.value) || 0;
+    const buyP = parseFloat(document.getElementById('buy-'+id)?.value) || 0;
+    const sym = document.getElementById('sym-'+id)?.value?.toUpperCase();
+    const cgId = COIN_LIST[sym]?.id;
+    const curP = cgId && priceCache[cgId]?.krw ? priceCache[cgId].krw : buyP;
+    totalInvest += qty * buyP;
+    totalEval += qty * curP;
+  });
+
+  const pnl = totalEval - totalInvest;
+  const pct = totalInvest > 0 ? ((pnl / totalInvest) * 100).toFixed(2) : 0;
+  const taxBase = Math.max(0, pnl - 2500000);
+  const tax = Math.floor(taxBase * 0.22);
+  const afterTax = pnl - tax;
+
+  document.getElementById('s-invest').textContent = fmt(totalInvest) + '원';
+  document.getElementById('s-current').textContent = fmt(totalEval) + '원';
+
+  const pnlEl = document.getElementById('s-pnl');
+  pnlEl.textContent = (pnl >= 0 ? '+' : '') + fmt(pnl) + '원';
+  pnlEl.className = 's-value ' + (pnl >= 0 ? 's-green' : 's-red');
+
+  const pctEl = document.getElementById('s-pct');
+  pctEl.textContent = (pct >= 0 ? '+' : '') + pct + '%';
+  pctEl.className = 's-value ' + (pct >= 0 ? 's-green' : 's-red');
+
+  document.getElementById('s-tax').textContent = tax > 0 ? fmt(tax) + '원' : '없음 🎉';
+  document.getElementById('s-aftertax').textContent = fmt(Math.max(0, afterTax)) + '원';
+
+  // 세금 미리보기
+  document.getElementById('tp-profit').textContent = fmt(pnl) + '원';
+  document.getElementById('tp-base').textContent = fmt(taxBase) + '원';
+  document.getElementById('tp-tax').textContent = fmt(tax) + '원';
+}
+
+/* ── 도넛 차트 (Canvas 직접 구현) ── */
+function drawDonut() {
+  const canvas = document.getElementById('donutChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 200, H = 200, cx = W/2, cy = H/2, R = 80, r = 50;
+
+  const COLORS = ['#f7931a','#00c896','#58a6ff','#f85149','#f0b429','#8b5cf6','#ec4899','#10b981','#3b82f6','#ef4444'];
+
+  const data = [];
+  coinRows.forEach(id => {
+    const qty = parseFloat(document.getElementById('qty-'+id)?.value) || 0;
+    const buyP = parseFloat(document.getElementById('buy-'+id)?.value) || 0;
+    const sym = document.getElementById('sym-'+id)?.value?.toUpperCase();
+    const cgId = COIN_LIST[sym]?.id;
+    const curP = cgId && priceCache[cgId]?.krw ? priceCache[cgId].krw : buyP;
+    const val = qty * (curP || buyP);
+    if (val > 0) data.push({ sym: sym || '?', val });
+  });
+
+  const total = data.reduce((s, d) => s + d.val, 0);
+  if (!total) return;
+
+  ctx.clearRect(0, 0, W, H);
+  let angle = -Math.PI / 2;
+
+  data.forEach((d, i) => {
+    const slice = (d.val / total) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, R, angle, angle + slice);
+    ctx.closePath();
+    ctx.fillStyle = COLORS[i % COLORS.length];
+    ctx.fill();
+    angle += slice;
+  });
+
+  // 중앙 구멍
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--card').trim() || '#1c2128';
+  ctx.fill();
+
+  // 범례
+  const legend = document.getElementById('chartLegend');
+  legend.innerHTML = data.map((d, i) => `
+    <div class="legend-item">
+      <div style="display:flex;align-items:center">
+        <div class="legend-dot" style="background:${COLORS[i%COLORS.length]}"></div>
+        <span style="color:var(--text)">${d.sym}</span>
+      </div>
+      <span style="color:var(--text2)">${((d.val/total)*100).toFixed(1)}% · ${fmt(d.val)}원</span>
+    </div>
+  `).join('');
+}
+
+/* ── 저장/불러오기 (localStorage) ── */
+function savePortfolio() {
+  const rows = coinRows.map(id => ({
+    sym: document.getElementById('sym-'+id)?.value || '',
+    qty: document.getElementById('qty-'+id)?.value || '',
+    buy: document.getElementById('buy-'+id)?.value || ''
+  }));
+  localStorage.setItem('portfolio_v1', JSON.stringify(rows));
+  alert('✅ 포트폴리오가 저장되었습니다!');
+}
+
+function loadPortfolio() {
+  const saved = localStorage.getItem('portfolio_v1');
+  if (!saved) { alert('저장된 포트폴리오가 없습니다.'); return; }
+  const rows = JSON.parse(saved);
+  document.getElementById('coinTableBody').innerHTML = '';
+  coinRows = []; rowId = 0;
+  rows.forEach(r => addCoinRow(r.sym, r.qty, r.buy));
+  fetchPrices();
+}
+
+/* ── D-day ── */
+function updateDday() {
+  const t = new Date('2027-01-01'), n = new Date();
+  const d = Math.ceil((t - n) / 864e5);
+  const el = document.getElementById('ddayCount');
+  if (el) el.textContent = d > 0 ? `D-${d.toLocaleString()}` : '과세 시작!';
+}
+updateDday();
+
+/* ── 숫자 포맷 ── */
+function fmt(n) { return Math.round(n).toLocaleString('ko-KR'); }
+
+/* ── 초기 예시 데이터 ── */
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('portfolio_v1');
+  if (saved) {
+    const rows = JSON.parse(saved);
+    rows.forEach(r => addCoinRow(r.sym, r.qty, r.buy));
+  } else {
+    addCoinRow('BTC', 0.05, 95000000);
+    addCoinRow('ETH', 2, 4200000);
+    addCoinRow('XRP', 5000, 850);
+  }
+  fetchPrices();
+  setInterval(fetchPrices, 60000); // 1분마다 자동 업데이트
+});
+</script>
+</body>
+</html>
