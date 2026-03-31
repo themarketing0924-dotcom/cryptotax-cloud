@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 물타기 계산기 2027 | 평균단가 즉시 계산 — CryptoTax.cloud</title>
+<meta name="description" content="코인 물타기 후 평균 매수단가를 즉시 계산하세요. 추가 매수 금액·수량 입력 시 새 평균단가·손익분기점·목표가 자동 계산.">
+<meta name="keywords" content="코인 물타기 계산기, 평균단가 계산기, 추가매수 계산기, 업비트 물타기, 코인 평균매수가">
+<link rel="canonical" href="https://cryptotax.cloud/tools/multa-calculator.html">
+<meta property="og:title" content="코인 물타기 계산기 — CryptoTax.cloud">
+<meta property="og:url" content="https://cryptotax.cloud/tools/multa-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"코인 물타기 계산기","url":"https://cryptotax.cloud/tools/multa-calculator.html","description":"코인 추가 매수 시 평균단가 계산","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<style>
+  :root{--bg:#f8f9fa;--card:#ffffff;--text:#1a1a2e;--sub:#6c757d;--primary:#f7931a;--primary-dark:#e07b0e;--border:#e9ecef;--success:#28a745;--danger:#dc3545;--info:#17a2b8;--shadow:0 2px 12px rgba(0,0,0,0.08);}
+  [data-theme="dark"]{--bg:#0d0d1a;--card:#1a1a2e;--text:#e8e8f0;--sub:#9999bb;--border:#2a2a4a;--shadow:0 2px 12px rgba(0,0,0,0.4);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:all .3s;}
+  nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+  .nav-logo{font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;}
+  .nav-links{display:flex;gap:20px;align-items:center;}
+  .nav-links a{color:var(--sub);text-decoration:none;font-size:.9rem;}
+  .nav-links a:hover{color:var(--primary);}
+  .theme-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.85rem;}
+  .breadcrumb{padding:12px 24px;font-size:.82rem;color:var(--sub);max-width:800px;margin:0 auto;}
+  .breadcrumb a{color:var(--sub);text-decoration:none;}
+  .hero{text-align:center;padding:40px 24px 20px;}
+  .hero-badge{display:inline-block;background:rgba(247,147,26,.12);color:var(--primary);border:1px solid rgba(247,147,26,.3);border-radius:20px;padding:4px 16px;font-size:.82rem;font-weight:600;margin-bottom:16px;}
+  .hero h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;}
+  .hero h1 span{color:var(--primary);}
+  .hero p{color:var(--sub);font-size:.95rem;}
+  .container{max-width:800px;margin:0 auto;padding:0 24px 60px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);}
+  .card-title{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group label{font-size:.85rem;font-weight:600;color:var(--sub);}
+  .form-group input{padding:12px 16px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:1rem;font-family:inherit;transition:border .2s;}
+  .form-group input:focus{outline:none;border-color:var(--primary);}
+  .form-group .hint{font-size:.78rem;color:var(--sub);}
+  .add-btn{background:rgba(247,147,26,.1);color:var(--primary);border:1px solid rgba(247,147,26,.3);border-radius:8px;padding:8px 16px;cursor:pointer;font-size:.85rem;font-weight:600;margin-top:8px;}
+  .add-btn:hover{background:rgba(247,147,26,.2);}
+  .calc-btn{width:100%;padding:16px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s;}
+  .calc-btn:hover{background:var(--primary-dark);transform:translateY(-1px);}
+  .buy-row{display:grid;grid-template-columns:1fr 1fr 40px;gap:10px;align-items:end;margin-bottom:10px;}
+  .del-btn{background:rgba(220,53,69,.1);color:var(--danger);border:1px solid rgba(220,53,69,.2);border-radius:8px;padding:12px;cursor:pointer;font-size:.9rem;}
+  .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;}
+  @media(max-width:500px){.result-grid{grid-template-columns:1fr;}}
+  .result-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;}
+  .result-item .label{font-size:.8rem;color:var(--sub);margin-bottom:4px;}
+  .result-item .value{font-size:1.3rem;font-weight:800;}
+  .value.up{color:var(--success);}.value.down{color:var(--danger);}.value.primary{color:var(--primary);}
+  .formula-box{background:rgba(247,147,26,.06);border:1px solid rgba(247,147,26,.2);border-radius:10px;padding:16px;font-size:.85rem;line-height:1.8;}
+  .formula-box strong{color:var(--primary);}
+  .alert{padding:14px 18px;border-radius:10px;font-size:.9rem;margin-top:12px;display:none;}
+  .alert.info{background:rgba(23,162,184,.1);border:1px solid rgba(23,162,184,.3);color:var(--info);}
+  .alert.danger{background:rgba(220,53,69,.1);border:1px solid rgba(220,53,69,.3);color:var(--danger);}
+  .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:600px){.tool-links{grid-template-columns:1fr 1fr;}}
+  .tool-link{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);font-size:.82rem;font-weight:600;text-align:center;transition:all .2s;}
+  .tool-link:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);}
+  .tool-link .icon{font-size:1.5rem;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{padding:16px 0;cursor:pointer;font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q:hover{color:var(--primary);}
+  .faq-a{padding:0 0 16px;color:var(--sub);font-size:.9rem;line-height:1.7;display:none;}
+  footer{background:var(--card);border-top:1px solid var(--border);padding:32px 24px;text-align:center;}
+  .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+  .footer-links a{color:var(--sub);text-decoration:none;font-size:.85rem;}
+  .footer-links a:hover{color:var(--primary);}
+  .footer-copy{font-size:.8rem;color:var(--sub);}
+  .ad-slot{background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:20px;text-align:center;color:var(--sub);font-size:.8rem;margin:16px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV계산기</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="https://cryptotax.cloud/">홈</a> › <a href="https://cryptotax.cloud/">계산기</a> › 물타기 계산기</div>
+<div class="hero">
+  <div class="hero-badge">📊 무료 계산기</div>
+  <h1>코인 <span>물타기</span> 계산기</h1>
+  <p>추가 매수 후 평균단가 · 손익분기점 · 목표 수익률 즉시 계산</p>
+</div>
+<div class="container">
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+<div class="card">
+  <div class="card-title">📊 매수 내역 입력</div>
+  <div style="display:flex;gap:16px;margin-bottom:8px;font-size:.8rem;color:var(--sub);font-weight:600;">
+    <span style="flex:1">매수단가 (원)</span>
+    <span style="flex:1">매수수량</span>
+    <span style="width:40px"></span>
+  </div>
+  <div id="buyRows">
+    <div class="buy-row">
+      <div class="form-group"><input type="number" placeholder="예: 50000000" class="price-input"></div>
+      <div class="form-group"><input type="number" placeholder="예: 0.01" class="qty-input"></div>
+      <button class="del-btn" onclick="delRow(this)">✕</button>
+    </div>
+    <div class="buy-row">
+      <div class="form-group"><input type="number" placeholder="예: 45000000" class="price-input"></div>
+      <div class="form-group"><input type="number" placeholder="예: 0.01" class="qty-input"></div>
+      <button class="del-btn" onclick="delRow(this)">✕</button>
+    </div>
+  </div>
+  <button class="add-btn" onclick="addRow()">＋ 매수 추가</button>
+  <div style="margin-top:16px;">
+    <div class="form-group">
+      <label>현재가 (원) — 목표 수익률 계산용</label>
+      <input type="number" id="curPrice" placeholder="예: 47000000">
+    </div>
+  </div>
+  <button class="calc-btn" onclick="calculate()">📊 평균단가 계산하기</button>
+</div>
+
+<div class="card" id="resultCard" style="display:none">
+  <div class="card-title">📊 계산 결과</div>
+  <div class="result-grid">
+    <div class="result-item"><div class="label">평균 매수단가</div><div class="value primary" id="avgPrice">—</div></div>
+    <div class="result-item"><div class="label">총 매수금액</div><div class="value" id="totalBuy">—</div></div>
+    <div class="result-item"><div class="label">총 보유수량</div><div class="value" id="totalQty">—</div></div>
+    <div class="result-item"><div class="label">현재 평가손익</div><div class="value" id="curPnl">—</div></div>
+  </div>
+  <div class="formula-box" id="formulaBox"></div>
+  <div class="alert info" id="alertInfo"></div>
+  <div class="alert danger" id="alertDanger"></div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (계산 결과 하단)</div>
+
+<div class="card">
+  <div class="card-title">🧰 다른 무료 계산기</div>
+  <div class="tool-links">
+    <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>세금 계산기</a>
+    <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-link"><span class="icon">📈</span>수익률 계산기</a>
+    <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 계산기</a>
+    <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-link"><span class="icon">🏦</span>스테이킹 계산기</a>
+    <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-link"><span class="icon">⚡</span>사토시 환산기</a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="tool-link"><span class="icon">📁</span>CSV 세금계산기</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">❓ 자주 묻는 질문</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">평균단가는 어떻게 계산되나요? <span>▼</span></div>
+    <div class="faq-a">평균단가 = 총 매수금액 ÷ 총 보유수량 입니다. 예를 들어 5천만원에 0.01 BTC, 4천500만원에 0.01 BTC를 샀다면 총 금액 9,500만원 ÷ 0.02 BTC = 평균단가 47,500만원입니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">물타기와 DCA의 차이는? <span>▼</span></div>
+    <div class="faq-a">물타기는 하락 시 감정적으로 추가 매수하는 것이고, DCA는 정해진 날짜에 정해진 금액을 꾸준히 매수하는 계획적 전략입니다. 두 방식 모두 평균단가를 낮추는 효과가 있지만 리스크 관리 방식이 다릅니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">손익분기점이란? <span>▼</span></div>
+    <div class="faq-a">손익분기점(BEP)은 수익도 손실도 없는 가격으로, 평균 매수단가와 동일합니다. 현재가가 손익분기점 위에 있으면 수익, 아래에 있으면 손실 상태입니다.</div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+<div class="card">
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <a href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📖 2027 가상자산 세금 완벽 가이드 →</a>
+    <a href="https://cryptotax.cloud/blog/" style="color:var(--text);text-decoration:none;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border);font-size:.9rem;">📰 코인 투자 가이드 블로그 →</a>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/about.html">소개</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
+    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+  </div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--sub)">contact@cryptotax.cloud</a></div>
+</footer>
+
+<script>
+const root=document.documentElement;
+const saved=localStorage.getItem('ctc-theme')||'light';
+root.setAttribute('data-theme',saved);
+document.getElementById('themeBtn').textContent=saved==='dark'?'☀️ 라이트':'🌙 다크';
+function toggleTheme(){const c=root.getAttribute('data-theme'),n=c==='dark'?'light':'dark';root.setAttribute('data-theme',n);localStorage.setItem('ctc-theme',n);document.getElementById('themeBtn').textContent=n==='dark'?'☀️ 라이트':'🌙 다크';}
+
+function addRow(){
+  const r=document.createElement('div');r.className='buy-row';
+  r.innerHTML=`<div class="form-group"><input type="number" placeholder="매수단가" class="price-input"></div><div class="form-group"><input type="number" placeholder="매수수량" class="qty-input"></div><button class="del-btn" onclick="delRow(this)">✕</button>`;
+  document.getElementById('buyRows').appendChild(r);
+}
+function delRow(btn){const rows=document.querySelectorAll('.buy-row');if(rows.length>1)btn.closest('.buy-row').remove();}
+
+function calculate(){
+  const prices=[...document.querySelectorAll('.price-input')].map(x=>parseFloat(x.value)||0);
+  const qtys=[...document.querySelectorAll('.qty-input')].map(x=>parseFloat(x.value)||0);
+  const curPrice=parseFloat(document.getElementById('curPrice').value)||0;
+  if(prices.every(p=>p===0)||qtys.every(q=>q===0)){alert('매수단가와 수량을 입력해주세요.');return;}
+  let totalAmt=0,totalQty=0;
+  prices.forEach((p,i)=>{totalAmt+=p*qtys[i];totalQty+=qtys[i];});
+  const avgPrice=totalAmt/totalQty;
+  const curVal=curPrice>0?curPrice*totalQty:0;
+  const pnl=curPrice>0?curVal-totalAmt:0;
+  const pnlPct=curPrice>0?(pnl/totalAmt*100):0;
+
+  document.getElementById('resultCard').style.display='block';
+  document.getElementById('avgPrice').textContent=Math.round(avgPrice).toLocaleString()+'원';
+  document.getElementById('totalBuy').textContent=Math.round(totalAmt).toLocaleString()+'원';
+  document.getElementById('totalQty').textContent=totalQty.toFixed(8).replace(/\.?0+$/,'');
+  const pnlEl=document.getElementById('curPnl');
+  if(curPrice>0){
+    pnlEl.textContent=(pnl>=0?'+':'')+Math.round(pnl).toLocaleString()+'원 ('+pnlPct.toFixed(2)+'%)';
+    pnlEl.className='value '+(pnl>=0?'up':'down');
+  } else {pnlEl.textContent='현재가 미입력';pnlEl.className='value';}
+
+  let formula=`<strong>계산 공식</strong><br>총 매수금액 = ${Math.round(totalAmt).toLocaleString()}원<br>총 보유수량 = ${totalQty.toFixed(8).replace(/\.?0+$/','')}개<br>평균단가 = ${Math.round(totalAmt).toLocaleString()} ÷ ${totalQty} = <strong>${Math.round(avgPrice).toLocaleString()}원</strong>`;
+  if(curPrice>0) formula+=`<br>현재 평가금액 = ${Math.round(curVal).toLocaleString()}원<br>평가손익 = <strong>${(pnl>=0?'+':'')+Math.round(pnl).toLocaleString()}원</strong>`;
+  formula+=`<br><small style="color:var(--sub)">※ 결과는 참고용 추정치입니다.</small>`;
+  document.getElementById('formulaBox').innerHTML=formula;
+
+  const aI=document.getElementById('alertInfo'),aD=document.getElementById('alertDanger');
+  aI.style.display=aD.style.display='none';
+  if(curPrice>0&&pnl<0){aD.style.display='block';aD.textContent=`📉 현재 ${Math.abs(Math.round(pnl)).toLocaleString()}원 손실 상태입니다. 손익분기점까지 ${((avgPrice-curPrice)/curPrice*100).toFixed(1)}% 상승이 필요합니다.`;}
+  else if(curPrice>0&&pnl>=0){aI.style.display='block';aI.textContent=`✅ 현재 ${Math.round(pnl).toLocaleString()}원 수익 중입니다.`;}
+  document.getElementById('resultCard').scrollIntoView({behavior:'smooth'});
+}
+function toggleFaq(el){const a=el.nextElementSibling,isOpen=a.style.display==='block';document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');document.querySelectorAll('.faq-q span').forEach(x=>x.textContent='▼');if(!isOpen){a.style.display='block';el.querySelector('span').textContent='▲';}}
+</script>
+</body>
+</html>
