@@ -2,31 +2,32 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/theme.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>사이트 소개 — CryptoTax.cloud</title>
 <meta name="description" content="CryptoTax.cloud는 한국 가상자산 투자자를 위한 무료 계산기 허브입니다.">
 <link rel="canonical" href="https://cryptotax.cloud/about.html">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7}
+body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.7}
 a{text-decoration:none;color:inherit}
-.nav{background:rgba(22,27,34,0.95);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #30363d;position:sticky;top:0;z-index:1000}
-.nav-logo{color:#f7931a;font-weight:800;font-size:1.15rem}
-.nav-links{display:flex;gap:12px}
-.nav-links a{color:#c9d1d9;font-size:0.85rem;padding:5px 10px;border-radius:6px}
-.nav-links a:hover{color:#f7931a}
+.nav{background:var(--bg-overlay);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-default);position:sticky;top:0;z-index:1000}
+.nav-logo{color:var(--orange);font-weight:800;font-size:1.15rem}
+.nav-links{display:flex;gap:12px;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:0.85rem;padding:5px 10px;border-radius:6px}
+.nav-links a:hover{color:var(--orange)}
 .container{max-width:800px;margin:0 auto;padding:48px 20px}
-h1{font-size:1.8rem;font-weight:900;color:#f7931a;margin-bottom:12px}
-h2{font-size:1.2rem;font-weight:700;color:#e6edf3;margin:32px 0 12px}
-p{color:#8b949e;font-size:0.95rem;margin-bottom:12px}
+h1{font-size:1.8rem;font-weight:900;color:var(--orange);margin-bottom:12px}
+h2{font-size:1.2rem;font-weight:700;color:var(--text-primary);margin:32px 0 12px}
+p{color:var(--text-secondary);font-size:0.95rem;margin-bottom:12px}
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:24px 0}
-.stat-box{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;text-align:center}
-.stat-box strong{display:block;font-size:1.8rem;font-weight:900;color:#f7931a}
-.stat-box span{font-size:0.8rem;color:#8b949e}
+.stat-box{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:20px;text-align:center}
+.stat-box strong{display:block;font-size:1.8rem;font-weight:900;color:var(--orange)}
+.stat-box span{font-size:0.8rem;color:var(--text-secondary)}
 .tool-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:16px 0}
-.tool-item{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;font-size:0.85rem;color:#c9d1d9}
-.footer{background:#161b22;border-top:1px solid #30363d;padding:24px 20px;text-align:center;color:#484f58;font-size:0.8rem;margin-top:48px}
-.footer a{color:#8b949e;margin:0 8px}
+.tool-item{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:8px;padding:12px;font-size:0.85rem;color:var(--text-primary)}
+.footer{background:var(--bg-surface);border-top:1px solid var(--border-default);padding:24px 20px;text-align:center;color:var(--text-muted);font-size:0.8rem;margin-top:48px}
+.footer a{color:var(--text-secondary);margin:0 8px}
 </style>
 </head>
 <body>
@@ -36,12 +37,19 @@ p{color:#8b949e;font-size:0.95rem;margin-bottom:12px}
     <a href="/">홈</a>
     <a href="/#tools">계산기</a>
     <a href="/#blog">블로그</a>
+ <button class="theme-toggle" onclick="toggleTheme()">
+    <span id="themeIcon">☀️</span>
+    <div class="toggle-track">
+      <div class="toggle-thumb"></div>
+    </div>
+    <span id="themeLabel">라이트</span>
+  </button>
   </div>
 </nav>
 
 <div class="container">
   <h1>CryptoTax.cloud 소개</h1>
-  <p>CryptoTax.cloud는 한국 가상자산 투자자 1,300만 명을 위한 <strong style="color:#e6edf3">무료 계산기 허브</strong>입니다. 코인 세금·수익률·DCA·물타기·스테이킹·김치프리미엄 등 투자에 필요한 모든 계산을 무료로 제공합니다.</p>
+  <p>CryptoTax.cloud는 한국 가상자산 투자자 1,300만 명을 위한 <strong style="color:var(--text-primary)">무료 계산기 허브</strong>입니다. 코인 세금·수익률·DCA·물타기·스테이킹·김치프리미엄 등 투자에 필요한 모든 계산을 무료로 제공합니다.</p>
 
   <div class="stat-grid">
     <div class="stat-box"><strong>12종</strong><span>무료 계산기</span></div>
@@ -89,6 +97,31 @@ p{color:#8b949e;font-size:0.95rem;margin-bottom:12px}
     <a href="/disclaimer.html">면책조항</a>
   </p>
 </footer>
+    <script>
+(function(){ 
+  const saved = localStorage.getItem('ctc-theme') || 'dark';
+  applyTheme(saved, false);
+})();
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(current === 'dark' ? 'light' : 'dark', true);
+}
+
+function applyTheme(theme, save) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(theme === 'light') {
+    if(icon)  icon.textContent  = '🌙';
+    if(label) label.textContent = '다크';
+  } else {
+    if(icon)  icon.textContent  = '☀️';
+    if(label) label.textContent = '라이트';
+  }
+  if(save) localStorage.setItem('ctc-theme', theme);
+}
+</script>
 </body>
 </html>
 Copy
