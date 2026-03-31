@@ -1,0 +1,90 @@
+/* ===== CSS 변수 (다크모드 기본) ===== */
+:root {
+  --bg-base:       #0d1117;
+  --bg-surface:    #161b22;
+  --bg-elevated:   #1c2128;
+  --bg-overlay:    rgba(22,27,34,0.95);
+  --text-primary:  #e6edf3;
+  --text-secondary:#8b949e;
+  --text-muted:    #484f58;
+  --border-default:#30363d;
+  --border-subtle: #21262d;
+  --orange:        #f7931a;
+  --orange-dim:    #2a1500;
+  --orange-border: #f7931a40;
+  --blue:          #58a6ff;
+  --blue-dim:      #0a1a2a;
+  --blue-border:   #58a6ff40;
+  --green:         #3fb950;
+  --green-dim:     #0a2a0a;
+  --green-border:  #3fb95040;
+  --red:           #f85149;
+  --input-bg:      #0d1117;
+  --footer-bg:     #161b22;
+  --transition:    0.3s ease;
+}
+
+/* ===== 라이트모드 오버라이드 ===== */
+[data-theme="light"] {
+  --bg-base:       #f6f8fa;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f0f3f6;
+  --bg-overlay:    rgba(255,255,255,0.95);
+  --text-primary:  #1a1f2e;
+  --text-secondary:#57606a;
+  --text-muted:    #8c959f;
+  --border-default:#d0d7de;
+  --border-subtle: #e8ecef;
+  --orange-dim:    #fff3e0;
+  --blue-dim:      #e8f3ff;
+  --green-dim:     #e6f9ec;
+  --input-bg:      #f6f8fa;
+  --footer-bg:     #ffffff;
+}
+
+/* ===== 토글 버튼 ===== */
+.theme-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.toggle-track {
+  width: 36px;
+  height: 20px;
+  background: var(--border-default);
+  border-radius: 20px;
+  position: relative;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+[data-theme="light"] .toggle-track {
+  background: var(--orange);
+}
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+[data-theme="light"] .toggle-thumb {
+  transform: translateX(16px);
+}
