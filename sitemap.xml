@@ -76,5 +76,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+ <url><loc>https://cryptotax.cloud/tools/roi-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cryptotax.cloud/tools/multa-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cryptotax.cloud/tools/dca-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cryptotax.cloud/tools/satoshi-calculator.html</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
