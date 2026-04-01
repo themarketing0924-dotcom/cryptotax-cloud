@@ -1,107 +1,775 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/theme.css">
-<link rel="stylesheet" href="/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>개인정보처리방침 — CryptoTax.cloud</title>
-<link rel="canonical" href="https://cryptotax.cloud/privacy-policy.html">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:var(--bg-base);color:var(--text-primary);line-height:1.8;transition:background var(--transition),color var(--transition)}
-a{text-decoration:none;color:var(--orange)}
-.nav{background:var(--bg-overlay);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-default);position:sticky;top:0;z-index:1000;transition:background var(--transition)}
-.nav-logo{color:var(--orange);font-weight:800;font-size:1.15rem}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{color:var(--text-secondary);font-size:0.85rem;padding:5px 10px;border-radius:6px}
-.nav-links a:hover{color:var(--orange)}
-.container{max-width:800px;margin:0 auto;padding:48px 20px}
-h1{font-size:1.8rem;font-weight:900;color:var(--orange);margin-bottom:8px}
-.updated{font-size:0.82rem;color:var(--text-muted);margin-bottom:32px}
-h2{font-size:1.1rem;font-weight:700;color:var(--text-primary);margin:28px 0 10px;padding-left:12px;border-left:3px solid var(--orange)}
-p,li{color:var(--text-secondary);font-size:0.92rem;margin-bottom:10px}
-ul{padding-left:20px}
-.footer{background:var(--bg-surface);border-top:1px solid var(--border-default);padding:24px 20px;text-align:center;color:var(--text-muted);font-size:0.8rem;margin-top:48px;transition:background var(--transition)}
-.footer a{color:var(--text-secondary);margin:0 8px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인정보 보호정책 | CryptoTax.cloud</title>
+  <meta name="description" content="CryptoTax.cloud 개인정보 보호정책. 당사는 개인정보를 수집하지 않습니다. 이메일 선택 제공 시 처리 방식과 사용자 권리를 안내합니다." />
+  <meta name="keywords" content="개인정보 보호정책, 코인세금, 가상자산, CryptoTax, 개인정보처리방침" />
+  <link rel="canonical" href="https://cryptotax.cloud/privacy-policy.html" />
+  <meta property="og:title" content="개인정보 보호정책 | CryptoTax.cloud" />
+  <meta property="og:description" content="CryptoTax.cloud는 개인정보를 수집하지 않습니다. 이메일 등록 시 처리 방식과 사용자 권리를 안내합니다." />
+  <meta property="og:url" content="https://cryptotax.cloud/privacy-policy.html" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/theme.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "개인정보 보호정책",
+    "url": "https://cryptotax.cloud/privacy-policy.html",
+    "description": "CryptoTax.cloud 개인정보 보호정책 안내 페이지",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CryptoTax.cloud",
+      "url": "https://cryptotax.cloud"
+    }
+  }
+  </script>
+
+  <style>
+    /* ── CSS 변수 (다크 기본) ── */
+    :root {
+      --bg-base:       #0d1117;
+      --bg-card:       #161b22;
+      --bg-hover:      #1c2128;
+      --border:        #30363d;
+      --text-primary:  #e6edf3;
+      --text-secondary:#8b949e;
+      --orange:        #f7931a;
+      --orange-dim:    rgba(247,147,26,.12);
+      --orange-glow:   rgba(247,147,26,.25);
+      --green:         #3fb950;
+      --green-dim:     rgba(63,185,80,.12);
+      --blue:          #58a6ff;
+      --blue-dim:      rgba(88,166,255,.12);
+      --red:           #f85149;
+      --red-dim:       rgba(248,81,73,.12);
+      --radius:        12px;
+      --radius-sm:     8px;
+      --shadow:        0 4px 24px rgba(0,0,0,.4);
+    }
+    [data-theme="light"] {
+      --bg-base:       #f6f8fa;
+      --bg-card:       #ffffff;
+      --bg-hover:      #f0f3f6;
+      --border:        #d0d7de;
+      --text-primary:  #1f2328;
+      --text-secondary:#57606a;
+      --orange-dim:    rgba(247,147,26,.08);
+      --orange-glow:   rgba(247,147,26,.15);
+      --green-dim:     rgba(63,185,80,.08);
+      --blue-dim:      rgba(88,166,255,.08);
+      --red-dim:       rgba(248,81,73,.08);
+      --shadow:        0 4px 24px rgba(0,0,0,.08);
+    }
+
+    /* ── 기본 리셋 ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+      transition: background .3s, color .3s;
+    }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── 네비게이션 ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      background: rgba(13,17,23,.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    [data-theme="light"] .nav { background: rgba(246,248,250,.92); }
+    .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--orange); }
+    .nav-logo span { color: var(--text-primary); }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { font-size: .9rem; color: var(--text-secondary); transition: color .2s; }
+    .nav-links a:hover { color: var(--text-primary); text-decoration: none; }
+    .theme-toggle {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 6px 14px; cursor: pointer;
+      font-size: .85rem; color: var(--text-primary);
+      transition: all .2s;
+    }
+    .theme-toggle:hover { border-color: var(--orange); }
+    .toggle-track {
+      width: 32px; height: 18px; background: var(--border);
+      border-radius: 9px; position: relative; transition: background .3s;
+    }
+    [data-theme="light"] .toggle-track { background: var(--orange); }
+    .toggle-thumb {
+      width: 12px; height: 12px; background: #fff;
+      border-radius: 50%; position: absolute; top: 3px; left: 3px;
+      transition: transform .3s;
+    }
+    [data-theme="light"] .toggle-thumb { transform: translateX(14px); }
+
+    /* ── 히어로 ── */
+    .hero {
+      text-align: center; padding: 72px 24px 48px;
+      background: linear-gradient(180deg, rgba(247,147,26,.06) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-dim); border: 1px solid var(--orange-glow);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: .8rem; color: var(--orange); font-weight: 600; margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 12px; }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub { color: var(--text-secondary); max-width: 540px; margin: 0 auto 28px; font-size: 1rem; }
+    .hero-meta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 8px 18px; font-size: .85rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── 핵심 요약 카드 ── */
+    .summary-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; max-width: 900px; margin: 0 auto;
+      padding: 36px 24px;
+    }
+    .summary-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .summary-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .summary-card .icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .summary-card .label { font-size: .8rem; color: var(--text-secondary); margin-bottom: 4px; }
+    .summary-card .value { font-size: .95rem; font-weight: 700; color: var(--text-primary); }
+
+    /* ── 목차 ── */
+    .toc-wrap { max-width: 860px; margin: 0 auto 12px; padding: 0 24px; }
+    .toc-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+    }
+    .toc-box h2 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--orange); }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .toc-list li a {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-secondary); font-size: .9rem; transition: color .2s;
+    }
+    .toc-list li a:hover { color: var(--orange); text-decoration: none; }
+    .toc-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--orange-dim); color: var(--orange);
+      font-size: .75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ── 본문 섹션 ── */
+    .content-wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
+    .pp-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      margin-bottom: 20px; scroll-margin-top: 80px;
+      transition: border-color .2s;
+    }
+    .pp-section:hover { border-color: var(--border); }
+    .section-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .section-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .icon-orange { background: var(--orange-dim); }
+    .icon-blue   { background: var(--blue-dim); }
+    .icon-green  { background: var(--green-dim); }
+    .icon-red    { background: var(--red-dim); }
+    .section-header h2 {
+      font-size: 1.15rem; font-weight: 700; color: var(--text-primary);
+    }
+    .pp-section p {
+      color: var(--text-secondary); font-size: .93rem;
+      line-height: 1.8; margin-bottom: 14px;
+    }
+    .pp-section p:last-child { margin-bottom: 0; }
+    .pp-section strong { color: var(--text-primary); }
+
+    /* 서브 섹션 제목 */
+    .sub-title {
+      font-size: .95rem; font-weight: 700; color: var(--text-primary);
+      margin: 20px 0 10px; padding-left: 10px;
+      border-left: 3px solid var(--orange);
+    }
+
+    /* 정보 박스 */
+    .info-box {
+      border-radius: var(--radius-sm); padding: 14px 18px;
+      font-size: .88rem; margin: 16px 0;
+    }
+    .info-box.orange { background: var(--orange-dim); border-left: 3px solid var(--orange); color: var(--orange); }
+    .info-box.green  { background: var(--green-dim);  border-left: 3px solid var(--green);  color: var(--green);  }
+    .info-box.blue   { background: var(--blue-dim);   border-left: 3px solid var(--blue);   color: var(--blue);  }
+    .info-box.red    { background: var(--red-dim);    border-left: 3px solid var(--red);    color: var(--red);   }
+
+    /* 테이블 */
+    .pp-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: 16px 0; }
+    .pp-table th {
+      background: var(--orange-dim); color: var(--orange);
+      font-weight: 700; padding: 10px 14px; text-align: left;
+      border-bottom: 2px solid var(--orange-glow);
+    }
+    .pp-table td {
+      padding: 10px 14px; color: var(--text-secondary);
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .pp-table tr:last-child td { border-bottom: none; }
+    .pp-table tr:hover td { background: var(--bg-hover); }
+
+    /* 권리 목록 */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px; margin: 16px 0;
+    }
+    .right-item {
+      background: var(--bg-base); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 14px; text-align: center;
+    }
+    .right-item .ri-icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .right-item .ri-label { font-size: .82rem; color: var(--text-secondary); }
+    .right-item .ri-val { font-size: .88rem; font-weight: 700; color: var(--text-primary); margin-top: 4px; }
+
+    /* CTA */
+    .cta-wrap {
+      max-width: 860px; margin: 0 auto 24px; padding: 0 24px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, var(--orange-dim), var(--blue-dim));
+      border: 1px solid var(--orange-glow);
+      border-radius: var(--radius); padding: 36px 32px; text-align: center;
+    }
+    .cta-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .cta-box p { color: var(--text-secondary); font-size: .93rem; margin-bottom: 24px; }
+    .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #000;
+      font-weight: 700; font-size: .95rem;
+      padding: 12px 28px; border-radius: var(--radius-sm);
+      border: none; cursor: pointer; transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .85; text-decoration: none; color: #000; }
+    .btn-secondary {
+      background: transparent; color: var(--text-primary);
+      font-weight: 600; font-size: .93rem;
+      padding: 12px 28px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); cursor: pointer; transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--orange); text-decoration: none; color: var(--text-primary); }
+
+    /* 관련 페이지 */
+    .related-wrap { max-width: 860px; margin: 0 auto 48px; padding: 0 24px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 12px; }
+    .related-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px; text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .related-card:hover { border-color: var(--orange); transform: translateY(-2px); text-decoration: none; }
+    .related-card .rc-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .related-card .rc-title { font-size: .9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .related-card .rc-sub { font-size: .8rem; color: var(--text-secondary); }
+
+    /* 푸터 */
+    .footer {
+      background: var(--bg-card); border-top: 1px solid var(--border);
+      text-align: center; padding: 32px 24px;
+    }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+    .footer-links a { font-size: .85rem; color: var(--text-secondary); }
+    .footer-links a:hover { color: var(--orange); text-decoration: none; }
+    .footer p { font-size: .8rem; color: var(--text-secondary); }
+
+    /* 스크롤 탑 */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--orange); color: #000;
+      border: none; cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px var(--orange-glow);
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+      z-index: 99;
+    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+
+    /* 반응형 */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 1.7rem; }
+      .pp-section { padding: 22px 18px; }
+      .cta-box { padding: 28px 18px; }
+    }
+  </style>
 </head>
+
 <body>
+
+<!-- ── 네비게이션 ── -->
 <nav class="nav">
-  <a class="nav-logo" href="/">₿ CryptoTax<span style="color:var(--blue)">.cloud</span></a>
-  <div class="nav-links">
-    <a href="/">홈</a>
-    <a href="/#tools">계산기</a>
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <span id="themeIcon">☀️</span>
-      <div class="toggle-track">
-        <div class="toggle-thumb"></div>
-      </div>
-      <span id="themeLabel">라이트</span>
-    </button>
-  </div>
+  <a class="nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>
+  <ul class="nav-links">
+    <li><a href="/">홈</a></li>
+    <li><a href="/tools/market.html">시장</a></li>
+    <li><a href="/#blog">블로그</a></li>
+    <li><a href="/tools/csv-calculator.html">CSV 계산기</a></li>
+    <li><a href="/disclaimer.html">면책조항</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span id="themeIcon">☀️</span>
+    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    <span id="themeLabel">라이트</span>
+  </button>
 </nav>
 
-<div class="container">
-  <h1>개인정보처리방침</h1>
-  <p class="updated">최종 업데이트: 2026년 3월 29일</p>
+<!-- ── 히어로 ── -->
+<section class="hero">
+  <div class="hero-badge">🔒 개인정보 보호정책</div>
+  <h1>우리는 <span>개인정보를</span><br>수집하지 않습니다</h1>
+  <p class="hero-sub">
+    CryptoTax.cloud는 계산기 이용에 어떠한 회원가입도, 개인정보 입력도 요구하지 않습니다.<br>
+    이메일을 자발적으로 제공하는 경우에만 아래 정책이 적용됩니다.
+  </p>
+  <div class="hero-meta">
+    📅 최종 업데이트: 2026년 3월 29일 &nbsp;·&nbsp; 시행일: 2026년 4월 1일
+  </div>
+</section>
 
-  <h2>1. 개인정보 수집 여부</h2>
-  <p>CryptoTax.cloud(이하 "본 사이트")는 <strong style="color:var(--green)">개인정보를 수집하지 않습니다.</strong> 모든 계산은 이용자의 브라우저 내에서만 처리되며, 입력한 금액·수량 등의 데이터는 서버로 전송되지 않습니다.</p>
-
-  <h2>2. 사용하는 외부 서비스</h2>
-  <p>본 사이트는 다음 외부 서비스를 사용하며, 각 서비스의 개인정보처리방침이 별도 적용됩니다.</p>
-  <ul>
-    <li><strong>Google AdSense</strong> — 광고 게재 목적. 쿠키를 사용할 수 있습니다.</li>
-    <li><strong>Google Analytics</strong> — 방문자 통계 수집 (익명화 처리)</li>
-    <li><strong>CoinGecko API</strong> — 실시간 코인 가격 조회</li>
-    <li><strong>Alternative.me API</strong> — 공포·탐욕 지수 조회</li>
-    <li><strong>TradingView 위젯</strong> — 시장 데이터 시각화</li>
-  </ul>
-
-  <h2>3. 쿠키 사용</h2>
-  <p>본 사이트는 자체적으로 쿠키를 설정하지 않습니다. 단, Google AdSense 등 외부 광고 서비스가 광고 최적화를 위해 쿠키를 사용할 수 있습니다. 브라우저 설정에서 쿠키를 비활성화할 수 있습니다.</p>
-
-  <h2>4. 이메일 수집</h2>
-  <p>무료 가이드 PDF 신청 시 이메일 주소를 수집합니다. 수집된 이메일은 PDF 발송 목적으로만 사용되며, 제3자에게 제공되지 않습니다. 언제든지 수신 거부 요청이 가능합니다.</p>
-
-  <h2>5. 아동 개인정보 보호</h2>
-  <p>본 사이트는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
-
-  <h2>6. 개인정보처리방침 변경</h2>
-  <p>본 방침은 법령 변경 또는 서비스 변경 시 업데이트될 수 있으며, 변경 시 본 페이지에 공지합니다.</p>
-
-  <h2>7. 문의</h2>
-  <p>개인정보 관련 문의: <a href="mailto:contact@cryptotax.cloud">contact@cryptotax.cloud</a></p>
+<!-- ── 핵심 요약 카드 ── -->
+<div class="summary-bar">
+  <div class="summary-card">
+    <div class="icon">🔒</div>
+    <div class="label">수집 원칙</div>
+    <div class="value">개인정보 미수집</div>
+  </div>
+  <div class="summary-card">
+    <div class="icon">📧</div>
+    <div class="label">이메일 등록</div>
+    <div class="value">자발적 선택만</div>
+  </div>
+  <div class="summary-card">
+    <div class="icon">🚫</div>
+    <div class="label">제3자 판매</div>
+    <div class="value">절대 없음</div>
+  </div>
+  <div class="summary-card">
+    <div class="icon">🗑️</div>
+    <div class="label">삭제 요청</div>
+    <div class="value">즉시 처리</div>
+  </div>
 </div>
 
+<!-- ── 목차 ── -->
+<div class="toc-wrap">
+  <div class="toc-box">
+    <h2>📋 목차</h2>
+    <ul class="toc-list">
+      <li><a href="#sec1"><span class="toc-num">1</span>수집하는 개인정보의 항목 및 수집 방법</a></li>
+      <li><a href="#sec2"><span class="toc-num">2</span>개인정보의 처리 목적 및 보유 기간</a></li>
+      <li><a href="#sec3"><span class="toc-num">3</span>개인정보의 제3자 제공 및 처리 위탁</a></li>
+      <li><a href="#sec4"><span class="toc-num">4</span>이용자 권리 및 행사 방법</a></li>
+      <li><a href="#sec5"><span class="toc-num">5</span>쿠키 및 자동 수집 정보</a></li>
+      <li><a href="#sec6"><span class="toc-num">6</span>개인정보 보호책임자 및 문의</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── 본문 ── -->
+<div class="content-wrap">
+
+  <!-- 제1장 -->
+  <div class="pp-section" id="sec1">
+    <div class="section-header">
+      <div class="section-icon icon-orange">📋</div>
+      <h2>제1장 · 수집하는 개인정보의 항목 및 수집 방법</h2>
+    </div>
+
+    <div class="info-box green">
+      ✅ <strong>핵심 원칙:</strong> CryptoTax.cloud의 계산기·시뮬레이터·차트 도구는 <strong>개인정보 수집 없이</strong> 이용 가능합니다. 회원가입 불필요, 로그인 불필요.
+    </div>
+
+    <div class="sub-title">1-1. 수집 항목</div>
+    <table class="pp-table">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>수집 항목</th>
+          <th>수집 시점</th>
+          <th>필수 여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>이메일 뉴스레터</td>
+          <td>이메일 주소</td>
+          <td>뉴스레터·PDF 가이드 신청 시</td>
+          <td>선택 (자발적)</td>
+        </tr>
+        <tr>
+          <td>문의 접수</td>
+          <td>이메일 주소, 문의 내용</td>
+          <td>contact@cryptotax.cloud 직접 발송 시</td>
+          <td>선택 (자발적)</td>
+        </tr>
+        <tr>
+          <td>자동 수집</td>
+          <td>접속 IP, 브라우저 유형, 방문 페이지, 접속 시간</td>
+          <td>사이트 방문 시 (서버 로그)</td>
+          <td>자동 (비식별)</td>
+        </tr>
+        <tr>
+          <td>계산기 입력값</td>
+          <td><strong>수집 안 함</strong> — 브라우저 로컬에서만 처리</td>
+          <td>—</td>
+          <td>미수집</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">1-2. 수집 방법</div>
+    <p>이메일 주소는 사이트 내 뉴스레터 신청 폼 또는 직접 이메일 발송을 통해서만 수집됩니다. 계산기에 입력한 매수·매도 금액, 수익 등 모든 계산 데이터는 <strong>사용자의 브라우저(로컬) 내에서만 처리</strong>되며 서버로 전송되지 않습니다.</p>
+  </div>
+
+  <!-- 제2장 -->
+  <div class="pp-section" id="sec2">
+    <div class="section-header">
+      <div class="section-icon icon-blue">🗂️</div>
+      <h2>제2장 · 개인정보의 처리 목적 및 보유 기간</h2>
+    </div>
+
+    <div class="sub-title">2-1. 처리 목적</div>
+    <table class="pp-table">
+      <thead>
+        <tr>
+          <th>처리 목적</th>
+          <th>해당 항목</th>
+          <th>법적 근거</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>세금 정보·절세 가이드 PDF 발송</td>
+          <td>이메일 주소</td>
+          <td>정보주체의 동의 (개인정보 보호법 제15조 제1항 제1호)</td>
+        </tr>
+        <tr>
+          <td>서비스 문의 응대</td>
+          <td>이메일 주소, 문의 내용</td>
+          <td>정보주체의 동의</td>
+        </tr>
+        <tr>
+          <td>서비스 보안 및 악용 방지</td>
+          <td>접속 IP (비식별)</td>
+          <td>정당한 이익 (개인정보 보호법 제15조 제1항 제6호)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">2-2. 보유 및 이용 기간</div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>항목</th><th>보유 기간</th><th>근거</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>이메일 주소 (뉴스레터)</td>
+          <td>수신 거부 요청 즉시 삭제</td>
+          <td>정보주체 요청</td>
+        </tr>
+        <tr>
+          <td>문의 이메일</td>
+          <td>문의 처리 완료 후 1년</td>
+          <td>분쟁 해결 목적</td>
+        </tr>
+        <tr>
+          <td>서버 접속 로그 (IP)</td>
+          <td>3개월 후 자동 삭제</td>
+          <td>통신비밀보호법 제15조의2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box orange">
+      ⚠️ 관련 법령에서 보존 의무를 부여하는 경우(「전자상거래 등에서의 소비자보호에 관한 법률」 등) 해당 기간 동안 별도 보관 후 파기합니다.
+    </div>
+  </div>
+
+  <!-- 제3장 -->
+  <div class="pp-section" id="sec3">
+    <div class="section-header">
+      <div class="section-icon icon-green">🤝</div>
+      <h2>제3장 · 개인정보의 제3자 제공 및 처리 위탁</h2>
+    </div>
+
+    <div class="info-box green">
+      🚫 <strong>제3자 판매 없음:</strong> CryptoTax.cloud는 수집한 개인정보를 마케팅 목적으로 제3자에게 판매하거나 임의 제공하지 않습니다.
+    </div>
+
+    <div class="sub-title">3-1. 제3자 제공 (예외 상황)</div>
+    <p>아래의 경우에 한해 최소한의 범위에서 제3자에게 정보를 제공할 수 있습니다.</p>
+    <table class="pp-table">
+      <thead>
+        <tr><th>제공 대상</th><th>제공 목적</th><th>제공 항목</th><th>보유 기간</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>수사기관·법원</td>
+          <td>법령에 따른 요청</td>
+          <td>법령이 요구하는 최소 정보</td>
+          <td>법령이 정한 기간</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">3-2. 처리 위탁</div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>수탁 업체</th><th>위탁 업무</th><th>보유 기간</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cloudflare, Inc.</td>
+          <td>CDN·서버 보안·DDoS 방어</td>
+          <td>서비스 이용 기간</td>
+        </tr>
+        <tr>
+          <td>Google Analytics (Google LLC)</td>
+          <td>익명 방문 통계 분석</td>
+          <td>14개월 (자동 만료)</td>
+        </tr>
+        <tr>
+          <td>이메일 서비스 제공업체</td>
+          <td>뉴스레터 발송</td>
+          <td>수신 거부 즉시 삭제</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>위탁 업체는 위탁 받은 업무 범위 내에서만 개인정보를 처리하며, 목적 외 이용 및 제3자 제공을 금지하는 계약을 체결하고 있습니다.</p>
+
+    <div class="sub-title">3-3. 국외 이전</div>
+    <p>Cloudflare 및 Google Analytics는 미국 기반 서비스로, 개인정보 처리 시 일부 정보가 국외(미국)에서 처리될 수 있습니다. 해당 업체들은 <strong>EU-US Data Privacy Framework</strong> 및 국제 표준 개인정보 보호 인증을 준수합니다.</p>
+  </div>
+
+  <!-- 제4장 -->
+  <div class="pp-section" id="sec4">
+    <div class="section-header">
+      <div class="section-icon icon-orange">⚖️</div>
+      <h2>제4장 · 이용자 권리 및 행사 방법</h2>
+    </div>
+
+    <p>개인정보 보호법 제35조~제39조에 따라 이용자는 언제든지 아래의 권리를 행사할 수 있습니다.</p>
+
+    <div class="rights-grid">
+      <div class="right-item">
+        <div class="ri-icon">👁️</div>
+        <div class="ri-val">열람권</div>
+        <div class="ri-label">수집된 정보 확인 요청</div>
+      </div>
+      <div class="right-item">
+        <div class="ri-icon">✏️</div>
+        <div class="ri-val">정정권</div>
+        <div class="ri-label">오류 정보 수정 요청</div>
+      </div>
+      <div class="right-item">
+        <div class="ri-icon">🗑️</div>
+        <div class="ri-val">삭제권</div>
+        <div class="ri-label">즉시 삭제 요청</div>
+      </div>
+      <div class="right-item">
+        <div class="ri-icon">⏸️</div>
+        <div class="ri-val">처리정지권</div>
+        <div class="ri-label">처리 중단 요청</div>
+      </div>
+      <div class="right-item">
+        <div class="ri-icon">🚫</div>
+        <div class="ri-val">동의 철회</div>
+        <div class="ri-label">언제든 수신 거부</div>
+      </div>
+    </div>
+
+    <div class="sub-title">행사 방법</div>
+    <p>이메일(<a href="mailto:contact@cryptotax.cloud">contact@cryptotax.cloud</a>)로 요청하시면 <strong>5영업일 이내</strong>에 처리합니다. 법령에서 정한 경우를 제외하고 요청을 거부하지 않습니다.</p>
+
+    <div class="info-box blue">
+      📌 뉴스레터 수신 거부: 수신된 이메일 하단의 <strong>[수신 거부]</strong> 링크 클릭 또는 contact@cryptotax.cloud로 요청 시 즉시 처리됩니다.
+    </div>
+
+    <div class="sub-title">개인정보 침해 신고</div>
+    <p>개인정보 처리에 관한 분쟁이 해결되지 않을 경우 아래 기관에 신고할 수 있습니다.</p>
+    <table class="pp-table">
+      <thead>
+        <tr><th>기관</th><th>연락처</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>개인정보보호위원회 개인정보 침해신고센터</td><td>☎ 118 / <a href="https://privacy.go.kr" target="_blank" rel="noopener">privacy.go.kr</a></td></tr>
+        <tr><td>경찰청 사이버범죄 신고</td><td>☎ 182 / <a href="https://ecrm.cyber.go.kr" target="_blank" rel="noopener">ecrm.cyber.go.kr</a></td></tr>
+        <tr><td>대검찰청 사이버수사과</td><td>☎ 1301 / <a href="https://www.spo.go.kr" target="_blank" rel="noopener">spo.go.kr</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 제5장 -->
+  <div class="pp-section" id="sec5">
+    <div class="section-header">
+      <div class="section-icon icon-blue">🍪</div>
+      <h2>제5장 · 쿠키 및 자동 수집 정보</h2>
+    </div>
+
+    <div class="sub-title">5-1. 사용하는 쿠키</div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>쿠키명</th><th>목적</th><th>유형</th><th>만료</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ctc-theme</td>
+          <td>다크/라이트 모드 설정 저장</td>
+          <td>기능성 (localStorage)</td>
+          <td>영구 (직접 삭제 전까지)</td>
+        </tr>
+        <tr>
+          <td>_ga, _ga_*</td>
+          <td>Google Analytics 익명 방문 통계</td>
+          <td>분석용</td>
+          <td>2년</td>
+        </tr>
+        <tr>
+          <td>__cf_bm</td>
+          <td>Cloudflare 봇 방지</td>
+          <td>보안</td>
+          <td>30분</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">5-2. 쿠키 거부 방법</div>
+    <p>브라우저 설정 → 개인정보 보호 → 쿠키 차단으로 거부할 수 있습니다. 단, Google Analytics 수집 거부는 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics 옵트아웃 도구</a>를 이용하시기 바랍니다. 쿠키를 거부해도 계산기 이용에는 영향이 없습니다.</p>
+
+    <div class="info-box blue">
+      📊 Google Analytics는 <strong>IP 익명화(anonymizeIp)</strong>가 적용되어 있으며, 개인을 식별할 수 있는 정보는 수집하지 않습니다.
+    </div>
+  </div>
+
+  <!-- 제6장 -->
+  <div class="pp-section" id="sec6">
+    <div class="section-header">
+      <div class="section-icon icon-green">📞</div>
+      <h2>제6장 · 개인정보 보호책임자 및 문의</h2>
+    </div>
+
+    <div class="sub-title">개인정보 보호책임자 (CPO)</div>
+    <table class="pp-table">
+      <thead>
+        <tr><th>항목</th><th>내용</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>사이트명</td><td>CryptoTax.cloud</td></tr>
+        <tr><td>담당 부서</td><td>운영팀</td></tr>
+        <tr><td>이메일</td><td><a href="mailto:contact@cryptotax.cloud">contact@cryptotax.cloud</a></td></tr>
+        <tr><td>응대 시간</td><td>영업일 기준 5일 이내 회신</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-title">정책 변경 안내</div>
+    <p>본 개인정보 보호정책은 법령 변경, 서비스 변경에 따라 개정될 수 있습니다. 변경 시 <strong>시행 7일 전</strong>에 사이트 공지사항을 통해 고지합니다. 중요한 변경(제3자 제공, 보유기간 변경 등)은 <strong>30일 전</strong>에 고지합니다.</p>
+
+    <div class="info-box orange">
+      📅 본 정책 최초 시행일: 2026년 4월 1일 &nbsp;|&nbsp; 최종 개정일: 2026년 3월 29일
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<!-- ── CTA ── -->
+<div class="cta-wrap">
+  <div class="cta-box">
+    <h2>🔒 안심하고 계산기를 사용하세요</h2>
+    <p>계산기 입력값은 서버에 전송되지 않으며, 어떤 개인정보도 요구하지 않습니다.</p>
+    <div class="cta-buttons">
+      <a href="/" class="btn-primary">세금 계산기 무료 사용</a>
+      <a href="/tools/csv-calculator.html" class="btn-secondary">CSV 계산기 바로가기</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── 관련 페이지 ── -->
+<div class="related-wrap">
+  <div class="related-grid">
+    <a href="/disclaimer.html" class="related-card">
+      <div class="rc-icon">⚖️</div>
+      <div class="rc-title">면책조항</div>
+      <div class="rc-sub">계산 결과 한계와 법적 범위</div>
+    </a>
+    <a href="/terms.html" class="related-card">
+      <div class="rc-icon">📜</div>
+      <div class="rc-title">이용약관</div>
+      <div class="rc-sub">서비스 이용 조건 안내</div>
+    </a>
+    <a href="/about.html" class="related-card">
+      <div class="rc-icon">ℹ️</div>
+      <div class="rc-title">소개</div>
+      <div class="rc-sub">CryptoTax.cloud 소개</div>
+    </a>
+    <a href="mailto:contact@cryptotax.cloud" class="related-card">
+      <div class="rc-icon">✉️</div>
+      <div class="rc-title">문의하기</div>
+      <div class="rc-sub">개인정보 관련 직접 문의</div>
+    </a>
+  </div>
+</div>
+
+<!-- ── 푸터 ── -->
 <footer class="footer">
-  <p>© 2026 CryptoTax.cloud</p>
-  <p style="margin-top:8px">
+  <div class="footer-links">
     <a href="/">홈</a>
-    <a href="/about.html">소개</a>
+    <a href="/disclaimer.html">면책조항</a>
     <a href="/privacy-policy.html">개인정보처리방침</a>
     <a href="/terms.html">이용약관</a>
-    <a href="/disclaimer.html">면책조항</a>
-  </p>
+    <a href="/about.html">소개</a>
+    <a href="mailto:contact@cryptotax.cloud">문의</a>
+  </div>
+  <p>© 2026 CryptoTax.cloud · 본 사이트의 모든 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
 </footer>
 
+<!-- ── 스크롤 탑 ── -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ── 테마 + 스크롤 스크립트 ── -->
 <script>
 (function(){
   const saved = localStorage.getItem('ctc-theme') || 'dark';
   applyTheme(saved, false);
 })();
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  applyTheme(current === 'dark' ? 'light' : 'dark', true);
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(cur === 'dark' ? 'light' : 'dark', true);
 }
 
-function applyTheme(theme, save) {
+function applyTheme(theme, save){
   document.documentElement.setAttribute('data-theme', theme);
   const icon  = document.getElementById('themeIcon');
   const label = document.getElementById('themeLabel');
-  if(theme === 'light') {
+  if(theme === 'light'){
     if(icon)  icon.textContent  = '🌙';
     if(label) label.textContent = '다크';
   } else {
@@ -110,6 +778,14 @@ function applyTheme(theme, save) {
   }
   if(save) localStorage.setItem('ctc-theme', theme);
 }
+
+// 스크롤 탑 버튼
+window.addEventListener('scroll', function(){
+  const btn = document.getElementById('scrollTop');
+  if(window.scrollY > 300) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
 </script>
+
 </body>
 </html>
