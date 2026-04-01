@@ -116,6 +116,20 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 .blog-link{display:block;padding:14px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.88rem;font-weight:600;transition:all .2s;margin-bottom:10px;}
 .blog-link:hover{border-color:var(--orange);color:var(--orange);}
 .ad-slot{background:var(--bg-surface);border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--text-muted);font-size:.78rem;margin:18px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+.cta-consult{background:linear-gradient(135deg,rgba(88,166,255,.1),rgba(63,185,80,.07));border:1px solid rgba(88,166,255,.3);border-radius:var(--radius);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cta-consult .cta-icon{font-size:2.4rem;flex-shrink:0;}
+.cta-consult .cta-text h3{font-size:.98rem;font-weight:800;margin-bottom:4px;}
+.cta-consult .cta-text p{font-size:.83rem;color:var(--text-sub);line-height:1.55;}
+.cta-btn{background:linear-gradient(135deg,var(--blue),#0ea5e9);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:.85rem;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 3px 14px rgba(88,166,255,.35);}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(88,166,255,.5);}
+.ext-links{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ext-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:9px;color:var(--text-sub);font-size:.83rem;transition:all .2s;}
+.ext-link:hover{border-color:var(--blue);color:var(--blue);}
+.ext-link .ext-badge{background:rgba(88,166,255,.12);color:var(--blue);border-radius:5px;padding:2px 7px;font-size:.71rem;font-weight:700;flex-shrink:0;}
+.formula-explain{background:var(--bg-elevated);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 18px;margin:12px 0;font-size:.85rem;line-height:1.9;color:var(--text-sub);}
+.formula-explain .fe-title{font-weight:800;color:var(--text);margin-bottom:6px;font-size:.9rem;}
+.formula-explain code{background:rgba(88,166,255,.12);color:var(--blue);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;}
+@media(max-width:480px){.cta-consult{flex-direction:column;text-align:center;}}
 .seo-box{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;transition:background var(--tr);}
 .seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;color:var(--text);}
 .seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
@@ -263,8 +277,50 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 <div class="ad-slot" style="min-height:260px">📢 광고 영역 (계산 결과 하단 — CTR 최고)</div>
 
-<!-- APY 참고표 -->
-<div class="card">
+<!-- 세무사 상담 CTA -->
+<div class="cta-consult">
+  <div class="cta-icon">🧑‍💼</div>
+  <div class="cta-text" style="flex:1">
+    <h3>스테이킹 수익 세금, 어떻게 신고하나요? 세무사 무료 상담</h3>
+    <p>2027년부터 스테이킹 이자수익도 22% 과세 예정입니다. ETH 스테이킹, 복수 코인 상장 수익 합산 신고 방법 등 가상자산 전문 세무사와 무료로 상담하세요.</p>
+  </div>
+  <a href="https://cryptotax.cloud/consultation.html" class="cta-btn">무료 상담 신청 →</a>
+</div>
+
+<div class="seo-box">
+  <h2>📐 스테이킹 수익 공식 완전 해설</h2>
+
+  <div class="formula-explain">
+    <div class="fe-title">① 단리(단순 이자) 공식</div>
+    <code>총 이자 = 원금 × APY ÷ 100 × 기간(년)</code>
+    <p style="margin-top:8px"><strong>의미:</strong> 원금에 매 회 동일한 이자를 받는 방식입니다. APY 5%라면 1년에 원금의 5%를 이자로 받습니다.</p>
+    <p style="margin-top:6px"><strong>예시:</strong> 1체원원, APY 5%, 1년<br>이자 = 1체 × 0.05 × 1 = <strong>500만원</strong></p>
+  </div>
+
+  <div class="formula-explain" style="border-left-color:var(--green)">
+    <div class="fe-title">② 복리(재투자) 공식</div>
+    <code>총 자산 = 원금 × (1 + APY ÷ 100)^기간(년)</code>
+    <p style="margin-top:8px"><strong>의미:</strong> 이자가 원금에 합산되어 다음 기간에 재투자됩니다. APY는 연간 복리 기준이므로 <strong>(1+r)^n</strong> 공식이 정확한 복리식입니다.</p>
+    <p style="margin-top:6px"><strong>예시:</strong> 1체원원, APY 5%, 2년<br>총 자산 = 1체 × (1 + 0.05)^2 = 1체 × 1.1025 = <strong>1체 1,025만원</strong></p>
+    <p style="margin-top:6px"><strong>APR vs APY:</strong> APR(연리)= 단순 연이율, APY = 복리 효과 포함 실질 연수익률. 업비트 스테이킹은 APY 기준으로 안내합니다.</p>
+  </div>
+
+  <h2 style="margin-top:18px">🔗 공신력 있는 정보 출처</h2>
+  <div class="ext-links">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2338&cntntsId=7717" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">국세청</span>스테이킹 수익 과세 안내 — nts.go.kr →
+    </a>
+    <a href="https://coinmarketcap.com/ko/glossary/staking/" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">코인랩스</span>스테이킹(Staking) 용어 정의 — CoinMarketCap →
+    </a>
+    <a href="https://coinmarketcap.com/ko/glossary/apy/" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">코인랩스</span>APY(연수익률) vs APR(연리) 차이 — CoinMarketCap →
+    </a>
+    <a href="https://upbit.com/service_center/notice" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">업비트</span>업비트 스테이킹 공식 안내 →
+    </a>
+  </div>
+</div>
   <div class="card-title">📊 주요 코인 스테이킹 APY 참고표</div>
   <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:14px">※ APY는 시장 상황에 따라 변동됩니다. 실제 수익률은 거래소 공식 안내를 확인하세요.</p>
   <div style="overflow-x:auto;">
@@ -325,12 +381,82 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
 </div>
 
+<!-- 세무사 상담 CTA -->
+<div class="card" style="border-color:rgba(88,166,255,.4);background:linear-gradient(135deg,rgba(88,166,255,.06),rgba(88,166,255,.02));">
+  <div class="card-title">🧑‍💼 스테이킹 수익 세금, 미리 준비하세요</div>
+  <p style="font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:16px;">
+    2027년부터 스테이킹 수익도 <strong>가상자산 양도소득세(22%)</strong> 과세 대상입니다.<br>
+    스테이킹 보상(리워드)의 취득가액 산정 방식은 수령 시점의 시가를 기준으로 합니다.<br>
+    <strong>연간 250만원 기본공제</strong>를 초과하면 신고가 필요합니다.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <a href="https://cryptotax.cloud/"
+       style="display:block;padding:13px 16px;background:var(--blue);color:#fff;border-radius:10px;text-align:center;font-weight:800;font-size:.9rem;">
+      💰 세금 계산기 바로가기
+    </a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html"
+       style="display:block;padding:13px 16px;background:var(--bg-elevated);border:1.5px solid var(--border);color:var(--text);border-radius:10px;text-align:center;font-weight:700;font-size:.9rem;">
+      📂 CSV 세금 자동계산
+    </a>
+  </div>
+  <p style="font-size:.75rem;color:var(--text-muted);margin-top:12px;text-align:center;">
+    💡 업비트 스테이킹 거래내역도 CSV로 세금을 자동 계산할 수 있습니다
+  </p>
+</div>
+
+<!-- 국세청 공식 링크 -->
+<div class="card">
+  <div class="card-title">🏛️ 공식 세금 신고 안내</div>
+  <div style="display:grid;gap:10px;">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40664&cntntsId=292939" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🏛️</span>
+      <div><div style="font-weight:700;font-size:.9rem;">국세청 — 스테이킹 보상 과세 안내</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">nts.go.kr — 스테이킹 리워드 취득가액 기준</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+    <a href="https://www.hometax.go.kr" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">💻</span>
+      <div><div style="font-weight:700;font-size:.9rem;">홈택스 — 양도소득세 전자신고</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">hometax.go.kr — 공식 신고·납부 창구</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+    <a href="https://upbit.com/service_center/guide_v3" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🔵</span>
+      <div><div style="font-weight:700;font-size:.9rem;">업비트 스테이킹 공식 가이드</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">upbit.com — ETH·SOL·ADA 스테이킹 방법</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- SEO 텍스트 강화 -->
+<div class="seo-box">
+  <h2>📐 스테이킹(Staking) APY 계산 공식 완전 이해</h2>
+  <p><strong>스테이킹(Staking)</strong>은 보유한 가상자산(Virtual Asset)을 블록체인 네트워크 운영(지분 증명, Proof of Stake)에 참여시키고 보상을 받는 방식입니다. 코인랩스(CoinLabs) 기준으로 <strong>APY(Annual Percentage Yield, 연간 실질 수익률)</strong>는 복리 효과를 포함한 연간 수익률입니다.</p>
+  <p style="margin-top:10px;"><strong>공식 풀이:</strong><br>
+  • <strong>단리(Simple Interest)</strong>: 이자 = 원금 × APY(%) × 기간(년)<br>
+  • <strong>복리(Compound Interest)</strong>: 최종 금액 = 원금 × (1 + APY)^기간(년)<br>
+  • APY vs APR: APR은 단순 연이율, APY는 복리 재투자를 포함한 실질 수익률<br>
+  • 일 수익 ≈ 연 수익 ÷ 365, 월 수익 ≈ 연 수익 ÷ 12</p>
+  <p style="margin-top:10px;"><strong>스테이킹 세금 계산:</strong><br>
+  스테이킹 보상 수령 시 시가를 취득가액으로, 이후 매도 시 차익에 과세됩니다.<br>
+  과세표준 = MAX(0, 연간 수익 합계 − 250만원) × 22%<br>
+  <a href="https://www.nts.go.kr" target="_blank" rel="noopener" style="color:var(--blue);">국세청 공식 안내 →</a></p>
+</div>
+
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
 <div class="card">
-  <div class="card-title">📰 관련 가이드</div>
+  <div class="card-title">📰 관련 가이드 & 절세 전략</div>
   <a class="blog-link" href="https://cryptotax.cloud/blog/upbit-staking-guide.html">🏦 업비트 스테이킹 완전 가이드 — ETH·SOL·ADA 수익 극대화 →</a>
   <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
+  <a class="blog-link" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">✂️ 손실 코인으로 세금 줄이기 — 절세 하베스팅 →</a>
 </div>
 
 </div>
@@ -345,7 +471,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <a href="https://cryptotax.cloud/terms.html">이용약관</a>
     <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
   </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud — 스테이킹 수익률은 참고용이며 실제 수익과 다를 수 있습니다.</div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud — 스테이킹 수익률은 참고용이며 실제 수익과 다를 수 있습니다 · 정확한 세금신고는 <a href="https://www.hometax.go.kr" target="_blank" rel="noopener" style="color:var(--orange)">국세청 홈택스</a> 이용</div>
 </footer>
 
 <script>

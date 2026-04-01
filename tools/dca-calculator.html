@@ -109,6 +109,20 @@ tr:hover td{background:var(--orange-dim);}
 .blog-link{display:block;padding:14px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.88rem;font-weight:600;transition:all .2s;margin-bottom:10px;}
 .blog-link:hover{border-color:var(--orange);color:var(--orange);}
 .ad-slot{background:var(--bg-surface);border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--text-muted);font-size:.78rem;margin:18px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+.cta-consult{background:linear-gradient(135deg,rgba(247,147,26,.1),rgba(63,185,80,.07));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cta-consult .cta-icon{font-size:2.4rem;flex-shrink:0;}
+.cta-consult .cta-text h3{font-size:.98rem;font-weight:800;margin-bottom:4px;}
+.cta-consult .cta-text p{font-size:.83rem;color:var(--text-sub);line-height:1.55;}
+.cta-btn{background:linear-gradient(135deg,var(--orange),#e8860f);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:.85rem;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 3px 14px rgba(247,147,26,.35);}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(247,147,26,.5);}
+.ext-links{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ext-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:9px;color:var(--text-sub);font-size:.83rem;transition:all .2s;}
+.ext-link:hover{border-color:var(--blue);color:var(--blue);}
+.ext-link .ext-badge{background:rgba(88,166,255,.12);color:var(--blue);border-radius:5px;padding:2px 7px;font-size:.71rem;font-weight:700;flex-shrink:0;}
+.formula-explain{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:16px 18px;margin:12px 0;font-size:.85rem;line-height:1.9;color:var(--text-sub);}
+.formula-explain .fe-title{font-weight:800;color:var(--text);margin-bottom:6px;font-size:.9rem;}
+.formula-explain code{background:rgba(247,147,26,.15);color:var(--orange);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;}
+@media(max-width:480px){.cta-consult{flex-direction:column;text-align:center;}}
 .seo-box{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;transition:background var(--tr);}
 .seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;color:var(--text);}
 .seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
@@ -237,12 +251,44 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 <div class="ad-slot" style="min-height:260px">📢 광고 영역 (계산 결과 하단 — CTR 최고)</div>
 
+<!-- 세무사 상담 CTA -->
+<div class="cta-consult">
+  <div class="cta-icon">🧑‍💼</div>
+  <div class="cta-text" style="flex:1">
+    <h3>DCA 수익에 세금이 걱정되신가요? 세무사 무료 상담</h3>
+    <p>정기매수로 쌓인 코인을 매도할 때 취득단가 계산이 복잡합니다. 여러 거래소 거래내역 합산, 2027 절세 전략까지 가상자산 전문 세무사와 무료로 상담하세요.</p>
+  </div>
+  <a href="https://cryptotax.cloud/consultation.html" class="cta-btn">무료 상담 신청 →</a>
+</div>
+
 <div class="seo-box">
-  <h2>DCA(달러 비용 평균법)란? — 가상자산 투자 전략</h2>
-  <p><strong>DCA(Dollar Cost Averaging)</strong>는 가격 변동에 상관없이 일정 금액을 정기적으로 매수하는 전략입니다. 업비트의 <strong>코인모으기</strong> 기능이 대표적인 DCA 방식입니다.</p>
-  <h2 style="margin-top:14px">DCA 평균단가 계산 공식</h2>
-  <p>평균단가 = 총 투자금액 ÷ 총 매수수량<br>
-  각 회차에서 매수수량 = 1회 투자금액 ÷ 해당 회차 가격으로 계산됩니다. 가격이 낮을수록 수량이 많아져 평균단가를 낮추는 효과가 있습니다.</p>
+  <h2>📐 DCA 평균단가 공식 완전 해설</h2>
+
+  <div class="formula-explain">
+    <div class="fe-title">① DCA 가중평균단가 공식</div>
+    <code>평균단가 = 총 투자금액 ÷ 총 매수수량</code>
+    <p style="margin-top:8px"><strong>의미:</strong> DCA(Dollar Cost Averaging, 달러 비용 평균법)는 가격 변동과 무관하게 일정 금액을 정기적으로 매수합니다. 가격이 낮을 때 수량이 많아지고, 높을 때 수량이 줄어 <strong>가중평균단가</strong>가 형성됩니다.</p>
+    <p style="margin-top:6px"><strong>각 회차 매수수량:</strong> <code>수량 = 1회 투자금액 ÷ 해당 회차 코인 가격</code></p>
+  </div>
+
+  <div class="formula-explain" style="border-left-color:var(--green)">
+    <div class="fe-title">② 단순평균 vs 가중평균 차이</div>
+    <code>단순평균 = (5천만 + 4천만 + 6천만) ÷ 3 = 5천만원</code>
+    <p style="margin-top:8px">DCA 가중평균: 3회 × 10만원 투자, 5천만/4천만/6천만원에 매수 시<br>총 수량 = 0.002 + 0.0025 + 0.00167 = 0.00617 BTC<br>평균단가 = 30만 ÷ 0.00617 = <strong>약 4,862만원</strong> (단순평균 5천만원보다 낮음)</p>
+  </div>
+
+  <h2 style="margin-top:18px">🔗 공신력 있는 정보 출처</h2>
+  <div class="ext-links">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2338&cntntsId=7717" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">국세청</span>가상자산 취득원가 계산 방법 — nts.go.kr →
+    </a>
+    <a href="https://coinmarketcap.com/ko/glossary/dca/" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">코인랩스</span>DCA(달러 비용 평균법) 용어 정의 — CoinMarketCap →
+    </a>
+    <a href="https://upbit.com/service_center/notice" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">업비트</span>업비트 코인모으기 공식 안내 →
+    </a>
+  </div>
 </div>
 
 <div class="card">
@@ -277,12 +323,73 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
 </div>
 
+<!-- 세무사 상담 CTA (제휴마케팅 퍼널) -->
+<div class="card" style="border-color:rgba(247,147,26,.4);background:linear-gradient(135deg,rgba(247,147,26,.06),rgba(247,147,26,.02));">
+  <div class="card-title">🧑‍💼 DCA 수익, 세금 신고 준비하셨나요?</div>
+  <p style="font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:16px;">
+    DCA(달러 비용 평균법)로 매수한 코인을 매도할 때 <strong>취득원가 산정</strong>이 핵심입니다.<br>
+    여러 차례 분할 매수한 경우 <strong>이동평균법</strong> 기준으로 취득가액을 산정해야 합니다.<br>
+    정확한 세금 계산은 전문 세무사 상담을 통해 확인하세요.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html"
+       style="display:block;padding:13px 16px;background:var(--orange);color:#fff;border-radius:10px;text-align:center;font-weight:800;font-size:.9rem;">
+      📂 CSV 세금 자동계산
+    </a>
+    <a href="https://cryptotax.cloud/"
+       style="display:block;padding:13px 16px;background:var(--bg-elevated);border:1.5px solid var(--border);color:var(--text);border-radius:10px;text-align:center;font-weight:700;font-size:.9rem;">
+      💰 세금 계산기 바로가기
+    </a>
+  </div>
+  <p style="font-size:.75rem;color:var(--text-muted);margin-top:12px;text-align:center;">
+    💡 업비트 코인모으기 거래내역 CSV로 세금을 자동 계산할 수 있습니다
+  </p>
+</div>
+
+<!-- 국세청 공식 링크 -->
+<div class="card">
+  <div class="card-title">🏛️ 공식 세금 신고 안내</div>
+  <div style="display:grid;gap:10px;">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40664&cntntsId=292939" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🏛️</span>
+      <div><div style="font-weight:700;font-size:.9rem;">국세청 가상자산 취득원가 산정 안내</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">nts.go.kr — 이동평균법·선입선출법 기준</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+    <a href="https://www.hometax.go.kr" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">💻</span>
+      <div><div style="font-weight:700;font-size:.9rem;">홈택스 — 양도소득세 전자신고</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">hometax.go.kr — 공식 신고·납부 창구</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- SEO + 공식 설명 강화 -->
+<div class="seo-box">
+  <h2>📐 DCA 평균단가 계산 공식 완전 이해</h2>
+  <p><strong>DCA(Dollar Cost Averaging, 달러 비용 평균법)</strong>는 가격 변동에 관계없이 일정 금액을 정기적으로 매수하는 전략입니다. 코인랩스(CoinLabs) 기준 용어로는 '정액 분할 매수 전략'이라 불립니다.</p>
+  <p style="margin-top:10px;"><strong>공식 풀이:</strong><br>
+  • 각 회차 매수수량 = 회당 투자금액 ÷ 해당 회차 매수단가<br>
+  • 총 보유수량 = Σ (각 회차 수량)<br>
+  • <strong>가중평균단가</strong> = 총 투자금액 ÷ 총 보유수량<br>
+  • 현재 ROI = (현재 평가금액 − 총 투자금액) ÷ 총 투자금액 × 100</p>
+  <p style="margin-top:10px;"><strong>DCA의 절세 포인트:</strong><br>
+  분할 매수 시 각 매수건의 취득가액이 다릅니다. 2027년 과세 시 <strong>이동평균법</strong>으로 취득원가를 산정하며, 여러 번 매수한 경우 평균 취득단가가 세금 계산의 기준이 됩니다.<br>
+  <a href="https://www.nts.go.kr" target="_blank" rel="noopener" style="color:var(--orange);">국세청 공식 안내 →</a></p>
+</div>
+
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
 <div class="card">
-  <div class="card-title">📰 관련 가이드</div>
+  <div class="card-title">📰 관련 가이드 & 절세 전략</div>
   <a class="blog-link" href="https://cryptotax.cloud/blog/dca-strategy-guide.html">📅 코인 DCA 전략 완전 가이드 — 업비트 코인모으기 활용법 →</a>
   <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
+  <a class="blog-link" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">✂️ 손실 코인으로 세금 줄이기 — 절세 하베스팅 →</a>
 </div>
 
 </div>
@@ -297,7 +404,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <a href="https://cryptotax.cloud/terms.html">이용약관</a>
     <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
   </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · 정확한 세금신고는 <a href="https://www.hometax.go.kr" target="_blank" rel="noopener" style="color:var(--orange)">국세청 홈택스</a>를 이용하세요 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
 </footer>
 
 <script>

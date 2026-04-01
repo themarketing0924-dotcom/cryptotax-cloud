@@ -107,6 +107,20 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 .blog-link{display:block;padding:14px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.88rem;font-weight:600;transition:all .2s;margin-bottom:10px;}
 .blog-link:hover{border-color:var(--orange);color:var(--orange);}
 .ad-slot{background:var(--bg-surface);border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--text-muted);font-size:.78rem;margin:18px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+.cta-consult{background:linear-gradient(135deg,rgba(247,147,26,.1),rgba(63,185,80,.07));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cta-consult .cta-icon{font-size:2.4rem;flex-shrink:0;}
+.cta-consult .cta-text h3{font-size:.98rem;font-weight:800;margin-bottom:4px;}
+.cta-consult .cta-text p{font-size:.83rem;color:var(--text-sub);line-height:1.55;}
+.cta-btn{background:linear-gradient(135deg,var(--orange),#e8860f);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:.85rem;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 3px 14px rgba(247,147,26,.35);}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(247,147,26,.5);}
+.ext-links{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ext-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:9px;color:var(--text-sub);font-size:.83rem;transition:all .2s;}
+.ext-link:hover{border-color:var(--blue);color:var(--blue);}
+.ext-link .ext-badge{background:rgba(88,166,255,.12);color:var(--blue);border-radius:5px;padding:2px 7px;font-size:.71rem;font-weight:700;flex-shrink:0;}
+.formula-explain{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:16px 18px;margin:12px 0;font-size:.85rem;line-height:1.9;color:var(--text-sub);}
+.formula-explain .fe-title{font-weight:800;color:var(--text);margin-bottom:6px;font-size:.9rem;}
+.formula-explain code{background:rgba(247,147,26,.15);color:var(--orange);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;}
+@media(max-width:480px){.cta-consult{flex-direction:column;text-align:center;}}
 .seo-box{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;transition:background var(--tr);}
 .seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;color:var(--text);}
 .seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
@@ -215,14 +229,45 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 <div class="ad-slot" style="min-height:260px">📢 광고 영역 (계산 결과 하단 — CTR 최고)</div>
 
+<!-- 세무사 상담 CTA -->
+<div class="cta-consult">
+  <div class="cta-icon">🧑‍💼</div>
+  <div class="cta-text" style="flex:1">
+    <h3>비트코인 투자 세금, 정확하게 신고하는 방법은? 세무사 무료 상담</h3>
+    <p>소액으로 매수한 BTC도 매도 수익이 연간 250만원을 넘으면 세금 대상입니다. 취득단가 계산, 신고 방법 등 가상자산 전문 세무사와 무료로 상담하세요.</p>
+  </div>
+  <a href="https://cryptotax.cloud/consultation.html" class="cta-btn">무료 상담 신청 →</a>
+</div>
+
 <div class="seo-box">
-  <h2>사토시(Satoshi)란 무엇인가요?</h2>
-  <p>사토시는 비트코인(BTC)의 최소 단위입니다. 비트코인 창시자 <strong>사토시 나카모토</strong>의 이름에서 유래했습니다.</p>
-  <p><strong>단위 관계:</strong> 1 BTC = 100,000,000 SAT (1억 사토시)<br>1 SAT = 0.00000001 BTC</p>
-  <h2 style="margin-top:14px">1만원으로 사토시 계산법</h2>
-  <p>BTC = 원화 ÷ BTC 시세<br>
-  사토시 = BTC × 100,000,000<br>
-  예시: BTC=1.3억, 1만원 → BTC = 10,000 ÷ 130,000,000 = 0.00007692 BTC = <strong>7,692 SAT</strong></p>
+  <h2>📐 사토시 환산 공식 완전 해설</h2>
+
+  <div class="formula-explain">
+    <div class="fe-title">① 사토시(돌레) 단위 체계</div>
+    <code>1 BTC = 100,000,000 SAT (1억 사토시)</code>
+    <p style="margin-top:8px"><strong>의미:</strong> 사토시(Satoshi)는 비트코인(BTC)의 최소 단위로, 비트코인 창시자 <strong>사토시 나카모토</strong>의 이름에서 유래했습니다. 1 사토시 = 0.00000001 BTC(1억분의 1 BTC)입니다.</p>
+    <p style="margin-top:6px">활용되는 BTC 단위 체계:<br>• 1 BTC = 1,000 mBTC(밀리비트코인)<br>• 1 mBTC = 1,000 μBTC(마이크로비트코인)<br>• 1 μBTC = 100 SAT(사토시)</p>
+  </div>
+
+  <div class="formula-explain" style="border-left-color:var(--green)">
+    <div class="fe-title">② 사토시 ↔ 원화 환산 공식</div>
+    <code>BTC = 원화 ÷ BTC 시세</code>
+    <code style="margin-left:8px">SAT = BTC × 100,000,000</code>
+    <p style="margin-top:8px"><strong>예시:</strong> BTC = 1.3억원, 1만원으로 살 수 있는 사토시:<br>BTC = 10,000 ÷ 130,000,000 = 0.00007692 BTC<br>SAT = 0.00007692 × 100,000,000 = <strong>7,692 SAT</strong></p>
+  </div>
+
+  <h2 style="margin-top:18px">🔗 공신력 있는 정보 출처</h2>
+  <div class="ext-links">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2338&cntntsId=7717" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">국세청</span>가상자산 양도소득세 안내 — nts.go.kr →
+    </a>
+    <a href="https://coinmarketcap.com/ko/glossary/satoshi/" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">코인랩스</span>사토시(Satoshi) 용어 정의 — CoinMarketCap →
+    </a>
+    <a href="https://bitcoin.org/ko/bitcoin-for-individuals" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">Bitcoin.org</span>비트코인 공식 사이트 — bitcoin.org →
+    </a>
+  </div>
 </div>
 
 <div class="card">
@@ -257,11 +302,77 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
 </div>
 
+<!-- 세무사 상담 CTA -->
+<div class="card" style="border-color:rgba(247,147,26,.4);background:linear-gradient(135deg,rgba(247,147,26,.06),rgba(247,147,26,.02));">
+  <div class="card-title">🧑‍💼 소액 비트코인도 세금 신고 대상입니다</div>
+  <p style="font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:16px;">
+    사토시 단위 소액이라도 <strong>연간 수익 합계가 250만원 초과</strong>하면 세금 신고 의무가 있습니다.<br>
+    업비트·빗썸에서 비트코인을 구매하고 매도할 때 <strong>취득가액 대비 양도차익</strong>에 22%가 과세됩니다.<br>
+    CSV 세금 계산기로 전체 거래내역을 한 번에 계산하세요.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <a href="https://cryptotax.cloud/"
+       style="display:block;padding:13px 16px;background:var(--orange);color:#fff;border-radius:10px;text-align:center;font-weight:800;font-size:.9rem;">
+      💰 세금 계산기 바로가기
+    </a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html"
+       style="display:block;padding:13px 16px;background:var(--bg-elevated);border:1.5px solid var(--border);color:var(--text);border-radius:10px;text-align:center;font-weight:700;font-size:.9rem;">
+      📂 CSV 세금 자동계산
+    </a>
+  </div>
+  <p style="font-size:.75rem;color:var(--text-muted);margin-top:12px;text-align:center;">
+    💡 연간 수익 250만원 이하는 세금 0원 — 세금 계산기로 먼저 확인하세요
+  </p>
+</div>
+
+<!-- 국세청 공식 링크 -->
+<div class="card">
+  <div class="card-title">🏛️ 공식 세금 신고 안내</div>
+  <div style="display:grid;gap:10px;">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40664&cntntsId=292939" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🏛️</span>
+      <div><div style="font-weight:700;font-size:.9rem;">국세청 — 비트코인 양도소득세 공식 안내</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">nts.go.kr — 2027 가상자산 과세 기준</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+    <a href="https://www.hometax.go.kr" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">💻</span>
+      <div><div style="font-weight:700;font-size:.9rem;">홈택스 — 양도소득세 전자신고</div>
+      <div style="font-size:.78rem;color:var(--text-muted);">hometax.go.kr — 공식 신고·납부 창구</div></div>
+      <span style="margin-left:auto;color:var(--text-muted);">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- SEO + 공식 설명 강화 -->
+<div class="seo-box">
+  <h2>📐 사토시(Satoshi) 환산 공식 완전 이해</h2>
+  <p><strong>사토시(Satoshi)</strong>는 비트코인(Bitcoin, BTC)의 최소 단위입니다. 비트코인 창시자 사토시 나카모토(Satoshi Nakamoto)의 이름에서 유래했습니다. 코인랩스(CoinLabs) 기준 용어로는 <strong>BTC의 소수점 단위</strong>로 정의합니다.</p>
+  <p style="margin-top:10px;"><strong>단위 관계 공식:</strong><br>
+  • 1 BTC = 100,000,000 SAT (1억 사토시)<br>
+  • 1 SAT = 0.00000001 BTC<br>
+  • BTC → 원화: 원화 금액 = BTC × BTC 현재가(원)<br>
+  • 원화 → BTC: BTC = 원화 ÷ BTC 현재가(원)<br>
+  • 원화 → SAT: SAT = (원화 ÷ BTC 현재가) × 100,000,000</p>
+  <p style="margin-top:10px;"><strong>예시 계산 (BTC=1.3억원):</strong><br>
+  1만원으로 살 수 있는 BTC = 10,000 ÷ 130,000,000 = 0.00007692 BTC<br>
+  = <strong>7,692 사토시</strong></p>
+  <p style="margin-top:10px;font-size:.82rem;color:var(--text-muted);">
+    📌 실시간 비트코인 시세는 <a href="https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC" target="_blank" rel="noopener" style="color:var(--orange);">업비트 BTC/KRW →</a> 에서 확인하세요.
+  </p>
+</div>
+
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
 <div class="card">
-  <div class="card-title">📰 관련 가이드</div>
+  <div class="card-title">📰 관련 가이드 & 절세 전략</div>
   <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
+  <a class="blog-link" href="https://cryptotax.cloud/tools/roi-calculator.html">📈 BTC 투자 수익률 계산하기 →</a>
+  <a class="blog-link" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">✂️ 손실 코인으로 세금 줄이기 — 절세 하베스팅 →</a>
   <a class="blog-link" href="https://cryptotax.cloud/blog/">📰 코인 투자 가이드 블로그 →</a>
 </div>
 
@@ -277,7 +388,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <a href="https://cryptotax.cloud/terms.html">이용약관</a>
     <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
   </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용입니다 · 정확한 세금신고는 <a href="https://www.hometax.go.kr" target="_blank" rel="noopener" style="color:var(--orange)">국세청 홈택스</a>를 이용하세요 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
 </footer>
 
 <script>

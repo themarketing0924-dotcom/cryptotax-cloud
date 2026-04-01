@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>코인 수익률 계산기 2027 무료 | 매수·매도 입력 → ROI·세후수익 즉시 계산 — CryptoTax.cloud</title>
-<meta name="description" content="코인 수익률을 즉시 계산하세요. 매수금액·매도금액 입력 시 ROI%, 수익금, 세후 순수익까지 자동 계산. 업비트·빗썸 1000만 투자자 무료 제공. 2027 양도소득세 22% 반영.">
+<meta name="description" content="코인 수익률을 즉시 계산하세요. 매수금액·매도금액 입력 시 ROI%, 수익금, 세후 순수익까지 자동 계산. 업비트·빗썸 투자자 1,326만명 무료 제공. 2027 양도소득세 22% 반영.">
 <meta name="keywords" content="코인 수익률 계산기, ROI 계산기, 가상자산 수익률, 업비트 수익률, 코인 투자 수익, 세후수익 계산, 코인 세금 계산기">
 <link rel="canonical" href="https://cryptotax.cloud/tools/roi-calculator.html">
 <meta property="og:title" content="코인 수익률(ROI) 계산기 2027 — 세금 포함 즉시 계산 | CryptoTax.cloud">
@@ -137,12 +137,26 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 .alert.danger{background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);}
 .alert.info{background:rgba(88,166,255,.1);border:1px solid rgba(88,166,255,.25);color:var(--blue);}
 
+/* CTA BOX - 세무사 상담 유도 */
+.cta-consult{background:linear-gradient(135deg,rgba(247,147,26,.1),rgba(63,185,80,.07));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cta-consult .cta-icon{font-size:2.4rem;flex-shrink:0;}
+.cta-consult .cta-text h3{font-size:.98rem;font-weight:800;margin-bottom:4px;}
+.cta-consult .cta-text p{font-size:.83rem;color:var(--text-sub);line-height:1.55;}
+.cta-btn{background:linear-gradient(135deg,var(--orange),#e8860f);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:.85rem;font-weight:800;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 3px 14px rgba(247,147,26,.35);}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(247,147,26,.5);}
+
 /* TOOL LINKS */
 .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 @media(max-width:580px){.tool-links{grid-template-columns:1fr 1fr;}}
 .tool-link{display:flex;flex-direction:column;align-items:center;gap:5px;padding:14px 8px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:11px;color:var(--text);font-size:.8rem;font-weight:700;text-align:center;transition:all .2s;}
 .tool-link:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px);}
 .tool-link .icon{font-size:1.4rem;}
+
+/* EXTERNAL LINKS */
+.ext-links{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ext-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:9px;color:var(--text-sub);font-size:.83rem;transition:all .2s;}
+.ext-link:hover{border-color:var(--blue);color:var(--blue);}
+.ext-link .ext-badge{background:rgba(88,166,255,.12);color:var(--blue);border-radius:5px;padding:2px 7px;font-size:.71rem;font-weight:700;flex-shrink:0;}
 
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border-subtle);}
@@ -162,6 +176,11 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 .seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;color:var(--text);}
 .seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
 
+/* FORMULA EXPLAIN BOX */
+.formula-explain{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:16px 18px;margin:12px 0;font-size:.85rem;line-height:1.9;color:var(--text-sub);}
+.formula-explain .fe-title{font-weight:800;color:var(--text);margin-bottom:6px;font-size:.9rem;}
+.formula-explain code{background:rgba(247,147,26,.15);color:var(--orange);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;}
+
 /* FOOTER */
 footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:28px 20px;text-align:center;transition:background var(--tr);}
 .footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
@@ -176,6 +195,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   .hero{padding:28px 16px 20px;}
   .container{padding:0 14px 48px;}
   .card{padding:18px;}
+  .cta-consult{flex-direction:column;text-align:center;}
 }
 </style>
 </head>
@@ -279,18 +299,50 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   <div class="alert info"   id="alertInfo"></div>
 </div>
 
-<!-- AD MID (CTR 최고 위치) -->
+<!-- AD MID (CTR 최고 위치: 계산 결과 직후) -->
 <div class="ad-slot" style="min-height:260px"><!-- Google AdSense 계산 결과 하단 300×250 — CTR 최고 위치 -->📢 광고 영역 (CTR 최고)</div>
 
-<!-- SEO 텍스트 -->
+<!-- 세무사 상담 CTA (수익 발생 시 핵심 전환 포인트) -->
+<div class="cta-consult">
+  <div class="cta-icon">🧑‍💼</div>
+  <div class="cta-text" style="flex:1">
+    <h3>세금이 복잡하신가요? 세무사 무료 상담 받기</h3>
+    <p>업비트·빗썸·바이낸스 다중 거래소, 해외 거래, 법인 투자 등 복잡한 경우는 전문 세무사의 도움이 필요합니다. 가상자산 전문 세무사와 무료로 상담하세요.</p>
+  </div>
+  <a href="https://cryptotax.cloud/consultation.html" class="cta-btn">무료 상담 신청 →</a>
+</div>
+
+<!-- 공식 의미 설명 (SEO + 교육 콘텐츠) -->
 <div class="seo-box">
-  <h2>코인 수익률(ROI) 계산 공식 — 정확한 수학적 계산법</h2>
-  <p><strong>ROI (Return on Investment)</strong> = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100</p>
-  <p>예시: 비트코인을 100만원에 매수해 150만원에 매도했을 때, 수수료 0.1% 적용 시<br>
-  수익금 = 150만 − 100만 − 2,500원 = <strong>499,500원</strong> / ROI = <strong>49.95%</strong></p>
-  <h2 style="margin-top:16px">2027년 가상자산 세금 계산법</h2>
-  <p>2027년 1월 1일부터 가상자산 양도소득세가 시행됩니다. 연간 수익 중 <strong>250만원 기본공제</strong> 후 초과분의 <strong>22%</strong>(소득세 20% + 지방세 2%)가 과세됩니다.</p>
-  <p>예시: 연간 수익 500만원 → 과세표준 = 500만 − 250만 = 250만원 → 세금 = 250만 × 22% = <strong>55만원</strong></p>
+  <h2>📐 ROI 공식 완전 해설 — 수학적 의미와 계산법</h2>
+
+  <div class="formula-explain">
+    <div class="fe-title">① ROI(투자수익률) 공식</div>
+    <code>ROI = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100</code>
+    <p style="margin-top:8px"><strong>의미:</strong> 내가 투자한 원금 대비 얼마나 수익을 냈는지를 % 단위로 표현합니다. 양수는 수익, 음수는 손실입니다. 수수료를 반드시 포함해야 실제 수익률과 일치합니다.</p>
+    <p style="margin-top:6px"><strong>예시:</strong> 100만원 매수 → 150만원 매도, 수수료 1,500원<br>ROI = (1,500,000 − 1,000,000 − 1,500) ÷ 1,000,000 × 100 = <strong>49.85%</strong></p>
+  </div>
+
+  <div class="formula-explain" style="border-left-color:var(--green)">
+    <div class="fe-title">② 가상자산 양도소득세 공식 (2027년 기준)</div>
+    <code>세금 = MAX(0, 수익금 − 250만원) × 22%</code>
+    <p style="margin-top:8px"><strong>의미:</strong> 연간 실현 수익에서 <strong>기본공제 250만원</strong>을 차감한 금액에 <strong>세율 22%</strong>(소득세 20% + 지방세 2%)를 곱합니다. 수익이 250만원 이하이면 세금은 0원입니다.</p>
+    <p style="margin-top:6px"><strong>예시:</strong> 연간 수익 1,000만원 → 과세표준 = 1,000만 − 250만 = 750만원 → 세금 = 750만 × 22% = <strong>165만원</strong></p>
+    <p style="margin-top:6px;font-size:.8rem;color:var(--text-muted)">※ 국세청 공식 세율 기준 | 2027.1.1 시행 예정</p>
+  </div>
+
+  <h2 style="margin-top:18px">🔗 공신력 있는 세금 정보</h2>
+  <div class="ext-links">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2338&cntntsId=7717" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">국세청</span>가상자산 양도소득세 과세 안내 (nts.go.kr) →
+    </a>
+    <a href="https://www.hometax.go.kr" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">홈택스</span>국세청 홈택스 — 세금 신고·납부 공식 창구 (hometax.go.kr) →
+    </a>
+    <a href="https://coinmarketcap.com/ko/glossary/roi/" target="_blank" rel="noopener" class="ext-link">
+      <span class="ext-badge">코인랩스</span>ROI(투자수익률) 용어 정의 — CoinMarketCap →
+    </a>
+  </div>
 </div>
 
 <!-- OTHER TOOLS -->
@@ -311,7 +363,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   <div class="card-title">❓ 자주 묻는 질문</div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">ROI(수익률)는 어떻게 계산되나요? <span>▼</span></div>
-    <div class="faq-a">ROI = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100 으로 계산됩니다. 예를 들어 100만원에 사서 150만원에 팔면 ROI = 50%입니다. 수수료를 포함하면 실제 수익률은 조금 낮아집니다.</div>
+    <div class="faq-a">ROI(Return on Investment, 투자수익률) = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100 으로 계산됩니다. 100만원에 사서 150만원에 팔면 ROI = 50%입니다. 수수료를 포함하면 실제 수익률은 조금 낮아집니다.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">2027년 코인 세금은 얼마인가요? <span>▼</span></div>
@@ -323,7 +375,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">손실이 났을 때 세금은? <span>▼</span></div>
-    <div class="faq-a">손실이 발생한 경우 세금은 0원입니다. 다만 손실을 다음 해로 이월 공제받으려면 신고가 필요합니다. 수익이 있는 코인과 손실 코인을 상계하는 '절세 하베스팅' 전략도 활용할 수 있습니다.</div>
+    <div class="faq-a">손실이 발생한 경우 세금은 0원입니다. 다만 손실을 활용해 수익 코인과 상계하는 '<a href="https://cryptotax.cloud/tools/tax-loss-harvesting.html" style="color:var(--orange)">절세 하베스팅</a>' 전략도 활용할 수 있습니다. 평가손실 코인을 매도하면 같은 해 수익에서 손실을 차감해 세금을 줄일 수 있습니다.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">세후 수익이 중요한 이유는? <span>▼</span></div>
@@ -331,14 +383,95 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
 </div>
 
+<!-- 세무사 상담 CTA (제휴마케팅 퍼널) -->
+<div class="card" style="border-color:rgba(247,147,26,.4);background:linear-gradient(135deg,rgba(247,147,26,.06),rgba(247,147,26,.02));">
+  <div class="card-title">🧑‍💼 세금 신고, 전문가에게 맡기세요</div>
+  <p style="font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:16px;">
+    계산기 결과로 <strong>예상 세금</strong>을 확인하셨나요?<br>
+    실제 신고는 취득가액 산정·손익통산·기타소득 구분 등 복잡한 사항이 있습니다.<br>
+    <strong>가상자산 전문 세무사</strong>와 무료 상담으로 절세 방법을 확인해 보세요.
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <a href="https://cryptotax.cloud/tools/tax-loss-harvesting.html"
+       style="display:block;padding:13px 16px;background:var(--orange);color:#fff;border-radius:10px;text-align:center;font-weight:800;font-size:.9rem;transition:all .2s;"
+       onmouseover="this.style.background='#e8860f'" onmouseout="this.style.background='var(--orange)'">
+      ✂️ 절세 전략 시뮬레이션
+    </a>
+    <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html"
+       style="display:block;padding:13px 16px;background:var(--bg-elevated);border:1.5px solid var(--border);color:var(--text);border-radius:10px;text-align:center;font-weight:700;font-size:.9rem;transition:all .2s;"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      📂 CSV 세금 자동계산
+    </a>
+  </div>
+  <p style="font-size:.75rem;color:var(--text-muted);margin-top:12px;text-align:center;">
+    💡 업비트·빗썸·바이낸스 거래내역 CSV 파일로 세금을 자동 계산할 수 있습니다
+  </p>
+</div>
+
+<!-- 국세청 공식 링크 박스 -->
+<div class="card">
+  <div class="card-title">🏛️ 공식 세금 신고 안내</div>
+  <div style="display:grid;gap:10px;">
+    <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40664&cntntsId=292939" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);transition:all .2s;"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🏛️</span>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;">국세청 가상자산 과세 공식 안내</div>
+        <div style="font-size:.78rem;color:var(--text-muted);">nts.go.kr — 2027 양도소득세 신고 방법</div>
+      </div>
+      <span style="margin-left:auto;color:var(--text-muted);font-size:.8rem;">↗</span>
+    </a>
+    <a href="https://www.hometax.go.kr" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);transition:all .2s;"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">💻</span>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;">홈택스 — 가상자산 세금 신고</div>
+        <div style="font-size:.78rem;color:var(--text-muted);">hometax.go.kr — 전자 신고·납부 공식 창구</div>
+      </div>
+      <span style="margin-left:auto;color:var(--text-muted);font-size:.8rem;">↗</span>
+    </a>
+    <a href="https://upbit.com" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);transition:all .2s;"
+       onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:1.5rem;">🔵</span>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;">업비트 — 거래내역 CSV 다운로드</div>
+        <div style="font-size:.78rem;color:var(--text-muted);">upbit.com → 거래내역 → 엑셀 다운로드</div>
+      </div>
+      <span style="margin-left:auto;color:var(--text-muted);font-size:.8rem;">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- 애드센스 수익 리포트 유도 섹션 -->
+<div class="seo-box">
+  <h2>📊 ROI(수익률) 완전 이해 가이드</h2>
+  <p><strong>ROI(Return on Investment, 투자수익률)</strong>는 투자한 금액 대비 얼마나 수익이 났는지를 나타내는 핵심 지표입니다. 코인랩스(CoinLabs) 기준 용어로는 가상자산(Virtual Asset) 거래에서 발생하는 양도차익률을 의미합니다.</p>
+  <p><strong>공식 풀이:</strong><br>
+  • <strong>수익금</strong> = 매도금액 − 매수금액(취득가액) − 수수료<br>
+  • <strong>ROI%</strong> = 수익금 ÷ 매수금액 × 100<br>
+  • <strong>과세표준</strong> = MAX(0, 연간 수익금 합계 − 250만원 기본공제)<br>
+  • <strong>예상 세금</strong> = 과세표준 × 22% (소득세 20% + 지방소득세 2%)</p>
+  <p style="margin-top:10px;"><strong>왜 세후 수익이 중요한가?</strong><br>
+  2027년부터 연간 250만원 초과 수익에 22%가 과세됩니다. ROI 50%라도 세금을 고려하면 실제 손에 남는 수익은 다릅니다. 
+  투자 계획은 반드시 <strong>세후 ROI 기준</strong>으로 설계해야 합니다.</p>
+  <p style="margin-top:10px;font-size:.82rem;color:var(--text-muted);">
+    📌 참고: <a href="https://www.nts.go.kr" target="_blank" rel="noopener" style="color:var(--orange);">국세청(nts.go.kr)</a>에서 가상자산 양도소득세 공식 안내를 확인할 수 있습니다. 
+    본 계산기는 참고용이며 실제 세금은 세무사 상담을 권장합니다.
+  </p>
+</div>
+
 <!-- AD BOTTOM -->
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
 <!-- RELATED BLOG -->
 <div class="card">
-  <div class="card-title">📰 관련 가이드</div>
+  <div class="card-title">📰 관련 가이드 & 절세 전략</div>
   <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 — 22% 세율·공제·신고 방법 →</a>
   <a class="blog-link" href="https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html">🔢 코인 세금 계산 5단계 — 초보자도 따라할 수 있는 방법 →</a>
+  <a class="blog-link" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">✂️ 손실 코인으로 세금 줄이기 — 절세 하베스팅 전략 →</a>
   <a class="blog-link" href="https://cryptotax.cloud/blog/">📰 코인 투자 가이드 블로그 전체보기 →</a>
 </div>
 
@@ -355,7 +488,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <a href="https://cryptotax.cloud/terms.html">이용약관</a>
     <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
   </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용이며 실제 세금과 다를 수 있습니다 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud · 본 계산기는 참고용이며 실제 세금과 다를 수 있습니다 · 정확한 세금신고는 <a href="https://www.hometax.go.kr" target="_blank" rel="noopener" style="color:var(--orange)">국세청 홈택스</a>를 이용하세요 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a></div>
 </footer>
 
 <script>
@@ -384,6 +517,11 @@ function applyTheme(theme, save){
 }
 
 // 수익률 계산
+// 수학 공식:
+// 수익금(profit) = 매도금액 − 매수금액 − 수수료
+// ROI(%) = profit ÷ 매수금액 × 100
+// 과세표준 = MAX(0, profit − 2,500,000)
+// 예상세금 = 과세표준 × 0.22
 function calculate(){
   const buy  = parseFloat(document.getElementById('buyAmt').value)  || 0;
   const sell = parseFloat(document.getElementById('sellAmt').value) || 0;
@@ -423,7 +561,7 @@ function calculate(){
   atEl.className = 'value ' + (afterTax >= 0 ? 'up' : 'down');
 
   document.getElementById('formulaBox').innerHTML =
-    `<strong>계산 공식</strong><br>
+    `<strong>계산 공식 적용 결과</strong><br>
      수익금 = ${sell.toLocaleString()} − ${buy.toLocaleString()} − ${fee.toLocaleString()} = <strong>${profit.toLocaleString()}원</strong><br>
      ROI = ${profit.toLocaleString()} ÷ ${buy.toLocaleString()} × 100 = <strong>${roi.toFixed(2)}%</strong>
      ${withTax ? `<br>과세표준 = MAX(0, ${profit.toLocaleString()} − 2,500,000) = <strong>${taxBase.toLocaleString()}원</strong><br>예상 세금 = ${taxBase.toLocaleString()} × 22% = <strong>${taxAmt.toLocaleString()}원</strong>` : ''}
