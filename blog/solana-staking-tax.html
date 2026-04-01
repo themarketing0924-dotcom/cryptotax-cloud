@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세 계산법 완벽 가이드</title>
+    <meta name="description" content="업비트·바이낸스 솔라나 스테이킹 보상, 2027년부터 22% 과세! 수령 시점 vs 매도 시점 과세 논란, 실전 계산 예시, 홈택스 신고 5단계 총정리.">
+    <meta name="keywords" content="솔라나세금, SOL스테이킹세금, 스테이킹보상과세, 업비트솔라나세금, 바이낸스스테이킹세금, 가상자산스테이킹과세2027">
+    <link rel="canonical" href="https://cryptotax.cloud/blog/solana-staking-tax.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 22% 과세">
+    <meta property="og:description" content="업비트 솔라나 스테이킹 연 6.22% 보상, 2027년부터 250만원 초과 시 22% 과세. 수령·매도 시점 과세 논란 해결법 완벽 정리.">
+    <meta property="og:image" content="https://cryptotax.cloud/images/solana-staking-tax.jpg">
+    <meta property="og:url" content="https://cryptotax.cloud/blog/solana-staking-tax.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="솔라나(SOL) 스테이킹 세금 신고 가이드">
+    <meta name="twitter:description" content="업비트 솔라나 스테이킹 연 6% 보상, 2027년부터 22% 과세. 수령·매도 시점 과세 논란 완벽 해결.">
+    <meta name="twitter:image" content="https://cryptotax.cloud/images/solana-staking-tax.jpg">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세 계산법 완벽 가이드",
+      "description": "업비트·바이낸스 솔라나 스테이킹 보상, 2027년부터 22% 과세! 수령 시점 vs 매도 시점 과세 논란, 실전 계산 예시, 홈택스 신고 5단계 총정리.",
+      "image": "https://cryptotax.cloud/images/solana-staking-tax.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "CryptoTax.cloud 세무팀"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CryptoTax.cloud",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cryptotax.cloud/logo.png"
+        }
+      },
+      "datePublished": "2026-03-31",
+      "dateModified": "2026-03-31"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "솔라나 스테이킹 보상도 세금 내야 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 2027년 1월 1일부터 스테이킹 보상은 '가상자산 대여 소득'으로 분류되어 연 250만원 초과 시 22% 과세됩니다. 업비트·바이낸스 등 모든 플랫폼 스테이킹이 대상입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "스테이킹 보상은 언제 과세되나요? 받을 때 vs 팔 때?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "현재 국세청은 '수령 시점' 과세 입장이나 법적 명확성이 부족합니다. 안전하게 수령 시점 시가를 기록하고, 매도 시 양도소득으로도 신고 준비하는 이중 기록을 권장합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "업비트 솔라나 스테이킹 연 6.22% 보상, 세금은 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "예: 1,000만원 스테이킹 → 연 보상 62.2만원 → 250만원 이하이므로 비과세. 단, 다른 코인 수익과 합산해 250만원 초과 시 22% 과세됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "바이낸스 해외 스테이킹도 신고해야 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 2027년부터 OECD CARF로 바이낸스, 크라켄 등 해외 거래소 정보도 국세청에 자동 제공됩니다. 반드시 신고하세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "솔라나 스테이킹 세금 신고는 어디서 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "매년 5월 1~31일, 홈택스(https://hometax.go.kr) → '종합소득세 → 기타소득 → 가상자산 대여 소득'에서 신고합니다."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            line-height:1.8; 
+            color:#1e293b; 
+            background:#fff;
+            padding:20px;
+        }
+        .container { 
+            max-width:800px; 
+            margin:0 auto; 
+            background:#fff;
+            padding:40px 20px;
+        }
+        h1 { 
+            font-size:2em; 
+            margin-bottom:20px; 
+            color:#0f172a;
+            font-weight:700;
+            line-height:1.3;
+        }
+        h2 { 
+            font-size:1.6em; 
+            margin:40px 0 20px; 
+            color:#0f172a;
+            font-weight:600;
+            border-bottom:3px solid #9945ff;
+            padding-bottom:10px;
+        }
+        h3 { 
+            font-size:1.3em; 
+            margin:30px 0 15px; 
+            color:#334155;
+            font-weight:600;
+        }
+        p { 
+            margin-bottom:16px; 
+            font-size:1.05em;
+        }
+        .meta { 
+            color:#64748b; 
+            font-size:0.95em; 
+            margin-bottom:30px;
+            padding:15px;
+            background:#f8fafc;
+            border-radius:8px;
+        }
+        .summary-box { 
+            background:linear-gradient(135deg, #9945ff 0%, #14f195 100%);
+            color:#fff;
+            padding:25px;
+            border-radius:12px;
+            margin:30px 0;
+            box-shadow:0 10px 30px rgba(153,69,255,0.3);
+        }
+        .summary-box h3 { 
+            color:#fff; 
+            margin-top:0;
+            font-size:1.4em;
+        }
+        .summary-box ul { 
+            margin:15px 0; 
+            padding-left:20px;
+        }
+        .summary-box li { 
+            margin:10px 0;
+            font-size:1.05em;
+        }
+        .warning-box {
+            background:#fef3c7;
+            border-left:5px solid #f59e0b;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        .warning-box strong {
+            color:#b45309;
+            font-size:1.1em;
+        }
+        .info-box {
+            background:#dbeafe;
+            border-left:5px solid #3b82f6;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        .success-box {
+            background:#d1fae5;
+            border-left:5px solid#10b981;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        table { 
+            width:100%; 
+            border-collapse:collapse; 
+            margin:25px 0;
+            font-size:0.95em;
+        }
+        table th { 
+            background:#0f172a; 
+            color:#fff; 
+            padding:12px;
+            text-align:left;
+            font-weight:600;
+        }
+        table td { 
+            padding:12px; 
+            border-bottom:1px solid #e2e8f0;
+        }
+        table tr:hover { 
+            background:#f8fafc;
+        }
+        ul, ol { 
+            margin:20px 0; 
+            padding-left:25px;
+        }
+        li { 
+            margin:10px 0;
+            line-height:1.8;
+        }
+        .cta-button {
+            display:inline-block;
+            background:#9945ff;
+            color:#fff;
+            padding:15px 30px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:600;
+            margin:10px 10px 10px 0;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 15px rgba(153,69,255,0.3);
+        }
+        .cta-button:hover {
+            background:#7b2bd6;
+            transform:translateY(-2px);
+            box-shadow:0 6px 20px rgba(153,69,255,0.4);
+        }
+        .stat-card {
+            background:#f8fafc;
+            padding:20px;
+            border-radius:8px;
+            margin:15px 0;
+            border-left:4px solid #9945ff;
+        }
+        .stat-card strong {
+            color:#9945ff;
+            font-size:1.8em;
+            display:block;
+            margin-bottom:5px;
+        }
+        .disclaimer {
+            background:#f1f5f9;
+            padding:20px;
+            border-radius:8px;
+            margin:40px 0 20px;
+            font-size:0.9em;
+            color:#475569;
+        }
+        code {
+            background:#f1f5f9;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:'Courier New', monospace;
+            color:#e11d48;
+        }
+        .formula {
+            background:#f8fafc;
+            padding:20px;
+            border-radius:8px;
+            margin:20px 0;
+            font-family:'Courier New', monospace;
+            border:2px solid #e2e8f0;
+        }
+        @media (max-width:768px) {
+            body { padding:10px; }
+            .container { padding:20px 10px; }
+            h1 { font-size:1.6em; }
+            h2 { font-size:1.3em; }
+            table { font-size:0.85em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💎 솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세 계산법 완벽 가이드</h1>
+        
+        <div class="meta">
+            📅 <strong>작성일:</strong> 2026년 3월 31일 | 
+            ⏱️ <strong>읽는 시간:</strong> 9분 | 
+            👤 <strong>작성자:</strong> CryptoTax.cloud 세무팀 | 
+            🏷️ <strong>태그:</strong> #솔라나세금 #SOL스테이킹세금 #스테이킹보상과세 #가상자산세금2027
+        </div>
+
+        <div class="summary-box">
+            <h3>⚡ 3초 요약</h3>
+            <ul>
+                <li><strong>2027년 1월 1일부터</strong> 솔라나 스테이킹 보상 <strong>연 250만원 초과 시 22% 과세</strong></li>
+                <li><strong>업비트 연 6.22%</strong>, 바이낸스 연 7~8% 보상 → 모두 <strong>'대여 소득'</strong>으로 신고</li>
+                <li><strong>수령 시점 vs 매도 시점</strong> 과세 논란 존재 → <strong>이중 기록 권장</strong></li>
+                <li><strong>미신고 시</strong> 최대 40% 가산세 + 형사 처벌 가능</li>
+            </ul>
+        </div>
+
+        <div class="stat-card">
+            <strong>6.22%</strong>
+            업비트 솔라나 스테이킹 연 추정 보상률 (2026년 3월 기준)
+        </div>
+
+        <div class="stat-card">
+            <strong>22%</strong>
+            스테이킹 보상 과세율 (소득세 20% + 지방소득세 2%)
+        </div>
+
+        <div class="stat-card">
+            <strong>250만원</strong>
+            연간 기본공제 금액 (초과분만 과세)
+        </div>
+
+        <div class="stat-card">
+            <strong>5월 1~31일</strong>
+            매년 홈택스 종합소득세 신고 기간
+        </div>
+
+        <h2>📌 왜 지금 솔라나 스테이킹 세금을 알아야 하나요?</h2>
+        
+        <p>2024년 12월, 업비트에서 1,000만원 상당의 솔라나(SOL)를 스테이킹했다면 1년 동안 <strong>약 5.19 SOL</strong>을 보상으로 받았을 것입니다. (뉴스1 보도) 이는 <strong>연 212% 수익률</strong>을 기록했습니다. 단순 보유 대비 20%p 이상 높은 수익이죠.</p>
+
+        <p>하지만 2027년 1월 1일부터 이러한 스테이킹 보상은 <strong>'가상자산 대여 소득'</strong>으로 분류되어 <strong>22%의 세금</strong>이 부과됩니다. 업비트, 바이낸스, 크라켄 등 어디서 스테이킹하든 예외가 없습니다.</p>
+
+        <div class="warning-box">
+            <strong>⚠️ 긴급 주의</strong><br>
+            2026년 3월 현재, <strong>스테이킹 보상 과세 시점(수령 vs 매도)</strong>에 대한 법적 명확성이 부족합니다. 미국 IRS는 '수령 즉시 과세' 입장이나, 한국 국세청은 아직 공식 지침을 발표하지 않았습니다. <strong>안전하게 수령 시점·매도 시점 모두 기록</strong>하는 것을 권장합니다.
+        </div>
+
+        <h2>🔍 솔라나 스테이킹이란? (초보자 설명)</h2>
+
+        <p>솔라나는 <strong>PoS(지분증명)</strong> 블록체인으로, 보유한 SOL 토큰을 네트워크 검증자에게 <strong>'위임(delegation)'</strong>하면 네트워크 보안에 기여한 대가로 <strong>정기적으로 보상</strong>을 받습니다.</p>
+
+        <h3>1️⃣ 스테이킹 방법 3가지</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>방법</th>
+                    <th>플랫폼</th>
+                    <th>연 보상률</th>
+                    <th>잠금 기간</th>
+                    <th>난이도</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>중앙화 거래소</strong></td>
+                    <td>업비트, 바이낸스</td>
+                    <td>6~8%</td>
+                    <td>언제든 해제 (2~3일)</td>
+                    <td>⭐ 쉬움</td>
+                </tr>
+                <tr>
+                    <td><strong>비수탁 지갑</strong></td>
+                    <td>Phantom, Solflare</td>
+                    <td>4~7%</td>
+                    <td>언제든 해제 (Epoch 단위)</td>
+                    <td>⭐⭐ 보통</td>
+                </tr>
+                <tr>
+                    <td><strong>직접 검증자 운영</strong></td>
+                    <td>자체 노드</td>
+                    <td>최대 10%+</td>
+                    <td>없음</td>
+                    <td>⭐⭐⭐ 어려움</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2️⃣ 업비트 솔라나 스테이킹 절차 (5단계)</h3>
+
+        <ol>
+            <li><strong>업비트 앱/웹</strong> 접속 → 로그인</li>
+            <li>하단 메뉴: <strong>디파이 → 스테이킹</strong></li>
+            <li>코인 선택: <strong>솔라나(SOL)</strong></li>
+            <li>수량 입력 → <strong>신청하기</strong></li>
+            <li>약 2시간 후 스테이킹 완료, 매일 보상 자동 지급</li>
+        </ol>
+
+        <div class="info-box">
+            <strong>💡 핵심 포인트</strong><br>
+            업비트는 스테이킹 신청 후 <strong>약 2시간</strong>, 언스테이킹은 <strong>3일</strong> 소요됩니다. (Epoch 주기 따름) 바이낸스는 <strong>즉시 언스테이킹</strong>이 가능하나 보상률이 약간 낮습니다.
+        </div>
+
+        <h2>💰 솔라나 스테이킹 세금 계산 방법 (5단계)</h2>
+
+        <h3>1단계: 스테이킹 보상 총액 확인하기</h3>
+
+        <p>업비트 예시 (2026년 기준):</p>
+
+        <ul>
+            <li><strong>스테이킹 금액:</strong> 1,000만원 (약 75.75 SOL, @132,000원 가정)</li>
+            <li><strong>연 보상률:</strong> 6.22%</li>
+            <li><strong>연 보상량:</strong> 75.75 × 0.0622 = <strong>4.71 SOL</strong></li>
+            <li><strong>보상 시가:</strong> 4.71 SOL × 132,000원 = <strong>621,720원</strong></li>
+        </ul>
+
+        <h3>2단계: 기본공제 적용하기</h3>
+
+        <div class="formula">
+<strong>📐 과세소득 계산 공식</strong><br><br>
+과세소득 = 스테이킹 보상 총액 − 250만원(기본공제)<br><br>
+<strong>예시:</strong> 621,720원 − 2,500,000원 = <strong>−1,878,280원 (비과세)</strong>
+        </div>
+
+        <div class="success-box">
+            <strong>✅ 결론</strong><br>
+            연 622만원 이하의 스테이킹 보상은 <strong>기본공제 250만원 내</strong>이므로 비과세입니다. 단, <strong>다른 코인(비트코인, 리플 등) 수익과 합산</strong>해야 합니다!
+        </div>
+
+        <h3>3단계: 다른 코인 수익과 통합 계산</h3>
+
+        <p><strong>실전 사례:</strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>솔라나 스테이킹 보상</td>
+                    <td>+621,720원</td>
+                </tr>
+                <tr>
+                    <td>비트코인 매매 차익</td>
+                    <td>+3,000,000원</td>
+                </tr>
+                <tr>
+                    <td>리플 매매 손실</td>
+                    <td>−500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>총 가상자산 소득</strong></td>
+                    <td><strong>3,121,720원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>621,720원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액 (22%)</strong></td>
+                    <td><strong>136,778원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4단계: 수령 시점 vs 매도 시점 과세 논란</h3>
+
+        <div class="warning-box">
+            <strong>⚠️ 현재 논란 중인 쟁점</strong><br>
+            <strong>미국 IRS 입장:</strong> 스테이킹 보상을 <strong>수령하는 즉시</strong> 그 시가로 과세 (소득 발생 시점)<br>
+            <strong>한국 국세청 추정 입장:</strong> 명확한 지침 없음. 일부 세무사는 '대여 소득'이므로 <strong>수령 시점</strong>, 일부는 '실현 시점(매도)'으로 해석<br><br>
+            <strong>🛡️ 안전 전략:</strong><br>
+            1. 스테이킹 보상 수령 시점의 <strong>시가를 엑셀에 기록</strong><br>
+            2. 매도 시점에도 <strong>양도소득 계산</strong><br>
+            3. 홈택스 신고 시 <strong>'대여 소득'으로 수령 시점 기준</strong> 신고 (국세청 예상 방침)
+        </div>
+
+        <h3>5단계: 세액 계산하기</h3>
+
+        <div class="formula">
+<strong>📐 세액 계산 공식</strong><br><br>
+세액 = 과세소득 × 22% (소득세 20% + 지방소득세 2%)<br><br>
+<strong>예시 1 (단순 스테이킹만):</strong> 621,720원 − 2,500,000원 = <strong>비과세 (0원)</strong><br>
+<strong>예시 2 (통합 계산):</strong> 621,720원 × 0.22 = <strong>136,778원</strong>
+        </div>
+
+        <h2>📊 실전 세금 계산 사례 (4가지 시나리오)</h2>
+
+        <h3>사례 1: 소액 스테이킹 (비과세)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>업비트 SOL 스테이킹 (1,000만원, 연 6.22%)</td>
+                    <td>+622,000원</td>
+                </tr>
+                <tr>
+                    <td>기타 코인 거래 없음</td>
+                    <td>0원</td>
+                </tr>
+                <tr>
+                    <td><strong>총 가상자산 소득</strong></td>
+                    <td><strong>622,000원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>0원 (비과세)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액</strong></td>
+                    <td><strong>0원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>사례 2: 중규모 스테이킹 + 매매 수익</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>바이낸스 SOL 스테이킹 (5,000만원, 연 7.5%)</td>
+                    <td>+3,750,000원</td>
+                </tr>
+                <tr>
+                    <td>비트코인 매매 차익</td>
+                    <td>+2,000,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>총 가상자산 소득</strong></td>
+                    <td><strong>5,750,000원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>3,250,000원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액 (22%)</strong></td>
+                    <td><strong>715,000원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>사례 3: 대규모 스테이킹 (1억원 케이스)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>업비트 SOL 스테이킹 (1억원, 연 6.22%)</td>
+                    <td>+6,220,000원</td>
+                </tr>
+                <tr>
+                    <td>기타 코인 거래 없음</td>
+                    <td>0원</td>
+                </tr>
+                <tr>
+                    <td><strong>총 가상자산 소득</strong></td>
+                    <td><strong>6,220,000원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>3,720,000원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액 (22%)</strong></td>
+                    <td><strong>818,400원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>사례 4: 스테이킹 + 보상 재투자 (복리 효과)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>초기 스테이킹 (3,000만원)</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>연 보상 (6.22%, 자동 재스테이킹)</td>
+                    <td>+1,866,000원 (1차년도)</td>
+                </tr>
+                <tr>
+                    <td>재투자 후 다음 해 보상 (복리)</td>
+                    <td>+1,982,015원 (2차년도)</td>
+                </tr>
+                <tr>
+                    <td><strong>2년 총 보상</strong></td>
+                    <td><strong>3,848,015원</strong></td>
+                </tr>
+                <tr>
+                    <td>연 평균 보상</td>
+                    <td>1,924,008원</td>
+                </tr>
+                <tr>
+                    <td>기본공제 (매년 적용)</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득 (1차년도)</strong></td>
+                    <td><strong>0원 (비과세)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>📝 홈택스 신고 5단계 완벽 가이드</h2>
+
+        <h3>1단계: 스테이킹 보상 내역 확인</h3>
+
+        <p><strong>업비트:</strong></p>
+        <ul>
+            <li>마이페이지 → 디파이 내역 → 스테이킹 보상 내역 조회</li>
+            <li>CSV 다운로드 또는 스크린샷 저장</li>
+        </ul>
+
+        <p><strong>바이낸스:</strong></p>
+        <ul>
+            <li>Wallet → Earn → Staking History</li>
+            <li>Download CSV Export (연 단위)</li>
+        </ul>
+
+        <p><strong>Phantom/Solflare 지갑:</strong></p>
+        <ul>
+            <li>솔스캔(Solscan.io) → 지갑 주소 입력 → Transaction History</li>
+            <li>필터: <code>Staking Rewards</code></li>
+            <li>CSV 다운로드 (무료 도구: <a href="https://github.com/your-repo/solana-staking-tracker" target="_blank">Solana Staking Tracker</a>)</li>
+        </ul>
+
+        <h3>2단계: 수령 시점 시가 기록하기</h3>
+
+        <div class="formula">
+<strong>📐 엑셀 기록 예시</strong><br><br>
+| 날짜       | 보상량(SOL) | 수령 시 시가(원) | 보상 가치(원) |<br>
+|------------|-------------|------------------|---------------|<br>
+| 2027-01-15 | 0.012 SOL   | 130,000원        | 1,560원       |<br>
+| 2027-01-16 | 0.012 SOL   | 131,500원        | 1,578원       |<br>
+| ...        | ...         | ...              | ...           |<br>
+| <strong>연 합계</strong>    | <strong>4.71 SOL</strong>    | <strong>-</strong>                | <strong>621,720원</strong>     |
+        </div>
+
+        <div class="info-box">
+            <strong>💡 시가 확인 방법</strong><br>
+            <strong>국내 원화 시가:</strong> 업비트·빗썸 일 종가 (홈택스 신고 시 인정)<br>
+            <strong>글로벌 시가:</strong> CoinMarketCap, CoinGecko (바이낸스 등 해외 스테이킹 시 활용)
+        </div>
+
+        <h3>3단계: 홈택스 접속 및 로그인</h3>
+        <p>🔗 <a href="https://hometax.go.kr" target="_blank" style="color:#3b82f6; text-decoration:underline;">https://hometax.go.kr</a> → 공동인증서/간편인증 로그인</p>
+
+        <h3>4단계: 종합소득세 신고 메뉴 선택</h3>
+        <ol>
+            <li>상단 메뉴: <strong>신고/납부</strong></li>
+            <li>세목 선택: <strong>종합소득세</strong></li>
+            <li>신고 유형: <strong>정기신고 (5월 1~31일)</strong></li>
+            <li>소득 구분: <strong>기타소득</strong></li>
+            <li>세부 항목: <strong>가상자산 대여 소득</strong> (스테이킹 선택)</li>
+        </ol>
+
+        <h3>5단계: 소득 정보 입력 및 제출</h3>
+        <ul>
+            <li><strong>플랫폼명:</strong> 업비트, 바이낸스, Phantom 등</li>
+            <li><strong>대여 소득 금액:</strong> 수령 시점 시가 총합 (예: 621,720원)</li>
+            <li><strong>기본공제:</strong> 250만원 (자동 계산)</li>
+            <li><strong>첨부 서류:</strong> 스테이킹 보상 내역 CSV 또는 스크린샷</li>
+            <li><strong>제출:</strong> 최종 확인 후 신고 완료</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>✅ 신고 완료 후</strong><br>
+            홈택스에서 <strong>납부서 출력</strong> 후 은행 방문 또는 <strong>인터넷뱅킹 납부</strong> 가능. 납부 기한은 신고 기한과 동일 (5월 31일)합니다.
+        </div>
+
+        <h2>🚨 미신고 시 발생하는 불이익</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>내용</th>
+                    <th>금액 (예: 세액 100만원 기준)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>무신고 가산세</strong></td>
+                    <td>산출세액의 20%</td>
+                    <td>20만원</td>
+                </tr>
+                <tr>
+                    <td><strong>과소신고 가산세</strong></td>
+                    <td>산출세액의 10%</td>
+                    <td>10만원</td>
+                </tr>
+                <tr>
+                    <td><strong>납부 지연 이자</strong></td>
+                    <td>연 8.76% (2026년 기준)</td>
+                    <td>1년 지연 시 8.76만원</td>
+                </tr>
+                <tr>
+                    <td><strong>형사 처벌</strong></td>
+                    <td>조세포탈죄 (3년 이하 징역 또는 포탈세액의 3배 벌금)</td>
+                    <td>최대 300만원 벌금</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>💡 주요 실수 5가지 & 해결 방법</h2>
+
+        <h3>1️⃣ "스테이킹 보상은 신고 안 해도 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 스테이킹은 비과세<br>
+        <strong>✅ 정답:</strong> 스테이킹 보상은 <strong>'대여 소득'</strong>으로 명확히 과세 대상</p>
+
+        <h3>2️⃣ "팔지 않으면 세금 안 내도 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 매도 시점에만 과세<br>
+        <strong>✅ 정답:</strong> 국세청 예상 방침은 <strong>'수령 시점'</strong> 과세 (IRS와 동일)</p>
+
+        <h3>3️⃣ "업비트만 신고하면 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 국내 거래소만 신고<br>
+        <strong>✅ 정답:</strong> 바이낸스, 크라켄 등 <strong>해외 거래소도 통합 신고</strong> 필수</p>
+
+        <h3>4️⃣ "250만원 이하는 기록도 안 해도 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 250만원 이하면 무시<br>
+        <strong>✅ 정답:</strong> 다른 코인 수익과 통산 시 과세될 수 있으므로 <strong>모든 내역 기록</strong></p>
+
+        <h3>5️⃣ "자동 재스테이킹하면 세금 안 나오겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 재투자 시 비과세<br>
+        <strong>✅ 정답:</strong> 보상 수령 즉시 과세 대상. <strong>재스테이킹 여부 무관</strong></p>
+
+        <h2>📚 관련 법령 & 공식 출처</h2>
+
+        <ul>
+            <li>🔗 <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank">국세청 - 거주자의 가상자산소득 과세 개요</a></li>
+            <li>🔗 <a href="https://www.law.go.kr/LSW/lsInfoP.do?efYd=20270101&lsiSeq=234520#0000" target="_blank">소득세법 제21조제1항제27호 (가상자산 소득)</a></li>
+            <li>🔗 <a href="https://www.asiae.co.kr/article/2024052914172732688" target="_blank">아시아경제 - 손익 통산때 해외도 포함…스테이킹도 과세</a></li>
+            <li>🔗 <a href="https://www.newstomato.com/ReadNews.aspx?no=1249456" target="_blank">뉴스토마토 - 미, 스테이킹도 과세…국내 가상자산업계 '촉각'</a></li>
+            <li>🔗 <a href="https://www.news1.kr/finance/blockchain-fintech/5675190" target="_blank">뉴스1 - 업비트서 '솔라나' 1년 스테이킹했다면 212% 수익</a></li>
+        </ul>
+
+        <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+
+        <h3>Q1. 솔라나 스테이킹 보상도 세금 내야 하나요?</h3>
+        <p><strong>A.</strong> 네. 2027년 1월 1일부터 스테이킹 보상은 <strong>'가상자산 대여 소득'</strong>으로 분류되어 연 250만원 초과 시 22% 과세됩니다. 업비트·바이낸스 등 모든 플랫폼 스테이킹이 대상입니다.</p>
+
+        <h3>Q2. 스테이킹 보상은 언제 과세되나요? 받을 때 vs 팔 때?</h3>
+        <p><strong>A.</strong> 현재 국세청은 <strong>'수령 시점'</strong> 과세 입장이나 법적 명확성이 부족합니다. 안전하게 수령 시점 시가를 기록하고, 매도 시 양도소득으로도 신고 준비하는 <strong>이중 기록</strong>을 권장합니다.</p>
+
+        <h3>Q3. 업비트 솔라나 스테이킹 연 6.22% 보상, 세금은 얼마인가요?</h3>
+        <p><strong>A.</strong> 예: 1,000만원 스테이킹 → 연 보상 62.2만원 → <strong>250만원 이하이므로 비과세</strong>. 단, 다른 코인 수익과 합산해 250만원 초과 시 22% 과세됩니다.</p>
+
+        <h3>Q4. 바이낸스 해외 스테이킹도 신고해야 하나요?</h3>
+        <p><strong>A.</strong> 네. 2027년부터 OECD CARF로 바이낸스, 크라켄 등 <strong>해외 거래소 정보도 국세청에 자동 제공</strong>됩니다. 반드시 신고하세요.</p>
+
+        <h3>Q5. 솔라나 스테이킹 세금 신고는 어디서 하나요?</h3>
+        <p><strong>A.</strong> 매년 <strong>5월 1~31일</strong>, 홈택스(https://hometax.go.kr) → <strong>'종합소득세 → 기타소득 → 가상자산 대여 소득'</strong>에서 신고합니다.</p>
+
+        <h3>Q6. 자동 재스테이킹하면 세금 안 나오나요?</h3>
+        <p><strong>A.</strong> <strong>아니오.</strong> 보상 수령 즉시 과세 대상입니다. 재투자 여부와 무관합니다.</p>
+
+        <h3>Q7. Phantom 지갑 스테이킹도 신고해야 하나요?</h3>
+        <p><strong>A.</strong> 네. 중앙화 거래소뿐 아니라 <strong>비수탁 지갑 스테이킹</strong>도 모두 신고 대상입니다.</p>
+
+        <h3>Q8. 스테이킹 보상을 SOL로 받으면 원화 환산은 어떻게 하나요?</h3>
+        <p><strong>A.</strong> 수령 시점의 <strong>업비트·빗썸 일 종가</strong>를 기준으로 원화 환산합니다. (국세청 인정)</p>
+
+        <h2>🎯 다음 단계 행동 가이드</h2>
+
+        <div class="success-box">
+            <strong>✅ 지금 바로 해야 할 3가지</strong>
+            <ol>
+                <li><strong>엑셀 파일 생성</strong> → 스테이킹 보상 내역 기록 시작 (날짜·수량·시가)</li>
+                <li><strong>무료 계산기</strong>로 예상 세액 확인: <a href="https://cryptotax.cloud/calculator" class="cta-button">무료 계산기 바로가기</a></li>
+                <li><strong>세무사 무료 상담</strong> 예약 (연 100만원 이상 보상 시 권장): <a href="https://cryptotax.cloud/consult" class="cta-button">무료 상담 신청</a></li>
+            </ol>
+        </div>
+
+        <h2>📖 관련 가이드</h2>
+
+        <ul>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/coinone-tax-guide.html">코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/binance-trade-history.html">바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/metamask-tax-guide.html">메타마스크 세금 신고 방법 | DeFi·스왑 완벽 정리</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/ripple-lawsuit-tax.html">리플(XRP) SEC 소송 종결 후 세금 신고 가이드</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            <strong>⚖️ 법적 고지 (Legal Disclaimer)</strong><br>
+            본 가이드는 <strong>2026년 3월 31일</strong> 기준으로 작성되었으며, <strong>일반적인 정보 제공 목적</strong>입니다. 스테이킹 보상 과세 시점(수령 vs 매도)은 현재 법적 논란이 있으므로 <strong>실제 신고 전 반드시 국세청 상담센터(☎ 126)</strong> 또는 <strong>세무사와 상담</strong>하시기 바랍니다. 본 가이드의 내용에 따른 어떠한 손실이나 법적 책임도 CryptoTax.cloud는 지지 않습니다.
+        </div>
+
+        <p style="text-align:center; margin-top:40px; color:#64748b;">
+            <strong>CryptoTax.cloud</strong> | 가상자산 세금 전문 플랫폼<br>
+            📧 contact@cryptotax.cloud | 🌐 https://cryptotax.cloud
+        </p>
+    </div>
+</body>
+</html>
