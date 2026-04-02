@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59PKBNRPBZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-59PKBNRPBZ');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코인 세금 계산 방법 5단계 | 매수·매도·수수료 — CryptoTax.cloud</title>
+  <meta name="description" content="코인 세금 계산을 5단계로 완전 정복. 비트코인 1억원 기준 실제 계산 예시, 총평균법, 수수료 공제까지 완벽 가이드.">
+  <meta name="keywords" content="코인 세금 계산 방법, 가상자산 세금 계산, 총평균법, 수수료 공제, 코인 세금 계산기, 비트코인 세금">
+  <meta name="robots" content="index, follow">
+  <meta name="naverbot" content="index, follow">
+  <meta name="yeti" content="index, follow">
+  <meta name="naver-site-verification" content="613a26a59443ccd3c399436ccc8a3349fcf7ce89">
+  <link rel="canonical" href="https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="코인 세금 계산 5단계 | CryptoTax.cloud">
+  <meta property="og:description" content="비트코인 1억원 수익 기준 실제 세금 계산 예시. 총평균법·수수료 공제 완벽 정리.">
+  <meta property="og:url" content="https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html">
+  <meta property="og:image" content="https://cryptotax.cloud/images/blog/coin-tax-calc-01.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta property="og:site_name" content="CryptoTax.cloud">
+  <meta property="og:locale" content="ko_KR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="코인 세금 계산 5단계 | CryptoTax.cloud">
+  <meta name="twitter:description" content="비트코인 1억원 수익 기준 실제 세금 계산 예시.">
+  <meta name="twitter:image" content="https://cryptotax.cloud/images/blog/coin-tax-calc-01.jpg">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "코인 세금 계산 방법 5단계: 비트코인 1억원 수익 실제 계산 예시",
+    "description": "코인 세금 계산을 5단계로 완전 정복. 총평균법, 수수료 공제, 다중 거래소 합산까지.",
+    "datePublished": "2026-03-31",
+    "dateModified": "2026-03-31",
+    "author": {"@type": "Organization", "name": "CryptoTax.cloud 편집팀"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "CryptoTax.cloud",
+      "logo": {"@type": "ImageObject", "url": "https://cryptotax.cloud/logo.png"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html"},
+    "image": "https://cryptotax.cloud/images/blog/coin-tax-calc-01.jpg"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "코인 세금 계산 시 수수료도 공제되나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 거래 수수료는 필요경비로 공제됩니다. 업비트 0.05%, 빗썸 0.04% 수수료 모두 취득원가 또는 양도비용으로 처리 가능합니다. 수수료를 빠뜨리면 세금이 더 많이 나오므로 반드시 포함하세요."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "동일 코인을 여러 번 나눠 샀을 때 어떻게 계산하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "한국 세법은 총평균법을 사용합니다. 총 매수금액을 총 매수수량으로 나눈 평균 취득단가를 적용합니다. 예를 들어 비트코인을 5,000만원에 0.5개, 7,000만원에 0.5개 샀다면 평균 취득단가는 1억 2,000만원 ÷ 1개 = 1억 2,000만원입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "해외 거래소 수익도 합산해야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 한국 거주자는 국내외 모든 가상자산 수익을 합산 신고해야 합니다. 바이낸스, 코인베이스 등 해외 거래소 수익도 원화로 환산하여 포함해야 하며, 미신고 시 가산세 20%가 부과됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "총평균법으로 계산하면 무조건 불리한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "상황에 따라 다릅니다. 초기에 낮은 가격으로 매수했다면 총평균법이 불리할 수 있습니다. 반면 고점에 많이 샀다면 유리할 수 있습니다. 의제취득가액 특례(2026-12-31 시가 기준)를 활용하면 불리함을 줄일 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "세금 계산은 직접 해야 하나요, 거래소가 해주나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2027년 과세 시작 후에는 거래소가 연간 거래 내역을 국세청에 제출하지만, 세금 계산과 신고는 투자자 본인이 직접 해야 합니다. 복잡한 경우 세무사에게 의뢰하거나 CryptoTax.cloud 무료 계산기를 활용하세요."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "가스비(이더리움 수수료)도 공제 가능한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "네, 이더리움 네트워크 가스비 등 블록체인 수수료도 거래 관련 필요경비로 공제 가능합니다. 단, 거래와 직접 관련된 비용만 인정되므로 정확한 기록을 유지하는 것이 중요합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://cryptotax.cloud"},
+      {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://cryptotax.cloud/blog"},
+      {"@type": "ListItem", "position": 3, "name": "세금 계산", "item": "https://cryptotax.cloud/blog/category/calculation"},
+      {"@type": "ListItem", "position": 4, "name": "코인 세금 계산 방법 5단계", "item": "https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html"}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans KR', sans-serif; background: #0a0a14; color: #e2e8f0; line-height: 1.8; font-size: 16px; }
+    a { color: #00d4ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header { background: #0d0d1f; border-bottom: 1px solid #1e1e3a; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .site-logo { font-size: 20px; font-weight: 900; color: #00d4ff; letter-spacing: -0.5px; }
+    .site-logo span { color: #f59e0b; }
+    .nav-back { font-size: 14px; color: #94a3b8; border: 1px solid #334155; padding: 6px 14px; border-radius: 20px; transition: all 0.2s; }
+    .nav-back:hover { background: #1e293b; color: #e2e8f0; text-decoration: none; }
+
+    .article-container { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+    .breadcrumb { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .category-badge { background: #1e3a5f; color: #00d4ff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; border: 1px solid #00d4ff33; }
+    .article-date, .read-time { font-size: 13px; color: #64748b; }
+
+    h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; line-height: 1.35; color: #f1f5f9; margin-bottom: 24px; word-break: keep-all; }
+    h2 { font-size: clamp(20px, 3vw, 26px); font-weight: 700; color: #e2e8f0; margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #1e3a5f; word-break: keep-all; }
+    h2::before { content: "▍"; color: #00d4ff; margin-right: 8px; }
+    h3 { font-size: 18px; font-weight: 700; color: #cbd5e1; margin: 28px 0 12px; }
+    p { margin-bottom: 16px; color: #cbd5e1; word-break: keep-all; }
+    strong { color: #f1f5f9; font-weight: 700; }
+    ul, ol { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: #cbd5e1; }
+
+    .summary-box { background: #0d1f3c; border-left: 4px solid #00d4ff; padding: 20px 24px; border-radius: 0 8px 8px 0; margin-bottom: 24px; }
+    .summary-box h3 { color: #00d4ff; font-size: 15px; margin-bottom: 12px; margin-top: 0; }
+    .summary-box li { color: #94a3b8; font-size: 14px; }
+    .summary-box li strong { color: #e2e8f0; }
+
+    .warn-box { background: #2a0a0a; border-left: 4px solid #ef4444; padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+    .warn-box .box-title { color: #ef4444; font-weight: 700; margin-bottom: 8px; }
+    .info-box { background: #0a1a2a; border-left: 4px solid #3b82f6; padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+    .info-box .box-title { color: #3b82f6; font-weight: 700; margin-bottom: 8px; }
+    .success-box { background: #0a2a15; border-left: 4px solid #22c55e; padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 24px 0; }
+    .success-box .box-title { color: #22c55e; font-weight: 700; margin-bottom: 8px; }
+
+    .calc-box { background: #111827; border: 1px solid #374151; padding: 24px; border-radius: 12px; margin: 24px 0; }
+    .calc-box h3 { color: #f59e0b; margin-top: 0; }
+    .calc-formula { background: #0a0a14; border: 1px solid #1e293b; padding: 16px; border-radius: 8px; font-family: monospace; color: #00d4ff; font-size: 15px; margin: 12px 0; line-height: 2.2; }
+
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: #1e3a5f; }
+    thead th { padding: 12px 16px; text-align: center; color: #e2e8f0; font-weight: 700; white-space: nowrap; }
+    tbody tr:nth-child(even) { background: #111827; }
+    tbody tr:nth-child(odd) { background: #0d0d1f; }
+    tbody tr:hover { background: #1e293b; }
+    tbody td { padding: 10px 16px; text-align: center; color: #cbd5e1; border-bottom: 1px solid #1e293b; }
+    .highlight-row td { background: #0a2a15 !important; color: #22c55e; font-weight: 700; }
+
+    .steps-container { margin: 24px 0; }
+    .step-card { display: flex; gap: 16px; align-items: flex-start; background: #111827; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 12px; transition: border-color 0.2s; }
+    .step-card:hover { border-color: #00d4ff44; }
+    .step-number { background: #00d4ff; color: #0a0a14; font-weight: 900; font-size: 16px; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-content h3 { margin-top: 0; font-size: 16px; color: #e2e8f0; }
+    .step-content p { margin-bottom: 0; font-size: 14px; }
+
+    .cta-box { background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); padding: 32px; border-radius: 16px; text-align: center; margin: 32px 0; }
+    .cta-box.cta-yellow { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+    .cta-box h3 { color: #0a0a14; font-size: 18px; margin-bottom: 8px; margin-top: 0; }
+    .cta-box p { color: #0a0a14; opacity: 0.85; margin-bottom: 20px; font-size: 14px; }
+    .cta-btn { display: inline-block; background: #0a0a14; color: #fff; font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: 8px; text-decoration: none; transition: transform 0.2s; }
+    .cta-btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+    .quiz-box { background: #1a1a2e; border: 2px solid #f59e0b; padding: 24px; border-radius: 12px; margin: 40px 0; }
+    .quiz-box h3 { color: #f59e0b; margin-top: 0; }
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+    .quiz-options button { background: #0d0d1f; border: 1px solid #334155; color: #e2e8f0; padding: 12px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s; text-align: left; }
+    .quiz-options button:hover { border-color: #00d4ff; }
+    .quiz-answer { display: none; background: #0a2a15; border-left: 4px solid #22c55e; padding: 12px 16px; border-radius: 0 8px 8px 0; color: #22c55e; font-size: 14px; margin-top: 8px; }
+
+    .faq-section { margin: 40px 0; }
+    .faq-item { background: #1e1e2e; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-question { padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: #e2e8f0; font-size: 15px; }
+    .faq-question:hover { background: #252540; }
+    .faq-icon { color: #00d4ff; font-size: 20px; transition: transform 0.3s; flex-shrink: 0; margin-left: 12px; }
+    .faq-answer { display: none; padding: 14px 20px 18px; color: #94a3b8; font-size: 14px; line-height: 1.8; border-top: 1px solid #2d2d4e; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+    .faq-item.active .faq-answer { display: block; }
+
+    figure { margin: 32px 0; }
+    figure img { width: 100%; border-radius: 10px; border: 1px solid #1e1e2e; background: #1a1a2e; min-height: 200px; display: block; object-fit: cover; }
+    figcaption { text-align: center; color: #64748b; font-size: 13px; margin-top: 8px; }
+
+    .disclaimer-mini { background: #1a1a1a; border-radius: 6px; padding: 10px 16px; font-size: 12px; color: #888; margin-bottom: 24px; }
+    .disclaimer-full { background: #111; border-top: 1px solid #333; padding: 24px; border-radius: 8px; font-size: 13px; color: #64748b; margin-top: 48px; }
+    .disclaimer-full h4 { color: #94a3b8; margin-bottom: 12px; }
+
+    .related-section { margin: 48px 0 0; }
+    .related-section > h3 { font-size: 18px; color: #e2e8f0; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1e293b; }
+    .related-articles { background: #111827; border-radius: 12px; padding: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .related-card { background: #1e293b; border-radius: 8px; padding: 16px; text-decoration: none; transition: all 0.2s; display: block; border: 1px solid #334155; }
+    .related-card:hover { border-color: #00d4ff44; transform: translateY(-2px); text-decoration: none; }
+    .related-card-label { font-size: 11px; color: #00d4ff; font-weight: 700; margin-bottom: 6px; display: block; }
+    .related-card-title { font-size: 13px; color: #cbd5e1; line-height: 1.5; word-break: keep-all; }
+
+    .ad-placeholder { background: #111827; border: 1px dashed #334155; border-radius: 8px; padding: 24px; text-align: center; color: #475569; font-size: 13px; margin: 32px 0; }
+
+    .site-footer { background: #0d0d1f; border-top: 1px solid #1e1e3a; padding: 32px 24px; text-align: center; color: #475569; font-size: 13px; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+    .footer-links a { color: #64748b; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .article-container { padding: 24px 16px 60px; }
+      .related-articles { grid-template-columns: 1fr; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .cta-box { padding: 24px 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="site-logo">Crypto<span>Tax</span>.cloud</div>
+  <a href="https://cryptotax.cloud" class="nav-back">← 메인으로</a>
+</header>
+
+<main class="article-container">
+<article>
+
+  <nav class="breadcrumb">
+    <a href="https://cryptotax.cloud">홈</a>
+    <span>›</span>
+    <a href="https://cryptotax.cloud/blog">블로그</a>
+    <span>›</span>
+    <span>세금 계산</span>
+  </nav>
+
+  <div class="article-meta">
+    <span class="category-badge">🧮 세금 계산</span>
+    <span class="article-date">2026년 3월 31일</span>
+    <span class="read-time">⏱ 약 12분 읽기</span>
+  </div>
+
+  <h1>코인 세금 계산 방법 5단계: 비트코인 1억원 수익 실제 계산 예시</h1>
+
+  <div class="summary-box">
+    <h3>📌 이 글의 핵심 요약 3가지</h3>
+    <ul>
+      <li><strong>계산 공식:</strong> (연간 총수익 - 250만원) × 22% = 납부세액</li>
+      <li><strong>취득가액:</strong> 한국 세법은 총평균법 적용 — 평균 매수단가로 계산</li>
+      <li><strong>수수료 공제:</strong> 업비트 0.05%, 빗썸 0.04% 거래수수료 전액 필요경비 공제 가능</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer-mini">
+    ⚠️ 본 콘텐츠는 정보 제공 목적이며 세무·법률 조언이 아닙니다. 정확한 신고를 위해 반드시 공인 세무사와 상담하세요.
+  </div>
+
+  <!-- 애드센스 광고 위치 #1 -->
+  <div class="ad-placeholder">📢 광고 영역 (Google AdSense #1)</div>
+
+  <!-- Section 1 -->
+  <h2>"세금이 얼마나 나올지 도저히 모르겠어요"</h2>
+
+  <figure>
+    <!--
+    이미지 프롬프트 (나노바나나용):
+    A dark desk with a calculator, Korean won bills, and a laptop showing 
+    cryptocurrency charts, cinematic lighting, photorealistic, 16:9, 
+    no human faces, no text overlay
+    저장명: coin-tax-calc-01.jpg
+    -->
+    <img src="../images/blog/coin-tax-calc-01.jpg"
+         alt="코인 세금 계산 방법 — 비트코인 매수 매도 수수료 계산기 사용법"
+         width="1280" height="720" loading="lazy">
+    <figcaption>▲ 코인 세금, 5단계만 따라하면 누구나 계산할 수 있습니다 | 출처: CryptoTax.cloud</figcaption>
+  </figure>
+
+  <p>
+    업비트에서 비트코인으로 <strong>2,000만원</strong>을 벌었습니다. 세금이 얼마나 나올까요? 처음 접하는 분들은 막막하게 느껴질 수 있습니다. 하지만 계산 방법을 알고 나면 생각보다 간단합니다.
+  </p>
+  <p>
+    2026년 3월 현재 비트코인은 약 <strong>1억원</strong>에 거래되고 있고, 국내 가상자산 투자자는 <strong>1,326만 명</strong>에 달합니다. 그런데 정작 세금 계산 방법을 제대로 아는 사람은 많지 않습니다.
+  </p>
+  <p>
+    이 글에서는 비트코인 1억원 수익을 기준으로 <strong>5단계 세금 계산법</strong>을 실제 숫자와 함께 완전히 정리해드립니다.
+  </p>
+
+  <div class="warn-box">
+    <div class="box-title">⚠️ 지금 계산을 안 하면 2028년 5월에 충격받습니다</div>
+    <p style="margin:0;font-size:14px;">2027년 수익에 대한 세금 신고는 <strong>2028년 5월</strong>입니다. 미리 계산해두지 않으면 예상치 못한 세금 폭탄을 맞을 수 있습니다.</p>
+  </div>
+
+  <!-- Section 2 -->
+  <h2>핵심 공식 하나만 기억하세요</h2>
+
+  <figure>
+    <!--
+    이미지 프롬프트 (나노바나나용):
+    Close-up of hands typing on a keyboard with multiple cryptocurrency 
+    price screens in background, dark blue office atmosphere, 
+    photorealistic, 16:9, no faces, no text overlay
+    저장명: coin-tax-calc-02.jpg
+    -->
+    <img src="../images/blog/coin-tax-calc-02.jpg"
+         alt="코인 세금 계산 공식 — 총평균법 취득가액 22% 세율 적용"
+         width="1280" height="720" loading="lazy">
+    <figcaption>▲ 단 하나의 공식으로 코인 세금을 계산할 수 있습니다 | 출처: CryptoTax.cloud</figcaption>
+  </figure>
+
+  <div class="calc-box">
+    <h3>🧮 코인 세금 계산 핵심 공식</h3>
+    <div class="calc-formula">
+      납부세액 = (연간 총수익 - 250만원) × 22%<br><br>
+      연간 총수익 = 총 매도금액 - 총 취득가액 - 수수료<br><br>
+      총 취득가액 = 평균 취득단가 × 매도수량<br>
+      (평균 취득단가 = 총 매수금액 ÷ 총 매수수량)
+    </div>
+  </div>
+
+  <p>
+    공식에서 핵심은 세 가지입니다. ① <strong>250만원 기본공제</strong>를 먼저 빼고, ② <strong>총평균법</strong>으로 취득가액을 계산하며, ③ <strong>수수료를 반드시 공제</strong>해야 합니다.
+  </p>
+
+  <div class="info-box">
+    <div class="box-title">📋 세금 계산에 필요한 정보 4가지</div>
+    <ul style="margin:0;">
+      <li><strong>총 매도금액:</strong> 코인을 판 금액 합계</li>
+      <li><strong>총 매수금액:</strong> 코인을 산 금액 합계</li>
+      <li><strong>수수료:</strong> 거래소 수수료 전체 합계</li>
+      <li><strong>보유수량:</strong> 매도 시점의 코인 수량</li>
+    </ul>
+  </div>
+
+  <!-- Section 3 -->
+  <h2>5단계 실제 계산 예시 — 비트코인 1억원 수익</h2>
+
+  <figure>
+    <!--
+    이미지 프롬프트 (나노바나나용):
+    A financial spreadsheet on a monitor showing Bitcoin buy and sell 
+    transactions with numbers, dark room, blue light reflection on screen,
+    photorealistic, 16:9, no faces, no text overlay
+    저장명: coin-tax-calc-03.jpg
+    -->
+    <img src="../images/blog/coin-tax-calc-03.jpg"
+         alt="비트코인 거래내역 스프레드시트 — 매수 매도 수수료 세금 계산 예시"
+         width="1280" height="720" loading="lazy">
+    <figcaption>▲ 실제 거래내역을 바탕으로 한 5단계 세금 계산 | 출처: CryptoTax.cloud</figcaption>
+  </figure>
+
+  <p><strong>📌 가정: 2027년 업비트에서 비트코인 거래</strong></p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>날짜</th>
+          <th>수량</th>
+          <th>단가</th>
+          <th>금액</th>
+          <th>수수료(0.05%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>매수</td>
+          <td>2027-01-15</td>
+          <td>0.5 BTC</td>
+          <td>8,000만원</td>
+          <td>4,000만원</td>
+          <td>2만원</td>
+        </tr>
+        <tr>
+          <td>매수</td>
+          <td>2027-03-20</td>
+          <td>0.5 BTC</td>
+          <td>1억원</td>
+          <td>5,000만원</td>
+          <td>2.5만원</td>
+        </tr>
+        <tr>
+          <td>매도</td>
+          <td>2027-11-10</td>
+          <td>1 BTC</td>
+          <td>1억 5,000만원</td>
+          <td>1억 5,000만원</td>
+          <td>7.5만원</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="steps-container">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>평균 취득단가 계산 (총평균법)</h3>
+        <p>총 매수금액 <strong>9,000만원</strong> ÷ 총 매수수량 <strong>1 BTC</strong> = 평균 취득단가 <strong>9,000만원/BTC</strong></p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>취득가액 계산</h3>
+        <p>평균 취득단가 9,000만원 × 매도수량 1 BTC = 취득가액 <strong>9,000만원</strong></p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>수수료 합산</h3>
+        <p>매수수수료 4.5만원 + 매도수수료 7.5만원 = 총 수수료 <strong>12만원</strong></p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>순수익 계산</h3>
+        <p>매도금액 1억 5,000만원 - 취득가액 9,000만원 - 수수료 12만원 = 순수익 <strong>5,988만원</strong></p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h3>납부세액 계산</h3>
+        <p>과세표준 = 5,988만원 - 250만원 = <strong>5,738만원</strong><br>납부세액 = 5,738만원 × 22% = <strong style="color:#f59e0b;">약 1,262만원</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adsense #2 -->
+  <div class="ad-placeholder">📢 광고 영역 (Google AdSense #2)</div>
+
+  <!-- Section 4 -->
+  <h2>총평균법 vs 이동평균법 — 한국은 어느 것을 쓰나요?</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>총평균법</th>
+          <th>이동평균법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>한국 세법 적용</strong></td>
+          <td style="color:#22c55e;font-weight:700;">✅ 적용</td>
+          <td style="color:#ef4444;">❌ 미적용</td>
+        </tr>
+        <tr>
+          <td><strong>계산 방식</strong></td>
+          <td>연간 전체 매수 평균</td>
+          <td>매수 시점마다 갱신</td>
+        </tr>
+        <tr>
+          <td><strong>장점</strong></td>
+          <td>계산 단순</td>
+          <td>실시간 정확도 높음</td>
+        </tr>
+        <tr>
+          <td><strong>단점</strong></td>
+          <td>고점매수 시 불리</td>
+          <td>계산 복잡</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    한국 소득세법은 <strong>총평균법</strong>만 인정합니다. 연간 매수한 코인의 총금액을 총수량으로 나눈 평균단가를 취득가액으로 사용합니다. 이동평균법이나 선입선출법(FIFO)은 한국 세법에서 인정하지 않으므로 주의하세요.
+  </p>
+
+  <!-- Section 5 -->
+  <h2>수수료·가스비도 공제된다 — 놓치면 손해</h2>
+
+  <figure>
+    <!--
+    이미지 프롬프트 (나노바나나용):
+    Stack of Korean tax documents on a dark desk with a pen and smartphone 
+    showing crypto app interface, top-down overhead view, dramatic lighting,
+    photorealistic, 16:9, no faces, no text overlay
+    저장명: coin-tax-calc-04.jpg
+    -->
+    <img src="../images/blog/coin-tax-calc-04.jpg"
+         alt="코인 세금 수수료 공제 — 업비트 빗썸 가스비 필요경비 처리 방법"
+         width="1280" height="720" loading="lazy">
+    <figcaption>▲ 수수료를 빠뜨리면 세금이 더 많이 나옵니다 | 출처: CryptoTax.cloud</figcaption>
+  </figure>
+
+  <div class="success-box">
+    <div class="box-title">✅ 공제 가능한 비용 목록</div>
+    <ul style="margin:0;">
+      <li><strong>거래소 수수료:</strong> 업비트 0.05%, 빗썸 0.04%, 코인원 0.1%</li>
+      <li><strong>이더리움 가스비:</strong> 블록체인 네트워크 수수료</li>
+      <li><strong>출금 수수료:</strong> 거래소 출금 시 발생하는 수수료</li>
+      <li><strong>세무사 신고대행 비용:</strong> 신고와 직접 관련된 비용</li>
+    </ul>
+  </div>
+
+  <p>
+    수수료를 빠뜨리면 세금이 그만큼 더 많이 나옵니다. 연간 거래가 많은 분이라면 수수료 합계가 <strong>수십만원~수백만원</strong>에 달할 수 있으니 반드시 포함하세요.
+  </p>
+  <p>
+    거래소 CSV 파일을 다운로드하면 수수료 컬럼이 따로 표시됩니다. 모든 거래의 수수료를 합산해서 필요경비로 신고하면 됩니다. 자세한 내용은 <a href="https://www.nts.go.kr" target="_blank" rel="noopener noreferrer">국세청</a>에서 확인하실 수 있습니다.
+  </p>
+
+  <!-- Section 6 -->
+  <h2>여러 거래소 동시 이용 시 합산 계산법</h2>
+
+  <div class="calc-box">
+    <h3>📊 다중 거래소 합산 계산 예시</h3>
+    <div class="calc-formula">
+      업비트 수익: +3,000만원<br>
+      빗썸 수익:   +800만원<br>
+      바이낸스 수익: +500만원 (원화 환산)<br>
+      보유 알트코인 손실: -600만원<br>
+      ─────────────────────────<br>
+      연간 총수익: 3,700만원<br>
+      기본공제:   - 250만원<br>
+      과세표준:   3,450만원<br>
+      납부세액:   3,450만원 × 22% = <strong style="color:#f59e0b;">759만원</strong>
+    </div>
+  </div>
+
+  <p>
+    국내외 모든 거래소 수익을 합산해야 합니다. <strong>손실 코인도 함께 통산</strong>되므로 손실이 있다면 반드시 포함하세요. 다만 손실의 다음 연도 이월은 불가하니 2026년 안에 정리하는 것이 유리합니다.
+  </p>
+  <p>
+    해외 거래소 수익은 <strong>거래 당일 기준환율</strong>로 원화 환산합니다. 환율 기준은 <a href="https://www.law.go.kr" target="_blank" rel="noopener noreferrer">국가법령정보센터</a>에서 확인 가능합니다.
+  </p>
+
+  <!-- Quiz -->
+  <div class="quiz-box">
+    <h3>🎯 복습 퀴즈</h3>
+    <p><strong>한국 가상자산 세법이 채택한 취득가액 계산 방식은?</strong></p>
+    <div class="quiz-options">
+      <button onclick="document.getElementById('q2a').style.background='#22c55e';document.getElementById('quiz2-answer').style.display='block'" id="q2a">① 총평균법</button>
+      <button onclick="document.getElementById('q2b').style.background='#ef4444';document.getElementById('quiz2-answer').style.display='block'" id="q2b">② 이동평균법</button>
+      <button onclick="document.getElementById('q2c').style.background='#ef4444';document.getElementById('quiz2-answer').style.display='block'" id="q2c">③ 선입선출법(FIFO)</button>
+      <button onclick="document.getElementById('q2d').style.background='#ef4444';document.getElementById('quiz2-answer').style.display='block'" id="q2d">④ 후입선출법(LIFO)</button>
+    </div>
+    <div class="quiz-answer" id="quiz2-answer">
+      ✅ 정답은 <strong>① 총평균법</strong>입니다! 한국 소득세법은 총평균법만 인정합니다. 연간 전체 매수금액을 매수수량으로 나눈 평균단가를 취득가액으로 사용합니다.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2>자주 묻는 질문 (FAQ)</h2>
+  <div class="faq-section">
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 코인 세금 계산 시 수수료도 공제되나요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">네, 거래 수수료는 필요경비로 전액 공제됩니다. 업비트 0.05%, 빗썸 0.04% 수수료 모두 취득원가 또는 양도비용으로 처리 가능합니다. 수수료를 빠뜨리면 세금이 더 많이 나오므로 반드시 포함하세요.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 동일 코인을 여러 번 나눠 샀을 때 어떻게 계산하나요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">한국 세법은 <strong>총평균법</strong>을 사용합니다. 연간 총 매수금액을 총 매수수량으로 나눈 평균 취득단가를 적용합니다. 예를 들어 5,000만원에 0.5개, 7,000만원에 0.5개 샀다면 평균 취득단가는 (5,000+7,000)만원 ÷ 1개 = 1억 2,000만원입니다.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 해외 거래소 수익도 합산해야 하나요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">네, 한국 거주자는 국내외 모든 가상자산 수익을 합산 신고해야 합니다. 바이낸스, 코인베이스 등 해외 거래소 수익도 거래 당일 기준환율로 원화 환산하여 포함해야 합니다. 미신고 시 가산세 20%가 부과됩니다.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 총평균법으로 계산하면 무조건 불리한가요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">상황에 따라 다릅니다. 초기 저가에 매수했다면 불리할 수 있지만, 고점에 많이 샀다면 유리합니다. <strong>의제취득가액 특례</strong>(2026-12-31 시가를 취득가액으로 선택)를 활용하면 불리함을 크게 줄일 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 세금 계산은 직접 해야 하나요, 거래소가 해주나요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">2027년 과세 시작 후 거래소는 거래내역을 국세청에 제출하지만, <strong>세금 계산과 신고는 투자자 본인</strong>이 직접 해야 합니다. 복잡한 경우 세무사에게 의뢰하거나 CryptoTax.cloud 무료 계산기를 활용하세요.</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('active')">
+      <div class="faq-question">Q. 가스비(이더리움 수수료)도 공제 가능한가요?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">네, 이더리움 네트워크 가스비 등 블록체인 수수료도 거래 관련 필요경비로 공제 가능합니다. 단, 거래와 직접 관련된 비용만 인정되므로 정확한 기록을 유지하는 것이 중요합니다. 자세한 기준은 <a href="https://www.nts.go.kr" target="_blank" rel="noopener noreferrer">국세청</a>을 참고하세요.</div>
+    </div>
+
+  </div>
+
+  <!-- CTA 1 -->
+  <div class="cta-box">
+    <h3>🧮 내 코인 세금 지금 바로 계산하기</h3>
+    <p>매수가·매도가·수수료 입력만 하면 2027년 예상 세금을 즉시 계산해드립니다</p>
+    <a href="https://cryptotax.cloud/#calculator" class="cta-btn">무료 세금 계산하기 →</a>
+  </div>
+
+  <!-- CTA 2 -->
+  <div class="cta-box cta-yellow">
+    <h3>👨‍💼 가상자산 전문 세무사 무료 상담받기</h3>
+    <p>복잡한 다중 거래소·해외 거래도 전문가가 정확하게 계산해드립니다</p>
+    <a href="https://cryptotax.cloud/#contact" class="cta-btn">무료 상담 신청 →</a>
+  </div>
+
+  <!-- Disclaimer Full -->
+  <div class="disclaimer-full">
+    <h4>📋 면책조항 (Disclaimer)</h4>
+    <p>본 웹사이트(CryptoTax.cloud)에서 제공하는 모든 콘텐츠는 일반적인 정보 제공을 목적으로 하며, 개인별 세무·법률·재무 조언을 대체하지 않습니다.</p>
+    <p>가상자산 세금은 개인의 거래 내역, 보유 기간, 거주 국가 등에 따라 달라질 수 있습니다. 반드시 공인 세무사와 상담하여 정확한 신고를 하시기 바랍니다.</p>
+    <p style="color:#555;font-size:12px;">최종 업데이트: 2026년 3월 31일 | 출처: 국세청, 소득세법, CryptoTax.cloud 편집팀</p>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>📖 함께 읽으면 좋은 글</h3>
+    <div class="related-articles">
+      <a href="virtual-asset-tax-2027-guide.html" class="related-card">
+        <span class="related-card-label">세금 기초</span>
+        <div class="related-card-title">가상자산 세금 2027 완벽 가이드 | 22% 계산부터 홈택스까지</div>
+      </a>
+      <a href="upbit-tax-report-guide.html" class="related-card">
+        <span class="related-card-label">거래소 가이드</span>
+        <div class="related-card-title">업비트 세금 신고 완벽 가이드 | 거래내역 다운로드 3분</div>
+      </a>
+      <a href="virtual-asset-profit-loss-offset-guide.html" class="related-card">
+        <span class="related-card-label">절세 전략</span>
+        <div class="related-card-title">가상자산 손익 통산 완벽 가이드 | 손실 코인으로 세금 줄이기</div>
+      </a>
+    </div>
+  </div>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud">홈</a>
+    <a href="https://cryptotax.cloud/blog">블로그</a>
+    <a href="https://cryptotax.cloud/#calculator">세금계산기</a>
+    <a href="https://cryptotax.cloud/#contact">세무사 상담</a>
+    <a href="https://cryptotax.cloud/privacy.html">개인정보처리방침</a>
+    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
+  </div>
+  <p>© 2026 CryptoTax.cloud | 본 사이트는 국세청 공식 사이트가 아닙니다.</p>
+  <p style="margin-top:6px;">세금 정보는 참고용이며 정확한 신고는 공인 세무사와 상담하세요.</p>
+</footer>
+
+</body>
+</html>
