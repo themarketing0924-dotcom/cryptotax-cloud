@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>업비트 거래내역 CSV 다운로드 | 2027 세금신고 전 필수 준비 가이드 | CryptoTax.cloud</title>
+<meta name="description" content="업비트 거래내역 CSV 다운로드 방법을 3분 만에 완벽 정리! 2027년 가상자산 과세 대비 거래내역 확보부터 세금 계산까지. PDF vs CSV 차이점과 API 활용법까지 총정리.">
+<meta name="keywords" content="업비트 거래내역 CSV 다운로드, 업비트 거래내역서, 가상자산 세금, 2027 과세, 업비트 엑셀, 코인 세금 신고">
+<link rel="canonical" href="https://cryptotax.cloud/blog/upbit-csv-download-guide-2027.html">
+
+<!-- Schema.org Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "업비트 거래내역 CSV 다운로드 | 2027 세금신고 전 필수 준비 가이드",
+  "description": "업비트 거래내역 CSV 다운로드 방법을 3분 만에 완벽 정리! 2027년 가상자산 과세 대비 필수 가이드.",
+  "author": {"@type": "Organization", "name": "CryptoTax.cloud"},
+  "publisher": {"@type": "Organization", "name": "CryptoTax.cloud", "logo": {"@type": "ImageObject", "url": "https://cryptotax.cloud/logo.png"}},
+  "datePublished": "2026-03-28",
+  "dateModified": "2026-03-28",
+  "image": "https://cryptotax.cloud/images/upbit-csv-download-main.jpg"
+}
+</script>
+
+<!-- Schema.org FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "업비트 거래내역을 CSV 파일로 다운로드할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "업비트 공식 서비스는 현재 PDF 형식만 지원합니다. CSV나 엑셀 파일이 필요한 경우 고객센터에 별도 요청하거나, 업비트 Open API를 활용해 직접 추출해야 합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2027년 가상자산 세금 신고를 위해 거래내역이 왜 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027년 1월 1일부터 가상자산 양도소득에 22% 세율이 적용됩니다. 정확한 취득가액과 양도가액을 증빙하려면 거래내역 데이터가 필수이며, 이를 통해 손익통산과 250만원 기본공제를 적용받을 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "업비트 거래내역 보관 기간은 얼마나 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "업비트는 거래내역을 최대 5년간 보관합니다. 세금 신고 및 세무조사 대비를 위해 정기적으로 다운로드하여 별도 보관하는 것을 권장합니다."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root{--primary:#4f46e5;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--warning:#f59e0b;--success:#10b981;--danger:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+.article{background:var(--card);padding:40px;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+h1{font-size:2rem;font-weight:800;margin-bottom:16px;line-height:1.3;color:var(--primary)}
+.meta{color:var(--muted);font-size:.85rem;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.meta a{color:var(--primary);text-decoration:none}
+.hook{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid var(--warning);padding:24px;margin:24px 0;border-radius:12px}
+.hook h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#92400e}
+h2{font-size:1.5rem;font-weight:700;margin:48px 0 20px;color:var(--primary);padding-top:20px;border-top:1px solid var(--border)}
+h2:first-of-type{border-top:none;margin-top:32px}
+h3{font-size:1.2rem;font-weight:600;margin:32px 0 12px;color:var(--text)}
+p{margin-bottom:20px}
+ul,ol{margin:16px 0 20px 24px}
+li{margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.9rem}
+th,td{padding:14px 12px;border:1px solid var(--border);text-align:left}
+th{background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;font-weight:700}
+tr:nth-child(even){background:#f8fafc}
+.insight{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border-left:4px solid var(--primary);padding:20px;margin:24px 0;border-radius:12px}
+.insight h4{font-size:1rem;font-weight:700;margin-bottom:10px;color:#3730a3}
+.warning-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left:4px solid var(--warning);padding:20px;margin:24px 0;border-radius:12px}
+.warning-box h4{color:#92400e;margin-bottom:12px}
+.danger-box{background:linear-gradient(135deg,#fee2e2,#fecaca);border-left:4px solid var(--danger);padding:20px;margin:24px 0;border-radius:12px}
+.danger-box h4{color:#991b1b;margin-bottom:12px}
+.success-box{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-left:4px solid var(--success);padding:20px;margin:24px 0;border-radius:12px}
+.success-box h4{color:#065f46;margin-bottom:12px}
+.step-box{background:#f8fafc;border:2px solid var(--primary);padding:24px;margin:20px 0;border-radius:12px}
+.step-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:16px}
+.step-number{display:inline-block;width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:700;margin-right:10px}
+.quiz{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px dashed var(--success);padding:24px;margin:32px 0;border-radius:12px;text-align:center}
+.quiz h3{color:var(--success);margin-bottom:16px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:16px 32px;border-radius:50px;text-decoration:none;font-weight:700;margin:20px 0;transition:all .3s ease;box-shadow:0 4px 15px rgba(79,70,229,.3)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(79,70,229,.4)}
+.faq{background:#f8fafc;padding:20px;border-radius:12px;margin:12px 0;border-left:3px solid var(--primary)}
+.faq h4{font-size:1rem;margin-bottom:8px;font-weight:700;color:var(--primary)}
+.disclaimer{background:#f1f5f9;border:1px solid var(--border);padding:20px;margin:40px 0;border-radius:12px;font-size:.85rem;color:var(--muted)}
+.disclaimer strong{color:var(--danger)}
+img{max-width:100%;height:auto;border-radius:12px;margin:24px 0;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.tags{margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+.tags a{display:inline-block;background:var(--bg);color:var(--primary);padding:8px 16px;border-radius:20px;font-size:.85rem;margin:4px;text-decoration:none;border:1px solid var(--border);transition:all .2s}
+.tags a:hover{background:var(--primary);color:#fff}
+.toc{background:#f8fafc;padding:24px;border-radius:12px;margin:24px 0}
+.toc h3{font-size:1rem;margin-bottom:16px;color:var(--primary)}
+.toc ul{margin:0;padding-left:20px}
+.toc li{margin-bottom:8px}
+.toc a{color:var(--text);text-decoration:none}
+.toc a:hover{color:var(--primary)}
+code{background:#e2e8f0;padding:2px 8px;border-radius:4px;font-size:.9rem}
+@media(max-width:768px){.article{padding:24px 18px}h1{font-size:1.5rem}h2{font-size:1.3rem}.btn{padding:14px 24px;font-size:.95rem}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <article class="article">
+    
+    <!-- Breadcrumb -->
+    <nav style="font-size:.85rem;color:var(--muted);margin-bottom:20px">
+      <a href="/" style="color:var(--primary)">홈</a> › 
+      <a href="/blog/" style="color:var(--primary)">세금 가이드</a> › 
+      업비트 거래내역 CSV 다운로드
+    </nav>
+
+    <!-- H1 Title -->
+    <h1>업비트 거래내역 CSV 다운로드 | 2027 세금신고 전 필수 준비 가이드</h1>
+    
+    <!-- Meta -->
+    <div class="meta">
+      📅 2026년 3월 28일 | ✍️ CryptoTax.cloud 편집팀 | ⏱️ 읽는 시간: 7분<br>
+      📚 출처: <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청</a>, 
+      <a href="https://support.upbit.com" target="_blank" rel="noopener">업비트 고객센터</a>
+    </div>
+
+    <!-- 3-Second Hook -->
+    <div class="hook">
+      <h3>⚡ 3초 요약: 업비트 거래내역 CSV 다운로드</h3>
+      <p><strong>업비트 거래내역 CSV 다운로드</strong>는 2027년 가상자산 세금 신고의 첫 번째 관문입니다. 현재 업비트 공식 서비스는 PDF만 지원하며, CSV/엑셀 파일은 고객센터 요청 또는 Open API 활용이 필요합니다.</p>
+      <ul style="margin:12px 0 0 20px">
+        <li><strong>핵심:</strong> 거래내역 없으면 취득가액 증빙 불가 → 양도가액의 최대 50%만 필요경비 인정</li>
+        <li><strong>주의:</strong> 지금 다운로드 안 하면 과거 데이터 소실 위험 + 가산세 20% 폭탄</li>
+      </ul>
+    </div>
+
+    <!-- 목차 -->
+    <div class="toc">
+      <h3>📑 목차</h3>
+      <ul>
+        <li><a href="#what">1. 업비트 거래내역 CSV란?</a></li>
+        <li><a href="#why">2. 왜 지금 다운로드해야 하나?</a></li>
+        <li><a href="#how">3. 다운로드 방법 3가지 (단계별)</a></li>
+        <li><a href="#compare">4. PDF vs CSV vs API 비교</a></li>
+        <li><a href="#mistakes">5. 90%가 저지르는 치명적 실수</a></li>
+        <li><a href="#calculator">6. 무료 세금 계산기 활용</a></li>
+        <li><a href="#faq">7. 자주 묻는 질문</a></li>
+      </ul>
+    </div>
+
+    <!-- [이미지 1: 메인 썸네일] -->
+    <img src="/images/upbit-csv-download-main.jpg" alt="업비트 거래내역 CSV 다운로드 방법 - 2027년 가상자산 세금 신고 준비 가이드 메인 이미지">
+
+    <!-- Section 1: 정의 -->
+    <h2 id="what">📌 업비트 거래내역 CSV 다운로드란?</h2>
+    
+    <p><strong>업비트 거래내역 CSV 다운로드</strong>란 업비트 거래소에서 발생한 모든 매수·매도·입출금 기록을 CSV(Comma-Separated Values) 형식의 파일로 추출하는 것을 의미합니다. 2027년 가상자산 과세 시행을 앞두고, 정확한 세금 계산을 위해 반드시 확보해야 하는 핵심 데이터입니다.</p>
+
+    <p>쉽게 말해, <strong>업비트 거래내역 CSV</strong>는 여러분의 코인 투자 '가계부'입니다. 언제, 얼마에, 어떤 코인을 샀고 팔았는지 모든 기록이 담겨 있죠. 이 데이터가 없으면? 국세청에 "나는 이만큼 벌었어요"라고 말해도 증빙이 없는 셈입니다.</p>
+
+    <h3>📊 2026년 3월 현재 상황</h3>
+    
+    <p>국세청에 따르면 2027년 1월 1일부터 가상자산 양도·대여 소득에 대해 22%(지방세 포함) 세율이 적용됩니다. 연간 250만원 기본공제 후 초과분에 과세되며, <strong>정확한 취득가액 증빙이 없으면 양도가액의 최대 50%만 필요경비로 인정</strong>받습니다.</p>
+
+    <div class="danger-box">
+      <h4>🚨 취득가액 증빙 못하면 벌어지는 일</h4>
+      <p><strong>예시:</strong> 1,000만원에 산 비트코인을 2,000만원에 팔았다면?</p>
+      <ul>
+        <li><strong>증빙 있을 때:</strong> 양도차익 1,000만원 - 250만원 = 750만원 × 22% = <strong>165만원 납부</strong></li>
+        <li><strong>증빙 없을 때:</strong> 2,000만원 × 50% = 1,000만원 필요경비 → 1,000만원 - 250만원 = 750만원 × 22% = <strong>165만원 납부</strong> (운 좋은 경우)</li>
+        <li><strong>최악의 경우:</strong> 필요경비 인정 비율이 낮아지면 세금 폭탄!</li>
+      </ul>
+    </div>
+
+    <!-- 세대별 비유 -->
+    <div class="insight">
+      <h4>💡 세대별 쉬운 이해</h4>
+      <p><strong>20대:</strong> "업비트 거래내역 CSV는 게임 전적 기록 같은 거예요. 없으면 내 실력 증명 못하죠."</p>
+      <p><strong>30-40대:</strong> "주식 거래내역서와 똑같습니다. 증권사에서 발급받는 것처럼요."</p>
+      <p><strong>50-60대:</strong> "은행 통장 거래내역 출력하는 것과 같습니다. 세무서에 제출할 증빙자료예요."</p>
+    </div>
+
+    <!-- [이미지 2: 왜 필요한가] -->
+    <img src="/images/upbit-csv-why-important.jpg" alt="업비트 거래내역 CSV가 필요한 이유 - 2027년 가상자산 세금 22% 과세 대비">
+
+    <!-- Section 2: 왜 지금? -->
+    <h2 id="why">⏰ 왜 '지금' 업비트 거래내역을 다운로드해야 하나?</h2>
+
+    <p>많은 분들이 "세금 신고는 2028년 5월인데 왜 지금?"이라고 생각합니다. 하지만 <strong>업비트 거래내역 CSV 다운로드</strong>는 지금 당장 해야 할 이유가 있습니다.</p>
+
+    <div class="warning-box">
+      <h4>⚠️ 지금 안 하면 생기는 문제 3가지</h4>
+      <ol>
+        <li><strong>데이터 보관 기한:</strong> 업비트는 거래내역을 최대 5년만 보관합니다. 오래된 데이터는 사라질 수 있습니다.</li>
+        <li><strong>의제취득가액 기준일:</strong> 2026년 12월 31일 시가가 기준입니다. 이전 취득가액을 증빙 못하면 불리해질 수 있습니다.</li>
+        <li><strong>거래소 서비스 변경:</strong> API 정책, 파일 형식 등이 언제든 변경될 수 있습니다.</li>
+      </ol>
+    </div>
+
+    <h3>📅 2027년 과세 타임라인</h3>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>시점</th>
+          <th>이벤트</th>
+          <th>해야 할 일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2026년 12월 31일</strong></td>
+          <td>의제취득가액 기준일</td>
+          <td>보유 코인 시가 기록</td>
+        </tr>
+        <tr>
+          <td><strong>2027년 1월 1일</strong></td>
+          <td>과세 시행일</td>
+          <td>이후 거래분부터 과세 대상</td>
+        </tr>
+        <tr>
+          <td><strong>2028년 5월 31일</strong></td>
+          <td>첫 신고 마감일</td>
+          <td>2027년 소득 신고·납부</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="success-box">
+      <h4>✅ 지금 준비하면 좋은 점</h4>
+      <p>미리 거래내역을 정리해두면 2027년에 발생하는 거래와 합산해 <strong>손익통산</strong>이 가능합니다. 손실이 난 코인과 이익이 난 코인을 상계하면 세금을 크게 줄일 수 있습니다.</p>
+    </div>
+
+    <!-- CTA 1 -->
+    <div style="text-align:center;margin:40px 0">
+      <a href="/#calculator" class="btn">🧮 무료 세금 계산기로 예상 세금 확인하기</a>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:12px">
+        거래내역 업로드만 하면 3분 만에 예상 세금이 계산됩니다
+      </p>
+    </div>
+
+    <!-- [이미지 3: 다운로드 방법] -->
+    <img src="/images/upbit-csv-download-method.jpg" alt="업비트 거래내역 CSV 다운로드 3가지 방법 - 고객센터, API, 외부 프로그램 비교">
+
+    <!-- Section 3: 다운로드 방법 -->
+    <h2 id="how">🛠️ 업비트 거래내역 CSV 다운로드 방법 3가지</h2>
+
+    <p>현재 업비트에서 거래내역을 CSV로 받는 방법은 크게 3가지입니다. 각 방법의 난이도와 장단점을 비교해 드리겠습니다.</p>
+
+    <h3>방법 1: 업비트 고객센터 요청 (가장 쉬움)</h3>
+    
+    <div class="step-box">
+      <h4><span class="step-number">1</span> 고객센터 요청 절차</h4>
+      <ol>
+        <li>업비트 앱/웹 → <strong>고객센터</strong> 접속</li>
+        <li><strong>1:1 문의</strong> 클릭</li>
+        <li>문의 유형: <strong>"거래내역 관련"</strong> 선택</li>
+        <li>내용 작성: "전체 거래내역 엑셀(CSV) 파일 발급 요청드립니다. 기간: 20XX년 XX월 ~ 현재"</li>
+        <li>본인 확인 절차 후 이메일로 수신 (3~5영업일 소요)</li>
+      </ol>
+    </div>
+
+    <p><strong>장점:</strong> 가장 간편하고 공식적인 방법<br>
+    <strong>단점:</strong> 처리 시간이 오래 걸림, 형식이 정해져 있음</p>
+
+    <h3>방법 2: 업비트 Open API 활용 (중급자)</h3>
+
+    <div class="step-box">
+      <h4><span class="step-number">2</span> API 키 발급 및 데이터 추출</h4>
+      <ol>
+        <li>업비트 로그인 → <strong>마이페이지</strong> → <strong>Open API 관리</strong></li>
+        <li><strong>API 키 발급</strong> (자산조회, 주문조회 권한 체크)</li>
+        <li>Access Key와 Secret Key 안전하게 보관</li>
+        <li>Python/JavaScript 등으로 거래내역 조회 API 호출</li>
+        <li>결과를 CSV 파일로 저장</li>
+      </ol>
+    </div>
+
+    <p><strong>장점:</strong> 실시간 데이터, 원하는 형식으로 가공 가능<br>
+    <strong>단점:</strong> 프로그래밍 지식 필요, API 호출 제한 있음</p>
+
+    <div class="insight">
+      <h4>💡 API 활용 팁</h4>
+      <p>업비트 개발자센터(<a href="https://docs.upbit.com" target="_blank" rel="noopener">docs.upbit.com</a>)에서 상세 문서를 확인하세요. <code>GET /v1/orders</code> 엔드포인트로 주문 내역을, <code>GET /v1/deposits</code>와 <code>GET /v1/withdraws</code>로 입출금 내역을 조회할 수 있습니다.</p>
+    </div>
+
+    <h3>방법 3: PDF 다운로드 후 변환 (대안)</h3>
+
+    <div class="step-box">
+      <h4><span class="step-number">3</span> PDF를 엑셀로 변환하기</h4>
+      <ol>
+        <li>업비트 앱/웹 → <strong>고객센터</strong> → <strong>증명서 발급</strong></li>
+        <li><strong>거래내역서 발급</strong> 선택</li>
+        <li>원하는 기간 설정 후 PDF 다운로드</li>
+        <li>Adobe Acrobat 또는 온라인 변환 도구로 CSV/Excel 변환</li>
+        <li>변환된 데이터 정확성 검토 (필수!)</li>
+      </ol>
+    </div>
+
+    <p><strong>장점:</strong> 즉시 발급 가능<br>
+    <strong>단점:</strong> 변환 과정에서 데이터 오류 가능성, 수동 검토 필요</p>
+
+    <!-- [이미지 4: 비교 표] -->
+    <img src="/images/upbit-csv-pdf-api-compare.jpg" alt="업비트 거래내역 다운로드 방법 비교 - PDF vs CSV vs API 장단점">
+
+    <!-- Section 4: 비교 분석 -->
+    <h2 id="compare">⚖️ PDF vs CSV vs API 어떤 게 유리할까?</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>PDF 발급</th>
+          <th>CSV 요청</th>
+          <th>API 활용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>난이도</strong></td>
+          <td>⭐ 매우 쉬움</td>
+          <td>⭐⭐ 쉬움</td>
+          <td>⭐⭐⭐⭐ 어려움</td>
+        </tr>
+        <tr>
+          <td><strong>발급 시간</strong></td>
+          <td>즉시</td>
+          <td>3~5영업일</td>
+          <td>즉시</td>
+        </tr>
+        <tr>
+          <td><strong>데이터 가공</strong></td>
+          <td>변환 필요</td>
+          <td>바로 사용</td>
+          <td>자유로움</td>
+        </tr>
+        <tr>
+          <td><strong>정확도</strong></td>
+          <td>변환 시 오류 가능</td>
+          <td>높음</td>
+          <td>매우 높음</td>
+        </tr>
+        <tr>
+          <td><strong>세금 계산기 호환</strong></td>
+          <td>△ 일부</td>
+          <td>◎ 대부분</td>
+          <td>◎ 대부분</td>
+        </tr>
+        <tr>
+          <td><strong>추천 대상</strong></td>
+          <td>거래량 적은 분</td>
+          <td>일반 투자자</td>
+          <td>전문 트레이더</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight">
+      <h4>🎓 전문가 추천</h4>
+      <p>"연간 거래 횟수가 100회 미만이라면 <strong>고객센터 CSV 요청</strong>이 가장 효율적입니다. 100회 이상 또는 자동매매를 사용한다면 <strong>API 활용</strong>을 권장합니다. 어떤 방법을 선택하든, 다운로드 후 반드시 <strong>데이터 정확성을 검증</strong>하세요."</p>
+    </div>
+
+    <!-- CTA 2 -->
+    <div style="text-align:center;margin:40px 0">
+      <a href="/#calculator" class="btn">📊 거래내역 업로드하고 세금 미리 계산하기</a>
+    </div>
+
+    <!-- [이미지 5: 실수 경고] -->
+    <img src="/images/upbit-csv-common-mistakes.jpg" alt="업비트 거래내역 CSV 다운로드 시 흔한 실수 - 90%가 모르는 주의사항">
+
+    <!-- Section 5: 치명적 실수 -->
+    <h2 id="mistakes">🚫 90%가 저지르는 치명적 실수 5가지</h2>
+
+    <div class="danger-box">
+      <h4>❌ 실수 1: 입출금 내역 누락</h4>
+      <p><strong>문제:</strong> 매수·매도 내역만 다운로드하고 입출금 기록을 빠뜨림</p>
+      <p><strong>결과:</strong> 다른 거래소나 개인지갑으로 이동한 코인의 취득가액 증빙 불가</p>
+      <p><strong>해결:</strong> 거래내역 + 입금내역 + 출금내역 모두 다운로드</p>
+    </div>
+
+    <div class="danger-box">
+      <h4>❌ 실수 2: 기간 설정 오류</h4>
+      <p><strong>문제:</strong> 최근 1년만 다운로드하고 과거 데이터 누락</p>
+      <p><strong>결과:</strong> 2017~2020년에 매수한 코인의 취득가액 증빙 불가</p>
+      <p><strong>해결:</strong> 가입일부터 현재까지 전체 기간 선택</p>
+    </div>
+
+    <div class="danger-box">
+      <h4>❌ 실수 3: 원본 파일 미보관</h4>
+      <p><strong>문제:</strong> 다운로드 후 가공만 하고 원본 삭제</p>
+      <p><strong>결과:</strong> 세무조사 시 원본 증빙 불가</p>
+      <p><strong>해결:</strong> 원본 파일은 별도 폴더에 날짜별로 보관 (클라우드 백업 권장)</p>
+    </div>
+
+    <div class="danger-box">
+      <h4>❌ 실수 4: 다른 거래소 데이터 미수집</h4>
+      <p><strong>문제:</strong> 업비트만 다운로드하고 빗썸, 코인원, 해외거래소 누락</p>
+      <p><strong>결과:</strong> 전체 손익 계산 불가, 손익통산 혜택 못 받음</p>
+      <p><strong>해결:</strong> 사용한 모든 거래소의 거래내역 수집</p>
+    </div>
+
+    <div class="danger-box">
+      <h4>❌ 실수 5: 마감일 직전 준비</h4>
+      <p><strong>문제:</strong> 2028년 5월에 급하게 데이터 수집</p>
+      <p><strong>결과:</strong> 시간 부족, 오류 발생, 가산세 위험</p>
+      <p><strong>해결:</strong> 지금 당장 시작! 분기별로 정기 다운로드</p>
+    </div>
+
+    <!-- [이미지 6: 계산기 활용] -->
+    <img src="/images/upbit-csv-tax-calculator.jpg" alt="업비트 거래내역으로 가상자산 세금 계산하기 - 무료 계산기 사용법">
+
+    <!-- Section 6: 계산기 활용 -->
+    <h2 id="calculator">🧮 무료 세금 계산기로 3분 만에 예상 세금 확인</h2>
+
+    <p><strong>업비트 거래내역 CSV</strong>를 다운로드했다면, 이제 실제로 얼마나 세금을 내야 하는지 확인해볼 차례입니다.</p>
+
+    <div class="step-box">
+      <h4>세금 계산기 사용 방법</h4>
+      <ol>
+        <li><strong>CryptoTax.cloud</strong> 접속</li>
+        <li><strong>거래내역 업로드</strong> 버튼 클릭</li>
+        <li>업비트 CSV 파일 선택</li>
+        <li>자동으로 취득가액, 양도가액, 손익 계산</li>
+        <li><strong>예상 세금</strong> 확인 (250만원 공제 적용)</li>
+      </ol>
+    </div>
+
+    <div class="success-box">
+      <h4>✅ 계산기 활용 이점</h4>
+      <ul>
+        <li>이동평균법 자동 적용</li>
+        <li>다중 거래소 데이터 통합</li>
+        <li>손익통산 자동 계산</li>
+        <li>신고서 양식 PDF 출력</li>
+      </ul>
+    </div>
+
+    <div style="text-align:center;margin:40px 0">
+      <a href="/#calculator" class="btn">🚀 지금 바로 무료 계산기 사용하기</a>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:12px">
+        회원가입 없이 바로 사용 가능 | 데이터는 브라우저에서만 처리
+      </p>
+    </div>
+
+    <!-- Section 7: FAQ -->
+    <h2 id="faq">❓ 자주 묻는 질문 (FAQ)</h2>
+
+    <div class="faq">
+      <h4>Q1: 업비트에서 CSV 파일을 직접 다운로드할 수 있나요?</h4>
+      <p><strong>A:</strong> 현재 업비트 공식 서비스는 거래내역서를 PDF 형식으로만 제공합니다. CSV나 엑셀 파일이 필요한 경우 고객센터(1588-5682)에 별도로 요청해야 합니다. Open API를 활용하면 직접 데이터를 추출할 수도 있습니다.</p>
+    </div>
+
+    <div class="faq">
+      <h4>Q2: 거래내역 보관 기간은 얼마나 되나요?</h4>
+      <p><strong>A:</strong> 업비트는 법적 요구에 따라 거래내역을 최소 5년간 보관합니다. 하지만 더 오래된 데이터의 경우 시스템 변경 등으로 조회가 어려울 수 있으므로, 정기적으로 다운로드하여 별도 보관하는 것을 강력히 권장합니다.</p>
+    </div>
+
+    <div class="faq">
+      <h4>Q3: 2027년 이전에 산 코인은 어떻게 계산하나요?</h4>
+      <p><strong>A:</strong> 소득세법에 따르면 2027년 1월 1일 전에 보유한 가상자산의 취득가액은 <strong>"2026년 12월 31일 시가"와 "실제 취득가액" 중 큰 금액</strong>으로 계산합니다. 따라서 과거 취득가액을 증빙해두면 유리할 수 있습니다.</p>
+    </div>
+
+    <div class="faq">
+      <h4>Q4: 여러 거래소를 사용했는데 어떻게 하나요?</h4>
+      <p><strong>A:</strong> 모든 거래소(업비트, 빗썸, 코인원, 해외거래소 등)의 거래내역을 각각 다운로드한 후, 세금 계산기에 함께 업로드하면 됩니다. 손익통산은 전체 거래를 합산해 계산하므로, 모든 거래소 데이터가 필요합니다.</p>
+    </div>
+
+    <div class="faq">
+      <h4>Q5: API 키 발급이 위험하지 않나요?</h4>
+      <p><strong>A:</strong> API 키 발급 시 <strong>"출금 권한"은 절대 체크하지 마세요.</strong> "자산조회"와 "주문조회" 권한만 부여하면 안전하게 데이터만 조회할 수 있습니다. 키는 타인에게 절대 공유하지 말고 안전하게 보관하세요.</p>
+    </div>
+
+    <!-- Mini Quiz -->
+    <div class="quiz">
+      <h3>🎯 이해도 체크 퀴즈</h3>
+      <p><strong>업비트 거래내역 CSV 다운로드와 관련해 올바른 설명은?</strong></p>
+      <ol style="text-align:left;max-width:500px;margin:16px auto">
+        <li>업비트 앱에서 바로 CSV 다운로드 버튼이 있다</li>
+        <li>거래내역은 1년만 보관되므로 매년 다운로드해야 한다</li>
+        <li>고객센터에 요청하거나 Open API를 활용해야 CSV를 받을 수 있다</li>
+        <li>PDF와 CSV는 완전히 동일한 데이터를 담고 있다</li>
+      </ol>
+      <details style="margin-top:16px">
+        <summary style="cursor:pointer;color:var(--success);font-weight:700">정답 확인하기</summary>
+        <p style="margin-top:12px;font-size:.9rem">✅ 정답: <strong>3번!</strong> 현재 업비트 공식 서비스는 PDF만 지원하며, CSV/엑셀은 고객센터 요청이나 Open API를 통해 받을 수 있습니다.</p>
+      </details>
+    </div>
+
+    <!-- 연관 콘텐츠 -->
+    <h2>🔗 함께 읽으면 좋은 글</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0">
+      <a href="/blog/crypto-tax-guide-2027.html" class="btn" style="padding:14px;font-size:.9rem;text-align:center">📄 2027 가상자산 세금 완벽 가이드</a>
+      <a href="/blog/upbit-bithumb-tax-compare.html" class="btn" style="padding:14px;font-size:.9rem;text-align:center">📄 업비트 vs 빗썸 세금 신고 비교</a>
+      <a href="/blog/crypto-loss-carryforward.html" class="btn" style="padding:14px;font-size:.9rem;text-align:center">📄 코인 손실 이월공제 방법</a>
+    </div>
+
+    <!-- 공식 출처 -->
+    <h3>📚 공식 참고 자료</h3>
+    <ul>
+      <li><a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank" rel="noopener">국세청 - 거주자의 가상자산소득 과세 개요</a></li>
+      <li><a href="https://support.upbit.com/hc/ko/articles/26396872782233" target="_blank" rel="noopener">업비트 고객센터 - 증명서 발급 안내</a></li>
+      <li><a href="https://docs.upbit.com" target="_blank" rel="noopener">업비트 개발자센터 - Open API 문서</a></li>
+      <li><a href="https://likms.assembly.go.kr" target="_blank" rel="noopener">국회 의안정보시스템 - 소득세법 개정안</a></li>
+    </ul>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <p><strong>⚠️ 면책 조항</strong></p>
+      <p>본 콘텐츠는 일반적인 정보 제공 목적으로 작성되었으며, 세무·법률 자문 서비스가 아닙니다. 개인의 상황에 따라 실제 세금 계산 결과가 다를 수 있으므로, 정확한 세금 신고를 위해서는 반드시 세무사 등 전문가와 상담하시기 바랍니다. 본 정보의 활용으로 인한 손실이나 불이익에 대해 CryptoTax.cloud는 책임지지 않습니다.</p>
+    </div>
+
+    <!-- Tags -->
+    <div class="tags">
+      <a href="/blog/?tag=업비트">#업비트</a>
+      <a href="/blog/?tag=거래내역">#거래내역</a>
+      <a href="/blog/?tag=CSV다운로드">#CSV다운로드</a>
+      <a href="/blog/?tag=가상자산세금">#가상자산세금</a>
+      <a href="/blog/?tag=2027과세">#2027과세</a>
+      <a href="/blog/?tag=코인세금">#코인세금</a>
+      <a href="/blog/?tag=세금계산기">#세금계산기</a>
+    </div>
+
+    <!-- Author & Contact -->
+    <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)">
+      <p>✍️ 작성자: <strong>CryptoTax.cloud 편집팀</strong></p>
+      <p>📅 최종 수정: 2026년 3월 28일</p>
+      <p>📧 문의: <a href="mailto:contact@cryptotax.cloud" style="color:var(--primary)">contact@cryptotax.cloud</a></p>
+    </div>
+
+  </article>
+</div>
+
+</body>
+</html>
