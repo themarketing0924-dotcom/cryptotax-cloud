@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루나(LUNA) 손실 세금 공제 | 2027년 이월공제 불가·손익통산만 가능</title>
+    <meta name="description" content="테라·루나 폭락 피해자 필독! 2027년부터 손실 이월공제 불가, 같은 해 수익과만 상계 가능. 실전 계산 예시, 신고 방법, 5가지 절세 전략 완벽 정리.">
+    <meta name="keywords" content="루나손실세금, 테라폭락세금, 가상자산손실공제, 손익통산, 이월공제불가, 루나피해자세금신고2027">
+    <link rel="canonical" href="https://cryptotax.cloud/blog/luna-loss-deduction.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="루나(LUNA) 손실 세금 공제 | 2027년 이월공제 불가">
+    <meta property="og:description" content="테라·루나 폭락 손실, 2027년부터 같은 해 수익과만 상계 가능. 이월공제 불가, 실전 계산·신고 방법 5분 완벽 정리.">
+    <meta property="og:image" content="https://cryptotax.cloud/images/luna-loss-deduction.jpg">
+    <meta property="og:url" content="https://cryptotax.cloud/blog/luna-loss-deduction.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="루나(LUNA) 손실 세금 공제 가이드">
+    <meta name="twitter:description" content="테라·루나 손실, 2027년부터 같은 해 수익과만 상계. 이월공제 불가, 신고 방법 완벽 정리.">
+    <meta name="twitter:image" content="https://cryptotax.cloud/images/luna-loss-deduction.jpg">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "루나(LUNA) 손실 세금 공제 | 2027년 이월공제 불가·손익통산만 가능",
+      "description": "테라·루나 폭락 피해자 필독! 2027년부터 손실 이월공제 불가, 같은 해 수익과만 상계 가능. 실전 계산 예시, 신고 방법, 5가지 절세 전략 완벽 정리.",
+      "image": "https://cryptotax.cloud/images/luna-loss-deduction.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "CryptoTax.cloud 세무팀"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CryptoTax.cloud",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cryptotax.cloud/logo.png"
+        }
+      },
+      "datePublished": "2026-03-31",
+      "dateModified": "2026-03-31"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "루나(LUNA) 손실, 세금 공제 받을 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "같은 해(2027년 1월~12월) 다른 코인 수익과 '손익통산'만 가능합니다. 예: 2027년 비트코인 +1,000만원, 루나 손실 −500만원 → 순이익 500만원만 과세. 단, 2026년 이전 루나 손실은 2027년 이후 수익과 상계 불가(이월공제 불가)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "2022년 루나 폭락 손실, 2027년 세금 신고 시 공제되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아니오. 2027년 1월 1일 이전 발생한 손실은 '이월공제' 불가입니다. 2022년 루나 손실은 2027년 이후 수익과 상계할 수 없습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "루나 손실 신고 안 하면 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "손실 자체는 신고 의무가 없으나, 다른 코인 수익이 있다면 손실을 신고해야 세금을 줄일 수 있습니다. 미신고 시 불필요하게 높은 세금을 낼 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "루나 손실 증명, 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "거래소(업비트·빗썸 등)에서 '거래내역 증명서' 발급 → 루나 매수·매도 내역 포함 → 홈택스 신고 시 첨부. 상장폐지 전 마지막 거래 기록이 증명 자료가 됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "루나 손실 세금 신고는 언제, 어디서 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "매년 5월 1~31일, 홈택스(https://hometax.go.kr) → '종합소득세 → 기타소득 → 가상자산 양도 소득'에서 손익통산 후 신고합니다."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            line-height:1.8; 
+            color:#1e293b; 
+            background:#fff;
+            padding:20px;
+        }
+        .container { 
+            max-width:800px; 
+            margin:0 auto; 
+            background:#fff;
+            padding:40px 20px;
+        }
+        h1 { 
+            font-size:2em; 
+            margin-bottom:20px; 
+            color:#0f172a;
+            font-weight:700;
+            line-height:1.3;
+        }
+        h2 { 
+            font-size:1.6em; 
+            margin:40px 0 20px; 
+            color:#0f172a;
+            font-weight:600;
+            border-bottom:3px solid #ef4444;
+            padding-bottom:10px;
+        }
+        h3 { 
+            font-size:1.3em; 
+            margin:30px 0 15px; 
+            color:#334155;
+            font-weight:600;
+        }
+        p { 
+            margin-bottom:16px; 
+            font-size:1.05em;
+        }
+        .meta { 
+            color:#64748b; 
+            font-size:0.95em; 
+            margin-bottom:30px;
+            padding:15px;
+            background:#f8fafc;
+            border-radius:8px;
+        }
+        .summary-box { 
+            background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color:#fff;
+            padding:25px;
+            border-radius:12px;
+            margin:30px 0;
+            box-shadow:0 10px 30px rgba(239,68,68,0.3);
+        }
+        .summary-box h3 { 
+            color:#fff; 
+            margin-top:0;
+            font-size:1.4em;
+        }
+        .summary-box ul { 
+            margin:15px 0; 
+            padding-left:20px;
+        }
+        .summary-box li { 
+            margin:10px 0;
+            font-size:1.05em;
+        }
+        .warning-box {
+            background:#fef3c7;
+            border-left:5px solid #f59e0b;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        .warning-box strong {
+            color:#b45309;
+            font-size:1.1em;
+        }
+        .info-box {
+            background:#dbeafe;
+            border-left:5px solid #3b82f6;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        .success-box {
+            background:#d1fae5;
+            border-left:5px solid #10b981;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        .danger-box {
+            background:#fee2e2;
+            border-left:5px solid #ef4444;
+            padding:20px;
+            margin:25px 0;
+            border-radius:8px;
+        }
+        table { 
+            width:100%; 
+            border-collapse:collapse; 
+            margin:25px 0;
+            font-size:0.95em;
+        }
+        table th { 
+            background:#0f172a; 
+            color:#fff; 
+            padding:12px;
+            text-align:left;
+            font-weight:600;
+        }
+        table td { 
+            padding:12px; 
+            border-bottom:1px solid #e2e8f0;
+        }
+        table tr:hover { 
+            background:#f8fafc;
+        }
+        ul, ol { 
+            margin:20px 0; 
+            padding-left:25px;
+        }
+        li { 
+            margin:10px 0;
+            line-height:1.8;
+        }
+        .cta-button {
+            display:inline-block;
+            background:#ef4444;
+            color:#fff;
+            padding:15px 30px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:600;
+            margin:10px 10px 10px 0;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 15px rgba(239,68,68,0.3);
+        }
+        .cta-button:hover {
+            background:#dc2626;
+            transform:translateY(-2px);
+            box-shadow:0 6px 20px rgba(239,68,68,0.4);
+        }
+        .stat-card {
+            background:#f8fafc;
+            padding:20px;
+            border-radius:8px;
+            margin:15px 0;
+            border-left:4px solid #ef4444;
+        }
+        .stat-card strong {
+            color:#ef4444;
+            font-size:1.8em;
+            display:block;
+            margin-bottom:5px;
+        }
+        .disclaimer {
+            background:#f1f5f9;
+            padding:20px;
+            border-radius:8px;
+            margin:40px 0 20px;
+            font-size:0.9em;
+            color:#475569;
+        }
+        code {
+            background:#f1f5f9;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:'Courier New', monospace;
+            color:#e11d48;
+        }
+        .formula {
+            background:#f8fafc;
+            padding:20px;
+            border-radius:8px;
+            margin:20px 0;
+            font-family:'Courier New', monospace;
+            border:2px solid #e2e8f0;
+        }
+        @media (max-width:768px) {
+            body { padding:10px; }
+            .container { padding:20px 10px; }
+            h1 { font-size:1.6em; }
+            h2 { font-size:1.3em; }
+            table { font-size:0.85em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💔 루나(LUNA) 손실 세금 공제 | 2027년 이월공제 불가·손익통산만 가능</h1>
+        
+        <div class="meta">
+            📅 <strong>작성일:</strong> 2026년 3월 31일 | 
+            ⏱️ <strong>읽는 시간:</strong> 10분 | 
+            👤 <strong>작성자:</strong> CryptoTax.cloud 세무팀 | 
+            🏷️ <strong>태그:</strong> #루나손실세금 #테라폭락세금 #손익통산 #이월공제불가
+        </div>
+
+        <div class="summary-box">
+            <h3>⚡ 3초 요약</h3>
+            <ul>
+                <li><strong>2027년 1월 1일부터</strong> 루나 손실은 <strong>같은 해 다른 코인 수익과만 상계</strong> 가능 (손익통산)</li>
+                <li><strong>이월공제 불가:</strong> 2022년 루나 손실 → 2027년 수익과 상계 ❌</li>
+                <li><strong>손실 신고 필수:</strong> 다른 코인 수익 있으면 손실 신고로 세금 절약</li>
+                <li><strong>증명 방법:</strong> 거래소 거래내역 증명서 발급 → 홈택스 첨부</li>
+            </ul>
+        </div>
+
+        <div class="stat-card">
+            <strong>57조원</strong>
+            2022년 테라·루나 폭락 사태 총 손실액 (전 세계)
+        </div>
+
+        <div class="stat-card">
+            <strong>28만명</strong>
+            국내 테라·루나 피해자 추정 인원 (2022년 기준)
+        </div>
+
+        <div class="stat-card">
+            <strong>0%</strong>
+            이월공제 허용 비율 (2027년 이후 손실만 같은 해 상계 가능)
+        </div>
+
+        <div class="stat-card">
+            <strong>22%</strong>
+            손익통산 후 순이익 250만원 초과 시 과세율
+        </div>
+
+        <h2>📌 테라·루나 사태란? (2022년 5월)</h2>
+        
+        <p>2022년 5월 8일, 스테이블코인 <strong>테라USD(UST)</strong>와 자매 코인 <strong>루나(LUNA)</strong>가 동반 폭락하여 <strong>일주일 만에 99.99% 하락</strong>했습니다. 이로 인해 전 세계적으로 약 <strong>450억 달러(약 57조원)</strong>의 손실이 발생했고, 국내에서만 <strong>약 28만 명</strong>이 피해를 입은 것으로 추산됩니다.</p>
+
+        <ul>
+            <li><strong>2022년 5월 5일:</strong> LUNA 약 110,000원</li>
+            <li><strong>2022년 5월 13일:</strong> LUNA 약 0.01원 (99.99% 폭락)</li>
+            <li><strong>2022년 5월 27일:</strong> 빗썸, 업비트, 고팍스 등 국내 거래소 <strong>LUNA 상장폐지</strong></li>
+        </ul>
+
+        <div class="danger-box">
+            <strong>⚠️ 현재 상황 (2026년 3월)</strong><br>
+            테라폼랩스 창업자 <strong>권도형</strong>은 2024년 미국 SEC와 <strong>45억 달러(약 6조원) 벌금</strong> 합의 후, 피해자 보상 절차가 진행 중입니다. 하지만 <strong>보상 금액은 피해액 대비 극히 일부</strong>이며, 대부분의 투자자는 손실을 회복하지 못했습니다.
+        </div>
+
+        <h2>🔍 루나 손실, 세금 공제 받을 수 있나요?</h2>
+
+        <h3>1️⃣ 결론: 조건부 가능 (손익통산만)</h3>
+
+        <p>루나 손실은 <strong>같은 연도(2027년 1월~12월)</strong> 다른 가상자산(비트코인, 이더리움 등) 수익과 <strong>'손익통산'</strong>만 가능합니다. <strong>이월공제는 불가</strong>합니다.</p>
+
+        <div class="formula">
+<strong>📐 손익통산 계산 공식</strong><br><br>
+<strong>과세 대상 = (연간 모든 코인 수익 합계 − 연간 모든 코인 손실 합계) − 250만원(기본공제)</strong><br><br>
+<strong>예시:</strong><br>
+2027년 비트코인 수익: +1,000만원<br>
+2027년 루나 손실: −500만원<br>
+→ 순이익 = 500만원 − 250만원 = <strong>250만원 과세소득</strong><br>
+→ 세액 = 250만원 × 22% = <strong>55만원</strong>
+        </div>
+
+        <h3>2️⃣ 이월공제 불가 (핵심 주의사항)</h3>
+
+        <div class="warning-box">
+            <strong>⚠️ 절대 주의</strong><br>
+            <strong>2027년 1월 1일 이전</strong> 발생한 손실(예: 2022년 루나 손실)은 <strong>2027년 이후 수익과 상계할 수 없습니다.</strong> 이는 가상자산 과세가 <strong>기타소득으로 분류</strong>되어 <strong>결손금 이월공제 규정이 없기 때문</strong>입니다.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>시나리오</th>
+                    <th>손실 발생 시점</th>
+                    <th>수익 발생 시점</th>
+                    <th>상계 가능 여부</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>케이스 1</strong></td>
+                    <td>2022년 루나 −1,000만원</td>
+                    <td>2027년 비트코인 +1,000만원</td>
+                    <td>❌ <strong>상계 불가</strong> (이월공제 불가)</td>
+                </tr>
+                <tr>
+                    <td><strong>케이스 2</strong></td>
+                    <td>2027년 루나 −500만원</td>
+                    <td>2027년 비트코인 +1,000만원</td>
+                    <td>✅ <strong>상계 가능</strong> (순이익 500만원)</td>
+                </tr>
+                <tr>
+                    <td><strong>케이스 3</strong></td>
+                    <td>2027년 루나 −1,500만원</td>
+                    <td>2027년 비트코인 +500만원</td>
+                    <td>✅ <strong>상계 가능</strong> (손실 −1,000만원, 과세 0원)</td>
+                </tr>
+                <tr>
+                    <td><strong>케이스 4</strong></td>
+                    <td>2027년 루나 −1,000만원</td>
+                    <td>2028년 비트코인 +1,000만원</td>
+                    <td>❌ <strong>상계 불가</strong> (연도 다름, 이월공제 불가)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3️⃣ 왜 이월공제가 안 되나요?</h3>
+
+        <p>가상자산 소득은 <strong>'기타소득'</strong>으로 분류되며, 소득세법상 기타소득은 <strong>결손금 이월공제 규정이 없습니다.</strong> 이는 다음과 같은 이유 때문입니다:</p>
+
+        <ul>
+            <li><strong>주식·부동산과 다름:</strong> 양도소득세는 결손금 이월공제 가능, 기타소득은 불가</li>
+            <li><strong>정부 입장:</strong> 가상자산 특성상 손실 조작 가능성 우려</li>
+            <li><strong>세수 확보:</strong> 이월공제 허용 시 세수 감소</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>💡 야당 공약 (2024년 총선)</strong><br>
+            민주당은 "가상자산 손익통산 및 5년 이월공제 허용"을 공약했으나, 2026년 3월 현재 <strong>법안 통과 없음</strong>. 2027년 1월 1일 시행 예정인 현행법에는 <strong>이월공제 규정이 없습니다</strong>.
+        </div>
+
+        <h2>💰 루나 손실 세금 계산 방법 (5단계)</h2>
+
+        <h3>1단계: 연간 모든 가상자산 거래 내역 확인</h3>
+
+        <p>2027년 1월 1일~12월 31일 동안 거래한 <strong>모든 코인(비트코인, 이더리움, 리플, 루나 등)</strong>의 손익을 계산합니다.</p>
+
+        <h3>2단계: 손익통산하기</h3>
+
+        <div class="formula">
+<strong>📐 손익통산 공식</strong><br><br>
+순이익 = (코인A 수익 + 코인B 수익 + ...) − (코인C 손실 + 코인D 손실 + ...)<br><br>
+<strong>예시:</strong><br>
+비트코인: +1,500만원<br>
+이더리움: +800만원<br>
+루나: −1,000만원<br>
+리플: −300만원<br>
+→ 순이익 = (1,500 + 800) − (1,000 + 300) = <strong>1,000만원</strong>
+        </div>
+
+        <h3>3단계: 기본공제 차감하기</h3>
+
+        <div class="formula">
+<strong>📐 과세소득 계산</strong><br><br>
+과세소득 = 순이익 − 250만원(기본공제)<br><br>
+<strong>예시:</strong> 1,000만원 − 250만원 = <strong>750만원</strong>
+        </div>
+
+        <h3>4단계: 세액 계산하기</h3>
+
+        <div class="formula">
+<strong>📐 세액 계산</strong><br><br>
+세액 = 과세소득 × 22% (소득세 20% + 지방소득세 2%)<br><br>
+<strong>예시:</strong> 750만원 × 0.22 = <strong>165만원</strong>
+        </div>
+
+        <h3>5단계: 홈택스 신고하기</h3>
+
+        <p>매년 5월 1~31일, 홈택스에서 <strong>'종합소득세 → 기타소득 → 가상자산 양도 소득'</strong>에 손익통산 후 신고합니다.</p>
+
+        <h2>📊 실전 세금 계산 사례 (4가지 시나리오)</h2>
+
+        <h3>사례 1: 루나 손실 완전 상계 (세금 0원)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2027년 비트코인 수익</td>
+                    <td>+3,000,000원</td>
+                </tr>
+                <tr>
+                    <td>2027년 루나 손실 (2027년 재구매 후 매도)</td>
+                    <td>−2,000,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>순이익</strong></td>
+                    <td><strong>1,000,000원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>0원 (비과세)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액</strong></td>
+                    <td><strong>0원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>사례 2: 루나 손실 부분 상계 (세금 감소)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2027년 비트코인 수익</td>
+                    <td>+10,000,000원</td>
+                </tr>
+                <tr>
+                    <td>2027년 이더리움 수익</td>
+                    <td>+5,000,000원</td>
+                </tr>
+                <tr>
+                    <td>2027년 루나 손실</td>
+                    <td>−8,000,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>순이익</strong></td>
+                    <td><strong>7,000,000원</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>4,500,000원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액 (22%)</strong></td>
+                    <td><strong>990,000원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success-box">
+            <strong>✅ 절세 효과</strong><br>
+            만약 루나 손실을 신고하지 않았다면?<br>
+            과세소득 = 15,000,000 − 2,500,000 = 12,500,000원<br>
+            세액 = 12,500,000 × 0.22 = <strong>2,750,000원</strong><br><br>
+            루나 손실 신고로 <strong>1,760,000원 절세</strong>! (2,750,000 − 990,000)
+        </div>
+
+        <h3>사례 3: 손실이 수익 초과 (세금 0원, 손실 이월 불가)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2027년 비트코인 수익</td>
+                    <td>+5,000,000원</td>
+                </tr>
+                <tr>
+                    <td>2027년 루나 손실</td>
+                    <td>−10,000,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>순손실</strong></td>
+                    <td><strong>−5,000,000원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>0원 (손실)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액</strong></td>
+                    <td><strong>0원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>잔여 손실 (−5,000,000원)</strong></td>
+                    <td><strong>❌ 2028년 이월 불가</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <strong>⚠️ 주의</strong><br>
+            2027년 순손실 −500만원은 <strong>2028년 이후 수익과 상계할 수 없습니다</strong>. (이월공제 불가)
+        </div>
+
+        <h3>사례 4: 2022년 루나 손실 + 2027년 수익 (상계 불가)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2022년 루나 손실 (폭락 시)</td>
+                    <td>−50,000,000원</td>
+                </tr>
+                <tr>
+                    <td>2027년 비트코인 수익</td>
+                    <td>+10,000,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>2027년 과세 대상</strong></td>
+                    <td><strong>+10,000,000원 (2022년 손실 무시)</strong></td>
+                </tr>
+                <tr>
+                    <td>기본공제</td>
+                    <td>−2,500,000원</td>
+                </tr>
+                <tr>
+                    <td><strong>과세소득</strong></td>
+                    <td><strong>7,500,000원</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>세액 (22%)</strong></td>
+                    <td><strong>1,650,000원</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="danger-box">
+            <strong>💔 가장 억울한 케이스</strong><br>
+            2022년 루나 폭락으로 5,000만원 손실을 입었지만, <strong>2027년 이후 수익과 상계할 수 없어</strong> 세금을 전액 내야 합니다.
+        </div>
+
+        <h2>📝 루나 손실 세금 신고 5단계 가이드</h2>
+
+        <h3>1단계: 거래소에서 거래내역 증명서 발급</h3>
+
+        <p><strong>업비트:</strong></p>
+        <ul>
+            <li>마이페이지 → 고객센터 → 거래내역 증명서 발급</li>
+            <li>기간: 2022년 1월~12월 (루나 상장폐지 전까지)</li>
+            <li>파일 형식: PDF</li>
+        </ul>
+
+        <p><strong>빗썸:</strong></p>
+        <ul>
+            <li>고객센터 → 증명서 발급 신청</li>
+            <li>파일 형식: Excel</li>
+            <li>발급 시간: 48시간</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>💡 루나 상장폐지 후 증명서 발급 불가?</strong><br>
+            아니오. 거래소는 <strong>상장폐지 이전 거래 내역</strong>을 보관하고 있으며, 고객 요청 시 증명서 발급이 가능합니다. 단, 일부 거래소는 <strong>최대 5년 이내</strong> 내역만 제공할 수 있습니다.
+        </div>
+
+        <h3>2단계: 손익통산 계산하기</h3>
+
+        <p>엑셀 또는 무료 계산기를 이용해 2027년 모든 코인 거래를 손익통산합니다.</p>
+
+        <p><strong>무료 자동 계산기 추천:</strong></p>
+        <ul>
+            <li>🔗 <a href="https://cryptotax.cloud/calculator" class="cta-button">CryptoTax.cloud 무료 계산기</a></li>
+        </ul>
+
+        <h3>3단계: 홈택스 접속 및 로그인</h3>
+        <p>🔗 <a href="https://hometax.go.kr" target="_blank" style="color:#3b82f6; text-decoration:underline;">https://hometax.go.kr</a> → 공동인증서/간편인증 로그인</p>
+
+        <h3>4단계: 종합소득세 신고 메뉴 선택</h3>
+        <ol>
+            <li>상단 메뉴: <strong>신고/납부</strong></li>
+            <li>세목 선택: <strong>종합소득세</strong></li>
+            <li>신고 유형: <strong>정기신고 (5월 1~31일)</strong></li>
+            <li>소득 구분: <strong>기타소득</strong></li>
+            <li>세부 항목: <strong>가상자산 양도 소득</strong></li>
+        </ol>
+
+        <h3>5단계: 소득 정보 입력 및 제출</h3>
+        <ul>
+            <li><strong>수익 항목:</strong> 비트코인, 이더리움 등 수익 발생 코인</li>
+            <li><strong>손실 항목:</strong> 루나 등 손실 발생 코인</li>
+            <li><strong>순이익:</strong> 자동 계산 (수익 − 손실)</li>
+            <li><strong>기본공제:</strong> 250만원 (자동 적용)</li>
+            <li><strong>첨부 서류:</strong> 거래내역 증명서 PDF 업로드</li>
+            <li><strong>제출:</strong> 최종 확인 후 신고 완료</li>
+        </ul>
+
+        <h2>💡 루나 손실 절세 전략 5가지</h2>
+
+        <h3>1️⃣ 2027년 내 손익 조절하기</h3>
+        <p>2027년 12월 31일 전에 수익 실현 시점을 조절하여 <strong>루나 손실과 같은 연도</strong>에 맞춥니다.</p>
+
+        <p><strong>예시:</strong></p>
+        <ul>
+            <li>2027년 11월: 비트코인 수익 발생 예상 → <strong>12월에 매도</strong></li>
+            <li>2027년 루나 손실과 손익통산 → 세금 절감</li>
+        </ul>
+
+        <h3>2️⃣ 손실 발생 코인 전략 매도</h3>
+        <p>2027년 내 다른 코인에서 손실이 발생 중이라면, <strong>연말 전 매도</strong>하여 수익과 상계합니다.</p>
+
+        <h3>3️⃣ 기본공제 250만원 활용</h3>
+        <p>연간 순이익이 <strong>250만원 이하</strong>가 되도록 손익을 조절하면 <strong>세금 0원</strong>입니다.</p>
+
+        <h3>4️⃣ 가족 계좌 분산 (합법 범위 내)</h3>
+        <p>배우자·자녀 명의 계좌로 분산 투자 시, <strong>각각 250만원 기본공제</strong>를 받을 수 있습니다.</p>
+
+        <div class="warning-box">
+            <strong>⚠️ 주의</strong><br>
+            명의 대여는 <strong>불법</strong>입니다. 실제 소유자와 명의자가 일치해야 하며, 자금 출처 조사 시 문제가 될 수 있습니다.
+        </div>
+
+        <h3>5️⃣ 세무사 상담 (대규모 손실 시)</h3>
+        <p>루나 손실이 <strong>1,000만원 이상</strong>이라면, 세무사 상담을 통해 합법적인 절세 전략을 수립하세요.</p>
+
+        <a href="https://cryptotax.cloud/consult" class="cta-button">무료 세무사 상담 신청</a>
+
+        <h2>🚨 미신고 시 발생하는 불이익</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>항목</th>
+                    <th>내용</th>
+                    <th>금액 (예: 세액 100만원 기준)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>무신고 가산세</strong></td>
+                    <td>산출세액의 20%</td>
+                    <td>20만원</td>
+                </tr>
+                <tr>
+                    <td><strong>과소신고 가산세</strong></td>
+                    <td>산출세액의 10%</td>
+                    <td>10만원</td>
+                </tr>
+                <tr>
+                    <td><strong>납부 지연 이자</strong></td>
+                    <td>연 8.76% (2026년 기준)</td>
+                    <td>1년 지연 시 8.76만원</td>
+                </tr>
+                <tr>
+                    <td><strong>형사 처벌</strong></td>
+                    <td>조세포탈죄 (3년 이하 징역 또는 포탈세액의 3배 벌금)</td>
+                    <td>최대 300만원 벌금</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <strong>💡 손실만 있는 경우?</strong><br>
+            2027년 순손실만 발생했다면 <strong>신고 의무 없음</strong>. 단, 다른 코인 수익이 있다면 <strong>손실 신고로 세금 절감</strong> 가능.
+        </div>
+
+        <h2>💡 주요 실수 5가지 & 해결 방법</h2>
+
+        <h3>1️⃣ "2022년 루나 손실, 2027년 세금 신고 시 공제되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 과거 손실 공제 가능<br>
+        <strong>✅ 정답:</strong> 2027년 1월 1일 이전 손실은 <strong>이월공제 불가</strong></p>
+
+        <h3>2️⃣ "손실만 있으면 신고 안 해도 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 손실은 미신고<br>
+        <strong>✅ 정답:</strong> 다른 코인 수익이 있다면 <strong>손실 신고로 세금 절감</strong></p>
+
+        <h3>3️⃣ "루나 상장폐지됐으니 증명서 발급 불가하겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 증명서 발급 불가<br>
+        <strong>✅ 정답:</strong> 거래소는 <strong>상장폐지 이전 내역</strong>을 보관, 발급 가능</p>
+
+        <h3>4️⃣ "손실이 크면 몇 년에 걸쳐 공제받겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 다음 해 이월 가능<br>
+        <strong>✅ 정답:</strong> <strong>같은 해에만 상계</strong> 가능, 이월공제 불가</p>
+
+        <h3>5️⃣ "해외 거래소 루나 손실은 신고 안 해도 되겠지?"</h3>
+        <p><strong>❌ 오답:</strong> 해외 거래소는 제외<br>
+        <strong>✅ 정답:</strong> 바이낸스 등 <strong>해외 거래소 손실도 통합 신고</strong></p>
+
+        <h2>📚 관련 법령 & 공식 출처</h2>
+
+        <ul>
+            <li>🔗 <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40370&cntntsId=238935" target="_blank">국세청 - 거주자의 가상자산소득 과세 개요</a></li>
+            <li>🔗 <a href="https://www.law.go.kr/LSW/lsInfoP.do?efYd=20270101&lsiSeq=234520#0000" target="_blank">소득세법 제21조제1항제27호 (가상자산 소득)</a></li>
+            <li>🔗 <a href="https://www.seumtax.com/insights/publications/1068" target="_blank">세움택스 - 루나 손실을 세금계산 때 손실로 인정 받을 수 있나요?</a></li>
+            <li>🔗 <a href="https://www.hani.co.kr/arti/society/society_general/1043367.html" target="_blank">한겨레 - 루나·테라 피해자들, 권도형 고소·재산 압류 신청</a></li>
+            <li>🔗 <a href="https://www.bbc.com/korean/news-61506284" target="_blank">BBC - 루나·테라: '천문학적 피해'...투자자 집단소송 나섰다</a></li>
+        </ul>
+
+        <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+
+        <h3>Q1. 루나(LUNA) 손실, 세금 공제 받을 수 있나요?</h3>
+        <p><strong>A.</strong> 같은 해(2027년 1월~12월) 다른 코인 수익과 <strong>'손익통산'만 가능</strong>합니다. 예: 2027년 비트코인 +1,000만원, 루나 손실 −500만원 → 순이익 500만원만 과세. 단, 2026년 이전 루나 손실은 2027년 이후 수익과 상계 불가(이월공제 불가).</p>
+
+        <h3>Q2. 2022년 루나 폭락 손실, 2027년 세금 신고 시 공제되나요?</h3>
+        <p><strong>A.</strong> 아니오. 2027년 1월 1일 이전 발생한 손실은 <strong>'이월공제' 불가</strong>입니다. 2022년 루나 손실은 2027년 이후 수익과 상계할 수 없습니다.</p>
+
+        <h3>Q3. 루나 손실 신고 안 하면 어떻게 되나요?</h3>
+        <p><strong>A.</strong> 손실 자체는 신고 의무가 없으나, 다른 코인 수익이 있다면 <strong>손실을 신고해야 세금을 줄일 수 있습니다</strong>. 미신고 시 불필요하게 높은 세금을 낼 수 있습니다.</p>
+
+        <h3>Q4. 루나 손실 증명, 어떻게 하나요?</h3>
+        <p><strong>A.</strong> 거래소(업비트·빗썸 등)에서 <strong>'거래내역 증명서'</strong> 발급 → 루나 매수·매도 내역 포함 → 홈택스 신고 시 첨부. 상장폐지 전 마지막 거래 기록이 증명 자료가 됩니다.</p>
+
+        <h3>Q5. 루나 손실 세금 신고는 언제, 어디서 하나요?</h3>
+        <p><strong>A.</strong> 매년 <strong>5월 1~31일</strong>, 홈택스(https://hometax.go.kr) → <strong>'종합소득세 → 기타소득 → 가상자산 양도 소득'</strong>에서 손익통산 후 신고합니다.</p>
+
+        <h3>Q6. 루나 손실이 수익보다 크면 어떻게 되나요?</h3>
+        <p><strong>A.</strong> 순손실 발생 시 <strong>세금 0원</strong>. 단, 잔여 손실은 <strong>다음 해 이월 불가</strong>합니다.</p>
+
+        <h3>Q7. 야당 공약대로 이월공제가 허용될 가능성은?</h3>
+        <p><strong>A.</strong> 2026년 3월 현재 <strong>법안 통과 없음</strong>. 2027년 1월 1일 시행 예정인 현행법에는 이월공제 규정이 없습니다. 향후 법 개정 가능성은 있으나 <strong>불확실</strong>합니다.</p>
+
+        <h2>🎯 다음 단계 행동 가이드</h2>
+
+        <div class="success-box">
+            <strong>✅ 지금 바로 해야 할 3가지</strong>
+            <ol>
+                <li><strong>거래소 접속</strong> → 루나 거래내역 증명서 발급 신청</li>
+                <li><strong>무료 계산기</strong>로 2027년 예상 세액 확인: <a href="https://cryptotax.cloud/calculator" class="cta-button">무료 계산기 바로가기</a></li>
+                <li><strong>세무사 무료 상담</strong> 예약 (손실 1,000만원 이상 시 권장): <a href="https://cryptotax.cloud/consult" class="cta-button">무료 상담 신청</a></li>
+            </ol>
+        </div>
+
+        <h2>📖 관련 가이드</h2>
+
+        <ul>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/coinone-tax-guide.html">코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/binance-trade-history.html">바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/metamask-tax-guide.html">메타마스크 세금 신고 방법 | DeFi·스왑 완벽 정리</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/ripple-lawsuit-tax.html">리플(XRP) SEC 소송 종결 후 세금 신고 가이드</a></li>
+            <li>🔗 <a href="https://cryptotax.cloud/blog/solana-staking-tax.html">솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            <strong>⚖️ 법적 고지 (Legal Disclaimer)</strong><br>
+            본 가이드는 <strong>2026년 3월 31일</strong> 기준으로 작성되었으며, <strong>일반적인 정보 제공 목적</strong>입니다. 이월공제 허용 여부는 향후 법 개정에 따라 변경될 수 있으므로 <strong>실제 신고 전 반드시 국세청 상담센터(☎ 126)</strong> 또는 <strong>세무사와 상담</strong>하시기 바랍니다. 본 가이드의 내용에 따른 어떠한 손실이나 법적 책임도 CryptoTax.cloud는 지지 않습니다.
+        </div>
+
+        <p style="text-align:center; margin-top:40px; color:#64748b;">
+            <strong>CryptoTax.cloud</strong> | 가상자산 세금 전문 플랫폼<br>
+            📧 contact@cryptotax.cloud | 🌐 https://cryptotax.cloud
+        </p>
+    </div>
+</body>
+</html>
