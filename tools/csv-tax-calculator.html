@@ -1,46 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+<!-- ===== 여기만 바꾸세요 (각 페이지별) ===== -->
+<title>업비트·빗썸·바이낸스 CSV 세금 계산기 2027 | 자동 파싱 무료 — CryptoTax.cloud</title>
+<meta name="description" content="업비트·빗썸·코인원·바이낸스 거래내역 CSV를 드래그&드롭하면 2027년 가상자산 세금을 자동 계산합니다. 개인정보 수집 없음, 완전 무료.">
+<meta name="keywords" content="업비트 CSV 세금 계산기, 빗썸 거래내역 세금, 코인 세금 자동 계산, 가상자산 양도소득세 CSV, 바이낸스 세금 계산">
+<link rel="canonical" href="https://cryptotax.cloud/tools/csv-tax-calculator.html">
+<!-- ===== 여기까지 ===== -->
 
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="업비트·빗썸 CSV 세금 자동 계산기 2027 | CryptoTax.cloud">
+<meta property="og:description" content="CSV 파일 하나로 2027년 코인 세금 즉시 계산. 서버 전송 없음, 완전 무료.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/csv-tax-calculator.html">
+<meta property="og:image" content="https://cryptotax.cloud/images/og-csv-calculator.png">
+<meta name="twitter:card" content="summary_large_image">
 
-3개 파일 모두 받았습니다. 이제 각 파일의 현재 상태와 추가해야 할 항목을 최종 정리하고 작업하겠습니다.
-
-최종 작업 정리:
-
-| 페이지 | 추가할 것 |
-|:---|:---|
-| csv-tax-calculator.html | 메인 영역 세무사CTA + 공식해설(정적) + SEO콘텐츠 + AEO/GEO Schema 강화 |
-| portfolio-tracker.html | 메인 영역 세무사CTA + 공식해설 + FAQ + SEO콘텐츠 + AEO/GEO Schema 강화 |
-| tax-loss-harvesting.html | 중간 광고 보강 + SEO콘텐츠 강화 + AEO/GEO Schema 강화 (이미 대부분 있음) |
-
-파일이 매우 길기 때문에 1개씩 완성본을 드리겠습니다.
-
-1/3 — csv-tax-calculator.html 완성본
-
-기존 코드 100% 보존 + 빠진 4개 섹션 추가 위치:
-- FAQ 섹션 뒤 `` 앞에 → 세무사CTA + 공식해설 + SEO콘텐츠
-- `` 내 → AEO/GEO Schema 추가
-
-
-
-
-
-
-
-
-업비트·빗썸·바이낸스 CSV 세금 계산기 2027 | 자동 파싱 무료 — CryptoTax.cloud
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- ===== AEO/GEO: JSON-LD WebApplication ===== -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -53,10 +33,10 @@
   "inLanguage": "ko-KR",
   "publisher": { "@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud" }
 }
+</script>
 
-
-
-
+<!-- ===== AEO/GEO: FAQPage Schema (AI 검색엔진 직접 인용용) ===== -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -111,10 +91,10 @@
     }
   ]
 }
+</script>
 
-
-
-
+<!-- ===== AEO/GEO: HowTo Schema (AI 검색엔진 단계별 안내 인용용) ===== -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -146,10 +126,10 @@
     }
   ]
 }
+</script>
 
-
-
-
+<!-- ===== AEO/GEO: BreadcrumbList Schema ===== -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -159,9 +139,9 @@
     {"@type": "ListItem", "position": 3, "name": "CSV 세금 계산기", "item": "https://cryptotax.cloud/tools/csv-tax-calculator.html"}
   ]
 }
+</script>
 
-
-
+<style>
 /* ===== CSS 변수 (다크/라이트 모드) ===== */
 :root {
   --bg: #0d1117;
@@ -587,411 +567,411 @@ footer a:hover { color: var(--accent); }
   .result-summary { grid-template-columns: 1fr 1fr; }
   .tool-grid { grid-template-columns: 1fr 1fr; }
 }
+</style>
+  <link rel="stylesheet" href="/theme.css">
+</head>
+<body>
 
-  
+<!-- ===== 네비게이션 ===== -->
+<nav>
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/#calculator">💰 세금계산기</a></li>
+    <li><a href="/#tools">🧰 도구모음</a></li>
+    <li><a href="/market/">📊 시장데이터</a></li>
+    <li><a href="/blog/">📰 블로그</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()">
+  <span id="themeIcon">☀️</span>
+  <div class="toggle-track">
+    <div class="toggle-thumb"></div>
+  </div>
+  <span id="themeLabel">라이트</span>
+</button>
+  </div>
+</nav>
 
+<!-- ===== 히어로 ===== -->
+<section class="hero">
+  <div class="hero-badge">🆕 2027 세금 자동 계산 · 완전 무료</div>
+  <h1>업비트·빗썸·코인원·바이낸스<br><span>CSV 세금 계산기</span></h1>
+  <p>거래내역 CSV 파일을 올리면 2027년 가상자산 양도소득세를 자동으로 계산합니다.<br>서버 전송 없음 — 모든 처리는 브라우저에서만 이루어집니다.</p>
+  <div class="privacy-badge">🔒 개인정보 수집 없음 · 브라우저 전용 처리</div>
+</section>
 
+<!-- ===== 상단 광고 ===== -->
+<div class="container">
+  <div class="ad-slot" style="min-height:90px;">
+    <div class="ad-slot-label">Advertisement</div>
+    <!-- Google AdSense: 728x90 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
 
+<!-- ===== 메인 콘텐츠 ===== -->
+<div class="container">
+  <div class="main-grid">
 
+    <!-- 왼쪽: 계산기 영역 -->
+    <main>
 
-  ₿ CryptoTax.cloud
-  
-    💰 세금계산기
-    🧰 도구모음
-    📊 시장데이터
-    📰 블로그
-  
-  
-    
-  ☀️
-  
-    
-  
-  라이트
+      <!-- STEP 1: 거래소 선택 -->
+      <div class="card">
+        <div class="card-title">📁 STEP 1 — 거래소 선택</div>
 
-  
-
-
-
-
-  🆕 2027 세금 자동 계산 · 완전 무료
-  업비트·빗썸·코인원·바이낸스CSV 세금 계산기
-  거래내역 CSV 파일을 올리면 2027년 가상자산 양도소득세를 자동으로 계산합니다.서버 전송 없음 — 모든 처리는 브라우저에서만 이루어집니다.
-  🔒 개인정보 수집 없음 · 브라우저 전용 처리
-
-
-
-
-  
-    Advertisement
-    
-    
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  
-
-
-
-
-  
-
-    
-    
-
-      
-      
-        📁 STEP 1 — 거래소 선택
-
-        
-          
-            
+        <div class="exchange-tabs">
+          <button class="ex-tab active" onclick="selectExchange('upbit')" id="tab-upbit">
+            <img src="https://cryptologos.cc/logos/upbit-upbit-logo.png" onerror="this.style.display='none'" alt="">
             업비트
-          
-          
-            
+          </button>
+          <button class="ex-tab" onclick="selectExchange('bithumb')" id="tab-bithumb">
+            <img src="https://cryptologos.cc/logos/bithumb-bithumb-logo.png" onerror="this.style.display='none'" alt="">
             빗썸
-          
-          
-            
+          </button>
+          <button class="ex-tab" onclick="selectExchange('coinone')" id="tab-coinone">
+            <img src="https://cryptologos.cc/logos/coinone-coinone-logo.png" onerror="this.style.display='none'" alt="">
             코인원
-          
-          
-            
+          </button>
+          <button class="ex-tab" onclick="selectExchange('binance')" id="tab-binance">
+            <img src="https://cryptologos.cc/logos/binance-bnb-logo.png" onerror="this.style.display='none'" alt="">
             바이낸스
-          
-          
+          </button>
+          <button class="ex-tab" onclick="selectExchange('manual')" id="tab-manual">
             ✏️ 직접입력
-          
-        
+          </button>
+        </div>
 
-        
-        
-          📥 업비트 CSV 다운로드 방법:
-          앱: 더보기 → 거래내역 → 내보내기 → CSV 다운로드
-          PC: 거래내역 페이지 → 거래내역 내보내기 버튼 클릭
-          컬럼 형식: 체결시간, 마켓, 종류(매수/매도), 거래수량, 거래단가, 거래금액, 수수료, 정산금액
-        
+        <!-- CSV 다운로드 안내 (거래소별 동적 변경) -->
+        <div class="csv-guide" id="csvGuide">
+          <strong>📥 업비트 CSV 다운로드 방법:</strong><br>
+          앱: 더보기 → 거래내역 → 내보내기 → CSV 다운로드<br>
+          PC: 거래내역 페이지 → <code>거래내역 내보내기</code> 버튼 클릭<br>
+          <strong>컬럼 형식:</strong> <code>체결시간, 마켓, 종류(매수/매도), 거래수량, 거래단가, 거래금액, 수수료, 정산금액</code>
+        </div>
 
-        
-        
-          📂
-          CSV 파일을 여기에 드래그하거나 클릭하세요
-          지원 형식: .csv, .txt (최대 10MB)
-          
-          
-        
+        <!-- 드래그&드롭 -->
+        <div class="drop-zone" id="dropZone">
+          <span class="drop-icon">📂</span>
+          <h3>CSV 파일을 여기에 드래그하거나 클릭하세요</h3>
+          <p>지원 형식: .csv, .txt (최대 10MB)</p>
+          <div class="file-name" id="fileName"></div>
+          <input type="file" accept=".csv,.txt" id="csvInput" onchange="handleFileSelect(event)">
+        </div>
 
-        
-        
-          
-        
-      
+        <!-- 진행 바 -->
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
 
-      
-      
-        ⚙️ STEP 2 — 계산 옵션 설정
+      <!-- STEP 2: 계산 옵션 -->
+      <div class="card">
+        <div class="card-title">⚙️ STEP 2 — 계산 옵션 설정</div>
 
-        
-          
-            📅 과세 기간 시작
-            
-          
-          
-            📅 과세 기간 종료
-            
-          
-          
-            💸 기본공제 금액 (원)
-            
-          
-          
-            📊 세율 (%)
-            
-          
-          
-            🔢 원가 계산 방식
-            
-              총평균법 (2027년 기본)
-              선입선출법 (FIFO)
-            
-          
-          
-            💱 통화 기준
-            
-              KRW (원화)
-              USDT (테더)
-            
-          
-        
+        <div class="options-grid">
+          <div class="form-group">
+            <label>📅 과세 기간 시작</label>
+            <input type="date" id="dateFrom" value="2027-01-01">
+          </div>
+          <div class="form-group">
+            <label>📅 과세 기간 종료</label>
+            <input type="date" id="dateTo" value="2027-12-31">
+          </div>
+          <div class="form-group">
+            <label>💸 기본공제 금액 (원)</label>
+            <input type="number" id="deduction" value="2500000" min="0" step="100000">
+          </div>
+          <div class="form-group">
+            <label>📊 세율 (%)</label>
+            <input type="number" id="taxRate" value="22" min="0" max="100" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>🔢 원가 계산 방식</label>
+            <select id="costMethod">
+              <option value="avg">총평균법 (2027년 기본)</option>
+              <option value="fifo">선입선출법 (FIFO)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>💱 통화 기준</label>
+            <select id="currency">
+              <option value="KRW">KRW (원화)</option>
+              <option value="USDT">USDT (테더)</option>
+            </select>
+          </div>
+        </div>
 
-        
-          
-          📁 파일을 먼저 업로드하세요
-        
-      
+        <button class="calc-btn" id="calcBtn" onclick="calculateTax()" disabled>
+          <div class="spinner" id="spinner"><div class="spinner-ring"></div></div>
+          <span id="calcBtnText">📁 파일을 먼저 업로드하세요</span>
+        </button>
+      </div>
 
-      
-      
-        
-          📊 STEP 3 — 세금 계산 결과
+      <!-- STEP 3: 결과 -->
+      <div id="resultSection">
+        <div class="card">
+          <div class="card-title">📊 STEP 3 — 세금 계산 결과</div>
 
-          
+          <div id="alertBox"></div>
 
-          
+          <div class="result-summary" id="resultSummary"></div>
 
-          
+          <div class="formula-box" id="formulaBox"></div>
 
-          
-            📋 거래 내역 파싱 결과
-            
-          
-          
-            
-              
-                
-                  날짜
-                  코인
-                  구분
-                  수량
-                  단가(원)
-                  금액(원)
-                  수수료(원)
-                  손익(원)
-                
-              
-              
-            
-          
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;">
+            <strong style="font-size:.95rem;">📋 거래 내역 파싱 결과</strong>
+            <span id="txCount" style="font-size:.82rem;color:var(--text2)"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>날짜</th>
+                  <th>코인</th>
+                  <th>구분</th>
+                  <th>수량</th>
+                  <th>단가(원)</th>
+                  <th>금액(원)</th>
+                  <th>수수료(원)</th>
+                  <th>손익(원)</th>
+                </tr>
+              </thead>
+              <tbody id="txTableBody"></tbody>
+            </table>
+          </div>
 
-          
-            📥 세금 보고서 다운로드 (CSV)
-            📄 요약 PDF 저장
-            🔗 결과 공유
-          
-        
-      
+          <div class="download-btns">
+            <button class="dl-btn primary" onclick="downloadReport()">📥 세금 보고서 다운로드 (CSV)</button>
+            <button class="dl-btn" onclick="downloadSummary()">📄 요약 PDF 저장</button>
+            <button class="dl-btn" onclick="shareResult()">🔗 결과 공유</button>
+          </div>
+        </div>
+      </div>
 
-      
-      
-        ✏️ 거래 내역 직접 입력
-        
-          
-            
-            
-            
-              매수
-              매도
-            
-            
-            
-            
-          
-        
-        + 행 추가
-        💰 세금 계산하기
-      
+      <!-- 직접입력 폼 (manual 탭 선택 시) -->
+      <div class="card" id="manualSection" style="display:none;">
+        <div class="card-title">✏️ 거래 내역 직접 입력</div>
+        <div id="manualRows">
+          <div class="manual-row" style="display:grid;grid-template-columns:1fr 1fr 100px 1fr 1fr 80px;gap:.5rem;margin-bottom:.5rem;">
+            <input placeholder="날짜 (YYYY-MM-DD)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input placeholder="코인 (예: BTC)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <select style="padding:.55rem .5rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+              <option value="buy">매수</option>
+              <option value="sell">매도</option>
+            </select>
+            <input type="number" placeholder="수량" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input type="number" placeholder="단가(원)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+            <input type="number" placeholder="수수료" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+          </div>
+        </div>
+        <button class="dl-btn" onclick="addManualRow()" style="margin-top:.5rem;">+ 행 추가</button>
+        <button class="calc-btn" onclick="calculateManual()" style="margin-top:.8rem;">💰 세금 계산하기</button>
+      </div>
 
-      
-      
-        Advertisement
-        
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      
+      <!-- ===== 중간 광고 (계산기 아래, FAQ 위) ===== -->
+      <div class="ad-slot" style="min-height:250px;">
+        <div class="ad-slot-label">Advertisement</div>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1111111111" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
-      
-      
-        🧑‍💼
-        CSV 거래내역이 복잡한가요? 세무사 무료 상담
-        
+      <!-- ===== 🆕 세무사 CTA (메인 영역) ===== -->
+      <div class="cta-main">
+        <div class="cta-icon">🧑‍💼</div>
+        <h3>CSV 거래내역이 복잡한가요? 세무사 무료 상담</h3>
+        <p>
           업비트·빗썸·바이낸스 등 여러 거래소 CSV를 합산해야 하거나, 총평균법과 선입선출법 중 어느 것이 유리한지 판단이 어렵다면 가상자산 전문 세무사와 무료로 상담하세요.
           2027년 과세 시행 전에 미리 준비하는 것이 가장 현명한 절세 전략입니다.
-        
-        무료 상담 신청하기 →
-        💡 업비트 회원 1,326만명 시대 — CSV 자동 계산으로 세금 신고 준비를 시작하세요
-      
+        </p>
+        <a href="/consultation" class="cta-btn">무료 상담 신청하기 →</a>
+        <p style="font-size:.75rem;color:var(--text3);margin-top:.8rem;">💡 업비트 회원 1,326만명 시대 — CSV 자동 계산으로 세금 신고 준비를 시작하세요</p>
+      </div>
 
-      
-      
-        📐 CSV 세금 계산 공식 완전 해설
+      <!-- ===== 🆕 공식 해설 (정적 — SEO/AEO용) ===== -->
+      <div class="formula-static">
+        <h2>📐 CSV 세금 계산 공식 완전 해설</h2>
 
-        
-          ① 총평균법 (한국 세법 기본 방식)
-          취득단가 = 해당 코인 총 매수금액 ÷ 총 매수수량
-          
+        <div class="formula-card">
+          <h4>① 총평균법 (한국 세법 기본 방식)</h4>
+          <div class="code">취득단가 = 해당 코인 총 매수금액 ÷ 총 매수수량</div>
+          <p>
             한 해 동안 매수한 동일 코인의 총 매수금액을 총 수량으로 나눈 평균 취득단가입니다.
             2027년 한국 세법(소득세법 제87조의2)의 기본 원가 계산 방식이며, 별도 신고 없으면 자동 적용됩니다.
             여러 거래소에서 같은 코인을 매수한 경우에도 전체 합산하여 평균단가를 산정합니다.
-          
-        
+          </p>
+        </div>
 
-        
-          ② 선입선출법 (FIFO — First In, First Out)
-          먼저 매수한 코인부터 먼저 매도한 것으로 간주
-          
+        <div class="formula-card">
+          <h4>② 선입선출법 (FIFO — First In, First Out)</h4>
+          <div class="code">먼저 매수한 코인부터 먼저 매도한 것으로 간주</div>
+          <p>
             먼저 산 코인을 먼저 팔았다고 가정합니다. 상승장에서는 초기 저가 매수분이 먼저 매도 처리되어 수익이 커지므로 세금이 더 많아질 수 있습니다.
             하락장에서는 반대로 유리할 수 있으며, 신고 시 별도 선택이 필요합니다.
-          
-        
+          </p>
+        </div>
 
-        
-          ③ 양도소득세 계산 공식
-          양도차익 = 총 매도금액 − 취득원가 − 수수료과세표준 = MAX(0, 양도차익 − 250만원)납부세액 = 과세표준 × 22%
-          
+        <div class="formula-card">
+          <h4>③ 양도소득세 계산 공식</h4>
+          <div class="code">양도차익 = 총 매도금액 − 취득원가 − 수수료<br>과세표준 = MAX(0, 양도차익 − 250만원)<br>납부세액 = 과세표준 × 22%</div>
+          <p>
             기본공제 250만원을 차감한 후 초과분에 22%(소득세 20% + 지방소득세 2%)를 적용합니다.
             수익이 250만원 이하면 세금이 0원입니다. 여러 코인의 양도차익을 합산한 후 한 번에 공제를 적용합니다.
-          
-          
-            📌 근거 법령: 소득세법 제87조의2, 제118조의2 ·
-            국세청 가상자산 과세 안내
-          
-        
-      
+          </p>
+          <p style="font-size:.82rem;color:var(--text3);margin-top:.5rem;">
+            📌 근거 법령: <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--accent);">소득세법 제87조의2, 제118조의2</a> ·
+            <a href="https://www.nts.go.kr" target="_blank" rel="noopener" style="color:var(--accent);">국세청 가상자산 과세 안내</a>
+          </p>
+        </div>
+      </div>
 
-      
-      
-        🧰 다른 무료 계산기
-        
-          💰 세금 계산기
-          📉 DCA 계산기
-          📊 물타기 계산기
-          🥩 스테이킹 계산기
-          ⚡ 사토시 계산기
-          💼 포트폴리오 추적기
-          ✂️ 절세 하베스팅
-        
-      
+      <!-- ===== 🆕 다른 도구 링크 ===== -->
+      <div class="card">
+        <div class="card-title">🧰 다른 무료 계산기</div>
+        <div class="tool-grid">
+          <a href="/">💰 세금 계산기</a>
+          <a href="/tools/dca-calculator.html">📉 DCA 계산기</a>
+          <a href="/tools/multa-calculator.html">📊 물타기 계산기</a>
+          <a href="/tools/staking-calculator.html">🥩 스테이킹 계산기</a>
+          <a href="/tools/satoshi-calculator.html">⚡ 사토시 계산기</a>
+          <a href="/tools/portfolio-tracker.html">💼 포트폴리오 추적기</a>
+          <a href="/tools/tax-loss-harvesting.html">✂️ 절세 하베스팅</a>
+        </div>
+      </div>
 
-      
-      
-        ❓ 자주 묻는 질문
-        
-          업비트 CSV 파일은 어디서 받나요? ＋
-          업비트 앱: 더보기 → 거래내역 → 오른쪽 상단 내보내기 버튼 → CSV 선택.PC 웹: upbit.com → 거래내역 탭 → 우측 상단 '내보내기' → CSV 다운로드. 기간은 최대 1년 단위로 선택 가능합니다.
-        
-        
-          내 거래 데이터가 서버로 전송되나요? ＋
-          아니요. 모든 파싱과 계산은 브라우저의 JavaScript에서만 처리됩니다. CSV 파일 내용은 서버로 전송되지 않으며, 페이지를 닫으면 데이터가 삭제됩니다.
-        
-        
-          총평균법과 선입선출법의 차이는? ＋
-          총평균법: 해당 연도에 보유한 전체 코인의 평균 취득단가를 기준으로 계산. 2027년 한국 세법 기본 방식.선입선출법(FIFO): 먼저 산 코인을 먼저 판 것으로 간주. 상승장에서 세금이 더 많이 나올 수 있습니다.
-        
-        
-          손실이 났을 때도 신고해야 하나요? ＋
-          과세표준이 0원 이하(손실 또는 250만원 이하 수익)이면 세금이 발생하지 않습니다. 단, 손실을 다음 해로 이월 공제받으려면 신고가 필요합니다. 정확한 판단은 세무사 상담을 권장합니다.
-        
-        
-        
-          업비트와 빗썸 거래내역을 합산할 수 있나요? ＋
-          네. 여러 거래소의 수익과 손실은 합산하여 신고해야 합니다. 국내 거래소(업비트, 빗썸, 코인원)와 해외 거래소(바이낸스) 모두 포함됩니다. 거래소별로 CSV를 각각 업로드하여 계산한 후 결과를 합산하세요.
-        
-        
-          바이낸스 CSV는 한국 세금에도 적용되나요? ＋
-          네. 해외 거래소(바이낸스, 바이비트 등)에서 발생한 수익도 한국 거주자라면 가상자산 양도소득세 신고 대상입니다. 바이낸스 CSV를 업로드하면 원화 기준으로 자동 환산하여 계산합니다.
-        
-      
+      <!-- FAQ (기존 유지 + 2개 추가) -->
+      <div class="faq-section">
+        <h2>❓ 자주 묻는 질문</h2>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">업비트 CSV 파일은 어디서 받나요? <span>＋</span></button>
+          <div class="faq-a">업비트 앱: 더보기 → 거래내역 → 오른쪽 상단 내보내기 버튼 → CSV 선택.<br>PC 웹: upbit.com → 거래내역 탭 → 우측 상단 '내보내기' → CSV 다운로드. 기간은 최대 1년 단위로 선택 가능합니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">내 거래 데이터가 서버로 전송되나요? <span>＋</span></button>
+          <div class="faq-a">아니요. 모든 파싱과 계산은 브라우저의 JavaScript에서만 처리됩니다. CSV 파일 내용은 서버로 전송되지 않으며, 페이지를 닫으면 데이터가 삭제됩니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">총평균법과 선입선출법의 차이는? <span>＋</span></button>
+          <div class="faq-a"><strong>총평균법:</strong> 해당 연도에 보유한 전체 코인의 평균 취득단가를 기준으로 계산. 2027년 한국 세법 기본 방식.<br><strong>선입선출법(FIFO):</strong> 먼저 산 코인을 먼저 판 것으로 간주. 상승장에서 세금이 더 많이 나올 수 있습니다.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">손실이 났을 때도 신고해야 하나요? <span>＋</span></button>
+          <div class="faq-a">과세표준이 0원 이하(손실 또는 250만원 이하 수익)이면 세금이 발생하지 않습니다. 단, 손실을 다음 해로 이월 공제받으려면 신고가 필요합니다. 정확한 판단은 세무사 상담을 권장합니다.</div>
+        </div>
+        <!-- 🆕 추가 FAQ -->
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">업비트와 빗썸 거래내역을 합산할 수 있나요? <span>＋</span></button>
+          <div class="faq-a">네. 여러 거래소의 수익과 손실은 합산하여 신고해야 합니다. 국내 거래소(업비트, 빗썸, 코인원)와 해외 거래소(바이낸스) 모두 포함됩니다. 거래소별로 CSV를 각각 업로드하여 계산한 후 결과를 합산하세요.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">바이낸스 CSV는 한국 세금에도 적용되나요? <span>＋</span></button>
+          <div class="faq-a">네. 해외 거래소(바이낸스, 바이비트 등)에서 발생한 수익도 한국 거주자라면 가상자산 양도소득세 신고 대상입니다. 바이낸스 CSV를 업로드하면 원화 기준으로 자동 환산하여 계산합니다.</div>
+        </div>
+      </div>
 
-      
-      
-        📐 CSV 세금 계산기 완전 이해 — 2027년 가상자산 과세 대비
-        
-          CSV 세금 계산기는 업비트·빗썸·코인원·바이낸스 등 국내외 가상자산 거래소에서 다운로드한 CSV(Comma-Separated Values) 거래내역 파일을 업로드하면,
+      <!-- ===== 🆕 SEO + AEO/GEO 콘텐츠 ===== -->
+      <div class="seo-content">
+        <h2>📐 CSV 세금 계산기 완전 이해 — 2027년 가상자산 과세 대비</h2>
+        <p>
+          <strong>CSV 세금 계산기</strong>는 업비트·빗썸·코인원·바이낸스 등 국내외 가상자산 거래소에서 다운로드한 CSV(Comma-Separated Values) 거래내역 파일을 업로드하면,
           2027년 시행 예정인 가상자산 양도소득세를 자동으로 계산하는 무료 도구입니다. 2025년 기준 업비트 누적 회원 수 1,326만 명으로, 한국인 4명 중 1명이 코인 투자자인 시대에
           세금 계산은 선택이 아닌 필수입니다.
-        
-        
+        </p>
+        <p>
           현행법(소득세법 제87조의2)에 따르면 가상자산 양도소득에 대해 연간 250만원을 초과하는 수익에 22%(소득세 20% + 지방소득세 2%)의 세율이 적용됩니다.
           원가 계산 방식은 총평균법이 기본이며, 납세자가 선입선출법(FIFO)을 선택할 수도 있습니다.
           총평균법은 동일 코인의 모든 매수 거래를 합산하여 평균 취득단가를 산정하는 방식이고,
           선입선출법은 시간순으로 먼저 매수한 코인을 먼저 매도한 것으로 간주합니다.
-        
-        
+        </p>
+        <p>
           이 계산기의 모든 처리는 브라우저의 JavaScript에서만 이루어지며, CSV 파일 데이터는 서버로 전송되지 않습니다.
           페이지를 닫으면 모든 데이터가 즉시 삭제되므로 개인정보 유출 위험이 없습니다.
           계산 결과는 CSV 보고서로 다운로드할 수 있어 세무사 상담 시 활용할 수 있습니다.
-        
-        
+        </p>
+        <p style="font-size:.82rem;color:var(--text3);">
           📌 본 계산기는 참고용 추정치를 제공하며, 실제 세금 신고는
-          홈택스(hometax.go.kr) 또는
-          국세청(nts.go.kr)의 공식 안내를 따르시기 바랍니다.
+          <a href="https://www.hometax.go.kr" target="_blank" rel="noopener">홈택스(hometax.go.kr)</a> 또는
+          <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청(nts.go.kr)</a>의 공식 안내를 따르시기 바랍니다.
           정확한 세금 계산은 가상자산 전문 세무사 상담을 권장합니다.
-        
-      
+        </p>
+      </div>
 
-    
+    </main>
 
-    
-    
+    <!-- 오른쪽: 사이드바 -->
+    <aside class="sidebar">
 
-      
-      
-        ⏰ 세금 신고 D-day
-        
-          —
-          2028년 5월 신고 마감까지
-        
-      
+      <!-- D-day 카운트다운 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">⏰ 세금 신고 D-day</div>
+        <div class="dday-box">
+          <div class="dday-count" id="ddayCount">—</div>
+          <div class="dday-label">2028년 5월 신고 마감까지</div>
+        </div>
+      </div>
 
-      
-      
-        🧰 관련 도구
-        💰 세금 계산기 →
-        📉 절세 하베스팅 →
-        🥩 스테이킹 계산기 →
-        📈 DCA 계산기 →
-        🌶️ 김치프리미엄 →
-        💼 포트폴리오 추적 →
-      
+      <!-- 관련 도구 빠른 링크 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">🧰 관련 도구</div>
+        <a class="quick-link" href="/tools/tax-calculator.html"><span class="icon">💰</span> 세금 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/tax-loss-harvesting.html"><span class="icon">📉</span> 절세 하베스팅 <span>→</span></a>
+        <a class="quick-link" href="/tools/staking-calculator.html"><span class="icon">🥩</span> 스테이킹 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/dca-calculator.html"><span class="icon">📈</span> DCA 계산기 <span>→</span></a>
+        <a class="quick-link" href="/tools/kimchi-premium.html"><span class="icon">🌶️</span> 김치프리미엄 <span>→</span></a>
+        <a class="quick-link" href="/tools/portfolio-tracker.html"><span class="icon">💼</span> 포트폴리오 추적 <span>→</span></a>
+      </div>
 
-      
-      
-        
-          Advertisement
-          
-          
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        
-      
+      <!-- 사이드바 광고 -->
+      <div class="sidebar-card" style="padding:0;overflow:hidden;">
+        <div class="ad-slot" style="margin:0;border-radius:var(--radius);min-height:250px;">
+          <div class="ad-slot-label">Advertisement</div>
+          <!-- AdSense 300x250 -->
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0987654321" data-ad-format="rectangle"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
 
-      
-      
-        
-          💼 세무사 무료 상담
-          복잡한 거래내역은전문 세무사에게 맡기세요
-          무료 상담 신청하기 →
-        
-      
+      <!-- 세무사 상담 CTA -->
+      <div class="sidebar-card">
+        <div class="cta-box">
+          <h4>💼 세무사 무료 상담</h4>
+          <p>복잡한 거래내역은<br>전문 세무사에게 맡기세요</p>
+          <a href="/consultation" class="cta-link">무료 상담 신청하기 →</a>
+        </div>
+      </div>
 
-      
-      
-        📰 관련 블로그 글
-        📖 2027 세금 완벽 가이드 →
-        🔢 세금 계산 5단계 →
-        📋 업비트 세금신고 방법 →
-        🎁 250만원 공제 절세법 →
-      
-    
-  
+      <!-- 추천 블로그 글 -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">📰 관련 블로그 글</div>
+        <a class="quick-link" href="/blog/virtual-asset-tax-2027-guide.html"><span class="icon">📖</span> 2027 세금 완벽 가이드 <span>→</span></a>
+        <a class="quick-link" href="/blog/coin-tax-calculation-5-steps.html"><span class="icon">🔢</span> 세금 계산 5단계 <span>→</span></a>
+        <a class="quick-link" href="/blog/upbit-tax-report-guide.html"><span class="icon">📋</span> 업비트 세금신고 방법 <span>→</span></a>
+        <a class="quick-link" href="/blog/coin-250-deduction-zero-tax.html"><span class="icon">🎁</span> 250만원 공제 절세법 <span>→</span></a>
+      </div>
+    </aside>
+  </div>
+</div>
 
+<!-- ===== 푸터 ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="/">홈</a>
+    <a href="/blog/">블로그</a>
+    <a href="/tools/tax-calculator.html">세금계산기</a>
+    <a href="/market/">시장데이터</a>
+    <a href="/privacy">개인정보처리방침</a>
+    <a href="/terms">이용약관</a>
+  </div>
+  <p>
+    © 2026 CryptoTax.cloud · 본 계산 결과는 참고용이며 법적 효력이 없습니다.<br>
+    정확한 세금 신고는 세무사 또는 국세청 홈택스(hometax.go.kr)를 이용하세요.<br>
+    문의: <a href="mailto:hello@cryptotax.cloud">hello@cryptotax.cloud</a>
+  </p>
+</footer>
 
-
-
-  
-    홈
-    블로그
-    세금계산기
-    시장데이터
-    개인정보처리방침
-    이용약관
-  
-  
-    © 2026 CryptoTax.cloud · 본 계산 결과는 참고용이며 법적 효력이 없습니다.
-    정확한 세금 신고는 세무사 또는 국세청 홈택스(hometax.go.kr)를 이용하세요.
-    문의: hello@cryptotax.cloud
-  
-
-
-
-
+<!-- ===== JavaScript (기존 100% 보존) ===== -->
+<script>
 /* ===================================================
    거래소별 CSV 컬럼 파싱 설정 (실제 포맷 기반)
    =================================================== */
@@ -1011,10 +991,10 @@ const EXCHANGE_CONFIG = {
     },
     buyKeywords:  ['매수', 'BUY', 'buy'],
     sellKeywords: ['매도', 'SELL', 'sell'],
-    guide: `📥 업비트 CSV 다운로드:
-앱: 더보기 → 거래내역 → 내보내기 → CSV
-PC: upbit.com → 거래내역 → 내보내기 버튼
-컬럼: 체결시간, 마켓, 종류, 거래수량, 거래단가, 거래금액, 수수료, 정산금액`
+    guide: `<strong>📥 업비트 CSV 다운로드:</strong><br>
+앱: 더보기 → 거래내역 → 내보내기 → CSV<br>
+PC: upbit.com → 거래내역 → 내보내기 버튼<br>
+<strong>컬럼:</strong> <code>체결시간, 마켓, 종류, 거래수량, 거래단가, 거래금액, 수수료, 정산금액</code>`
   },
   bithumb: {
     name: '빗썸',
@@ -1031,10 +1011,10 @@ PC: upbit.com → 거래내역 → 내보내기 버튼
     },
     buyKeywords:  ['매수', 'BUY', 'buy', '구매'],
     sellKeywords: ['매도', 'SELL', 'sell', '판매'],
-    guide: `📥 빗썸 CSV 다운로드:
-PC: bithumb.com → 마이페이지 → 거래내역 → 엑셀 다운로드
-앱: 자산 → 거래내역 → 다운로드 (인증 필요)
-컬럼: 거래일시, 거래종류, 가상자산, 거래수량, 거래단가, 거래금액, 수수료`
+    guide: `<strong>📥 빗썸 CSV 다운로드:</strong><br>
+PC: bithumb.com → 마이페이지 → 거래내역 → 엑셀 다운로드<br>
+앱: 자산 → 거래내역 → 다운로드 (인증 필요)<br>
+<strong>컬럼:</strong> <code>거래일시, 거래종류, 가상자산, 거래수량, 거래단가, 거래금액, 수수료</code>`
   },
   coinone: {
     name: '코인원',
@@ -1051,9 +1031,9 @@ PC: bithumb.com → 마이페이지 → 거래내역 → 엑셀 다운로드
     },
     buyKeywords:  ['매수', 'BUY', 'buy'],
     sellKeywords: ['매도', 'SELL', 'sell'],
-    guide: `📥 코인원 CSV 다운로드:
-PC: coinone.co.kr → 마이페이지 → 거래내역 → 엑셀 다운로드
-컬럼: 날짜, 구분, 코인, 수량, 단가, 금액, 수수료`
+    guide: `<strong>📥 코인원 CSV 다운로드:</strong><br>
+PC: coinone.co.kr → 마이페이지 → 거래내역 → 엑셀 다운로드<br>
+<strong>컬럼:</strong> <code>날짜, 구분, 코인, 수량, 단가, 금액, 수수료</code>`
   },
   binance: {
     name: '바이낸스',
@@ -1070,14 +1050,14 @@ PC: coinone.co.kr → 마이페이지 → 거래내역 → 엑셀 다운로드
     },
     buyKeywords:  ['Buy', 'buy', 'BUY', 'Purchase'],
     sellKeywords: ['Sell', 'sell', 'SELL'],
-    guide: `📥 바이낸스 CSV 다운로드:
-PC: binance.com → 지갑 → 거래 내역 → 내보내기 → CSV 다운로드
-컬럼: User_ID, UTC_Time, Account, Operation, Coin, Change, Remark`
+    guide: `<strong>📥 바이낸스 CSV 다운로드:</strong><br>
+PC: binance.com → 지갑 → 거래 내역 → 내보내기 → CSV 다운로드<br>
+<strong>컬럼:</strong> <code>User_ID, UTC_Time, Account, Operation, Coin, Change, Remark</code>`
   },
   manual: {
     name: '직접입력',
-    guide: `✏️ 직접 입력 모드:
-아래 양식에 거래 내역을 직접 입력하세요.
+    guide: `<strong>✏️ 직접 입력 모드:</strong><br>
+아래 양식에 거래 내역을 직접 입력하세요.<br>
 거래소가 없거나 CSV 파일이 없을 때 사용합니다.`
   }
 };
@@ -1146,7 +1126,7 @@ function processFile(file) {
     showAlert('CSV 또는 TXT 파일만 지원합니다.', 'error');
     return;
   }
-  document.getElementById('fileName').textContent = ✅ ${file.name} (${(file.size/1024).toFixed(1)} KB);
+  document.getElementById('fileName').textContent = `✅ ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
   document.getElementById('fileName').style.display = 'block';
   const encoding = EXCHANGE_CONFIG[currentExchange]?.encoding || 'UTF-8';
   const reader = new FileReader();
@@ -1167,13 +1147,22 @@ function processFile(file) {
 function parseCSV(text) {
   text = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   const lines = text.split('\n').filter(l => l.trim().length > 0);
-  if (lines.length  h.trim().replace(/"/g,'').toLowerCase() === c.toLowerCase());
+  if (lines.length < 2) {
+    showAlert('CSV 데이터가 부족합니다. 파일을 확인해주세요.', 'error');
+    return;
+  }
+  const headers = parseCSVLine(lines[0]);
+  const config = EXCHANGE_CONFIG[currentExchange];
+  const idxMap = {};
+  for (const [key, candidates] of Object.entries(config.colMap)) {
+    for (const c of candidates) {
+      const idx = headers.findIndex(h => h.trim().replace(/"/g,'').toLowerCase() === c.toLowerCase());
       if (idx !== -1) { idxMap[key] = idx; break; }
     }
   }
   if (idxMap.date === undefined || idxMap.type === undefined || idxMap.qty === undefined) {
     showAlert(
-      `컬럼 인식 실패. 감지된 헤더: [${headers.join(', ')}]
+      `컬럼 인식 실패. 감지된 헤더: [${headers.join(', ')}]<br>
       거래소 선택이 올바른지 확인하거나, 직접입력 모드를 사용하세요.`,
       'error'
     );
@@ -1181,7 +1170,22 @@ function parseCSV(text) {
   }
   parsedTransactions = [];
   let parseErrors = 0;
-  for (let i = 1; i  typeStr.includes(k))) type = 'buy';
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCSVLine(lines[i]);
+    if (cols.length < 3) continue;
+    try {
+      const rawDate = cols[idxMap.date] || '';
+      const rawType = cols[idxMap.type] || '';
+      const rawMarket = idxMap.market !== undefined ? cols[idxMap.market] : '';
+      const rawQty = idxMap.qty !== undefined ? cols[idxMap.qty] : '0';
+      const rawPrice = idxMap.price !== undefined ? cols[idxMap.price] : '0';
+      const rawAmount = idxMap.amount !== undefined ? cols[idxMap.amount] : '0';
+      const rawFee = idxMap.fee !== undefined ? cols[idxMap.fee] : '0';
+      let coin = rawMarket.replace(/KRW-|\/KRW|\/USDT|\/BTC/gi, '').trim().toUpperCase();
+      if (!coin || coin === '') coin = 'UNKNOWN';
+      let type = 'unknown';
+      const typeStr = rawType.trim();
+      if (config.buyKeywords.some(k => typeStr.includes(k))) type = 'buy';
       else if (config.sellKeywords.some(k => typeStr.includes(k))) type = 'sell';
       const qty = parseFloat(rawQty.replace(/[,\s]/g, '')) || 0;
       const price = parseFloat(rawPrice.replace(/[,\s]/g, '')) || 0;
@@ -1190,7 +1194,8 @@ function parseCSV(text) {
       if (amount === 0 && qty > 0 && price > 0) amount = qty * price;
       if (currentExchange === 'binance' && type === 'unknown') {
         const change = parseFloat(rawQty.replace(/[,\s]/g, ''));
-        if (change  0) type = 'buy';
+        if (change < 0) type = 'sell';
+        else if (change > 0) type = 'buy';
       }
       if (qty === 0 && amount === 0) continue;
       parsedTransactions.push({
@@ -1206,17 +1211,44 @@ function parseCSV(text) {
     return;
   }
   document.getElementById('calcBtn').disabled = false;
-  document.getElementById('calcBtnText').textContent = 💰 세금 계산하기 (${parsedTransactions.length}건);
+  document.getElementById('calcBtnText').textContent = `💰 세금 계산하기 (${parsedTransactions.length}건)`;
   if (parseErrors > 0) {
-    showAlertInline(⚠️ ${parseErrors}건의 행을 읽지 못했습니다. 나머지 ${parsedTransactions.length}건은 정상 파싱되었습니다., 'warn');
+    showAlertInline(`⚠️ ${parseErrors}건의 행을 읽지 못했습니다. 나머지 ${parsedTransactions.length}건은 정상 파싱되었습니다.`, 'warn');
   } else {
-    showAlertInline(✅ ${parsedTransactions.length}건의 거래 내역이 파싱되었습니다. 이제 세금 계산하기를 클릭하세요., 'success');
+    showAlertInline(`✅ ${parsedTransactions.length}건의 거래 내역이 파싱되었습니다. 이제 세금 계산하기를 클릭하세요.`, 'success');
   }
 }
 
 function parseCSVLine(line) {
   const result = []; let cur = ''; let inQuote = false;
-  for (let i = 0; i  {
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQuote = !inQuote; }
+    else if (ch === ',' && !inQuote) { result.push(cur.trim()); cur = ''; }
+    else { cur += ch; }
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function normalizeDate(str) {
+  if (!str) return '날짜없음';
+  str = str.replace(/"/g, '').trim();
+  const m = str.match(/(\d{4}[-./]\d{1,2}[-./]\d{1,2})/);
+  return m ? m[1].replace(/\./g, '-').replace(/\//g, '-') : str.substring(0, 10);
+}
+
+function calculateTax() {
+  if (parsedTransactions.length === 0) return;
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('calcBtnText');
+  const progressBar = document.getElementById('progressBar');
+  const progressFill = document.getElementById('progressFill');
+  spinner.classList.add('show');
+  btnText.textContent = '계산 중...';
+  progressBar.style.display = 'block';
+  progressFill.style.width = '30%';
+  setTimeout(() => {
     const dateFrom = new Date(document.getElementById('dateFrom').value);
     const dateTo   = new Date(document.getElementById('dateTo').value);
     dateTo.setHours(23,59,59);
@@ -1226,7 +1258,27 @@ function parseCSVLine(line) {
     const filtered = parsedTransactions.filter(tx => {
       if (tx.date === '날짜없음') return true;
       const d = new Date(tx.date);
-      return d >= dateFrom && d  0 ? c.buyAmount / c.buyQty : 0;
+      return d >= dateFrom && d <= dateTo;
+    });
+    progressFill.style.width = '60%';
+    const coinMap = {};
+    for (const tx of filtered) {
+      if (!coinMap[tx.coin]) coinMap[tx.coin] = { buyAmount:0, buyQty:0, sellAmount:0, sellFee:0, txList:[], avgCost:0, fifoQueue:[] };
+      const c = coinMap[tx.coin];
+      if (tx.type === 'buy') {
+        c.buyAmount += tx.amount;
+        c.buyQty    += tx.qty;
+        if (method === 'fifo') c.fifoQueue.push({ qty: tx.qty, unitCost: tx.price || (tx.amount / tx.qty) });
+      } else if (tx.type === 'sell') {
+        c.sellAmount += tx.amount;
+        c.sellFee    += tx.fee;
+      }
+      c.txList.push(tx);
+    }
+    let totalBuy = 0, totalSell = 0, totalFee = 0, totalGain = 0;
+    const coinResults = [];
+    for (const [coin, c] of Object.entries(coinMap)) {
+      const avgUnitCost = c.buyQty > 0 ? c.buyAmount / c.buyQty : 0;
       const sellTxs = c.txList.filter(t => t.type === 'sell');
       let coinGain = 0;
       if (method === 'avg') {
@@ -1240,7 +1292,34 @@ function parseCSVLine(line) {
           let costBasis = 0;
           while (remaining > 0 && queue.length > 0) {
             const first = queue[0];
-            if (first.qty  { progressBar.style.display = 'none'; }, 800);
+            if (first.qty <= remaining) {
+              costBasis += first.qty * first.unitCost;
+              remaining -= first.qty;
+              queue.shift();
+            } else {
+              costBasis += remaining * first.unitCost;
+              first.qty -= remaining;
+              remaining = 0;
+            }
+          }
+          coinGain += tx.amount - costBasis - tx.fee;
+        }
+      }
+      totalBuy  += c.buyAmount;
+      totalSell += c.sellAmount;
+      totalFee  += c.sellFee;
+      totalGain += coinGain;
+      coinResults.push({ coin, buyAmount: c.buyAmount, sellAmount: c.sellAmount, fee: c.sellFee, gain: coinGain, txCount: c.txList.length });
+    }
+    const taxBase = Math.max(0, totalGain - deduction);
+    const taxAmt  = Math.floor(taxBase * taxRate);
+    const afterTaxProfit = totalGain - taxAmt;
+    progressFill.style.width = '100%';
+    spinner.classList.remove('show');
+    btnText.textContent = `✅ 계산 완료 (${filtered.length}건)`;
+    calcResults = { totalBuy, totalSell, totalFee, totalGain, deduction, taxBase, taxAmt, afterTaxProfit, taxRate, filtered, coinResults };
+    renderResults(calcResults);
+    setTimeout(() => { progressBar.style.display = 'none'; }, 800);
   }, 300);
 }
 
@@ -1249,46 +1328,47 @@ function renderResults(r) {
   section.style.display = 'block';
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   document.getElementById('resultSummary').innerHTML = `
-    총 매수금액${fmtKRW(r.totalBuy)}원
-    총 매도금액${fmtKRW(r.totalSell)}원
-    총 수익= 0 ? 'profit' : 'tax'}">${fmtKRW(r.totalGain)}원
-    기본공제-${fmtKRW(r.deduction)}원
-    과세표준 0 ? 'tax' : 'profit'}">${fmtKRW(r.taxBase)}원
-    납부세액 (${(r.taxRate*100).toFixed(1)}%)${fmtKRW(r.taxAmt)}원
+    <div class="result-stat"><div class="label">총 매수금액</div><div class="value neutral">${fmtKRW(r.totalBuy)}원</div></div>
+    <div class="result-stat"><div class="label">총 매도금액</div><div class="value neutral">${fmtKRW(r.totalSell)}원</div></div>
+    <div class="result-stat"><div class="label">총 수익</div><div class="value ${r.totalGain >= 0 ? 'profit' : 'tax'}">${fmtKRW(r.totalGain)}원</div></div>
+    <div class="result-stat"><div class="label">기본공제</div><div class="value neutral">-${fmtKRW(r.deduction)}원</div></div>
+    <div class="result-stat"><div class="label">과세표준</div><div class="value ${r.taxBase > 0 ? 'tax' : 'profit'}">${fmtKRW(r.taxBase)}원</div></div>
+    <div class="result-stat"><div class="label">납부세액 (${(r.taxRate*100).toFixed(1)}%)</div><div class="value tax">${fmtKRW(r.taxAmt)}원</div></div>
   `;
   document.getElementById('formulaBox').innerHTML = `
-    📐 세금 계산 공식 (총평균법 기준)
-    매도금액 ${fmtKRW(r.totalSell)}원
-    - 취득원가 ${fmtKRW(r.totalBuy)}원
-    - 수수료 ${fmtKRW(r.totalFee)}원
-    = 실현손익 ${fmtKRW(r.totalGain)}원
-    - 기본공제 ${fmtKRW(r.deduction)}원
-    = 과세표준 ${fmtKRW(r.taxBase)}원
-    × 세율 ${(r.taxRate*100).toFixed(1)}% = 납부세액 ${fmtKRW(r.taxAmt)}원
+    <div class="formula-title">📐 세금 계산 공식 (총평균법 기준)</div>
+    <div class="formula-line">매도금액 <strong>${fmtKRW(r.totalSell)}원</strong></div>
+    <div class="formula-line">- 취득원가 <strong>${fmtKRW(r.totalBuy)}원</strong></div>
+    <div class="formula-line">- 수수료 <strong>${fmtKRW(r.totalFee)}원</strong></div>
+    <div class="formula-line">= 실현손익 <strong>${fmtKRW(r.totalGain)}원</strong></div>
+    <div class="formula-line">- 기본공제 <strong>${fmtKRW(r.deduction)}원</strong></div>
+    <div class="formula-line">= 과세표준 <strong>${fmtKRW(r.taxBase)}원</strong></div>
+    <div class="formula-result">× 세율 ${(r.taxRate*100).toFixed(1)}% = <strong>납부세액 ${fmtKRW(r.taxAmt)}원</strong></div>
   `;
   let alertHtml = '';
   if (r.taxAmt === 0 && r.totalGain > 0) {
-    alertHtml = 🎉 수익이 기본공제(${fmtKRW(r.deduction)}원) 이하여서 납부할 세금이 없습니다!;
-  } else if (r.totalGain 📉 손실이 발생했습니다. 과세표준이 0원으로 납부 세금 없음. 손실 이월 공제를 위해 신고를 고려하세요.`;
+    alertHtml = `<div class="alert alert-success">🎉 수익이 기본공제(${fmtKRW(r.deduction)}원) 이하여서 납부할 세금이 없습니다!</div>`;
+  } else if (r.totalGain < 0) {
+    alertHtml = `<div class="alert alert-warn">📉 손실이 발생했습니다. 과세표준이 0원으로 납부 세금 없음. 손실 이월 공제를 위해 신고를 고려하세요.</div>`;
   } else if (r.taxAmt > 0) {
-    alertHtml = ⚠️ 2028년 5월 종합소득세 신고 기간에 홈택스(hometax.go.kr)에서 신고·납부하세요. 무신고 시 가산세 최대 40%.;
+    alertHtml = `<div class="alert alert-warn">⚠️ 2028년 5월 종합소득세 신고 기간에 홈택스(hometax.go.kr)에서 신고·납부하세요. 무신고 시 가산세 최대 40%.</div>`;
   }
   document.getElementById('alertBox').innerHTML = alertHtml;
-  document.getElementById('txCount').textContent = 총 ${r.filtered.length}건 (최대 100건 표시);
+  document.getElementById('txCount').textContent = `총 ${r.filtered.length}건 (최대 100건 표시)`;
   const tbody = document.getElementById('txTableBody');
   tbody.innerHTML = '';
   const display = r.filtered.slice(0, 100);
   for (const tx of display) {
     const row = document.createElement('tr');
     row.innerHTML = `
-      ${tx.date}
-      ${tx.coin}
-      ${tx.type === 'buy' ? '매수' : tx.type === 'sell' ? '매도' : '기타'}
-      ${tx.qty.toFixed(6)}
-      ${fmtKRW(tx.price)}
-      ${fmtKRW(tx.amount)}
-      ${fmtKRW(tx.fee)}
-      —
+      <td>${tx.date}</td>
+      <td><strong>${tx.coin}</strong></td>
+      <td><span class="badge badge-${tx.type}">${tx.type === 'buy' ? '매수' : tx.type === 'sell' ? '매도' : '기타'}</span></td>
+      <td>${tx.qty.toFixed(6)}</td>
+      <td>${fmtKRW(tx.price)}</td>
+      <td>${fmtKRW(tx.amount)}</td>
+      <td>${fmtKRW(tx.fee)}</td>
+      <td style="color:${tx.type === 'sell' ? 'var(--accent2)' : 'var(--text2)'}">—</td>
     `;
     tbody.appendChild(row);
   }
@@ -1319,7 +1399,7 @@ function downloadReport() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = cryptotax_report_${new Date().toISOString().slice(0,10)}.csv;
+  a.download = `cryptotax_report_${new Date().toISOString().slice(0,10)}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -1342,15 +1422,15 @@ function addManualRow() {
   div.className = 'manual-row';
   div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 100px 1fr 1fr 80px;gap:.5rem;margin-bottom:.5rem;';
   div.innerHTML = `
-    
-    
-    
-      매수
-      매도
-    
-    
-    
-    
+    <input placeholder="날짜 (YYYY-MM-DD)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input placeholder="코인 (예: BTC)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <select style="padding:.55rem .5rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+      <option value="buy">매수</option>
+      <option value="sell">매도</option>
+    </select>
+    <input type="number" placeholder="수량" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input type="number" placeholder="단가(원)" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
+    <input type="number" placeholder="수수료" style="padding:.55rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.85rem;">
   `;
   document.getElementById('manualRows').appendChild(div);
 }
@@ -1393,22 +1473,22 @@ function updateDday() {
   const now = new Date();
   const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
   const el = document.getElementById('ddayCount');
-  if (el) el.textContent = diff > 0 ? D-${diff.toLocaleString()} : '마감';
+  if (el) el.textContent = diff > 0 ? `D-${diff.toLocaleString()}` : '마감';
 }
 updateDday();
 
 function showAlert(msg, type) {
   const icons = { warn: '⚠️', error: '❌', success: '✅' };
   const box = document.getElementById('alertBox');
-  box.innerHTML = ${icons[type]} ${msg};
+  box.innerHTML = `<div class="alert alert-${type}">${icons[type]} ${msg}</div>`;
   document.getElementById('resultSection').style.display = 'block';
 }
 function showAlertInline(msg, type) {
   const icons = { warn: '⚠️', error: '❌', success: '✅' };
   const prog = document.getElementById('progressBar');
   const div = document.createElement('div');
-  div.className = alert alert-${type};
-  div.innerHTML = ${icons[type]} ${msg};
+  div.className = `alert alert-${type}`;
+  div.innerHTML = `${icons[type]} ${msg}`;
   prog.after(div);
   setTimeout(() => div.remove(), 5000);
 }
@@ -1417,30 +1497,7 @@ function fmtKRW(n) {
   if (!n && n !== 0) return '—';
   return Math.round(n).toLocaleString('ko-KR');
 }
+</script>
 
-
-
-
-
-csv-tax-calculator.html 완성! 추가된 것 요약:
-
-| 항목 | 위치 | 상세 |
-|:---|:---|:---|
-| 광고 영역 | 계산기와 FAQ 사이 | 300×250 중간 광고 추가 |
-| 세무사 CTA | FAQ 위 메인 영역 | .cta-main 블록 — 상담 유도 |
-| 공식 해설 | 세무사 CTA 아래 | 총평균법/FIFO/양도소득세 3단 해설 + 법령 출처 |
-| SEO 콘텐츠 | FAQ 아래 | 2027 과세 설명 + 업비트 1,326만명 통계 + 출처 링크 |
-| AEO Schema | `` | FAQPage(6개 Q&A), HowTo(3단계), BreadcrumbList |
-| GEO 최적화 | 전체 | 소득세법 조항 인용, 국세청/홈택스 출처 명시, 통계 데이터 |
-| 추가 FAQ | FAQ 섹션 | "거래소 합산" + "바이낸스 해외 적용" 2개 추가 |
-| 다른 도구 링크 | 공식 해설 아래 | 7개 도구 그리드 링크 |
-
-다음은 2/3 — portfolio-tracker.html 완성본을 드리겠습니다. 계속할까요?
-
-답변 개선을 위한 5가지 질문
-
-1. csv-tax-calculator.html 완성본에 수정할 부분이 있나요? — 있으면 portfolio 작업 전에 반영합니다.
-2. portfolio-tracker.html과 tax-loss-harvesting.html도 같은 메시지에서 이어서 드릴까요, 별도 메시지로 나눌까요?
-3. 세무사 CTA의 링크가 /consultation인데, 실제 페이지 확장자가 .html인지 확인 부탁드립니다.
-4. AdSense slot 번호를 실제 값으로 교체해야 하나요? — 현재 1234567890, 0987654321 등 플레이스홀더입니다.
-5. 완성본을 깃허브에 push하신 후 실제 사이트에서 확인하면 피드백 주세요 — 디자인 깨지는 부분이 있으면 바로 수정해드립니다.
+</body>
+</html>
