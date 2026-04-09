@@ -10,6 +10,14 @@
 
 /* ── 2. 컬러 변수 (라이트 모드) ── */
 :root {
+  --bg: #F8FAFC;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+  --primary: #FF7A00;
+  --primary-hover: #FF5500;
+  --text: #111827;
+  --subtext: #6B7280;
+
   --font-main: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* 배경 */
@@ -22,11 +30,39 @@
   --text-secondary:#6b7280;
   --text-muted:    #9ca3af;
 
-  /* 브랜드 컬러 */
+  /* 브랜드 */
   --accent:        #f97316;
   --accent-hover:  #ea6c0a;
   --accent-light:  #fff7ed;
   --accent-gradient: linear-gradient(135deg, #f97316, #f59e0b);
+
+  /* 컬러 */
+  --blue:#3b82f6;
+  --green:#10b981;
+  --purple:#8b5cf6;
+  --red:#ef4444;
+  --yellow:#f59e0b;
+
+  /* 테두리 */
+  --border:#e5e7eb;
+  --border-light:#f3f4f6;
+
+  /* 그림자 */
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.12);
+  --shadow-accent:0 4px 16px rgba(249,115,22,.30);
+
+  /* 반경 */
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-xl:24px;
+  --radius-full:9999px;
+
+  /* 애니메이션 */
+  --transition:0.2s ease;
+}
 
   /* 보조 컬러 */
   --blue:    #3b82f6;
@@ -305,7 +341,23 @@ button { font-family: var(--font-main); cursor: pointer; }
   padding: 24px;
   transition: transform var(--transition), box-shadow var(--transition);
 }
+.card {
+  position: relative;
+  overflow: hidden;
+}
 
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,122,0,.08), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
