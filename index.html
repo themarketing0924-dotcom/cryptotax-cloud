@@ -70,6 +70,16 @@
 <meta property="og:url" content="https://cryptotax.cloud/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://cryptotax.cloud/og-image.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -480,6 +490,8 @@ a{text-decoration:none;color:inherit;}
   .drawer-item { padding: 10px 20px; gap: 10px; }
   .drawer-section-title { padding: 10px 20px 4px; }
   .theme-toggle .toggle-label{display:none;}
+  /* 모바일에서 nav 상단의 theme-toggle 숨김 — 햄버거 메뉴 내부에만 표시 */
+  #themeToggle{display:none;}
 }
 @media(max-width:479px){
   .cd-unit{min-width:60px;padding:10px 12px;}
@@ -868,12 +880,12 @@ a{text-decoration:none;color:inherit;}
     <p>코인 시장의 흐름을 한눈에 파악하세요</p>
   </div>
   <div class="market-grid">
-    <a class="market-card" href="/market/heatmap.html"><div class="mc-title">🗺️ 코인 히트맵</div><div class="mc-desc">암호화폐 시가총액별 시각화</div><span class="mc-live">LIVE</span></a>
-    <a class="market-card" href="/market/prices.html"><div class="mc-title">💹 실시간 코인 시세</div><div class="mc-desc">상위 100개 코인 실시간 가격·등락률</div><span class="mc-live">LIVE</span></a>
-    <a class="market-card" href="/market/fear-greed.html"><div class="mc-title">😨 공포·탐욕 지수</div><div class="mc-desc">현재 코인 시장 심리 0~100 지수</div><span class="mc-live">LIVE</span></a>
-    <a class="market-card" href="/market/dominance.html"><div class="mc-title">₿ 비트코인 도미넌스</div><div class="mc-desc">비트코인이 전체 시장에서 차지하는 비율</div><span class="mc-live">LIVE</span></a>
-    <a class="market-card" href="/market/halving-countdown.html"><div class="mc-title">⏱️ 반감기 카운트다운</div><div class="mc-desc">다음 비트코인 반감기까지 남은 시간</div></a>
-    <a class="market-card" href="/market/altseason.html"><div class="mc-title">🚀 알트코인 시즌 지수</div><div class="mc-desc">지금이 비트코인 시즌인지 알트코인 시즌인지</div><span class="mc-live">LIVE</span></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">🗺️ 시장 지수</div><div class="mc-desc">실시간 코인 시장 분석 데이터</div><span class="mc-live">LIVE</span></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">💹 실시간 코인 시세</div><div class="mc-desc">상위 100개 코인 실시간 가격·등락률</div><span class="mc-live">LIVE</span></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">😨 공포·탐욕 지수</div><div class="mc-desc">현재 코인 시장 심리 0~100 지수</div><span class="mc-live">LIVE</span></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">₿ 비트코인 도미넌스</div><div class="mc-desc">비트코인이 전체 시장에서 차지하는 비율</div><span class="mc-live">LIVE</span></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">⏱️ 반감기 카운트다운</div><div class="mc-desc">다음 비트코인 반감기까지 남은 시간</div></a>
+    <a class="market-card" href="/tools/market-index.html"><div class="mc-title">🚀 알트코인 시즌 지수</div><div class="mc-desc">지금이 비트코인 시즌인지 알트코인 시즌인지</div><span class="mc-live">LIVE</span></a>
   </div>
 </section>
 
@@ -1003,12 +1015,12 @@ a{text-decoration:none;color:inherit;}
     </div>
     <div class="footer-col">
       <h4>시장 데이터</h4>
-      <a href="/market/heatmap.html">코인 히트맵</a>
-      <a href="/market/fear-greed.html">공포·탐욕 지수</a>
-      <a href="/market/halving-countdown.html">반감기 카운트다운</a>
-      <a href="/market/prices.html">실시간 코인 시세</a>
-      <a href="/market/dominance.html">비트코인 도미넌스</a>
-      <a href="/market/altseason.html">알트코인 시즌 지수</a>
+      <a href="/tools/market-index.html">시장 지수</a>
+      <a href="/tools/market-index.html">공포·탐욕 지수</a>
+      <a href="/tools/market-index.html">반감기 카운트다운</a>
+      <a href="/tools/market-index.html">실시간 코인 시세</a>
+      <a href="/tools/market-index.html">비트코인 도미넌스</a>
+      <a href="/tools/market-index.html">알트코인 시즌 지수</a>
     </div>
     <div class="footer-col">
       <h4>블로그</h4>
