@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 시가총액 계산기 무료 | 가격 × 유통량 → 시총 즉시 계산 | CryptoTax.cloud</title>
+<meta name="description" content="코인 가격과 유통량 입력 시 시가총액 즉시 계산. 목표 시총 달성 시 필요 가격 역산도 가능. 비트코인·이더리움 비교. 무료.">
+<meta name="keywords" content="코인 시가총액 계산기, 시총 계산기, 코인 시가총액, 비트코인 시총, 목표 시총 계산, 코인 가격 예측">
+<link rel="canonical" href="https://cryptotax.cloud/tools/market-cap-calculator.html">
+<meta property="og:title" content="코인 시가총액 계산기 무료 | CryptoTax.cloud">
+<meta property="og:description" content="코인 가격 × 유통량 = 시가총액 즉시 계산. 목표 시총 달성 시 필요 가격 역산.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/market-cap-calculator.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "코인 시가총액이란 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "시가총액 = 현재 코인 가격 × 유통 중인 코인 수량입니다. 코인의 전체 시장 규모를 나타내며, 비트코인 시가총액이 가장 큽니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "시가총액으로 코인 가격을 예측할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "목표 시가총액을 정하고 유통량으로 나누면 필요한 가격을 역산할 수 있습니다. 예: 비트코인이 금 시총(약 2경원)에 도달하면 BTC 1개 가격 = 2경 ÷ 2,100만개 = 약 9억 5천만원."
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --bg:#0d0d1a; --bg-surface:#1a1a2e; --bg-elevated:#24243e;
+  --text:#e8e8f0; --text-sub:#9999bb; --text-muted:#6666aa;
+  --orange:#f7931a; --green:#3fb950; --red:#f85149; --blue:#58a6ff;
+  --border:#2a2a4a; --shadow:0 4px 24px rgba(0,0,0,.45);
+  --tr:.25s ease; --radius:14px;
+}
+[data-theme="light"] {
+  --bg:#f6f8fa; --bg-surface:#ffffff; --bg-elevated:#f0f2f5;
+  --text:#1a1a2e; --text-sub:#57606a; --text-muted:#8c959f;
+  --border:#d0d7de; --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+a{color:var(--orange);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+.nav-links{display:flex;gap:20px;font-size:.9rem;}
+.nav-links a{color:var(--text-sub);}
+.theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
+.breadcrumb{max-width:860px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);}
+.hero{max-width:860px;margin:0 auto;padding:40px 20px 20px;text-align:center;}
+.hero-badge{display:inline-block;background:rgba(247,147,26,.15);border:1px solid rgba(247,147,26,.3);color:var(--orange);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px;}
+.hero h1 span{color:var(--orange);}
+.hero p{font-size:1rem;color:var(--text-sub);max-width:640px;margin:0 auto 24px;}
+.ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:860px;margin:16px auto;}
+.calc-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+.calc-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+.calc-title{font-size:1.1rem;font-weight:800;margin-bottom:20px;}
+.mode-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.mode-tab{flex:1;padding:10px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.88rem;font-weight:600;color:var(--text-sub);text-align:center;transition:all var(--tr);}
+.mode-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:.85rem;color:var(--text-sub);font-weight:600;}
+.form-group input,.form-group select{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;outline:none;transition:border-color var(--tr);}
+.form-group input:focus{border-color:var(--orange);}
+.calc-btn{width:100%;margin-top:20px;padding:16px;background:linear-gradient(135deg,var(--orange),#e6820f);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;}
+.result-box{display:none;margin-top:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
+.result-box.show{display:block;}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+.result-item{background:var(--bg-surface);border-radius:10px;padding:16px;text-align:center;}
+.result-item .label{font-size:.75rem;color:var(--text-muted);margin-bottom:6px;}
+.result-item .value{font-size:1.15rem;font-weight:800;color:var(--orange);}
+.compare-section{margin-top:20px;}
+.compare-title{font-size:.85rem;font-weight:700;color:var(--text-sub);margin-bottom:10px;}
+.compare-bar{margin-bottom:10px;}
+.compare-bar .bar-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-muted);margin-bottom:4px;}
+.compare-bar .bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.compare-bar .bar-fill{height:100%;background:var(--orange);border-radius:4px;transition:width .6s ease;}
+.result-note{margin-top:14px;font-size:.8rem;color:var(--text-muted);}
+.ref-table{max-width:860px;margin:24px auto;padding:0 20px;}
+.ref-table-inner{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.ref-table-inner table{width:100%;border-collapse:collapse;}
+.ref-table-inner th,.ref-table-inner td{padding:12px 16px;text-align:left;font-size:.85rem;border-bottom:1px solid var(--border);}
+.ref-table-inner th{background:var(--bg-elevated);font-weight:700;color:var(--text-sub);}
+.ref-table-inner tr:last-child td{border-bottom:none;}
+.cta-banner{max-width:860px;margin:24px auto;padding:0 20px;}
+.cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.1));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.cta-inner .cta-icon{font-size:2rem;}
+.cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+.cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+.cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:10px 22px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
+.formula-section,.tools-section,.faq-section,.seo-section{max-width:860px;margin:32px auto;padding:0 20px;}
+.formula-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+.formula-card h2{font-size:1.1rem;font-weight:800;margin-bottom:16px;}
+.formula-block{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin:10px 0;font-family:monospace;font-size:.9rem;line-height:1.6;}
+.formula-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7;margin:8px 0;}
+.tools-section h2,.faq-section h2,.seo-section h2{font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.tool-link{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color var(--tr),transform var(--tr);}
+.tool-link:hover{border-color:var(--orange);transform:translateY(-2px);text-decoration:none;color:var(--text);}
+.faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.faq-q{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'▼';font-size:.75rem;color:var(--text-muted);transition:transform var(--tr);}
+.faq-item.open .faq-q::after{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 20px 16px;font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
+.seo-section p{font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:12px;}
+.footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+.footer-inner{max-width:860px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+.footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+.footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+.footer-col a:hover{color:var(--text);text-decoration:none;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="/">홈</a>
+    <a href="/tools/">계산기</a>
+    <a href="/market/crypto-charts.html">시장</a>
+    <a href="/blog/">블로그</a>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">홈</a> › <a href="/tools/">계산기 도구</a> › 시가총액 계산기
+</div>
+
+<section class="hero">
+  <div class="hero-badge">📊 시가총액 분석 도구</div>
+  <h1>코인 시가총액 계산기<br><span>가격 × 유통량</span> → 시총 즉시 계산</h1>
+  <p>"이 코인이 비트코인 시총에 도달하면 가격이 얼마일까?" — 목표 시총으로 <strong>필요 가격을 역산</strong>하거나 현재 시총을 즉시 계산해드립니다.</p>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<!-- 주요 코인 시총 참고표 -->
+<div class="ref-table">
+  <div class="ref-table-inner">
+    <table>
+      <thead><tr><th>코인</th><th>현재 가격 (참고)</th><th>유통량</th><th>시가총액 (참고)</th></tr></thead>
+      <tbody>
+        <tr><td>₿ 비트코인 (BTC)</td><td id="refBtcPrice">로딩중...</td><td>약 1,970만개</td><td id="refBtcCap">로딩중...</td></tr>
+        <tr><td>Ξ 이더리움 (ETH)</td><td id="refEthPrice">로딩중...</td><td>약 1억 2,000만개</td><td id="refEthCap">로딩중...</td></tr>
+        <tr><td>🏅 금 (Gold)</td><td>-</td><td>약 205,000톤</td><td>약 2경 3,000조원</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-title">📊 시가총액 계산기</div>
+    <div class="mode-tabs">
+      <div class="mode-tab active" id="tab1" onclick="switchMode(1)">📊 시총 계산 (가격 × 유통량)</div>
+      <div class="mode-tab" id="tab2" onclick="switchMode(2)">🎯 목표 시총 → 필요 가격 역산</div>
+    </div>
+
+    <!-- 모드 1: 시총 계산 -->
+    <div id="mode1">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>코인 현재 가격 (원)</label>
+          <input type="number" id="coinPrice" placeholder="예: 135000000 (BTC)" min="0" oninput="liveCalc()">
+        </div>
+        <div class="form-group">
+          <label>유통량 (개)</label>
+          <input type="number" id="coinSupply" placeholder="예: 19700000 (BTC)" min="0" oninput="liveCalc()">
+        </div>
+        <div class="form-group">
+          <label>내 보유 수량 (선택)</label>
+          <input type="number" id="myHolding" placeholder="예: 0.1" min="0" step="0.00001">
+        </div>
+        <div class="form-group">
+          <label>비교 기준 코인 시총 (원, 선택)</label>
+          <input type="number" id="compareCap" placeholder="예: BTC 시총 입력 시 비율 표시">
+        </div>
+      </div>
+    </div>
+
+    <!-- 모드 2: 역산 -->
+    <div id="mode2" style="display:none;">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>목표 시가총액 (원)</label>
+          <input type="number" id="targetCap" placeholder="예: 23000000000000000 (금 시총)" min="0">
+        </div>
+        <div class="form-group">
+          <label>유통량 (개)</label>
+          <input type="number" id="targetSupply" placeholder="예: 19700000 (BTC)" min="0">
+        </div>
+        <div class="form-group">
+          <label>현재 가격 (원, 선택)</label>
+          <input type="number" id="currentPrice" placeholder="입력 시 상승률 계산">
+        </div>
+        <div class="form-group">
+          <label>내 보유 수량 (선택)</label>
+          <input type="number" id="myHolding2" placeholder="입력 시 평가액 계산">
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calcMarketCap()">📊 시가총액 계산하기</button>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-grid" id="resultGrid"></div>
+      <div class="compare-section" id="compareSection" style="display:none;">
+        <div class="compare-title">📊 주요 자산 대비 비율</div>
+        <div id="compareBars"></div>
+      </div>
+      <p class="result-note">⚠️ 참고용 계산입니다. 실제 시세는 <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>에서 확인하세요.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (결과 하단 — CTR 최고)</div>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-icon">💰</div>
+    <div class="cta-text">
+      <h3>목표가 달성 시 세금도 미리 계산하세요</h3>
+      <p>2027년부터 코인 수익에 22% 세금. 목표 달성 시 실수령액을 미리 확인하세요.</p>
+    </div>
+    <a class="cta-link" href="/tools/tax-calculator.html">세금 계산하기 →</a>
+  </div>
+</div>
+
+<section class="formula-section">
+  <div class="formula-card">
+    <h2>📐 시가총액 계산 공식</h2>
+    <p><strong>① 시가총액 기본 공식</strong></p>
+    <div class="formula-block">시가총액 = 현재 가격 (원) × 유통량 (개)</div>
+    <p><strong>② 목표 시총 달성 시 필요 가격 역산</strong></p>
+    <div class="formula-block">필요 가격 = 목표 시가총액 ÷ 유통량</div>
+    <p><strong>③ 목표 달성 시 내 보유분 평가액</strong></p>
+    <div class="formula-block">내 평가액 = 필요 가격 × 내 보유 수량</div>
+    <p><strong>계산 예시:</strong> BTC가 금 시총(약 2경 3,000조원)에 도달한다면?</p>
+    <div class="formula-block">
+필요 가격 = 23,000조원 ÷ 1,970만개 = 약 11억 6,750만원/BTC
+내가 0.1 BTC 보유 → 평가액 = 약 1억 1,675만원
+현재가 1억 3,500만원 → 상승 필요: 약 +765%
+    </div>
+    <p>📎 출처: <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> · <a href="https://coinmarketcap.com/" target="_blank" rel="noopener">CoinMarketCap</a></p>
+  </div>
+</section>
+
+<section class="tools-section">
+  <h2>🧰 함께 쓰면 더 유용한 무료 계산기</h2>
+  <div class="tools-grid">
+    <a class="tool-link" href="/tools/target-price-calculator.html">🎯 목표가 역산 계산기</a>
+    <a class="tool-link" href="/tools/krw-converter.html">💱 코인 원화 환산기</a>
+    <a class="tool-link" href="/tools/tax-calculator.html">💰 코인 세금 계산기</a>
+    <a class="tool-link" href="/tools/roi-calculator.html">📈 수익률 계산기</a>
+    <a class="tool-link" href="/tools/portfolio-tracker.html">📊 포트폴리오 계산기</a>
+    <a class="tool-link" href="/market/crypto-charts.html">📡 실시간 차트</a>
+    <a class="tool-link" href="/market/bitcoin-rainbow-chart.html">🌈 레인보우 차트</a>
+    <a class="tool-link" href="/tools/dca-calculator.html">🔄 DCA 계산기</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>❓ 시가총액 자주 묻는 질문</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">코인 시가총액이란 무엇인가요?</div>
+    <div class="faq-a">시가총액(Market Cap)은 <strong>현재 코인 가격 × 유통 중인 수량</strong>입니다. 코인의 전체 시장 규모를 나타내는 지표로, 시총이 클수록 안정적인 코인으로 평가받습니다. 비트코인이 전체 코인 시총의 약 50% 이상을 차지합니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">유통량과 총 발행량은 어떻게 다른가요?</div>
+    <div class="faq-a"><strong>유통량(Circulating Supply)</strong>은 현재 시장에서 실제로 거래되는 수량이고, <strong>총 발행량(Total Supply)</strong>은 채굴·발행 완료된 전체 수량입니다. 비트코인 최대 발행량은 2,100만개이지만 현재 유통량은 약 1,970만개입니다. 시가총액 계산에는 유통량을 사용합니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">시총으로 코인 투자 판단이 가능한가요?</div>
+    <div class="faq-a">시총은 투자 판단의 참고 지표 중 하나입니다. 시총이 작은 코인(소형 코인)은 가격 변동이 크고 성장 가능성도 높지만 위험도 큽니다. 시총이 큰 코인(비트코인, 이더리움 등)은 상대적으로 안정적입니다. 단, 시총만으로 투자를 결정하는 것은 위험합니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">비트코인이 금 시총에 도달하면 얼마인가요?</div>
+    <div class="faq-a">금의 시가총액은 약 2경 3,000조원(2026년 기준)입니다. 비트코인 유통량 약 1,970만개 기준으로 역산하면 BTC 1개 = 약 <strong>11억 6,000만원</strong>이 됩니다. 이 계산기의 목표 시총 역산 기능으로 직접 계산해보세요.</div>
+  </div>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+
+<section class="seo-section">
+  <h2>📖 코인 시가총액 완전 이해 가이드</h2>
+  <p>코인 시가총액은 해당 코인의 전체 시장 규모를 나타내는 핵심 지표입니다. 주식 시장의 시가총액과 동일한 개념으로, <strong>현재 가격 × 유통량</strong>으로 계산됩니다. 비트코인 도미넌스(BTC 시총 ÷ 전체 코인 시총)는 시장 전반의 흐름을 파악하는 데 활용됩니다.</p>
+  <p>목표 시총 역산 기능을 활용하면 "이 코인이 이더리움 시총에 도달하면 가격이 얼마일까?"와 같은 질문에 답할 수 있습니다. 단, 이는 단순 수학적 계산이며 실제 가격 예측이 아닙니다. 실시간 시장 현황은 <a href="/market/crypto-charts.html">코인 차트·히트맵</a>에서 확인하세요.</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>₿ CryptoTax.cloud</h4>
+        <p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한<br>무료 계산기 허브.</p>
+      </div>
+      <div class="footer-col">
+        <h4>계산기 도구</h4>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/roi-calculator.html">수익률 계산기</a>
+        <a href="/tools/multa-calculator.html">물타기 계산기</a>
+        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
+        <a href="/tools/kimchi-calculator.html">김치 프리미엄 계산기</a>
+        <a href="/tools/krw-converter.html">코인 원화 환산기</a>
+        <a href="/tools/target-price-calculator.html">목표가 역산 계산기</a>
+        <a href="/tools/market-cap-calculator.html">시가총액 계산기</a>
+      </div>
+      <div class="footer-col">
+        <h4>시장 데이터</h4>
+        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
+        <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>
+      </div>
+      <div class="footer-col">
+        <h4>사이트 정보</h4>
+        <a href="/blog/">블로그</a>
+        <a href="/consultation.html">무료 세무 상담</a>
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/sitemap.html">사이트맵</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="/disclaimer.html">면책조항</a>
+      </div>
+      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용입니다.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){ const t=localStorage.getItem('ctc-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();
+function toggleTheme(){
+  const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  localStorage.setItem('ctc-theme',n);
+  document.querySelector('.theme-btn').textContent=n==='dark'?'🌙 다크':'☀️ 라이트';
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+function fmtBig(n){
+  if(n>=1e16) return (n/1e16).toFixed(2)+'경원';
+  if(n>=1e12) return (n/1e12).toFixed(2)+'조원';
+  if(n>=1e8)  return (n/1e8).toFixed(2)+'억원';
+  return Math.round(n).toLocaleString('ko-KR')+'원';
+}
+function fmtKrw(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+
+let currentMode = 1;
+function switchMode(m){
+  currentMode = m;
+  document.getElementById('tab1').classList.toggle('active', m===1);
+  document.getElementById('tab2').classList.toggle('active', m===2);
+  document.getElementById('mode1').style.display = m===1?'block':'none';
+  document.getElementById('mode2').style.display = m===2?'block':'none';
+}
+
+async function fetchRefPrices(){
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=krw&include_market_cap=true');
+    const data = await res.json();
+    if(data.bitcoin){
+      document.getElementById('refBtcPrice').textContent = fmtKrw(data.bitcoin.krw);
+      document.getElementById('refBtcCap').textContent   = fmtBig(data.bitcoin.krw_market_cap);
+    }
+    if(data.ethereum){
+      document.getElementById('refEthPrice').textContent = fmtKrw(data.ethereum.krw);
+      document.getElementById('refEthCap').textContent   = fmtBig(data.ethereum.krw_market_cap);
+    }
+  } catch(e){}
+}
+
+function liveCalc(){
+  const p = parseFloat(document.getElementById('coinPrice').value)||0;
+  const s = parseFloat(document.getElementById('coinSupply').value)||0;
+  if(p&&s) calcMarketCap();
+}
+
+function calcMarketCap(){
+  const grid = document.getElementById('resultGrid');
+  grid.innerHTML = '';
+  document.getElementById('compareSection').style.display = 'none';
+
+  if(currentMode === 1){
+    const price   = parseFloat(document.getElementById('coinPrice').value)||0;
+    const supply  = parseFloat(document.getElementById('coinSupply').value)||0;
+    const holding = parseFloat(document.getElementById('myHolding').value)||0;
+    const compare = parseFloat(document.getElementById('compareCap').value)||0;
+    if(!price||!supply) return;
+
+    const cap = price * supply;
+    const myVal = holding * price;
+    const ratio = compare > 0 ? (cap/compare*100) : 0;
+
+    addResult(grid,'시가총액', fmtBig(cap));
+    addResult(grid,'현재 가격', fmtKrw(price));
+    addResult(grid,'유통량', supply.toLocaleString('ko-KR')+'개');
+    if(holding) addResult(grid,'내 보유분 평가액', fmtKrw(myVal));
+    if(compare) addResult(grid,'비교 대비 비율', ratio.toFixed(2)+'%');
+
+  } else {
+    const targetCap    = parseFloat(document.getElementById('targetCap').value)||0;
+    const supply       = parseFloat(document.getElementById('targetSupply').value)||0;
+    const currentPrice = parseFloat(document.getElementById('currentPrice').value)||0;
+    const holding      = parseFloat(document.getElementById('myHolding2').value)||0;
+    if(!targetCap||!supply) return;
+
+    const needPrice = targetCap / supply;
+    const rise      = currentPrice > 0 ? ((needPrice/currentPrice)-1)*100 : 0;
+    const myVal     = holding * needPrice;
+
+    addResult(grid,'목표 시가총액', fmtBig(targetCap));
+    addResult(grid,'필요 가격 (역산)', fmtKrw(needPrice));
+    if(currentPrice) addResult(grid,'현재 대비 상승 필요', rise.toFixed(1)+'%');
+    if(holding) addResult(grid,'목표 달성 시 내 평가액', fmtKrw(myVal));
+  }
+
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function addResult(grid, label, value){
+  const div = document.createElement('div');
+  div.className = 'result-item';
+  div.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div>`;
+  grid.appendChild(div);
+}
+
+window.addEventListener('load', fetchRefPrices);
+</script>
+</body>
+</html>
