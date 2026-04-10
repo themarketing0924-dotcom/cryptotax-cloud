@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 손실 회복 계산기 무료 | 원금 회복에 필요한 상승률 즉시 계산 | CryptoTax.cloud</title>
+<meta name="description" content="코인이 -50% 떨어졌다면 원금 회복에 +100%가 필요합니다. 손실률 입력 시 원금 회복 필요 상승률과 목표가를 즉시 계산. 무료.">
+<meta name="keywords" content="코인 손실 회복, 손실 회복 계산기, 코인 원금 회복, 손실 얼마 올라야, 코인 마이너스 회복, 비트코인 손실 회복">
+<link rel="canonical" href="https://cryptotax.cloud/tools/loss-recovery-calculator.html">
+<meta property="og:title" content="코인 손실 회복 계산기 무료 | CryptoTax.cloud">
+<meta property="og:url" content="https://cryptotax.cloud/tools/loss-recovery-calculator.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "코인이 50% 떨어지면 원금 회복에 몇 % 올라야 하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "50% 하락 후 원금 회복에는 100% 상승이 필요합니다. 공식: 회복 필요 상승률 = 1/(1-손실률) - 1 × 100%. 손실이 클수록 비대칭적으로 더 큰 상승이 필요합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "코인 손실을 세금으로 활용할 수 있나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "네. 같은 과세연도 내 손실은 다른 코인 수익과 상계할 수 있습니다. 예를 들어 500만원 수익에 300만원 손실이면 순이익 200만원으로 세금을 크게 줄일 수 있습니다. 이를 Tax-Loss Harvesting이라 합니다." }
+    }
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d0d1a;--bg-surface:#1a1a2e;--bg-elevated:#24243e;--text:#e8e8f0;--text-sub:#9999bb;--text-muted:#6666aa;--orange:#f7931a;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--border:#2a2a4a;--shadow:0 4px 24px rgba(0,0,0,.45);--tr:.25s ease;--radius:14px;}
+  [data-theme="light"]{--bg:#f6f8fa;--bg-surface:#fff;--bg-elevated:#f0f2f5;--text:#1a1a2e;--text-sub:#57606a;--text-muted:#8c959f;--border:#d0d7de;--shadow:0 4px 24px rgba(0,0,0,.08);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+  a{color:var(--orange);text-decoration:none;}a:hover{text-decoration:underline;}
+  .nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+  .nav-links{display:flex;gap:20px;font-size:.9rem;}.nav-links a{color:var(--text-sub);}
+  .theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
+  .breadcrumb{max-width:860px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+  .breadcrumb a{color:var(--text-muted);}
+  .hero{max-width:860px;margin:0 auto;padding:40px 20px 20px;text-align:center;}
+  .hero-badge{display:inline-block;background:rgba(248,81,73,.15);border:1px solid rgba(248,81,73,.3);color:var(--red);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px;}
+  .hero h1 span{color:var(--red);}
+  .hero p{font-size:1rem;color:var(--text-sub);max-width:640px;margin:0 auto 24px;}
+  .loss-table{max-width:860px;margin:0 auto 20px;padding:0 20px;}
+  .loss-table-inner{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .loss-table-inner table{width:100%;border-collapse:collapse;}
+  .loss-table-inner th,.loss-table-inner td{padding:10px 16px;text-align:center;border-bottom:1px solid var(--border);font-size:.88rem;}
+  .loss-table-inner th{background:var(--bg-elevated);font-weight:700;color:var(--text-sub);}
+  .loss-table-inner .red{color:var(--red);}
+  .loss-table-inner .green{color:var(--green);}
+  .ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:860px;margin:16px auto;}
+  .calc-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+  .calc-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+  .calc-title{font-size:1.1rem;font-weight:800;margin-bottom:20px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group label{font-size:.85rem;color:var(--text-sub);font-weight:600;}
+  .form-group input{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;outline:none;transition:border-color var(--tr);}
+  .form-group input:focus{border-color:var(--orange);}
+  .calc-btn{width:100%;margin-top:20px;padding:16px;background:linear-gradient(135deg,var(--orange),#e6820f);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;}
+  .result-box{display:none;margin-top:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
+  .result-box.show{display:block;}
+  .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+  .result-item{background:var(--bg-surface);border-radius:10px;padding:16px;text-align:center;}
+  .result-item .label{font-size:.75rem;color:var(--text-muted);margin-bottom:6px;}
+  .result-item .value{font-size:1.2rem;font-weight:800;}
+  .psychology-box{margin-top:20px;padding:16px;border-radius:10px;background:rgba(247,147,26,.08);border:1px solid rgba(247,147,26,.2);font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+  .result-note{margin-top:12px;font-size:.82rem;color:var(--text-muted);}
+  .formula-section,.tools-section,.faq-section,.seo-section{max-width:860px;margin:32px auto;padding:0 20px;}
+  .formula-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+  .formula-card h2{font-size:1.15rem;font-weight:800;margin-bottom:16px;}
+  .formula-block{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:.9rem;line-height:1.6;}
+  .formula-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7;margin:10px 0;}
+  .cta-banner{max-width:860px;margin:24px auto;padding:0 20px;}
+  .cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.1));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .cta-inner .cta-icon{font-size:2rem;}
+  .cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+  .cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+  .cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:10px 22px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
+  .tools-section h2,.faq-section h2,.seo-section h2{font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+  .tool-link{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color var(--tr),transform var(--tr);}
+  .tool-link:hover{border-color:var(--orange);transform:translateY(-2px);text-decoration:none;color:var(--text);}
+  .faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+  .faq-q{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'▼';font-size:.75rem;color:var(--text-muted);transition:transform var(--tr);}
+  .faq-item.open .faq-q::after{transform:rotate(180deg);}
+  .faq-a{display:none;padding:0 20px 16px;font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+  .faq-item.open .faq-a{display:block;}
+  .seo-section p{font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:12px;}
+  .footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+  .footer-inner{max-width:860px;margin:0 auto;}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+  .footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+  .footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+  .footer-col a:hover{color:var(--text);text-decoration:none;}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
