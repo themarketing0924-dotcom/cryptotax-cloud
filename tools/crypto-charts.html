@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>암호화폐 실시간 차트·히트맵·버블차트 무료 | 코린이 필수 | CryptoTax.cloud</title>
+<meta name="description" content="비트코인·이더리움 실시간 차트, 암호화폐 히트맵, 버블차트를 한 곳에서 무료 확인. 코린이도 쉽게 이해하는 시장 분석 가이드 + 세금 계산기 무료 제공.">
+<meta name="keywords" content="암호화폐 차트, 비트코인 실시간 차트, 코인 히트맵, 암호화폐 버블차트, 코린이 코인투자, 코인 시장 현황, 비트코인 기술적분석, 트레이딩뷰 차트, 코인 언제 사야해, 코인 매수 타이밍">
+<link rel="canonical" href="https://cryptotax.cloud/market/crypto-charts.html">
+<meta property="og:title" content="암호화폐 실시간 차트·히트맵·버블차트 | 코린이 필수 | CryptoTax.cloud">
+<meta property="og:description" content="TradingView 전문 차트 + 히트맵 + 버블차트 무료. 코린이도 쉽게 시장을 읽는 방법.">
+<meta property="og:url" content="https://cryptotax.cloud/market/crypto-charts.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "name":"암호화폐 실시간 차트·히트맵·버블차트 무료",
+      "url":"https://cryptotax.cloud/market/crypto-charts.html",
+      "description":"TradingView 전문 차트와 암호화폐 히트맵, 버블차트를 한 곳에서 무료로 확인하는 시장 분석 허브.",
+      "inLanguage":"ko-KR",
+      "breadcrumb":{
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},
+          {"@type":"ListItem","position":2,"name":"시장 데이터","item":"https://cryptotax.cloud/market/"},
+          {"@type":"ListItem","position":3,"name":"암호화폐 차트 분석","item":"https://cryptotax.cloud/market/crypto-charts.html"}
+        ]
+      }
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"코린이가 차트를 봐야 하는 이유는?","acceptedAnswer":{"@type":"Answer","text":"차트는 코인 가격의 역사입니다. 지금이 비쌀 때인지, 쌀 때인지 판단하는 가장 기본 도구입니다. 버블차트로 어떤 코인이 오르는지, 히트맵으로 시장 전체 분위기를 확인하면 충동 매수를 크게 줄일 수 있습니다."}},
+        {"@type":"Question","name":"버블차트와 히트맵의 차이는?","acceptedAnswer":{"@type":"Answer","text":"버블차트는 원형 버블로 코인별 등락을 직관적으로, 히트맵은 사각형 블록으로 시가총액 비중까지 함께 보여줍니다. 두 가지를 함께 보면 시장 전체 흐름을 가장 빠르게 파악할 수 있습니다."}},
+        {"@type":"Question","name":"코인 수익에 세금이 붙나요?","acceptedAnswer":{"@type":"Answer","text":"2027년부터 가상자산 양도소득세 22%가 부과됩니다. 연간 수익 250만원까지는 기본공제로 세금이 없습니다."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* ===== 디자인 시스템 ===== */
+:root{
+  --bg:#0d0d1a;--bg-surface:#1a1a2e;--bg-elevated:#24243e;
+  --text:#e8e8f0;--text-sub:#9999bb;--text-muted:#6666aa;
+  --orange:#f7931a;--orange-dim:rgba(247,147,26,.12);
+  --green:#3fb950;--red:#f85149;--blue:#58a6ff;--purple:#a371f7;
+  --border:#2a2a4a;--border-subtle:#1e1e3a;
+  --shadow:0 4px 24px rgba(0,0,0,.45);--tr:.25s ease;--radius:14px;
+}
+[data-theme="light"]{
+  --bg:#f6f8fa;--bg-surface:#ffffff;--bg-elevated:#f0f2f5;
+  --text:#1a1a2e;--text-sub:#57606a;--text-muted:#8c959f;
+  --border:#d0d7de;--border-subtle:#e8eaed;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;min-height:100vh;
+  transition:background var(--tr),color var(--tr);
+}
+a{text-decoration:none;color:inherit;}
+
+/* ===== NAV ===== */
+nav{
+  background:var(--bg-surface);border-bottom:1px solid var(--border);
+  padding:0 24px;height:60px;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:1000;
+  backdrop-filter:blur(12px);
+}
+.nav-logo{font-size:1.15rem;font-weight:800;color:var(--orange);}
+.nav-logo span{color:var(--text-sub);}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-links a{color:var(--text-sub);font-size:.82rem;padding:5px 10px;border-radius:7px;transition:all .2s;}
+.nav-links a:hover{color:var(--orange);background:var(--orange-dim);}
+.nav-back{background:var(--bg-elevated);border:1px solid var(--border);border-radius:7px;padding:5px 12px;}
+.theme-toggle{
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:50px;cursor:pointer;display:flex;align-items:center;
+  gap:5px;padding:5px 11px;font-size:.8rem;color:var(--text-sub);transition:all var(--tr);
+}
+.theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
+.toggle-track{width:32px;height:17px;background:var(--border);border-radius:20px;position:relative;transition:background var(--tr);}
+[data-theme="light"] .toggle-track{background:var(--orange);}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform var(--tr);box-shadow:0 1px 3px rgba(0,0,0,.3);}
+[data-theme="light"] .toggle-thumb{transform:translateX(15px);}
+
+/* ===== TICKER ===== */
+.ticker-bar{
+  background:var(--bg-surface);border-bottom:1px solid var(--border);
+  overflow:hidden;height:38px;display:flex;align-items:center;
+}
+.ticker-inner{
+  display:flex;white-space:nowrap;
+  animation:ticker-scroll 40s linear infinite;
+}
+.ticker-bar:hover .ticker-inner{animation-play-state:paused;}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0 20px;font-size:.82rem;font-weight:700;
+  border-right:1px solid var(--border);height:38px;cursor:default;transition:background .2s;
+}
+.ticker-item:hover{background:var(--orange-dim);}
+.ticker-coin{color:var(--text-muted);font-weight:600;}
+.ticker-price{color:var(--text);}
+.ticker-change.up{color:var(--green);}
+.ticker-change.dn{color:var(--red);}
+@keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ===== HERO ===== */
+.hero{
+  padding:48px 24px 36px;text-align:center;
+  background:radial-gradient(ellipse at 50% -10%,rgba(247,147,26,.09) 0%,transparent 60%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 50%,rgba(88,166,255,.05) 0%,transparent 50%),
+              radial-gradient(circle at 80% 50%,rgba(163,113,247,.05) 0%,transparent 50%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-dim);color:var(--orange);
+  border:1px solid rgba(247,147,26,.3);border-radius:20px;
+  padding:5px 16px;font-size:.78rem;font-weight:700;
+  margin-bottom:16px;letter-spacing:.03em;
+}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:900;line-height:1.2;margin-bottom:10px;letter-spacing:-.03em;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{color:var(--text-sub);font-size:.95rem;max-width:600px;margin:0 auto 20px;line-height:1.7;}
+.hero-keywords{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  margin-bottom:28px;
+}
+.hero-kw{
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:20px;padding:4px 13px;font-size:.78rem;
+  color:var(--text-muted);font-weight:600;
+}
+.hero-kw.hot{border-color:rgba(247,147,26,.4);color:var(--orange);background:var(--orange-dim);}
+
+/* ===== 시장 요약 카드 ===== */
+.market-summary{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  max-width:960px;margin:0 auto 24px;padding:0 20px;
+}
+@media(min-width:600px){.market-summary{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:900px){.market-summary{grid-template-columns:repeat(6,1fr);}}
+.ms-card{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:12px;padding:14px 12px;text-align:center;transition:all .2s;
+}
+.ms-card:hover{border-color:var(--orange);transform:translateY(-2px);}
+.ms-card .ms-coin{font-size:.72rem;font-weight:700;color:var(--text-muted);margin-bottom:4px;}
+.ms-card .ms-price{font-size:1rem;font-weight:800;margin-bottom:2px;}
+.ms-chg.up{color:var(--green);}
+.ms-chg.dn{color:var(--red);}
+.ms-chg.loading{color:var(--text-muted);}
+.ms-chg{font-size:.82rem;font-weight:700;}
+
+/* ===== 코린이 가이드 배너 ===== */
+.newbie-banner{
+  max-width:960px;margin:0 auto 20px;padding:0 20px;
+}
+.nb-inner{
+  background:linear-gradient(135deg,rgba(247,147,26,.12) 0%,rgba(88,166,255,.08) 100%);
+  border:1px solid rgba(247,147,26,.3);border-radius:16px;
+  padding:20px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.nb-emoji{font-size:2.5rem;flex-shrink:0;}
+.nb-content h3{font-size:.95rem;font-weight:800;color:var(--orange);margin-bottom:4px;}
+.nb-content p{font-size:.83rem;color:var(--text-sub);line-height:1.65;}
+.nb-cta{
+  margin-left:auto;flex-shrink:0;
+  background:var(--orange);color:#fff;
+  border-radius:10px;padding:10px 20px;
+  font-size:.85rem;font-weight:800;white-space:nowrap;transition:opacity .2s;
+}
+.nb-cta:hover{opacity:.85;}
+
+/* ===== 섹션 탭 ===== */
+.section-tabs{
+  display:flex;gap:8px;overflow-x:auto;
+  padding:0 20px;max-width:960px;margin:0 auto 24px;
+  scrollbar-width:none;
+}
+.section-tabs::-webkit-scrollbar{display:none;}
+.stab{
+  flex-shrink:0;padding:10px 18px;
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:10px;color:var(--text-sub);font-size:.85rem;
+  font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.stab:hover{border-color:var(--orange);color:var(--orange);}
+.stab.active{background:var(--orange);color:#fff;border-color:var(--orange);}
+
+/* ===== 컨테이너 ===== */
+.container{max-width:960px;margin:0 auto;padding:0 20px 64px;}
+
+/* ===== 섹션 타이틀 ===== */
+.sec-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.sec-title h2{font-size:1.05rem;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px;}
+.live-badge{
+  font-size:.68rem;font-weight:700;padding:3px 8px;
+  background:rgba(63,185,80,.15);color:var(--green);
+  border:1px solid rgba(63,185,80,.3);border-radius:20px;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+.sec-desc{font-size:.83rem;color:var(--text-muted);margin-bottom:16px;line-height:1.7;}
+
+/* ===== 카드 ===== */
+.card{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;margin-bottom:20px;
+  box-shadow:var(--shadow);transition:background var(--tr),border-color var(--tr);
+}
+
+/* ===== TradingView 위젯 ===== */
+.tv-widget-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg-elevated);position:relative;}
+.tv-widget-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--bg-elevated);z-index:1;font-size:.85rem;color:var(--text-muted);transition:opacity .5s;}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ===== 코인 탭 ===== */
+.coin-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.ctab{padding:7px 14px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;font-size:.82rem;font-weight:700;color:var(--text-sub);cursor:pointer;transition:all .2s;}
+.ctab:hover{border-color:var(--orange);color:var(--orange);}
+.ctab.active{background:var(--orange);color:#fff;border-color:var(--orange);}
+
+/* ===== 버블 차트 ===== */
+.bubble-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#000;margin-bottom:20px;}
+.bubble-header{padding:14px 18px;background:var(--bg-elevated);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.bubble-header .bh-title{font-size:.9rem;font-weight:800;color:var(--text);}
+.bubble-header .bh-desc{font-size:.78rem;color:var(--text-muted);}
+.bubble-period-tabs{display:flex;gap:5px;}
+.bptab{padding:5px 10px;font-size:.75rem;font-weight:700;border-radius:6px;background:var(--bg-surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:all .2s;}
+.bptab:hover,.bptab.active{background:var(--orange);color:#fff;border-color:var(--orange);}
+.bubble-iframe-wrap{position:relative;padding-top:60%;background:#0a0a15;}
+@media(min-width:768px){.bubble-iframe-wrap{padding-top:50%;}}
+.bubble-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+/* ===== 컬러 가이드 ===== */
+.color-guide{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px;}
+.cg-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg-elevated);}
+.cg-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.cg-text{font-size:.78rem;color:var(--text-sub);font-weight:600;}
+
+/* ===== 코린이 설명 박스 ===== */
+.explain-box{
+  background:linear-gradient(135deg,var(--bg-elevated) 0%,var(--bg-surface) 100%);
+  border:1px solid var(--border);border-left:4px solid var(--orange);
+  border-radius:12px;padding:18px 20px;margin-bottom:20px;
+}
+.explain-box h3{font-size:.92rem;font-weight:800;color:var(--orange);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.explain-box p{font-size:.85rem;color:var(--text-sub);line-height:1.75;margin-bottom:6px;}
+.explain-box p:last-child{margin-bottom:0;}
+.explain-box strong{color:var(--text);}
+
+/* ===== 시장 심리 ===== */
+.sentiment-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(min-width:600px){.sentiment-bar{grid-template-columns:repeat(4,1fr);}}
+.sb-item{background:var(--bg-elevated);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;transition:all .2s;}
+.sb-item:hover{border-color:var(--orange);}
+.sb-emoji{font-size:1.6rem;margin-bottom:4px;}
+.sb-label{font-size:.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;margin-bottom:2px;}
+.sb-value{font-size:1.1rem;font-weight:900;}
+
+/* ===== 도구 CTA 박스 ===== */
+.tool-cta{
+  background:linear-gradient(135deg,rgba(247,147,26,.1) 0%,rgba(88,166,255,.07) 100%);
+  border:1px solid rgba(247,147,26,.25);border-radius:14px;
+  padding:20px 22px;margin-bottom:20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.tool-cta-info h3{font-size:.92rem;font-weight:800;color:var(--text);margin-bottom:4px;}
+.tool-cta-info p{font-size:.82rem;color:var(--text-sub);}
+.tool-cta-btn{
+  margin-left:auto;flex-shrink:0;
+  background:var(--orange);color:#fff;
+  border-radius:10px;padding:11px 22px;
+  font-size:.85rem;font-weight:800;white-space:nowrap;
+  transition:opacity .2s;display:inline-block;
+}
+.tool-cta-btn:hover{opacity:.85;}
+
+/* ===== 광고 슬롯 ===== */
+.ad-slot{
+  background:var(--bg-surface);border:1px dashed var(--border);
+  border-radius:10px;padding:18px;text-align:center;
+  color:var(--text-muted);font-size:.78rem;margin:20px 0;
+  min-height:90px;display:flex;align-items:center;justify-content:center;
+}
+
+/* ===== 관련 도구 그리드 ===== */
+.tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:580px){.tool-links{grid-template-columns:1fr 1fr;}}
+.tool-link{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:14px 8px;background:var(--bg-elevated);
+  border:1px solid var(--border);border-radius:11px;
+  color:var(--text);font-size:.8rem;font-weight:700;
+  text-align:center;transition:all .2s;
+}
+.tool-link:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px);}
+.tool-link .icon{font-size:1.4rem;}
+
+/* ===== SEO 랜딩 텍스트 ===== */
+.seo-section{margin-bottom:20px;}
+.seo-section h2{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-subtle);}
+.seo-section p{font-size:.86rem;color:var(--text-sub);line-height:1.85;margin-bottom:10px;}
+.seo-section p:last-child{margin-bottom:0;}
+
+/* ===== Q&A 코린이 ===== */
+.qna-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+@media(min-width:640px){.qna-grid{grid-template-columns:1fr 1fr;}}
+.qna-item{
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:12px;padding:18px;transition:all .2s;
+}
+.qna-item:hover{border-color:rgba(247,147,26,.4);}
+.qna-item .q{font-size:.88rem;font-weight:800;color:var(--orange);margin-bottom:8px;display:flex;gap:6px;}
+.qna-item .a{font-size:.83rem;color:var(--text-sub);line-height:1.75;}
+.qna-item .a strong{color:var(--text);}
+
+/* ===== FAQ 아코디언 ===== */
+.faq-item{border-bottom:1px solid var(--border-subtle);}
+.faq-q{padding:14px 0;cursor:pointer;font-weight:700;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;color:var(--text);transition:color .2s;}
+.faq-q:hover{color:var(--orange);}
+.faq-a{padding:0 0 14px;color:var(--text-sub);font-size:.87rem;line-height:1.75;display:none;}
+.faq-a strong{color:var(--text);}
+
+/* ===== 브레드크럼 ===== */
+.breadcrumb{padding:10px 24px;font-size:.8rem;color:var(--text-muted);max-width:960px;margin:0 auto;}
+.breadcrumb a{color:var(--text-muted);}
+.breadcrumb a:hover{color:var(--orange);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:28px 20px;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
+.footer-links a{color:var(--text-muted);font-size:.82rem;}
+.footer-links a:hover{color:var(--orange);}
+.footer-copy{font-size:.76rem;color:var(--text-muted);}
+
+/* ===== 반응형 ===== */
+@media(max-width:480px){
+  nav{padding:0 14px;}
+  .hero{padding:28px 14px 20px;}
+  .container{padding:0 14px 48px;}
+  .card{padding:16px;}
+  .section-tabs{padding:0 14px;}
+  .market-summary{padding:0 14px;}
+  .newbie-banner{padding:0 14px;}
+  .nb-cta{margin-left:0;width:100%;text-align:center;}
+  .tool-cta-btn{margin-left:0;width:100%;text-align:center;}
+  .sec-ta-grid{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax<span>.cloud</span></a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/" class="nav-back">← 홈</a>
+    <a href="https://cryptotax.cloud/tools/">계산기</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환">
+    <span id="themeIcon">☀️</span>
+    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    <span id="themeLabel">라이트</span>
+  </button>
+</nav>
+
+<!-- ===== 실시간 코인 티커 ===== -->
+<div class="ticker-bar">
+  <div class="ticker-inner" id="tickerInner">
+    <div class="ticker-item"><span class="ticker-coin">BTC</span><span class="ticker-price">로딩 중...</span></div>
+  </div>
+</div>
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+  <a href="https://cryptotax.cloud/">홈</a> ›
+  <a href="https://cryptotax.cloud/market/">시장 데이터</a> ›
+  암호화폐 차트 분석
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge">📊 실시간 시장 분석 허브 — 무료</div>
+  <h1>코인 <em>지금 사도 될까?</em><br>차트·히트맵·버블로 확인</h1>
+  <p class="hero-sub">
+    트레이더들이 매일 보는 도구를 코린이도 쉽게.<br>
+    <strong>버블차트 + 히트맵 + 실시간 차트</strong>를 한 곳에서 무료로.
+  </p>
+  <div class="hero-keywords">
+    <span class="hero-kw hot">🔥 코인 언제 살까</span>
+    <span class="hero-kw hot">🔥 암호화폐 히트맵</span>
+    <span class="hero-kw hot">🔥 비트코인 실시간</span>
+    <span class="hero-kw">코인 버블차트</span>
+    <span class="hero-kw">기술적 분석</span>
+    <span class="hero-kw">코린이 투자</span>
+    <span class="hero-kw">공포탐욕지수</span>
+  </div>
+</section>
+
+<!-- ===== 시장 요약 카드 ===== -->
+<div class="market-summary">
+  <div class="ms-card"><div class="ms-coin">BTC</div><div class="ms-price" id="p-btc">—</div><div class="ms-chg loading" id="c-btc">로딩</div></div>
+  <div class="ms-card"><div class="ms-coin">ETH</div><div class="ms-price" id="p-eth">—</div><div class="ms-chg loading" id="c-eth">로딩</div></div>
+  <div class="ms-card"><div class="ms-coin">XRP</div><div class="ms-price" id="p-xrp">—</div><div class="ms-chg loading" id="c-xrp">로딩</div></div>
+  <div class="ms-card"><div class="ms-coin">SOL</div><div class="ms-price" id="p-sol">—</div><div class="ms-chg loading" id="c-sol">로딩</div></div>
+  <div class="ms-card"><div class="ms-coin">BNB</div><div class="ms-price" id="p-bnb">—</div><div class="ms-chg loading" id="c-bnb">로딩</div></div>
+  <div class="ms-card"><div class="ms-coin">공포·탐욕</div><div class="ms-price" id="p-fg">—</div><div class="ms-chg loading" id="c-fg">로딩</div></div>
+</div>
+
+<!-- ===== 코린이 가이드 배너 ===== -->
+<div class="newbie-banner">
+  <div class="nb-inner">
+    <div class="nb-emoji">🐣</div>
+    <div class="nb-content">
+      <h3>코린이라면 꼭 알아야 할 3가지 도구</h3>
+      <p>① <strong>버블차트</strong> — 어떤 코인이 오르는지 색상으로 즉시 확인<br>
+         ② <strong>히트맵</strong> — 시장 전체가 상승인지 하락인지 한눈에<br>
+         ③ <strong>기술적 분석</strong> — 매수·매도 신호를 자동으로 계산</p>
+    </div>
+    <a href="#sec-guide" class="nb-cta">👇 사용법 보기</a>
+  </div>
+</div>
+
+<!-- ===== 섹션 탭 ===== -->
+<div class="section-tabs">
+  <button class="stab active" onclick="scrollToSec('sec-bubble',this)">🫧 버블차트</button>
+  <button class="stab" onclick="scrollToSec('sec-heatmap',this)">🗺️ 히트맵</button>
+  <button class="stab" onclick="scrollToSec('sec-chart',this)">📈 실시간 차트</button>
+  <button class="stab" onclick="scrollToSec('sec-ta',this)">🔬 기술적 분석</button>
+  <button class="stab" onclick="scrollToSec('sec-market',this)">💹 시장 개요</button>
+  <button class="stab" onclick="scrollToSec('sec-news',this)">📰 뉴스</button>
+  <button class="stab" onclick="scrollToSec('sec-guide',this)">🐣 코린이 가이드</button>
+</div>
+
+<!-- ===== MAIN CONTAINER ===== -->
+<div class="container">
+
+  <div class="ad-slot">📢 광고 영역 (상단 — 728×90)</div>
+
+  <!-- 시장 심리 요약 -->
+  <div class="sentiment-bar">
+    <div class="sb-item">
+      <div class="sb-emoji" id="fg-emoji">⏳</div>
+      <div class="sb-label">공포·탐욕 지수</div>
+      <div class="sb-value" id="fg-val" style="color:var(--text-muted)">—</div>
+    </div>
+    <div class="sb-item">
+      <div class="sb-emoji">₿</div>
+      <div class="sb-label">BTC 도미넌스</div>
+      <div class="sb-value" id="dom-val" style="color:var(--orange)">—</div>
+    </div>
+    <div class="sb-item">
+      <div class="sb-emoji" id="market-emoji">📊</div>
+      <div class="sb-label">시장 평균 등락</div>
+      <div class="sb-value" id="market-chg">—</div>
+    </div>
+    <div class="sb-item">
+      <div class="sb-emoji">🏦</div>
+      <div class="sb-label">총 시가총액</div>
+      <div class="sb-value" id="total-mcap" style="color:var(--blue)">—</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ① 버블차트                                   -->
+  <!-- ============================================ -->
+  <div id="sec-bubble" style="scroll-margin-top:70px;">
+
+    <!-- 코린이 설명 -->
+    <div class="explain-box">
+      <h3>🫧 버블차트가 뭔가요? — 코린이 설명</h3>
+      <p>각 코인을 <strong>동그란 버블(원)</strong>로 표현한 차트입니다. <strong>버블이 클수록 시가총액이 크고</strong>, <strong>초록색이면 오늘 상승, 빨간색이면 하락</strong>입니다.</p>
+      <p>한 화면에서 "지금 어떤 코인이 오르고 있는지"를 한눈에 파악할 수 있어 코린이에게 가장 유용한 도구 중 하나입니다. 특히 장이 좋을 때는 화면이 초록으로, 나쁠 때는 빨간색으로 가득 찹니다.</p>
+    </div>
+
+    <div class="sec-title">
+      <h2>🫧 암호화폐 버블차트 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc"><strong style="color:var(--green)">초록</strong> = 상승 · <strong style="color:var(--red)">빨강</strong> = 하락 · 버블 크기 = 시가총액 · 클릭하면 코인 상세정보</p>
+
+    <div class="bubble-wrap">
+      <div class="bubble-header">
+        <div>
+          <div class="bh-title">🫧 CryptoBubbles — 실시간 버블차트</div>
+          <div class="bh-desc">버블 크기=시가총액 · 색상=등락률 · 클릭=상세정보</div>
+        </div>
+        <div class="bubble-period-tabs">
+          <button class="bptab active" onclick="changeBubblePeriod(this)">1시간</button>
+          <button class="bptab" onclick="changeBubblePeriod(this)">24시간</button>
+          <button class="bptab" onclick="changeBubblePeriod(this)">7일</button>
+          <button class="bptab" onclick="changeBubblePeriod(this)">30일</button>
+        </div>
+      </div>
+      <div class="bubble-iframe-wrap">
+        <iframe id="bubbleIframe" src="https://cryptobubbles.net" loading="lazy" allowfullscreen title="암호화폐 버블차트"></iframe>
+      </div>
+    </div>
+
+    <!-- 버블차트 읽는 법 -->
+    <div class="card">
+      <div class="sec-title"><h2>💡 버블차트 읽는 법</h2></div>
+      <div class="color-guide">
+        <div class="cg-item"><div class="cg-dot" style="background:#1a9a50"></div><div class="cg-text">🟢 큰 초록 = 대형코인 강한 상승</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#2ecc71"></div><div class="cg-text">💚 작은 초록 = 소형코인 상승</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#e74c3c"></div><div class="cg-text">🔴 큰 빨강 = 대형코인 큰 하락</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#f85149"></div><div class="cg-text">❤️ 작은 빨강 = 소형코인 하락</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#95a5a6"></div><div class="cg-text">⬜ 회색 = 보합 (±0%)</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#f1c40f"></div><div class="cg-text">🟡 노랑 = 소폭 변동</div></div>
+      </div>
+    </div>
+
+    <!-- DCA 계산기 연계 CTA -->
+    <div class="tool-cta">
+      <div style="font-size:1.8rem;">📅</div>
+      <div class="tool-cta-info">
+        <h3>버블차트에서 좋은 코인 찾았나요?</h3>
+        <p>DCA 적립식 계산기로 평균 매수 단가와 수익률을 미리 계산해보세요. 충동 매수 방지에 효과적입니다.</p>
+      </div>
+      <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-cta-btn">📅 DCA 계산기 →</a>
+    </div>
+  </div>
+
+  <div class="ad-slot">📢 광고 영역 (버블차트 하단 — CTR 높음)</div>
+
+  <!-- ============================================ -->
+  <!-- ② 히트맵                                     -->
+  <!-- ============================================ -->
+  <div id="sec-heatmap" style="scroll-margin-top:70px;">
+
+    <div class="explain-box">
+      <h3>🗺️ 히트맵이 뭔가요? — 코린이 설명</h3>
+      <p>히트맵은 <strong>사각형 블록</strong>으로 시장 전체를 표현합니다. <strong>블록이 클수록 시가총액이 크고</strong>, 색상으로 상승/하락을 보여줍니다. 비트코인이 가장 큰 블록을 차지합니다.</p>
+      <p>버블차트와 차이점: 버블차트는 개별 코인 비교에, 히트맵은 <strong>"전체 시장에서 어떤 코인군이 얼마나 비중을 차지하는지"</strong>를 파악하는 데 더 유리합니다.</p>
+    </div>
+
+    <div class="sec-title">
+      <h2>🗺️ 암호화폐 시장 히트맵 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc">시가총액 크기(면적)와 등락률(색상)을 동시에 확인. 어떤 섹터가 시장을 이끄는지 한눈에 파악.</p>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div class="tv-widget-wrap" style="min-height:500px;position:relative;">
+        <div class="tv-widget-loading" id="heatmap-loading">
+          <div class="spinner"></div><span>히트맵 로딩 중...</span>
+        </div>
+        <div class="tradingview-widget-container" style="height:500px;width:100%;">
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+          {
+            "dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"change",
+            "locale":"kr","colorTheme":"dark","hasTopBar":true,
+            "isDataSetEnabled":true,"isZoomEnabled":true,
+            "hasSymbolTooltip":true,"isMonoSize":false,
+            "width":"100%","height":"500"
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title"><h2>💡 히트맵 색상 읽는 법</h2></div>
+      <div class="color-guide">
+        <div class="cg-item"><div class="cg-dot" style="background:#1a6b3c"></div><div class="cg-text">🟩 진초록 = +5% 이상 강한 상승</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#2ecc71"></div><div class="cg-text">🟢 연초록 = 소폭 상승</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#95a5a6"></div><div class="cg-text">⬜ 회색 = 보합 (±0.5%)</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#e74c3c"></div><div class="cg-text">🟥 연빨강 = 소폭 하락</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#7f0000"></div><div class="cg-text">🔴 진빨강 = -5% 이상 큰 하락</div></div>
+        <div class="cg-item"><div class="cg-dot" style="background:#3498db"></div><div class="cg-text">📦 박스 크기 = 시가총액 비중</div></div>
+      </div>
+    </div>
+
+    <!-- 세금 계산기 연계 CTA -->
+    <div class="tool-cta">
+      <div style="font-size:1.8rem;">💰</div>
+      <div class="tool-cta-info">
+        <h3>히트맵 상승장에서 수익 났다면?</h3>
+        <p>2027년부터 연 250만원 초과 수익에는 22% 세금이 부과됩니다. 지금 바로 예상 세금을 계산해보세요.</p>
+      </div>
+      <a href="https://cryptotax.cloud/" class="tool-cta-btn">💰 세금 계산기 →</a>
+    </div>
+  </div>
+
+  <div class="ad-slot">📢 광고 영역 (히트맵 하단)</div>
+
+  <!-- ============================================ -->
+  <!-- ③ 실시간 차트                                -->
+  <!-- ============================================ -->
+  <div id="sec-chart" style="scroll-margin-top:70px;">
+
+    <div class="explain-box">
+      <h3>📈 실시간 차트가 왜 필요한가요? — 코린이 설명</h3>
+      <p>캔들차트는 <strong>코인 가격의 역사</strong>입니다. 과거에 어느 가격에서 많이 사고팔았는지, 지금 가격이 상대적으로 높은지 낮은지를 판단하는 핵심 도구입니다.</p>
+      <p><strong>이동평균선(MA)</strong>: 일정 기간 평균 가격. 현재가가 이 선 위에 있으면 강세, 아래면 약세 신호입니다.<br>
+      <strong>RSI</strong>: 70 이상이면 과열(매도 고려), 30 이하면 과매도(매수 고려).<br>
+      <strong>MACD</strong>: 두 선이 교차할 때 방향 전환 신호.</p>
+    </div>
+
+    <div class="sec-title">
+      <h2>📈 실시간 차트 분석 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc">TradingView 전문 차트. 캔들·이동평균선·RSI·MACD 기술적 지표 직접 확인.</p>
+
+    <div class="coin-tabs">
+      <button class="ctab active" onclick="switchChart('BINANCE:BTCUSDT',this)">₿ BTC/USDT</button>
+      <button class="ctab" onclick="switchChart('BINANCE:ETHUSDT',this)">Ξ ETH/USDT</button>
+      <button class="ctab" onclick="switchChart('BINANCE:XRPUSDT',this)">✕ XRP/USDT</button>
+      <button class="ctab" onclick="switchChart('BINANCE:SOLUSDT',this)">◎ SOL/USDT</button>
+      <button class="ctab" onclick="switchChart('BINANCE:BNBUSDT',this)">⬡ BNB/USDT</button>
+      <button class="ctab" onclick="switchChart('UPBIT:BTCKRW',this)">🇰🇷 BTC/KRW</button>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div class="tv-widget-wrap" style="height:500px;">
+        <div class="tradingview-widget-container" style="height:500px;width:100%;">
+          <div id="tradingview-chart" style="height:500px;width:100%;"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js" async onload="initTVChart()"></script>
+        </div>
+      </div>
+    </div>
+
+    <!-- 수익률 계산기 연계 CTA -->
+    <div class="tool-cta">
+      <div style="font-size:1.8rem;">📊</div>
+      <div class="tool-cta-info">
+        <h3>차트에서 목표 매도가를 정했나요?</h3>
+        <p>수익률 계산기로 매수가·매도가·수량을 입력하면 순수익과 세후 실수령액을 바로 계산합니다.</p>
+      </div>
+      <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-cta-btn">📊 수익률 계산기 →</a>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ④ 기술적 분석                                -->
+  <!-- ============================================ -->
+  <div id="sec-ta" style="scroll-margin-top:70px;margin-top:8px;">
+
+    <div class="explain-box">
+      <h3>🔬 기술적 분석 신호란? — 코린이 설명</h3>
+      <p>이동평균선·RSI·MACD 등 20개 이상의 지표를 자동으로 계산해 <strong>매수(Buy) / 매도(Sell) / 중립(Neutral)</strong> 신호를 숫자로 보여줍니다. 처음에는 "지표 대부분이 매수라면 단기 상승 가능성이 높다" 정도로만 활용해도 충분합니다.</p>
+      <p>⚠️ 주의: 기술적 분석은 <strong>확률</strong>이지 정답이 아닙니다. 반드시 다른 정보(뉴스, 공포·탐욕 지수 등)와 함께 판단하세요.</p>
+    </div>
+
+    <div class="sec-title">
+      <h2>🔬 기술적 분석 신호 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc">이동평균선·오실레이터 기반 자동 매수·매도 신호. 다수의 지표가 매수면 단기 상승 압력.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="sec-ta-grid">
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--border);font-size:.88rem;font-weight:800;">₿ BTC/USDT 기술적 분석</div>
+        <div class="tradingview-widget-container" style="height:420px;">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {"interval":"1D","width":"100%","isTransparent":true,"height":420,"symbol":"BINANCE:BTCUSDT","showIntervalTabs":true,"displayMode":"single","locale":"kr","colorTheme":"dark"}
+          </script>
+        </div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--border);font-size:.88rem;font-weight:800;">Ξ ETH/USDT 기술적 분석</div>
+        <div class="tradingview-widget-container" style="height:420px;">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {"interval":"1D","width":"100%","isTransparent":true,"height":420,"symbol":"BINANCE:ETHUSDT","showIntervalTabs":true,"displayMode":"single","locale":"kr","colorTheme":"dark"}
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">📢 광고 영역 (기술분석 하단)</div>
+
+  <!-- ============================================ -->
+  <!-- ⑤ 시장 개요                                  -->
+  <!-- ============================================ -->
+  <div id="sec-market" style="scroll-margin-top:70px;">
+    <div class="sec-title">
+      <h2>💹 시장 개요 — 전체 코인 시세 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc">주요 암호화폐 실시간 가격·등락률·거래량 한눈에 확인.</p>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div class="tradingview-widget-container" style="height:600px;">
+        <div class="tradingview-widget-container__widget" style="height:600px;width:100%;"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {"width":"100%","height":600,"defaultColumn":"overview","defaultScreen":"crypto","market":"crypto","showToolbar":true,"colorTheme":"dark","locale":"kr","isTransparent":true}
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- ⑥ 뉴스                                       -->
+  <!-- ============================================ -->
+  <div id="sec-news" style="scroll-margin-top:70px;margin-top:8px;">
+    <div class="sec-title">
+      <h2>📰 암호화폐 최신 뉴스 <span class="live-badge">LIVE</span></h2>
+    </div>
+    <p class="sec-desc">글로벌 암호화폐 시장 최신 뉴스 실시간 업데이트.</p>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div class="tradingview-widget-container" style="height:500px;">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        {"feedMode":"market","market":"crypto","isTransparent":true,"displayMode":"regular","width":"100%","height":500,"colorTheme":"dark","locale":"kr"}
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">📢 광고 영역 (뉴스 하단)</div>
+
+  <!-- ============================================ -->
+  <!-- ⑦ 코린이 Q&A 가이드 — 핵심 SEO 섹션          -->
+  <!-- ============================================ -->
+  <div id="sec-guide" style="scroll-margin-top:70px;">
+
+    <!-- SEO 랜딩 텍스트 -->
+    <div class="card">
+      <div class="seo-section">
+        <h2>📊 코린이가 차트를 봐야 하는 이유</h2>
+        <p>코인 투자를 처음 시작하면 "그냥 사면 되지"라고 생각하기 쉽습니다. 하지만 차트를 전혀 보지 않고 코인을 사는 것은 지도 없이 길을 찾는 것과 같습니다. 버블차트와 히트맵만 봐도 지금 시장 전체가 상승 중인지 하락 중인지 10초 안에 파악할 수 있습니다. 이 판단 하나만으로도 충동 매수를 크게 줄일 수 있습니다.</p>
+        <p>실시간 차트의 이동평균선(MA)은 "지금 가격이 평소보다 높은지 낮은지"를 알려주는 가장 기본적인 지표입니다. RSI가 30 이하라면 과매도 구간으로 반등 가능성이 높고, 70 이상이라면 과열 신호로 단기 조정이 올 수 있습니다. 이 두 가지만 알아도 코인 초보를 벗어날 수 있습니다.</p>
+      </div>
+      <div class="seo-section">
+        <h2>🫧 버블차트 vs 🗺️ 히트맵 — 어떻게 다른가요?</h2>
+        <p>버블차트와 히트맵은 둘 다 "어떤 코인이 오르고 내리는지"를 시각적으로 보여주지만 관점이 다릅니다. 버블차트는 원형 버블로 코인 간 상대적 크기와 등락을 직관적으로 보여줍니다. 반면 히트맵은 사각형 블록으로 시가총액 비중을 면적으로 나타내기 때문에 비트코인이 전체 시장에서 얼마나 지배적인지 바로 파악할 수 있습니다.</p>
+        <p>코린이 추천 활용법: 아침에 눈을 뜨면 먼저 히트맵으로 전체 시장 분위기를 확인하고, 특정 코인이 궁금하면 버블차트에서 그 코인의 색상과 크기를 확인하세요. 10초면 충분합니다.</p>
+      </div>
+    </div>
+
+    <!-- 코린이 Q&A 그리드 -->
+    <div class="card">
+      <div class="sec-title"><h2>🐣 코린이 Q&A — 차트·히트맵·버블 완전 정복</h2></div>
+      <div class="qna-grid">
+
+        <div class="qna-item">
+          <div class="q">Q. 화면이 온통 빨간색이에요. 지금 팔아야 하나요?</div>
+          <div class="a">빨간색 가득한 화면은 <strong>하락장(Bear Market)</strong> 신호입니다. 하지만 이것이 반드시 매도 타이밍은 아닙니다. 공포·탐욕 지수가 20 이하(극단적 공포)이면 오히려 <strong>장기 투자자에게 매수 기회</strong>일 수 있습니다. 단기 손절은 신중하게 결정하세요.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 버블이 초록색인데 왜 내 코인은 마이너스예요?</div>
+          <div class="a">버블차트는 <strong>전체 시장 평균</strong>을 보여줍니다. 대형 코인(BTC, ETH)이 오르면 전체적으로 초록이어도 내가 가진 소형 알트코인은 하락할 수 있습니다. 이럴 때는 <strong>BTC 도미넌스</strong>를 확인하세요. 도미넌스가 높으면 자금이 비트코인에만 몰리고 있다는 의미입니다.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. RSI 70이면 지금 팔아야 하나요?</div>
+          <div class="a">RSI 70 이상은 <strong>과열 신호</strong>지만 반드시 즉시 하락을 의미하지는 않습니다. 강한 상승장에서는 RSI가 90 이상을 유지하기도 합니다. RSI만으로 매매하지 말고 <strong>이동평균선, MACD, 뉴스</strong>를 함께 보는 것이 좋습니다.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 히트맵에서 BTC 블록이 제일 큰 이유는?</div>
+          <div class="a">비트코인(BTC)의 시가총액이 전체 암호화폐 시장의 약 <strong>50~60%</strong>를 차지하기 때문입니다. 이를 <strong>BTC 도미넌스</strong>라고 합니다. 도미넌스가 낮아지면 알트코인 시즌이 올 가능성이 높고, 높아지면 비트코인 중심 장세입니다.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 차트를 매일 봐야 하나요?</div>
+          <div class="a">장기 투자(홀딩) 전략이라면 <strong>매일 볼 필요 없습니다</strong>. 오히려 매일 보면 감정 매매를 유발할 수 있습니다. 주 1~2회 히트맵으로 큰 흐름만 확인하고, 본인의 DCA 계획대로 꾸준히 적립하는 것이 더 효과적입니다.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 코인 수익에 세금이 얼마나 붙나요?</div>
+          <div class="a">2027년부터 연간 수익 <strong>250만원 초과분에 22%(소득세 20%+지방세 2%)</strong>가 부과됩니다. 예: 연 500만원 수익 → (500만-250만) × 22% = <strong>55만원 세금</strong>. 아래 세금 계산기로 미리 확인하세요.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 버블차트에서 어떤 코인을 사야 하나요?</div>
+          <div class="a">버블차트는 <strong>종목 선택 도구가 아닙니다</strong>. 단기 급등 코인을 보고 충동 매수하는 것은 위험합니다. 버블차트는 시장 분위기 파악용으로만 활용하고, 종목은 프로젝트 내용, 팀, 사용처를 별도로 조사하세요.</div>
+        </div>
+
+        <div class="qna-item">
+          <div class="q">Q. 이 도구들은 정말 무료인가요?</div>
+          <div class="a">네, <strong>완전 무료</strong>입니다. TradingView 위젯과 CryptoBubbles iframe은 무료 embed 서비스이며, 이 페이지의 모든 도구는 회원가입 없이 사용할 수 있습니다. 수익은 Google AdSense 광고를 통해서만 발생합니다.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /sec-guide -->
+
+  <!-- ===== FAQ 아코디언 (추가 SEO) ===== -->
+  <div class="card">
+    <div class="sec-title"><h2>❓ 자주 묻는 질문</h2></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">버블차트와 히트맵의 차이는 무엇인가요? <span>▼</span></div>
+      <div class="faq-a">버블차트는 원형 버블로, 히트맵은 사각형 블록으로 시각화합니다. 버블차트는 코인 간 상대 비교가 직관적이고, 히트맵은 시가총액 비중까지 함께 파악할 수 있어 전체 시장 구조를 이해하는 데 유리합니다. 두 가지를 함께 활용하는 것이 가장 효과적입니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">기술적 분석 신호는 얼마나 신뢰할 수 있나요? <span>▼</span></div>
+      <div class="faq-a">기술적 분석은 과거 가격·거래량 패턴 기반으로 확률적 신호를 제공합니다. <strong>반드시 맞는 것이 아니며</strong>, 뉴스·온체인 데이터·공포탐욕 지수와 함께 종합 판단하는 것이 중요합니다. 특히 급격한 뉴스(규제, 해킹 등) 발생 시에는 기술적 분석이 맞지 않을 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">차트 데이터는 실시간인가요? <span>▼</span></div>
+      <div class="faq-a">TradingView 위젯은 바이낸스 등 주요 거래소 실시간 데이터를 반영합니다. 업비트·빗썸 KRW 마켓은 차트에서 'BTC/KRW' 탭을 선택하면 확인할 수 있습니다. 시세 카드는 CoinGecko API를 통해 30초마다 자동 갱신됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">코인 수익에 세금이 붙나요? 얼마나 내야 하나요? <span>▼</span></div>
+      <div class="faq-a">2027년부터 가상자산 양도소득세 22%가 부과됩니다. 연간 수익 250만원까지는 기본공제로 세금이 없습니다. 예시: 연 수익 500만원 → (500만-250만) × 22% = 55만원. 아래 무료 세금 계산기로 본인의 예상 세금을 미리 계산해보세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">코린이가 처음 봐야 할 도구 순서는? <span>▼</span></div>
+      <div class="faq-a">① <strong>히트맵</strong>으로 전체 시장 분위기 확인 (초록 많으면 상승장, 빨간색 많으면 하락장) → ② <strong>공포·탐욕 지수</strong>로 지금이 공포 구간인지 탐욕 구간인지 확인 → ③ <strong>BTC 실시간 차트</strong>에서 이동평균선 위/아래 위치 확인 → ④ 투자 결정 시 <strong>DCA 계산기</strong>로 분할 매수 계획 수립.</div>
+    </div>
+
+  </div>
+
+  <!-- ===== 관련 무료 도구 ===== -->
+  <div class="card">
+    <div class="sec-title"><h2>🧰 함께 쓰면 좋은 무료 도구</h2></div>
+    <div class="tool-links">
+      <a href="https://cryptotax.cloud/market/bitcoin-rainbow-chart.html" class="tool-link"><span class="icon">🌈</span>레인보우 차트</a>
+      <a href="https://cryptotax.cloud/market/fear-greed.html" class="tool-link"><span class="icon">😨</span>공포·탐욕 지수</a>
+      <a href="https://cryptotax.cloud/market/dominance.html" class="tool-link"><span class="icon">₿</span>BTC 도미넌스</a>
+      <a href="https://cryptotax.cloud/market/altseason.html" class="tool-link"><span class="icon">🚀</span>알트코인 시즌</a>
+      <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 계산기</a>
+      <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-link"><span class="icon">🏦</span>스테이킹 계산기</a>
+      <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-link"><span class="icon">📊</span>수익률 계산기</a>
+      <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-link"><span class="icon">₿</span>사토시 환산기</a>
+      <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>세금 계산기</a>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/tools/">계산기 모음</a>
+    <a href="https://cryptotax.cloud/market/">시장 데이터</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <div class="footer-copy">© 2026 CryptoTax.cloud — 차트 데이터는 참고용이며 투자 조언이 아닙니다.</div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+/* ===== 테마 ===== */
+(function(){
+  const t = localStorage.getItem('ctc-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  updateThemeUI(t);
+})();
+function toggleTheme(){
+  const cur  = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('ctc-theme', next);
+  updateThemeUI(next);
+}
+function updateThemeUI(t){
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(t === 'light'){ if(icon) icon.textContent='🌙'; if(label) label.textContent='다크'; }
+  else             { if(icon) icon.textContent='☀️'; if(label) label.textContent='라이트'; }
+}
+
+/* ===== 섹션 스크롤 ===== */
+function scrollToSec(id, btn){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+}
+
+/* ===== FAQ ===== */
+function toggleFaq(el){
+  const a    = el.nextElementSibling;
+  const open = a.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(x => x.style.display='none');
+  document.querySelectorAll('.faq-q span').forEach(s => s.textContent='▼');
+  if(!open){ a.style.display='block'; el.querySelector('span').textContent='▲'; }
+}
+
+/* ===== TradingView 고급 차트 ===== */
+let tvWidget = null, tvLoaded = false;
+function initTVChart(){
+  if(tvLoaded) return;
+  tvLoaded = true;
+  tvWidget = new TradingView.widget({
+    container_id:'tradingview-chart',
+    width:'100%', height:500,
+    symbol:'BINANCE:BTCUSDT',
+    interval:'D',
+    timezone:'Asia/Seoul',
+    theme: document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark',
+    style:'1',
+    locale:'kr',
+    enable_publishing:false,
+    save_image:true,
+    studies:['RSI@tv-basicstudies','MACD@tv-basicstudies'],
+    show_popup_button:true,
+  });
+}
+function switchChart(symbol, btn){
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  if(tvWidget) tvWidget.setSymbol(symbol, 'D', function(){});
+}
+
+/* ===== 버블 기간 탭 ===== */
+function changeBubblePeriod(btn){
+  document.querySelectorAll('.bptab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  // CryptoBubbles는 외부 iframe이므로 리로드
+  const iframe = document.getElementById('bubbleIframe');
+  iframe.src = iframe.src;
+}
+
+/* ===== CoinGecko 실시간 시세 ===== */
+const COINS = [
+  {id:'bitcoin',     sym:'BTC', kid:'btc'},
+  {id:'ethereum',    sym:'ETH', kid:'eth'},
+  {id:'ripple',      sym:'XRP', kid:'xrp'},
+  {id:'solana',      sym:'SOL', kid:'sol'},
+  {id:'binancecoin', sym:'BNB', kid:'bnb'},
+];
+
+function fmtKrw(v){
+  if(v >= 100000000) return (v/100000000).toFixed(2)+'억';
+  if(v >= 10000)     return (v/10000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')+'만';
+  return v.toLocaleString('ko-KR');
+}
+
+async function fetchMarketData(){
+  try{
+    const ids = COINS.map(c=>c.id).join(',');
+    const res  = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=krw&include_24hr_change=true&include_market_cap=true`);
+    const data = await res.json();
+    let totalChg=0, totalMcap=0;
+    COINS.forEach(c=>{
+      const d = data[c.id]; if(!d) return;
+      const chg = d.krw_24h_change;
+      totalChg  += chg;
+      totalMcap += d.krw_market_cap||0;
+      const pe = document.getElementById('p-'+c.kid);
+      const ce = document.getElementById('c-'+c.kid);
+      if(pe) pe.textContent = fmtKrw(d.krw);
+      if(ce){ ce.textContent=(chg>=0?'+':'')+chg.toFixed(2)+'%'; ce.className='ms-chg '+(chg>=0?'up':'dn'); }
+    });
+    const avgChg = totalChg/COINS.length;
+    const mce = document.getElementById('market-chg');
+    const mee = document.getElementById('market-emoji');
+    if(mce){ mce.textContent=(avgChg>=0?'+':'')+avgChg.toFixed(2)+'%'; mce.style.color=avgChg>=0?'var(--green)':'var(--red)'; }
+    if(mee) mee.textContent=avgChg>=0?'📈':'📉';
+    const tme = document.getElementById('total-mcap');
+    if(tme) tme.textContent=(totalMcap/1e12).toFixed(2)+'조';
+    buildTicker(data);
+  }catch(e){ console.warn('시세 오류',e); }
+}
+
+function buildTicker(data){
+  const inner = document.getElementById('tickerInner');
+  if(!inner) return;
+  let html='';
+  for(let r=0;r<2;r++){
+    COINS.forEach(c=>{
+      const d=data[c.id]; if(!d) return;
+      const chg=d.krw_24h_change;
+      html+=`<div class="ticker-item">
+        <span class="ticker-coin">${c.sym}</span>
+        <span class="ticker-price">${fmtKrw(d.krw)}원</span>
+        <span class="ticker-change ${chg>=0?'up':'dn'}">${chg>=0?'▲':'▼'}${Math.abs(chg).toFixed(2)}%</span>
+      </div>`;
+    });
+  }
+  inner.innerHTML=html;
+}
+
+async function fetchFearGreed(){
+  try{
+    const res  = await fetch('https://api.alternative.me/fng/?limit=1');
+    const data = await res.json();
+    const val  = parseInt(data.data[0].value);
+    const cls  = data.data[0].value_classification;
+    const pf   = document.getElementById('p-fg');
+    const cf   = document.getElementById('c-fg');
+    if(pf) pf.textContent=val;
+    if(cf){ cf.textContent=cls; cf.className='ms-chg '+(val>50?'up':val<30?'dn':'loading'); }
+    const fgv=document.getElementById('fg-val');
+    const fge=document.getElementById('fg-emoji');
+    if(fgv){ fgv.textContent=val+' '+cls; fgv.style.color=val>=70?'var(--green)':val<=25?'var(--red)':'var(--orange)'; }
+    if(fge) fge.textContent=val>=70?'🤑':val>=55?'😊':val>=45?'😐':val>=30?'😨':'😱';
+  }catch(e){}
+}
+
+async function fetchDominance(){
+  try{
+    const res  = await fetch('https://api.coingecko.com/api/v3/global');
+    const data = await res.json();
+    const dom  = data.data.market_cap_percentage.btc;
+    const dv   = document.getElementById('dom-val');
+    if(dv) dv.textContent=dom.toFixed(1)+'%';
+  }catch(e){}
+}
+
+window.addEventListener('load',()=>{
+  fetchMarketData();
+  fetchFearGreed();
+  fetchDominance();
+  setInterval(fetchMarketData, 30000);
+  setInterval(fetchFearGreed,  60000);
+  // 히트맵 로딩 숨기기
+  setTimeout(()=>{
+    const hl=document.getElementById('heatmap-loading');
+    if(hl){ hl.style.opacity='0'; setTimeout(()=>{ if(hl) hl.style.display='none'; },500); }
+  }, 3500);
+});
+</script>
+</body>
+</html>
