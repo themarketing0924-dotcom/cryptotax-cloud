@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 거래 수수료 계산기 무료 | 업비트 빗썸 바이낸스 수수료 비교 | CryptoTax.cloud</title>
+<meta name="description" content="업비트 0.05%, 빗썸, 바이낸스 수수료를 즉시 비교. 매수·매도 금액 입력 시 거래소별 수수료와 실수령액 자동 계산. 무료.">
+<meta name="keywords" content="코인 수수료 계산기, 업비트 수수료, 빗썸 수수료, 바이낸스 수수료, 거래소 수수료 비교, 코인 거래 수수료">
+<link rel="canonical" href="https://cryptotax.cloud/tools/fee-calculator.html">
+<meta property="og:title" content="코인 거래 수수료 계산기 무료 | CryptoTax.cloud">
+<meta property="og:url" content="https://cryptotax.cloud/tools/fee-calculator.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "업비트 수수료는 얼마인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "업비트 원화마켓 수수료는 매수·매도 각각 0.05%입니다. 1,000만원 거래 시 5,000원의 수수료가 발생합니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "빗썸 수수료는 얼마인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "빗썸 기본 수수료는 0.25%이며, 거래량과 이벤트에 따라 할인이 적용될 수 있습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "코인 수수료도 세금 계산 시 공제되나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "네. 2027년 가상자산 과세 시 거래 수수료는 필요경비로 인정되어 수익에서 차감됩니다. 수익 = 매도금액 - 매수금액 - 수수료입니다." }
+    }
+  ]
+}
+</script>
+<style>
+  :root { --bg:#0d0d1a;--bg-surface:#1a1a2e;--bg-elevated:#24243e;--text:#e8e8f0;--text-sub:#9999bb;--text-muted:#6666aa;--orange:#f7931a;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--border:#2a2a4a;--shadow:0 4px 24px rgba(0,0,0,.45);--tr:.25s ease;--radius:14px; }
+  [data-theme="light"] { --bg:#f6f8fa;--bg-surface:#fff;--bg-elevated:#f0f2f5;--text:#1a1a2e;--text-sub:#57606a;--text-muted:#8c959f;--border:#d0d7de;--shadow:0 4px 24px rgba(0,0,0,.08); }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+  a{color:var(--orange);text-decoration:none;}a:hover{text-decoration:underline;}
+  .nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+  .nav-links{display:flex;gap:20px;font-size:.9rem;}.nav-links a{color:var(--text-sub);}
+  .theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
+  .breadcrumb{max-width:860px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+  .breadcrumb a{color:var(--text-muted);}
+  .hero{max-width:860px;margin:0 auto;padding:40px 20px 20px;text-align:center;}
+  .hero-badge{display:inline-block;background:rgba(247,147,26,.15);border:1px solid rgba(247,147,26,.3);color:var(--orange);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px;}
+  .hero h1 span{color:var(--orange);}
+  .hero p{font-size:1rem;color:var(--text-sub);max-width:640px;margin:0 auto 24px;}
+  .ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:860px;margin:16px auto;}
+  .calc-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+  .calc-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+  .calc-title{font-size:1.1rem;font-weight:800;margin-bottom:20px;}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+  .form-group label{font-size:.85rem;color:var(--text-sub);font-weight:600;}
+  .form-group input{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;outline:none;transition:border-color var(--tr);}
+  .form-group input:focus{border-color:var(--orange);}
+  .calc-btn{width:100%;margin-top:8px;padding:16px;background:linear-gradient(135deg,var(--orange),#e6820f);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;}
+  .fee-table{width:100%;border-collapse:collapse;margin-top:20px;}
+  .fee-table th,.fee-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem;}
+  .fee-table th{background:var(--bg-elevated);font-weight:700;color:var(--text-sub);}
+  .fee-table tr:hover{background:var(--bg-elevated);}
+  .best-row{color:var(--green);font-weight:800;}
+  .result-note{margin-top:14px;font-size:.82rem;color:var(--text-muted);}
+  .formula-section,.tools-section,.faq-section,.seo-section{max-width:860px;margin:32px auto;padding:0 20px;}
+  .formula-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+  .formula-card h2{font-size:1.15rem;font-weight:800;margin-bottom:16px;}
+  .formula-block{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:.95rem;}
+  .formula-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7;margin:10px 0;}
+  .cta-banner{max-width:860px;margin:24px auto;padding:0 20px;}
+  .cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.1));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .cta-inner .cta-icon{font-size:2rem;}
+  .cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+  .cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+  .cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:10px 22px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
+  .tools-section h2,.faq-section h2,.seo-section h2{font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+  .tool-link{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color var(--tr),transform var(--tr);}
+  .tool-link:hover{border-color:var(--orange);transform:translateY(-2px);text-decoration:none;color:var(--text);}
+  .faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+  .faq-q{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'▼';font-size:.75rem;color:var(--text-muted);transition:transform var(--tr);}
+  .faq-item.open .faq-q::after{transform:rotate(180deg);}
+  .faq-a{display:none;padding:0 20px 16px;font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+  .faq-item.open .faq-a{display:block;}
+  .seo-section p{font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:12px;}
+  .footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+  .footer-inner{max-width:860px;margin:0 auto;}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+  .footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+  .footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+  .footer-col a:hover{color:var(--text);text-decoration:none;}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
+  <div class="nav-links"><a href="/">홈</a><a href="/tools/">계산기</a><a href="/market/crypto-charts.html">시장</a><a href="/blog/">블로그</a></div>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
+</nav>
+<div class="breadcrumb"><a href="/">홈</a> › <a href="/tools/">계산기 도구</a> › 코인 수수료 계산기</div>
+
+<section class="hero">
+  <div class="hero-badge">💸 거래소별 수수료 비교</div>
+  <h1>코인 거래 수수료 계산기<br><span>업비트·빗썸·바이낸스</span> 즉시 비교</h1>
+  <p>수수료를 모르면 수익률 계산이 틀립니다. 거래 금액 입력 시 거래소별 수수료와 <strong>실수령액을 즉시 비교</strong>해드립니다.</p>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-title">💸 수수료 비교 계산기</div>
+    <div class="form-group">
+      <label>거래 금액 (원)</label>
+      <input type="number" id="tradeAmt" placeholder="예: 10000000 (1,000만원)" min="0" oninput="calcFee()">
+    </div>
+    <div class="form-group">
+      <label>커스텀 수수료율 (%, 선택 — 직접 입력)</label>
+      <input type="number" id="customFee" placeholder="예: 0.1" min="0" step="0.001" oninput="calcFee()">
+    </div>
+    <button class="calc-btn" onclick="calcFee()">💸 수수료 계산하기</button>
+    <table class="fee-table" id="feeTable" style="display:none;">
+      <thead><tr><th>거래소</th><th>수수료율</th><th>매수 수수료</th><th>매도 수수료</th><th>왕복 수수료</th><th>실수령액 (1회)</th></tr></thead>
+      <tbody id="feeBody"></tbody>
+    </table>
+    <p class="result-note" id="feeNote" style="display:none;">⚠️ 수수료는 변경될 수 있으며, 실제 거래소 수수료를 확인하세요. 수수료는 2027년 세금 계산 시 필요경비로 인정됩니다.</p>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (결과 하단)</div>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-icon">💰</div>
+    <div class="cta-text">
+      <h3>수수료 포함한 실제 세후 수익 계산</h3>
+      <p>수수료는 세금 계산 시 필요경비로 인정됩니다. 세금 계산기로 정확한 세후 수익을 확인하세요.</p>
+    </div>
+    <a class="cta-link" href="/tools/tax-calculator.html">세금 계산하기 →</a>
+  </div>
+</div>
+
+<section class="formula-section">
+  <div class="formula-card">
+    <h2>📐 수수료 계산 공식</h2>
+    <p><strong>① 수수료 계산</strong></p>
+    <div class="formula-block">수수료 = 거래 금액 × 수수료율(%)</div>
+    <p><strong>② 왕복 수수료 (매수 + 매도)</strong></p>
+    <div class="formula-block">왕복 수수료 = (매수 수수료) + (매도 수수료) = 매수금액×수수료율 + 매도금액×수수료율</div>
+    <p><strong>계산 예시:</strong> 업비트 0.05%, 1,000만원 매수 → 1,500만원 매도</p>
+    <div class="formula-block">
+매수 수수료 = 1,000만 × 0.05% = 5,000원<br>
+매도 수수료 = 1,500만 × 0.05% = 7,500원<br>
+왕복 수수료 = 12,500원<br>
+세금 계산 시 수익 = 500만 - 12,500 = 4,987,500원
+    </div>
+    <p>📎 공식 거래소 수수료 안내: <a href="https://upbit.com/service_center/notice?id=4566" target="_blank" rel="noopener">업비트 수수료 안내</a></p>
+  </div>
+</section>
+
+<section class="tools-section">
+  <h2>🧰 함께 쓰면 더 유용한 무료 계산기</h2>
+  <div class="tools-grid">
+    <a class="tool-link" href="/tools/tax-calculator.html">💰 코인 세금 계산기</a>
+    <a class="tool-link" href="/tools/roi-calculator.html">📈 수익률 계산기</a>
+    <a class="tool-link" href="/tools/dca-calculator.html">🔄 DCA 계산기</a>
+    <a class="tool-link" href="/tools/multa-calculator.html">💧 물타기 계산기</a>
+    <a class="tool-link" href="/tools/kimchi-calculator.html">🌶️ 김치 프리미엄 계산기</a>
+    <a class="tool-link" href="/tools/tax-loss-harvesting.html">🌿 손실 세금 최적화</a>
+    <a class="tool-link" href="/tools/satoshi-calculator.html">₿ 사토시 환산기</a>
+    <a class="tool-link" href="/market/crypto-charts.html">📡 실시간 차트</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>❓ 수수료 자주 묻는 질문</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">업비트 수수료는 얼마인가요?</div>
+    <div class="faq-a">업비트 원화마켓 수수료는 매수·매도 각각 <strong>0.05%</strong>입니다. 1,000만원 거래 시 5,000원, 1억원 거래 시 50,000원이 수수료로 차감됩니다. 업비트는 주요 국내 거래소 중 가장 낮은 수수료율을 제공합니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">수수료가 세금 계산에 영향을 주나요?</div>
+    <div class="faq-a">네. 2027년 가상자산 과세 시 <strong>거래 수수료는 필요경비로 인정</strong>되어 수익에서 차감됩니다. 수익 = 매도금액 - 취득원가 - 수수료 공식으로 계산됩니다. 수수료를 포함해야 정확한 세금이 계산됩니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">바이낸스 수수료는 얼마인가요?</div>
+    <div class="faq-a">바이낸스 기본 수수료는 <strong>0.1%</strong>이며, BNB 코인으로 결제 시 25% 할인된 0.075%가 적용됩니다. 거래량이 많을수록 등급이 올라가 수수료가 더 낮아집니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">거래소 수수료가 높으면 어떤 영향이 있나요?</div>
+    <div class="faq-a">수수료가 높을수록 실질 수익률이 낮아집니다. 단기 매매를 자주 할수록 수수료 누적 비용이 커지므로, 장기 투자 전략과 함께 거래소 수수료를 꼼꼼히 비교하는 것이 중요합니다.</div>
+  </div>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+
+<section class="seo-section">
+  <h2>📖 코인 수수료 완전 가이드</h2>
+  <p>거래소 수수료는 겉으로 작아 보이지만 장기적으로 수익에 큰 영향을 미칩니다. 업비트 0.05% vs 빗썸 0.25% — 1억원 매수·매도 기준으로 업비트는 10만원, 빗썸은 50만원의 수수료가 발생합니다. 이 차이가 연간 수십 번의 거래라면 수백만원의 차이가 될 수 있습니다.</p>
+  <p>2027년 세금 계산 시 수수료는 <strong>필요경비로 공제</strong>되므로, 정확한 수수료 내역을 기록해두는 것이 절세에 도움이 됩니다. 업비트 CSV 파일에는 거래별 수수료가 자동으로 포함되어 있어 <a href="/tools/csv-tax-calculator.html">CSV 세금 계산기</a>로 손쉽게 계산할 수 있습니다.</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>₿ CryptoTax.cloud</h4><p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한 무료 계산기 허브.</p></div>
+      <div class="footer-col"><h4>계산기 도구</h4>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/roi-calculator.html">수익률 계산기</a>
+        <a href="/tools/multa-calculator.html">물타기 계산기</a>
+        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
+        <a href="/tools/staking-calculator.html">스테이킹 계산기</a>
+        <a href="/tools/satoshi-calculator.html">사토시 환산기</a>
+        <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화</a>
+        <a href="/tools/kimchi-calculator.html">김치 프리미엄 계산기</a>
+      </div>
+      <div class="footer-col"><h4>시장 데이터</h4>
+        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
+        <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>
+      </div>
+      <div class="footer-col"><h4>사이트 정보</h4>
+        <a href="/blog/">블로그</a>
+        <a href="/consultation.html">무료 세무 상담</a>
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;"><a href="/about.html">사이트 소개</a><a href="/privacy-policy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책조항</a></div>
+      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용입니다.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){ const t=localStorage.getItem('ctc-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();
+function toggleTheme(){const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('ctc-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'🌙 다크':'☀️ 라이트';}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function fmtKrw(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+
+const EXCHANGES = [
+  { name: '업비트', emoji: '🇰🇷', rate: 0.0005, note: '원화마켓 기준' },
+  { name: '빗썸', emoji: '🇰🇷', rate: 0.0025, note: '기본 수수료' },
+  { name: '코인원', emoji: '🇰🇷', rate: 0.002, note: '기본 수수료' },
+  { name: '바이낸스', emoji: '🌐', rate: 0.001, note: '기본 (BNB 할인 전)' },
+  { name: '바이낸스 BNB', emoji: '🌐', rate: 0.00075, note: 'BNB 결제 25% 할인' },
+];
+
+function calcFee() {
+  const amt = parseFloat(document.getElementById('tradeAmt').value) || 0;
+  const custom = parseFloat(document.getElementById('customFee').value);
+  if (!amt) return;
+
+  let exchanges = [...EXCHANGES];
+  if (!isNaN(custom) && custom > 0) {
+    exchanges.push({ name: '직접 입력', emoji: '✏️', rate: custom / 100, note: '사용자 입력' });
+  }
+
+  const tbody = document.getElementById('feeBody');
+  tbody.innerHTML = '';
+  let minFee = Infinity;
+  exchanges.forEach(ex => {
+    const buyFee = amt * ex.rate;
+    const sellFee = amt * ex.rate; // 매도 금액이 같다고 가정
+    const total = buyFee + sellFee;
+    if (total < minFee) minFee = total;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${ex.emoji} ${ex.name}<br><small style="color:var(--text-muted)">${ex.note}</small></td><td>${(ex.rate*100).toFixed(3)}%</td><td>${fmtKrw(buyFee)}</td><td>${fmtKrw(sellFee)}</td><td>${fmtKrw(total)}</td><td>${fmtKrw(amt-buyFee)}</td>`;
+    tbody.appendChild(tr);
+  });
+  // 최저 수수료 행 강조
+  Array.from(tbody.rows).forEach(row => {
+    const total = parseFloat(row.cells[4].textContent.replace(/[^0-9]/g,''));
+    if (total === Math.round(minFee)) row.classList.add('best-row');
+  });
+  document.getElementById('feeTable').style.display = 'table';
+  document.getElementById('feeNote').style.display = 'block';
+}
+</script>
+</body>
+</html>
