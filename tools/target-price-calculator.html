@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 목표가 역산 계산기 무료 | 원하는 수익률로 목표 매도가 계산 | CryptoTax.cloud</title>
+<meta name="description" content="목표 수익률이나 목표 금액을 입력하면 필요한 코인 매도가를 역산합니다. 세금 포함 실수령액 기준 목표가도 계산. 무료.">
+<meta name="keywords" content="코인 목표가 계산기, 목표가 역산, 코인 수익률 목표, 비트코인 목표가, 코인 매도가 계산, 목표 수익 코인">
+<link rel="canonical" href="https://cryptotax.cloud/tools/target-price-calculator.html">
+<meta property="og:title" content="코인 목표가 역산 계산기 무료 | CryptoTax.cloud">
+<meta property="og:url" content="https://cryptotax.cloud/tools/target-price-calculator.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "코인 목표가 역산이란 무엇인가요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "원하는 수익률(예: 50%) 또는 목표 수익금액을 입력하면, 현재 평균 매수가와 보유수량을 기준으로 필요한 매도 목표가를 역산하는 계산 방법입니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "세금 포함 목표가는 어떻게 계산하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "세금 포함 목표가 계산 시 목표 세후 수익에 세금(22%)을 역산으로 더해 필요한 매도가를 구합니다. 공식: 필요 총수익 = (목표 세후수익 + 250만원) ÷ (1 - 0.22)" }
+    }
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d0d1a;--bg-surface:#1a1a2e;--bg-elevated:#24243e;--text:#e8e8f0;--text-sub:#9999bb;--text-muted:#6666aa;--orange:#f7931a;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--border:#2a2a4a;--shadow:0 4px 24px rgba(0,0,0,.45);--tr:.25s ease;--radius:14px;}
+  [data-theme="light"]{--bg:#f6f8fa;--bg-surface:#fff;--bg-elevated:#f0f2f5;--text:#1a1a2e;--text-sub:#57606a;--text-muted:#8c959f;--border:#d0d7de;--shadow:0 4px 24px rgba(0,0,0,.08);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+  a{color:var(--orange);text-decoration:none;}a:hover{text-decoration:underline;}
+  .nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+  .nav-links{display:flex;gap:20px;font-size:.9rem;}.nav-links a{color:var(--text-sub);}
+  .theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
+  .breadcrumb{max-width:860px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+  .breadcrumb a{color:var(--text-muted);}
+  .hero{max-width:860px;margin:0 auto;padding:40px 20px 20px;text-align:center;}
+  .hero-badge{display:inline-block;background:rgba(247,147,26,.15);border:1px solid rgba(247,147,26,.3);color:var(--orange);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+  .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px;}
+  .hero h1 span{color:var(--orange);}
+  .hero p{font-size:1rem;color:var(--text-sub);max-width:640px;margin:0 auto 24px;}
+  .ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:860px;margin:16px auto;}
+  .calc-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+  .calc-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+  .calc-title{font-size:1.1rem;font-weight:800;margin-bottom:20px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group label{font-size:.85rem;color:var(--text-sub);font-weight:600;}
+  .form-group input,.form-group select{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:1rem;outline:none;transition:border-color var(--tr);}
+  .form-group input:focus,.form-group select:focus{border-color:var(--orange);}
+  .mode-tabs{display:flex;gap:8px;margin-bottom:20px;}
+  .mode-tab{flex:1;padding:10px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-sub);text-align:center;transition:all var(--tr);}
+  .mode-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+  .calc-btn{width:100%;margin-top:20px;padding:16px;background:linear-gradient(135deg,var(--orange),#e6820f);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;}
+  .result-box{display:none;margin-top:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
+  .result-box.show{display:block;}
+  .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+  .result-item{background:var(--bg-surface);border-radius:10px;padding:16px;text-align:center;}
+  .result-item .label{font-size:.75rem;color:var(--text-muted);margin-bottom:6px;}
+  .result-item .value{font-size:1.2rem;font-weight:800;}
+  .value.orange{color:var(--orange);}
+  .value.green{color:var(--green);}
+  .result-note{margin-top:14px;font-size:.82rem;color:var(--text-muted);}
+  .formula-section,.tools-section,.faq-section,.seo-section{max-width:860px;margin:32px auto;padding:0 20px;}
+  .formula-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+  .formula-card h2{font-size:1.15rem;font-weight:800;margin-bottom:16px;}
+  .formula-block{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:monospace;font-size:.9rem;line-height:1.6;}
+  .formula-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7;margin:10px 0;}
+  .cta-banner{max-width:860px;margin:24px auto;padding:0 20px;}
+  .cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.1));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .cta-inner .cta-icon{font-size:2rem;}
+  .cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+  .cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+  .cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:10px 22px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
+  .tools-section h2,.faq-section h2,.seo-section h2{font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+  .tool-link{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color var(--tr),transform var(--tr);}
+  .tool-link:hover{border-color:var(--orange);transform:translateY(-2px);text-decoration:none;color:var(--text);}
+  .faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+  .faq-q{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'▼';font-size:.75rem;color:var(--text-muted);transition:transform var(--tr);}
+  .faq-item.open .faq-q::after{transform:rotate(180deg);}
+  .faq-a{display:none;padding:0 20px 16px;font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+  .faq-item.open .faq-a{display:block;}
+  .seo-section p{font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:12px;}
+  .footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+  .footer-inner{max-width:860px;margin:0 auto;}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+  .footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+  .footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+  .footer-col a:hover{color:var(--text);text-decoration:none;}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
+  <div class="nav-links"><a href="/">홈</a><a href="/tools/">계산기</a><a href="/market/crypto-charts.html">시장</a><a href="/blog/">블로그</a></div>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
+</nav>
+<div class="breadcrumb"><a href="/">홈</a> › <a href="/tools/">계산기 도구</a> › 목표가 역산 계산기</div>
+
+<section class="hero">
+  <div class="hero-badge">🎯 목표가 역산 · 수익 목표 설정</div>
+  <h1>코인 목표가 역산 계산기<br><span>원하는 수익률 달성</span>에 필요한 매도가 즉시 계산</h1>
+  <p>"얼마가 되면 팔아야 할까?" — 목표 수익률 또는 목표 금액을 입력하면 <strong>필요한 목표 매도가</strong>를 즉시 역산합니다. 세금 포함 실수령 기준도 계산 가능.</p>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-title">🎯 목표가 역산 계산기</div>
+    <div class="mode-tabs">
+      <div class="mode-tab active" id="tab1" onclick="switchMode(1)">📈 목표 수익률로 계산</div>
+      <div class="mode-tab" id="tab2" onclick="switchMode(2)">💰 목표 수익금액으로 계산</div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>평균 매수가 (원/개)</label>
+        <input type="number" id="avgBuy" placeholder="예: 100000000 (1억원)" min="0">
+      </div>
+      <div class="form-group">
+        <label>보유 수량</label>
+        <input type="number" id="holdQty" placeholder="예: 0.1 BTC" min="0" step="0.00001">
+      </div>
+      <div class="form-group" id="rateGroup">
+        <label>목표 수익률 (%)</label>
+        <input type="number" id="targetRate" placeholder="예: 50 (50% 수익)" min="0">
+      </div>
+      <div class="form-group" id="amtGroup" style="display:none;">
+        <label>목표 수익금액 (원)</label>
+        <input type="number" id="targetAmt" placeholder="예: 5000000 (500만원)" min="0">
+      </div>
+      <div class="form-group">
+        <label>수수료율 (%)</label>
+        <input type="number" id="feeRate" value="0.05" min="0" step="0.01">
+      </div>
+      <div class="form-group">
+        <label>세금 계산 포함 여부</label>
+        <select id="taxMode">
+          <option value="0">세금 미포함 (세전 목표가)</option>
+          <option value="1">세금 포함 (세후 실수령 기준)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calcTarget()">🎯 목표가 계산하기</button>
+    <div class="result-box" id="resultBox">
+      <div class="result-grid">
+        <div class="result-item"><div class="label">목표 매도가 (원/개)</div><div class="value orange" id="rTarget">-</div></div>
+        <div class="result-item"><div class="label">목표 총 매도금액</div><div class="value" id="rTotalSell">-</div></div>
+        <div class="result-item"><div class="label">목표 수익 (세전)</div><div class="value green" id="rProfit">-</div></div>
+        <div class="result-item"><div class="label">예상 세금 (22%)</div><div class="value" id="rTax">-</div></div>
+        <div class="result-item"><div class="label">세후 실수령액</div><div class="value green" id="rNet">-</div></div>
+        <div class="result-item"><div class="label">현재가 대비 필요 상승률</div><div class="value orange" id="rRise">-</div></div>
+      </div>
+      <p class="result-note">⚠️ 수수료와 세금이 포함된 계산입니다. 실제 투자 결정 전 세무사 상담을 권장합니다.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (결과 하단)</div>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-icon">💰</div>
+    <div class="cta-text">
+      <h3>목표가 도달 전, 세금 미리 준비하세요</h3>
+      <p>2027년부터 22% 양도소득세. 지금 세금 계산기로 목표 달성 시 실수령액을 확인하세요.</p>
+    </div>
+    <a class="cta-link" href="/tools/tax-calculator.html">세금 계산하기 →</a>
+  </div>
+</div>
+
+<section class="formula-section">
+  <div class="formula-card">
+    <h2>📐 목표가 역산 공식</h2>
+    <p><strong>① 수익률 기준 목표 매도가</strong></p>
+    <div class="formula-block">목표 매도가 = 평균 매수가 × (1 + 목표수익률/100) ÷ (1 - 수수료율)</div>
+    <p><strong>② 목표 수익금액 기준</strong></p>
+    <div class="formula-block">목표 총매도금액 = 총투자금액 + 목표수익금액<br>목표 매도가 = 목표 총매도금액 ÷ 보유수량</div>
+    <p><strong>③ 세금 포함 목표가 역산</strong></p>
+    <div class="formula-block">
+필요 세전 수익 = (목표 세후수익 + 250만원) ÷ (1 - 0.22)<br>
+단, 목표 세후수익 ≤ 250만원이면 세금 없음
+    </div>
+    <p><strong>계산 예시:</strong> 평균 매수가 1억원, 0.1 BTC 보유, 세후 500만원 목표</p>
+    <div class="formula-block">
+총 투자금액 = 1억 × 0.1 = 1,000만원<br>
+필요 세전 수익 = (500만 + 250만) ÷ 0.78 = 약 961만원<br>
+목표 총매도금액 = 1,000만 + 961만 = 1,961만원<br>
+목표 매도가 = 1,961만 ÷ 0.1 BTC = 1억 9,610만원/BTC
+    </div>
+  </div>
+</section>
+
+<section class="tools-section">
+  <h2>🧰 함께 쓰면 더 유용한 무료 계산기</h2>
+  <div class="tools-grid">
+    <a class="tool-link" href="/tools/tax-calculator.html">💰 코인 세금 계산기</a>
+    <a class="tool-link" href="/tools/roi-calculator.html">📈 수익률 계산기</a>
+    <a class="tool-link" href="/tools/loss-recovery-calculator.html">📉 손실 회복 계산기</a>
+    <a class="tool-link" href="/tools/dca-calculator.html">🔄 DCA 계산기</a>
+    <a class="tool-link" href="/tools/multa-calculator.html">💧 물타기 계산기</a>
+    <a class="tool-link" href="/tools/tax-loss-harvesting.html">🌿 손실 세금 최적화</a>
+    <a class="tool-link" href="/tools/portfolio-tracker.html">📊 포트폴리오 계산기</a>
+    <a class="tool-link" href="/market/bitcoin-rainbow-chart.html">🌈 레인보우 차트</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>❓ 목표가 역산 자주 묻는 질문</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">목표가 역산이란 무엇인가요?</div>
+    <div class="faq-a">원하는 수익률(예: 50%)이나 수익금액(예: 500만원)을 먼저 정하고, 거기서 필요한 매도 가격을 역으로 계산하는 방법입니다. "비트코인이 얼마가 되면 팔아야 하나?"라는 질문에 답을 줍니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">세금 포함 목표가는 왜 더 높게 나오나요?</div>
+    <div class="faq-a">2027년부터 수익의 22%를 세금으로 납부해야 하기 때문입니다. 세후 500만원을 받으려면 세금 납부 후 500만원이 남아야 하므로, 실제로는 더 높은 수익이 필요합니다. 이 계산기는 세금까지 역산해 필요한 매도가를 보여줍니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">목표가 계산 시 수수료를 포함해야 하나요?</div>
+    <div class="faq-a">네. 수수료는 세금 계산 시 필요경비로 인정되므로 포함해야 합니다. 업비트 기준 0.05%를 적용하면 됩니다. 수수료를 제외하면 실제 수익이 과대평가됩니다.</div>
+  </div>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+
+<section class="seo-section">
+  <h2>📖 코인 목표가 설정 전략 — 코린이 가이드</h2>
+  <p>코인 투자에서 <strong>출구 전략(Exit Strategy)</strong>은 매우 중요합니다. "오를 것 같아서 못 팔겠다"는 심리가 결국 수익 기회를 놓치게 만듭니다. 목표가를 미리 정해두고 달성 시 기계적으로 실행하는 것이 장기적으로 유리합니다.</p>
+  <p>실시간 코인 차트는 <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>에서, 비트코인의 현재 과매수/과매도 구간은 <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>에서 확인하세요. 목표가 도달 시 세금까지 미리 준비하면 진정한 수익 실현이 됩니다.</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>₿ CryptoTax.cloud</h4><p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한 무료 계산기 허브.</p></div>
+      <div class="footer-col"><h4>계산기 도구</h4>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/roi-calculator.html">수익률 계산기</a>
+        <a href="/tools/multa-calculator.html">물타기 계산기</a>
+        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
+        <a href="/tools/staking-calculator.html">스테이킹 계산기</a>
+        <a href="/tools/kimchi-calculator.html">김치 프리미엄 계산기</a>
+        <a href="/tools/fee-calculator.html">수수료 비교 계산기</a>
+        <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화</a>
+      </div>
+      <div class="footer-col"><h4>시장 데이터</h4>
+        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
+        <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>
+      </div>
+      <div class="footer-col"><h4>사이트 정보</h4>
+        <a href="/blog/">블로그</a>
+        <a href="/consultation.html">무료 세무 상담</a>
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;"><a href="/about.html">사이트 소개</a><a href="/privacy-policy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책조항</a></div>
+      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용입니다.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){ const t=localStorage.getItem('ctc-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();
+function toggleTheme(){const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('ctc-theme',n);document.querySelector('.theme-btn').textContent=n==='dark'?'🌙 다크':'☀️ 라이트';}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+let currentMode = 1;
+function switchMode(m){
+  currentMode = m;
+  document.getElementById('tab1').classList.toggle('active', m===1);
+  document.getElementById('tab2').classList.toggle('active', m===2);
+  document.getElementById('rateGroup').style.display = m===1?'flex':'none';
+  document.getElementById('amtGroup').style.display = m===2?'flex':'none';
+}
+function calcTarget(){
+  const avgBuy = parseFloat(document.getElementById('avgBuy').value)||0;
+  const qty = parseFloat(document.getElementById('holdQty').value)||0;
+  const feeRate = (parseFloat(document.getElementById('feeRate').value)||0.05)/100;
+  const taxMode = parseInt(document.getElementById('taxMode').value);
+  if(!avgBuy||!qty) return;
+  const totalInvest = avgBuy * qty;
+  let targetProfit = 0;
+  if(currentMode===1){
+    const rate = (parseFloat(document.getElementById('targetRate').value)||0)/100;
+    targetProfit = totalInvest * rate;
+  } else {
+    targetProfit = parseFloat(document.getElementById('targetAmt').value)||0;
+  }
+  let actualProfit = targetProfit;
+  if(taxMode===1){
+    // 역산: 세후 목표 수익 → 세전 필요 수익
+    if(targetProfit > 2500000){
+      actualProfit = (targetProfit - 2500000) / (1 - 0.22) + 2500000;
+    }
+  }
+  const targetTotalSell = totalInvest + actualProfit;
+  const targetPrice = targetTotalSell / qty / (1 - feeRate);
+  const tax = taxMode===1 ? Math.max(0,(actualProfit-2500000)*0.22) : Math.max(0,(targetProfit-2500000)*0.22);
+  const net = targetProfit - (taxMode===0?tax:0);
+  const currentPrice = avgBuy; // 현재가 = 매수가로 가정 (입력 없을 시)
+  const riseNeeded = ((targetPrice/avgBuy)-1)*100;
+  document.getElementById('rTarget').textContent = fmt(targetPrice);
+  document.getElementById('rTotalSell').textContent = fmt(targetTotalSell);
+  document.getElementById('rProfit').textContent = fmt(actualProfit);
+  document.getElementById('rTax').textContent = fmt(tax);
+  document.getElementById('rNet').textContent = fmt(targetProfit);
+  document.getElementById('rRise').textContent = riseNeeded.toFixed(2)+'%';
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
+</body>
+</html>
