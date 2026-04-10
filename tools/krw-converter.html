@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 원화 환산기 무료 | 코인 수량 → 실시간 원화 계산 | CryptoTax.cloud</title>
+<meta name="description" content="비트코인·이더리움 수량을 입력하면 실시간 원화 가치를 즉시 계산. 업비트 시세 기준, 완전 무료. 세금 계산까지 한번에.">
+<meta name="keywords" content="코인 원화 환산기, 비트코인 원화 계산, 이더리움 원화, 코인 가격 원화, 업비트 시세 계산, 코인 수량 원화">
+<link rel="canonical" href="https://cryptotax.cloud/tools/krw-converter.html">
+<meta property="og:title" content="코인 원화 환산기 무료 | CryptoTax.cloud">
+<meta property="og:description" content="코인 수량 입력 시 실시간 원화 가치 즉시 계산. 업비트 시세 기준.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/krw-converter.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "비트코인 0.1개는 원화로 얼마인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "비트코인 가격에 따라 다릅니다. BTC 가격이 1억 3,500만원이라면 0.1 BTC = 1,350만원입니다. 이 계산기는 실시간 시세로 자동 계산해드립니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "코인 원화 환산 시 세금은 얼마인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027년부터 코인 매도 수익에 22% 양도소득세가 부과됩니다. 연간 250만원 기본공제 후 초과분에 적용됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "실시간 코인 시세는 어디서 가져오나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CoinGecko API를 통해 실시간 시세를 가져옵니다. 업비트 시세와 약간 차이가 있을 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --bg:#0d0d1a; --bg-surface:#1a1a2e; --bg-elevated:#24243e;
+  --text:#e8e8f0; --text-sub:#9999bb; --text-muted:#6666aa;
+  --orange:#f7931a; --green:#3fb950; --red:#f85149; --blue:#58a6ff;
+  --border:#2a2a4a; --shadow:0 4px 24px rgba(0,0,0,.45);
+  --tr:.25s ease; --radius:14px;
+}
+[data-theme="light"] {
+  --bg:#f6f8fa; --bg-surface:#ffffff; --bg-elevated:#f0f2f5;
+  --text:#1a1a2e; --text-sub:#57606a; --text-muted:#8c959f;
+  --border:#d0d7de; --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+a{color:var(--orange);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+.nav-links{display:flex;gap:20px;font-size:.9rem;}
+.nav-links a{color:var(--text-sub);}
+.theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
+.breadcrumb{max-width:860px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);}
+.hero{max-width:860px;margin:0 auto;padding:40px 20px 20px;text-align:center;}
+.hero-badge{display:inline-block;background:rgba(247,147,26,.15);border:1px solid rgba(247,147,26,.3);color:var(--orange);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.3;margin-bottom:12px;}
+.hero h1 span{color:var(--orange);}
+.hero p{font-size:1rem;color:var(--text-sub);max-width:640px;margin:0 auto 24px;}
+.ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:860px;margin:16px auto;}
+.calc-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+.calc-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+.calc-title{font-size:1.1rem;font-weight:800;margin-bottom:8px;}
+.live-price-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
+.live-chip{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:.82rem;display:flex;align-items:center;gap:8px;}
+.live-chip .coin-name{color:var(--text-muted);font-weight:600;}
+.live-chip .coin-price{font-weight:800;color:var(--orange);}
+.coin-rows{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.coin-row{display:grid;grid-template-columns:140px 1fr 1fr auto;gap:10px;align-items:end;background:var(--bg-elevated);border-radius:10px;padding:14px;}
+@media(max-width:600px){.coin-row{grid-template-columns:1fr 1fr;}}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-group label{font-size:.78rem;color:var(--text-muted);font-weight:600;}
+.form-group select,.form-group input{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:.95rem;outline:none;transition:border-color var(--tr);}
+.form-group select:focus,.form-group input:focus{border-color:var(--orange);}
+.btn-remove{background:none;border:none;color:var(--red);cursor:pointer;font-size:1.2rem;padding:8px;border-radius:8px;}
+.btn-add{background:var(--bg-elevated);border:1px solid var(--border);border-radius:9px;padding:10px 18px;color:var(--orange);font-weight:700;font-size:.88rem;cursor:pointer;margin-bottom:16px;}
+.calc-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--orange),#e6820f);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:800;cursor:pointer;}
+.result-box{display:none;margin-top:24px;}
+.result-box.show{display:block;}
+.result-table{width:100%;border-collapse:collapse;background:var(--bg-elevated);border-radius:10px;overflow:hidden;}
+.result-table th{background:var(--bg-surface);padding:12px 16px;text-align:left;font-size:.82rem;color:var(--text-muted);font-weight:700;}
+.result-table td{padding:12px 16px;font-size:.92rem;border-bottom:1px solid var(--border);}
+.result-table tr:last-child td{border-bottom:none;}
+.result-table .total-row td{font-weight:800;color:var(--orange);background:var(--bg-surface);}
+.result-note{margin-top:12px;font-size:.8rem;color:var(--text-muted);line-height:1.6;}
+.cta-banner{max-width:860px;margin:24px auto;padding:0 20px;}
+.cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.1));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.cta-inner .cta-icon{font-size:2rem;}
+.cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+.cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+.cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:10px 22px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
+.formula-section,.tools-section,.faq-section,.seo-section{max-width:860px;margin:32px auto;padding:0 20px;}
+.formula-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;}
+.formula-card h2{font-size:1.1rem;font-weight:800;margin-bottom:16px;}
+.formula-block{background:var(--bg-elevated);border-left:3px solid var(--orange);border-radius:8px;padding:14px 18px;margin:10px 0;font-family:monospace;font-size:.9rem;line-height:1.6;}
+.formula-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7;margin:8px 0;}
+.tools-section h2,.faq-section h2,.seo-section h2{font-size:1.05rem;font-weight:800;margin-bottom:16px;}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.tool-link{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:border-color var(--tr),transform var(--tr);}
+.tool-link:hover{border-color:var(--orange);transform:translateY(-2px);text-decoration:none;color:var(--text);}
+.faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.faq-q{padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'▼';font-size:.75rem;color:var(--text-muted);transition:transform var(--tr);}
+.faq-item.open .faq-q::after{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 20px 16px;font-size:.9rem;color:var(--text-sub);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
+.seo-section p{font-size:.9rem;color:var(--text-sub);line-height:1.8;margin-bottom:12px;}
+.footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+.footer-inner{max-width:860px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+.footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+.footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+.footer-col a:hover{color:var(--text);text-decoration:none;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
+  <div class="nav-links">
+    <a href="/">홈</a>
+    <a href="/tools/">계산기</a>
+    <a href="/market/crypto-charts.html">시장</a>
+    <a href="/blog/">블로그</a>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">홈</a> › <a href="/tools/">계산기 도구</a> › 코인 원화 환산기
+</div>
+
+<section class="hero">
+  <div class="hero-badge">💱 실시간 시세 기준</div>
+  <h1>코인 원화 환산기<br><span>수량 입력</span> → 실시간 원화 가치 즉시 계산</h1>
+  <p>비트코인 0.1개가 지금 얼마인지 모르시나요?<br>코인 수량을 입력하면 <strong>실시간 원화 가치</strong>를 즉시 계산해드립니다.</p>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-title">💱 코인 원화 환산기</div>
+    <div class="live-price-bar" id="livePriceBar">
+      <div class="live-chip"><span class="coin-name">BTC</span><span class="coin-price" id="lBTC">로딩중...</span></div>
+      <div class="live-chip"><span class="coin-name">ETH</span><span class="coin-price" id="lETH">로딩중...</span></div>
+      <div class="live-chip"><span class="coin-name">XRP</span><span class="coin-price" id="lXRP">로딩중...</span></div>
+      <div class="live-chip"><span class="coin-name">SOL</span><span class="coin-price" id="lSOL">로딩중...</span></div>
+      <div class="live-chip"><span class="coin-name">DOGE</span><span class="coin-price" id="lDOGE">로딩중...</span></div>
+    </div>
+
+    <div class="coin-rows" id="coinRows">
+      <div class="coin-row">
+        <div class="form-group">
+          <label>코인 선택</label>
+          <select class="coin-select">
+            <option value="bitcoin">BTC 비트코인</option>
+            <option value="ethereum">ETH 이더리움</option>
+            <option value="ripple">XRP 리플</option>
+            <option value="solana">SOL 솔라나</option>
+            <option value="dogecoin">DOGE 도지코인</option>
+            <option value="cardano">ADA 카르다노</option>
+            <option value="avalanche-2">AVAX 아발란체</option>
+            <option value="polkadot">DOT 폴카닷</option>
+            <option value="custom">직접 입력</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>보유 수량</label>
+          <input type="number" class="coin-qty" placeholder="예: 0.1" min="0" step="0.00001">
+        </div>
+        <div class="form-group">
+          <label>직접 단가 입력 (원, 선택)</label>
+          <input type="number" class="coin-price-input" placeholder="비워두면 실시간 적용">
+        </div>
+        <button class="btn-remove" onclick="removeRow(this)">✕</button>
+      </div>
+    </div>
+
+    <button class="btn-add" onclick="addRow()">+ 코인 추가</button>
+    <button class="calc-btn" onclick="calcKrw()">💱 원화 환산하기</button>
+
+    <div class="result-box" id="resultBox">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>코인</th>
+            <th>수량</th>
+            <th>현재 단가</th>
+            <th>원화 가치</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="3">💰 총 원화 가치</td>
+            <td id="totalKrw">-</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="result-note">⚠️ 실시간 시세 기준이며 실제 거래가와 차이가 있을 수 있습니다. 세금 계산은 <a href="/tools/tax-calculator.html">코인 세금 계산기</a>를 이용하세요.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ad-slot">📢 광고 영역 (결과 하단 — CTR 최고)</div>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-icon">💰</div>
+    <div class="cta-text">
+      <h3>코인 가치 확인 후 세금도 미리 계산하세요</h3>
+      <p>2027년부터 코인 수익에 22% 세금. 지금 세금 계산기로 미리 확인하세요.</p>
+    </div>
+    <a class="cta-link" href="/tools/tax-calculator.html">세금 계산하기 →</a>
+  </div>
+</div>
+
+<section class="formula-section">
+  <div class="formula-card">
+    <h2>📐 코인 원화 환산 공식</h2>
+    <p><strong>① 기본 환산 공식</strong></p>
+    <div class="formula-block">원화 가치 = 코인 수량 × 현재 코인 단가 (원)</div>
+    <p><strong>② 여러 코인 합산</strong></p>
+    <div class="formula-block">총 원화 가치 = Σ (각 코인 수량 × 각 코인 단가)</div>
+    <p><strong>계산 예시:</strong> BTC 0.1개 (단가 1억 3,500만원) + ETH 1개 (단가 450만원)</p>
+    <div class="formula-block">
+BTC: 0.1 × 135,000,000 = 13,500,000원
+ETH: 1.0 × 4,500,000 = 4,500,000원
+총합: 18,000,000원 (1,800만원)
+    </div>
+    <p>📎 실시간 시세 출처: <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko API</a> · <a href="https://upbit.com/" target="_blank" rel="noopener">업비트</a></p>
+  </div>
+</section>
+
+<section class="tools-section">
+  <h2>🧰 함께 쓰면 더 유용한 무료 계산기</h2>
+  <div class="tools-grid">
+    <a class="tool-link" href="/tools/tax-calculator.html">💰 코인 세금 계산기</a>
+    <a class="tool-link" href="/tools/roi-calculator.html">📈 수익률 계산기</a>
+    <a class="tool-link" href="/tools/portfolio-tracker.html">📊 포트폴리오 계산기</a>
+    <a class="tool-link" href="/tools/satoshi-calculator.html">₿ 사토시 환산기</a>
+    <a class="tool-link" href="/tools/market-cap-calculator.html">📊 시가총액 계산기</a>
+    <a class="tool-link" href="/tools/dca-calculator.html">🔄 DCA 계산기</a>
+    <a class="tool-link" href="/tools/multa-calculator.html">💧 물타기 계산기</a>
+    <a class="tool-link" href="/market/crypto-charts.html">📡 실시간 차트</a>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>❓ 코인 원화 환산 자주 묻는 질문</h2>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">비트코인 0.01개는 얼마인가요?</div>
+    <div class="faq-a">비트코인 현재 가격에 따라 다릅니다. BTC 가격이 1억 3,500만원이라면 0.01 BTC = 135만원입니다. 위 계산기에 수량을 입력하면 실시간으로 계산됩니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">업비트 가격과 다른 이유가 뭔가요?</div>
+    <div class="faq-a">이 계산기는 CoinGecko 글로벌 평균가를 사용합니다. 업비트는 원화 거래소이므로 <strong>김치 프리미엄</strong>이 반영되어 차이가 날 수 있습니다. 정확한 업비트 가격은 <a href="https://upbit.com/" target="_blank">업비트 공식 사이트</a>에서 확인하세요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">보유 코인 원화 가치에도 세금이 있나요?</div>
+    <div class="faq-a">보유만 하는 것은 세금이 없습니다. <strong>실제로 매도(판매)해서 수익이 발생한 경우에만</strong> 2027년부터 22% 세금이 부과됩니다. 세금 계산은 <a href="/tools/tax-calculator.html">코인 세금 계산기</a>를 이용하세요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">여러 코인을 한번에 계산할 수 있나요?</div>
+    <div class="faq-a">네! "+ 코인 추가" 버튼을 누르면 여러 코인을 추가해서 <strong>총 포트폴리오 원화 가치</strong>를 한번에 계산할 수 있습니다. 더 자세한 포트폴리오 분석은 <a href="/tools/portfolio-tracker.html">포트폴리오 계산기</a>를 이용하세요.</div>
+  </div>
+</section>
+
+<div class="ad-slot">📢 광고 영역 (하단)</div>
+
+<section class="seo-section">
+  <h2>📖 코인 원화 환산 완전 가이드</h2>
+  <p>비트코인이나 이더리움을 얼마나 보유하고 있는지 원화로 확인하고 싶을 때 이 계산기를 사용하세요. 코인 수량에 현재 시세를 곱하면 원화 가치가 나옵니다. 여러 종류의 코인을 보유하고 있다면 모두 합산해서 총 포트폴리오 가치를 확인할 수 있습니다.</p>
+  <p>실시간 코인 시장 현황은 <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>에서 확인할 수 있으며, 보유 코인을 매도할 때 발생하는 세금은 <a href="/tools/tax-calculator.html">코인 세금 계산기</a>로 미리 계산해보세요.</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>₿ CryptoTax.cloud</h4>
+        <p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한<br>무료 계산기 허브.</p>
+      </div>
+      <div class="footer-col">
+        <h4>계산기 도구</h4>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/roi-calculator.html">수익률 계산기</a>
+        <a href="/tools/multa-calculator.html">물타기 계산기</a>
+        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
+        <a href="/tools/staking-calculator.html">스테이킹 계산기</a>
+        <a href="/tools/satoshi-calculator.html">사토시 환산기</a>
+        <a href="/tools/kimchi-calculator.html">김치 프리미엄 계산기</a>
+        <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화</a>
+      </div>
+      <div class="footer-col">
+        <h4>시장 데이터</h4>
+        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
+        <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>
+      </div>
+      <div class="footer-col">
+        <h4>사이트 정보</h4>
+        <a href="/blog/">블로그</a>
+        <a href="/consultation.html">무료 세무 상담</a>
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/sitemap.html">사이트맵</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="/disclaimer.html">면책조항</a>
+      </div>
+      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용입니다.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){ const t=localStorage.getItem('ctc-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();
+function toggleTheme(){
+  const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  localStorage.setItem('ctc-theme',n);
+  document.querySelector('.theme-btn').textContent=n==='dark'?'🌙 다크':'☀️ 라이트';
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+
+// 실시간 시세 저장소
+let livePrices = {};
+
+async function fetchPrices(){
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,solana,dogecoin,cardano,avalanche-2,polkadot&vs_currencies=krw');
+    livePrices = await res.json();
+    document.getElementById('lBTC').textContent  = livePrices.bitcoin    ? livePrices.bitcoin.krw.toLocaleString('ko-KR')+'원'    : '-';
+    document.getElementById('lETH').textContent  = livePrices.ethereum   ? livePrices.ethereum.krw.toLocaleString('ko-KR')+'원'   : '-';
+    document.getElementById('lXRP').textContent  = livePrices.ripple     ? livePrices.ripple.krw.toLocaleString('ko-KR')+'원'     : '-';
+    document.getElementById('lSOL').textContent  = livePrices.solana     ? livePrices.solana.krw.toLocaleString('ko-KR')+'원'     : '-';
+    document.getElementById('lDOGE').textContent = livePrices.dogecoin   ? livePrices.dogecoin.krw.toLocaleString('ko-KR')+'원'   : '-';
+  } catch(e) {
+    document.getElementById('lBTC').textContent = '로딩 실패';
+  }
+}
+
+function addRow(){
+  const rows = document.getElementById('coinRows');
+  const div = document.createElement('div');
+  div.className = 'coin-row';
+  div.innerHTML = `
+    <div class="form-group">
+      <label>코인 선택</label>
+      <select class="coin-select">
+        <option value="bitcoin">BTC 비트코인</option>
+        <option value="ethereum">ETH 이더리움</option>
+        <option value="ripple">XRP 리플</option>
+        <option value="solana">SOL 솔라나</option>
+        <option value="dogecoin">DOGE 도지코인</option>
+        <option value="cardano">ADA 카르다노</option>
+        <option value="avalanche-2">AVAX 아발란체</option>
+        <option value="polkadot">DOT 폴카닷</option>
+        <option value="custom">직접 입력</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>보유 수량</label>
+      <input type="number" class="coin-qty" placeholder="예: 0.1" min="0" step="0.00001">
+    </div>
+    <div class="form-group">
+      <label>직접 단가 입력 (원, 선택)</label>
+      <input type="number" class="coin-price-input" placeholder="비워두면 실시간 적용">
+    </div>
+    <button class="btn-remove" onclick="removeRow(this)">✕</button>
+  `;
+  rows.appendChild(div);
+}
+
+function removeRow(btn){
+  const row = btn.closest('.coin-row');
+  if(document.querySelectorAll('.coin-row').length > 1) row.remove();
+}
+
+function calcKrw(){
+  const rows = document.querySelectorAll('.coin-row');
+  let total = 0;
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+
+  rows.forEach(row => {
+    const coinId  = row.querySelector('.coin-select').value;
+    const qty     = parseFloat(row.querySelector('.coin-qty').value) || 0;
+    const manual  = parseFloat(row.querySelector('.coin-price-input').value) || 0;
+    if(!qty) return;
+
+    const price = manual > 0 ? manual : (livePrices[coinId] ? livePrices[coinId].krw : 0);
+    const value = qty * price;
+    total += value;
+
+    const coinName = row.querySelector('.coin-select').options[row.querySelector('.coin-select').selectedIndex].text;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${coinName}</td>
+      <td>${qty.toLocaleString('ko-KR', {maximumFractionDigits:8})}</td>
+      <td>${price > 0 ? fmt(price) : '가격 없음'}</td>
+      <td style="font-weight:700;color:var(--orange)">${price > 0 ? fmt(value) : '-'}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('totalKrw').textContent = fmt(total);
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+window.addEventListener('load', fetchPrices);
+setInterval(fetchPrices, 60000); // 1분마다 갱신
+</script>
+</body>
+</html>
