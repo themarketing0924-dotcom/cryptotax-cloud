@@ -1,637 +1,574 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>무료 코인 계산기 도구 모음 2026 | 세금·수익률·DCA·물타기·시장지수 — CryptoTax.cloud</title>
-<meta name="description" content="코인 투자자를 위한 무료 계산기 9종 모음. 세금계산기, 수익률계산기, DCA, 물타기, 스테이킹, 사토시환산기, 시장지수 대시보드까지. 회원가입 없음·개인정보 미수집.">
-<meta name="keywords" content="코인 계산기, 가상자산 세금계산기, 수익률 계산기, DCA 계산기, 물타기 계산기, 사토시 환산기, 알트코인 시즌 지수">
+<title>무료 코인 계산기 12종 모음 | 가상자산 세금·수익·절세 도구 | CryptoTax.cloud</title>
+<meta name="description" content="코인 세금 계산기, 수익률, DCA, 물타기, 스테이킹, 김치 프리미엄, 시가총액 등 12종 무료 계산기. 회원가입 없이 즉시 사용. 2027 가상자산 과세 대비.">
+<meta name="keywords" content="코인 계산기, 가상자산 계산기, 코인 세금 계산기, 업비트 계산기, 수익률 계산기, DCA 계산기, 물타기 계산기, 스테이킹 계산기">
 <link rel="canonical" href="https://cryptotax.cloud/tools/">
-<meta property="og:title" content="무료 코인 계산기 도구 모음 — CryptoTax.cloud">
-<meta property="og:description" content="코인 세금·수익률·DCA·물타기·시장지수 등 9종 무료 계산기">
+<meta property="og:title" content="무료 코인 계산기 12종 모음 | CryptoTax.cloud">
+<meta property="og:description" content="코인 세금·수익률·DCA·물타기·스테이킹 등 12종 무료 계산기. 회원가입 없이 즉시 사용.">
 <meta property="og:url" content="https://cryptotax.cloud/tools/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://cryptotax.cloud/images/og-tools.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
-<!-- Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "무료 코인 계산기 도구 모음",
+  "name": "무료 코인 계산기 12종 모음",
+  "description": "한국 가상자산 투자자를 위한 무료 계산기 모음",
   "url": "https://cryptotax.cloud/tools/",
-  "description": "코인 투자자를 위한 무료 계산기 9종 모음",
-  "publisher": {
-    "@type": "Organization",
-    "name": "CryptoTax.cloud",
-    "url": "https://cryptotax.cloud"
-  },
-  "hasPart": [
-    {"@type":"WebApplication","name":"코인 세금 계산기","url":"https://cryptotax.cloud/"},
-    {"@type":"WebApplication","name":"수익률 계산기","url":"https://cryptotax.cloud/tools/roi-calculator.html"},
-    {"@type":"WebApplication","name":"물타기 계산기","url":"https://cryptotax.cloud/tools/multa-calculator.html"},
-    {"@type":"WebApplication","name":"DCA 계산기","url":"https://cryptotax.cloud/tools/dca-calculator.html"},
-    {"@type":"WebApplication","name":"스테이킹 계산기","url":"https://cryptotax.cloud/tools/staking-calculator.html"},
-    {"@type":"WebApplication","name":"사토시 환산기","url":"https://cryptotax.cloud/tools/satoshi-calculator.html"},
-    {"@type":"WebApplication","name":"시장 지수 대시보드","url":"https://cryptotax.cloud/tools/market-index.html"},
-    {"@type":"WebApplication","name":"CSV 세금 계산기","url":"https://cryptotax.cloud/tools/csv-tax-calculator.html"},
-    {"@type":"WebApplication","name":"절세 하베스팅","url":"https://cryptotax.cloud/tools/tax-loss-harvesting.html"}
+  "publisher": {"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud"},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},
+      {"@type":"ListItem","position":2,"name":"계산기 도구","item":"https://cryptotax.cloud/tools/"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "모든 계산기가 정말 무료인가요?",
+      "acceptedAnswer": {"@type":"Answer","text":"네, 모든 도구는 영구 무료입니다. 회원가입, 개인정보 입력 없이 즉시 사용할 수 있습니다. 수익은 Google AdSense 광고로만 운영됩니다."}
+    },
+    {
+      "@type": "Question",
+      "name": "계산 결과를 믿을 수 있나요?",
+      "acceptedAnswer": {"@type":"Answer","text":"국세청 공식 기준을 적용하며 2027년 시행 예정인 22% 세율과 250만원 기본공제를 반영합니다. 실제 세금 신고 시에는 세무사 상담을 권장합니다."}
+    },
+    {
+      "@type": "Question",
+      "name": "입력한 데이터가 서버에 저장되나요?",
+      "acceptedAnswer": {"@type":"Answer","text":"아니오. 모든 계산은 브라우저 내에서만 처리되며 입력 데이터는 서버로 전송되지 않습니다. 페이지를 닫으면 데이터가 완전히 삭제됩니다."}
+    }
   ]
 }
 </script>
 <style>
-  :root {
-    --bg:#f8f9fa; --card:#ffffff; --text:#1a1a2e; --sub:#6c757d;
-    --primary:#f7931a; --primary-dark:#e07b0e; --border:#e9ecef;
-    --success:#28a745; --danger:#dc3545; --info:#17a2b8;
-    --shadow:0 2px 12px rgba(0,0,0,0.08);
-    --shadow-hover:0 8px 28px rgba(0,0,0,0.14);
-  }
-  [data-theme="dark"] {
-    --bg:#0d0d1a; --card:#1a1a2e; --text:#e8e8f0; --sub:#9999bb;
-    --border:#2a2a4a; --shadow:0 2px 12px rgba(0,0,0,0.4);
-    --shadow-hover:0 8px 28px rgba(0,0,0,0.6);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;}
+:root {
+  --bg:#0d0d1a; --bg-surface:#1a1a2e; --bg-elevated:#24243e;
+  --text:#e8e8f0; --text-sub:#9999bb; --text-muted:#6666aa;
+  --orange:#f7931a; --green:#3fb950; --red:#f85149; --blue:#58a6ff;
+  --border:#2a2a4a; --shadow:0 4px 24px rgba(0,0,0,.45);
+  --tr:.25s ease; --radius:14px;
+}
+[data-theme="light"] {
+  --bg:#f6f8fa; --bg-surface:#ffffff; --bg-elevated:#f0f2f5;
+  --text:#1a1a2e; --text-sub:#57606a; --text-muted:#8c959f;
+  --border:#d0d7de; --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+a{color:var(--orange);text-decoration:none;}
+a:hover{text-decoration:underline;}
 
-  /* NAV */
-  nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
-  .nav-logo{font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;}
-  .nav-links{display:flex;gap:16px;align-items:center;}
-  .nav-links a{color:var(--sub);text-decoration:none;font-size:.88rem;transition:color .2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--primary);font-weight:600;}
-  .theme-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;cursor:pointer;color:var(--text);font-size:.82rem;transition:all .2s;}
-  .theme-btn:hover{border-color:var(--primary);color:var(--primary);}
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:800;font-size:1.15rem;color:var(--orange);}
+.nav-links{display:flex;gap:20px;font-size:.9rem;}
+.nav-links a{color:var(--text-sub);}
+.nav-links a:hover{color:var(--text);text-decoration:none;}
+.theme-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text);}
 
-  /* BREADCRUMB */
-  .breadcrumb{padding:12px 24px;font-size:.82rem;color:var(--sub);max-width:1100px;margin:0 auto;}
-  .breadcrumb a{color:var(--sub);text-decoration:none;}
-  .breadcrumb a:hover{color:var(--primary);}
+/* BREADCRUMB */
+.breadcrumb{max-width:960px;margin:12px auto;padding:0 20px;font-size:.8rem;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);}
 
-  /* HERO */
-  .hero{background:linear-gradient(135deg,rgba(247,147,26,.08) 0%,rgba(247,147,26,.02) 100%);border-bottom:1px solid var(--border);padding:48px 24px 36px;text-align:center;}
-  .hero-badge{display:inline-block;background:rgba(247,147,26,.12);color:var(--primary);border:1px solid rgba(247,147,26,.3);border-radius:20px;padding:4px 16px;font-size:.82rem;font-weight:600;margin-bottom:14px;}
-  .hero h1{font-size:2rem;font-weight:900;margin-bottom:10px;}
-  .hero h1 span{color:var(--primary);}
-  .hero p{color:var(--sub);font-size:.95rem;max-width:560px;margin:0 auto 20px;}
-  .hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
-  .hero-stat{text-align:center;}
-  .hero-stat .num{font-size:1.4rem;font-weight:800;color:var(--primary);}
-  .hero-stat .lbl{font-size:.78rem;color:var(--sub);}
+/* HERO */
+.hero{max-width:960px;margin:0 auto;padding:36px 20px 24px;text-align:center;}
+.hero-badge{display:inline-block;background:rgba(247,147,26,.15);border:1px solid rgba(247,147,26,.3);color:var(--orange);font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900;line-height:1.3;margin-bottom:10px;}
+.hero h1 span{color:var(--orange);}
+.hero p{font-size:.95rem;color:var(--text-sub);max-width:600px;margin:0 auto 20px;}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+.hero-stat strong{display:block;font-size:1.3rem;font-weight:900;color:var(--orange);}
+.hero-stat span{font-size:.75rem;color:var(--text-muted);}
 
-  /* CONTAINER */
-  .container{max-width:1100px;margin:0 auto;padding:32px 20px 60px;}
+/* AD */
+.ad-slot{background:var(--bg-elevated);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text-muted);font-size:.8rem;max-width:960px;margin:16px auto;}
 
-  /* FILTER BAR */
-  .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;align-items:center;}
-  .filter-btn{padding:7px 18px;border:1px solid var(--border);border-radius:20px;background:var(--card);color:var(--sub);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
-  .filter-btn:hover{border-color:var(--primary);color:var(--primary);}
-  .filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
-  .filter-label{font-size:.85rem;color:var(--sub);font-weight:600;margin-right:4px;}
+/* NOTICE */
+.notice{max-width:960px;margin:0 auto 4px;padding:0 20px;}
+.notice-inner{background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.2);border-radius:10px;padding:12px 18px;font-size:.82rem;color:var(--text-sub);}
 
-  /* TOOLS GRID */
-  .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  @media(max-width:900px){.tools-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:560px){.tools-grid{grid-template-columns:1fr;}}
+/* FILTER */
+.filter-wrap{max-width:960px;margin:20px auto 0;padding:0 20px;}
+.filter-label{font-size:.8rem;color:var(--text-muted);margin-bottom:8px;}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;}
+.filter-tab{padding:7px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:20px;font-size:.82rem;font-weight:600;color:var(--text-sub);cursor:pointer;transition:all var(--tr);}
+.filter-tab.active,.filter-tab:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
 
-  /* TOOL CARD */
-  .tool-card{
-    background:var(--card);border:1px solid var(--border);border-radius:18px;
-    overflow:hidden;box-shadow:var(--shadow);transition:all .25s;
-    display:flex;flex-direction:column;text-decoration:none;color:var(--text);
-    position:relative;
-  }
-  .tool-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:rgba(247,147,26,.3);}
-  .tool-card.hidden{display:none;}
+/* SECTION TITLE */
+.section-title{max-width:960px;margin:28px auto 0;padding:0 20px;font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px;}
 
-  /* CARD THUMB */
-  .card-thumb{
-    height:160px;display:flex;align-items:center;justify-content:center;
-    font-size:4rem;position:relative;overflow:hidden;
-  }
-  .card-thumb::before{content:'';position:absolute;inset:0;opacity:.08;}
+/* TOOL GRID */
+.tools-wrap{max-width:960px;margin:14px auto;padding:0 20px;}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
 
-  /* 카테고리별 색상 */
-  .cat-tax    .card-thumb{background:linear-gradient(135deg,#fff3e0,#ffe0b2);}
-  .cat-tax    .card-thumb::before{background:var(--primary);}
-  [data-theme="dark"] .cat-tax .card-thumb{background:linear-gradient(135deg,rgba(247,147,26,.2),rgba(247,147,26,.08));}
+/* TOOL CARD */
+.tool-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;cursor:pointer;transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr);text-decoration:none;color:var(--text);position:relative;min-height:160px;justify-content:center;}
+.tool-card:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 8px 24px rgba(247,147,26,.15);text-decoration:none;color:var(--text);}
+.tool-card.new::after{content:'NEW';position:absolute;top:10px;right:10px;background:var(--green);color:#fff;font-size:.65rem;font-weight:800;padding:2px 7px;border-radius:10px;}
+.tool-card.hot::after{content:'🔥 인기';position:absolute;top:10px;right:10px;background:var(--orange);color:#fff;font-size:.65rem;font-weight:800;padding:2px 7px;border-radius:10px;}
+.tool-icon{font-size:2rem;line-height:1;}
+.tool-name{font-size:.95rem;font-weight:800;}
+.tool-cat{font-size:.7rem;font-weight:700;color:var(--orange);background:rgba(247,147,26,.1);padding:2px 8px;border-radius:10px;}
+.tool-desc{font-size:.78rem;color:var(--text-sub);line-height:1.4;}
 
-  .cat-calc   .card-thumb{background:linear-gradient(135deg,#e3f2fd,#bbdefb);}
-  .cat-calc   .card-thumb::before{background:#2196f3;}
-  [data-theme="dark"] .cat-calc .card-thumb{background:linear-gradient(135deg,rgba(33,150,243,.2),rgba(33,150,243,.08));}
+/* COMING SOON */
+.tool-card.coming{opacity:.6;cursor:default;}
+.tool-card.coming:hover{transform:none;border-color:var(--border);box-shadow:none;}
+.coming-badge{font-size:.7rem;font-weight:700;color:var(--text-muted);background:var(--bg-elevated);padding:3px 9px;border-radius:10px;border:1px solid var(--border);}
 
-  .cat-market .card-thumb{background:linear-gradient(135deg,#f3e5f5,#e1bee7);}
-  .cat-market .card-thumb::before{background:#9c27b0;}
-  [data-theme="dark"] .cat-market .card-thumb{background:linear-gradient(135deg,rgba(156,39,176,.2),rgba(156,39,176,.08));}
+/* CTA */
+.cta-banner{max-width:960px;margin:24px auto;padding:0 20px;}
+.cta-inner{background:linear-gradient(135deg,rgba(247,147,26,.15),rgba(88,166,255,.08));border:1px solid rgba(247,147,26,.3);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.cta-inner .cta-icon{font-size:2.2rem;}
+.cta-inner .cta-text h3{font-size:1rem;font-weight:800;margin-bottom:4px;}
+.cta-inner .cta-text p{font-size:.85rem;color:var(--text-sub);}
+.cta-inner .cta-link{margin-left:auto;background:var(--orange);color:#fff;padding:11px 24px;border-radius:10px;font-weight:700;font-size:.9rem;white-space:nowrap;}
 
-  .cat-strategy .card-thumb{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);}
-  .cat-strategy .card-thumb::before{background:#4caf50;}
-  [data-theme="dark"] .cat-strategy .card-thumb{background:linear-gradient(135deg,rgba(76,175,80,.2),rgba(76,175,80,.08));}
+/* FAQ */
+.faq-section{max-width:960px;margin:32px auto;padding:0 20px;}
+.faq-section h2{font-size:1rem;font-weight:800;margin-bottom:14px;}
+.faq-item{background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.faq-q{padding:15px 20px;cursor:pointer;font-weight:700;font-size:.92rem;display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'▼';font-size:.72rem;color:var(--text-muted);transition:transform var(--tr);}
+.faq-item.open .faq-q::after{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 20px 15px;font-size:.88rem;color:var(--text-sub);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
 
-  /* BADGE */
-  .card-badge{
-    position:absolute;top:12px;right:12px;
-    padding:3px 10px;border-radius:12px;
-    font-size:.72rem;font-weight:700;
-  }
-  .badge-hot{background:#ff4757;color:#fff;}
-  .badge-new{background:#2ed573;color:#fff;}
-  .badge-realtime{background:#1e90ff;color:#fff;}
-  .badge-popular{background:var(--primary);color:#fff;}
+/* FOOTER */
+.footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:40px 20px 24px;margin-top:40px;}
+.footer-inner{max-width:960px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;margin-bottom:24px;}
+.footer-col h4{font-size:.9rem;font-weight:800;margin-bottom:12px;color:var(--orange);}
+.footer-col a{display:block;font-size:.82rem;color:var(--text-muted);margin-bottom:7px;}
+.footer-col a:hover{color:var(--text);text-decoration:none;}
+.footer-bottom{border-top:1px solid var(--border);padding-top:16px;font-size:.76rem;color:var(--text-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
 
-  /* CARD BODY */
-  .card-body{padding:20px;flex:1;display:flex;flex-direction:column;}
-  .card-cat{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;color:var(--sub);}
-  .card-title-text{font-size:1.05rem;font-weight:800;margin-bottom:8px;line-height:1.4;}
-  .card-desc{font-size:.85rem;color:var(--sub);line-height:1.6;flex:1;margin-bottom:14px;}
-
-  /* CARD META */
-  .card-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
-  .meta-tag{
-    padding:3px 10px;background:var(--bg);border:1px solid var(--border);
-    border-radius:8px;font-size:.75rem;color:var(--sub);font-weight:500;
-  }
-
-  /* CARD STATS */
-  .card-stats{display:flex;gap:16px;margin-bottom:16px;padding:10px 12px;background:var(--bg);border-radius:10px;}
-  .cstat{text-align:center;flex:1;}
-  .cstat .cv{font-size:.9rem;font-weight:700;color:var(--primary);}
-  .cstat .cl{font-size:.68rem;color:var(--sub);}
-
-  /* CTA BUTTON */
-  .card-cta{
-    display:block;width:100%;padding:12px;
-    background:var(--primary);color:#fff;
-    border:none;border-radius:10px;
-    font-size:.9rem;font-weight:700;
-    text-align:center;text-decoration:none;
-    cursor:pointer;transition:all .2s;font-family:inherit;
-  }
-  .card-cta:hover{background:var(--primary-dark);}
-  .card-cta.secondary{background:transparent;border:1.5px solid var(--primary);color:var(--primary);}
-  .card-cta.secondary:hover{background:var(--primary);color:#fff;}
-
-  /* FEATURED CARD (가로형) */
-  .tool-card.featured{grid-column:1/-1;flex-direction:row;align-items:stretch;}
-  .tool-card.featured .card-thumb{width:280px;height:auto;flex-shrink:0;font-size:5rem;}
-  .tool-card.featured .card-body{padding:28px;}
-  .tool-card.featured .card-title-text{font-size:1.3rem;}
-  .tool-card.featured .card-desc{font-size:.92rem;}
-  @media(max-width:700px){
-    .tool-card.featured{flex-direction:column;}
-    .tool-card.featured .card-thumb{width:100%;height:140px;}
-  }
-
-  /* SECTION TITLE */
-  .section-title{font-size:1.1rem;font-weight:800;margin:32px 0 16px;display:flex;align-items:center;gap:8px;}
-  .section-title::after{content:'';flex:1;height:1px;background:var(--border);margin-left:8px;}
-
-  /* AD SLOT */
-  .ad-slot{background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:16px;text-align:center;color:var(--sub);font-size:.8rem;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
-
-  /* GA NOTICE */
-  .ga-notice{background:rgba(23,162,184,.08);border:1px solid rgba(23,162,184,.2);border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:.85rem;color:var(--info);display:flex;gap:10px;align-items:flex-start;}
-
-  /* POPULARITY BAR */
-  .pop-bar-wrap{margin:8px 0;}
-  .pop-bar-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--sub);margin-bottom:4px;}
-  .pop-bar-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
-  .pop-bar-fill{height:100%;background:var(--primary);border-radius:3px;transition:width 1s ease;}
-
-  /* FAQ */
-  .faq-item{border-bottom:1px solid var(--border);}
-  .faq-q{padding:14px 0;cursor:pointer;font-weight:600;font-size:.92rem;display:flex;justify-content:space-between;}
-  .faq-q:hover{color:var(--primary);}
-  .faq-a{padding:0 0 14px;color:var(--sub);font-size:.88rem;line-height:1.7;display:none;}
-
-  /* FOOTER */
-  footer{background:var(--card);border-top:1px solid var(--border);padding:32px 24px;text-align:center;}
-  .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
-  .footer-links a{color:var(--sub);text-decoration:none;font-size:.85rem;}
-  .footer-links a:hover{color:var(--primary);}
-  .footer-copy{font-size:.8rem;color:var(--sub);}
-
-  @media(max-width:480px){
-    .hero h1{font-size:1.5rem;}
-    .nav-links a{display:none;}
-    .hero-stats{gap:16px;}
-  }
+@media(max-width:600px){
+  .nav-links{display:none;}
+  .tools-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-stats{gap:16px;}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax.cloud</a>
+<nav class="nav">
+  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
   <div class="nav-links">
-    <a href="https://cryptotax.cloud/">홈</a>
-    <a href="https://cryptotax.cloud/tools/" class="active">도구</a>
-    <a href="https://cryptotax.cloud/blog/">블로그</a>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+    <a href="/">홈</a>
+    <a href="/tools/" style="color:var(--orange);">계산기</a>
+    <a href="/market/crypto-charts.html">시장</a>
+    <a href="/blog/">블로그</a>
+    <a href="/consultation.html">무료 상담</a>
   </div>
+  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
 </nav>
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="https://cryptotax.cloud/">홈</a> › 무료 계산기 도구 모음
+  <a href="/">홈</a> › 계산기 도구 모음
 </div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">🧰 무료 계산기 모음</div>
-  <h1>코린이를 위한 <span>무료 도구</span> 9종</h1>
-  <p>세금·수익률·물타기·DCA·스테이킹·사토시·시장지수까지<br>회원가입 없음 · 개인정보 미수집 · 완전 무료</p>
+<section class="hero">
+  <div class="hero-badge">🧰 12종 완전 무료 · 개인정보 미수집</div>
+  <h1>코린이도 바로 쓰는<br><span>무료 코인 계산기 12종</span></h1>
+  <p>세금·수익률·DCA·물타기·스테이킹·김치 프리미엄까지<br>업비트·빗썸 투자자가 꼭 필요한 모든 계산기를 무료로 제공합니다</p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="num">9종</div><div class="lbl">무료 도구</div></div>
-    <div class="hero-stat"><div class="num">0원</div><div class="lbl">완전 무료</div></div>
-    <div class="hero-stat"><div class="num">100%</div><div class="lbl">브라우저 처리</div></div>
-    <div class="hero-stat"><div class="num">실시간</div><div class="lbl">시장 데이터</div></div>
+    <div class="hero-stat"><strong>12종</strong><span>무료 계산기</span></div>
+    <div class="hero-stat"><strong>0원</strong><span>완전 무료</span></div>
+    <div class="hero-stat"><strong>100%</strong><span>개인정보 미수집</span></div>
+    <div class="hero-stat"><strong>2027</strong><span>과세 대비 완료</span></div>
   </div>
-</div>
+</section>
 
-<div class="container">
-
-<!-- AD TOP -->
 <div class="ad-slot">📢 광고 영역 (728×90)</div>
 
-<!-- GA NOTICE -->
-<div class="ga-notice">
-  <span>📊</span>
-  <span>각 도구의 이용 통계는 Google Analytics로 측정됩니다. 인기 도구는 더 빠르게 업데이트되며, 반응이 없는 도구는 개선·통합됩니다. 여러분의 사용이 서비스 개선에 직접 반영됩니다.</span>
+<!-- NOTICE -->
+<div class="notice">
+  <div class="notice-inner">
+    📊 각 도구의 이용 통계는 Google Analytics로 측정됩니다. 인기 도구는 더 빠르게 업데이트되며, 여러분의 사용이 서비스 개선에 직접 반영됩니다.
+  </div>
 </div>
 
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <span class="filter-label">필터:</span>
-  <button class="filter-btn active" onclick="filterTools('all', this)">전체 9종</button>
-  <button class="filter-btn" onclick="filterTools('tax', this)">💰 세금</button>
-  <button class="filter-btn" onclick="filterTools('calc', this)">📊 계산기</button>
-  <button class="filter-btn" onclick="filterTools('market', this)">📡 시장</button>
-  <button class="filter-btn" onclick="filterTools('strategy', this)">🎯 전략</button>
+<!-- FILTER -->
+<div class="filter-wrap">
+  <div class="filter-label">필터:</div>
+  <div class="filter-tabs">
+    <div class="filter-tab active" onclick="filterCards('all', this)">🧰 전체 보기</div>
+    <div class="filter-tab" onclick="filterCards('tax', this)">💰 세금</div>
+    <div class="filter-tab" onclick="filterCards('invest', this)">📈 투자 계산</div>
+    <div class="filter-tab" onclick="filterCards('strategy', this)">🎯 전략</div>
+    <div class="filter-tab" onclick="filterCards('market', this)">📊 시장 분석</div>
+  </div>
 </div>
 
-<!-- ── FEATURED: 세금 계산기 ── -->
+<!-- ===== 섹션 1: 인기 도구 ===== -->
 <div class="section-title">🔥 가장 많이 사용되는 도구</div>
+<div class="tools-wrap">
+  <div class="tools-grid" id="hotGrid">
 
-<div class="tools-grid">
+    <a class="tool-card hot" href="/tools/tax-calculator.html" data-cat="tax">
+      <span class="tool-icon">💰</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">코인 세금 계산기</span>
+      <span class="tool-desc">2027 양도소득세 22%<br>매수·매도 입력 → 즉시 계산</span>
+    </a>
 
-  <!-- FEATURED -->
-  <a href="https://cryptotax.cloud/" class="tool-card featured cat-tax" data-cat="tax" onclick="trackClick('세금계산기')">
-    <div class="card-thumb">
-      💰
-      <span class="card-badge badge-hot">🔥 HOT</span>
-    </div>
-    <div class="card-body">
-      <div class="card-cat">💰 세금 계산기</div>
-      <div class="card-title-text">코인 세금 계산기 2027 — 매수·매도 입력 즉시 계산</div>
-      <div class="card-desc">2027년 가상자산 양도소득세 22%를 자동 계산합니다. 거래소 선택, 매수·매도 금액 입력만으로 예상 세금·기본공제·실효세율·세후 순수익을 즉시 확인할 수 있습니다. 국세청 공식 기준(소득세법 제87조의2) 적용.</div>
-      <div class="card-meta">
-        <span class="meta-tag">22% 세율</span>
-        <span class="meta-tag">250만원 공제</span>
-        <span class="meta-tag">업비트·빗썸</span>
-        <span class="meta-tag">국세청 기준</span>
-      </div>
-      <div class="card-stats">
-        <div class="cstat"><div class="cv">22%</div><div class="cl">적용 세율</div></div>
-        <div class="cstat"><div class="cv">250만원</div><div class="cl">기본공제</div></div>
-        <div class="cstat"><div class="cv">2027.1.1</div><div class="cl">시행 예정</div></div>
-      </div>
-      <span class="card-cta">지금 계산하기 →</span>
-    </div>
-  </a>
+    <a class="tool-card" href="/tools/dca-calculator.html" data-cat="invest">
+      <span class="tool-icon">📅</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">DCA 적립식 계산기</span>
+      <span class="tool-desc">월 적립 → 평균단가<br>누적 자산 예측</span>
+    </a>
 
-  <!-- 시장 지수 (2위) -->
-  <a href="https://cryptotax.cloud/tools/market-index.html" class="tool-card cat-market" data-cat="market" onclick="trackClick('시장지수')">
-    <div class="card-thumb">
-      📡
-      <span class="card-badge badge-realtime">실시간</span>
-    </div>
-    <div class="card-body">
-      <div class="card-cat">📡 시장 지수</div>
-      <div class="card-title-text">공포·탐욕 지수 & 알트코인 시즌 대시보드</div>
-      <div class="card-desc">지금이 비트코인 시즌인지 알트시즌인지 실시간으로 확인하세요. 공포·탐욕 지수, 알트코인 시즌 지수, BTC 도미넌스, 상위 20개 코인 등락률을 한 화면에서 볼 수 있습니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">공포·탐욕 지수</span>
-        <span class="meta-tag">알트시즌</span>
-        <span class="meta-tag">BTC 도미넌스</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:90%"></div></div>
-      </div>
-      <span class="card-cta">시장 확인하기 →</span>
-    </div>
-  </a>
+    <a class="tool-card" href="/tools/multa-calculator.html" data-cat="invest">
+      <span class="tool-icon">💧</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">물타기 계산기</span>
+      <span class="tool-desc">추가 매수 후<br>평균단가 계산</span>
+    </a>
 
-  <!-- CSV 세금계산기 -->
-  <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="tool-card cat-tax" data-cat="tax" onclick="trackClick('CSV세금계산기')">
-    <div class="card-thumb">
-      📁
-      <span class="card-badge badge-new">NEW</span>
-    </div>
-    <div class="card-body">
-      <div class="card-cat">💰 세금 계산기</div>
-      <div class="card-title-text">업비트·빗썸·바이낸스 CSV 자동 세금 계산기</div>
-      <div class="card-desc">거래소에서 내려받은 CSV 파일을 드래그&드롭하면 연간 손익·세금·수수료를 자동 계산합니다. 총평균법·FIFO 선택 가능. 국내 유일 4개 거래소 지원.</div>
-      <div class="card-meta">
-        <span class="meta-tag">업비트</span>
-        <span class="meta-tag">빗썸</span>
-        <span class="meta-tag">바이낸스</span>
-        <span class="meta-tag">FIFO·총평균</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:85%"></div></div>
-      </div>
-      <span class="card-cta">CSV 계산하기 →</span>
-    </div>
-  </a>
+    <a class="tool-card" href="/tools/tax-loss-harvesting.html" data-cat="tax">
+      <span class="tool-icon">🌿</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">손실 세금 최적화</span>
+      <span class="tool-desc">손실 코인으로 세금 줄이기<br>Tax-Loss Harvesting</span>
+    </a>
 
-</div><!-- /featured grid -->
+    <a class="tool-card" href="/tools/roi-calculator.html" data-cat="invest">
+      <span class="tool-icon">📈</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">수익률 계산기</span>
+      <span class="tool-desc">매수가·매도가 입력<br>→ 손익·ROI 계산</span>
+    </a>
 
-<!-- ── 계산기 섹션 ── -->
-<div class="section-title">📊 투자 계산기</div>
+  </div>
+</div>
 
-<div class="tools-grid">
+<!-- ===== 섹션 2: 전체 계산기 ===== -->
+<div class="section-title">📊 전체 계산기 12종</div>
+<div class="tools-wrap">
+  <div class="tools-grid" id="allGrid">
 
-  <!-- 수익률 -->
-  <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-card cat-calc" data-cat="calc" onclick="trackClick('수익률계산기')">
-    <div class="card-thumb">
-      📈
-      <span class="card-badge badge-popular">인기</span>
-    </div>
-    <div class="card-body">
-      <div class="card-cat">📊 계산기</div>
-      <div class="card-title-text">코인 수익률(ROI) 계산기</div>
-      <div class="card-desc">매수금액과 매도금액을 입력하면 ROI%, 순수익금, 예상 세금(22%), 세후 순수익을 즉시 계산합니다. 수수료 공제도 지원합니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">ROI%</span>
-        <span class="meta-tag">세후 수익</span>
-        <span class="meta-tag">수수료 공제</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:72%"></div></div>
-      </div>
-      <span class="card-cta">수익률 계산하기 →</span>
-    </div>
-  </a>
+    <!-- 1. 세금 계산기 -->
+    <a class="tool-card hot" href="/tools/tax-calculator.html" data-cat="tax">
+      <span class="tool-icon">💰</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">코인 세금 계산기</span>
+      <span class="tool-desc">2027 양도소득세 22%<br>매수·매도 입력 → 즉시 계산</span>
+    </a>
 
-  <!-- 물타기 -->
-  <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="tool-card cat-calc" data-cat="calc" onclick="trackClick('물타기계산기')">
-    <div class="card-thumb">📊</div>
-    <div class="card-body">
-      <div class="card-cat">📊 계산기</div>
-      <div class="card-title-text">코인 물타기 평균단가 계산기</div>
-      <div class="card-desc">여러 번 매수한 코인의 평균 매수단가를 계산합니다. 추가 매수 후 새 평균단가·현재 평가손익·손익분기점을 한번에 확인하세요.</div>
-      <div class="card-meta">
-        <span class="meta-tag">평균단가</span>
-        <span class="meta-tag">손익분기점</span>
-        <span class="meta-tag">다중 매수</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:68%"></div></div>
-      </div>
-      <span class="card-cta">평균단가 계산하기 →</span>
-    </div>
-  </a>
+    <!-- 2. 수익률 계산기 -->
+    <a class="tool-card" href="/tools/roi-calculator.html" data-cat="invest">
+      <span class="tool-icon">📈</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">수익률 계산기</span>
+      <span class="tool-desc">매수가·매도가 → 손익<br>ROI 자동 계산</span>
+    </a>
 
-  <!-- DCA -->
-  <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-card cat-strategy" data-cat="strategy" onclick="trackClick('DCA계산기')">
-    <div class="card-thumb">📅</div>
-    <div class="card-body">
-      <div class="card-cat">🎯 전략</div>
-      <div class="card-title-text">DCA 적립식 매수 계산기</div>
-      <div class="card-desc">매월·매주·매일 정기 매수 시 평균단가와 총 투자금을 계산합니다. 최저·최고 단가 범위 입력 시 회차별 매수 내역 테이블도 자동 생성됩니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">적립식 매수</span>
-        <span class="meta-tag">평균단가</span>
-        <span class="meta-tag">업비트 코인모으기</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:65%"></div></div>
-      </div>
-      <span class="card-cta">DCA 계산하기 →</span>
-    </div>
-  </a>
+    <!-- 3. 스테이킹 계산기 -->
+    <a class="tool-card" href="/tools/staking-calculator.html" data-cat="invest">
+      <span class="tool-icon">💎</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">스테이킹 이자 계산기</span>
+      <span class="tool-desc">APY 입력 → 날별 누적 이자<br>복리 그래프 표시</span>
+    </a>
 
-  <!-- 스테이킹 -->
-  <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-card cat-calc" data-cat="calc" onclick="trackClick('스테이킹계산기')">
-    <div class="card-thumb">🏦</div>
-    <div class="card-body">
-      <div class="card-cat">📊 계산기</div>
-      <div class="card-title-text">업비트 스테이킹 이자 계산기</div>
-      <div class="card-desc">ETH·SOL·ADA 등 스테이킹 예치 금액과 연이율(APY) 입력 시 일·월·연간 이자 수익과 2027년 예상 세금을 자동 계산합니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">ETH·SOL·ADA</span>
-        <span class="meta-tag">APY 계산</span>
-        <span class="meta-tag">이자 세금</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:55%"></div></div>
-      </div>
-      <span class="card-cta">스테이킹 계산하기 →</span>
-    </div>
-  </a>
+    <!-- 4. 물타기 계산기 -->
+    <a class="tool-card" href="/tools/multa-calculator.html" data-cat="invest">
+      <span class="tool-icon">💧</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">물타기 계산기</span>
+      <span class="tool-desc">추가 매수 후<br>평균단가 계산</span>
+    </a>
 
-  <!-- 사토시 -->
-  <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-card cat-calc" data-cat="calc" onclick="trackClick('사토시환산기')">
-    <div class="card-thumb">⚡</div>
-    <div class="card-body">
-      <div class="card-cat">📊 계산기</div>
-      <div class="card-title-text">사토시 ↔ BTC ↔ 원화 환산기</div>
-      <div class="card-desc">비트코인 사토시를 원화로, 원화를 사토시로 즉시 환산합니다. 실시간 BTC 시세 적용, 1만원으로 살 수 있는 사토시 수량도 바로 확인 가능합니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">실시간 시세</span>
-        <span class="meta-tag">3방향 환산</span>
-        <span class="meta-tag">참조표 자동생성</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:50%"></div></div>
-      </div>
-      <span class="card-cta">사토시 환산하기 →</span>
-    </div>
-  </a>
+    <!-- 5. DCA 계산기 -->
+    <a class="tool-card" href="/tools/dca-calculator.html" data-cat="invest">
+      <span class="tool-icon">📅</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">DCA 적립식 계산기</span>
+      <span class="tool-desc">월 적립 → 평균단가<br>누적 자산 예측</span>
+    </a>
 
-  <!-- 절세 하베스팅 -->
-  <a href="https://cryptotax.cloud/tools/tax-loss-harvesting.html" class="tool-card cat-tax" data-cat="tax" onclick="trackClick('절세하베스팅')">
-    <div class="card-thumb">✂️</div>
-    <div class="card-body">
-      <div class="card-cat">💰 절세 전략</div>
-      <div class="card-title-text">절세 하베스팅 — 손실로 세금 줄이기</div>
-      <div class="card-desc">보유 중인 손실 코인을 매도해 수익과 상계할 때 절감되는 세금을 계산합니다. 연말 절세 전략 수립에 꼭 필요한 도구입니다.</div>
-      <div class="card-meta">
-        <span class="meta-tag">손익 통산</span>
-        <span class="meta-tag">절세 금액</span>
-        <span class="meta-tag">연말 전략</span>
-      </div>
-      <div class="pop-bar-wrap">
-        <div class="pop-bar-label"><span>예상 인기도</span><span>⭐⭐⭐⭐</span></div>
-        <div class="pop-bar-track"><div class="pop-bar-fill" style="width:60%"></div></div>
-      </div>
-      <span class="card-cta">절세 계산하기 →</span>
-    </div>
-  </a>
+    <!-- 6. 김치 프리미엄 -->
+    <a class="tool-card new" href="/tools/kimchi-calculator.html" data-cat="market">
+      <span class="tool-icon">🌶️</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">김치 프리미엄 계산기</span>
+      <span class="tool-desc">업비트-바이낸스<br>국내외 가격 차이 % 계산</span>
+    </a>
 
-</div><!-- /tools-grid -->
+    <!-- 7. 수수료 비교 -->
+    <a class="tool-card new" href="/tools/fee-calculator.html" data-cat="invest">
+      <span class="tool-icon">💸</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">수수료 비교 계산기</span>
+      <span class="tool-desc">업비트·빗썸·바이낸스<br>거래소별 수수료 비교</span>
+    </a>
 
-<!-- AD MID -->
+    <!-- 8. 목표가 역산 -->
+    <a class="tool-card new" href="/tools/target-price-calculator.html" data-cat="strategy">
+      <span class="tool-icon">🎯</span>
+      <span class="tool-cat">🎯 전략</span>
+      <span class="tool-name">목표가 역산 계산기</span>
+      <span class="tool-desc">목표 수익률 → 매도가 계산<br>세금 포함 역산 가능</span>
+    </a>
+
+    <!-- 9. 손실 회복 -->
+    <a class="tool-card new" href="/tools/loss-recovery-calculator.html" data-cat="strategy">
+      <span class="tool-icon">📉</span>
+      <span class="tool-cat">🎯 전략</span>
+      <span class="tool-name">손실 회복 계산기</span>
+      <span class="tool-desc">-50% 하락 시 본전까지<br>필요 상승률 즉시 계산</span>
+    </a>
+
+    <!-- 10. 코인 원화 환산기 -->
+    <a class="tool-card new" href="/tools/krw-converter.html" data-cat="market">
+      <span class="tool-icon">💱</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">코인 원화 환산기</span>
+      <span class="tool-desc">코인 수량 → 실시간<br>원화 가치 계산</span>
+    </a>
+
+    <!-- 11. 시가총액 계산기 -->
+    <a class="tool-card new" href="/tools/market-cap-calculator.html" data-cat="market">
+      <span class="tool-icon">📊</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">시가총액 계산기</span>
+      <span class="tool-desc">가격 × 유통량 → 시총<br>목표 시총 → 가격 역산</span>
+    </a>
+
+    <!-- 12. 사토시 환산기 -->
+    <a class="tool-card" href="/tools/satoshi-calculator.html" data-cat="market">
+      <span class="tool-icon">⚡</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">사토시 환산기</span>
+      <span class="tool-desc">1만원으로 비트코인<br>몇 사토시 살 수 있나?</span>
+    </a>
+
+  </div>
+</div>
+
 <div class="ad-slot">📢 광고 영역 (중간)</div>
 
-<!-- ── 준비 중 도구 (Coming Soon) ── -->
-<div class="section-title">🔜 준비 중인 도구</div>
-<div class="tools-grid">
+<!-- ===== 섹션 3: 세금 전용 도구 ===== -->
+<div class="section-title">💰 세금 신고 전용 도구</div>
+<div class="tools-wrap">
+  <div class="tools-grid">
 
-  <div class="tool-card" style="opacity:.65;cursor:default;" data-cat="calc">
-    <div class="card-thumb" style="background:linear-gradient(135deg,#f5f5f5,#eeeeee);">🌶️</div>
-    <div class="card-body">
-      <div class="card-cat">📊 계산기</div>
-      <div class="card-title-text">김치 프리미엄 실시간 계산기</div>
-      <div class="card-desc">국내·해외 거래소 가격 차이(김프)를 실시간으로 계산합니다. 업비트 vs 바이낸스 BTC/ETH/XRP 김프율 자동 표시.</div>
-      <div class="card-meta"><span class="meta-tag">준비 중</span><span class="meta-tag">곧 출시</span></div>
-      <span class="card-cta secondary" style="cursor:default;opacity:.6;">준비 중...</span>
-    </div>
+    <a class="tool-card" href="/tools/csv-tax-calculator.html" data-cat="tax">
+      <span class="tool-icon">📂</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">CSV 세금 자동 계산기</span>
+      <span class="tool-desc">업비트·빗썸 거래내역 CSV 업로드<br>→ 세금 자동 계산</span>
+    </a>
+
+    <a class="tool-card" href="/tools/tax-loss-harvesting.html" data-cat="tax">
+      <span class="tool-icon">🌿</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">손실 세금 최적화</span>
+      <span class="tool-desc">손실 코인으로 세금 줄이기<br>Tax-Loss Harvesting</span>
+    </a>
+
+    <a class="tool-card" href="/tools/portfolio-tracker.html" data-cat="invest">
+      <span class="tool-icon">💼</span>
+      <span class="tool-cat">📈 투자 계산</span>
+      <span class="tool-name">포트폴리오 계산기</span>
+      <span class="tool-desc">보유 코인 전체 수익률<br>세금 포함 실수령 계산</span>
+    </a>
+
   </div>
-
-  <div class="tool-card" style="opacity:.65;cursor:default;" data-cat="strategy">
-    <div class="card-thumb" style="background:linear-gradient(135deg,#f5f5f5,#eeeeee);">🎯</div>
-    <div class="card-body">
-      <div class="card-cat">🎯 전략</div>
-      <div class="card-title-text">목표가 역산 계산기</div>
-      <div class="card-desc">목표 수익금 또는 목표 수익률 입력 시 필요한 매도 가격을 역산합니다. 세금 공제 후 실수령액 기준으로 계산합니다.</div>
-      <div class="card-meta"><span class="meta-tag">준비 중</span><span class="meta-tag">곧 출시</span></div>
-      <span class="card-cta secondary" style="cursor:default;opacity:.6;">준비 중...</span>
-    </div>
-  </div>
-
-  <div class="tool-card" style="opacity:.65;cursor:default;" data-cat="strategy">
-    <div class="card-thumb" style="background:linear-gradient(135deg,#f5f5f5,#eeeeee);">🔄</div>
-    <div class="card-body">
-      <div class="card-cat">🎯 전략</div>
-      <div class="card-title-text">코인 사기 위험도 분석기</div>
-      <div class="card-desc">코인 이름·주소 입력 시 사기 위험 신호를 체크합니다. 리딩방 사기·러그풀 패턴 분석. 코린이 필수 도구.</div>
-      <div class="card-meta"><span class="meta-tag">준비 중</span><span class="meta-tag">곧 출시</span></div>
-      <span class="card-cta secondary" style="cursor:default;opacity:.6;">준비 중...</span>
-    </div>
-  </div>
-
 </div>
 
-<!-- AD BOTTOM -->
+<!-- ===== 섹션 4: 시장 데이터 링크 ===== -->
+<div class="section-title">📡 실시간 시장 데이터</div>
+<div class="tools-wrap">
+  <div class="tools-grid">
+
+    <a class="tool-card" href="/market/crypto-charts.html">
+      <span class="tool-icon">📡</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">코인 히트맵·버블차트</span>
+      <span class="tool-desc">실시간 코인 시세<br>히트맵·버블차트·트레이딩뷰</span>
+    </a>
+
+    <a class="tool-card" href="/market/bitcoin-rainbow-chart.html">
+      <span class="tool-icon">🌈</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">비트코인 레인보우 차트</span>
+      <span class="tool-desc">현재 BTC 과매수·과매도<br>구간 즉시 확인</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ===== 준비 중 섹션 ===== -->
+<div class="section-title">🔜 준비 중인 도구</div>
+<div class="tools-wrap">
+  <div class="tools-grid">
+
+    <div class="tool-card coming">
+      <span class="tool-icon">🔄</span>
+      <span class="tool-cat">🎯 전략</span>
+      <span class="tool-name">코인 사기 위험도 분석기</span>
+      <span class="tool-desc">코인 이름 입력 시<br>사기 위험 신호 체크</span>
+      <span class="coming-badge">준비 중</span>
+    </div>
+
+    <div class="tool-card coming">
+      <span class="tool-icon">📰</span>
+      <span class="tool-cat">📊 시장 분석</span>
+      <span class="tool-name">코인 뉴스 감성 분석기</span>
+      <span class="tool-desc">실시간 뉴스 긍정·부정<br>감성 지수 분석</span>
+      <span class="coming-badge">준비 중</span>
+    </div>
+
+    <div class="tool-card coming">
+      <span class="tool-icon">⚖️</span>
+      <span class="tool-cat">💰 세금</span>
+      <span class="tool-name">거래소 세금 비교기</span>
+      <span class="tool-desc">국내외 거래소별<br>세금 신고 방법 비교</span>
+      <span class="coming-badge">준비 중</span>
+    </div>
+
+  </div>
+</div>
+
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-icon">🧑‍💼</div>
+    <div class="cta-text">
+      <h3>계산기만으론 부족하다면 — 세무사 무료 상담</h3>
+      <p>여러 거래소 합산·손실 상계·2027 절세 전략까지, 가상자산 전문 세무사와 무료로 상담하세요.</p>
+    </div>
+    <a class="cta-link" href="/consultation.html">무료 상담 신청 →</a>
+  </div>
+</div>
+
 <!-- FAQ -->
-<div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);">
-  <div style="font-size:.95rem;font-weight:700;margin-bottom:16px;">❓ 도구 관련 자주 묻는 질문</div>
+<section class="faq-section">
+  <h2>❓ 도구 관련 자주 묻는 질문</h2>
+
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">모든 계산기가 정말 무료인가요? <span>▼</span></div>
+    <div class="faq-q" onclick="toggleFaq(this)">모든 계산기가 정말 무료인가요?</div>
     <div class="faq-a">네, 모든 도구는 영구 무료입니다. 회원가입, 개인정보 입력 없이 즉시 사용할 수 있습니다. 수익은 Google AdSense 광고로만 운영됩니다.</div>
   </div>
+
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">계산 결과를 믿을 수 있나요? <span>▼</span></div>
+    <div class="faq-q" onclick="toggleFaq(this)">계산 결과를 믿을 수 있나요?</div>
     <div class="faq-a">국세청 공식 기준(소득세법 제87조의2)을 적용하며, 2027년 시행 예정인 22% 세율과 250만원 기본공제를 반영합니다. 다만 실제 세금 신고 시에는 세무사 상담을 권장합니다. 본 도구의 결과는 참고용입니다.</div>
   </div>
+
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">입력한 데이터가 서버에 저장되나요? <span>▼</span></div>
+    <div class="faq-q" onclick="toggleFaq(this)">입력한 데이터가 서버에 저장되나요?</div>
     <div class="faq-a">아니오. 모든 계산은 브라우저 내에서만 처리되며, 입력 데이터는 서버로 전송되지 않습니다. 페이지를 닫으면 데이터가 완전히 삭제됩니다.</div>
   </div>
+
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">어떤 도구가 가장 유용한가요? <span>▼</span></div>
-    <div class="faq-a">2027년 과세 대비를 위해서는 세금 계산기와 CSV 자동 계산기가 가장 유용합니다. 시장 흐름 파악에는 공포·탐욕·알트시즌 대시보드, 매수 전략에는 DCA·물타기 계산기를 추천합니다. Google Analytics 데이터를 기반으로 인기 도구를 지속 업데이트합니다.</div>
+    <div class="faq-q" onclick="toggleFaq(this)">어떤 도구가 가장 유용한가요?</div>
+    <div class="faq-a">2027년 과세 대비를 위해서는 <a href="/tools/tax-calculator.html">세금 계산기</a>와 <a href="/tools/csv-tax-calculator.html">CSV 자동 계산기</a>가 가장 유용합니다. 매수 전략에는 <a href="/tools/dca-calculator.html">DCA 계산기</a>·<a href="/tools/multa-calculator.html">물타기 계산기</a>를 추천합니다.</div>
   </div>
-</div>
 
-<!-- BLOG CTA -->
-<div style="background:linear-gradient(135deg,rgba(247,147,26,.1),rgba(247,147,26,.04));border:1px solid rgba(247,147,26,.2);border-radius:16px;padding:24px;text-align:center;">
-  <div style="font-size:1.1rem;font-weight:800;margin-bottom:8px;">📰 계산기만으로 부족하다면?</div>
-  <div style="font-size:.9rem;color:var(--sub);margin-bottom:16px;">세금·절세·DCA·물타기 전략을 쉽게 설명한 무료 가이드</div>
-  <a href="https://cryptotax.cloud/blog/" style="display:inline-block;padding:12px 28px;background:var(--primary);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.95rem;">블로그 가이드 보러가기 →</a>
-</div>
-
-</div><!-- /container -->
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">코린이인데 어떤 계산기부터 써야 하나요?</div>
+    <div class="faq-a">처음이라면 ① <a href="/tools/roi-calculator.html">수익률 계산기</a>로 내 수익을 확인하고 ② <a href="/tools/tax-calculator.html">세금 계산기</a>로 2027년 예상 세금을 미리 파악한 후 ③ <a href="/tools/dca-calculator.html">DCA 계산기</a>로 적립 전략을 세워보세요.</div>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-links">
-    <a href="https://cryptotax.cloud/">홈</a>
-    <a href="https://cryptotax.cloud/tools/">도구</a>
-    <a href="https://cryptotax.cloud/blog/">블로그</a>
-    <a href="https://cryptotax.cloud/about.html">소개</a>
-    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
-    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
-    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>₿ CryptoTax.cloud</h4>
+        <p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 · 개인정보 미수집.</p>
+      </div>
+      <div class="footer-col">
+        <h4>세금 도구</h4>
+        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
+        <a href="/tools/csv-tax-calculator.html">CSV 세금 자동 계산기</a>
+        <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화</a>
+        <a href="/tools/portfolio-tracker.html">포트폴리오 계산기</a>
+      </div>
+      <div class="footer-col">
+        <h4>투자 계산기</h4>
+        <a href="/tools/roi-calculator.html">수익률 계산기</a>
+        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
+        <a href="/tools/multa-calculator.html">물타기 계산기</a>
+        <a href="/tools/staking-calculator.html">스테이킹 계산기</a>
+        <a href="/tools/fee-calculator.html">수수료 비교 계산기</a>
+      </div>
+      <div class="footer-col">
+        <h4>전략·시장 분석</h4>
+        <a href="/tools/kimchi-calculator.html">김치 프리미엄 계산기</a>
+        <a href="/tools/target-price-calculator.html">목표가 역산 계산기</a>
+        <a href="/tools/loss-recovery-calculator.html">손실 회복 계산기</a>
+        <a href="/tools/krw-converter.html">코인 원화 환산기</a>
+        <a href="/tools/market-cap-calculator.html">시가총액 계산기</a>
+        <a href="/tools/satoshi-calculator.html">사토시 환산기</a>
+      </div>
+      <div class="footer-col">
+        <h4>시장 데이터</h4>
+        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
+        <a href="/market/bitcoin-rainbow-chart.html">레인보우 차트</a>
+        <a href="/blog/">블로그</a>
+        <a href="/consultation.html">무료 세무 상담</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="/about.html">사이트 소개</a>
+        <a href="/privacy-policy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="/disclaimer.html">면책조항</a>
+        <a href="/sitemap.html">사이트맵</a>
+      </div>
+      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud · 모든 계산기는 참고용 · <a href="mailto:contact@cryptotax.cloud" style="color:var(--sub)">contact@cryptotax.cloud</a></div>
 </footer>
 
 <script>
-/* ── THEME ── */
-const root = document.documentElement;
-const saved = localStorage.getItem('ctc-theme') || 'light';
-root.setAttribute('data-theme', saved);
-document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
-function toggleTheme() {
-  const c = root.getAttribute('data-theme'), n = c === 'dark' ? 'light' : 'dark';
-  root.setAttribute('data-theme', n);
-  localStorage.setItem('ctc-theme', n);
-  document.getElementById('themeBtn').textContent = n === 'dark' ? '☀️ 라이트' : '🌙 다크';
+/* 테마 */
+(function(){ const t=localStorage.getItem('ctc-theme')||'dark'; document.documentElement.setAttribute('data-theme',t); })();
+function toggleTheme(){
+  const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  localStorage.setItem('ctc-theme',n);
+  document.querySelector('.theme-btn').textContent=n==='dark'?'🌙 다크':'☀️ 라이트';
 }
 
-/* ── FILTER ── */
-function filterTools(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.tool-card').forEach(card => {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.classList.remove('hidden');
+/* FAQ */
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+/* 필터 */
+function filterCards(cat, tab){
+  document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  document.querySelectorAll('#allGrid .tool-card').forEach(card=>{
+    if(cat==='all'){
+      card.style.display='flex';
     } else {
-      card.classList.add('hidden');
+      card.style.display = card.dataset.cat===cat ? 'flex' : 'none';
     }
   });
-}
-
-/* ── GA TRACKING ── */
-function trackClick(toolName) {
-  // Google Analytics 이벤트 전송
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'tool_click', {
-      'event_category': 'Tools',
-      'event_label': toolName,
-      'value': 1
-    });
-  }
-  // 로컬 클릭 카운트 (GA 없을 때 백업)
-  const key = 'tool_clicks';
-  const clicks = JSON.parse(localStorage.getItem(key) || '{}');
-  clicks[toolName] = (clicks[toolName] || 0) + 1;
-  localStorage.setItem(key, JSON.stringify(clicks));
-}
-
-/* ── POPULARITY BAR ANIMATION ── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.querySelectorAll('.pop-bar-fill').forEach(bar => {
-      const w = bar.style.width;
-      bar.style.width = '0%';
-      setTimeout(() => bar.style.width = w, 100);
-    });
-  }, 300);
-});
-
-/* ── FAQ ── */
-function toggleFaq(el) {
-  const a = el.nextElementSibling;
-  const isOpen = a.style.display === 'block';
-  document.querySelectorAll('.faq-a').forEach(x => x.style.display = 'none');
-  document.querySelectorAll('.faq-q span').forEach(x => x.textContent = '▼');
-  if (!isOpen) { a.style.display = 'block'; el.querySelector('span').textContent = '▲'; }
 }
 </script>
 </body>
