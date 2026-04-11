@@ -708,7 +708,7 @@ function toggleFaq(el){
 /* ===== DB 폼 ===== */
 document.getElementById('leadForm').addEventListener('submit',function(e){
   e.preventDefault();
-  fetch('https://script.google.com/macros/s/AKfycbzwjouifr_B1nwTZr7S1VaYjaJy2ErzevMIyEMpTdkDGXZylMUhc4gSs4Y2vgQ3QC44sQ/exec',{
+  fetch('https://script.google.com/macros/s/AKfycbwhInTn6uhuIe5JStHEhKRKudxmcU7pLYhQ5ozTJ-sGh32TJgMtAhsxMM9eF9HDDs-whw/exec',{
     method:'POST',
     body:JSON.stringify({name:document.getElementById('lName').value,phone:document.getElementById('lPhone').value,email:document.getElementById('lEmail').value,agree1:document.getElementById('lAgree1').checked,agree2:document.getElementById('lAgree2').checked,page:window.location.pathname})
   }).then(()=>{document.getElementById('leadForm').style.display='none';document.getElementById('leadSuccess').style.display='block';})
