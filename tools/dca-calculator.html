@@ -449,20 +449,37 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 <div class="section">
   <h2 class="section-title">📋 DCA 계산기 사용법 (5단계)</h2>
   <style>
-.howto-list{display:flex;flex-direction:column;gap:0;max-width:640px;margin:0;}
-.howto-step{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);max-width:640px;}
+.howto-list{display:flex;flex-direction:column;}
+.howto-step{display:flex;align-items:flex-start;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
 .howto-step:last-child{border-bottom:none;}
-.howto-step .howto-num{width:36px;height:36px;background:var(--point);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;margin-top:2px;margin-left:0;}
-.howto-content h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.howto-content p{font-size:14px;color:var(--text2);line-height:1.6;}
-</style>
-<div class="howto-list">
-  <div class="howto-step"><div class="howto-num">1</div><div class="howto-content"><h4>코인 검색·선택</h4><p>검색창에 코인명 또는 심볼을 입력해 업비트·빗썸 상장 코인 중 선택합니다.</p></div></div>
-  <div class="howto-step"><div class="howto-num">2</div><div class="howto-content"><h4>매수 설정 입력</h4><p>매수 주기(매일/매주/매월), 1회 매수금액, 총 매수 횟수를 입력합니다.</p></div></div>
-  <div class="howto-step"><div class="howto-num">3</div><div class="howto-content"><h4>단가 범위 입력</h4><p>최저·최고 매수단가와 현재가를 입력하면 수익률을 시뮬레이션합니다.</p></div></div>
-  <div class="howto-step"><div class="howto-num">4</div><div class="howto-content"><h4>결과 확인</h4><p>총 투자금액, 평균단가, 수익률, 2027 세금 예상액을 확인합니다.</p></div></div>
-  <div class="howto-step"><div class="howto-num">5</div><div class="howto-content"><h4>엑셀 다운로드</h4><p>세금 신고용 엑셀 2종을 무료로 다운로드해 국세청 신고를 준비합니다.</p></div></div>
+.howto-num-box{width:40px;height:40px;background:var(--point);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;}
+.howto-text h4{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.howto-text p{font-size:14px;color:var(--text2);line-height:1.7;margin:0;}
+  </style>
+  <div class="howto-list">
+    <div class="howto-step">
+      <div class="howto-num-box">1</div>
+      <div class="howto-text"><h4>코인 검색·선택</h4><p>검색창에 코인명 또는 심볼을 입력해 업비트·빗썸 상장 코인 중 선택합니다.</p></div>
+    </div>
+    <div class="howto-step">
+      <div class="howto-num-box">2</div>
+      <div class="howto-text"><h4>매수 설정 입력</h4><p>매수 주기(매일/매주/매월), 1회 매수금액, 총 매수 횟수를 입력합니다.</p></div>
+    </div>
+    <div class="howto-step">
+      <div class="howto-num-box">3</div>
+      <div class="howto-text"><h4>단가 범위 입력</h4><p>최저·최고 매수단가와 현재가를 입력하면 수익률을 시뮬레이션합니다.</p></div>
+    </div>
+    <div class="howto-step">
+      <div class="howto-num-box">4</div>
+      <div class="howto-text"><h4>결과 확인</h4><p>총 투자금액, 평균단가, 수익률, 2027 세금 예상액을 확인합니다.</p></div>
+    </div>
+    <div class="howto-step">
+      <div class="howto-num-box">5</div>
+      <div class="howto-text"><h4>엑셀 다운로드</h4><p>세금 신고용 엑셀 2종을 무료로 다운로드해 국세청 신고를 준비합니다.</p></div>
+    </div>
+  </div>
 </div>
+
 
 <!-- 5. PDF 폼 -->
 <div class="section" style="padding-top:0;">
