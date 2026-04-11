@@ -792,25 +792,87 @@ function downloadExcel(type){
 
   if(type===1){
     // 시트1: 요약
-    const s1=[
-      ['CryptoTax.cloud — DCA 분석 리포트'],[''],
-      ['코인',selectedCoinSym],['총 투자금액',calcResult.totalInvest],
-      ['평균단가',Math.round(calcResult.avgPrice)],['총 수량',calcResult.totalQty],
-      ['현재가',calcResult.curP||'-'],['평가금액',calcResult.evalAmt||'-'],
-      ['수익금',calcResult.profit||'-'],['수익률(%)',calcResult.roi?calcResult.roi.toFixed(2):'-'],
-      ['예상세금(22%)',Math.round(calcResult.tax)],['세후수익',Math.round(calcResult.afterTax)],
-    ];
-    const ws1=XLSX.utils.aoa_to_sheet(s1);
-    XLSX.utils.book_append_sheet(wb,ws1,'DCA 요약');
+  const wb1 = XLSX.utils.book_new();
 
-    // 시트2: 회차별
-    const s2=[['회차','매수단가(원)','매수수량','투자금액(원)','누적평균단가(원)']];
-    let cumQty=0;
-    calcResult.rows.forEach(r=>{cumQty+=r.qty;s2.push([r.round,Math.round(r.price),r.qty,r.invest,Math.round(calcResult.totalInvest/cumQty)]);});
-    const ws2=XLSX.utils.aoa_to_sheet(s2);
-    XLSX.utils.book_append_sheet(wb,ws2,'회차별 상세');
+// 시트1: DCA 요약 (컬러 스타일)
+const s1 = [
+  ['CryptoTax.cloud — DCA 분석 리포트','',''],
+  ['','',''],
+  ['항목','값','단위'],
+  ['코인', selectedCoinSym, ''],
+  ['총 투자금액', calcResult.totalInvest, '원'],
+  ['예상 평균단가', Math.round(calcResult.avgPrice), '원'],
+  ['총 매수수량', calcResult.totalQty, selectedCoinSym],
+  ['현재가', calcResult.curP||0, '원'],
+  ['현재 평가금액', Math.round(calcResult.evalAmt||0), '원'],
+  ['수익금', Math.round(calcResult.profit||0), '원'],
+  ['수익률(ROI)', calcResult.roi ? calcResult.roi.toFixed(2)+'%' : '-', ''],
+  ['연간 기본공제', '2,500,000', '원'],
+  ['예상 세금(22%)', Math.round(calcResult.tax), '원'],
+  ['세후 수익', Math.round(calcResult.afterTax), '원'],
+  ['','',''],
+  ['※ 본 리포트는 참고용이며 실제 세금 신고는 세무사와 상담하세요.','',''],
+  ['※ 출처: 국세청 (www.nts.go.kr)','',''],
+];
 
-    XLSX.writeFile(wb,`DCA_분석리포트_${selectedCoinSym}_${new Date().toISOString().slice(0,10)}.xlsx`);
+const ws1 = XLSX.utils.aoa_to_sheet(s1);
+
+// 컬럼 너비
+ws1['!cols'] = [{wch:22},{wch:18},{wch:10}];
+
+// 스타일 (배경색·폰트)
+const styleTitle = {font:{bold:true,sz:14,color:{rgb:'FFFFFF'}},fill:{fgColor:{rgb:'F7931A'}},alignment:{horizontal:'center'}};
+const styleHeader = {font:{bold:true,sz:11,color:{rgb:'FFFFFF'}},fill:{fgColor:{rgb:'F7931A'}}};
+const styleHighlight = {font:{bold:true,sz:12,color:{rgb:'F7931A'}},fill:{fgColor:{rgb:'FFF3E0'}}};
+const styleNormal = {fill:{fgColor:{rgb:'FFFFFF'}}};
+const styleAlt = {fill:{fgColor:{rgb:'FFF9F0'}}};
+
+// 셀 스타일 적용
+if(!ws1['A1'].s) ws1['A1'].s={};
+ws1['A1'].s = styleTitle;
+ws1['A3'].s = styleHeader;
+ws1['B3'].s = styleHeader;
+ws1['C3'].s = styleHeader;
+
+// 수익·세금 행 하이라이트
+['A11','B11','A13','B13','A14','B14'].forEach(cell=>{
+  if(ws1[cell]) ws1[cell].s = styleHighlight;
+});
+
+// 병합
+ws1['!merges'] = [
+  {s:{r:0,c:0},e:{r:0,c:2}},
+  {s:{r:15,c:0},e:{r:15,c:2}},
+  {s:{r:16,c:0},e:{r:16,c:2}},
+];
+
+XLSX.utils.book_append_sheet(wb1, ws1, 'DCA 요약');
+
+// 시트2: 회차별 상세
+const s2 = [['회차','매수단가(원)','매수수량','투자금액(원)','누적평균단가(원)']];
+let cumQty2 = 0;
+calcResult.rows.forEach(r => {
+  cumQty2 += r.qty;
+  s2.push([
+    r.round,
+    Math.round(r.price),
+    parseFloat(r.qty.toFixed(8)),
+    r.invest,
+    Math.round(calcResult.totalInvest / cumQty2)
+  ]);
+});
+
+const ws2 = XLSX.utils.aoa_to_sheet(s2);
+ws2['!cols'] = [{wch:8},{wch:16},{wch:14},{wch:14},{wch:18}];
+
+// 헤더 스타일
+['A1','B1','C1','D1','E1'].forEach(cell=>{
+  if(ws2[cell]) ws2[cell].s = styleHeader;
+});
+
+XLSX.utils.book_append_sheet(wb1, ws2, '회차별 상세');
+
+XLSX.writeFile(wb1, `DCA_분석리포트_${selectedCoinSym}_${new Date().toISOString().slice(0,10)}.xlsx`);
   } else {
     // 국세청 신고 준비용
     const s=[
