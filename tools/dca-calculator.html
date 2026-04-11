@@ -519,7 +519,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     </div>
   </div>
 
-  
 <!-- 7. 다른 계산기 -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">🧰 다른 무료 계산기</h2>
@@ -620,28 +619,68 @@ function toggleTheme(){
 })();
 
 /* ===== 코인 데이터 ===== */
-const COINS=[
-  {sym:'BTC',name:'비트코인',color:'#f7931a',exch:'업비트/빗썸'},
-  {sym:'ETH',name:'이더리움',color:'#627eea',exch:'업비트/빗썸'},
-  {sym:'XRP',name:'리플',color:'#00aae4',exch:'업비트/빗썸'},
-  {sym:'SOL',name:'솔라나',color:'#9945ff',exch:'업비트/빗썸'},
-  {sym:'DOGE',name:'도지코인',color:'#c3a634',exch:'업비트/빗썸'},
-  {sym:'ADA',name:'에이다',color:'#0d1e6d',exch:'업비트/빗썸'},
-  {sym:'AVAX',name:'아발란체',color:'#e84142',exch:'업비트/빗썸'},
-  {sym:'MATIC',name:'폴리곤',color:'#8247e5',exch:'업비트/빗썸'},
-  {sym:'DOT',name:'폴카닷',color:'#e6007a',exch:'업비트/빗썸'},
-  {sym:'LINK',name:'체인링크',color:'#2a5ada',exch:'업비트/빗썸'},
-  {sym:'UNI',name:'유니스왑',color:'#ff007a',exch:'업비트/빗썸'},
-  {sym:'ATOM',name:'코스모스',color:'#2e3148',exch:'업비트/빗썸'},
-  {sym:'LTC',name:'라이트코인',color:'#345d9d',exch:'업비트/빗썸'},
-  {sym:'BCH',name:'비트코인캐시',color:'#8dc351',exch:'업비트/빗썸'},
-  {sym:'NEAR',name:'니어프로토콜',color:'#000000',exch:'업비트/빗썸'},
-  {sym:'FTM',name:'팬텀',color:'#1969ff',exch:'업비트'},
-  {sym:'SAND',name:'샌드박스',color:'#04adef',exch:'업비트/빗썸'},
-  {sym:'MANA',name:'디센트럴랜드',color:'#ff2d55',exch:'업비트/빗썸'},
-  {sym:'ALGO',name:'알고랜드',color:'#000000',exch:'업비트/빗썸'},
-  {sym:'ICP',name:'인터넷컴퓨터',color:'#29abe2',exch:'업비트/빗썸'},
-];
+let COINS = [];
+let selectedCoinSym = 'BTC';
+let calcResult = null;
+
+// 업비트 API로 코인 목록 + 로고 자동 로드
+async function loadUpbitCoins() {
+  try {
+    const res = await fetch('https://api.upbit.com/v1/market/all?isDetails=true');
+    const data = await res.json();
+    COINS = data
+      .filter(c => c.market.startsWith('KRW-'))
+      .map(c => ({
+        sym: c.market.replace('KRW-', ''),
+        name: c.korean_name,
+        exch: '업비트',
+        logo: `https://static.upbit.com/logos/${c.market.replace('KRW-', '')}.png`
+      }));
+    // 초기 드롭다운 BTC 선택
+    const btc = COINS.find(c => c.sym === 'BTC');
+    if (btc) selectCoin(btc.sym, btc.name, btc.logo, btc.exch);
+  } catch(e) {
+    console.error('업비트 코인 로드 실패', e);
+  }
+}
+
+function renderDropdown(list) {
+  const dd = document.getElementById('coinDropdown');
+  dd.innerHTML = list.map(c => `
+    <div class="coin-item" onclick="selectCoin('${c.sym}','${c.name}','${c.logo}','${c.exch}')">
+      <img src="${c.logo}" width="32" height="32" style="border-radius:50%;flex-shrink:0;" onerror="this.src='https://static.upbit.com/logos/BTC.png'">
+      <div class="coin-info"><div class="coin-name">${c.name}</div><div class="coin-sym">${c.sym}</div></div>
+      <div class="coin-exch">${c.exch}</div>
+    </div>`).join('');
+}
+
+function openDropdown() {
+  renderDropdown(COINS);
+  document.getElementById('coinDropdown').classList.add('open');
+}
+
+function filterCoins(v) {
+  const f = COINS.filter(c =>
+    c.name.includes(v) || c.sym.toLowerCase().includes(v.toLowerCase())
+  );
+  renderDropdown(f);
+  document.getElementById('coinDropdown').classList.add('open');
+}
+
+function selectCoin(sym, name, logo, exch) {
+  selectedCoinSym = sym;
+  document.getElementById('selectedCoin').innerHTML = `
+    <img src="${logo}" width="36" height="36" style="border-radius:50%;flex-shrink:0;" onerror="this.src='https://static.upbit.com/logos/BTC.png'">
+    <div class="coin-info">
+      <div class="coin-name" style="color:var(--point);font-weight:700;">${name}</div>
+      <div class="coin-sym">${sym} · ${exch}</div>
+    </div>`;
+  document.getElementById('coinSearch').value = '';
+  document.getElementById('coinDropdown').classList.remove('open');
+}
+
+// 페이지 로드시 실행
+loadUpbitCoins();
 
 let selectedCoinSym='BTC';
 let calcResult=null;
