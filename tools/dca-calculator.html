@@ -930,7 +930,12 @@ async function submitPdfLead() {
    FAQ
 ============================================================ */
 function toggleFaq(el) {
-  el.parentElement.classList.toggle('open');
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  // 모든 FAQ 닫기 (아코디언 효과)
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  // 클릭한 항목이 닫혀있었으면 열기
+  if (!isOpen) item.classList.add('open');
 }
 
 /* ============================================================
