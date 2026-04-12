@@ -1268,8 +1268,12 @@ async function submitPdfLead() {
     });
   } catch(e) { /* DB 실패해도 완료 처리 */ }
 
- document.querySelector('.lead-inputs').style.display = 'none';
-document.getElementById('leadSuccess').style.display = 'block';
+ document.querySelector('.lead-form-wrap').innerHTML = 
+  '<div style="text-align:center;padding:32px 0;">' +
+  '<div style="font-size:48px;margin-bottom:16px;">✅</div>' +
+  '<p style="font-size:18px;font-weight:700;color:#f5a623;">신청 완료! 입력하신 이메일로 PDF 가이드가 발송됩니다.</p>' +
+  '<p style="font-size:14px;color:#888;">스팸함도 확인해 주세요 📬</p>' +
+  '</div>';
 
 /* ============================================================
    FAQ
