@@ -274,20 +274,22 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .blog-card .b-title{font-weight:800;}
 .faq-q{font-weight:700;}
 .blog-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:16px;}
-.blog-card-new{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:block;transition:transform .2s,box-shadow .2s;}
-.blog-card-new:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
-.blog-card-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:56px;}
+.blog-card-new{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:block;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;}
+.blog-card-new:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(108,60,255,.15);}
+.blog-card-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:56px;background:linear-gradient(135deg,#6c3cff,#9b5cff);}
 .blog-card-body{padding:18px;}
 .blog-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
-.tag-breaking{background:#fee2e2;color:#dc2626;}
-.tag-guide{background:#ede9fe;color:#7c3aed;}
-.tag-strategy{background:#d1fae5;color:#059669;}
-.blog-card-body h3{font-size:15px;font-weight:800;color:var(--text);line-height:1.4;margin-bottom:8px;}
-.blog-card-body p{font-size:13px;color:var(--text2);line-height:1.6;}
-.blog-more{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--point);}
+.tag-breaking{background:rgba(220,38,38,.15);color:#f87171;}
+.tag-guide{background:rgba(124,58,237,.15);color:#a78bfa;}
+.tag-strategy{background:rgba(5,150,105,.15);color:#34d399;}
+.blog-card-body h3{font-size:15px;font-weight:800;color:var(--text);line-height:1.4;margin:0 0 8px;}
+.blog-card-body p{font-size:13px;color:var(--text2);line-height:1.6;margin:0;}
+.blog-more{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--point);text-decoration:none;}
 @media(max-width:480px){
   .blog-card-grid{grid-template-columns:1fr;gap:14px;}
-  .blog-card-img{height:120px;font-size:44px;}
+  .blog-card-img{height:110px;font-size:40px;}
+  .blog-card-body{padding:14px;}
+  .blog-card-body h3{font-size:14px;}
 }
 </style>
 </head>
@@ -615,6 +617,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 
   </div>
 </div>
+
 
 <!-- FAQ -->
 <div class="section" style="padding-top:0;">
