@@ -482,28 +482,7 @@ footer {
 .footer-links a { color: var(--text2); text-decoration: none; font-size: .82rem; }
 .footer-links a:hover { color: var(--accent); }
 footer p { color: var(--text3); font-size: .8rem; line-height: 1.8; }
-  <style>
-  (기존 CSS들...)
 
-  /* 🔥 카드 호버 빛 효과 추가 (여기에 붙여넣기) */
-  .blog-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .blog-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent, rgba(255,122,0,.08), transparent);
-    opacity: 0;
-    transition: opacity .3s;
-  }
-
-  .blog-card:hover::before {
-    opacity: 1;
-  }
-</style>
 </head>
 <body>
 
