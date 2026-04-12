@@ -52,8 +52,6 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-
-/* 상단바 */
 .top-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;}
 .top-bar-logo{font-weight:700;color:var(--point);font-size:15px;text-decoration:none;}
 .top-bar-nav{display:flex;gap:16px;align-items:center;}
@@ -61,8 +59,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .top-bar-nav a:hover{color:var(--point);}
 .theme-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;cursor:pointer;color:var(--text2);font-size:12px;}
 .theme-btn:hover{border-color:var(--point);color:var(--point);}
-
-/* 티커 */
 .ticker-wrap{background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;height:36px;}
 .ticker-track{display:flex;gap:32px;animation:ticker 30s linear infinite;height:36px;align-items:center;padding:0 20px;white-space:nowrap;}
 .ticker-track:hover{animation-play-state:paused;}
@@ -71,8 +67,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .ticker-item .t-price{color:var(--text);font-weight:600;}
 .t-up{color:#16c784;} .t-down{color:#ea3943;}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* 헤더 */
 .hero{background:linear-gradient(135deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:3px solid var(--point);padding:40px 20px 32px;text-align:center;}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--point);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
 .hero h1{font-size:clamp(22px,4vw,36px);font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.3;}
@@ -85,16 +79,12 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .stat-badge{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px;}
 .stat-badge .s-num{font-size:20px;font-weight:800;color:var(--point);}
 .stat-badge .s-label{font-size:11px;color:var(--text2);margin-top:2px;}
-
-/* 공통 */
 .section{max-width:860px;margin:0 auto;padding:32px 20px;}
 .section-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:20px;}
 .ad-wrap{background:var(--bg2);border:1px dashed var(--border);border-radius:8px;padding:16px;text-align:center;color:var(--text3);font-size:12px;max-width:860px;margin:0 auto;}
 .ad-wrap.tall{height:90px;display:flex;align-items:center;justify-content:center;}
 .chart-wrap{max-width:860px;margin:0 auto;padding:0 20px;}
 .chart-wrap iframe{width:100%;height:220px;border:none;border-radius:var(--radius);}
-
-/* 계산기 */
 .calc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
 .coin-search-wrap{position:relative;margin-bottom:12px;}
 .coin-search{width:100%;padding:12px 16px 12px 40px;border:2px solid var(--border);border-radius:8px;font-size:15px;background:var(--bg);color:var(--text);transition:border .2s;}
@@ -118,8 +108,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--point);}
 .calc-btn{width:100%;padding:16px;background:var(--point);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px;transition:background .2s;}
 .calc-btn:hover{background:var(--point-dark);}
-
-/* 결과 */
 .result-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:20px;display:none;}
 .result-box.show{display:block;}
 .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
@@ -133,8 +121,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .result-table th{background:var(--point);color:#fff;padding:8px 10px;text-align:center;}
 .result-table td{padding:7px 10px;text-align:center;border-bottom:1px solid var(--border);}
 .result-table tr:nth-child(even) td{background:var(--bg2);}
-
-/* 엑셀 폼 */
 .excel-section{margin-top:20px;padding:20px;background:var(--point-light);border:2px dashed var(--point);border-radius:var(--radius);text-align:center;}
 .excel-section h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .excel-section p{font-size:13px;color:var(--text2);margin-bottom:16px;}
@@ -145,8 +131,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .excel-btn{padding:13px 24px;background:var(--point);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin:4px;transition:background .2s;}
 .excel-btn:hover{background:var(--point-dark);}
 .excel-success{display:none;margin-top:12px;padding:10px;background:#1a2e1a;border-radius:8px;color:#4caf50;font-weight:600;}
-
-/* HowTo */
 .howto-list{display:flex;flex-direction:column;width:100%;}
 .howto-step{display:flex;align-items:flex-start;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);width:100%;}
 .howto-step:last-child{border-bottom:none;}
@@ -154,8 +138,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .howto-text{flex:1;}
 .howto-text h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .howto-text p{font-size:14px;color:var(--text2);line-height:1.7;margin:0;}
-
-/* PDF 폼 */
 .lead-form-wrap{background:var(--bg2);border:2px solid var(--point);border-radius:var(--radius);padding:32px;text-align:center;}
 .lead-form-wrap h2{font-size:22px;font-weight:800;margin-bottom:8px;}
 .lead-form-wrap>p{color:var(--text2);font-size:14px;margin-bottom:20px;}
@@ -168,8 +150,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .lead-submit{width:100%;padding:15px;background:var(--point);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:4px;}
 .lead-submit:hover{background:var(--point-dark);}
 .lead-success{display:none;padding:16px;background:var(--point-light);border-radius:8px;color:var(--point);font-weight:700;font-size:15px;margin-top:12px;}
-
-/* 공식 */
 .formula-box{background:var(--bg2);border-radius:var(--radius);padding:24px;}
 .formula-box>p{color:var(--text2);margin-bottom:12px;font-size:14px;line-height:1.8;}
 .formula-steps{list-style:none;counter-reset:step;padding:0;}
@@ -177,8 +157,6 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .formula-steps li:last-child{border-bottom:none;}
 .formula-steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:24px;height:24px;background:var(--point);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
 .formula-example{background:var(--point-light);border-left:4px solid var(--point);padding:14px 16px;border-radius:0 8px 8px 0;margin-top:16px;font-size:13px;color:var(--text);line-height:1.8;}
-
-/* 출처 */
 .source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
 @media(max-width:600px){.source-grid{grid-template-columns:1fr;}}
 .source-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;text-decoration:none;transition:border .2s;display:block;}
@@ -186,16 +164,12 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .source-card .s-icon{font-size:28px;margin-bottom:6px;}
 .source-card .s-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .source-card .s-desc{font-size:12px;color:var(--text2);}
-
-/* 계산기 그리드 */
 .tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 @media(max-width:700px){.tools-grid{grid-template-columns:repeat(2,1fr);}}
 .tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;text-decoration:none;transition:all .2s;display:block;}
 .tool-card:hover{border-color:var(--point);transform:translateY(-2px);}
 .tool-card .t-icon{font-size:28px;margin-bottom:6px;}
 .tool-card .t-name{font-size:13px;font-weight:700;color:var(--text);}
-
-/* 블로그 */
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 @media(max-width:700px){.blog-grid{grid-template-columns:1fr;}}
 .blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-decoration:none;transition:all .2s;display:block;}
@@ -203,25 +177,14 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .blog-card .b-tag{font-size:11px;color:var(--point);font-weight:700;margin-bottom:8px;}
 .blog-card .b-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.4;}
 .blog-card .b-desc{font-size:13px;color:var(--text2);line-height:1.5;}
-
-/* FAQ */
 .faq-item{border-bottom:1px solid var(--border);}
 .faq-q{padding:16px 0;font-size:15px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
 .faq-q:hover{color:var(--point);}
 .faq-icon{font-size:20px;color:var(--point);transition:transform .25s;flex-shrink:0;}
-.faq-a{
-  font-size:14px;color:var(--text2);line-height:1.7;
-  max-height:0;overflow:hidden;
-  transition:max-height 0.35s ease, padding 0.35s ease, opacity 0.35s ease;
-  padding:0;opacity:0;
-}
+.faq-a{font-size:14px;color:var(--text2);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.35s ease, padding 0.35s ease, opacity 0.35s ease;padding:0;opacity:0;}
 .faq-a a{color:var(--point);}
 .faq-item.open .faq-icon{transform:rotate(45deg);}
-.faq-item.open .faq-a{
-  max-height:400px;padding:0 0 16px;opacity:1;
-}
-
-/* 면책 */
+.faq-item.open .faq-a{max-height:400px;padding:0 0 16px;opacity:1;}
 .disclaimer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 20px;text-align:center;}
 .disclaimer p{font-size:12px;color:var(--text3);line-height:1.8;}
 .disclaimer a{color:var(--point);}
@@ -240,7 +203,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 0. 티커 -->
+<!-- 티커 -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="tickerTrack">
     <span class="ticker-item"><span class="t-name">BTC</span> <span class="t-price" id="t-btc">로딩중...</span> <span id="t-btc-c"></span></span>
@@ -258,7 +221,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 1. 헤더 + GEO + 통계 -->
+<!-- 헤더 -->
 <div class="hero">
   <div class="hero-badge">📅 2027 최신 업데이트 · 완전 무료</div>
   <h1>코인 <span>DCA 평균단가</span> 계산기</h1>
@@ -276,7 +239,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 2. BTC 차트 -->
+<!-- BTC 차트 -->
 <div class="chart-wrap" style="padding-top:24px;">
   <p style="font-size:13px;color:var(--text2);margin-bottom:8px;padding:0 4px;">📈 비트코인(BTC/KRW) 실시간 차트 — 현재가 확인 후 계산하세요</p>
   <iframe src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?locale=kr#%7B%22symbol%22%3A%22UPBIT%3ABTCKRW%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22220%22%2C%22dateRange%22%3A%221M%22%2C%22colorTheme%22%3A%22light%22%2C%22trendLineColor%22%3A%22%23f7931a%22%2C%22underLineColor%22%3A%22rgba(247%2C147%2C26%2C0.1)%22%2C%22isTransparent%22%3Atrue%2C%22autosize%22%3Atrue%7D" title="BTC/KRW 실시간 차트"></iframe>
@@ -287,12 +250,10 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   <div class="ad-wrap tall">광고 영역 (728×90) — 검색광고·애드센스</div>
 </div>
 
-<!-- 3. DCA 계산기 -->
+<!-- DCA 계산기 -->
 <div class="section">
   <h2 class="section-title">📅 DCA 계산기</h2>
   <div class="calc-card">
-
-    <!-- 코인 검색 -->
     <div class="coin-search-wrap">
       <span class="coin-search-icon">🔍</span>
       <input type="text" class="coin-search" id="coinSearch"
@@ -302,18 +263,14 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
         autocomplete="off">
       <div class="coin-dropdown" id="coinDropdown"></div>
     </div>
-
-    <!-- 선택된 코인 표시 -->
     <div class="selected-coin" id="selectedCoin">
       <img src="https://static.upbit.com/logos/BTC.png" width="36" height="36"
-        style="border-radius:50%;flex-shrink:0;"
-        onerror="this.style.display='none'">
+        style="border-radius:50%;flex-shrink:0;" onerror="this.style.display='none'">
       <div class="coin-info">
         <div class="coin-name" style="color:var(--point);font-weight:700;">비트코인</div>
         <div class="coin-sym">BTC · 업비트</div>
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label>매수 주기</label>
@@ -354,46 +311,20 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     <!-- 결과 박스 -->
     <div class="result-box" id="resultBox">
       <div class="result-grid">
-        <div class="result-item highlight">
-          <div class="r-label">예상 평균단가</div>
-          <div class="r-value" id="r-avg">-</div>
-        </div>
-        <div class="result-item highlight">
-          <div class="r-label">수익률 (ROI)</div>
-          <div class="r-value" id="r-roi">-</div>
-        </div>
-        <div class="result-item">
-          <div class="r-label">총 투자금액</div>
-          <div class="r-value" id="r-total">-</div>
-        </div>
-        <div class="result-item">
-          <div class="r-label">총 매수수량</div>
-          <div class="r-value" id="r-qty">-</div>
-        </div>
-        <div class="result-item">
-          <div class="r-label">현재 평가금액</div>
-          <div class="r-value" id="r-eval">-</div>
-        </div>
-        <div class="result-item">
-          <div class="r-label">수익금</div>
-          <div class="r-value" id="r-profit">-</div>
-        </div>
-        <div class="result-item">
-          <div class="r-label">예상 세금 (22%)</div>
-          <div class="r-value" id="r-tax">-</div>
-        </div>
-        <div class="result-item highlight">
-          <div class="r-label">세후 수익</div>
-          <div class="r-value" id="r-after">-</div>
-        </div>
+        <div class="result-item highlight"><div class="r-label">예상 평균단가</div><div class="r-value" id="r-avg">-</div></div>
+        <div class="result-item highlight"><div class="r-label">수익률 (ROI)</div><div class="r-value" id="r-roi">-</div></div>
+        <div class="result-item"><div class="r-label">총 투자금액</div><div class="r-value" id="r-total">-</div></div>
+        <div class="result-item"><div class="r-label">총 매수수량</div><div class="r-value" id="r-qty">-</div></div>
+        <div class="result-item"><div class="r-label">현재 평가금액</div><div class="r-value" id="r-eval">-</div></div>
+        <div class="result-item"><div class="r-label">수익금</div><div class="r-value" id="r-profit">-</div></div>
+        <div class="result-item"><div class="r-label">예상 세금 (22%)</div><div class="r-value" id="r-tax">-</div></div>
+        <div class="result-item highlight"><div class="r-label">세후 수익</div><div class="r-value" id="r-after">-</div></div>
       </div>
-
-      <!-- 회차별 테이블 -->
       <div style="overflow-x:auto;margin-top:16px;">
         <table class="result-table" id="resultTable"></table>
       </div>
 
-  <!-- ✅ 계산 결과 하단 — DB수집 + 엑셀 2종 다운로드 -->
+      <!-- 엑셀 다운로드 폼 -->
       <div class="excel-section" id="excelFormWrap">
         <div style="font-size:32px;margin-bottom:8px;">📊</div>
         <h3>계산 결과 엑셀로 저장하기</h3>
@@ -427,39 +358,25 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     </div>
   </div>
 </div>
-<!-- 광고 2 (CTR 최고) -->
+
+<!-- 광고 2 -->
 <div style="padding:0 20px 8px;max-width:860px;margin:0 auto;">
   <div class="ad-wrap tall">광고 영역 (계산 결과 하단 — CTR 최고)</div>
 </div>
 
-<!-- 4. HowTo 5단계 -->
+<!-- HowTo 5단계 -->
 <div class="section">
   <h2 class="section-title">📋 DCA 계산기 사용법 (5단계)</h2>
   <div class="howto-list">
-    <div class="howto-step">
-      <div class="howto-num-box">1</div>
-      <div class="howto-text"><h4>코인 검색·선택</h4><p>검색창에 코인명 또는 심볼을 입력해 업비트 상장 코인 중 선택합니다.</p></div>
-    </div>
-    <div class="howto-step">
-      <div class="howto-num-box">2</div>
-      <div class="howto-text"><h4>매수 설정 입력</h4><p>매수 주기(매일/매주/매월), 1회 매수금액, 총 매수 횟수를 입력합니다.</p></div>
-    </div>
-    <div class="howto-step">
-      <div class="howto-num-box">3</div>
-      <div class="howto-text"><h4>단가 범위 입력</h4><p>최저·최고 매수단가와 현재가를 입력하면 수익률을 시뮬레이션합니다.</p></div>
-    </div>
-    <div class="howto-step">
-      <div class="howto-num-box">4</div>
-      <div class="howto-text"><h4>결과 확인</h4><p>총 투자금액, 평균단가, 수익률, 2027 세금 예상액을 확인합니다.</p></div>
-    </div>
-    <div class="howto-step">
-      <div class="howto-num-box">5</div>
-      <div class="howto-text"><h4>엑셀 다운로드</h4><p>세금 신고용 엑셀 2종을 무료로 다운로드해 국세청 신고를 준비합니다.</p></div>
-    </div>
+    <div class="howto-step"><div class="howto-num-box">1</div><div class="howto-text"><h4>코인 검색·선택</h4><p>검색창에 코인명 또는 심볼을 입력해 업비트 상장 코인 중 선택합니다.</p></div></div>
+    <div class="howto-step"><div class="howto-num-box">2</div><div class="howto-text"><h4>매수 설정 입력</h4><p>매수 주기(매일/매주/매월), 1회 매수금액, 총 매수 횟수를 입력합니다.</p></div></div>
+    <div class="howto-step"><div class="howto-num-box">3</div><div class="howto-text"><h4>단가 범위 입력</h4><p>최저·최고 매수단가와 현재가를 입력하면 수익률을 시뮬레이션합니다.</p></div></div>
+    <div class="howto-step"><div class="howto-num-box">4</div><div class="howto-text"><h4>결과 확인</h4><p>총 투자금액, 평균단가, 수익률, 2027 세금 예상액을 확인합니다.</p></div></div>
+    <div class="howto-step"><div class="howto-num-box">5</div><div class="howto-text"><h4>엑셀 다운로드</h4><p>세금 신고용 엑셀 2종을 무료로 다운로드해 국세청 신고를 준비합니다.</p></div></div>
   </div>
 </div>
 
-<!-- 5. PDF 폼 -->
+<!-- PDF 폼 -->
 <div class="section" id="pdfSection" style="padding-top:0;">
   <div class="lead-form-wrap">
     <div style="font-size:40px;margin-bottom:10px;">📥</div>
@@ -468,18 +385,15 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     이름·전화번호·이메일 입력 후 <strong style="color:var(--point)">이메일로 즉시 발송</strong>됩니다</p>
     <div class="lead-inputs">
       <div>
-        <input type="text" id="l-name" placeholder="이름 (예: 홍길동)"
-          oninput="validatePdfField('l-name','name')">
+        <input type="text" id="l-name" placeholder="이름 (예: 홍길동)" oninput="validatePdfField('l-name','name')">
         <div class="field-err" id="l-name-err"></div>
       </div>
       <div>
-        <input type="tel" id="l-phone" placeholder="전화번호 (예: 010-1234-5678)"
-          oninput="validatePdfField('l-phone','phone')">
+        <input type="tel" id="l-phone" placeholder="전화번호 (예: 010-1234-5678)" oninput="validatePdfField('l-phone','phone')">
         <div class="field-err" id="l-phone-err"></div>
       </div>
       <div>
-        <input type="email" id="l-email" placeholder="이메일 (예: abc@gmail.com)"
-          oninput="validatePdfField('l-email','email')">
+        <input type="email" id="l-email" placeholder="이메일 (예: abc@gmail.com)" oninput="validatePdfField('l-email','email')">
         <div class="field-err" id="l-email-err"></div>
       </div>
       <label class="check-group">
@@ -499,7 +413,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 6. 공식 해설 -->
+<!-- 공식 해설 -->
 <div class="section">
   <h2 class="section-title">📐 DCA 평균단가 공식 완전 해설</h2>
   <div class="formula-box">
@@ -520,7 +434,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 7. 다른 무료 계산기 -->
+<!-- 다른 계산기 -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">🧰 다른 무료 계산기</h2>
   <div class="tools-grid">
@@ -540,29 +454,17 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   <div class="ad-wrap tall">광고 영역 (728×90)</div>
 </div>
 
-<!-- 8. 블로그 -->
+<!-- 블로그 -->
 <div class="section">
   <h2 class="section-title">📝 관련 블로그</h2>
   <div class="blog-grid">
-    <a href="https://cryptotax.cloud/blog/dca-strategy-2027.html" class="blog-card">
-      <div class="b-tag">DCA 전략</div>
-      <div class="b-title">2027 비트코인 DCA 전략 완벽 가이드</div>
-      <div class="b-desc">하락장에서도 수익 내는 정기매수 전략과 세금 절세법을 알아봅니다.</div>
-    </a>
-    <a href="https://cryptotax.cloud/blog/crypto-tax-2027.html" class="blog-card">
-      <div class="b-tag">세금 정보</div>
-      <div class="b-title">2027 가상자산 양도소득세 완전 정리</div>
-      <div class="b-desc">22% 세율, 250만원 공제, 이동평균법 취득원가 계산법까지 한번에.</div>
-    </a>
-    <a href="https://cryptotax.cloud/blog/upbit-coin-collect.html" class="blog-card">
-      <div class="b-tag">업비트 가이드</div>
-      <div class="b-title">업비트 코인모으기 완전 사용법</div>
-      <div class="b-desc">매일 자동 매수 설정부터 수수료, DCA 효과 분석까지 실전 가이드.</div>
-    </a>
+    <a href="https://cryptotax.cloud/blog/dca-strategy-2027.html" class="blog-card"><div class="b-tag">DCA 전략</div><div class="b-title">2027 비트코인 DCA 전략 완벽 가이드</div><div class="b-desc">하락장에서도 수익 내는 정기매수 전략과 세금 절세법을 알아봅니다.</div></a>
+    <a href="https://cryptotax.cloud/blog/crypto-tax-2027.html" class="blog-card"><div class="b-tag">세금 정보</div><div class="b-title">2027 가상자산 양도소득세 완전 정리</div><div class="b-desc">22% 세율, 250만원 공제, 이동평균법 취득원가 계산법까지 한번에.</div></a>
+    <a href="https://cryptotax.cloud/blog/upbit-coin-collect.html" class="blog-card"><div class="b-tag">업비트 가이드</div><div class="b-title">업비트 코인모으기 완전 사용법</div><div class="b-desc">매일 자동 매수 설정부터 수수료, DCA 효과 분석까지 실전 가이드.</div></a>
   </div>
 </div>
 
-<!-- 9. FAQ -->
+<!-- FAQ -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">❓ 자주 묻는 질문</h2>
   <div id="faqList">
@@ -576,23 +478,17 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 공신력 있는 출처 -->
+<!-- 출처 -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">🔗 공신력 있는 정보 출처</h2>
   <div class="source-grid">
-    <a href="https://www.nts.go.kr/" target="_blank" rel="noopener" class="source-card">
-      <div class="s-icon">🏛️</div><div class="s-name">국세청</div><div class="s-desc">가상자산 과세 공식 안내</div>
-    </a>
-    <a href="https://www.law.go.kr/" target="_blank" rel="noopener" class="source-card">
-      <div class="s-icon">⚖️</div><div class="s-name">국가법령정보센터</div><div class="s-desc">소득세법 시행령 원문</div>
-    </a>
-    <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener" class="source-card">
-      <div class="s-icon">🏆</div><div class="s-name">더코인랩스</div><div class="s-desc">대한민국 1위 블록체인 교육</div>
-    </a>
+    <a href="https://www.nts.go.kr/" target="_blank" rel="noopener" class="source-card"><div class="s-icon">🏛️</div><div class="s-name">국세청</div><div class="s-desc">가상자산 과세 공식 안내</div></a>
+    <a href="https://www.law.go.kr/" target="_blank" rel="noopener" class="source-card"><div class="s-icon">⚖️</div><div class="s-name">국가법령정보센터</div><div class="s-desc">소득세법 시행령 원문</div></a>
+    <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener" class="source-card"><div class="s-icon">🏆</div><div class="s-name">더코인랩스</div><div class="s-desc">대한민국 1위 블록체인 교육</div></a>
   </div>
 </div>
 
-<!-- 10. 면책조항 -->
+<!-- 면책조항 -->
 <div class="disclaimer">
   <p>⚠️ 본 계산기는 참고용이며 법적·세무적 조언을 대체하지 않습니다. 실제 세금 신고는 반드시 전문 세무사와 상담하세요.</p>
   <p>📌 공식 정보: <a href="https://www.nts.go.kr/" target="_blank" rel="noopener">국세청</a> · <a href="https://www.fsc.go.kr/" target="_blank" rel="noopener">금융위원회</a> · <a href="https://www.law.go.kr/" target="_blank" rel="noopener">국가법령정보센터</a></p>
@@ -601,7 +497,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 
 <script>
 /* ============================================================
-   전역 변수 (단 1회 선언)
+   전역 변수
 ============================================================ */
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpCxqVrSLFG20i8Vovmz8XwzDqND2S9OzPE80fvzJxIrEsdF2odohI-TKixc7fcRfPzQ/exec';
 let COINS = [];
@@ -626,7 +522,19 @@ function toggleTheme() {
 })();
 
 /* ============================================================
-   업비트 API — 코인 목록 + 로고 자동 로드
+   DB 저장 공통 함수 (no-cors 적용)
+============================================================ */
+function saveToDb(payload) {
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
+
+/* ============================================================
+   업비트 코인 목록 로드
 ============================================================ */
 async function loadUpbitCoins() {
   try {
@@ -640,9 +548,7 @@ async function loadUpbitCoins() {
         exch: '업비트',
         logo: `https://static.upbit.com/logos/${m.market.replace('KRW-', '')}.png`
       }));
-    console.log('✅ 업비트 API 코인 로드:', COINS.length + '개');
   } catch (e) {
-    console.warn('⚠️ 업비트 API 실패 → 내장 코인 목록 사용');
     COINS = [
       {sym:'BTC',name:'비트코인',exch:'업비트',logo:'https://static.upbit.com/logos/BTC.png'},
       {sym:'ETH',name:'이더리움',exch:'업비트',logo:'https://static.upbit.com/logos/ETH.png'},
@@ -677,283 +583,25 @@ async function loadUpbitCoins() {
       {sym:'ONE',name:'하모니',exch:'업비트',logo:'https://static.upbit.com/logos/ONE.png'},
       {sym:'ZIL',name:'질리카',exch:'업비트',logo:'https://static.upbit.com/logos/ZIL.png'},
       {sym:'BAT',name:'베이직어텐션토큰',exch:'업비트',logo:'https://static.upbit.com/logos/BAT.png'},
-      {sym:'ZRX',name:'0x',exch:'업비트',logo:'https://static.upbit.com/logos/ZRX.png'},
       {sym:'GRT',name:'더그래프',exch:'업비트',logo:'https://static.upbit.com/logos/GRT.png'},
       {sym:'SNX',name:'신세틱스',exch:'업비트',logo:'https://static.upbit.com/logos/SNX.png'},
-      {sym:'COMP',name:'컴파운드',exch:'업비트',logo:'https://static.upbit.com/logos/COMP.png'},
       {sym:'AAVE',name:'에이브',exch:'업비트',logo:'https://static.upbit.com/logos/AAVE.png'},
       {sym:'MKR',name:'메이커',exch:'업비트',logo:'https://static.upbit.com/logos/MKR.png'},
-      {sym:'SUSHI',name:'스시스왑',exch:'업비트',logo:'https://static.upbit.com/logos/SUSHI.png'},
-      {sym:'1INCH',name:'1인치',exch:'업비트',logo:'https://static.upbit.com/logos/1INCH.png'},
-      {sym:'CRV',name:'커브다오',exch:'업비트',logo:'https://static.upbit.com/logos/CRV.png'},
-      {sym:'YFI',name:'연파이낸스',exch:'업비트',logo:'https://static.upbit.com/logos/YFI.png'},
-      {sym:'KAVA',name:'카바',exch:'업비트',logo:'https://static.upbit.com/logos/KAVA.png'},
-      {sym:'KSM',name:'쿠사마',exch:'업비트',logo:'https://static.upbit.com/logos/KSM.png'},
       {sym:'ICX',name:'아이콘',exch:'업비트',logo:'https://static.upbit.com/logos/ICX.png'},
       {sym:'BORA',name:'보라',exch:'업비트',logo:'https://static.upbit.com/logos/BORA.png'},
-      {sym:'MVL',name:'엠블',exch:'업비트',logo:'https://static.upbit.com/logos/MVL.png'},
-      {sym:'MED',name:'메디블록',exch:'업비트',logo:'https://static.upbit.com/logos/MED.png'},
       {sym:'WEMIX',name:'위믹스',exch:'업비트',logo:'https://static.upbit.com/logos/WEMIX.png'},
       {sym:'STX',name:'스택스',exch:'업비트',logo:'https://static.upbit.com/logos/STX.png'},
-      {sym:'QTUM',name:'퀀텀',exch:'업비트',logo:'https://static.upbit.com/logos/QTUM.png'},
-      {sym:'NEO',name:'네오',exch:'업비트',logo:'https://static.upbit.com/logos/NEO.png'},
-      {sym:'ONT',name:'온톨로지',exch:'업비트',logo:'https://static.upbit.com/logos/ONT.png'},
-      {sym:'ANKR',name:'앵커',exch:'업비트',logo:'https://static.upbit.com/logos/ANKR.png'},
-      {sym:'BTT',name:'비트토렌트',exch:'업비트',logo:'https://static.upbit.com/logos/BTT.png'},
-      {sym:'XEM',name:'넴',exch:'업비트',logo:'https://static.upbit.com/logos/XEM.png'},
-      {sym:'STEEM',name:'스팀',exch:'업비트',logo:'https://static.upbit.com/logos/STEEM.png'},
-      {sym:'CAKE',name:'팬케이크스왑',exch:'업비트',logo:'https://static.upbit.com/logos/CAKE.png'},
-      {sym:'GMT',name:'스테픈',exch:'업비트',logo:'https://static.upbit.com/logos/GMT.png'},
       {sym:'PEPE',name:'페페',exch:'업비트',logo:'https://static.upbit.com/logos/PEPE.png'},
       {sym:'FLOKI',name:'플로키',exch:'업비트',logo:'https://static.upbit.com/logos/FLOKI.png'},
       {sym:'BONK',name:'봉크',exch:'업비트',logo:'https://static.upbit.com/logos/BONK.png'},
-      {sym:'WIF',name:'도그위프햇',exch:'업비트',logo:'https://static.upbit.com/logos/WIF.png'},
-      {sym:'TRUMP',name:'오피셜트럼프',exch:'업비트',logo:'https://static.upbit.com/logos/TRUMP.png'},
-      {sym:'JUP',name:'주피터',exch:'업비트',logo:'https://static.upbit.com/logos/JUP.png'},
-      {sym:'TIA',name:'셀레스티아',exch:'업비트',logo:'https://static.upbit.com/logos/TIA.png'},
-      {sym:'SEI',name:'세이',exch:'업비트',logo:'https://static.upbit.com/logos/SEI.png'},
-      {sym:'INJ',name:'인젝티브',exch:'업비트',logo:'https://static.upbit.com/logos/INJ.png'},
       {sym:'SUI',name:'수이',exch:'업비트',logo:'https://static.upbit.com/logos/SUI.png'},
       {sym:'APT',name:'앱토스',exch:'업비트',logo:'https://static.upbit.com/logos/APT.png'},
       {sym:'OP',name:'옵티미즘',exch:'업비트',logo:'https://static.upbit.com/logos/OP.png'},
       {sym:'ARB',name:'아비트럼',exch:'업비트',logo:'https://static.upbit.com/logos/ARB.png'},
-      {sym:'BLUR',name:'블러',exch:'업비트',logo:'https://static.upbit.com/logos/BLUR.png'},
       {sym:'WLD',name:'월드코인',exch:'업비트',logo:'https://static.upbit.com/logos/WLD.png'},
-      {sym:'EIGEN',name:'아이겐레이어',exch:'업비트',logo:'https://static.upbit.com/logos/EIGEN.png'},
-      {sym:'POPCAT',name:'팝캣',exch:'업비트',logo:'https://static.upbit.com/logos/POPCAT.png'},
-      {sym:'SONIC',name:'소닉',exch:'업비트',logo:'https://static.upbit.com/logos/SONIC.png'},
-      {sym:'VIRTUAL',name:'버추얼프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/VIRTUAL.png'},
-      {sym:'GRASS',name:'그라스',exch:'업비트',logo:'https://static.upbit.com/logos/GRASS.png'},
-      {sym:'PNUT',name:'피넛더스쿼럴',exch:'업비트',logo:'https://static.upbit.com/logos/PNUT.png'},
-      {sym:'NOT',name:'노트코인',exch:'업비트',logo:'https://static.upbit.com/logos/NOT.png'},
-      {sym:'DOGS',name:'독스',exch:'업비트',logo:'https://static.upbit.com/logos/DOGS.png'},
-      {sym:'HMSTR',name:'햄스터콤뱃',exch:'업비트',logo:'https://static.upbit.com/logos/HMSTR.png'},
-      {sym:'PENGU',name:'푸들리',exch:'업비트',logo:'https://static.upbit.com/logos/PENGU.png'},
-      {sym:'MOVE',name:'무브먼트',exch:'업비트',logo:'https://static.upbit.com/logos/MOVE.png'},
-      {sym:'FET',name:'페치에이아이',exch:'업비트',logo:'https://static.upbit.com/logos/FET.png'},
-      {sym:'RNDR',name:'렌더',exch:'업비트',logo:'https://static.upbit.com/logos/RNDR.png'},
-      {sym:'TAO',name:'비텐서',exch:'업비트',logo:'https://static.upbit.com/logos/TAO.png'},
-      {sym:'OCEAN',name:'오션프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/OCEAN.png'},
-      {sym:'BAND',name:'밴드프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/BAND.png'},
-      {sym:'PAXG',name:'팍스골드',exch:'업비트',logo:'https://static.upbit.com/logos/PAXG.png'},
-      {sym:'XMR',name:'모네로',exch:'업비트',logo:'https://static.upbit.com/logos/XMR.png'},
-      {sym:'ZEC',name:'지캐시',exch:'업비트',logo:'https://static.upbit.com/logos/ZEC.png'},
-      {sym:'DASH',name:'대시',exch:'업비트',logo:'https://static.upbit.com/logos/DASH.png'},
-      {sym:'ZEN',name:'호라이즌',exch:'업비트',logo:'https://static.upbit.com/logos/ZEN.png'},
-      {sym:'SC',name:'시아코인',exch:'업비트',logo:'https://static.upbit.com/logos/SC.png'},
-      {sym:'GNO',name:'노시스',exch:'업비트',logo:'https://static.upbit.com/logos/GNO.png'},
-      {sym:'LSK',name:'리스크',exch:'업비트',logo:'https://static.upbit.com/logos/LSK.png'},
-      {sym:'WAVES',name:'웨이브즈',exch:'업비트',logo:'https://static.upbit.com/logos/WAVES.png'},
-      {sym:'CVC',name:'시빅',exch:'업비트',logo:'https://static.upbit.com/logos/CVC.png'},
-      {sym:'OGN',name:'오리진프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/OGN.png'},
-      {sym:'MTL',name:'메탈',exch:'업비트',logo:'https://static.upbit.com/logos/MTL.png'},
-      {sym:'STORJ',name:'스토리지',exch:'업비트',logo:'https://static.upbit.com/logos/STORJ.png'},
-      {sym:'CBK',name:'코박토큰',exch:'업비트',logo:'https://static.upbit.com/logos/CBK.png'},
-      {sym:'SNT',name:'스테이터스',exch:'업비트',logo:'https://static.upbit.com/logos/SNT.png'},
-      {sym:'HIFI',name:'하이파이',exch:'업비트',logo:'https://static.upbit.com/logos/HIFI.png'},
-      {sym:'CELO',name:'셀로',exch:'업비트',logo:'https://static.upbit.com/logos/CELO.png'},
-      {sym:'SKL',name:'스케일',exch:'업비트',logo:'https://static.upbit.com/logos/SKL.png'},
-      {sym:'GLM',name:'골렘',exch:'업비트',logo:'https://static.upbit.com/logos/GLM.png'},
-      {sym:'NMR',name:'뉴메레르',exch:'업비트',logo:'https://static.upbit.com/logos/NMR.png'},
-      {sym:'REP',name:'어거',exch:'업비트',logo:'https://static.upbit.com/logos/REP.png'},
-      {sym:'LPT',name:'라이브피어',exch:'업비트',logo:'https://static.upbit.com/logos/LPT.png'},
-      {sym:'AERGO',name:'에어고',exch:'업비트',logo:'https://static.upbit.com/logos/AERGO.png'},
-      {sym:'APE',name:'에이프코인',exch:'업비트',logo:'https://static.upbit.com/logos/APE.png'},
-      {sym:'GMT',name:'그린메타버스토큰',exch:'업비트',logo:'https://static.upbit.com/logos/GMT.png'},
-      {sym:'SAND',name:'더샌드박스',exch:'업비트',logo:'https://static.upbit.com/logos/SAND.png'},
       {sym:'IMX',name:'이뮤터블',exch:'업비트',logo:'https://static.upbit.com/logos/IMX.png'},
-      {sym:'LDO',name:'리도다오',exch:'업비트',logo:'https://static.upbit.com/logos/LDO.png'},
-      {sym:'RPL',name:'로켓풀',exch:'업비트',logo:'https://static.upbit.com/logos/RPL.png'},
-      {sym:'SSV',name:'SSV네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/SSV.png'},
-      {sym:'PENDLE',name:'펜들',exch:'업비트',logo:'https://static.upbit.com/logos/PENDLE.png'},
       {sym:'ENA',name:'에테나',exch:'업비트',logo:'https://static.upbit.com/logos/ENA.png'},
-      {sym:'PYTH',name:'파이스네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/PYTH.png'},
-      {sym:'JTO',name:'지토',exch:'업비트',logo:'https://static.upbit.com/logos/JTO.png'},
-      {sym:'ONDO',name:'온도파이낸스',exch:'업비트',logo:'https://static.upbit.com/logos/ONDO.png'},
-      {sym:'W',name:'워프게이트',exch:'업비트',logo:'https://static.upbit.com/logos/W.png'},
-      {sym:'STRK',name:'스타크넷',exch:'업비트',logo:'https://static.upbit.com/logos/STRK.png'},
-      {sym:'ALT',name:'알트레이어',exch:'업비트',logo:'https://static.upbit.com/logos/ALT.png'},
-      {sym:'DYM',name:'다이메이션',exch:'업비트',logo:'https://static.upbit.com/logos/DYM.png'},
-      {sym:'ZETA',name:'제타체인',exch:'업비트',logo:'https://static.upbit.com/logos/ZETA.png'},
-      {sym:'PORTAL',name:'포탈',exch:'업비트',logo:'https://static.upbit.com/logos/PORTAL.png'},
-      {sym:'MANTA',name:'만타네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/MANTA.png'},
-      {sym:'PIXEL',name:'픽셀',exch:'업비트',logo:'https://static.upbit.com/logos/PIXEL.png'},
-      {sym:'IO',name:'io.net',exch:'업비트',logo:'https://static.upbit.com/logos/IO.png'},
-      {sym:'ZK',name:'ZKsync',exch:'업비트',logo:'https://static.upbit.com/logos/ZK.png'},
-      {sym:'LISTA',name:'리스타다오',exch:'업비트',logo:'https://static.upbit.com/logos/LISTA.png'},
-      {sym:'BB',name:'보라비트',exch:'업비트',logo:'https://static.upbit.com/logos/BB.png'},
-      {sym:'BOME',name:'북오브밈',exch:'업비트',logo:'https://static.upbit.com/logos/BOME.png'},
-      {sym:'MEW',name:'캣인어독스월드',exch:'업비트',logo:'https://static.upbit.com/logos/MEW.png'},
-      {sym:'NEIRO',name:'네이로',exch:'업비트',logo:'https://static.upbit.com/logos/NEIRO.png'},
-      {sym:'CATI',name:'캐터즌',exch:'업비트',logo:'https://static.upbit.com/logos/CATI.png'},
-      {sym:'MAJOR',name:'메이저',exch:'업비트',logo:'https://static.upbit.com/logos/MAJOR.png'},
-      {sym:'DEEP',name:'딥북',exch:'업비트',logo:'https://static.upbit.com/logos/DEEP.png'},
-      {sym:'KAITO',name:'카이토',exch:'업비트',logo:'https://static.upbit.com/logos/KAITO.png'}
-    ];
-  }
-  const btc = COINS.find(c => c.sym === 'BTC');
-  if (btc) selectCoin(btc.sym, btc.name, btc.logo, btc.exch);
-}
-async function loadUpbitCoins() {
-  try {
-    const res = await fetch('https://api.upbit.com/v1/market/all?isDetails=true');
-    const data = await res.json();
-    COINS = data
-      .filter(m => m.market.startsWith('KRW-'))
-      .map(m => ({
-        sym: m.market.replace('KRW-', ''),
-        name: m.korean_name,
-        exch: '업비트',
-        logo: `https://static.upbit.com/logos/${m.market.replace('KRW-', '')}.png`
-      }));
-    console.log('✅ 업비트 API 코인 로드:', COINS.length + '개');
-  } catch (e) {
-    console.warn('⚠️ 업비트 API 실패 → 내장 코인 목록 사용');
-    COINS = [
-      {sym:'BTC',name:'비트코인',exch:'업비트',logo:'https://static.upbit.com/logos/BTC.png'},
-      {sym:'ETH',name:'이더리움',exch:'업비트',logo:'https://static.upbit.com/logos/ETH.png'},
-      {sym:'XRP',name:'리플',exch:'업비트',logo:'https://static.upbit.com/logos/XRP.png'},
-      {sym:'SOL',name:'솔라나',exch:'업비트',logo:'https://static.upbit.com/logos/SOL.png'},
-      {sym:'DOGE',name:'도지코인',exch:'업비트',logo:'https://static.upbit.com/logos/DOGE.png'},
-      {sym:'ADA',name:'에이다',exch:'업비트',logo:'https://static.upbit.com/logos/ADA.png'},
-      {sym:'AVAX',name:'아발란체',exch:'업비트',logo:'https://static.upbit.com/logos/AVAX.png'},
-      {sym:'TRX',name:'트론',exch:'업비트',logo:'https://static.upbit.com/logos/TRX.png'},
-      {sym:'DOT',name:'폴카닷',exch:'업비트',logo:'https://static.upbit.com/logos/DOT.png'},
-      {sym:'LINK',name:'체인링크',exch:'업비트',logo:'https://static.upbit.com/logos/LINK.png'},
-      {sym:'MATIC',name:'폴리곤',exch:'업비트',logo:'https://static.upbit.com/logos/MATIC.png'},
-      {sym:'LTC',name:'라이트코인',exch:'업비트',logo:'https://static.upbit.com/logos/LTC.png'},
-      {sym:'BCH',name:'비트코인캐시',exch:'업비트',logo:'https://static.upbit.com/logos/BCH.png'},
-      {sym:'SHIB',name:'시바이누',exch:'업비트',logo:'https://static.upbit.com/logos/SHIB.png'},
-      {sym:'UNI',name:'유니스왑',exch:'업비트',logo:'https://static.upbit.com/logos/UNI.png'},
-      {sym:'ATOM',name:'코스모스',exch:'업비트',logo:'https://static.upbit.com/logos/ATOM.png'},
-      {sym:'ETC',name:'이더리움클래식',exch:'업비트',logo:'https://static.upbit.com/logos/ETC.png'},
-      {sym:'XLM',name:'스텔라루멘',exch:'업비트',logo:'https://static.upbit.com/logos/XLM.png'},
-      {sym:'ALGO',name:'알고랜드',exch:'업비트',logo:'https://static.upbit.com/logos/ALGO.png'},
-      {sym:'VET',name:'비체인',exch:'업비트',logo:'https://static.upbit.com/logos/VET.png'},
-      {sym:'SAND',name:'더샌드박스',exch:'업비트',logo:'https://static.upbit.com/logos/SAND.png'},
-      {sym:'MANA',name:'디센트럴랜드',exch:'업비트',logo:'https://static.upbit.com/logos/MANA.png'},
-      {sym:'AXS',name:'엑시인피니티',exch:'업비트',logo:'https://static.upbit.com/logos/AXS.png'},
-      {sym:'THETA',name:'쎄타토큰',exch:'업비트',logo:'https://static.upbit.com/logos/THETA.png'},
-      {sym:'FIL',name:'파일코인',exch:'업비트',logo:'https://static.upbit.com/logos/FIL.png'},
-      {sym:'HBAR',name:'헤데라',exch:'업비트',logo:'https://static.upbit.com/logos/HBAR.png'},
-      {sym:'NEAR',name:'니어프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/NEAR.png'},
-      {sym:'FLOW',name:'플로우',exch:'업비트',logo:'https://static.upbit.com/logos/FLOW.png'},
-      {sym:'CHZ',name:'칠리즈',exch:'업비트',logo:'https://static.upbit.com/logos/CHZ.png'},
-      {sym:'ENJ',name:'엔진코인',exch:'업비트',logo:'https://static.upbit.com/logos/ENJ.png'},
-      {sym:'ONE',name:'하모니',exch:'업비트',logo:'https://static.upbit.com/logos/ONE.png'},
-      {sym:'ZIL',name:'질리카',exch:'업비트',logo:'https://static.upbit.com/logos/ZIL.png'},
-      {sym:'BAT',name:'베이직어텐션토큰',exch:'업비트',logo:'https://static.upbit.com/logos/BAT.png'},
-      {sym:'ZRX',name:'0x',exch:'업비트',logo:'https://static.upbit.com/logos/ZRX.png'},
-      {sym:'GRT',name:'더그래프',exch:'업비트',logo:'https://static.upbit.com/logos/GRT.png'},
-      {sym:'SNX',name:'신세틱스',exch:'업비트',logo:'https://static.upbit.com/logos/SNX.png'},
-      {sym:'COMP',name:'컴파운드',exch:'업비트',logo:'https://static.upbit.com/logos/COMP.png'},
-      {sym:'AAVE',name:'에이브',exch:'업비트',logo:'https://static.upbit.com/logos/AAVE.png'},
-      {sym:'MKR',name:'메이커',exch:'업비트',logo:'https://static.upbit.com/logos/MKR.png'},
-      {sym:'SUSHI',name:'스시스왑',exch:'업비트',logo:'https://static.upbit.com/logos/SUSHI.png'},
-      {sym:'1INCH',name:'1인치',exch:'업비트',logo:'https://static.upbit.com/logos/1INCH.png'},
-      {sym:'CRV',name:'커브다오',exch:'업비트',logo:'https://static.upbit.com/logos/CRV.png'},
-      {sym:'YFI',name:'연파이낸스',exch:'업비트',logo:'https://static.upbit.com/logos/YFI.png'},
-      {sym:'KAVA',name:'카바',exch:'업비트',logo:'https://static.upbit.com/logos/KAVA.png'},
-      {sym:'KSM',name:'쿠사마',exch:'업비트',logo:'https://static.upbit.com/logos/KSM.png'},
-      {sym:'ICX',name:'아이콘',exch:'업비트',logo:'https://static.upbit.com/logos/ICX.png'},
-      {sym:'BORA',name:'보라',exch:'업비트',logo:'https://static.upbit.com/logos/BORA.png'},
-      {sym:'MVL',name:'엠블',exch:'업비트',logo:'https://static.upbit.com/logos/MVL.png'},
-      {sym:'MED',name:'메디블록',exch:'업비트',logo:'https://static.upbit.com/logos/MED.png'},
-      {sym:'WEMIX',name:'위믹스',exch:'업비트',logo:'https://static.upbit.com/logos/WEMIX.png'},
-      {sym:'STX',name:'스택스',exch:'업비트',logo:'https://static.upbit.com/logos/STX.png'},
-      {sym:'QTUM',name:'퀀텀',exch:'업비트',logo:'https://static.upbit.com/logos/QTUM.png'},
-      {sym:'NEO',name:'네오',exch:'업비트',logo:'https://static.upbit.com/logos/NEO.png'},
-      {sym:'ONT',name:'온톨로지',exch:'업비트',logo:'https://static.upbit.com/logos/ONT.png'},
-      {sym:'ANKR',name:'앵커',exch:'업비트',logo:'https://static.upbit.com/logos/ANKR.png'},
-      {sym:'BTT',name:'비트토렌트',exch:'업비트',logo:'https://static.upbit.com/logos/BTT.png'},
-      {sym:'XEM',name:'넴',exch:'업비트',logo:'https://static.upbit.com/logos/XEM.png'},
-      {sym:'STEEM',name:'스팀',exch:'업비트',logo:'https://static.upbit.com/logos/STEEM.png'},
-      {sym:'CAKE',name:'팬케이크스왑',exch:'업비트',logo:'https://static.upbit.com/logos/CAKE.png'},
-      {sym:'GMT',name:'스테픈',exch:'업비트',logo:'https://static.upbit.com/logos/GMT.png'},
-      {sym:'PEPE',name:'페페',exch:'업비트',logo:'https://static.upbit.com/logos/PEPE.png'},
-      {sym:'FLOKI',name:'플로키',exch:'업비트',logo:'https://static.upbit.com/logos/FLOKI.png'},
-      {sym:'BONK',name:'봉크',exch:'업비트',logo:'https://static.upbit.com/logos/BONK.png'},
-      {sym:'WIF',name:'도그위프햇',exch:'업비트',logo:'https://static.upbit.com/logos/WIF.png'},
-      {sym:'TRUMP',name:'오피셜트럼프',exch:'업비트',logo:'https://static.upbit.com/logos/TRUMP.png'},
-      {sym:'JUP',name:'주피터',exch:'업비트',logo:'https://static.upbit.com/logos/JUP.png'},
-      {sym:'TIA',name:'셀레스티아',exch:'업비트',logo:'https://static.upbit.com/logos/TIA.png'},
-      {sym:'SEI',name:'세이',exch:'업비트',logo:'https://static.upbit.com/logos/SEI.png'},
-      {sym:'INJ',name:'인젝티브',exch:'업비트',logo:'https://static.upbit.com/logos/INJ.png'},
-      {sym:'SUI',name:'수이',exch:'업비트',logo:'https://static.upbit.com/logos/SUI.png'},
-      {sym:'APT',name:'앱토스',exch:'업비트',logo:'https://static.upbit.com/logos/APT.png'},
-      {sym:'OP',name:'옵티미즘',exch:'업비트',logo:'https://static.upbit.com/logos/OP.png'},
-      {sym:'ARB',name:'아비트럼',exch:'업비트',logo:'https://static.upbit.com/logos/ARB.png'},
-      {sym:'BLUR',name:'블러',exch:'업비트',logo:'https://static.upbit.com/logos/BLUR.png'},
-      {sym:'WLD',name:'월드코인',exch:'업비트',logo:'https://static.upbit.com/logos/WLD.png'},
-      {sym:'EIGEN',name:'아이겐레이어',exch:'업비트',logo:'https://static.upbit.com/logos/EIGEN.png'},
-      {sym:'POPCAT',name:'팝캣',exch:'업비트',logo:'https://static.upbit.com/logos/POPCAT.png'},
-      {sym:'SONIC',name:'소닉',exch:'업비트',logo:'https://static.upbit.com/logos/SONIC.png'},
-      {sym:'VIRTUAL',name:'버추얼프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/VIRTUAL.png'},
-      {sym:'GRASS',name:'그라스',exch:'업비트',logo:'https://static.upbit.com/logos/GRASS.png'},
-      {sym:'PNUT',name:'피넛더스쿼럴',exch:'업비트',logo:'https://static.upbit.com/logos/PNUT.png'},
-      {sym:'NOT',name:'노트코인',exch:'업비트',logo:'https://static.upbit.com/logos/NOT.png'},
-      {sym:'DOGS',name:'독스',exch:'업비트',logo:'https://static.upbit.com/logos/DOGS.png'},
-      {sym:'HMSTR',name:'햄스터콤뱃',exch:'업비트',logo:'https://static.upbit.com/logos/HMSTR.png'},
-      {sym:'PENGU',name:'푸들리',exch:'업비트',logo:'https://static.upbit.com/logos/PENGU.png'},
-      {sym:'MOVE',name:'무브먼트',exch:'업비트',logo:'https://static.upbit.com/logos/MOVE.png'},
-      {sym:'FET',name:'페치에이아이',exch:'업비트',logo:'https://static.upbit.com/logos/FET.png'},
-      {sym:'RNDR',name:'렌더',exch:'업비트',logo:'https://static.upbit.com/logos/RNDR.png'},
       {sym:'TAO',name:'비텐서',exch:'업비트',logo:'https://static.upbit.com/logos/TAO.png'},
-      {sym:'OCEAN',name:'오션프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/OCEAN.png'},
-      {sym:'BAND',name:'밴드프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/BAND.png'},
-      {sym:'PAXG',name:'팍스골드',exch:'업비트',logo:'https://static.upbit.com/logos/PAXG.png'},
-      {sym:'XMR',name:'모네로',exch:'업비트',logo:'https://static.upbit.com/logos/XMR.png'},
-      {sym:'ZEC',name:'지캐시',exch:'업비트',logo:'https://static.upbit.com/logos/ZEC.png'},
-      {sym:'DASH',name:'대시',exch:'업비트',logo:'https://static.upbit.com/logos/DASH.png'},
-      {sym:'ZEN',name:'호라이즌',exch:'업비트',logo:'https://static.upbit.com/logos/ZEN.png'},
-      {sym:'SC',name:'시아코인',exch:'업비트',logo:'https://static.upbit.com/logos/SC.png'},
-      {sym:'GNO',name:'노시스',exch:'업비트',logo:'https://static.upbit.com/logos/GNO.png'},
-      {sym:'LSK',name:'리스크',exch:'업비트',logo:'https://static.upbit.com/logos/LSK.png'},
-      {sym:'WAVES',name:'웨이브즈',exch:'업비트',logo:'https://static.upbit.com/logos/WAVES.png'},
-      {sym:'CVC',name:'시빅',exch:'업비트',logo:'https://static.upbit.com/logos/CVC.png'},
-      {sym:'OGN',name:'오리진프로토콜',exch:'업비트',logo:'https://static.upbit.com/logos/OGN.png'},
-      {sym:'MTL',name:'메탈',exch:'업비트',logo:'https://static.upbit.com/logos/MTL.png'},
-      {sym:'STORJ',name:'스토리지',exch:'업비트',logo:'https://static.upbit.com/logos/STORJ.png'},
-      {sym:'CBK',name:'코박토큰',exch:'업비트',logo:'https://static.upbit.com/logos/CBK.png'},
-      {sym:'SNT',name:'스테이터스',exch:'업비트',logo:'https://static.upbit.com/logos/SNT.png'},
-      {sym:'HIFI',name:'하이파이',exch:'업비트',logo:'https://static.upbit.com/logos/HIFI.png'},
-      {sym:'CELO',name:'셀로',exch:'업비트',logo:'https://static.upbit.com/logos/CELO.png'},
-      {sym:'SKL',name:'스케일',exch:'업비트',logo:'https://static.upbit.com/logos/SKL.png'},
-      {sym:'GLM',name:'골렘',exch:'업비트',logo:'https://static.upbit.com/logos/GLM.png'},
-      {sym:'NMR',name:'뉴메레르',exch:'업비트',logo:'https://static.upbit.com/logos/NMR.png'},
-      {sym:'REP',name:'어거',exch:'업비트',logo:'https://static.upbit.com/logos/REP.png'},
-      {sym:'LPT',name:'라이브피어',exch:'업비트',logo:'https://static.upbit.com/logos/LPT.png'},
-      {sym:'AERGO',name:'에어고',exch:'업비트',logo:'https://static.upbit.com/logos/AERGO.png'},
-      {sym:'APE',name:'에이프코인',exch:'업비트',logo:'https://static.upbit.com/logos/APE.png'},
-      {sym:'GMT',name:'그린메타버스토큰',exch:'업비트',logo:'https://static.upbit.com/logos/GMT.png'},
-      {sym:'SAND',name:'더샌드박스',exch:'업비트',logo:'https://static.upbit.com/logos/SAND.png'},
-      {sym:'IMX',name:'이뮤터블',exch:'업비트',logo:'https://static.upbit.com/logos/IMX.png'},
-      {sym:'LDO',name:'리도다오',exch:'업비트',logo:'https://static.upbit.com/logos/LDO.png'},
-      {sym:'RPL',name:'로켓풀',exch:'업비트',logo:'https://static.upbit.com/logos/RPL.png'},
-      {sym:'SSV',name:'SSV네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/SSV.png'},
-      {sym:'PENDLE',name:'펜들',exch:'업비트',logo:'https://static.upbit.com/logos/PENDLE.png'},
-      {sym:'ENA',name:'에테나',exch:'업비트',logo:'https://static.upbit.com/logos/ENA.png'},
-      {sym:'PYTH',name:'파이스네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/PYTH.png'},
-      {sym:'JTO',name:'지토',exch:'업비트',logo:'https://static.upbit.com/logos/JTO.png'},
-      {sym:'ONDO',name:'온도파이낸스',exch:'업비트',logo:'https://static.upbit.com/logos/ONDO.png'},
-      {sym:'W',name:'워프게이트',exch:'업비트',logo:'https://static.upbit.com/logos/W.png'},
-      {sym:'STRK',name:'스타크넷',exch:'업비트',logo:'https://static.upbit.com/logos/STRK.png'},
-      {sym:'ALT',name:'알트레이어',exch:'업비트',logo:'https://static.upbit.com/logos/ALT.png'},
-      {sym:'DYM',name:'다이메이션',exch:'업비트',logo:'https://static.upbit.com/logos/DYM.png'},
-      {sym:'ZETA',name:'제타체인',exch:'업비트',logo:'https://static.upbit.com/logos/ZETA.png'},
-      {sym:'PORTAL',name:'포탈',exch:'업비트',logo:'https://static.upbit.com/logos/PORTAL.png'},
-      {sym:'MANTA',name:'만타네트워크',exch:'업비트',logo:'https://static.upbit.com/logos/MANTA.png'},
-      {sym:'PIXEL',name:'픽셀',exch:'업비트',logo:'https://static.upbit.com/logos/PIXEL.png'},
-      {sym:'IO',name:'io.net',exch:'업비트',logo:'https://static.upbit.com/logos/IO.png'},
-      {sym:'ZK',name:'ZKsync',exch:'업비트',logo:'https://static.upbit.com/logos/ZK.png'},
-      {sym:'LISTA',name:'리스타다오',exch:'업비트',logo:'https://static.upbit.com/logos/LISTA.png'},
-      {sym:'BB',name:'보라비트',exch:'업비트',logo:'https://static.upbit.com/logos/BB.png'},
-      {sym:'BOME',name:'북오브밈',exch:'업비트',logo:'https://static.upbit.com/logos/BOME.png'},
-      {sym:'MEW',name:'캣인어독스월드',exch:'업비트',logo:'https://static.upbit.com/logos/MEW.png'},
-      {sym:'NEIRO',name:'네이로',exch:'업비트',logo:'https://static.upbit.com/logos/NEIRO.png'},
-      {sym:'CATI',name:'캐터즌',exch:'업비트',logo:'https://static.upbit.com/logos/CATI.png'},
-      {sym:'MAJOR',name:'메이저',exch:'업비트',logo:'https://static.upbit.com/logos/MAJOR.png'},
-      {sym:'DEEP',name:'딥북',exch:'업비트',logo:'https://static.upbit.com/logos/DEEP.png'},
       {sym:'KAITO',name:'카이토',exch:'업비트',logo:'https://static.upbit.com/logos/KAITO.png'}
     ];
   }
@@ -969,14 +617,11 @@ function renderDropdown(list) {
   }
   dd.innerHTML = list.slice(0, 60).map(c => `
     <div class="coin-item" onclick="selectCoin('${c.sym}','${c.name.replace(/'/g,"\\'")}','${c.logo}','${c.exch}')">
-      <img src="${c.logo}" width="32" height="32"
-        style="border-radius:50%;flex-shrink:0;"
-        onerror="this.style.display='none'">
+      <img src="${c.logo}" width="32" height="32" style="border-radius:50%;flex-shrink:0;" onerror="this.style.display='none'">
       <div class="coin-info">
         <div class="coin-name">${c.name}</div>
         <div class="coin-sym">${c.sym}</div>
       </div>
-    
     </div>`).join('');
 }
 
@@ -987,9 +632,7 @@ function openDropdown() {
 
 function filterCoins(v) {
   const q = v.trim().toLowerCase();
-  const filtered = q
-    ? COINS.filter(c => c.name.includes(v) || c.sym.toLowerCase().includes(q))
-    : COINS;
+  const filtered = q ? COINS.filter(c => c.name.includes(v) || c.sym.toLowerCase().includes(q)) : COINS;
   renderDropdown(filtered);
   document.getElementById('coinDropdown').classList.add('open');
 }
@@ -997,9 +640,7 @@ function filterCoins(v) {
 function selectCoin(sym, name, logo, exch) {
   selectedCoinSym = sym;
   document.getElementById('selectedCoin').innerHTML = `
-    <img src="${logo}" width="36" height="36"
-      style="border-radius:50%;flex-shrink:0;"
-      onerror="this.style.display='none'">
+    <img src="${logo}" width="36" height="36" style="border-radius:50%;flex-shrink:0;" onerror="this.style.display='none'">
     <div class="coin-info">
       <div class="coin-name" style="color:var(--point);font-weight:700;">${name}</div>
       <div class="coin-sym">${sym} · ${exch}</div>
@@ -1008,13 +649,11 @@ function selectCoin(sym, name, logo, exch) {
   document.getElementById('coinDropdown').classList.remove('open');
 }
 
-// 외부 클릭 시 드롭다운 닫기
 document.addEventListener('click', e => {
   if (!e.target.closest('.coin-search-wrap'))
     document.getElementById('coinDropdown').classList.remove('open');
 });
 
-// 페이지 로드
 loadUpbitCoins();
 
 /* ============================================================
@@ -1054,26 +693,22 @@ function calculate() {
   const tax      = Math.max(0, (profit - 2500000) * 0.22);
   const afterTax = profit - tax;
 
-  // 결과 표시
-  document.getElementById('r-avg').textContent   = fmt(avgPrice);
-  document.getElementById('r-total').textContent = fmt(totalInvest);
-  document.getElementById('r-qty').textContent   = fmtQ(totalQty) + ' ' + selectedCoinSym;
-  document.getElementById('r-eval').textContent  = curP ? fmt(evalAmt)  : '-';
-  document.getElementById('r-profit').textContent= curP ? (profit >= 0 ? '+' : '') + fmt(profit) : '-';
-  document.getElementById('r-roi').textContent   = curP ? roi.toFixed(2) + '%' : '-';
-  document.getElementById('r-tax').textContent   = curP ? fmt(tax)      : '-';
-  document.getElementById('r-after').textContent = curP ? fmt(afterTax) : '-';
+  document.getElementById('r-avg').textContent    = fmt(avgPrice);
+  document.getElementById('r-total').textContent  = fmt(totalInvest);
+  document.getElementById('r-qty').textContent    = fmtQ(totalQty) + ' ' + selectedCoinSym;
+  document.getElementById('r-eval').textContent   = curP ? fmt(evalAmt)  : '-';
+  document.getElementById('r-profit').textContent = curP ? (profit >= 0 ? '+' : '') + fmt(profit) : '-';
+  document.getElementById('r-roi').textContent    = curP ? roi.toFixed(2) + '%' : '-';
+  document.getElementById('r-tax').textContent    = curP ? fmt(tax)      : '-';
+  document.getElementById('r-after').textContent  = curP ? fmt(afterTax) : '-';
 
-  // ROI 컬러
   const roiEl = document.getElementById('r-roi');
   if (curP) roiEl.style.color = roi >= 0 ? '#16c784' : '#ea3943';
 
-  // 회차별 테이블 (최대 20행)
-  const disp = rows.slice(0, 20);
   let cumQ = 0;
   document.getElementById('resultTable').innerHTML =
     `<tr><th>회차</th><th>매수단가</th><th>매수수량</th><th>투자금액</th><th>누적평균단가</th></tr>` +
-    disp.map(r => {
+    rows.slice(0, 20).map(r => {
       cumQ += r.qty;
       return `<tr>
         <td>${r.round}</td>
@@ -1085,22 +720,22 @@ function calculate() {
     }).join('') +
     (rows.length > 20 ? `<tr><td colspan="5" style="color:var(--text3)">… 총 ${rows.length}회 (상위 20회 표시)</td></tr>` : '');
 
-  calcResult = { rows, totalInvest, totalQty, avgPrice, evalAmt, profit, roi, tax, afterTax };
+  calcResult = { rows, totalInvest, totalQty, avgPrice, evalAmt, profit, roi, tax, afterTax, curP };
   document.getElementById('resultBox').classList.add('show');
   document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 /* ============================================================
-   엑셀 다운로드
+   엑셀 다운로드 (DB 저장 포함)
 ============================================================ */
-  function validateXlField(id, type) {
+function validateXlField(id, type) {
   const el  = document.getElementById(id);
   const err = document.getElementById(id + '-err');
   const val = el.value.trim();
   let msg = '';
   if (type === 'name'  && val.length > 0 && val.length < 2)
     msg = '⚠️ 이름을 2자 이상 입력해주세요.';
-  if (type === 'phone' && val.length > 0 && !/^01[016789]\d{7,8}$/.test(val.replace(/-/g,'')))
+  if (type === 'phone' && val.length > 0 && !/^01[016789]-?\d{3,4}-?\d{4}$/.test(val))
     msg = '⚠️ 올바른 전화번호 형식이 아닙니다.';
   if (type === 'email' && val.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val))
     msg = '⚠️ 올바른 이메일 형식이 아닙니다.';
@@ -1117,36 +752,32 @@ function downloadExcel(type) {
   validateXlField('xl-name',  'name');
   validateXlField('xl-phone', 'phone');
   validateXlField('xl-email', 'email');
+
   if (!name)  { document.getElementById('xl-name').focus();  return; }
+  if (!phone) { document.getElementById('xl-phone').focus(); return; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     document.getElementById('xl-email-err').textContent = '⚠️ 올바른 이메일을 입력하세요.';
     document.getElementById('xl-email').focus(); return;
   }
-  if (!agree) { alert('개인정보 수집·이용에 동의해주세요.'); return; }
-  if (!calcResult) { alert('먼저 계산하기 버튼을 눌러주세요.'); return; }
+  if (!agree)       { alert('개인정보 수집·이용에 동의해주세요.'); return; }
+  if (!calcResult)  { alert('먼저 계산하기 버튼을 눌러주세요.'); return; }
 
-  // DB 저장 (비동기, 실패해도 다운로드 진행)
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify({ name, phone, email,
-      page: 'dca-calculator-excel-' + type,
-      agree1: true, agree2: false,
-      memo: '엑셀다운로드 type' + type })
-  }).catch(() => {});
+  /* ── DB 저장 (no-cors) ── */
+  saveToDb({ name, phone, email,
+    page: 'DCA계산기-엑셀' + type + '종',
+    agree1: true, agree2: false,
+    memo: '엑셀 ' + type + '종 다운로드' });
 
   const styleHeader    = { font:{bold:true,sz:11,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'F7931A'}} };
   const styleHighlight = { font:{bold:true,sz:12,color:{rgb:'F7931A'}}, fill:{fgColor:{rgb:'FFF3E0'}} };
   const today = new Date().toISOString().slice(0,10);
 
   if (type === 1) {
-    /* ── DCA 분석 리포트 ── */
     const wb = XLSX.utils.book_new();
-
-    // 시트1: 요약
     const s1 = [
-      ['CryptoTax.cloud — DCA 분석 리포트', '', ''],
-      ['', '', ''],
-      ['항목', '값', '단위'],
+      ['CryptoTax.cloud — DCA 분석 리포트','',''],
+      ['','',''],
+      ['항목','값','단위'],
       ['코인', selectedCoinSym, ''],
       ['총 투자금액', calcResult.totalInvest, '원'],
       ['예상 평균단가', Math.round(calcResult.avgPrice), '원'],
@@ -1154,27 +785,21 @@ function downloadExcel(type) {
       ['현재가', calcResult.curP || 0, '원'],
       ['현재 평가금액', Math.round(calcResult.evalAmt || 0), '원'],
       ['수익금', Math.round(calcResult.profit || 0), '원'],
-      ['수익률(ROI)', calcResult.roi ? calcResult.roi.toFixed(2) + '%' : '-', ''],
+      ['수익률(ROI)', calcResult.roi ? calcResult.roi.toFixed(2)+'%' : '-', ''],
       ['연간 기본공제', 2500000, '원'],
       ['예상 세금(22%)', Math.round(calcResult.tax), '원'],
       ['세후 수익', Math.round(calcResult.afterTax), '원'],
-      ['', '', ''],
-      ['※ 본 리포트는 참고용이며 실제 세금 신고는 세무사와 상담하세요.', '', ''],
-      ['※ 출처: 국세청 (www.nts.go.kr)', '', ''],
+      ['','',''],
+      ['※ 본 리포트는 참고용이며 실제 세금 신고는 세무사와 상담하세요.','',''],
+      ['※ 출처: 국세청 (www.nts.go.kr)','',''],
     ];
     const ws1 = XLSX.utils.aoa_to_sheet(s1);
     ws1['!cols'] = [{wch:22},{wch:18},{wch:10}];
-    ws1['!merges'] = [
-      {s:{r:0,c:0},e:{r:0,c:2}},
-      {s:{r:15,c:0},e:{r:15,c:2}},
-      {s:{r:16,c:0},e:{r:16,c:2}},
-    ];
+    ws1['!merges'] = [{s:{r:0,c:0},e:{r:0,c:2}},{s:{r:15,c:0},e:{r:15,c:2}},{s:{r:16,c:0},e:{r:16,c:2}}];
     if (ws1['A1']) ws1['A1'].s = { font:{bold:true,sz:14,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'F7931A'}}, alignment:{horizontal:'center'} };
     ['A3','B3','C3'].forEach(k => { if(ws1[k]) ws1[k].s = styleHeader; });
-    ['A11','B11','A13','B13','A14','B14'].forEach(k => { if(ws1[k]) ws1[k].s = styleHighlight; });
     XLSX.utils.book_append_sheet(wb, ws1, 'DCA 요약');
 
-    // 시트2: 회차별
     const s2 = [['회차','매수단가(원)','매수수량','투자금액(원)','누적평균단가(원)']];
     let cumQ2 = 0;
     calcResult.rows.forEach(r => {
@@ -1185,27 +810,23 @@ function downloadExcel(type) {
     ws2['!cols'] = [{wch:8},{wch:16},{wch:14},{wch:14},{wch:18}];
     ['A1','B1','C1','D1','E1'].forEach(k => { if(ws2[k]) ws2[k].s = styleHeader; });
     XLSX.utils.book_append_sheet(wb, ws2, '회차별 상세');
-
     XLSX.writeFile(wb, `DCA_분석리포트_${selectedCoinSym}_${today}.xlsx`);
 
   } else {
-    /* ── 국세청 신고 준비용 ── */
     const wb = XLSX.utils.book_new();
     const s = [
       ['국세청 가상자산 양도소득세 신고 준비용 — CryptoTax.cloud'],
       [],
       ['자산명','취득방법','취득일자','취득가액(원)','양도일자','양도가액(원)','필요경비(원)','양도차익(원)','기본공제(원)','과세표준(원)','세율(%)','산출세액(원)'],
-      [
-        selectedCoinSym, '정기매수(DCA)', today,
-        Math.round(calcResult.totalInvest), '',
-        Math.round(calcResult.evalAmt || 0),
-        Math.round(calcResult.totalInvest),
-        Math.round(calcResult.profit || 0),
-        2500000,
-        Math.max(0, Math.round((calcResult.profit || 0) - 2500000)),
-        22,
-        Math.round(calcResult.tax)
-      ],
+      [selectedCoinSym, '정기매수(DCA)', today,
+       Math.round(calcResult.totalInvest), '',
+       Math.round(calcResult.evalAmt || 0),
+       Math.round(calcResult.totalInvest),
+       Math.round(calcResult.profit || 0),
+       2500000,
+       Math.max(0, Math.round((calcResult.profit || 0) - 2500000)),
+       22,
+       Math.round(calcResult.tax)]
     ];
     const ws = XLSX.utils.aoa_to_sheet(s);
     ws['!cols'] = [{wch:10},{wch:14},{wch:12},{wch:14},{wch:12},{wch:14},{wch:12},{wch:12},{wch:12},{wch:12},{wch:8},{wch:14}];
@@ -1219,7 +840,7 @@ function downloadExcel(type) {
 }
 
 /* ============================================================
-   PDF 폼 유효성 검사 + 제출
+   PDF 폼 유효성 검사 + 제출 (DB 저장 포함)
 ============================================================ */
 function validatePdfField(id, type) {
   const el  = document.getElementById(id);
@@ -1237,9 +858,9 @@ function validatePdfField(id, type) {
 }
 
 async function submitPdfLead() {
-  const name  = document.getElementById('l-name').value.trim();
-  const phone = document.getElementById('l-phone').value.trim();
-  const email = document.getElementById('l-email').value.trim();
+  const name   = document.getElementById('l-name').value.trim();
+  const phone  = document.getElementById('l-phone').value.trim();
+  const email  = document.getElementById('l-email').value.trim();
   const agree1 = document.getElementById('l-agree1').checked;
   const agree2 = document.getElementById('l-agree2').checked;
 
@@ -1259,27 +880,22 @@ async function submitPdfLead() {
   btn.textContent = '⏳ 처리 중...';
   btn.disabled = true;
 
-  try {
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({
-        name, phone, email,
-        page: 'DCA계산기-PDF신청',
-        agree1: true,
-        agree2,
-        memo: 'PDF 무료가이드 신청'
-      })
-    });
-  } catch(e) {}
+  /* ── DB 저장 (no-cors) ── */
+  saveToDb({ name, phone, email,
+    page: 'DCA계산기-PDF신청',
+    agree1: true, agree2,
+    memo: 'PDF 무료가이드 신청' });
+
+  /* ── 잠깐 대기 후 완료 화면 전환 ── */
+  await new Promise(r => setTimeout(r, 800));
 
   document.getElementById('pdfSection').innerHTML =
     '<div style="text-align:center;padding:48px 20px;">' +
     '<div style="font-size:56px;margin-bottom:16px;">✅</div>' +
     '<p style="font-size:20px;font-weight:700;color:#f5a623;margin-bottom:8px;">신청 완료!</p>' +
-    '<p style="font-size:15px;color:#555;">입력하신 이메일로 PDF 가이드가 발송됩니다.<br>스팸함도 확인해 주세요 📬</p>' +
+    '<p style="font-size:15px;color:#888;">입력하신 이메일로 PDF 가이드가 발송됩니다.<br>스팸함도 확인해 주세요 📬</p>' +
     '</div>';
 }
-
 
 /* ============================================================
    FAQ
@@ -1287,14 +903,12 @@ async function submitPdfLead() {
 function toggleFaq(el) {
   const item = el.parentElement;
   const isOpen = item.classList.contains('open');
-  // 모든 FAQ 닫기 (아코디언 효과)
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  // 클릭한 항목이 닫혀있었으면 열기
   if (!isOpen) item.classList.add('open');
 }
 
 /* ============================================================
-   티커 (업비트 API, 30초 갱신)
+   티커 (30초 갱신)
 ============================================================ */
 async function loadTicker() {
   try {
@@ -1302,7 +916,6 @@ async function loadTicker() {
     const data = await res.json();
     const map  = {};
     data.forEach(d => map[d.market] = d);
-
     [['btc','KRW-BTC'],['eth','KRW-ETH'],['xrp','KRW-XRP'],
      ['sol','KRW-SOL'],['doge','KRW-DOGE'],['ada','KRW-ADA']
     ].forEach(([id, mkt]) => {
@@ -1312,7 +925,6 @@ async function loadTicker() {
       const cls   = chg >= 0 ? 't-up' : 't-down';
       const sign  = chg >= 0 ? '▲' : '▼';
       const txt   = `${sign}${Math.abs(chg).toFixed(2)}%`;
-
       ['', '2'].forEach(suffix => {
         const pe = document.getElementById(`t-${id}${suffix}`);
         const ce = document.getElementById(`t-${id}-c${suffix}`);
