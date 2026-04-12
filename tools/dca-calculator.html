@@ -675,66 +675,84 @@ function validateXlField(id, type) {
 
 /* ── 엑셀 다운로드 (버튼 1개 → 파일 2개) ── */
 async function downloadExcel() {
-  const name   = document.getElementById('xl-name').value.trim();
-  const phone  = document.getElementById('xl-phone').value.trim();
-  const email  = document.getElementById('xl-email').value.trim();
+  const name  = document.getElementById('xl-name').value.trim();
+  const phone = document.getElementById('xl-phone').value.trim();
+  const email = document.getElementById('xl-email').value.trim();
   const agree1 = document.getElementById('xl-agree1').checked;
 
   let valid = true;
-  if(!name || name.length < 2) {
+  if (!name || name.length < 2) {
     document.getElementById('xl-name-err').textContent = '이름을 2자 이상 입력해주세요.';
     document.getElementById('xl-name').style.borderColor = '#e53935'; valid = false;
-  } else { document.getElementById('xl-name-err').textContent = ''; document.getElementById('xl-name').style.borderColor = '#4caf50'; }
-
-  if(!phone || !/^01[016789]-?\d{3,4}-?\d{4}$/.test(phone)) {
+  } else {
+    document.getElementById('xl-name-err').textContent = '';
+    document.getElementById('xl-name').style.borderColor = '#4caf50';
+  }
+  if (!phone || !/^01[016789]-?\d{3,4}-?\d{4}$/.test(phone)) {
     document.getElementById('xl-phone-err').textContent = '올바른 전화번호를 입력해주세요.';
     document.getElementById('xl-phone').style.borderColor = '#e53935'; valid = false;
-  } else { document.getElementById('xl-phone-err').textContent = ''; document.getElementById('xl-phone').style.borderColor = '#4caf50'; }
-
-  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+  } else {
+    document.getElementById('xl-phone-err').textContent = '';
+    document.getElementById('xl-phone').style.borderColor = '#4caf50';
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     document.getElementById('xl-email-err').textContent = '올바른 이메일을 입력해주세요.';
     document.getElementById('xl-email').style.borderColor = '#e53935'; valid = false;
-  } else { document.getElementById('xl-email-err').textContent = ''; document.getElementById('xl-email').style.borderColor = '#4caf50'; }
+  } else {
+    document.getElementById('xl-email-err').textContent = '';
+    document.getElementById('xl-email').style.borderColor = '#4caf50';
+  }
+  if (!agree1) { alert('[필수] 개인정보 수집·이용에 동의해주세요.'); valid = false; }
+  if (!calcResult) { alert('먼저 DCA 계산을 실행해주세요.'); return; }
+  if (!valid) return;
 
-  if(!agree1) { alert('[필수] 개인정보 수집·이용에 동의해주세요.'); valid = false; }
-  if(!calcResult) { alert('먼저 DCA 계산을 실행해주세요.'); valid = false; }
-  if(!valid) return;
-
+  // DB 저장
   saveToDb({ name, phone, email, page: 'DCA계산기-엑셀다운로드', agree1: true, memo: 'DCA분석+국세청신고준비 엑셀 다운로드' });
 
-  const today = new Date().toISOString().slice(0,10);
-  const sym   = selectedCoinSym || 'COIN';
+  // Step 2: 폼을 다운로드 버튼 화면으로 교체
+  document.getElementById('excelFormWrap').innerHTML =
+    '<div style="text-align:center;padding:40px 20px;">' +
+    '<div style="font-size:48px;margin-bottom:16px;">📊</div>' +
+    '<p style="font-size:20px;font-weight:800;color:var(--point);margin-bottom:8px;">DB 저장 완료!</p>' +
+    '<p style="font-size:14px;color:#888;margin-bottom:24px;">아래 버튼을 눌러 엑셀 파일을 다운로드하세요.</p>' +
+    '<button onclick="doDownload()" style="padding:16px 40px;background:#f7931a;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;">📥 엑셀 다운로드</button>' +
+    '</div>';
+}
+
+function doDownload() {
+  const today = new Date().toISOString().slice(0, 10);
+  const sym = (typeof selectedCoinSym !== 'undefined' && selectedCoinSym) ? selectedCoinSym : 'COIN';
   const taxBase = Math.max(0, calcResult.profit - 2500000);
   const taxAmt  = taxBase * 0.22;
 
   const wb = XLSX.utils.book_new();
 
-  // 시트1: DCA 분석 리포트
+  // Sheet 1: DCA 분석 리포트
   const ws1 = XLSX.utils.aoa_to_sheet([
     ['DCA 분석 리포트'],
     ['코인', sym],
-    ['총 투자금액(원)', calcResult.totalInvest],
-    ['평균 매수단가(원)', calcResult.avgPrice],
-    ['현재가(원)', calcResult.currentPrice],
-    ['평가금액(원)', calcResult.evalAmount],
-    ['수익금(원)', calcResult.profit],
+    ['총 투자금액', calcResult.totalInvest],
+    ['평균 매수단가', calcResult.avgPrice],
+    ['현재가', calcResult.currentPrice],
+    ['평가금액', calcResult.evalAmount],
+    ['수익금', calcResult.profit],
     ['수익률(%)', calcResult.roi],
     ['과세표준(250만원 공제 후)', taxBase],
     ['예상 세금(22%)', taxAmt],
-    ['세후 수익(원)', calcResult.profit - taxAmt],
+    ['세후 수익', calcResult.profit - taxAmt],
   ]);
   XLSX.utils.book_append_sheet(wb, ws1, 'DCA분석리포트');
 
-  // 시트2: 회차별 상세
-  if(calcResult.rounds && calcResult.rounds.length) {
+  // Sheet 2: 회차별 상세
+  if (calcResult.rounds && calcResult.rounds.length) {
     const ws2 = XLSX.utils.aoa_to_sheet([
       ['회차','매수가격','투자금액','매수수량','누적평균단가'],
-      ...calcResult.rounds.map((r,i) => [i+1, Math.round(r.price), Math.round(r.invest), r.qty, Math.round(r.avgPrice)])
+      ...calcResult.rounds.map((r,i) => [i+1, r.price, r.invest, r.qty, r.avgPrice])
     ]);
     XLSX.utils.book_append_sheet(wb, ws2, '회차별상세');
   }
 
-  // 시트3: 국세청 신고 준비용
+  // Sheet 3: 국세청 신고 준비용
   const ws3 = XLSX.utils.aoa_to_sheet([
     ['국세청 신고 준비용 (세무사 상담·신고 참고자료)'],
     ['자산명', sym],
@@ -753,14 +771,15 @@ async function downloadExcel() {
 
   XLSX.writeFile(wb, `DCA_세금리포트_${sym}_${today}.xlsx`);
 
-
- document.getElementById('excelFormWrap').innerHTML =
+  // Step 3: 다운로드 완료 메시지
+  document.getElementById('excelFormWrap').innerHTML =
     '<div style="text-align:center;padding:32px 20px;">' +
-    '<div style="font-size:48px;margin-bottom:12px;">✅</div>' +
-    '<p style="font-size:18px;font-weight:700;color:#f5a623;margin-bottom:8px;">다운로드 완료!</p>' +
+    '<div style="font-size:56px;margin-bottom:12px;">✅</div>' +
+    '<p style="font-size:20px;font-weight:800;color:#f7931a;margin-bottom:8px;">다운로드 완료!</p>' +
     '<p style="font-size:14px;color:#888;">엑셀 파일이 저장되었습니다.<br>세무사 상담·신고 시 참고자료로 활용하세요 📋</p>' +
     '</div>';
 }
+
 
 /* ── PDF 필드 검증 ── */
 function validatePdfField(id, type) {
