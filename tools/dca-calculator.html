@@ -187,6 +187,89 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 .ticker-item .t-price{color:var(--text);font-weight:600;}
 .t-up{color:#16c784;} .t-down{color:#ea3943;}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  /* ── 데스크톱 최적화 ── */
+@media(min-width:1025px){
+  .hero h1{font-size:42px;}
+  .hero-sub{font-size:17px;font-weight:500;}
+  .hero-badge{font-size:14px;padding:6px 16px;}
+  .stat-badge .s-num{font-size:28px;}
+  .stat-badge .s-label{font-size:13px;}
+  .stat-badge{min-width:140px;padding:14px 20px;}
+  .section-title{font-size:24px;}
+  .calc-btn{font-size:18px;padding:18px;}
+  .excel-btn{font-size:16px;padding:16px 32px;}
+  .tool-card .t-icon{font-size:36px;}
+  .tool-card .t-name{font-size:15px;}
+  .source-card .s-name{font-size:16px;font-weight:800;}
+  .source-card .s-desc{font-size:13px;}
+  .lead-form-wrap h2{font-size:26px;}
+}
+
+/* ── 아이패드 최적화 ── */
+@media(min-width:481px) and (max-width:1024px){
+  .hero h1{font-size:32px;}
+  .hero-sub{font-size:15px;}
+  .stat-badge .s-num{font-size:24px;}
+  .stat-badge{min-width:110px;}
+  .tools-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
+  .blog-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .section{padding:24px 24px;}
+  .calc-card{padding:24px;}
+  .calc-btn{font-size:17px;padding:17px;}
+  .section-title{font-size:21px;}
+}
+
+/* ── 모바일 최적화 ── */
+@media(max-width:480px){
+  .top-bar{padding:10px 14px;}
+  .top-bar-logo{font-size:18px;}
+  .top-bar-nav a{font-size:13px;}
+  .hero{padding:32px 16px 24px;}
+  .hero h1{font-size:28px;line-height:1.3;}
+  .hero-sub{font-size:14px;line-height:1.6;}
+  .hero-badge{font-size:13px;padding:5px 14px;}
+  .geo-summary p{font-size:14px;}
+  .stat-badge .s-num{font-size:24px;}
+  .stat-badge .s-label{font-size:12px;}
+  .stat-badge{min-width:90px;padding:10px 10px;}
+  .section-title{font-size:19px;}
+  .calc-card{padding:16px;}
+  .form-group label{font-size:14px;font-weight:700;}
+  .form-group input,.form-group select{font-size:15px;padding:13px;}
+  .calc-btn{font-size:17px;padding:18px;font-weight:800;}
+  .result-item .r-label{font-size:13px;}
+  .result-item .r-value{font-size:17px;}
+  .excel-btn{font-size:15px;padding:16px;width:100%;}
+  .howto-text h4{font-size:15px;font-weight:800;}
+  .howto-text p{font-size:14px;}
+  .lead-form-wrap h2{font-size:20px;}
+  .lead-submit{font-size:16px;padding:16px;font-weight:800;}
+  .tool-card .t-icon{font-size:28px;}
+  .tool-card .t-name{font-size:14px;font-weight:700;}
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .blog-card .b-title{font-size:15px;font-weight:700;}
+  .blog-card .b-desc{font-size:13px;}
+  .faq-q{font-size:15px;font-weight:700;}
+  .faq-a{font-size:14px;}
+  .disclaimer p{font-size:13px;line-height:2;}
+}
+
+/* ── 전체 볼드 강조 ── */
+.hero h1{font-weight:900;}
+.hero-sub strong{color:var(--point);font-weight:800;}
+.geo-summary strong{color:var(--point);font-weight:800;}
+.stat-badge .s-num{font-weight:900;}
+.section-title{font-weight:800;}
+.howto-text h4{font-weight:800;}
+.calc-btn{font-weight:800;}
+.excel-btn{font-weight:800;}
+.lead-submit{font-weight:800;}
+.result-item.highlight .r-value{font-weight:900;}
+.source-card .s-name{font-weight:800;}
+.tool-card .t-name{font-weight:700;}
+.blog-card .b-title{font-weight:800;}
+.faq-q{font-weight:700;}
+
 </style>
 </head>
 <body>
