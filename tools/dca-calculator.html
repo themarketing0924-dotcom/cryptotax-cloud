@@ -622,13 +622,42 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 <!-- FAQ -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">❓ 자주 묻는 질문</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA란 무엇인가요?<span class="faq-icon">+</span></div><div class="faq-a">DCA(Dollar Cost Averaging)는 가격 변동과 무관하게 일정 금액을 정기적으로 매수하는 전략입니다. 가격이 낮을 때 더 많이 사게 되어 평균단가를 낮추는 효과가 있습니다.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA 평균단가는 어떻게 계산하나요?<span class="faq-icon">+</span></div><div class="faq-a">가중평균단가 = 총 투자금액 ÷ 총 매수수량입니다. 각 회차 수량은 '1회 투자금액 ÷ 해당 회차 코인 가격'으로 구합니다.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">업비트 코인모으기 어떻게 하나요?<span class="faq-icon">+</span></div><div class="faq-a">업비트 앱 → 코인모으기 기능을 사용하면 매일 자동으로 일정 금액을 매수할 수 있습니다. 매주·매월 단위로도 설정 가능합니다.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA 수익에도 세금이 붙나요?<span class="faq-icon">+</span></div><div class="faq-a">네. 2027년 1월 1일부터 DCA 수익도 가상자산 양도소득세(22%) 과세 대상입니다. 연간 250만원 기본공제 후 초과분에만 세금이 부과됩니다. <a href="https://cryptotax.cloud/tools/tax-calculator.html">→ 세금 계산기 바로가기</a></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA와 물타기의 차이는?<span class="faq-icon">+</span></div><div class="faq-a">DCA는 계획적으로 정해진 날짜에 정해진 금액을 매수하는 장기 전략이고, 물타기는 가격 하락 시 손실 만회를 목적으로 추가 매수하는 방식입니다. <a href="https://cryptotax.cloud/tools/multa-calculator.html">→ 물타기 계산기</a></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA 투자 기간은 얼마나 해야 효과적인가요?<span class="faq-icon">+</span></div><div class="faq-a">1년 이상의 투자 기간에서 DCA 효과가 뚜렷합니다. 비트코인의 경우 4년 반감기 사이클을 고려해 최소 2~4년 이상 지속하는 것이 권장됩니다.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">DCA로 매수한 코인의 취득원가는 어떻게 계산하나요?<span class="faq-icon">+</span></div><div class="faq-a">2027년 가상자산 과세 시 취득원가는 이동평균법으로 산정합니다. 업비트 거래내역 CSV를 다운로드하여 <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV 세금 계산기</a>로 자동 계산할 수 있습니다.</div></div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA란 무엇인가요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">DCA(Dollar Cost Averaging)는 가격 변동과 무관하게 일정 금액을 정기적으로 매수하는 전략입니다. 가격이 낮을 때 더 많은 수량을 사게 되어 자연스럽게 평균단가를 낮추는 효과가 있습니다. 감정적 판단 없이 기계적으로 매수하기 때문에 장기 투자자에게 특히 유리한 방식입니다.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA 평균단가는 어떻게 계산하나요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">가중평균단가 = 총 투자금액 ÷ 총 매수수량으로 계산합니다. 각 회차 수량은 '1회 투자금액 ÷ 해당 회차 코인 가격'으로 구하며, 회차가 많을수록 평균단가는 안정적으로 수렴합니다. 위 계산기에 금액과 기간을 입력하면 자동으로 계산됩니다.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">업비트 코인모으기 어떻게 하나요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">업비트 앱 → 하단 메뉴 → 코인모으기 기능을 선택하면 매일 자동으로 일정 금액을 매수할 수 있습니다. 매주·매월 단위로도 설정 가능하며, 10,000원부터 소액으로 시작할 수 있어 초보 투자자에게도 적합합니다. 자동 매수이므로 시장을 매일 확인하지 않아도 DCA 전략을 실행할 수 있습니다.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA 수익에도 세금이 붙나요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">네. 2027년 1월 1일부터 DCA로 발생한 수익도 가상자산 양도소득세(22%) 과세 대상입니다. 연간 250만원 기본공제 후 초과분에만 세금이 부과되며, 여러 코인의 손익을 합산해 계산합니다. 정확한 세금은 아래 계산기를 이용하세요. <a href="https://cryptotax.cloud/tools/tax-calculator.html">→ 세금 계산기 바로가기</a></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA와 물타기의 차이는?<span class="faq-icon">+</span></div>
+    <div class="faq-a">DCA는 가격과 무관하게 계획적으로 정해진 날짜에 정해진 금액을 매수하는 장기 전략입니다. 반면 물타기는 가격이 하락했을 때 손실 만회를 목적으로 추가 매수하는 방식으로, 심리적 판단이 개입됩니다. DCA는 규칙 기반이라 감정적 실수를 줄일 수 있다는 점에서 더 안정적인 전략으로 평가받습니다. <a href="https://cryptotax.cloud/tools/multa-calculator.html">→ 물타기 계산기</a></div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA 투자 기간은 얼마나 해야 효과적인가요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">최소 1년 이상의 투자 기간에서 DCA 효과가 뚜렷하게 나타납니다. 비트코인의 경우 약 4년 주기의 반감기 사이클을 고려하면 최소 2~4년 이상 지속하는 것이 권장됩니다. 단기 가격 등락에 흔들리지 않고 꾸준히 매수하는 것이 DCA 전략의 핵심입니다.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">DCA로 매수한 코인의 취득원가는 어떻게 계산하나요?<span class="faq-icon">+</span></div>
+    <div class="faq-a">2027년 가상자산 과세 시 취득원가는 이동평균법으로 산정합니다. 매수할 때마다 평균단가가 갱신되며, 전체 보유 수량의 평균 매입가가 취득원가로 인정됩니다. 업비트 거래내역 CSV를 다운로드하여 <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html">CSV 세금 계산기</a>로 자동 계산할 수 있습니다.</div>
+  </div>
+
 </div>
 
 <!-- 면책 -->
