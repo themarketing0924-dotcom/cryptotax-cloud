@@ -768,70 +768,294 @@ function downloadExcel(type) {
     agree1: true, agree2: false,
     memo: '엑셀 ' + type + '종 다운로드' });
 
-  const styleHeader    = { font:{bold:true,sz:11,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'F7931A'}} };
-  const styleHighlight = { font:{bold:true,sz:12,color:{rgb:'F7931A'}}, fill:{fgColor:{rgb:'FFF3E0'}} };
-  const today = new Date().toISOString().slice(0,10);
+  const today = new Date().toISOString().slice(0, 10);
 
+  /* ── 공통 스타일 ── */
+  const sTitle = {
+    font: { bold: true, sz: 16, color: { rgb: 'FFFFFF' } },
+    fill: { fgColor: { rgb: 'F7931A' } },
+    alignment: { horizontal: 'center', vertical: 'center' }
+  };
+  const sSubTitle = {
+    font: { bold: true, sz: 11, color: { rgb: 'F7931A' } },
+    fill: { fgColor: { rgb: 'FFF3E0' } },
+    alignment: { horizontal: 'left', vertical: 'center' }
+  };
+  const sHeader = {
+    font: { bold: true, sz: 11, color: { rgb: 'FFFFFF' } },
+    fill: { fgColor: { rgb: '333333' } },
+    alignment: { horizontal: 'center', vertical: 'center' },
+    border: {
+      top:    { style: 'thin', color: { rgb: '999999' } },
+      bottom: { style: 'thin', color: { rgb: '999999' } },
+      left:   { style: 'thin', color: { rgb: '999999' } },
+      right:  { style: 'thin', color: { rgb: '999999' } }
+    }
+  };
+  const sLabelOrange = {
+    font: { bold: true, sz: 11, color: { rgb: 'FFFFFF' } },
+    fill: { fgColor: { rgb: 'F7931A' } },
+    alignment: { horizontal: 'left', vertical: 'center' },
+    border: {
+      top:    { style: 'thin', color: { rgb: 'E0E0E0' } },
+      bottom: { style: 'thin', color: { rgb: 'E0E0E0' } },
+      left:   { style: 'thin', color: { rgb: 'E0E0E0' } },
+      right:  { style: 'thin', color: { rgb: 'E0E0E0' } }
+    }
+  };
+  const sValueNormal = {
+    font: { sz: 11, color: { rgb: '1A1A1A' } },
+    fill: { fgColor: { rgb: 'FFFFFF' } },
+    alignment: { horizontal: 'right', vertical: 'center' },
+    border: {
+      top:    { style: 'thin', color: { rgb: 'E0E0E0' } },
+      bottom: { style: 'thin', color: { rgb: 'E0E0E0' } },
+      left:   { style: 'thin', color: { rgb: 'E0E0E0' } },
+      right:  { style: 'thin', color: { rgb: 'E0E0E0' } }
+    }
+  };
+  const sValueHighlight = {
+    font: { bold: true, sz: 13, color: { rgb: 'F7931A' } },
+    fill: { fgColor: { rgb: 'FFF3E0' } },
+    alignment: { horizontal: 'right', vertical: 'center' },
+    border: {
+      top:    { style: 'medium', color: { rgb: 'F7931A' } },
+      bottom: { style: 'medium', color: { rgb: 'F7931A' } },
+      left:   { style: 'medium', color: { rgb: 'F7931A' } },
+      right:  { style: 'medium', color: { rgb: 'F7931A' } }
+    }
+  };
+  const sValueRed = {
+    font: { bold: true, sz: 13, color: { rgb: 'FFFFFF' } },
+    fill: { fgColor: { rgb: 'EA3943' } },
+    alignment: { horizontal: 'right', vertical: 'center' },
+    border: {
+      top:    { style: 'medium', color: { rgb: 'EA3943' } },
+      bottom: { style: 'medium', color: { rgb: 'EA3943' } },
+      left:   { style: 'medium', color: { rgb: 'EA3943' } },
+      right:  { style: 'medium', color: { rgb: 'EA3943' } }
+    }
+  };
+  const sValueGreen = {
+    font: { bold: true, sz: 13, color: { rgb: 'FFFFFF' } },
+    fill: { fgColor: { rgb: '16C784' } },
+    alignment: { horizontal: 'right', vertical: 'center' },
+    border: {
+      top:    { style: 'medium', color: { rgb: '16C784' } },
+      bottom: { style: 'medium', color: { rgb: '16C784' } },
+      left:   { style: 'medium', color: { rgb: '16C784' } },
+      right:  { style: 'medium', color: { rgb: '16C784' } }
+    }
+  };
+  const sRowEven = {
+    font: { sz: 11, color: { rgb: '1A1A1A' } },
+    fill: { fgColor: { rgb: 'F8F9FA' } },
+    alignment: { horizontal: 'center', vertical: 'center' },
+    border: {
+      top:    { style: 'thin', color: { rgb: 'E0E0E0' } },
+      bottom: { style: 'thin', color: { rgb: 'E0E0E0' } },
+      left:   { style: 'thin', color: { rgb: 'E0E0E0' } },
+      right:  { style: 'thin', color: { rgb: 'E0E0E0' } }
+    }
+  };
+  const sRowOdd = {
+    font: { sz: 11, color: { rgb: '1A1A1A' } },
+    fill: { fgColor: { rgb: 'FFFFFF' } },
+    alignment: { horizontal: 'center', vertical: 'center' },
+    border: {
+      top:    { style: 'thin', color: { rgb: 'E0E0E0' } },
+      bottom: { style: 'thin', color: { rgb: 'E0E0E0' } },
+      left:   { style: 'thin', color: { rgb: 'E0E0E0' } },
+      right:  { style: 'thin', color: { rgb: 'E0E0E0' } }
+    }
+  };
+  const sNote = {
+    font: { italic: true, sz: 10, color: { rgb: '888888' } },
+    fill: { fgColor: { rgb: 'F8F9FA' } },
+    alignment: { horizontal: 'left', vertical: 'center' }
+  };
+
+  function applyStyle(ws, cellRef, style) {
+    if (!ws[cellRef]) return;
+    ws[cellRef].s = style;
+  }
+
+  /* ====================================================
+     타입 1 — DCA 분석 리포트
+  ==================================================== */
   if (type === 1) {
     const wb = XLSX.utils.book_new();
+    const profit = calcResult.profit || 0;
+    const isProfit = profit >= 0;
+
+    /* 시트1: 요약 */
     const s1 = [
-      ['CryptoTax.cloud — DCA 분석 리포트','',''],
-      ['','',''],
-      ['항목','값','단위'],
-      ['코인', selectedCoinSym, ''],
+      ['DCA 분석 리포트', '', ''],
+      [`생성일: ${today}  |  코인: ${selectedCoinSym}  |  CryptoTax.cloud`, '', ''],
+      ['', '', ''],
+      ['📌 투자 요약', '', ''],
+      ['항목', '값', '단위'],
       ['총 투자금액', calcResult.totalInvest, '원'],
       ['예상 평균단가', Math.round(calcResult.avgPrice), '원'],
       ['총 매수수량', parseFloat(calcResult.totalQty.toFixed(8)), selectedCoinSym],
+      ['총 매수 횟수', calcResult.rows.length, '회'],
+      ['', '', ''],
+      ['📈 수익 분석', '', ''],
       ['현재가', calcResult.curP || 0, '원'],
       ['현재 평가금액', Math.round(calcResult.evalAmt || 0), '원'],
-      ['수익금', Math.round(calcResult.profit || 0), '원'],
-      ['수익률(ROI)', calcResult.roi ? calcResult.roi.toFixed(2)+'%' : '-', ''],
+      ['수익금', Math.round(profit), '원'],
+      ['수익률(ROI)', calcResult.roi ? calcResult.roi.toFixed(2) + '%' : '-', ''],
+      ['', '', ''],
+      ['💰 세금 계산 (2027 기준)', '', ''],
       ['연간 기본공제', 2500000, '원'],
-      ['예상 세금(22%)', Math.round(calcResult.tax), '원'],
+      ['과세표준', Math.max(0, Math.round(profit - 2500000)), '원'],
+      ['세율', '22%', ''],
+      ['예상 세금', Math.round(calcResult.tax), '원'],
       ['세후 수익', Math.round(calcResult.afterTax), '원'],
-      ['','',''],
-      ['※ 본 리포트는 참고용이며 실제 세금 신고는 세무사와 상담하세요.','',''],
-      ['※ 출처: 국세청 (www.nts.go.kr)','',''],
+      ['', '', ''],
+      ['※ 본 리포트는 참고용이며 실제 세금 신고는 세무사와 상담하세요.', '', ''],
+      ['※ 출처: 국세청 (www.nts.go.kr)', '', ''],
     ];
     const ws1 = XLSX.utils.aoa_to_sheet(s1);
-    ws1['!cols'] = [{wch:22},{wch:18},{wch:10}];
-    ws1['!merges'] = [{s:{r:0,c:0},e:{r:0,c:2}},{s:{r:15,c:0},e:{r:15,c:2}},{s:{r:16,c:0},e:{r:16,c:2}}];
-    if (ws1['A1']) ws1['A1'].s = { font:{bold:true,sz:14,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'F7931A'}}, alignment:{horizontal:'center'} };
-    ['A3','B3','C3'].forEach(k => { if(ws1[k]) ws1[k].s = styleHeader; });
+    ws1['!cols'] = [{ wch: 24 }, { wch: 20 }, { wch: 10 }];
+    ws1['!merges'] = [
+      { s: { r: 0, c: 0 }, e: { r: 0, c: 2 } },
+      { s: { r: 1, c: 0 }, e: { r: 1, c: 2 } },
+      { s: { r: 3, c: 0 }, e: { r: 3, c: 2 } },
+      { s: { r: 9, c: 0 }, e: { r: 9, c: 2 } },
+      { s: { r: 10, c: 0 }, e: { r: 10, c: 2 } },
+      { s: { r: 15, c: 0 }, e: { r: 15, c: 2 } },
+      { s: { r: 16, c: 0 }, e: { r: 16, c: 2 } },
+      { s: { r: 22, c: 0 }, e: { r: 22, c: 2 } },
+      { s: { r: 23, c: 0 }, e: { r: 23, c: 2 } },
+      { s: { r: 24, c: 0 }, e: { r: 24, c: 2 } },
+    ];
+
+    applyStyle(ws1, 'A1', sTitle);
+    applyStyle(ws1, 'A2', sSubTitle);
+    applyStyle(ws1, 'A4', { ...sSubTitle, font: { bold: true, sz: 12, color: { rgb: 'F7931A' } } });
+    ['A5','B5','C5'].forEach(k => applyStyle(ws1, k, sHeader));
+    ['A6','A7','A8','A9'].forEach(k => applyStyle(ws1, k, sLabelOrange));
+    ['B6','C6','B7','C7','B8','C8','B9','C9'].forEach(k => applyStyle(ws1, k, sValueNormal));
+
+    applyStyle(ws1, 'A11', { ...sSubTitle, font: { bold: true, sz: 12, color: { rgb: 'F7931A' } } });
+    ['A12','A13','A14','A15'].forEach(k => applyStyle(ws1, k, sLabelOrange));
+    ['B12','C12','B13','C13'].forEach(k => applyStyle(ws1, k, sValueNormal));
+    applyStyle(ws1, 'B14', isProfit ? sValueGreen : sValueRed);
+    applyStyle(ws1, 'C14', sValueNormal);
+    applyStyle(ws1, 'B15', isProfit ? sValueGreen : sValueRed);
+    applyStyle(ws1, 'C15', sValueNormal);
+
+    applyStyle(ws1, 'A17', { ...sSubTitle, font: { bold: true, sz: 12, color: { rgb: 'F7931A' } } });
+    ['A18','A19','A20','A21','A22'].forEach(k => applyStyle(ws1, k, sLabelOrange));
+    ['B18','C18','B19','C19','B20','C20'].forEach(k => applyStyle(ws1, k, sValueNormal));
+    applyStyle(ws1, 'B21', sValueRed);
+    applyStyle(ws1, 'C21', sValueNormal);
+    applyStyle(ws1, 'B22', sValueHighlight);
+    applyStyle(ws1, 'C22', sValueNormal);
+
+    applyStyle(ws1, 'A24', sNote);
+    applyStyle(ws1, 'A25', sNote);
+
+    ws1['!rows'] = [30,20,8,28,22,22,22,22,22,8,28,22,22,26,26,8,28,22,22,22,26,26,8,18,18].map(h => ({ hpt: h }));
     XLSX.utils.book_append_sheet(wb, ws1, 'DCA 요약');
 
-    const s2 = [['회차','매수단가(원)','매수수량','투자금액(원)','누적평균단가(원)']];
+    /* 시트2: 회차별 상세 */
+    const s2 = [
+      ['DCA 회차별 매수 상세', '', '', '', ''],
+      [`코인: ${selectedCoinSym} | 총 ${calcResult.rows.length}회 | CryptoTax.cloud`, '', '', '', ''],
+      ['', '', '', '', ''],
+      ['회차', '매수단가 (원)', '매수수량', '투자금액 (원)', '누적 평균단가 (원)']
+    ];
     let cumQ2 = 0;
     calcResult.rows.forEach(r => {
       cumQ2 += r.qty;
-      s2.push([r.round, Math.round(r.price), parseFloat(r.qty.toFixed(8)), r.invest, Math.round(calcResult.totalInvest / cumQ2)]);
+      s2.push([
+        r.round,
+        Math.round(r.price),
+        parseFloat(r.qty.toFixed(8)),
+        r.invest,
+        Math.round(calcResult.totalInvest / cumQ2)
+      ]);
     });
     const ws2 = XLSX.utils.aoa_to_sheet(s2);
-    ws2['!cols'] = [{wch:8},{wch:16},{wch:14},{wch:14},{wch:18}];
-    ['A1','B1','C1','D1','E1'].forEach(k => { if(ws2[k]) ws2[k].s = styleHeader; });
+    ws2['!cols'] = [{ wch: 8 }, { wch: 18 }, { wch: 16 }, { wch: 16 }, { wch: 20 }];
+    ws2['!merges'] = [
+      { s: { r: 0, c: 0 }, e: { r: 0, c: 4 } },
+      { s: { r: 1, c: 0 }, e: { r: 1, c: 4 } }
+    ];
+    applyStyle(ws2, 'A1', sTitle);
+    applyStyle(ws2, 'A2', sSubTitle);
+    ['A4','B4','C4','D4','E4'].forEach(k => applyStyle(ws2, k, sHeader));
+    calcResult.rows.forEach((_, idx) => {
+      const row = idx + 5;
+      const style = idx % 2 === 0 ? sRowEven : sRowOdd;
+      ['A','B','C','D','E'].forEach(col => applyStyle(ws2, `${col}${row}`, style));
+    });
+    ws2['!rows'] = [30, 20, 8, 22, ...calcResult.rows.map(() => 20)].map(h => ({ hpt: h }));
     XLSX.utils.book_append_sheet(wb, ws2, '회차별 상세');
+
     XLSX.writeFile(wb, `DCA_분석리포트_${selectedCoinSym}_${today}.xlsx`);
 
+  /* ====================================================
+     타입 2 — 국세청 신고 준비용
+  ==================================================== */
   } else {
     const wb = XLSX.utils.book_new();
+    const profit = calcResult.profit || 0;
+
     const s = [
-      ['국세청 가상자산 양도소득세 신고 준비용 — CryptoTax.cloud'],
-      [],
-      ['자산명','취득방법','취득일자','취득가액(원)','양도일자','양도가액(원)','필요경비(원)','양도차익(원)','기본공제(원)','과세표준(원)','세율(%)','산출세액(원)'],
-      [selectedCoinSym, '정기매수(DCA)', today,
-       Math.round(calcResult.totalInvest), '',
-       Math.round(calcResult.evalAmt || 0),
-       Math.round(calcResult.totalInvest),
-       Math.round(calcResult.profit || 0),
-       2500000,
-       Math.max(0, Math.round((calcResult.profit || 0) - 2500000)),
-       22,
-       Math.round(calcResult.tax)]
+      ['국세청 가상자산 양도소득세 신고 준비용', '', '', '', '', '', '', '', '', '', '', ''],
+      [`생성일: ${today}  |  코인: ${selectedCoinSym}  |  CryptoTax.cloud`, '', '', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', '', '', ''],
+      ['자산명', '취득방법', '취득일자', '취득가액(원)', '양도일자', '양도가액(원)', '필요경비(원)', '양도차익(원)', '기본공제(원)', '과세표준(원)', '세율(%)', '산출세액(원)'],
+      [
+        selectedCoinSym, '정기매수(DCA)', today,
+        Math.round(calcResult.totalInvest), today,
+        Math.round(calcResult.evalAmt || 0),
+        Math.round(calcResult.totalInvest),
+        Math.round(profit),
+        2500000,
+        Math.max(0, Math.round(profit - 2500000)),
+        22,
+        Math.round(calcResult.tax)
+      ],
+      ['', '', '', '', '', '', '', '', '', '', '', ''],
+      ['📌 계산 근거 및 주의사항', '', '', '', '', '', '', '', '', '', '', ''],
+      ['· 취득원가는 이동평균법으로 산정 (2027 소득세법 시행령 기준)', '', '', '', '', '', '', '', '', '', '', ''],
+      ['· 연간 기본공제 250만원은 가상자산 양도소득 전체에 1회만 적용됩니다.', '', '', '', '', '', '', '', '', '', '', ''],
+      ['· 본 자료는 참고용이며 실제 신고는 반드시 세무사와 상담하세요.', '', '', '', '', '', '', '', '', '', '', ''],
+      ['· 출처: 국세청 (www.nts.go.kr)', '', '', '', '', '', '', '', '', '', '', ''],
     ];
     const ws = XLSX.utils.aoa_to_sheet(s);
-    ws['!cols'] = [{wch:10},{wch:14},{wch:12},{wch:14},{wch:12},{wch:14},{wch:12},{wch:12},{wch:12},{wch:12},{wch:8},{wch:14}];
-    if (ws['A1']) ws['A1'].s = { font:{bold:true,sz:13,color:{rgb:'FFFFFF'}}, fill:{fgColor:{rgb:'F7931A'}} };
-    ['A3','B3','C3','D3','E3','F3','G3','H3','I3','J3','K3','L3'].forEach(k => { if(ws[k]) ws[k].s = styleHeader; });
+    ws['!cols'] = [
+      {wch:10},{wch:14},{wch:12},{wch:16},{wch:12},
+      {wch:16},{wch:14},{wch:14},{wch:12},{wch:14},{wch:8},{wch:16}
+    ];
+    ws['!merges'] = [
+      { s: { r: 0, c: 0 }, e: { r: 0, c: 11 } },
+      { s: { r: 1, c: 0 }, e: { r: 1, c: 11 } },
+      { s: { r: 6, c: 0 }, e: { r: 6, c: 11 } },
+      { s: { r: 7, c: 0 }, e: { r: 7, c: 11 } },
+      { s: { r: 8, c: 0 }, e: { r: 8, c: 11 } },
+      { s: { r: 9, c: 0 }, e: { r: 9, c: 11 } },
+      { s: { r: 10, c: 0 }, e: { r: 10, c: 11 } },
+    ];
+    applyStyle(ws, 'A1', sTitle);
+    applyStyle(ws, 'A2', sSubTitle);
+    ['A4','B4','C4','D4','E4','F4','G4','H4','I4','J4','K4','L4'].forEach(k => applyStyle(ws, k, sHeader));
+    ['A5','B5','C5'].forEach(k => applyStyle(ws, k, sRowEven));
+    ['D5','F5','G5'].forEach(k => applyStyle(ws, k, sValueNormal));
+    applyStyle(ws, 'E5', sRowEven);
+    applyStyle(ws, 'H5', profit >= 0 ? sValueGreen : sValueRed);
+    applyStyle(ws, 'I5', sValueNormal);
+    applyStyle(ws, 'J5', sValueHighlight);
+    applyStyle(ws, 'K5', sRowEven);
+    applyStyle(ws, 'L5', sValueRed);
+    applyStyle(ws, 'A7', { ...sSubTitle, font: { bold: true, sz: 12, color: { rgb: 'F7931A' } } });
+    ['A8','A9','A10','A11'].forEach(k => applyStyle(ws, k, sNote));
+    ws['!rows'] = [30, 20, 8, 26, 28, 8, 26, 18, 18, 18, 18].map(h => ({ hpt: h }));
+
     XLSX.utils.book_append_sheet(wb, ws, '국세청 신고 준비');
     XLSX.writeFile(wb, `국세청신고준비_${selectedCoinSym}_${today}.xlsx`);
   }
