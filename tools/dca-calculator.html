@@ -753,7 +753,12 @@ async function downloadExcel() {
   XLSX.writeFile(wb, `DCA_세금리포트_${sym}_${today}.xlsx`);
 
 
-  document.getElementById('excelSuccess').style.display = 'block';
+ document.getElementById('excelFormWrap').innerHTML =
+    '<div style="text-align:center;padding:32px 20px;">' +
+    '<div style="font-size:48px;margin-bottom:12px;">✅</div>' +
+    '<p style="font-size:18px;font-weight:700;color:#f5a623;margin-bottom:8px;">다운로드 완료!</p>' +
+    '<p style="font-size:14px;color:#888;">엑셀 파일이 저장되었습니다.<br>세무사 상담·신고 시 참고자료로 활용하세요 📋</p>' +
+    '</div>';
 }
 
 /* ── PDF 필드 검증 ── */
