@@ -1268,9 +1268,8 @@ async function submitPdfLead() {
     });
   } catch(e) { /* DB 실패해도 완료 처리 */ }
 
-  btn.style.display = 'none';
-  document.getElementById('leadSuccess').style.display = 'block';
-}
+ document.querySelector('.lead-inputs').style.display = 'none';
+document.getElementById('leadSuccess').style.display = 'block';
 
 /* ============================================================
    FAQ
