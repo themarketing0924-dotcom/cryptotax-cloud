@@ -196,14 +196,21 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 </div>
 
 <!-- 티커 -->
-<div class="ticker-wrap" style="height:60px;padding:0;overflow:hidden;">
-  <iframe
-    scrolling="no"
-    allowtransparency="true"
-    frameborder="0"
-    src="https://s.tradingview.com/embed-widget/tickers/?locale=kr#%7B%22symbols%22%3A%5B%7B%22proName%22%3A%22UPBIT%3ABTCKRW%22%2C%22title%22%3A%22BTC%22%7D%2C%7B%22proName%22%3A%22UPBIT%3AETHKRW%22%2C%22title%22%3A%22ETH%22%7D%2C%7B%22proName%22%3A%22UPBIT%3AXRPKRW%22%2C%22title%22%3A%22XRP%22%7D%2C%7B%22proName%22%3A%22UPBIT%3ASOLKRW%22%2C%22title%22%3A%22SOL%22%7D%2C%7B%22proName%22%3A%22UPBIT%3ADOGEKRW%22%2C%22title%22%3A%22DOGE%22%7D%2C%7B%22proName%22%3A%22UPBIT%3AADAKRW%22%2C%22title%22%3A%22ADA%22%7D%5D%2C%22colorTheme%22%3A%22light%22%2C%22isTransparent%22%3Atrue%2C%22showSymbolLogo%22%3Atrue%2C%22width%22%3A%22100%25%22%2C%22height%22%3A46%7D"
-    style="width:100%;height:46px;border:none;display:block;">
-  </iframe>
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item"><span class="t-name">BTC</span><span class="t-price" id="t-btc">-</span><span id="t-btc-c"></span></span>
+    <span class="ticker-item"><span class="t-name">ETH</span><span class="t-price" id="t-eth">-</span><span id="t-eth-c"></span></span>
+    <span class="ticker-item"><span class="t-name">XRP</span><span class="t-price" id="t-xrp">-</span><span id="t-xrp-c"></span></span>
+    <span class="ticker-item"><span class="t-name">SOL</span><span class="t-price" id="t-sol">-</span><span id="t-sol-c"></span></span>
+    <span class="ticker-item"><span class="t-name">DOGE</span><span class="t-price" id="t-doge">-</span><span id="t-doge-c"></span></span>
+    <span class="ticker-item"><span class="t-name">ADA</span><span class="t-price" id="t-ada">-</span><span id="t-ada-c"></span></span>
+    <span class="ticker-item"><span class="t-name">BTC</span><span class="t-price" id="t-btc2">-</span><span id="t-btc-c2"></span></span>
+    <span class="ticker-item"><span class="t-name">ETH</span><span class="t-price" id="t-eth2">-</span><span id="t-eth-c2"></span></span>
+    <span class="ticker-item"><span class="t-name">XRP</span><span class="t-price" id="t-xrp2">-</span><span id="t-xrp-c2"></span></span>
+    <span class="ticker-item"><span class="t-name">SOL</span><span class="t-price" id="t-sol2">-</span><span id="t-sol-c2"></span></span>
+    <span class="ticker-item"><span class="t-name">DOGE</span><span class="t-price" id="t-doge2">-</span><span id="t-doge-c2"></span></span>
+    <span class="ticker-item"><span class="t-name">ADA</span><span class="t-price" id="t-ada2">-</span><span id="t-ada-c2"></span></span>
+  </div>
 </div>
 
 <!-- 헤더 -->
