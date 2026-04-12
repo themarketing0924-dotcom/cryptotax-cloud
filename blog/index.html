@@ -34,7 +34,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Blog",
+  "@type": "Blog",ㅇ
   "name": "CryptoTax.cloud 블로그",
   "url": "https://cryptotax.cloud/blog/",
   "description": "대한민국 코인 투자자를 위한 세금·투자전략·스테이킹·사기예방 정보 블로그",
@@ -482,7 +482,31 @@ footer {
 .footer-links a { color: var(--text2); text-decoration: none; font-size: .82rem; }
 .footer-links a:hover { color: var(--accent); }
 footer p { color: var(--text3); font-size: .8rem; line-height: 1.8; }
-
+/* ── 라이트 모드 보정 ── */
+[data-theme="light"] .hero-eyebrow{background:rgba(247,147,26,.15);border-color:rgba(247,147,26,.35);}
+[data-theme="light"] .filter-bar{background:#f0f2f5;border-bottom:1px solid #d0d7de;}
+[data-theme="light"] .cat-btn{background:#fff;border-color:#d0d7de;color:#57606a;}
+[data-theme="light"] .cat-btn:hover{border-color:#f7931a;color:#f7931a;}
+[data-theme="light"] .cat-btn.active{background:#f7931a;border-color:#f7931a;color:#fff;}
+[data-theme="light"] .blog-card{box-shadow:0 2px 12px rgba(0,0,0,.06);}
+[data-theme="light"] .blog-card:hover{box-shadow:0 8px 28px rgba(247,147,26,.2);}
+[data-theme="light"] .sidebar-card{box-shadow:0 2px 12px rgba(0,0,0,.06);}
+/* ── 썸네일 그라데이션 ── */
+.blog-card:nth-child(5n+1) .card-thumb{background:linear-gradient(135deg,#6c3cff,#9b5cff);}
+.blog-card:nth-child(5n+2) .card-thumb{background:linear-gradient(135deg,#ff6b35,#ff8c42);}
+.blog-card:nth-child(5n+3) .card-thumb{background:linear-gradient(135deg,#0ea5e9,#38bdf8);}
+.blog-card:nth-child(5n+4) .card-thumb{background:linear-gradient(135deg,#10b981,#34d399);}
+.blog-card:nth-child(5n+5) .card-thumb{background:linear-gradient(135deg,#f43f5e,#fb7185);}
+/* ── 모바일 최적화 ── */
+@media(max-width:768px){
+  .search-box input{font-size:16px;padding:.8rem 3rem .8rem 1rem;}
+  .hero-stats{gap:1rem;}
+  .hero-stat .num{font-size:1.2rem;}
+  .hero-stat .lbl{font-size:.68rem;}
+  .filter-bar{padding:.7rem 1rem;}
+  .cat-btn{font-size:.75rem;padding:.35rem .7rem;}
+}
+</style>
 </head>
 <body>
 
