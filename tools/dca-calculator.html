@@ -220,43 +220,51 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 }
 
 /* ── 모바일 최적화 ── */
-@media(max-width:480px){
+@media(max-width:768px){
   .top-bar{padding:10px 14px;}
   .top-bar-logo{font-size:18px;}
   .top-bar-nav a{font-size:13px;}
-  .hero{padding:32px 16px 24px;}
-  .hero h1{font-size:28px;line-height:1.3;}
+  .hero{padding:28px 16px 20px;}
+  .hero h1{font-size:26px;line-height:1.3;}
   .hero-sub{font-size:14px;line-height:1.6;}
   .hero-badge{font-size:13px;padding:5px 14px;}
   .geo-summary p{font-size:14px;}
   .stats-row{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:8px;}
-  .stat-badge{min-width:unset !important;max-width:unset !important;flex:unset !important;padding:10px 8px;}
-  .stat-badge .s-num{font-size:16px !important;}
+  .stat-badge{min-width:unset !important;max-width:unset !important;flex:unset !important;padding:12px 8px;}
+  .stat-badge .s-num{font-size:18px !important;}
   .stat-badge .s-label{font-size:11px !important;}
   .source-grid{grid-template-columns:repeat(2,1fr) !important;}
-  .section-title{font-size:19px;}
+  .source-grid2{grid-template-columns:repeat(2,1fr) !important;gap:10px;}
+  .source-card{padding:14px 10px;}
+  .source-card .s-icon{font-size:26px;}
+  .source-card .s-name{font-size:13px;}
+  .source-card .s-desc{font-size:11px;}
+  .section-title{font-size:18px;}
+  .section{padding:24px 16px;}
   .calc-card{padding:16px;}
   .form-group label{font-size:14px;font-weight:700;}
   .form-group input,.form-group select{font-size:15px;padding:13px;}
-  .calc-btn{font-size:17px;padding:18px;font-weight:800;}
+  .calc-btn{font-size:16px;padding:16px;font-weight:800;}
   .result-item .r-label{font-size:13px;}
   .result-item .r-value{font-size:17px;}
   .excel-btn{font-size:15px;padding:16px;width:100%;}
   .howto-text h4{font-size:15px;font-weight:800;}
-  .howto-text p{font-size:14px;}
-  .lead-form-wrap h2{font-size:20px;}
+  .howto-text p{font-size:14px;line-height:1.7;}
+  .lead-form-wrap h2{font-size:19px;}
   .lead-submit{font-size:16px;padding:16px;font-weight:800;}
   .tool-card .t-icon{font-size:28px;}
   .tool-card .t-name{font-size:14px;font-weight:700;}
   .tools-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px;}
-  .blog-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px;}
-  .blog-grid .blog-card:last-child:nth-child(odd){grid-column:1 / -1;max-width:50%;margin:0 auto;}
-  .blog-card .b-title{font-size:15px;font-weight:700;}
-  .blog-card .b-desc{font-size:13px;}
-  .faq-q{font-size:15px;font-weight:700;}
-  .faq-a{font-size:14px;}
-  .disclaimer p{font-size:13px;line-height:2;}
+  .blog-card-grid{grid-template-columns:1fr !important;gap:14px;}
+  .blog-card-img{height:100px !important;font-size:38px;}
+  .blog-card-body{padding:14px;}
+  .blog-card-body h3{font-size:14px;}
+  .blog-card-body p{font-size:12px;}
+  .faq-q{font-size:14px;padding:14px 12px;}
+  .faq-a{font-size:13px;line-height:1.8;padding:12px;}
+  .disclaimer p{font-size:12px;line-height:1.9;}
 }
+
 
 /* ── 전체 볼드 강조 ── */
 .hero h1{font-weight:900;}
