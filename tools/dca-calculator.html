@@ -831,5 +831,35 @@ function toggleFaq(el) {
   el.parentElement.classList.toggle('open');
 }
 </script>
+  </script>
+
+<h3>무료 상담 신청</h3>
+<input id="name" placeholder="이름"><br><br>
+<input id="phone" placeholder="전화번호"><br><br>
+<input id="email" placeholder="이메일"><br><br>
+<button id="sendBtn">제출하기</button>
+
+<script>
+document.getElementById("sendBtn").onclick = function() {
+
+  fetch("https://script.google.com/macros/s/AKfycbw3jhYcQ81lhpRz4nppXniHD-EQiE5cpjWlDnvdKE9BD1X5GTENfOG-XEPRQjLaV-03EA/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      page: window.location.href
+    })
+  })
+  .then(res => res.text())
+  .then(data => {
+    alert("신청 완료!");
+  });
+
+};
+</script>
 </body>
 </html>
