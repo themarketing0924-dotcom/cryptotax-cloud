@@ -706,8 +706,9 @@ async function downloadExcel() {
   const taxBase = Math.max(0, calcResult.profit - 2500000);
   const taxAmt  = taxBase * 0.22;
 
-  /* 파일1: DCA 분석 리포트 */
-  const wb1 = XLSX.utils.book_new();
+  const wb = XLSX.utils.book_new();
+
+  // 시트1: DCA 분석 리포트
   const ws1 = XLSX.utils.aoa_to_sheet([
     ['DCA 분석 리포트'],
     ['코인', sym],
@@ -721,19 +722,19 @@ async function downloadExcel() {
     ['예상 세금(22%)', taxAmt],
     ['세후 수익(원)', calcResult.profit - taxAmt],
   ]);
-  XLSX.utils.book_append_sheet(wb1, ws1, 'DCA분석');
+  XLSX.utils.book_append_sheet(wb, ws1, 'DCA분석리포트');
+
+  // 시트2: 회차별 상세
   if(calcResult.rounds && calcResult.rounds.length) {
-    const ws1b = XLSX.utils.aoa_to_sheet([
+    const ws2 = XLSX.utils.aoa_to_sheet([
       ['회차','매수가격','투자금액','매수수량','누적평균단가'],
       ...calcResult.rounds.map((r,i) => [i+1, Math.round(r.price), Math.round(r.invest), r.qty, Math.round(r.avgPrice)])
     ]);
-    XLSX.utils.book_append_sheet(wb1, ws1b, '회차별상세');
+    XLSX.utils.book_append_sheet(wb, ws2, '회차별상세');
   }
-  XLSX.writeFile(wb1, `DCA_분석리포트_${sym}_${today}.xlsx`);
 
-  /* 파일2: 국세청 신고 준비용 */
-  const wb2 = XLSX.utils.book_new();
-  const ws2 = XLSX.utils.aoa_to_sheet([
+  // 시트3: 국세청 신고 준비용
+  const ws3 = XLSX.utils.aoa_to_sheet([
     ['국세청 신고 준비용 (세무사 상담·신고 참고자료)'],
     ['자산명', sym],
     ['취득방법', 'DCA 분할매수'],
@@ -747,8 +748,10 @@ async function downloadExcel() {
     [''],
     ['※ 본 자료는 참고용이며 실제 신고는 세무사와 상담하세요.'],
   ]);
-  XLSX.utils.book_append_sheet(wb2, ws2, '국세청신고준비');
-  XLSX.writeFile(wb2, `국세청신고준비_${sym}_${today}.xlsx`);
+  XLSX.utils.book_append_sheet(wb, ws3, '국세청신고준비');
+
+  XLSX.writeFile(wb, `DCA_세금리포트_${sym}_${today}.xlsx`);
+
 
   document.getElementById('excelSuccess').style.display = 'block';
 }
