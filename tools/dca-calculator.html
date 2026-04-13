@@ -195,7 +195,7 @@ body{
 .lead-form-wrap{background:var(--bg2);border:2px solid var(--point);border-radius:var(--radius);padding:32px;text-align:center;}
 .lead-form-wrap h2{font-size:22px;font-weight:800;margin-bottom:8px;letter-spacing:-0.3px;}
 .lead-form-wrap>p{color:var(--text2);font-size:14px;margin-bottom:20px;line-height:1.7;}
-.lead-inputs{display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto;}
+.lead-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;max-width:640px;margin:0 auto;}
 .lead-inputs input{padding:13px 16px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg);color:var(--text);min-height:48px;}
 .lead-inputs input:focus{outline:none;border-color:var(--point);}
 .field-err{font-size:12px;color:#e53935;margin-top:3px;min-height:16px;padding-left:2px;}
@@ -471,6 +471,7 @@ body{
   .lead-form-wrap h2{font-size:18px;}
   .lead-form-wrap>p{font-size:13px;}
   .lead-inputs input{font-size:15px;min-height:48px;}
+  .lead-inputs{grid-template-columns:1fr;}
   .lead-submit{font-size:15px;padding:15px;min-height:52px;}
   .check-group{font-size:12px;}
 
