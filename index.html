@@ -187,12 +187,12 @@ a{text-decoration:none;color:inherit;}
 .cta-secondary:hover{background:var(--bg-elevated);border-color:var(--orange);color:var(--orange);}
 @media(min-width:520px){.cta-primary,.cta-secondary{width:auto;max-width:none;}}
 /* ===== 소셜 증거 바 ===== */
-.social-proof{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:14px 20px;transition:background var(--transition),border-color var(--transition);overflow-x:auto;}
-@media(min-width:768px){.social-proof{padding:14px 32px;}}
-.social-proof-inner{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;align-items:center;max-width:960px;margin:0 auto;}
-.sp-item{display:flex;align-items:center;gap:7px;font-size:0.84rem;font-weight:500;color:var(--text-secondary);white-space:nowrap;}
+.social-proof{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:20px;}
+.social-proof-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:480px;margin:0 auto;}
+.sp-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-secondary);background:var(--card);border:1px solid var(--border-default);border-radius:10px;padding:12px 14px;}
 .sp-item strong{color:var(--text-primary);font-weight:700;}
-.sp-divider{color:var(--border-default);font-size:1.2rem;}
+.sp-divider{display:none;}
+@media(max-width:480px){.social-proof-inner{max-width:100%;gap:8px;}.sp-item{font-size:0.78rem;padding:10px 12px;}}
 /* ===== 광고 슬롯 ===== */
 .ad-slot{padding:20px;max-width:960px;margin:0 auto;}
 @media(min-width:768px){.ad-slot{padding:20px 32px;}}
@@ -607,11 +607,8 @@ a{text-decoration:none;color:inherit;}
 <div class="social-proof">
   <div class="social-proof-inner">
     <div class="sp-item">✅ <strong>국세청 공식 기준</strong> 적용</div>
-    <div class="sp-divider">|</div>
     <div class="sp-item">🏛️ <strong>소득세법 제87조의2</strong> 근거</div>
-    <div class="sp-divider">|</div>
-    <div class="sp-item">🔒 <strong>계산값 서버 미전송</strong> · 완전 익명</div>
-    <div class="sp-divider">|</div>
+    <div class="sp-item">📥 <strong>무료 절세 PDF</strong> · 이메일 즉시 발송</div>
     <div class="sp-item">📱 <strong>모바일 최적화</strong> · 즉시 사용</div>
   </div>
 </div>
