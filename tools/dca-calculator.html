@@ -535,6 +535,9 @@ body{
   .stat-badge .s-num{font-size:16px;}
   .section-title{font-size:16px;}
 }
+  @media(max-width:374px){
+  .calc-toss-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -787,6 +790,8 @@ body{
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">🛠️ 전체 계산기 모음</h2>
   <div class="calc-toss-grid">
+
+    <!-- 1. 세금 계산기 -->
     <a href="https://cryptotax.cloud/tools/tax-calculator.html" class="calc-toss-item fade-up" style="animation-delay:0.05s">
       <div class="calc-toss-icon" style="background:linear-gradient(135deg,#ff6b35,#ff8c42);">🧮</div>
       <div class="calc-toss-body">
@@ -795,6 +800,8 @@ body{
         <div class="calc-toss-desc">양도소득세 정확 계산 →</div>
       </div>
     </a>
+
+    <!-- 2. DCA 계산기 (현재 페이지) -->
     <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="calc-toss-item active fade-up" style="animation-delay:0.10s">
       <div class="calc-toss-icon" style="background:linear-gradient(135deg,#6c3cff,#9b5cff);">📅</div>
       <div class="calc-toss-body">
@@ -803,6 +810,8 @@ body{
         <div class="calc-toss-desc">정기매수 평균단가 계산 →</div>
       </div>
     </a>
+
+    <!-- 3. 물타기 계산기 -->
     <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="calc-toss-item fade-up" style="animation-delay:0.15s">
       <div class="calc-toss-icon" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8);">📉</div>
       <div class="calc-toss-body">
@@ -811,6 +820,8 @@ body{
         <div class="calc-toss-desc">하락장 추가매수 전략 →</div>
       </div>
     </a>
+
+    <!-- 4. CSV 계산기 -->
     <a href="https://cryptotax.cloud/tools/csv-tax-calculator.html" class="calc-toss-item fade-up" style="animation-delay:0.20s">
       <div class="calc-toss-icon" style="background:linear-gradient(135deg,#10b981,#34d399);">📂</div>
       <div class="calc-toss-body">
@@ -819,6 +830,27 @@ body{
         <div class="calc-toss-desc">업비트 거래내역 자동계산 →</div>
       </div>
     </a>
+
+    <!-- 5. ROI 계산기 -->
+    <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="calc-toss-item fade-up" style="animation-delay:0.25s">
+      <div class="calc-toss-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">📈</div>
+      <div class="calc-toss-body">
+        <span class="calc-toss-tag" style="color:#f59e0b;">수익률</span>
+        <div class="calc-toss-title">ROI 계산기</div>
+        <div class="calc-toss-desc">투자 수익률 계산 →</div>
+      </div>
+    </a>
+
+    <!-- 6. 세금 절약 (Tax-Loss Harvesting) -->
+    <a href="https://cryptotax.cloud/tools/tax-loss-harvesting.html" class="calc-toss-item fade-up" style="animation-delay:0.30s">
+      <div class="calc-toss-icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa);">🌿</div>
+      <div class="calc-toss-body">
+        <span class="calc-toss-tag" style="color:#8b5cf6;">절세</span>
+        <div class="calc-toss-title">절세 계산기</div>
+        <div class="calc-toss-desc">손실로 세금 줄이기 →</div>
+      </div>
+    </a>
+
   </div>
 </div>
 
