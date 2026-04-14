@@ -449,10 +449,31 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
 
 <!-- 트레이딩뷰 BTC 차트 -->
 <div class="widget-wrap">
-  <div class="widget-label">📊 업비트 BTC/KRW 실시간 차트 — RSI·MACD 포함</div>
-  <div class="widget-box" style="height:420px;" id="tv-chart-wrap">
-    <div class="tradingview-widget-container" style="height:100%;">
-      <div id="tv-chart" style="height:100%;"></div>
+  <div class="widget-label" style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:12px;">
+    📊 업비트 BTC/KRW 실시간 차트 — RSI·MACD 포함
+  </div>
+  <div class="widget-box" style="height:420px;">
+    <div class="tradingview-widget-container" style="height:100%;width:100%;">
+      <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%;"></div>
+      <div class="tradingview-widget-copyright">
+        <a href="https://kr.tradingview.com/" rel="noopener nofollow" target="_blank">
+          <span class="blue-text">TradingView에서 추적</span>
+        </a>
+      </div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+      {
+        "autosize": true,
+        "symbol": "UPBIT:BTCKRW",
+        "interval": "D",
+        "timezone": "Asia/Seoul",
+        "theme": "light",
+        "style": "1",
+        "locale": "kr",
+        "allow_symbol_change": true,
+        "studies": ["RSI@tv-basicstudies","MACD@tv-basicstudies"],
+        "support_host": "https://www.tradingview.com"
+      }
+      </script>
     </div>
   </div>
   <div class="widget-explain">
@@ -461,6 +482,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     차트 상승 추세인데 김프가 낮으면 국내 투자자들이 아직 반응 전 → 선행 진입 기회일 수 있습니다.
   </div>
 </div>
+
 
 <!-- 리드폼 -->
 <div class="section" style="padding-top:0;">
@@ -516,11 +538,29 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
   </div>
 </div>
 
-<!-- 코인 히트맵 위젯 -->
+<!-- 히트맵 위젯 -->
 <div class="widget-wrap">
-  <div class="widget-label">🗺️ 실시간 코인 히트맵 — 지금 어떤 코인이 오르나?</div>
-  <div class="widget-box" style="height:500px;" id="tv-heatmap-wrap">
-    <div id="tv-heatmap" style="height:100%;"></div>
+  <div class="widget-label" style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:12px;">
+    🗺️ 실시간 코인 히트맵 — 지금 어떤 코인이 오르나?
+  </div>
+  <div class="widget-box" style="height:500px;">
+    <div class="tradingview-widget-container" style="height:100%;width:100%;">
+      <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+      {
+        "dataSource": "Crypto",
+        "blockSize": "market_cap_calc",
+        "blockColor": "change",
+        "locale": "kr",
+        "colorTheme": "light",
+        "hasTopBar": false,
+        "isZoomEnabled": true,
+        "hasSymbolTooltip": true,
+        "width": "100%",
+        "height": "100%"
+      }
+      </script>
+    </div>
   </div>
   <div class="widget-explain">
     🟢 <strong>초록 = 상승</strong> / 🔴 <strong>빨간 = 하락</strong><br>
@@ -528,6 +568,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-s
     히트맵 빨간 + 김프 마이너스 → 단기 바닥 구간 가능성 (저점 매수 검토)
   </div>
 </div>
+
 
 <!-- 광고 3 -->
 <div class="ad-wrap" style="margin:0 auto;max-width:var(--max-w);padding:16px 20px;">
