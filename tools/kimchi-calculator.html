@@ -498,36 +498,8 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
     📊 업비트 BTC/KRW 실시간 차트 — 볼린저밴드·RSI 포함
   </div>
   <div class="widget-box" style="height:500px; min-height:500px;">
-    <div class="tradingview-widget-container" style="height:100%;width:100%;">
-      <div class="tradingview-widget-container__widget" 
-           style="height:500px;width:100%;"></div>
-      <div class="tradingview-widget-copyright">
-        <a href="https://kr.tradingview.com/" rel="noopener nofollow" target="_blank">
-          <span class="blue-text">TradingView에서 추적</span>
-        </a>
-      </div>
-      <script type="text/javascript" 
-        src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-      {
-        "autosize": false,
-        "width": "100%",
-        "height": 500,
-        "symbol": "UPBIT:BTCKRW",
-        "interval": "60",
-        "timezone": "Asia/Seoul",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "allow_symbol_change": false,
-        "save_image": false,
-        "studies": [
-          "STD;Bollinger_Bands",
-          "STD;RSI"
-        ],
-        "show_popup_button": false,
-        "support_host": "https://www.tradingview.com"
-      }
-      </script>
+    <div id="tv-chart" class="tradingview-widget-container" style="height:100%;width:100%;">
+      <div class="tradingview-widget-container__widget" style="height:500px;width:100%;"></div>
     </div>
   </div>
   <div class="widget-explain">
@@ -594,30 +566,13 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
 </div>
 
 <!-- 히트맵 위젯 -->
-<!-- 히트맵 위젯 -->
 <div class="widget-wrap">
   <div class="widget-label" style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:12px;">
     🗺️ 실시간 코인 히트맵 — 지금 어떤 코인이 오르나?
   </div>
   <div class="widget-box" style="height:500px; min-height:500px;">
-    <div class="tradingview-widget-container" style="height:100%;width:100%;">
-      <div class="tradingview-widget-container__widget" 
-           style="height:500px;width:100%;"></div>
-      <script type="text/javascript" 
-        src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-      {
-        "dataSource": "Crypto",
-        "blockSize": "market_cap_calc",
-        "blockColor": "change",
-        "locale": "kr",
-        "colorTheme": "dark",
-        "hasTopBar": false,
-        "isZoomEnabled": true,
-        "hasSymbolTooltip": true,
-        "width": "100%",
-        "height": 500
-      }
-      </script>
+    <div id="tv-heatmap" class="tradingview-widget-container" style="height:100%;width:100%;">
+      <div class="tradingview-widget-container__widget" style="height:500px;width:100%;"></div>
     </div>
   </div>
   <div class="widget-explain">
@@ -773,25 +728,64 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
 </div>
 <script>
 (function(){
-  const saved = localStorage.getItem('theme') || 'dark';
+  const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
+
+  function buildChart(theme) {
+    const c = document.getElementById('tv-chart');
+    if(!c) return;
+    c.innerHTML = '<div class="tradingview-widget-container__widget" style="height:500px;width:100%;"></div>';
+    const s = document.createElement('script');
+    s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    s.async = true;
+    s.textContent = JSON.stringify({
+      autosize: false, width: "100%", height: 500,
+      symbol: "UPBIT:BTCKRW", interval: "60",
+      timezone: "Asia/Seoul", theme: theme,
+      style: "1", locale: "kr",
+      allow_symbol_change: false, save_image: false,
+      studies: ["STD;Bollinger_Bands","STD;RSI"],
+      show_popup_button: false,
+      support_host: "https://www.tradingview.com"
+    });
+    c.appendChild(s);
+  }
+
+  function buildHeatmap(theme) {
+    const c = document.getElementById('tv-heatmap');
+    if(!c) return;
+    c.innerHTML = '<div class="tradingview-widget-container__widget" style="height:500px;width:100%;"></div>';
+    const s = document.createElement('script');
+    s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
+    s.async = true;
+    s.textContent = JSON.stringify({
+      dataSource: "Crypto", blockSize: "market_cap_calc",
+      blockColor: "change", locale: "kr",
+      colorTheme: theme, hasTopBar: false,
+      isZoomEnabled: true, hasSymbolTooltip: true,
+      width: "100%", height: 500
+    });
+    c.appendChild(s);
+  }
+
+  function toggleTheme(){
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const btn = document.querySelector('.theme-btn');
+    if(btn) btn.textContent = next === 'dark' ? '☀️ 라이트' : '🌙 다크';
+    buildChart(next);
+    buildHeatmap(next);
+  }
+
+  window.toggleTheme = toggleTheme;
 
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
-    if(!btn) return;
-    btn.textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
-
-    btn.addEventListener('click', function(){
-      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      btn.textContent = next === 'dark' ? '☀️ 라이트' : '🌙 다크';
-
-      /* 트레이딩뷰 위젯 테마도 같이 변경 */
-      document.querySelectorAll('iframe').forEach(function(f){
-        try{ f.src = f.src; }catch(e){}
-      });
-    });
+    if(btn) btn.textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
+    buildChart(saved);
+    buildHeatmap(saved);
   });
 })();
 </script>
