@@ -219,9 +219,9 @@ a{text-decoration:none;color:inherit;}
 .section-title p{color:var(--text-secondary);font-size:0.9rem;font-weight:500;word-break:keep-all;}
 /* ===== 도구 그리드 ===== */
 .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:920px;margin:0 auto;}
-@media(min-width:520px){.tools-grid{grid-template-columns:repeat(3,1fr);gap:12px;}}
+@media(min-width:480px){.tools-grid{grid-template-columns:repeat(3,1fr);gap:12px;}}
 @media(min-width:768px){.tools-grid{grid-template-columns:repeat(4,1fr);gap:14px;}}
-@media(min-width:1024px){.tools-grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:1024px){.tools-grid{grid-template-columns:repeat(4,1fr);gap:16px;}}
 .tool-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:14px;padding:18px 12px;transition:all 0.2s;display:block;text-align:center;}
 .tool-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 6px 20px #f7931a20;}
 .tool-card .tc-icon{font-size:1.9rem;margin-bottom:9px;}
@@ -313,9 +313,8 @@ a{text-decoration:none;color:inherit;}
 .faq-a.open{display:block;}
 .faq-q.active .faq-arrow{transform:rotate(180deg);}
 /* ===== 채널 그리드 ===== */
-.channels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:720px;margin:0 auto;}
-@media(min-width:520px){.channels-grid{grid-template-columns:repeat(3,1fr);}}
-@media(min-width:768px){.channels-grid{grid-template-columns:repeat(4,1fr);}}
+.channels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:720px;margin:0 auto;}
+@media(min-width:520px){.channels-grid{grid-template-columns:repeat(3,1fr);gap:14px;}}
 .ch-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:16px 12px;text-align:center;transition:all 0.2s;display:block;}
 .ch-card:hover{transform:translateY(-2px);border-color:var(--orange);}
 .ch-card .ch-icon{font-size:1.6rem;margin-bottom:7px;}
@@ -414,7 +413,7 @@ a{text-decoration:none;color:inherit;}
 .blog-card h3{font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:6px;line-height:1.4;}
 .blog-card p{font-size:0.8rem;color:var(--text-secondary);}
 .blog-card .read-more{font-size:0.78rem;color:var(--orange);margin-top:10px;display:block;}
-.exchange-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:900px;margin:0 auto;}
+.exchange-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:720px;margin:0 auto;}
 .exchange-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;transition:all 0.2s;}
 .exchange-card:hover{border-color:var(--orange);}
 .ex-icon{font-size:1.6rem;}
