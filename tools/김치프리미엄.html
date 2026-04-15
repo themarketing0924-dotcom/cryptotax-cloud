@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ★ SEO 메타태그 -->
+  <title>김치프리미엄 계산기 실시간 | 업비트-바이낸스 김프 즉시 계산 — CryptoTax.cloud</title>
+  <meta name="description" content="지금 김치프리미엄(김프)이 몇 %인지 즉시 계산하세요. 업비트·바이낸스 실시간 가격 차이, 신호등 판단, BTC 차트까지 한 페이지에서 확인. 코린이도 3초면 이해합니다.">
+  <meta name="keywords" content="김치프리미엄, 김프, 김프 계산기, 업비트 바이낸스 차이, 역프리미엄, 김프 실시간">
+  
+  <!-- ★ AEO / AI 검색 최적화 — FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "김치프리미엄이란 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "김치프리미엄(김프)은 한국 원화 거래소(업비트, 빗썸)의 비트코인 가격이 해외 거래소(바이낸스)보다 높게 형성되는 현상입니다. 김프(%) = (국내 원화가 ÷ 해외 원화가 - 1) × 100 공식으로 계산하며, 역사적으로 강세장에서 20~30%까지 오른 사례가 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "김프가 높으면 어떻게 해야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "김프 8% 이상은 국내 투자 심리 과열 신호입니다. 역사적으로 김프 20% 이상에서 단기 고점이 형성된 경우가 많습니다. 반대로 역프리미엄(-) 구간은 저점 가능성이 있어 일부 투자자들이 분할 매수 기회로 활용합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "김치프리미엄 계산 공식은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "김프(%) = (업비트 BTC 원화가 ÷ (바이낸스 BTC 달러가 × 달러 환율) - 1) × 100. 예시: 업비트 135,000,000원, 바이낸스 $95,000, 환율 1,380원이면 김프 = (135,000,000 ÷ 131,100,000 - 1) × 100 = 약 2.97%"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "역프리미엄이란 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "역프리미엄(역프)은 국내 거래소 가격이 해외보다 낮은 상태로 김프가 마이너스(-)일 때입니다. 국내 매도 압력이 클 때 발생하며, 역사적으로 역프 구간이 저점 부근인 경우가 많았습니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ★ BreadcrumbList Schema (SEO 빵부스러기) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},
+      {"@type":"ListItem","position":2,"name":"무료 계산기","item":"https://cryptotax.cloud/#calculator"},
+      {"@type":"ListItem","position":3,"name":"김치프리미엄 계산기","item":"https://cryptotax.cloud/tools/kimchi-calculator.html"}
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== 기본 리셋 & 변수 ===== */
+    :root {
+      --primary: #f7931a;
+      --primary-dark: #d4780e;
+      --bg-dark: #0d0d0d;
+      --bg-card: #1a1a2e;
+      --bg-card2: #16213e;
+      --text: #f0f0f0;
+      --text-sub: #a0a0b0;
+      --green: #00c896;
+      --red: #ff4757;
+      --yellow: #ffd32a;
+      --border: #2a2a4a;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== 레이아웃 ===== */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    .section { padding: 48px 0; }
+    .section-sm { padding: 28px 0; }
+
+    /* ===== 카드 ===== */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ===== ZONE 1 — 티커 & 속보 ===== */
+    .breaking-bar {
+      background: linear-gradient(135deg, #1a0a00, #2d1500);
+      border-bottom: 2px solid var(--primary);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .breaking-bar span { animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ===== ZONE 2 — HOOK 헤드라인 ===== */
+    .hero {
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a0a00 50%, #0d0d0d 100%);
+      padding: 56px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(247,147,26,0.15);
+      border: 1px solid var(--primary);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .hero h1 .highlight { color: var(--primary); }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+
+    /* 실시간 김프 HUD */
+    .kimp-hud {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 28px;
+      margin-bottom: 16px;
+    }
+    .kimp-hud .label { font-size: 0.85rem; color: var(--text-sub); }
+    .kimp-hud .value {
+      font-size: 2rem;
+      font-weight: 900;
+      transition: color 0.5s;
+    }
+    .kimp-hud .signal {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .signal-normal  { background: rgba(0,200,150,0.15); color: var(--green); border: 1px solid var(--green); }
+    .signal-caution { background: rgba(255,211,42,0.15); color: var(--yellow); border: 1px solid var(--yellow); }
+    .signal-danger  { background: rgba(255,71,87,0.15);  color: var(--red);   border: 1px solid var(--red); }
+
+    /* AEO 답변 블록 */
+    .aeo-answer {
+      background: rgba(247,147,26,0.06);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.95rem;
+    }
+    .aeo-answer strong { color: var(--primary); }
+
+    /* ===== ZONE 3 — 계산기 ===== */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    @media(max-width:600px){ .calc-grid { grid-template-columns: 1fr; } }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .form-group input {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus { outline: none; border-color: var(--primary); }
+
+    .btn-calc {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,147,26,0.35); }
+
+    /* 결과 박스 */
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    @media(max-width:500px){ .result-grid { grid-template-columns: 1fr; } }
+    .result-item {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .result-item .r-label { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 6px; }
+    .result-item .r-value { font-size: 1.35rem; font-weight: 800; }
+    .result-item.highlight-result {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(247,147,26,0.1), rgba(247,147,26,0.05));
+      border-color: var(--primary);
+    }
+    .result-item.highlight-result .r-value { font-size: 2rem; color: var(--primary); }
+
+    /* 신호등 결과 설명 */
+    .signal-explain {
+      background: var(--bg-dark);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    /* ===== 신호등 범례 ===== */
+    .traffic-light {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .tl-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      background: var(--bg-dark);
+      border-radius: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+    }
+    .tl-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* ===== 광고 자리 ===== */
+    .ad-wrap {
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.8rem;
+      margin: 24px 0;
+    }
+
+    /* ===== ZONE 4/5 — 위젯 ===== */
+    .widget-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .widget-label {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      padding: 10px 16px;
+      background: var(--bg-card2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== 이메일 수집 배너 ===== */
+    .email-banner {
+      background: linear-gradient(135deg, #1a0a00, #16213e);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .email-banner h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .email-banner p { color: var(--text-sub); margin-bottom: 20px; font-size: 0.95rem; }
+    .email-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
+    @media(max-width:500px){ .email-form { flex-direction: column; } }
+    .email-form input {
+      flex: 1;
+      background: var(--bg-dark);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .email-form input:focus { outline: none; border-color: var(--primary); }
+    .btn-email {
+      background: var(--primary);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+    .email-note { font-size: 0.75rem; color: var(--text-sub); margin-top: 10px; }
+
+    /* ===== 레퍼럴 거래소 비교 블록 ===== */
+    .exchange-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .exchange-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .exchange-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+    .exchange-card .ex-header { display: flex; align-items: center; gap: 12px; }
+    .exchange-card .ex-logo {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+    .exchange-card .ex-name { font-weight: 700; font-size: 1rem; }
+    .exchange-card .ex-type { font-size: 0.75rem; color: var(--text-sub); }
+    .exchange-card .ex-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,200,150,0.12);
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .exchange-card .ex-features { font-size: 0.85rem; color: var(--text-sub); line-height: 1.8; }
+    .exchange-card .ex-features li { list-style: none; padding-left: 0; }
+    .exchange-card .ex-features li::before { content: "✅ "; }
+    .btn-exchange {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #000;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-top: auto;
+      transition: opacity 0.2s;
+    }
+    .btn-exchange:hover { opacity: 0.9; text-decoration: none; }
+    .btn-exchange.secondary {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+    }
+    .referral-notice {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ===== Q&A 아코디언 ===== */
+    .faq-item {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--primary); }
+    .faq-icon { font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 20px 18px; }
+
+    /* ===== 관련 계산기 카드 ===== */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .tool-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .tool-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .tool-card .t-icon { font-size: 2rem; margin-bottom: 8px; }
+    .tool-card .t-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+    .tool-card .t-desc { font-size: 0.75rem; color: var(--text-sub); }
+
+    /* ===== 블로그 링크 ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .blog-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .blog-card:hover { border-color: var(--primary); }
+    .blog-tag {
+      display: inline-block;
+      background: rgba(247,147,26,0.15);
+      color: var(--primary);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .blog-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+    .blog-card p { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 12px; line-height: 1.6; }
+    .blog-card a { font-size: 0.82rem; color: var(--primary); font-weight: 600; }
+
+    /* ===== 섹션 타이틀 ===== */
+    .sec-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sec-sub {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      margin-bottom: 24px;
+    }
+
+    /* ===== 공식 링크 배너 ===== */
+    .official-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .official-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .official-link-btn:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+
+    /* ===== 공식 출처 배지 ===== */
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 24px 0;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+    .trust-bar span { display: flex; align-items: center; gap: 6px; }
+
+    /* ===== 반응형 ===== */
+    @media(max-width: 768px) {
+      .card { padding: 20px 16px; }
+      .hero { padding: 36px 0 28px; }
+      .kimp-hud { flex-wrap: wrap; justify-content: center; gap: 10px; padding: 14px 18px; }
+      .email-banner { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================
+  ZONE 1: 신뢰 즉시 형성
+============================= -->
+
+<!-- 속보 배너 -->
+<div class="breaking-bar">
+  <span>🔴 LIVE</span>&nbsp;
+  실시간 김치프리미엄 모니터링 중 — 업비트·바이낸스 가격 차이를 즉시 계산해드립니다
+</div>
+
+<!-- 티커테이프 위젯 -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" 
+    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+    "symbols": [
+      {"proName":"UPBIT:BTCKRW","title":"BTC 업비트"},
+      {"proName":"BINANCE:BTCUSDT","title":"BTC 바이낸스"},
+      {"proName":"UPBIT:ETHKRW","title":"ETH"},
+      {"proName":"UPBIT:XRPKRW","title":"XRP"},
+      {"proName":"UPBIT:SOLKRW","title":"SOL"},
+      {"proName":"FX_IDC:USDKRW","title":"달러환율"}
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "colorTheme": "dark",
+    "locale": "kr"
+  }
+  </script>
+</div>
+
+<!-- ============================
+  ZONE 2: HOOK 헤드라인 + AEO
+============================= -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🌶️ 실시간 업데이트 · 완전 무료</div>
+    <h1>
+      지금 김프 <span class="highlight" id="hero-kimp-pct">계산 중...</span><br>
+      업비트가 바이낸스보다 <span class="highlight" id="hero-kimp-won">--</span> 비쌉니다
+    </h1>
+    <p class="sub">
+      업비트·바이낸스 BTC 가격 차이를 3초 만에 계산하세요.<br>
+      신호등 판단 · 역사적 맥락 · 실시간 차트까지 한 페이지에서 완결
+    </p>
+
+    <!-- 실시간 HUD -->
+    <div class="kimp-hud">
+      <div>
+        <div class="label">업비트 BTC</div>
+        <div class="value" id="hud-upbit" style="color:var(--primary)">로딩중...</div>
+      </div>
+      <div style="font-size:1.5rem; color:var(--border)">vs</div>
+      <div>
+        <div class="label">바이낸스 BTC</div>
+        <div class="value" id="hud-binance" style="color:var(--text)">로딩중...</div>
+      </div>
+      <div>
+        <div class="label">환율</div>
+        <div class="value" style="font-size:1.2rem;" id="hud-rate">로딩중...</div>
+      </div>
+      <div id="hud-signal" class="signal signal-normal">—</div>
+    </div>
+
+    <!-- AEO 구조화 답변 블록 -->
+    <div class="aeo-answer" style="max-width:680px; margin:24px auto 0; text-align:left;">
+      <strong>💡 김치프리미엄(김프)이란?</strong><br>
+      한국 거래소(업비트·빗썸)의 비트코인 가격이 해외(바이낸스)보다 높게 형성되는 현상입니다.
+      <strong>김프 공식 = (국내가 ÷ 해외 원화환산가 − 1) × 100.</strong>
+      역사적으로 강세장 고점에서 20~30%까지 올랐으며, 역프(-) 구간은 저점 신호로 해석되기도 합니다.
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 3: 핵심 계산기
+============================= -->
+<div class="container section-sm">
+
+  <!-- 신호등 범례 -->
+  <div class="traffic-light">
+    <div class="tl-item"><div class="tl-dot" style="background:var(--green)"></div>0~3% — 정상 구간</div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--yellow)"></div>3~8% — 주의 (과열 초입)</div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--red)"></div>8%+ — 과열 경고</div>
+    <div class="tl-item"><div class="tl-dot" style="background:#7f8ff4"></div>마이너스 — 역프 (저점 가능)</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🌶️ 김치프리미엄 계산기</div>
+
+    <div class="calc-grid">
+      <div class="form-group">
+        <label>🇰🇷 국내 거래소 BTC 가격 (원) — 업비트 기준</label>
+        <input type="number" id="in-domestic" placeholder="예: 135000000">
+      </div>
+      <div class="form-group">
+        <label>🌐 해외 거래소 BTC 가격 ($) — 바이낸스 기준</label>
+        <input type="number" id="in-overseas" placeholder="예: 95000">
+      </div>
+      <div class="form-group">
+        <label>💵 달러 환율 (원/$)</label>
+        <input type="number" id="in-rate" placeholder="예: 1380">
+      </div>
+      <div class="form-group">
+        <label>🪙 보유 수량 BTC (선택 — 차익 금액 계산)</label>
+        <input type="number" id="in-qty" placeholder="예: 0.5">
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calcKimp()">🔥 김치프리미엄 즉시 계산하기</button>
+
+    <!-- 결과 -->
+    <div id="result-section" style="display:none; margin-top:20px;">
+      <div class="result-grid">
+        <div class="result-item highlight-result">
+          <div class="r-label">🌶️ 김치프리미엄</div>
+          <div class="r-value" id="r-kimp">—</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">해외 원화 환산가</div>
+          <div class="r-value" id="r-overseas-krw">—</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">가격 차이</div>
+          <div class="r-value" id="r-diff">—</div>
+        </div>
+        <div class="result-item">
+          <div class="r-label">보유량 기준 차익 (수수료 전)</div>
+          <div class="r-value" id="r-profit">—</div>
+        </div>
+      </div>
+
+      <!-- 신호등 설명 -->
+      <div class="signal-explain" id="signal-explain"></div>
+
+      <!-- 차익→세금 계산기 연결 CTA -->
+      <div style="margin-top:16px; padding:14px 18px; background:rgba(247,147,26,0.08); border:1px solid rgba(247,147,26,0.3); border-radius:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div style="font-size:0.9rem;">
+          💰 <strong>이 차익에 세금이 얼마?</strong> 2027 가상자산 과세 기준으로 미리 계산해보세요
+        </div>
+        <a href="https://cryptotax.cloud/tools/tax-calculator.html" 
+          style="background:var(--primary); color:#000; padding:8px 18px; border-radius:8px; font-weight:800; font-size:0.85rem; white-space:nowrap;">
+          세금 계산하기 →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 광고 728×90 — 계산기 직후 CTR 최고 -->
+  <div class="ad-wrap">
+    📢 광고 영역 (728×90) — 계산 결과 직후 · CTR 최고 위치<br>
+    <code>&lt;!-- Google AdSense 코드 삽입 --&gt;</code>
+  </div>
+
+</div>
+
+<!-- ============================
+  ZONE 4: BTC 실시간 차트
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">📈 업비트 BTC/KRW 실시간 차트</div>
+  <div class="sec-sub">
+    차트와 김프를 함께 보면 과열/저점 신호가 더 명확해집니다
+  </div>
+
+  <!-- 차트 해석 힌트 -->
+  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+    <div style="background:rgba(0,200,150,0.1); border:1px solid var(--green); border-radius:8px; padding:8px 14px; font-size:0.8rem; color:var(--green);">
+      📊 RSI &lt; 30 = 과매도 → 역프 구간 가능성 ↑
+    </div>
+    <div style="background:rgba(255,71,87,0.1); border:1px solid var(--red); border-radius:8px; padding:8px 14px; font-size:0.8rem; color:var(--red);">
+      📊 RSI &gt; 70 = 과매수 → 김프 고점 가능성 ↑
+    </div>
+    <div style="background:rgba(255,211,42,0.1); border:1px solid var(--yellow); border-radius:8px; padding:8px 14px; font-size:0.8rem; color:var(--yellow);">
+      📊 MACD 골든크로스 = 단기 상승 모멘텀
+    </div>
+  </div>
+
+  <div class="widget-wrap">
+    <div class="widget-label">📊 업비트 BTC/KRW · 1시간봉 · RSI·MACD 포함</div>
+    <div class="tradingview-widget-container" style="height:500px;">
+      <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);"></div>
+      <script type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+      {
+        "symbol": "UPBIT:BTCKRW",
+        "interval": "60",
+        "timezone": "Asia/Seoul",
+        "theme": "dark",
+        "style": "1",
+        "locale": "kr",
+        "allow_symbol_change": true,
+        "height": 500,
+        "studies": ["STD;RSI","STD;MACD"],
+        "show_popup_button": true,
+        "popup_width": "1000",
+        "popup_height": "650"
+      }
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 5: 히트맵 + 스크리너
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">🗺️ 실시간 코인 히트맵</div>
+  <div class="sec-sub">초록 = 상승 / 빨강 = 하락. 김프가 높은 날 히트맵이 전체 초록이면 국내 과열 신호입니다.</div>
+
+  <div class="widget-wrap">
+    <div class="widget-label">🗺️ 전체 코인 시가총액 기준 히트맵 (실시간)</div>
+    <div class="tradingview-widget-container" style="height:500px;">
+      <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);"></div>
+      <script type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+      {
+        "dataSource": "Crypto",
+        "blockSize": "market_cap_calc",
+        "blockColor": "change",
+        "locale": "kr",
+        "colorTheme": "dark",
+        "hasTopBar": true,
+        "isDataSetEnabled": true,
+        "isZoomEnabled": true,
+        "hasSymbolTooltip": true,
+        "height": 500
+      }
+      </script>
+    </div>
+  </div>
+
+  <!-- 광고 336×280 -->
+  <div class="ad-wrap" style="max-width:360px; margin:0 auto 24px;">
+    📢 광고 (336×280) — 히트맵 직후
+  </div>
+
+  <!-- 이메일 수집 배너 — 히트맵과 스크리너 사이 -->
+  <div class="email-banner">
+    <div style="font-size:2rem; margin-bottom:8px;">📥</div>
+    <h3>무료 김프 실전 가이드 PDF 받기</h3>
+    <p>
+      김프 구간별 대응 전략 · 역프 저점 매수법 · 2027 세금 핵심 요약<br>
+      <strong>30페이지 완전 무료 — 이메일 1개로 즉시 수령</strong>
+    </p>
+    <div class="email-form">
+      <input type="email" id="email-input" placeholder="이메일 주소 입력">
+      <button class="btn-email" onclick="submitEmail()">📨 무료로 받기</button>
+    </div>
+    <div class="email-note">스팸 없음 · 언제든 수신 거부 가능 · 개인정보는 PDF 발송에만 사용됩니다</div>
+  </div>
+
+  <!-- 코인 스크리너 -->
+  <div class="sec-title">🏆 실시간 코인 시세 순위 (원화 기준)</div>
+  <div class="sec-sub">지금 거래량이 폭발하는 코인을 실시간으로 확인하세요.</div>
+
+  <div class="widget-wrap">
+    <div class="widget-label">🏆 코인 마켓 스크리너 · KRW 기준 실시간</div>
+    <div class="tradingview-widget-container" style="height:490px;">
+      <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);"></div>
+      <script type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+      {
+        "width": "100%",
+        "height": 490,
+        "defaultColumn": "overview",
+        "screener_type": "crypto_mkt",
+        "displayCurrency": "KRW",
+        "colorTheme": "dark",
+        "locale": "kr",
+        "market": "crypto"
+      }
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 6A: 거래소 비교 + 레퍼럴
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">🏦 거래소 직접 비교 — 어디서 거래하면 유리할까?</div>
+  <div class="sec-sub">
+    김프를 확인했다면 다음 단계는 거래소 선택입니다. 수수료와 혜택을 비교하세요.
+  </div>
+
+  <div class="exchange-grid">
+
+    <!-- 업비트 -->
+    <div class="exchange-card">
+      <div class="ex-header">
+        <div class="ex-logo" style="background:#0051ff; color:white;">U</div>
+        <div>
+          <div class="ex-name">업비트 (Upbit)</div>
+          <div class="ex-type">🇰🇷 국내 1위 원화 거래소</div>
+        </div>
+      </div>
+      <div><span class="ex-badge">✅ 국내 점유율 1위</span></div>
+      <ul class="ex-features">
+        <li>국내 KRW 직접 입출금</li>
+        <li>거래 수수료 0.05%</li>
+        <li>금융당국 VASP 인가 취득</li>
+        <li>카카오 계열사 — 높은 신뢰도</li>
+      </ul>
+      <a href="https://upbit.com" target="_blank" rel="noopener" class="btn-exchange secondary">
+        업비트 공식 사이트 →
+      </a>
+    </div>
+
+    <!-- 바이낸스 — 레퍼럴 핵심 -->
+    <div class="exchange-card" style="border-color:rgba(247,183,49,0.4);">
+      <div class="ex-header">
+        <div class="ex-logo" style="background:#f3ba2f; color:#000;">B</div>
+        <div>
+          <div class="ex-name">바이낸스 (Binance)</div>
+          <div class="ex-type">🌐 세계 1위 글로벌 거래소</div>
+        </div>
+      </div>
+      <div>
+        <span class="ex-badge">🔥 추천 링크 가입 혜택</span>
+      </div>
+      <ul class="ex-features">
+        <li>세계 최대 거래량 · 200+ 코인</li>
+        <li>수수료 0.1% (BNB 결제 시 25% 추가 할인)</li>
+        <li>선물·옵션·스테이킹 전부 지원</li>
+        <li>추천 링크 가입 시 수수료 20% 할인</li>
+      </ul>
+      <!-- ★ 여기에 본인 바이낸스 레퍼럴 링크 삽입 -->
+      <a href="https://www.binance.com/join?ref=YOUR_REF_CODE" target="_blank" rel="noopener sponsored" class="btn-exchange">
+        🎁 수수료 20% 할인 가입하기
+      </a>
+      <div class="referral-notice">* 추천 링크 통해 가입 시 신규 가입자 수수료 20% 할인, 사이트 운영비 일부 지원됩니다</div>
+    </div>
+
+    <!-- 바이비트 — 레퍼럴 고수익 -->
+    <div class="exchange-card" style="border-color:rgba(255,214,61,0.4);">
+      <div class="ex-header">
+        <div class="ex-logo" style="background:#FFD63D; color:#000;">By</div>
+        <div>
+          <div class="ex-name">바이비트 (Bybit)</div>
+          <div class="ex-type">🌐 선물 거래 세계 2위</div>
+        </div>
+      </div>
+      <div><span class="ex-badge">💎 신규 보너스 최대 제공</span></div>
+      <ul class="ex-features">
+        <li>선물 거래 글로벌 2위</li>
+        <li>수수료 Maker 0.01% / Taker 0.06%</li>
+        <li>신규 가입 보너스 이벤트 상시 운영</li>
+        <li>한국어 고객센터 지원</li>
+      </ul>
+      <!-- ★ 여기에 본인 바이비트 레퍼럴 링크 삽입 -->
+      <a href="https://www.bybit.com/invite?ref=YOUR_REF_CODE" target="_blank" rel="noopener sponsored" class="btn-exchange">
+        🎁 신규 가입 보너스 받기
+      </a>
+      <div class="referral-notice">* 추천 링크 통해 가입 시 신규 가입자 보너스 제공, 사이트 운영비 일부 지원됩니다</div>
+    </div>
+
+  </div>
+
+  <!-- 공신력 공식 링크 -->
+  <div style="margin-top:20px;">
+    <div style="font-size:0.85rem; color:var(--text-sub); margin-bottom:10px;">📎 공식 가격 확인 출처</div>
+    <div class="official-links">
+      <a href="https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC" target="_blank" class="official-link-btn" rel="noopener">
+        🇰🇷 업비트 BTC 실시간 가격
+      </a>
+      <a href="https://www.binance.com/ko/trade/BTC_USDT" target="_blank" class="official-link-btn" rel="noopener">
+        🌐 바이낸스 BTC 실시간 가격
+      </a>
+      <a href="https://www.bok.or.kr/portal/main/contents.do?menuNo=200068" target="_blank" class="official-link-btn" rel="noopener">
+        🏦 한국은행 공식 환율
+      </a>
+    </div>
+  </div>
+
+  <!-- 신뢰 배지 -->
+  <div class="trust-bar">
+    <span>✅ 국세청 기준 계산식 적용</span>
+    <span>🏦 한국은행 환율 데이터</span>
+    <span>📊 업비트·바이낸스 공식 API</span>
+    <span>🔒 개인정보 미수집</span>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 6B: Q&A (AEO 최적화)
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">❓ 코린이 Q&A 15가지 — 김치프리미엄 완전 정복</div>
+  <div class="sec-sub">가장 많이 검색되는 질문에 전문가가 직접 답합니다</div>
+
+  <div id="faq-wrap">
+    <!-- Q1 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김치프리미엄이란 정확히 무엇인가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        김치프리미엄(김프)은 한국 원화 거래소(업비트·빗썸)의 비트코인 가격이 해외 거래소(바이낸스 등)보다 높게 형성되는 현상입니다. 한국의 자본 이동 제한(외국환거래법)과 높은 국내 투자 수요가 원인입니다. 2021년 4월 강세장 최고점에서 30%까지 오른 사례가 있습니다.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프 계산 공식이 무엇인가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <strong>김프(%) = (업비트 BTC 원화가 ÷ (바이낸스 BTC 달러가 × 달러환율) − 1) × 100</strong><br><br>
+        예시: 업비트 135,000,000원, 바이낸스 $95,000, 환율 1,380원이면<br>
+        해외 원화환산 = 95,000 × 1,380 = 131,100,000원<br>
+        김프 = (135,000,000 ÷ 131,100,000 − 1) × 100 = <strong>약 2.97%</strong>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프가 높으면 코인을 팔아야 하나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        김프 8% 이상은 국내 투자 심리 과열 신호로 해석됩니다. 역사적으로 김프 20% 이상에서 단기 고점이 형성된 사례가 많습니다. 단, 김프만으로 매도를 결정하는 것은 위험하며 RSI, 거래량, 전체 시장 상황을 함께 판단하는 것이 중요합니다.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        역프리미엄(역프)이 뭔가요? 저점 신호인가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        역프리미엄은 국내 거래소 가격이 해외보다 낮아 김프가 마이너스(-)인 상태입니다. 국내 매도 압력이 극심하거나 투자 심리가 공황 상태일 때 나타납니다. 2022년 LUNA 사태 당시 역프가 크게 발생했으며, 역사적으로 역프 구간이 중장기 저점 부근인 경우가 많았습니다. 단, 이 역시 단독 지표로만 판단하면 위험합니다.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프 차익거래는 합법인가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        해외에서 코인을 매수해 국내에 전송 후 판매하는 방식은 <strong>외국환거래법 위반 소지</strong>가 있습니다. 2023년 이후 금융당국의 단속이 강화되었으며 적발 시 형사처벌까지 가능합니다. 반드시 전문 세무사·법무사 상담을 받으시기 바랍니다.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프 수익에 세금이 얼마나 붙나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        2027년부터 가상자산 양도소득세 22%(소득세 20% + 지방소득세 2%)가 부과됩니다. 연간 수익에서 기본공제 250만원을 뺀 금액에 세금이 적용됩니다. <a href="https://cryptotax.cloud/tools/tax-calculator.html">코인 세금 계산기</a>에서 즉시 계산해보세요.
+      </div>
+    </div>
+
+    <!-- Q7~Q15 간략 버전 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        업비트와 빗썸 중 어디서 BTC를 사는 게 유리한가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        두 거래소 모두 수수료 0.05%로 동일합니다. 단, 실시간 호가 차이가 존재하므로 거래 전 양쪽 가격을 비교하는 것이 유리합니다. 거래량이 많은 업비트의 스프레드가 일반적으로 더 좁습니다. 빗썸은 이벤트 수수료 할인이 자주 있어 단기 매매자에게 유리할 수 있습니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        바이낸스 가격과 업비트 가격이 왜 다른가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        한국과 해외 간 자본 이동이 자유롭지 않기 때문입니다. 해외에서 싸게 사서 국내에 팔면 이론상 차익이 나지만, 외국환거래법 규제로 자유로운 차익거래가 불가능합니다. 이로 인해 수요·공급이 분리되어 가격 차이가 유지됩니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프를 실시간으로 확인할 수 있는 다른 방법이 있나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        트레이딩뷰에서 "KIMCHI PREMIUM" 지표를 검색해 직접 차트에서 확인할 수 있습니다. 또는 본 페이지 상단의 실시간 HUD를 북마크해두시면 언제든 빠르게 확인하실 수 있습니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        코린이도 김프를 투자에 활용할 수 있나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        네. 가장 단순한 활용법은 <strong>①김프 8% 이상 → 매수 자제 / ②역프(-) 구간 → 분할 매수 고려</strong>입니다. 단, 이는 보조 지표이며 RSI, 거래량, 글로벌 시장 흐름과 함께 판단해야 합니다. 단일 지표로 매매 결정을 내리지 마세요.
+      </div>
+    </div>
+
+    <!-- 추가 Q11~Q15 5개 -->
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        달러 환율이 오르면 김프에 어떤 영향이 있나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        달러 환율이 오르면 해외 BTC의 원화 환산 가격이 높아져 김프가 낮아지는 효과가 있습니다. 반대로 환율이 내리면 해외 원화 환산 가격이 낮아져 김프가 높아 보일 수 있습니다. 따라서 김프를 볼 때는 반드시 동시에 달러 환율도 확인해야 합니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        2021년 김프 30%는 어떻게 발생했나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        2021년 4월 BTC가 사상 최고가를 경신하면서 국내 개인 투자자들의 매수 폭발이 발생했습니다. 해외 자본이 국내로 즉시 유입될 수 없는 구조적 제한으로 인해 국내 가격이 해외를 30%까지 추월했습니다. 당시 업비트 일 거래대금이 코스피를 넘어서는 전무후무한 기록이 나왔습니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        김프 정상 범위는 몇 %인가요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        일반적으로 0~3% 내외를 정상 범위로 봅니다. 3~8%는 주의 구간(과열 초입), 8% 이상은 과열 경고 구간으로 해석합니다. 마이너스는 역프리미엄으로 국내 투자 심리가 매우 위축된 상태를 의미합니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        비트코인 외에 다른 코인도 김프를 계산할 수 있나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        네. 위 계산기에서 BTC 대신 ETH, XRP, SOL 등 어떤 코인이든 업비트 원화 가격과 바이낸스 달러 가격을 입력하면 동일한 공식으로 김프를 계산할 수 있습니다. 알트코인은 BTC보다 김프 변동폭이 더 큰 경우가 많습니다.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        업비트 회원가입 시 주의사항이 있나요?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        업비트 가입은 카카오 계정과 실명 인증(신분증)이 필요합니다. 원화 출금을 위해서는 연동 은행 계좌(케이뱅크 또는 농협은행)가 필요합니다. 반드시 공식 사이트(upbit.com)에서만 가입하고, 피싱 사이트를 주의하세요. 투자는 여유 자금으로만 하는 것이 원칙입니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 광고 728×90 -->
+  <div class="ad-wrap" style="margin-top:24px;">
+    📢 광고 영역 (728×90) — Q&A 하단
+  </div>
+</div>
+
+<!-- ============================
+  관련 계산기 내부 링크
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">🧰 함께 쓰면 더 강력한 무료 계산기</div>
+  <div class="sec-sub">김프 확인 → 세금 계산 → 평단 관리까지 원스톱으로 해결하세요</div>
+
+  <div class="tool-grid">
+    <a href="https://cryptotax.cloud/tools/tax-calculator.html" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">💰</div>
+        <div class="t-name">코인 세금 계산기</div>
+        <div class="t-desc">2027 과세 기준 22% 즉시 계산</div>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/#calculator" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">📊</div>
+        <div class="t-name">평단가 계산기</div>
+        <div class="t-desc">물타기·불타기 평균단가 계산</div>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/#calculator" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">🎯</div>
+        <div class="t-name">목표가 수익률 계산기</div>
+        <div class="t-desc">BTC 목표가 도달 시 수익 예상</div>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/#calculator" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">⚡</div>
+        <div class="t-name">레버리지 청산가 계산기</div>
+        <div class="t-desc">선물 거래 청산 가격 즉시 계산</div>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/#calculator" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">📅</div>
+        <div class="t-name">DCA 시뮬레이터</div>
+        <div class="t-desc">매월 적립식 투자 수익률 시뮬</div>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/#calculator" style="text-decoration:none; color:inherit;">
+      <div class="tool-card">
+        <div class="t-icon">₿</div>
+        <div class="t-name">사토시 변환 계산기</div>
+        <div class="t-desc">원화 ↔ 사토시 즉시 환산</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 7A: 실시간 코인 뉴스
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">📰 실시간 코인 뉴스</div>
+  <div class="sec-sub">글로벌 크립토 시장 최신 소식을 지금 바로 확인하세요</div>
+
+  <div class="widget-wrap">
+    <div class="widget-label">📰 코인 실시간 뉴스피드</div>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+      {
+        "feedMode": "market",
+        "market": "crypto",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": "100%",
+        "height": 500,
+        "colorTheme": "dark",
+        "locale": "kr"
+      }
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+  ZONE 7B: 블로그 내부 링크 3개
+============================= -->
+<div class="container section-sm">
+  <div class="sec-title">📝 김치프리미엄 심화 가이드</div>
+  <div class="sec-sub">읽으면 코린이를 벗어나는 실전 글 3편 — 무료로 공개합니다</div>
+
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-tag">📖 입문</div>
+      <h4>김치프리미엄 완전 이해 가이드 — 코린이도 3분이면 마스터</h4>
+      <p>김프가 생기는 이유부터 역사적 데이터, 실전 활용 전략까지 한 번에 정리했습니다.</p>
+      <a href="https://cryptotax.cloud/blog/kimchi-premium-guide.html">전체 글 읽기 →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">📊 전략</div>
+      <h4>김프 구간별 대응 전략 — 0%, 5%, 10%, 역프 각각 어떻게 해야 하나</h4>
+      <p>김프 수치별로 역사 데이터 기반 실전 대응법을 정리했습니다. 감이 아닌 데이터로 판단하세요.</p>
+      <a href="https://cryptotax.cloud/blog/kimchi-premium-strategy.html">전체 글 읽기 →</a>
+    </div>
+    <div class="blog-card">
+      <div class="blog-tag">💰 세금</div>
+      <h4>코인 수익에 세금 얼마? — 2027 가상자산 과세 완전 정복</h4>
+      <p>2027년 시행 예정인 22% 양도소득세. 지금 미리 알아두면 절세 전략을 세울 수 있습니다.</p>
+      <a href="https://cryptotax.cloud/blog/crypto-tax-2027.html">전체 글 읽기 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+  하단 면책 + 공식 링크
+============================= -->
+<div style="background:var(--bg-card2); border-top:1px solid var(--border); padding:32px 0; margin-top:32px;">
+  <div class="container" style="text-align:center; font-size:0.78rem; color:var(--text-sub); line-height:1.9;">
+    ⚠️ 본 사이트의 모든 계산 결과는 <strong>참고용 추정치</strong>이며 투자 권유가 아닙니다.<br>
+    실제 투자 결정은 본인 책임 하에 이루어져야 하며, 필요 시 전문가 상담을 받으시기 바랍니다.<br>
+    업비트·바이낸스 가격 데이터는 공식 API를 통해 수집되며 지연이 있을 수 있습니다.<br><br>
+    📎 공식 출처: 
+    <a href="https://upbit.com" target="_blank">업비트</a> · 
+    <a href="https://www.binance.com" target="_blank">바이낸스</a> · 
+    <a href="https://www.bok.or.kr" target="_blank">한국은행</a> · 
+    <a href="https://www.nts.go.kr" target="_blank">국세청</a>
+    <br><br>
+    © 2025 CryptoTax.cloud — 코린이를 위한 무료 가상자산 도구
+  </div>
+</div>
+
+<!-- ============================
+  JavaScript — 계산기 + 실시간 API
+============================= -->
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 실시간 API 데이터 로드
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let liveUpbit = 0, liveBinance = 0, liveRate = 0;
+
+async function loadLiveData() {
+  try {
+    // 업비트 BTC/KRW
+    const upbitRes = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC');
+    const upbitData = await upbitRes.json();
+    liveUpbit = upbitData[0].trade_price;
+
+    // 바이낸스 BTC/USDT
+    const binanceRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
+    const binanceData = await binanceRes.json();
+    liveBinance = parseFloat(binanceData.price);
+
+    // 환율 (무료 API)
+    const rateRes = await fetch('https://open.er-api.com/v6/latest/USD');
+    const rateData = await rateRes.json();
+    liveRate = rateData.rates.KRW;
+
+    // 폼 자동 입력
+    document.getElementById('in-domestic').value = liveUpbit;
+    document.getElementById('in-overseas').value = liveBinance.toFixed(2);
+    document.getElementById('in-rate').value = liveRate.toFixed(2);
+
+    // HUD 업데이트
+    const overseasKrw = liveBinance * liveRate;
+    const kimp = ((liveUpbit / overseasKrw) - 1) * 100;
+
+    document.getElementById('hud-upbit').textContent = 
+      '₩' + liveUpbit.toLocaleString('ko-KR');
+    document.getElementById('hud-binance').textContent = 
+      '$' + liveBinance.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+    document.getElementById('hud-rate').textContent = 
+      liveRate.toFixed(0) + '원';
+
+    // 히어로 섹션 업데이트
+    const kimpPct = kimp.toFixed(2);
+    document.getElementById('hero-kimp-pct').textContent = kimpPct + '%';
+    document.getElementById('hero-kimp-won').textContent = 
+      Math.abs(liveUpbit - overseasKrw).toLocaleString('ko-KR') + '원';
+
+    // 신호등
+    updateSignal(kimp);
+
+    // 자동 계산 실행
+    calcKimp();
+
+  } catch(e) {
+    console.warn('실시간 데이터 로드 실패:', e);
+    document.getElementById('hud-upbit').textContent = 'API 오류';
+    document.getElementById('hero-kimp-pct').textContent = '—';
+  }
+}
+
+function updateSignal(kimp) {
+  const el = document.getElementById('hud-signal');
+  const heroEl = document.getElementById('hero-kimp-pct');
+
+  if (kimp < 0) {
+    el.textContent = '🔵 역프리미엄';
+    el.className = 'signal signal-normal';
+    el.style.background = 'rgba(127,143,244,0.15)';
+    el.style.color = '#7f8ff4';
+    el.style.borderColor = '#7f8ff4';
+    if(heroEl) heroEl.style.color = '#7f8ff4';
+  } else if (kimp < 3) {
+    el.textContent = '🟢 정상';
+    el.className = 'signal signal-normal';
+    el.style = '';
+    if(heroEl) heroEl.style.color = 'var(--green)';
+  } else if (kimp < 8) {
+    el.textContent = '🟡 주의';
+    el.className = 'signal signal-caution';
+    el.style = '';
+    if(heroEl) heroEl.style.color = 'var(--yellow)';
+  } else {
+    el.textContent = '🔴 과열!';
+    el.className = 'signal signal-danger';
+    el.style = '';
+    if(heroEl) heroEl.style.color = 'var(--red)';
+  }
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 계산기 로직
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function calcKimp() {
+  const domestic = parseFloat(document.getElementById('in-domestic').value);
+  const overseas = parseFloat(document.getElementById('in-overseas').value);
+  const rate     = parseFloat(document.getElementById('in-rate').value);
+  const qty      = parseFloat(document.getElementById('in-qty').value) || 0;
+
+  if (!domestic || !overseas || !rate) return;
+
+  const overseasKrw = overseas * rate;
+  const diff = domestic - overseasKrw;
+  const kimp = ((domestic / overseasKrw) - 1) * 100;
+  const profit = qty > 0 ? diff * qty : null;
+
+  // 결과 표시
+  document.getElementById('result-section').style.display = 'block';
+
+  const kimpEl = document.getElementById('r-kimp');
+  kimpEl.textContent = kimp.toFixed(2) + '%';
+  kimpEl.style.color = kimp < 0 ? '#7f8ff4' : kimp < 3 ? 'var(--green)' : kimp < 8 ? 'var(--yellow)' : 'var(--red)';
+
+  document.getElementById('r-overseas-krw').textContent = 
+    '₩' + Math.round(overseasKrw).toLocaleString('ko-KR');
+  document.getElementById('r-diff').textContent = 
+    (diff >= 0 ? '+' : '') + Math.round(diff).toLocaleString('ko-KR') + '원';
+  document.getElementById('r-profit').textContent = 
+    profit !== null ? (profit >= 0 ? '+' : '') + Math.round(profit).toLocaleString('ko-KR') + '원' : '수량 미입력';
+
+  // 신호등 설명
+  const explainEl = document.getElementById('signal-explain');
+  explainEl.style.display = 'block';
+
+  let explainHtml = '';
+  if (kimp < 0) {
+    explainHtml = `<span style="color:#7f8ff4; font-weight:700;">🔵 역프리미엄 ${kimp.toFixed(2)}%</span><br>
+    국내 가격이 해외보다 낮습니다. 국내 매도 압력이 강하거나 공황 심리가 작용 중입니다. 
+    역사적으로 역프 구간은 중장기 저점 부근인 경우가 많았습니다. <strong>무리한 추가 매도보다는 관망이 유리할 수 있습니다.</strong>`;
+  } else if (kimp < 3) {
+    explainHtml = `<span style="color:var(--green); font-weight:700;">🟢 정상 구간 ${kimp.toFixed(2)}%</span><br>
+    현재 김프는 정상 범위(0~3%)입니다. 국내외 투자 심리가 균형 잡혀 있습니다.
+    <strong>과열 신호 없음 — 일반적인 투자 판단 기준으로 접근하세요.</strong>`;
+  } else if (kimp < 8) {
+    explainHtml = `<span style="color:var(--yellow); font-weight:700;">🟡 주의 구간 ${kimp.toFixed(2)}%</span><br>
+    국내 투자 심리가 달아오르고 있습니다. 역사적으로 이 구간에서 단기 변동성이 커졌습니다.
+    <strong>신규 대량 매수는 분할로 나눠서 접근하는 것이 좋습니다.</strong>`;
+  } else {
+    explainHtml = `<span style="color:var(--red); font-weight:700;">🔴 과열 경고 ${kimp.toFixed(2)}%</span><br>
+    국내 투자 심리가 극도로 과열되어 있습니다. 2021년 강세장 고점에서 이 구간이 30%까지 갔습니다.
+    <strong>일부 수익 실현을 고려하고, 신규 진입은 극히 조심해야 합니다.</strong>`;
+  }
+  explainEl.innerHTML = explainHtml;
+
+  updateSignal(kimp);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// FAQ 아코디언
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  // 모두 닫기
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 이메일 제출 (실제 연동 필요)
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function submitEmail() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) {
+    alert('올바른 이메일 주소를 입력해주세요.');
+    return;
+  }
+  // TODO: Mailchimp / ConvertKit / Google Form 연동
+  alert('✅ 감사합니다! 김프 가이드 PDF를 보내드렸습니다.\n(스팸함도 확인해주세요)');
+  document.getElementById('email-input').value = '';
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 초기화
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+loadLiveData();
+// 30초마다 자동 갱신
+setInterval(loadLiveData, 30000);
+</script>
+
+</body>
+</html>
