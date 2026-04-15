@@ -364,6 +364,30 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
     <button class="theme-btn">🌙 다크</button>
   </div>
 </nav>
+<!-- 티커테이프 -->
+<div id="tv-ticker" style="border-bottom:1px solid var(--border);">
+  <div class="tradingview-widget-container" style="width:100%;">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {"proName":"UPBIT:BTCKRW","title":"BTC 업비트"},
+        {"proName":"BINANCE:BTCUSDT","title":"BTC 바이낸스"},
+        {"proName":"UPBIT:ETHKRW","title":"ETH"},
+        {"proName":"UPBIT:XRPKRW","title":"XRP"},
+        {"proName":"UPBIT:SOLKRW","title":"SOL"},
+        {"proName":"UPBIT:DOTKRW","title":"DOT"},
+        {"proName":"FX_IDC:USDKRW","title":"달러/원"}
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "colorTheme": "light",
+      "locale": "kr"
+    }
+    </script>
+  </div>
+</div>
 
 <!-- 히어로 -->
 <div class="hero fade-up">
@@ -731,6 +755,35 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
   const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
 
+  function buildTicker(theme) {
+    const c = document.getElementById('tv-ticker');
+    if(!c) return;
+    c.innerHTML = '';
+    const wrap = document.createElement('div');
+    wrap.className = 'tradingview-widget-container';
+    wrap.style.width = '100%';
+    const inner = document.createElement('div');
+    inner.className = 'tradingview-widget-container__widget';
+    wrap.appendChild(inner);
+    const s = document.createElement('script');
+    s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    s.async = true;
+    s.textContent = JSON.stringify({
+      symbols: [
+        {proName:"UPBIT:BTCKRW", title:"BTC 업비트"},
+        {proName:"BINANCE:BTCUSDT", title:"BTC 바이낸스"},
+        {proName:"UPBIT:ETHKRW", title:"ETH"},
+        {proName:"UPBIT:XRPKRW", title:"XRP"},
+        {proName:"UPBIT:SOLKRW", title:"SOL"},
+        {proName:"FX_IDC:USDKRW", title:"달러/원"}
+      ],
+      showSymbolLogo: true, isTransparent: false,
+      displayMode: "adaptive", colorTheme: theme, locale: "kr"
+    });
+    wrap.appendChild(s);
+    c.appendChild(wrap);
+  }
+
   function buildChart(theme) {
     const c = document.getElementById('tv-chart');
     if(!c) return;
@@ -775,6 +828,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
     localStorage.setItem('theme', next);
     const btn = document.querySelector('.theme-btn');
     if(btn) btn.textContent = next === 'dark' ? '☀️ 라이트' : '🌙 다크';
+    buildTicker(next);
     buildChart(next);
     buildHeatmap(next);
   }
@@ -784,6 +838,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
     if(btn) btn.textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
+    buildTicker(saved);
     buildChart(saved);
     buildHeatmap(saved);
   });
