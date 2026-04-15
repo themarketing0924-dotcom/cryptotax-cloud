@@ -194,7 +194,6 @@ a{text-decoration:none;color:inherit;}
 .sp-divider{display:none;}
 @media(max-width:480px){.social-proof-inner{max-width:100%;gap:8px;}.sp-item{font-size:0.78rem;padding:10px 12px;}}
 /* ===== 광고 슬롯 ===== */
-.ad-slot{padding:20px;max-width:960px;margin:0 auto;}
 @media(min-width:768px){.ad-slot{padding:20px 32px;}}
 @media(min-width:1024px){.ad-slot{padding:20px 40px;}}
 /* ===== Urgency 카운트다운 ===== */
@@ -338,7 +337,9 @@ a{text-decoration:none;color:inherit;}
 .scroll-top:hover{transform:scale(1.1);}
 
 /* ===== 광고 슬롯 — 점선 테두리 제거, 깔끔하게 ===== */
-.ad-slot{margin:20px;padding:10px;text-align:center;}
+.ad-slot{width:100%;max-width:860px;margin:0 auto;padding:20px;}
+@media(min-width:768px){.ad-slot{padding:20px 32px;}}
+@media(min-width:1024px){.ad-slot{padding:20px 40px;}}
 
 .urgency{background:var(--urgency-bg);border:1px solid var(--orange-border);border-radius:16px;padding:24px;margin:24px 20px;text-align:center;transition:background var(--transition);}
 .urgency h2{font-size:1.1rem;color:#ffd700;margin-bottom:12px;}
