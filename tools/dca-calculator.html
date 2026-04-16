@@ -717,7 +717,7 @@ body{
 
 <!-- PDF 폼 -->
 <div class="section" id="pdfSection" style="padding-top:0;">
-  <div class="lead-form-wrap">
+  <div class="lead-form-wrap" id="pdfFormBox">
     <div style="font-size:40px;margin-bottom:10px;">📥</div>
     <h2>2027 코인 세금 완벽가이드 무료 받기</h2>
     <p>DCA 수익에 붙는 세금 22% 계산법·절세 전략 <strong>30페이지 PDF</strong><br>
@@ -734,19 +734,20 @@ body{
       <div>
         <input type="email" id="l-email" placeholder="이메일 (예: abc@gmail.com)" oninput="validatePdfField('l-email','email')">
         <div class="field-err" id="l-email-err"></div>
+      </div>
     </div>
-<div style="max-width:640px;margin:0 auto;text-align:left;padding:0 4px;">
-  <label class="check-group">
-    <input type="checkbox" id="l-agree1">
-    <span>[필수] 개인정보 수집·이용 동의 (이름, 전화번호, 이메일 / 목적: PDF 발송 / 보유기간: 3년)</span>
-  </label>
-  <label class="check-group">
-    <input type="checkbox" id="l-agree2">
-    <span>[선택] 코인 세금·투자 정보 뉴스레터 수신 동의</span>
-  </label>
-</div>
-<button class="lead-submit" id="pdfSubmitBtn" onclick="submitPdfLead()">📨 이메일로 PDF 무료 받기</button>
-</div>
+    <div style="max-width:640px;margin:0 auto;text-align:left;padding:0 4px;">
+      <label class="check-group">
+        <input type="checkbox" id="l-agree1">
+        <span>[필수] 개인정보 수집·이용 동의 (이름, 전화번호, 이메일 / 목적: PDF 발송 / 보유기간: 3년)</span>
+      </label>
+      <label class="check-group">
+        <input type="checkbox" id="l-agree2">
+        <span>[선택] 코인 세금·투자 정보 뉴스레터 수신 동의</span>
+      </label>
+    </div>
+    <button class="lead-submit" id="pdfSubmitBtn" onclick="submitPdfLead()">📨 이메일로 PDF 무료 받기</button>
+  </div>
 </div>
 
 <!-- 계산 원리 -->
