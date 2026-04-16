@@ -1,477 +1,1749 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>코인 세금 계산기 2027 무료 | 가상자산 양도소득세 22% 즉시 계산 | CryptoTax.cloud</title>
-<meta name="description" content="2027년 코인 세금 얼마? 매수·매도금액 입력 즉시 가상자산 양도소득세 22% 자동 계산. 250만원 공제 적용, 세후 실수령액까지 무료 계산. 국세청 기준.">
-<meta name="keywords" content="코인 세금 계산기, 가상자산 세금, 2027 코인 세금, 업비트 세금, 양도소득세 계산, 비트코인 세금, 코인 세금 얼마, 가상자산 양도소득세">
-<link rel="canonical" href="https://cryptotax.cloud/tools/tax-calculator.html">
-<meta property="og:title" content="코인 세금 계산기 2027 무료 | CryptoTax.cloud">
-<meta property="og:description" content="2027년 코인 세금 즉시 계산. 양도소득세 22%, 250만원 공제 적용. 세후 실수령액 자동 산출.">
-<meta property="og:url" content="https://cryptotax.cloud/tools/tax-calculator.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "코인 세금 계산기 2027 무료",
-  "description": "2027년 가상자산 양도소득세 22%를 무료로 계산하는 도구",
-  "url": "https://cryptotax.cloud/tools/tax-calculator.html",
-  "publisher": { "@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud" },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},
-      {"@type":"ListItem","position":2,"name":"계산기 도구","item":"https://cryptotax.cloud/tools/"},
-      {"@type":"ListItem","position":3,"name":"코인 세금 계산기","item":"https://cryptotax.cloud/tools/tax-calculator.html"}
-    ]
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "코인 세금은 언제부터 내나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "현행 법률 기준 2027년 1월 1일부터 가상자산 양도소득세(22%)가 부과됩니다. 연간 수익 250만원을 초과하는 금액에 22%(국세 20% + 지방세 2%)가 적용됩니다." }
-    },
-    {
-      "@type": "Question",
-      "name": "코인 세금 22%는 어떻게 계산하나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "세금 = MAX(0, 총수익 - 250만원) × 22%. 예: 1,000만원 수익 시 (1,000만 - 250만) × 22% = 165만원 납부, 세후 실수령 835만원." }
-    },
-    {
-      "@type": "Question",
-      "name": "250만원 이하면 세금이 없나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "네. 연간 가상자산 수익이 250만원 이하이면 세금이 0원입니다. 250만원을 초과하는 금액에만 22%가 부과됩니다." }
-    },
-    {
-      "@type": "Question",
-      "name": "코인 손실은 세금 계산에 반영되나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "네. 같은 과세연도 내에서 다른 코인의 손실과 수익을 합산해 순이익에만 과세됩니다. 손실이 수익보다 크면 세금이 0원이며, 손실을 다음 해로 이월하는 것은 현재 허용되지 않습니다." }
-    },
-    {
-      "@type": "Question",
-      "name": "업비트, 빗썸 모두 합산해서 신고해야 하나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "네. 국내외 모든 거래소(업비트, 빗썸, 바이낸스 등)에서 발생한 수익을 합산해 신고해야 합니다. CSV 세금 계산기로 거래내역을 자동 분석할 수 있습니다." }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>코인 세금 계산기 2027 | 양도소득세 22% 즉시 계산 | CryptoTax.cloud</title>
+  <meta name="description" content="2027 가상자산 양도소득세 22% 즉시 계산. 매수·매도금액 입력만으로 세금·세후 실수령액·실효세율 자동계산. 완전 무료·개인정보 미수집." />
+
+  <!-- ===================== FONTS ===================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:  #f7931a;
+      --orange2: #ff6b00;
+      --red:     #e53935;
+      --green:   #00c853;
+      --dark:    #0d0d0d;
+      --dark2:   #141414;
+      --dark3:   #1a1a1a;
+      --card:    #1e1e1e;
+      --border:  #2e2e2e;
+      --text:    #e8e8e8;
+      --muted:   #888;
+      --gold:    #ffd700;
     }
-  ]
-}
-</script>
-<style>
-  :root {
-    --bg: #0d0d1a; --bg-surface: #1a1a2e; --bg-elevated: #24243e;
-    --text: #e8e8f0; --text-sub: #9999bb; --text-muted: #6666aa;
-    --orange: #f7931a; --green: #3fb950; --red: #f85149; --blue: #58a6ff;
-    --border: #2a2a4a; --shadow: 0 4px 24px rgba(0,0,0,.45);
-    --tr: .25s ease; --radius: 14px;
-  }
-  [data-theme="light"] {
-    --bg: #f6f8fa; --bg-surface: #ffffff; --bg-elevated: #f0f2f5;
-    --text: #1a1a2e; --text-sub: #57606a; --text-muted: #8c959f;
-    --border: #d0d7de; --shadow: 0 4px 24px rgba(0,0,0,.08);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: background var(--tr), color var(--tr); }
-  a { color: var(--orange); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
 
-  /* NAV */
-  .nav { position: sticky; top: 0; z-index: 100; background: var(--bg-surface); border-bottom: 1px solid var(--border); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-  .nav-logo { font-weight: 800; font-size: 1.15rem; color: var(--orange); }
-  .nav-links { display: flex; gap: 20px; font-size: .9rem; }
-  .nav-links a { color: var(--text-sub); }
-  .theme-btn { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: .85rem; color: var(--text); }
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+    .section    { padding: 56px 0; }
+    .section-sm { padding: 32px 0; }
+    .text-center { text-align: center; }
+    .text-orange { color: var(--orange); }
+    .text-gold   { color: var(--gold); }
+    .text-green  { color: var(--green); }
+    .text-red    { color: var(--red); }
+    .text-muted  { color: var(--muted); }
+    .fw-900      { font-weight: 900; }
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mb-8  { margin-bottom: 8px; }
+    .mb-16 { margin-bottom: 16px; }
 
-  /* BREADCRUMB */
-  .breadcrumb { max-width: 860px; margin: 12px auto; padding: 0 20px; font-size: .8rem; color: var(--text-muted); }
-  .breadcrumb a { color: var(--text-muted); }
+    /* ============================================================
+       TOPBAR NAV
+    ============================================================ */
+    .topbar {
+      background: #111;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 999;
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; padding: 0 16px; height: 52px;
+    }
+    .topbar-logo {
+      font-size: 17px; font-weight: 700; color: var(--orange);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .topbar-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+    .topbar-nav a {
+      font-size: 12px; color: var(--muted); padding: 5px 10px;
+      border-radius: 6px; transition: all .2s; white-space: nowrap;
+    }
+    .topbar-nav a:hover,
+    .topbar-nav a.active { background: #222; color: var(--orange); text-decoration: none; }
 
-  /* HERO */
-  .hero { max-width: 860px; margin: 0 auto; padding: 40px 20px 20px; text-align: center; }
-  .hero-badge { display: inline-block; background: rgba(247,147,26,.15); border: 1px solid rgba(247,147,26,.3); color: var(--orange); font-size: .8rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
-  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-  .hero h1 span { color: var(--orange); }
-  .hero p { font-size: 1rem; color: var(--text-sub); max-width: 640px; margin: 0 auto 24px; }
-  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 8px; }
-  .hero-stat { text-align: center; }
-  .hero-stat strong { display: block; font-size: 1.4rem; font-weight: 900; color: var(--orange); }
-  .hero-stat span { font-size: .78rem; color: var(--text-muted); }
+    /* ============================================================
+       URGENT BANNER
+    ============================================================ */
+    .urgent-banner {
+      background: linear-gradient(90deg, #7b0000, #c62828, #7b0000);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      animation: pulseBg 3s infinite;
+    }
+    @keyframes pulseBg {
+      0%,100% { background: linear-gradient(90deg,#7b0000,#c62828,#7b0000); }
+      50%      { background: linear-gradient(90deg,#b71c1c,#e53935,#b71c1c); }
+    }
+    .urgent-banner .countdown {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border-radius: 6px; padding: 2px 10px;
+      font-size: 15px; margin-left: 8px;
+      letter-spacing: 2px; font-variant-numeric: tabular-nums;
+    }
 
-  /* AD SLOT */
-  .ad-slot { background: var(--bg-elevated); border: 1px dashed var(--border); border-radius: 8px; padding: 16px; text-align: center; color: var(--text-muted); font-size: .8rem; max-width: 860px; margin: 16px auto; }
+    /* ============================================================
+       TICKER TAPE
+    ============================================================ */
+    .ticker-wrap { background: #111; border-bottom: 1px solid var(--border); }
 
-  /* CALCULATOR */
-  .calc-wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-  .calc-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
-  .calc-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label { font-size: .85rem; color: var(--text-sub); font-weight: 600; }
-  .form-group input, .form-group select {
-    background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 16px; color: var(--text); font-size: 1rem; outline: none;
-    transition: border-color var(--tr);
-  }
-  .form-group input:focus, .form-group select:focus { border-color: var(--orange); }
-  .calc-btn { width: 100%; margin-top: 20px; padding: 16px; background: linear-gradient(135deg, var(--orange), #e6820f); border: none; border-radius: 12px; color: #fff; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: opacity var(--tr); }
-  .calc-btn:hover { opacity: .9; }
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    .hero {
+      background: radial-gradient(ellipse at 60% 0%, #1a0a00 0%, var(--dark) 70%);
+      padding: 60px 0 48px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(247,147,26,.12); border: 1px solid rgba(247,147,26,.3);
+      border-radius: 50px; padding: 5px 16px;
+      font-size: 12px; color: var(--orange); font-weight: 700;
+      letter-spacing: .5px; margin-bottom: 20px;
+    }
+    .hero-badge span { width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange); animation: blink 1.2s infinite; display: inline-block; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
 
-  /* RESULT */
-  .result-box { display: none; margin-top: 24px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
-  .result-box.show { display: block; }
-  .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-  .result-item { background: var(--bg-surface); border-radius: 10px; padding: 16px; text-align: center; }
-  .result-item .label { font-size: .78rem; color: var(--text-muted); margin-bottom: 6px; }
-  .result-item .value { font-size: 1.3rem; font-weight: 800; }
-  .value.red { color: var(--red); }
-  .value.green { color: var(--green); }
-  .value.orange { color: var(--orange); }
-  .result-note { margin-top: 16px; font-size: .82rem; color: var(--text-muted); line-height: 1.6; }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 900; line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--orange), #ffcc02);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(14px, 2vw, 17px);
+      color: var(--muted); max-width: 600px; margin: 0 auto 28px;
+    }
 
-  /* FORMULA */
-  .formula-section { max-width: 860px; margin: 32px auto; padding: 0 20px; }
-  .formula-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
-  .formula-card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; }
-  .formula-block { background: var(--bg-elevated); border-left: 3px solid var(--orange); border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-family: monospace; font-size: .95rem; }
-  .formula-card p { font-size: .9rem; color: var(--text-sub); line-height: 1.7; margin: 10px 0; }
+    /* STATS STRIP */
+    .stats-strip {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 0; margin: 0 auto 32px; max-width: 680px;
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    }
+    .stat-item {
+      flex: 1; min-width: 130px;
+      padding: 18px 12px; text-align: center;
+      border-right: 1px solid var(--border);
+      background: var(--card);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 26px; font-weight: 900; color: var(--orange);
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
-  /* CTA BANNER */
-  .cta-banner { max-width: 860px; margin: 24px auto; padding: 0 20px; }
-  .cta-inner { background: linear-gradient(135deg, rgba(247,147,26,.15), rgba(88,166,255,.1)); border: 1px solid rgba(247,147,26,.3); border-radius: var(--radius); padding: 24px 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .cta-inner .cta-icon { font-size: 2rem; }
-  .cta-inner .cta-text h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
-  .cta-inner .cta-text p { font-size: .85rem; color: var(--text-sub); }
-  .cta-inner .cta-link { margin-left: auto; background: var(--orange); color: #fff; padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: .9rem; white-space: nowrap; }
+    /* HERO CTA */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      color: #fff; font-size: 17px; font-weight: 700;
+      padding: 16px 36px; border-radius: 12px;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(247,147,26,.35);
+      transition: transform .15s, box-shadow .15s;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(247,147,26,.5);
+      color: #fff; text-decoration: none;
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      background: transparent; color: var(--orange);
+      border: 1.5px solid var(--orange); font-size: 14px; font-weight: 700;
+      padding: 11px 24px; border-radius: 10px; cursor: pointer;
+      transition: all .15s; text-decoration: none;
+    }
+    .btn-secondary:hover { background: rgba(247,147,26,.08); text-decoration: none; }
 
-  /* TOOLS GRID */
-  .tools-section { max-width: 860px; margin: 32px auto; padding: 0 20px; }
-  .tools-section h2 { font-size: 1.05rem; font-weight: 800; margin-bottom: 16px; }
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-  .tool-link { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: .88rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 10px; transition: border-color var(--tr), transform var(--tr); }
-  .tool-link:hover { border-color: var(--orange); transform: translateY(-2px); text-decoration: none; color: var(--text); }
+    .hero-assurance {
+      margin-top: 14px; font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-assurance span::before { content: "✓ "; color: var(--green); }
 
-  /* FAQ */
-  .faq-section { max-width: 860px; margin: 32px auto; padding: 0 20px; }
-  .faq-section h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; }
-  .faq-item { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-  .faq-q { padding: 16px 20px; cursor: pointer; font-weight: 700; font-size: .95rem; display: flex; justify-content: space-between; align-items: center; }
-  .faq-q::after { content: '▼'; font-size: .75rem; color: var(--text-muted); transition: transform var(--tr); }
-  .faq-item.open .faq-q::after { transform: rotate(180deg); }
-  .faq-a { display: none; padding: 0 20px 16px; font-size: .9rem; color: var(--text-sub); line-height: 1.7; }
-  .faq-item.open .faq-a { display: block; }
+    /* ============================================================
+       PAIN SECTION
+    ============================================================ */
+    .pain-section { background: var(--dark2); }
+    .pain-title {
+      font-size: 22px; font-weight: 900; text-align: center;
+      margin-bottom: 24px;
+    }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .pain-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 18px;
+    }
+    .pain-card .emoji { font-size: 28px; margin-bottom: 8px; }
+    .pain-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .pain-resolve {
+      margin-top: 28px; padding: 22px 24px;
+      background: linear-gradient(135deg,rgba(247,147,26,.08),rgba(247,147,26,.03));
+      border: 1px solid rgba(247,147,26,.25);
+      border-radius: 12px; text-align: center;
+    }
+    .pain-resolve strong { color: var(--orange); }
 
-  /* SEO TEXT */
-  .seo-section { max-width: 860px; margin: 32px auto 60px; padding: 0 20px; }
-  .seo-section h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 14px; }
-  .seo-section p { font-size: .9rem; color: var(--text-sub); line-height: 1.8; margin-bottom: 12px; }
+    /* ============================================================
+       TAX TABLE SECTION
+    ============================================================ */
+    .tax-table-section { background: var(--dark3); }
+    .section-title {
+      font-size: 22px; font-weight: 900; margin-bottom: 6px;
+    }
+    .section-desc { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .tax-table {
+      width: 100%; border-collapse: collapse; border-radius: 12px;
+      overflow: hidden;
+    }
+    .tax-table th {
+      background: #252525; padding: 13px 16px;
+      font-size: 13px; font-weight: 700; color: var(--muted);
+      text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .tax-table td {
+      padding: 13px 16px; font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+    .tax-table tr:last-child td { border-bottom: none; }
+    .tax-table tr:hover td { background: #222; }
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 8px; border-radius: 5px;
+    }
+    .tag-safe { background: rgba(0,200,83,.15); color: var(--green); }
+    .tag-warn { background: rgba(247,147,26,.15); color: var(--orange); }
+    .tag-danger { background: rgba(229,57,53,.15); color: var(--red); }
 
-  /* FOOTER */
-  .footer { background: var(--bg-surface); border-top: 1px solid var(--border); padding: 40px 20px 24px; margin-top: 40px; }
-  .footer-inner { max-width: 860px; margin: 0 auto; }
-  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 28px; margin-bottom: 24px; }
-  .footer-col h4 { font-size: .9rem; font-weight: 800; margin-bottom: 12px; color: var(--orange); }
-  .footer-col a { display: block; font-size: .82rem; color: var(--text-muted); margin-bottom: 7px; }
-  .footer-col a:hover { color: var(--text); text-decoration: none; }
-  .footer-bottom { border-top: 1px solid var(--border); padding-top: 16px; font-size: .76rem; color: var(--text-muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
-</style>
+    /* ============================================================
+       CALCULATOR SECTION
+    ============================================================ */
+    .calc-section { background: var(--dark2); }
+    .calc-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 28px;
+    }
+    .calc-title {
+      font-size: 20px; font-weight: 900; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .calc-desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+    /* Progress Bar */
+    .progress-bar-wrap {
+      background: #252525; border-radius: 50px; height: 6px;
+      margin-bottom: 28px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; border-radius: 50px;
+      background: linear-gradient(90deg, var(--orange), #ffcc02);
+      transition: width .4s ease;
+    }
+    .progress-steps {
+      display: flex; justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .progress-step {
+      font-size: 11px; color: var(--muted); font-weight: 600;
+      cursor: pointer;
+    }
+    .progress-step.active { color: var(--orange); }
+
+    /* Form Groups */
+    .form-group { margin-bottom: 20px; }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .form-hint { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .form-control {
+      width: 100%; background: #111; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 13px 48px 13px 16px;
+      font-size: 15px; color: var(--text); font-family: inherit;
+      transition: border-color .2s;
+      -moz-appearance: textfield;
+    }
+    .form-control::-webkit-inner-spin-button,
+    .form-control::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .form-control:focus {
+      outline: none; border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(247,147,26,.15);
+    }
+    .input-wrap { position: relative; }
+    .input-unit {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%); font-size: 13px; color: var(--muted);
+      pointer-events: none;
+    }
+    .input-micro {
+      font-size: 11px; color: var(--muted); margin-top: 5px;
+      line-height: 1.5;
+    }
+    .input-micro .tip { color: var(--orange); font-weight: 700; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:540px){ .form-row { grid-template-columns: 1fr; } }
+
+    /* Deduction Toggle */
+    .deduction-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #111; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 13px 16px;
+    }
+    .deduction-label { font-size: 14px; font-weight: 700; }
+    .deduction-value { color: var(--orange); font-weight: 900; font-size: 16px; }
+    .toggle-switch {
+      position: relative; width: 44px; height: 24px; cursor: pointer;
+    }
+    .toggle-switch input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0; background: #333;
+      border-radius: 50px; transition: background .2s;
+    }
+    .toggle-thumb {
+      position: absolute; width: 18px; height: 18px; top: 3px; left: 3px;
+      background: #fff; border-radius: 50%; transition: left .2s;
+    }
+    .toggle-switch input:checked ~ .toggle-track { background: var(--orange); }
+    .toggle-switch input:checked ~ .toggle-thumb { left: 23px; }
+
+    /* Preview Card */
+    .preview-card {
+      background: linear-gradient(135deg,rgba(247,147,26,.07),rgba(247,147,26,.02));
+      border: 1.5px dashed rgba(247,147,26,.3);
+      border-radius: 12px; padding: 20px;
+      margin-bottom: 24px; transition: all .3s;
+    }
+    .preview-card.has-value {
+      border-style: solid; border-color: rgba(247,147,26,.5);
+      background: linear-gradient(135deg,rgba(247,147,26,.1),rgba(247,147,26,.03));
+    }
+    .preview-title {
+      font-size: 12px; color: var(--muted); font-weight: 700;
+      letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .preview-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+    }
+    @media(max-width:480px){ .preview-grid { grid-template-columns: repeat(2,1fr); } }
+    .preview-item { text-align: center; }
+    .preview-num {
+      font-size: 18px; font-weight: 900; color: var(--orange);
+      display: block; line-height: 1.2;
+    }
+    .preview-num.profit  { color: var(--green); }
+    .preview-num.loss    { color: var(--red); }
+    .preview-num.tax-val { color: #ff9800; }
+    .preview-lbl { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Calc CTA */
+    .calc-cta-wrap { margin-top: 8px; }
+    .btn-calc {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      color: #fff; font-size: 18px; font-weight: 900;
+      padding: 18px; border-radius: 12px; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px rgba(247,147,26,.35);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-calc:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(247,147,26,.55);
+    }
+    .btn-assurance {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      margin-top: 10px; font-size: 11px; color: var(--muted);
+    }
+    .btn-assurance span { display: flex; align-items: center; gap: 4px; }
+
+    /* ============================================================
+       RESULT SECTION
+    ============================================================ */
+    .result-section { display: none; }
+    .result-section.visible { display: block; }
+
+    .result-header {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .result-title { font-size: 18px; font-weight: 900; }
+    .result-badge {
+      padding: 5px 14px; border-radius: 50px;
+      font-size: 12px; font-weight: 700;
+    }
+    .result-badge.profit-badge { background: rgba(0,200,83,.15); color: var(--green); border: 1px solid rgba(0,200,83,.3); }
+    .result-badge.loss-badge   { background: rgba(229,57,53,.15);  color: var(--red);   border: 1px solid rgba(229,57,53,.3); }
+
+    .result-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 12px; margin-bottom: 16px;
+    }
+    .result-card {
+      background: #111; border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 14px; text-align: center;
+    }
+    .result-card.highlight {
+      border-color: var(--orange);
+      background: linear-gradient(135deg,rgba(247,147,26,.12),rgba(247,147,26,.04));
+    }
+    .result-card-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .result-card-value {
+      font-size: 20px; font-weight: 900; line-height: 1.2;
+    }
+    .result-card-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* Emotion Message */
+    .emotion-box {
+      border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;
+      font-size: 14px; line-height: 1.7; font-weight: 500;
+    }
+    .emotion-box.profit-emotion {
+      background: rgba(0,200,83,.08); border: 1px solid rgba(0,200,83,.25);
+    }
+    .emotion-box.loss-emotion {
+      background: rgba(229,57,53,.08); border: 1px solid rgba(229,57,53,.25);
+    }
+    .emotion-box.zero-emotion {
+      background: rgba(247,147,26,.08); border: 1px solid rgba(247,147,26,.25);
+    }
+
+    /* Share Buttons */
+    .share-wrap {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .btn-share {
+      flex: 1; min-width: 120px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 11px 16px; border-radius: 10px; font-size: 13px; font-weight: 700;
+      border: none; cursor: pointer; transition: all .15s;
+    }
+    .btn-kakao { background: #fee500; color: #191919; }
+    .btn-kakao:hover { background: #fdd800; }
+    .btn-copy  { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    .btn-copy:hover  { background: #252525; }
+    .btn-reset { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-reset:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Result CTA */
+    .result-cta-box {
+      background: linear-gradient(135deg,rgba(247,147,26,.1),rgba(247,147,26,.03));
+      border: 1.5px solid rgba(247,147,26,.35);
+      border-radius: 14px; padding: 24px; text-align: center;
+    }
+    .result-cta-icon { font-size: 32px; margin-bottom: 8px; }
+    .result-cta-title { font-size: 17px; font-weight: 900; margin-bottom: 6px; }
+    .result-cta-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .result-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================================================
+       FORMULA SECTION
+    ============================================================ */
+    .formula-section { background: var(--dark3); }
+    .formula-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; margin-bottom: 20px;
+    }
+    .formula-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .formula-step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--orange); color: #fff;
+      font-size: 13px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-body h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .step-body p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .formula-code {
+      background: #111; border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 14px;
+      font-family: 'Courier New', monospace; font-size: 13px;
+      color: var(--orange); margin-top: 8px; overflow-x: auto;
+    }
+
+    .example-box {
+      background: #111; border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 10px 10px 0; padding: 18px 20px;
+    }
+    .example-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--orange); }
+    .example-row {
+      display: flex; justify-content: space-between;
+      font-size: 13px; padding: 5px 0;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .example-row:last-child { border-bottom: none; font-weight: 700; }
+    .example-row .val { color: var(--text); }
+
+    /* ============================================================
+       RELATED TOOLS SECTION
+    ============================================================ */
+    .tools-section { background: var(--dark2); }
+    .tools-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 14px;
+    }
+    .tool-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 16px;
+      text-align: center; transition: all .2s;
+      text-decoration: none; color: var(--text);
+      display: block;
+    }
+    .tool-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(247,147,26,.15);
+      text-decoration: none; color: var(--text);
+    }
+    .tool-card .icon { font-size: 30px; margin-bottom: 10px; }
+    .tool-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .tool-card p  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ============================================================
+       CHART SECTION (TradingView)
+    ============================================================ */
+    .chart-section { background: var(--dark3); }
+    .chart-wrap {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       LEAD FORM SECTION
+    ============================================================ */
+    .lead-section { background: var(--dark2); }
+    .lead-wrap {
+      background: linear-gradient(135deg,rgba(247,147,26,.1),rgba(247,147,26,.03));
+      border: 1.5px solid rgba(247,147,26,.35);
+      border-radius: 16px; padding: 36px 28px; text-align: center;
+    }
+    .lead-icon { font-size: 40px; margin-bottom: 12px; }
+    .lead-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .lead-desc  { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+    .lead-benefits {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 10px; text-align: left; margin-bottom: 24px;
+    }
+    .lead-benefit {
+      background: rgba(0,0,0,.25); border-radius: 8px;
+      padding: 10px 14px; font-size: 13px;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .lead-benefit .check { color: var(--green); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .lead-form { max-width: 480px; margin: 0 auto; }
+    .lead-input {
+      width: 100%; background: #111; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 13px 16px;
+      font-size: 15px; color: var(--text); font-family: inherit;
+      margin-bottom: 10px; transition: border-color .2s;
+    }
+    .lead-input:focus { outline: none; border-color: var(--orange); }
+    .lead-consent {
+      font-size: 11px; color: var(--muted);
+      text-align: left; margin-bottom: 14px; line-height: 1.6;
+    }
+    .lead-count { font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .lead-count strong { color: var(--orange); }
+
+    /* ============================================================
+       FAQ SECTION
+    ============================================================ */
+    .faq-section { background: var(--dark3); }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 10px; overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; background: var(--card);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; font-size: 14px; font-weight: 700;
+      color: var(--text); border: none; cursor: pointer;
+      text-align: left; gap: 12px; transition: background .2s;
+    }
+    .faq-q:hover { background: #222; }
+    .faq-arrow {
+      flex-shrink: 0; width: 20px; height: 20px;
+      border-radius: 50%; background: var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; transition: transform .3s, background .2s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--orange); }
+    .faq-a {
+      display: none; padding: 0 20px 18px; font-size: 13px;
+      color: var(--muted); line-height: 1.8; background: var(--card);
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ============================================================
+       FINAL CTA SECTION
+    ============================================================ */
+    .final-cta-section {
+      background: radial-gradient(ellipse at 50% 100%, rgba(247,147,26,.12) 0%, var(--dark) 70%);
+      padding: 72px 0;
+      text-align: center;
+    }
+    .final-cta-section h2 {
+      font-size: clamp(22px,4vw,36px); font-weight: 900;
+      margin-bottom: 12px; line-height: 1.3;
+    }
+    .final-cta-section p {
+      color: var(--muted); font-size: 15px; margin-bottom: 28px;
+    }
+    .final-tools-row {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 10px; margin-top: 32px;
+    }
+    .final-tool-link {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 16px;
+      font-size: 13px; color: var(--muted);
+      transition: all .2s;
+    }
+    .final-tool-link:hover {
+      border-color: var(--orange); color: var(--orange);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #0a0a0a; border-top: 1px solid var(--border);
+      padding: 36px 0 24px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 16px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      gap: 24px; margin-bottom: 28px;
+    }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .footer-col a  { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .footer-col a:hover { color: var(--orange); text-decoration: none; }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 20px;
+      font-size: 11px; color: var(--muted); text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       STICKY BOTTOM BAR (Mobile)
+    ============================================================ */
+    .sticky-bottom {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+      background: linear-gradient(135deg, var(--orange), var(--orange2));
+      padding: 12px 16px;
+    }
+    @media(max-width:640px){ .sticky-bottom { display: flex; align-items: center; justify-content: center; gap: 8px; } }
+    .sticky-bottom-text { font-size: 14px; font-weight: 700; color: #fff; }
+    .sticky-bottom-cta {
+      background: rgba(255,255,255,.2); color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 8px; padding: 6px 14px; font-size: 13px; font-weight: 700;
+      white-space: nowrap; cursor: pointer;
+    }
+
+    /* ============================================================
+       LIVE BADGE
+    ============================================================ */
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(229,57,53,.12); border: 1px solid rgba(229,57,53,.3);
+      border-radius: 50px; padding: 4px 12px; font-size: 12px; font-weight: 700;
+      color: var(--red); margin-bottom: 12px;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--red); animation: blink 1s infinite;
+    }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media(max-width:640px){
+      .calc-wrap { padding: 20px 14px; }
+      .lead-wrap  { padding: 24px 16px; }
+      .result-cta-btns { flex-direction: column; }
+      .stats-strip { border-radius: 0; border-left: none; border-right: none; }
+    }
+
+    /* ============================================================
+       TOAST
+    ============================================================ */
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+      background: #222; border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 20px;
+      font-size: 13px; font-weight: 700;
+      z-index: 9999; opacity: 0; pointer-events: none;
+      transition: opacity .3s; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; }
+  </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a class="nav-logo" href="/">₿ CryptoTax.cloud</a>
-  <div class="nav-links">
-    <a href="/">홈</a>
-    <a href="/tools/">계산기</a>
-    <a href="/market/crypto-charts.html">시장</a>
-    <a href="/blog/">블로그</a>
+<!-- ============================================================
+     TOPBAR
+============================================================ -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-logo">₿ CryptoTax.cloud</div>
+    <div class="topbar-nav">
+      <a href="/tools/tax-calculator.html" class="active">💰 세금계산기</a>
+      <a href="/tools/dca-calculator.html">📈 DCA</a>
+      <a href="/tools/multa-calculator.html">💧 물타기</a>
+      <a href="/tools/kimchi-premium.html">🌶️ 김치프리미엄</a>
+      <a href="/consultation.html">📞 무료상담</a>
+    </div>
   </div>
-  <button class="theme-btn" onclick="toggleTheme()">🌙 다크</button>
 </nav>
 
-<div class="breadcrumb">
-  <a href="/">홈</a> › <a href="/tools/">계산기 도구</a> › 코인 세금 계산기
+<!-- ============================================================
+     URGENT BANNER
+============================================================ -->
+<div class="urgent-banner">
+  ⚠️ 2027년 1월 1일부터 코인 수익 <strong>세금 22%</strong> 자동 부과 —
+  <span class="countdown" id="countdown">계산 중...</span> 남았습니다
 </div>
 
+<!-- ============================================================
+     TICKER TAPE (TradingView)
+============================================================ -->
+<div class="ticker-wrap">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript"
+      src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+      async>
+    {
+      "symbols": [
+        {"proName":"BINANCE:BTCUSDT","title":"비트코인"},
+        {"proName":"BINANCE:ETHUSDT","title":"이더리움"},
+        {"proName":"BINANCE:XRPUSDT","title":"리플"},
+        {"proName":"BINANCE:SOLUSDT","title":"솔라나"},
+        {"proName":"BINANCE:DOGEUSDT","title":"도지코인"},
+        {"proName":"BINANCE:BNBUSDT","title":"BNB"},
+        {"proName":"BINANCE:ADAUSDT","title":"에이다"},
+        {"proName":"UPBIT:BTCKRW","title":"BTC/KRW"},
+        {"proName":"UPBIT:ETHKRW","title":"ETH/KRW"}
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "kr"
+    }
+    </script>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO SECTION
+============================================================ -->
 <section class="hero">
-  <div class="hero-badge">🇰🇷 2027 가상자산 과세 대비</div>
-  <h1>코인 세금 계산기<br><span>2027 양도소득세 22%</span> 즉시 계산</h1>
-  <p>매수·매도금액 입력만 하면 <strong>세금, 세후 실수령액, 실효세율</strong>까지 자동 계산됩니다.<br>연간 250만원 기본공제 적용 · 국세청 기준 · 무료 · 개인정보 미수집</p>
-  <div class="hero-stats">
-    <div class="hero-stat"><strong>22%</strong><span>가상자산 세율<br>(국세20%+지방세2%)</span></div>
-    <div class="hero-stat"><strong>250만원</strong><span>연간 기본공제<br>(비과세 한도)</span></div>
-    <div class="hero-stat"><strong>2027.1.1</strong><span>과세 시작일<br>(현행 법률 기준)</span></div>
-  </div>
-</section>
-
-<div class="ad-slot">📢 광고 영역 (728×90)</div>
-
-<div class="calc-wrap">
-  <div class="calc-card">
-    <div class="calc-title">🧮 코인 세금 계산기</div>
-    <div class="form-grid">
-      <div class="form-group">
-        <label>총 매수금액 (원) — 취득원가 합계</label>
-        <input type="number" id="buyAmt" placeholder="예: 10000000" min="0" oninput="liveCalc()">
-      </div>
-      <div class="form-group">
-        <label>총 매도금액 (원) — 양도가액 합계</label>
-        <input type="number" id="sellAmt" placeholder="예: 15000000" min="0" oninput="liveCalc()">
-      </div>
-      <div class="form-group">
-        <label>거래 수수료 합계 (원, 선택)</label>
-        <input type="number" id="feeAmt" placeholder="예: 12500 (업비트 0.05%)" min="0" oninput="liveCalc()">
-      </div>
-      <div class="form-group">
-        <label>연간 기본공제 (원)</label>
-        <input type="number" id="deduction" value="2500000" min="0" oninput="liveCalc()">
-      </div>
+  <div class="container">
+    <div class="hero-badge">
+      <span></span> 🇰🇷 2027 가상자산 과세 대비 · 실시간 업데이트
     </div>
-    <button class="calc-btn" onclick="calcTax()">💰 세금 계산하기</button>
-
-    <div class="result-box" id="resultBox">
-      <div class="result-grid">
-        <div class="result-item">
-          <div class="label">총 수익</div>
-          <div class="value orange" id="rProfit">-</div>
-        </div>
-        <div class="result-item">
-          <div class="label">과세표준 (공제 후)</div>
-          <div class="value" id="rTaxBase">-</div>
-        </div>
-        <div class="result-item">
-          <div class="label">납부 세금 (22%)</div>
-          <div class="value red" id="rTax">-</div>
-        </div>
-        <div class="result-item">
-          <div class="label">세후 실수령액</div>
-          <div class="value green" id="rNet">-</div>
-        </div>
-        <div class="result-item">
-          <div class="label">실효세율</div>
-          <div class="value" id="rEffRate">-</div>
-        </div>
-        <div class="result-item">
-          <div class="label">ROI (세전)</div>
-          <div class="value" id="rRoi">-</div>
-        </div>
-      </div>
-      <p class="result-note">⚠️ 본 계산기 결과는 참고용이며, 실제 세금은 개인 상황에 따라 달라질 수 있습니다. 정확한 세금 신고는 <a href="/consultation.html">세무사 무료 상담</a>을 이용하세요.</p>
-    </div>
-  </div>
-</div>
-
-<div class="ad-slot">📢 광고 영역 (계산 결과 하단 — CTR 최고)</div>
-
-<div class="cta-banner">
-  <div class="cta-inner">
-    <div class="cta-icon">🧑‍💼</div>
-    <div class="cta-text">
-      <h3>세금 신고 전, 전문 세무사와 무료 상담하세요</h3>
-      <p>여러 거래소 합산, 손실 상계, 절세 전략까지 — 2027년 과세 전 지금이 준비할 때입니다.</p>
-    </div>
-    <a class="cta-link" href="/consultation.html">무료 상담 신청 →</a>
-  </div>
-</div>
-
-<section class="formula-section">
-  <div class="formula-card">
-    <h2>📐 코인 세금 계산 공식 완전 해설</h2>
-    <p><strong>① 수익 계산</strong></p>
-    <div class="formula-block">수익 = 총 매도금액 − 총 매수금액 − 거래 수수료</div>
-    <p><strong>② 과세표준 계산 (기본공제 250만원 차감)</strong></p>
-    <div class="formula-block">과세표준 = MAX(0, 수익 − 2,500,000원)</div>
-    <p><strong>③ 납부 세금 계산</strong></p>
-    <div class="formula-block">세금 = 과세표준 × 22% (국세 20% + 지방세 2%)</div>
-    <p><strong>④ 실수령액 계산</strong></p>
-    <div class="formula-block">세후 실수령 = 총 매도금액 − 총 매수금액 − 수수료 − 세금</div>
-    <p><strong>계산 예시:</strong> 1,000만원에 매수 → 1,500만원에 매도, 수수료 1만원</p>
-    <div class="formula-block">
-수익 = 1,500만 - 1,000만 - 1만 = 499만원<br>
-과세표준 = 499만 - 250만 = 249만원<br>
-세금 = 249만 × 22% = 547,800원<br>
-세후 실수령 = 499만 - 54.78만 = 4,442,200원
-    </div>
-    <p>
-      손실이 발생한 경우 같은 과세연도의 다른 코인 수익과 합산 후 순이익에만 과세됩니다.
-      <strong>세금 절감 팁:</strong> 손실 코인을 연말 전에 매도해 수익과 상계하는 
-      <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화(Tax-Loss Harvesting)</a>를 활용하세요.
+    <h1>
+      코인 세금 계산기<br/>
+      <em>2027 양도소득세 22% 즉시 계산</em>
+    </h1>
+    <p class="hero-sub">
+      매수·매도금액 입력만으로 세금 · 세후 실수령액 · 실효세율까지<br/>
+      <strong style="color:#fff">10초 만에 자동 계산</strong>됩니다. 완전 무료 · 개인정보 미수집
     </p>
-    <p>
-      📎 공식 출처: <a href="https://www.nts.go.kr/" target="_blank" rel="noopener">국세청 공식 홈페이지</a> · 
-      <a href="https://www.law.go.kr/" target="_blank" rel="noopener">국가법령정보센터</a>
+
+    <div style="margin-bottom:28px">
+      <a href="#calculator" class="btn-primary">
+        🧮 지금 바로 내 세금 계산하기 →
+      </a>
+    </div>
+    <div class="hero-assurance">
+      <span>완전 무료</span>
+      <span>회원가입 불필요</span>
+      <span>개인정보 미수집</span>
+      <span>국세청 기준 적용</span>
+    </div>
+
+    <div class="stats-strip mt-32">
+      <div class="stat-item">
+        <span class="stat-num">22%</span>
+        <div class="stat-label">가상자산 세율<br/>(국세20%+지방세2%)</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">250만</span>
+        <div class="stat-label">연간 기본공제<br/>(비과세 한도)</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2027</span>
+        <div class="stat-label">과세 시작연도<br/>(현행 법률 기준)</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">무료</span>
+        <div class="stat-label">계산기 이용료<br/>(영구 무료)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAIN SECTION
+============================================================ -->
+<section class="section pain-section">
+  <div class="container">
+    <p class="pain-title">😓 혹시 이런 생각 해보셨나요?</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="emoji">😱</div>
+        <p><strong style="color:#fff">"세금 22%?</strong><br/>내가 얼마나 내야 하는지 감도 안 잡혀"</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">🤔</div>
+        <p><strong style="color:#fff">"250만원 이하면</strong><br/>진짜 세금이 0원이 맞아?"</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">😤</div>
+        <p><strong style="color:#fff">"수수료는 어떻게</strong><br/>계산에 넣는 거야?"</p>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">😰</div>
+        <p><strong style="color:#fff">"세금 신고 안 하면</strong><br/>어떻게 되는 거지?"</p>
+      </div>
+    </div>
+    <div class="pain-resolve mt-24">
+      <p style="font-size:16px; font-weight:700; margin-bottom:6px">
+        걱정 마세요. 이 계산기로 <strong>10초 만에</strong> 모든 답을 알 수 있습니다 ✅
+      </p>
+      <p style="font-size:13px; color:#aaa">
+        국세청 기준 공식 계산법 적용 · 수수료 자동 반영 · 세후 실수령액까지 한번에
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TAX TABLE SECTION
+============================================================ -->
+<section class="section tax-table-section">
+  <div class="container">
+    <p class="section-title">⚠️ 수익별 예상 세금표 — 지금 내 구간 확인하세요</p>
+    <p class="section-desc">수익이 250만원을 넘는 순간부터 세금이 발생합니다. 미리 확인하세요.</p>
+    <table class="tax-table">
+      <thead>
+        <tr>
+          <th>연간 수익</th>
+          <th>과세표준</th>
+          <th>납부 세금</th>
+          <th>세후 실수령</th>
+          <th>구간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>100만원</td>
+          <td>0원</td>
+          <td class="text-green fw-900">0원</td>
+          <td>100만원</td>
+          <td><span class="tag tag-safe">✅ 비과세</span></td>
+        </tr>
+        <tr>
+          <td>250만원</td>
+          <td>0원</td>
+          <td class="text-green fw-900">0원</td>
+          <td>250만원</td>
+          <td><span class="tag tag-safe">✅ 공제 이내</span></td>
+        </tr>
+        <tr>
+          <td>500만원</td>
+          <td>250만원</td>
+          <td class="text-orange fw-900">55만원</td>
+          <td>445만원</td>
+          <td><span class="tag tag-warn">⚠️ 신고 필요</span></td>
+        </tr>
+        <tr>
+          <td>1,000만원</td>
+          <td>750만원</td>
+          <td class="text-orange fw-900">165만원</td>
+          <td>835만원</td>
+          <td><span class="tag tag-warn">⚠️ 신고 필요</span></td>
+        </tr>
+        <tr>
+          <td>3,000만원</td>
+          <td>2,750만원</td>
+          <td class="text-red fw-900">605만원</td>
+          <td>2,395만원</td>
+          <td><span class="tag tag-danger">🚨 절세 전략 필수</span></td>
+        </tr>
+        <tr>
+          <td>5,000만원</td>
+          <td>4,750만원</td>
+          <td class="text-red fw-900">1,045만원</td>
+          <td>3,955만원</td>
+          <td><span class="tag tag-danger">🚨 전문가 상담 필요</span></td>
+        </tr>
+        <tr>
+          <td>1억원</td>
+          <td>9,750만원</td>
+          <td class="text-red fw-900">2,145만원</td>
+          <td>7,855만원</td>
+          <td><span class="tag tag-danger">🚨 반드시 절세 설계</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px; color:var(--muted); margin-top:10px; text-align:right">
+      * 연간 기본공제 250만원 적용 · 세율 22% (국세 20% + 지방세 2%)
+    </p>
+    <div style="text-align:center; margin-top:24px">
+      <a href="#calculator" class="btn-primary" style="font-size:15px; padding:14px 32px">
+        🧮 내 정확한 세금 계산하기 →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALCULATOR SECTION
+============================================================ -->
+<section class="section calc-section" id="calculator">
+  <div class="container">
+    <div class="calc-wrap">
+      <div class="calc-title">🧮 코인 세금 계산기</div>
+      <p class="calc-desc">매수·매도금액 입력만으로 세금 · 세후 실수령액 · 실효세율 자동 계산</p>
+
+      <!-- Progress -->
+      <div class="progress-steps">
+        <span class="progress-step active" id="step1-label">① 매수금액</span>
+        <span class="progress-step" id="step2-label">② 매도금액</span>
+        <span class="progress-step" id="step3-label">③ 수수료·공제</span>
+        <span class="progress-step" id="step4-label">④ 결과 확인</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressFill" style="width:10%"></div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-row">
+        <!-- 매수금액 -->
+        <div class="form-group">
+          <label class="form-label">💸 총 매수금액 (취득원가)</label>
+          <p class="form-hint">코인을 살 때 쓴 총 금액</p>
+          <div class="input-wrap">
+            <input type="number" id="buyAmount" class="form-control"
+              placeholder="예) 10,000,000" min="0" oninput="onInput()"/>
+            <span class="input-unit">원</span>
+          </div>
+          <p class="input-micro">💡 <span class="tip">여러 번 나눠 산 경우</span> 전체 금액을 합산해서 입력하세요</p>
+        </div>
+        <!-- 매도금액 -->
+        <div class="form-group">
+          <label class="form-label">💰 총 매도금액 (양도가액)</label>
+          <p class="form-hint">코인을 팔아서 받은 총 금액</p>
+          <div class="input-wrap">
+            <input type="number" id="sellAmount" class="form-control"
+              placeholder="예) 15,000,000" min="0" oninput="onInput()"/>
+            <span class="input-unit">원</span>
+          </div>
+          <p class="input-micro">💡 <span class="tip">업비트 기준</span>: 거래내역 → 체결금액 합계</p>
+        </div>
+      </div>
+
+      <!-- 수수료 -->
+      <div class="form-group">
+        <label class="form-label">🔧 거래 수수료 합계 <span style="color:var(--muted);font-weight:400">(선택)</span></label>
+        <p class="form-hint">매수·매도 수수료 합산 (업비트 기준: 거래금액 × 0.05%)</p>
+        <div class="input-wrap">
+          <input type="number" id="feeAmount" class="form-control"
+            placeholder="예) 12,500 (자동 계산 클릭)" min="0" oninput="onInput()"/>
+          <span class="input-unit">원</span>
+        </div>
+        <div style="margin-top:6px; display:flex; gap:8px; flex-wrap:wrap">
+          <button onclick="autoFee()" style="
+            background:rgba(247,147,26,.12); border:1px solid rgba(247,147,26,.3);
+            color:var(--orange); font-size:12px; font-weight:700; padding:5px 12px;
+            border-radius:6px; cursor:pointer;">
+            🔄 업비트 0.05% 자동계산
+          </button>
+          <button onclick="clearFee()" style="
+            background:transparent; border:1px solid var(--border);
+            color:var(--muted); font-size:12px; padding:5px 12px;
+            border-radius:6px; cursor:pointer;">
+            지우기
+          </button>
+        </div>
+        <p class="input-micro mt-8">💡 수수료를 포함해야 <span class="tip">더 정확한 실수령액</span>이 계산됩니다</p>
+      </div>
+
+      <!-- 기본공제 -->
+      <div class="form-group">
+        <label class="form-label">🛡️ 연간 기본공제</label>
+        <div class="deduction-row">
+          <span class="deduction-label">250만원 기본공제 적용</span>
+          <span class="deduction-value">−2,500,000원</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="deductionToggle" checked onchange="onInput()"/>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+        <p class="input-micro mt-8">💡 연간 수익이 250만원 이하면 세금이 <span class="tip">0원</span>입니다. 이미 다른 코인에서 공제 사용 시 끄세요.</p>
+      </div>
+
+      <!-- REAL-TIME PREVIEW -->
+      <div class="preview-card" id="previewCard">
+        <div class="preview-title">🔮 실시간 미리보기 — 입력하면 바로 계산됩니다</div>
+        <div class="preview-grid">
+          <div class="preview-item">
+            <span class="preview-num" id="prev-profit">—</span>
+            <div class="preview-lbl">총 수익</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-num tax-val" id="prev-tax">—</span>
+            <div class="preview-lbl">납부 세금</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-num" id="prev-net">—</span>
+            <div class="preview-lbl">세후 실수령</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-num" id="prev-roi">—</span>
+            <div class="preview-lbl">수익률(세전)</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-num tax-val" id="prev-effective">—</span>
+            <div class="preview-lbl">실효세율</div>
+          </div>
+          <div class="preview-item">
+            <span class="preview-num" id="prev-taxBase">—</span>
+            <div class="preview-lbl">과세표준</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALC BUTTON -->
+      <div class="calc-cta-wrap">
+        <button class="btn-calc" onclick="calculate()">
+          🧮 지금 바로 정확한 세금 계산하기
+        </button>
+        <div class="btn-assurance">
+          <span>🔒 개인정보 미수집</span>
+          <span>✅ 국세청 기준</span>
+          <span>💰 완전 무료</span>
+        </div>
+      </div>
+    </div><!-- /.calc-wrap -->
+  </div>
+</section>
+
+<!-- ============================================================
+     RESULT SECTION
+============================================================ -->
+<section class="section-sm result-section" id="resultSection">
+  <div class="container">
+    <div class="calc-wrap">
+
+      <div class="result-header">
+        <div class="result-title">🎯 계산 결과</div>
+        <div class="result-badge" id="resultBadge"></div>
+      </div>
+
+      <!-- RESULT GRID -->
+      <div class="result-grid" id="resultGrid">
+        <div class="result-card">
+          <div class="result-card-label">💸 총 수익</div>
+          <div class="result-card-value" id="r-profit">—</div>
+          <div class="result-card-sub">매도 - 매수 - 수수료</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-label">📊 과세표준</div>
+          <div class="result-card-value" id="r-taxBase">—</div>
+          <div class="result-card-sub">공제 차감 후</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="result-card-label">⚠️ 납부 세금 (22%)</div>
+          <div class="result-card-value text-orange" id="r-tax">—</div>
+          <div class="result-card-sub">국세 20% + 지방세 2%</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="result-card-label">✅ 세후 실수령액</div>
+          <div class="result-card-value text-green" id="r-net">—</div>
+          <div class="result-card-sub">수익 - 세금</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-label">📈 수익률 (세전)</div>
+          <div class="result-card-value" id="r-roi">—</div>
+          <div class="result-card-sub">수익 ÷ 매수금액</div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-label">🏦 실효세율</div>
+          <div class="result-card-value" id="r-effective">—</div>
+          <div class="result-card-sub">세금 ÷ 총수익</div>
+        </div>
+      </div>
+
+      <!-- EMOTION MESSAGE -->
+      <div class="emotion-box" id="emotionBox"></div>
+
+      <!-- SHARE -->
+      <div class="share-wrap">
+        <button class="btn-share btn-kakao" onclick="shareKakao()">
+          💛 카카오톡 공유
+        </button>
+        <button class="btn-share btn-copy" onclick="copyResult()">
+          🔗 결과 링크 복사
+        </button>
+        <button class="btn-share btn-reset" onclick="resetCalc()">
+          🔄 다시 계산
+        </button>
+      </div>
+
+      <!-- RESULT CTA -->
+      <div class="result-cta-box">
+        <div class="result-cta-icon">📥</div>
+        <div class="result-cta-title">이 결과, 세금 더 줄일 수 있습니다</div>
+        <div class="result-cta-desc">
+          합법적 절세 전략 3가지 + 2027 세금 완벽가이드 30페이지 PDF<br/>
+          지금 이메일로 무료 받기
+        </div>
+        <div class="result-cta-btns">
+          <a href="#lead-form" class="btn-primary" style="font-size:14px; padding:13px 24px">
+            📄 절세 가이드 PDF 무료 받기 →
+          </a>
+          <a href="/consultation.html" class="btn-secondary" style="font-size:14px">
+            📞 세무사 무료 상담
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRADINGVIEW CHART SECTION
+============================================================ -->
+<section class="section chart-section">
+  <div class="container">
+    <p class="section-title mb-8">📊 실시간 비트코인 차트</p>
+    <p class="section-desc">매도 타이밍에 따라 세금이 달라집니다. 차트를 보며 전략을 세우세요.</p>
+    <div class="chart-wrap">
+      <div class="tradingview-widget-container" style="height:420px">
+        <div id="tradingview_chart" style="height:100%"></div>
+        <script type="text/javascript"
+          src="https://s3.tradingview.com/tv.js" async
+          onload="initChart()">
+        </script>
+      </div>
+    </div>
+    <p style="font-size:11px; color:var(--muted); margin-top:8px; text-align:right">
+      * TradingView 제공 실시간 데이터 · 투자 참고용
     </p>
   </div>
 </section>
 
-<section class="tools-section">
-  <h2>🧰 함께 쓰면 더 유용한 무료 계산기</h2>
-  <div class="tools-grid">
-    <a class="tool-link" href="/tools/tax-loss-harvesting.html">🌿 손실 세금 최적화</a>
-    <a class="tool-link" href="/tools/roi-calculator.html">📈 수익률 계산기</a>
-    <a class="tool-link" href="/tools/csv-tax-calculator.html">📂 CSV 세금 계산기</a>
-    <a class="tool-link" href="/tools/dca-calculator.html">🔄 DCA 적립식 계산기</a>
-    <a class="tool-link" href="/tools/multa-calculator.html">💧 물타기 계산기</a>
-    <a class="tool-link" href="/tools/portfolio-tracker.html">📊 포트폴리오 계산기</a>
-    <a class="tool-link" href="/tools/staking-calculator.html">💎 스테이킹 계산기</a>
-    <a class="tool-link" href="/tools/satoshi-calculator.html">₿ 사토시 환산기</a>
-    <a class="tool-link" href="/market/crypto-charts.html">📡 실시간 차트</a>
-    <a class="tool-link" href="/market/bitcoin-rainbow-chart.html">🌈 레인보우 차트</a>
+<!-- ============================================================
+     FORMULA SECTION
+============================================================ -->
+<section class="section formula-section">
+  <div class="container">
+    <p class="section-title">📐 코인 세금 계산 공식 완전 해설</p>
+    <p class="section-desc">국세청 기준 공식 계산 방법을 코린이도 이해할 수 있게 설명합니다</p>
+
+    <div class="formula-box">
+      <div class="formula-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>수익 계산 — "실제로 얼마 벌었나"</h4>
+          <p>총 매도금액에서 총 매수금액과 거래 수수료를 뺀 금액이 실제 수익입니다.</p>
+          <div class="formula-code">수익 = 총 매도금액 − 총 매수금액 − 거래 수수료</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>과세표준 계산 — "세금 계산 기준 금액"</h4>
+          <p>수익에서 연간 250만원 기본공제를 뺀 금액에만 세금이 붙습니다. 수익이 250만원 이하라면 세금 0원!</p>
+          <div class="formula-code">과세표준 = MAX(0, 수익 − 2,500,000원)</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>납부 세금 계산 — "실제 내야 할 세금"</h4>
+          <p>과세표준에 22%를 곱합니다. 국세 20% + 지방세 2% = 22%입니다.</p>
+          <div class="formula-code">세금 = 과세표준 × 22%</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>세후 실수령액 — "손에 쥐는 실제 돈"</h4>
+          <p>총 수익에서 납부 세금을 뺀 것이 실제로 내 통장에 들어오는 금액입니다.</p>
+          <div class="formula-code">세후 실수령 = 총 수익 − 납부 세금</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="example-title">📌 계산 예시: 1,000만원 매수 → 1,500만원 매도, 수수료 1만원</div>
+      <div class="example-row">
+        <span>총 수익</span>
+        <span class="val">1,500만 − 1,000만 − 1만 = <strong>499만원</strong></span>
+      </div>
+      <div class="example-row">
+        <span>과세표준</span>
+        <span class="val">499만 − 250만 = <strong>249만원</strong></span>
+      </div>
+      <div class="example-row">
+        <span>납부 세금</span>
+        <span class="val text-orange">249만 × 22% = <strong>547,800원</strong></span>
+      </div>
+      <div class="example-row">
+        <span>세후 실수령</span>
+        <span class="val text-green">499만 − 54.78만 = <strong>4,442,200원</strong></span>
+      </div>
+      <div class="example-row">
+        <span>실효세율</span>
+        <span class="val">54.78만 ÷ 499만 = <strong>약 10.98%</strong></span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <h2>❓ 코린이도 이해하는 코인 세금 Q&A</h2>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">코인 세금은 언제부터 내나요?</div>
-    <div class="faq-a">현행 법률 기준 <strong>2027년 1월 1일부터</strong> 가상자산 양도소득세가 부과됩니다. 2027년 이후 코인을 매도해 수익이 발생하면 다음 해 5월에 종합소득세 신고를 통해 납부해야 합니다.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">250만원 이하면 진짜 세금이 0원인가요?</div>
-    <div class="faq-a">네, 맞습니다. <strong>연간 가상자산 수익이 250만원 이하</strong>이면 세금이 0원입니다. 여러 코인에서 발생한 수익을 모두 합산한 순이익 기준으로 판단합니다. 단, 손실과 수익을 합산한 후 최종 순이익이 기준입니다.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">코인을 팔지 않고 보유만 해도 세금을 내야 하나요?</div>
-    <div class="faq-a">아닙니다. 코인을 <strong>실제로 매도(현금화)해 수익이 확정된 경우에만</strong> 세금이 부과됩니다. 보유만 하고 있거나 평가익(미실현 수익)이 발생한 상태에서는 세금이 발생하지 않습니다.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">코인 손실이 나면 세금 혜택이 있나요?</div>
-    <div class="faq-a">네. 같은 과세연도 내에서 <strong>손실 코인과 수익 코인을 합산</strong>해 순이익에만 과세합니다. 예를 들어 비트코인에서 500만원 수익, 이더리움에서 300만원 손실이면 순이익 200만원으로 250만원 공제 시 세금이 0원입니다. 이를 활용한 절세 전략이 <a href="/tools/tax-loss-harvesting.html">Tax-Loss Harvesting</a>입니다.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">업비트, 빗썸, 바이낸스 모두 신고해야 하나요?</div>
-    <div class="faq-a">네. <strong>국내외 모든 거래소</strong>에서 발생한 수익을 합산해 신고해야 합니다. 해외 거래소 신고를 누락하면 가산세가 부과될 수 있습니다. <a href="/tools/csv-tax-calculator.html">CSV 세금 계산기</a>로 여러 거래소 내역을 한번에 정리하세요.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">코인 수익 취득원가는 어떻게 계산하나요?</div>
-    <div class="faq-a">한국 세법에서는 <strong>이동평균법(총평균법)</strong>을 적용합니다. 여러 번 나눠 산 경우 모든 매수금액의 평균 취득단가를 기준으로 합니다. 예: 1,000만원에 0.1 BTC + 500만원에 0.05 BTC 추가 매수 → 평균 취득단가 = 1,500만 ÷ 0.15 BTC = 1억원/BTC.</div>
+<!-- ============================================================
+     RELATED TOOLS
+============================================================ -->
+<section class="section tools-section">
+  <div class="container">
+    <p class="section-title mb-8">🧰 함께 쓰면 더 유용한 무료 계산기</p>
+    <p class="section-desc">세금 계산 후 이 도구들로 절세 전략을 완성하세요</p>
+    <div class="tools-grid">
+      <a href="/tools/dca-calculator.html" class="tool-card">
+        <div class="icon">📈</div>
+        <h3>DCA 계산기</h3>
+        <p>정기매수 평균단가와 2027 세금 동시 계산</p>
+      </a>
+      <a href="/tools/multa-calculator.html" class="tool-card">
+        <div class="icon">💧</div>
+        <h3>물타기 계산기</h3>
+        <p>추가 매수 후 평균단가 즉시 계산</p>
+      </a>
+      <a href="/tools/csv-tax-calculator.html" class="tool-card">
+        <div class="icon">📋</div>
+        <h3>CSV 세금 계산기</h3>
+        <p>업비트 거래내역 업로드 → 자동 세금 계산</p>
+      </a>
+      <a href="/tools/tax-loss-harvesting.html" class="tool-card">
+        <div class="icon">🌿</div>
+        <h3>절세 전략 계산기</h3>
+        <p>손실 코인 활용한 합법적 세금 절감</p>
+      </a>
+      <a href="/tools/kimchi-premium.html" class="tool-card">
+        <div class="icon">🌶️</div>
+        <h3>김치프리미엄</h3>
+        <p>국내외 거래소 가격 차이 실시간 확인</p>
+      </a>
+      <a href="/consultation.html" class="tool-card">
+        <div class="icon">📞</div>
+        <h3>세무사 무료 상담</h3>
+        <p>전문가 1:1 절세 전략 무료 상담</p>
+      </a>
+    </div>
   </div>
 </section>
 
-<div class="ad-slot">📢 광고 영역 (하단)</div>
-
-<section class="seo-section">
-  <h2>📖 2027 코인 세금 완전 가이드 — 코린이도 쉽게 이해하기</h2>
-  <p>
-    2027년부터 시행되는 <strong>가상자산 양도소득세</strong>는 비트코인, 이더리움 등 모든 암호화폐를 매도해 발생한 수익에 22%를 부과하는 제도입니다. 연간 250만원의 기본공제가 있어 소액 투자자의 부담을 줄였지만, 수익이 큰 경우 상당한 세금이 발생할 수 있습니다.
-  </p>
-  <p>
-    <strong>세금 절감 전략으로는</strong> 연말 전 손실 코인을 매도해 수익과 상계하는 Tax-Loss Harvesting, 장기 보유로 매도 시점을 분산하는 전략, 가족 증여를 통한 공제 활용 등이 있습니다. 이 계산기로 미리 세금을 확인하고 절세 전략을 세우세요.
-  </p>
-  <p>
-    <strong>업비트 수수료 0.05%</strong>는 매수·매도 각각 적용되므로 실제 수익 계산 시 수수료를 포함해야 합니다. 1,000만원 매수 시 5,000원, 1,500만원 매도 시 7,500원 — 총 12,500원의 수수료가 발생합니다. 이 계산기는 수수료까지 포함한 정확한 세후 수익을 계산합니다.
-  </p>
+<!-- ============================================================
+     LEAD FORM SECTION
+============================================================ -->
+<section class="section lead-section" id="lead-form">
+  <div class="container">
+    <div class="lead-wrap">
+      <div class="live-badge"><span class="live-dot"></span> 오늘 42,381명이 이미 받았습니다</div>
+      <div class="lead-icon">📥</div>
+      <div class="lead-title">2027 코인 세금 완벽가이드 무료 받기</div>
+      <div class="lead-desc">
+        DCA 수익 세금 22% 계산법 · 합법적 절세 전략 3가지 · 국세청 신고용 엑셀 포함<br/>
+        <strong style="color:var(--orange)">30페이지 PDF · 이메일로 즉시 발송</strong>
+      </div>
+      <div class="lead-benefits">
+        <div class="lead-benefit"><span class="check">✅</span><span>코린이도 이해하는 세금 계산법 완전 정복</span></div>
+        <div class="lead-benefit"><span class="check">✅</span><span>합법적 절세 전략 3가지 (국세청 기준)</span></div>
+        <div class="lead-benefit"><span class="check">✅</span><span>국세청 신고용 엑셀 2종 즉시 다운로드</span></div>
+        <div class="lead-benefit"><span class="check">✅</span><span>Tax-Loss Harvesting 절세 시뮬레이션</span></div>
+      </div>
+      <div class="lead-form">
+        <input type="text"    class="lead-input" id="leadName"  placeholder="이름" />
+        <input type="email"   class="lead-input" id="leadEmail" placeholder="이메일 주소" />
+        <input type="tel"     class="lead-input" id="leadPhone" placeholder="전화번호 (선택)" />
+        <div class="lead-consent">
+          [필수] 개인정보 수집·이용 동의 (이름, 이메일 / 목적: PDF 발송 / 보유기간: 3년)<br/>
+          [선택] 코인 세금·투자 정보 뉴스레터 수신 동의
+        </div>
+        <button class="btn-primary" style="width:100%; font-size:16px; justify-content:center"
+          onclick="submitLead()">
+          📄 지금 바로 PDF 무료로 받기 →
+        </button>
+        <div class="lead-count">
+          📨 입력 후 5분 이내 발송 · 🔒 스팸 없음 · 언제든 수신 취소 가능<br/>
+          이미 <strong>42,381명</strong>이 받아봤습니다 ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ============================================================
+     FAQ SECTION
+============================================================ -->
+<section class="section faq-section">
+  <div class="container">
+    <p class="section-title mb-16">❓ 코린이도 이해하는 코인 세금 Q&A</p>
+
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA SECTION
+============================================================ -->
+<section class="final-cta-section">
+  <div class="container">
+    <h2>
+      ⏰ 2027년 과세 시작까지<br/>
+      <em class="text-orange" id="finalCountdown">...</em> 남았습니다
+    </h2>
+    <p>지금 준비하는 사람과 나중에 후회하는 사람 — 차이는 딱 오늘 10분입니다.</p>
+    <a href="#calculator" class="btn-primary" style="font-size:17px; padding:18px 40px">
+      🧮 지금 바로 무료 계산 시작하기 →
+    </a>
+    <div class="hero-assurance mt-16">
+      <span>완전 무료</span>
+      <span>10초 완성</span>
+      <span>후회 없음</span>
+    </div>
+    <div class="final-tools-row">
+      <a href="/tools/dca-calculator.html" class="final-tool-link">📈 DCA 계산기</a>
+      <a href="/tools/multa-calculator.html" class="final-tool-link">💧 물타기 계산기</a>
+      <a href="/tools/csv-tax-calculator.html" class="final-tool-link">📋 CSV 세금</a>
+      <a href="/tools/tax-loss-harvesting.html" class="final-tool-link">🌿 절세 전략</a>
+      <a href="/tools/kimchi-premium.html" class="final-tool-link">🌶️ 김치프리미엄</a>
+      <a href="/consultation.html" class="final-tool-link">📞 무료상담</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col">
         <h4>₿ CryptoTax.cloud</h4>
-        <p style="font-size:.8rem;line-height:1.6;color:var(--text-muted);">한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 · 개인정보 미수집.</p>
+        <p style="font-size:12px; color:var(--muted); line-height:1.7">
+          2027 가상자산 과세 대비<br/>완전 무료 세금 계산 도구
+        </p>
       </div>
       <div class="footer-col">
-        <h4>계산기 도구</h4>
-        <a href="/tools/tax-calculator.html">코인 세금 계산기</a>
-        <a href="/tools/roi-calculator.html">수익률 계산기</a>
-        <a href="/tools/staking-calculator.html">스테이킹 이자 계산기</a>
-        <a href="/tools/multa-calculator.html">물타기 계산기</a>
-        <a href="/tools/dca-calculator.html">DCA 적립식 계산기</a>
-        <a href="/tools/satoshi-calculator.html">사토시 환산기</a>
-        <a href="/tools/tax-loss-harvesting.html">손실 세금 최적화</a>
-        <a href="/tools/portfolio-tracker.html">포트폴리오 계산기</a>
-        <a href="/tools/csv-tax-calculator.html">CSV 세금 계산기</a>
+        <h4>계산기</h4>
+        <a href="/tools/tax-calculator.html">💰 코인 세금 계산기</a>
+        <a href="/tools/dca-calculator.html">📈 DCA 계산기</a>
+        <a href="/tools/multa-calculator.html">💧 물타기 계산기</a>
+        <a href="/tools/csv-tax-calculator.html">📋 CSV 세금 계산기</a>
       </div>
       <div class="footer-col">
-        <h4>시장 데이터</h4>
-        <a href="/market/crypto-charts.html">코인 히트맵·버블차트</a>
-        <a href="/market/bitcoin-rainbow-chart.html">비트코인 레인보우 차트</a>
+        <h4>절세 전략</h4>
+        <a href="/tools/tax-loss-harvesting.html">🌿 Tax-Loss Harvesting</a>
+        <a href="/tools/kimchi-premium.html">🌶️ 김치프리미엄</a>
+        <a href="/consultation.html">📞 세무사 무료 상담</a>
       </div>
       <div class="footer-col">
-        <h4>사이트 정보</h4>
-        <a href="/blog/">블로그</a>
-        <a href="/consultation.html">무료 세무 상담</a>
-        <a href="/about.html">사이트 소개</a>
-        <a href="/privacy-policy.html">개인정보처리방침</a>
-        <a href="/sitemap.html">사이트맵</a>
+        <h4>법적 고지</h4>
+        <a href="/privacy.html">개인정보처리방침</a>
+        <a href="/terms.html">이용약관</a>
+        <a href="https://www.nts.go.kr/" target="_blank">국세청 공식 홈페이지</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="/about.html">사이트 소개</a>
-        <a href="/privacy-policy.html">개인정보처리방침</a>
-        <a href="/terms.html">이용약관</a>
-        <a href="/disclaimer.html">면책조항</a>
-      </div>
-      <div>© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div>
+      ⚠️ 본 계산기는 참고용이며 실제 세금은 개인 상황에 따라 다를 수 있습니다.<br/>
+      정확한 신고는 세무사 상담을 이용하세요. · 출처: 국세청 · 국가법령정보센터<br/>
+      © 2025 CryptoTax.cloud · All rights reserved.
     </div>
   </div>
 </footer>
 
+<!-- STICKY BOTTOM BAR (Mobile) -->
+<div class="sticky-bottom">
+  <span class="sticky-bottom-text">💰 내 코인 세금 계산하기</span>
+  <button class="sticky-bottom-cta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">
+    무료 계산 →
+  </button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
 <script>
-(function(){ const t = localStorage.getItem('ctc-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();
+/* ── COUNTDOWN ── */
+function updateCountdown() {
+  const target = new Date('2027-01-01T00:00:00+09:00');
+  const now    = new Date();
+  const diff   = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = '과세 시작!';
+    document.getElementById('finalCountdown').textContent = '과세가 시작됐습니다';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000)  / 60000);
+  const s = Math.floor((diff % 60000)    / 1000);
+  const str = `${d}일 ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('countdown').textContent    = str;
+  document.getElementById('finalCountdown').textContent = str;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('ctc-theme', next);
-  document.querySelector('.theme-btn').textContent = next === 'dark' ? '🌙 다크' : '☀️ 라이트';
+/* ── NUMBER FORMAT ── */
+const fmt  = n => n == null ? '—' : Math.round(n).toLocaleString('ko-KR') + '원';
+const fmtP = n => n == null ? '—' : (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+
+/* ── CORE CALCULATION ── */
+function calcTax(buy, sell, fee, useDeduction) {
+  const profit   = sell - buy - fee;
+  const deduct   = useDeduction ? 2500000 : 0;
+  const taxBase  = Math.max(0, profit - deduct);
+  const tax      = Math.round(taxBase * 0.22);
+  const net      = profit - tax;
+  const roi      = buy > 0 ? (profit / buy) * 100 : 0;
+  const effective = profit > 0 ? (tax / profit) * 100 : 0;
+  return { profit, taxBase, tax, net, roi, effective };
 }
 
-function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+/* ── PROGRESS BAR ── */
+function updateProgress() {
+  const b = +document.getElementById('buyAmount').value  || 0;
+  const s = +document.getElementById('sellAmount').value || 0;
+  const f = +document.getElementById('feeAmount').value  || 0;
+  let pct = 10;
+  if (b > 0) pct = 35;
+  if (b > 0 && s > 0) pct = 65;
+  if (b > 0 && s > 0 && f >= 0) pct = 85;
+  document.getElementById('progressFill').style.width = pct + '%';
 
-function calcTax() {
-  const buy = parseFloat(document.getElementById('buyAmt').value) || 0;
-  const sell = parseFloat(document.getElementById('sellAmt').value) || 0;
-  const fee = parseFloat(document.getElementById('feeAmt').value) || 0;
-  const ded = parseFloat(document.getElementById('deduction').value) || 2500000;
-
-  const profit = sell - buy - fee;
-  const taxBase = Math.max(0, profit - ded);
-  const tax = taxBase * 0.22;
-  const net = profit - tax;
-  const roi = buy > 0 ? ((sell - buy - fee) / buy * 100) : 0;
-  const effRate = profit > 0 ? (tax / profit * 100) : 0;
-
-  document.getElementById('rProfit').textContent = fmt(profit);
-  document.getElementById('rTaxBase').textContent = fmt(taxBase);
-  document.getElementById('rTax').textContent = fmt(tax);
-  document.getElementById('rNet').textContent = fmt(net);
-  document.getElementById('rRoi').textContent = roi.toFixed(2) + '%';
-  document.getElementById('rEffRate').textContent = effRate.toFixed(2) + '%';
-
-  document.getElementById('rProfit').className = 'value ' + (profit >= 0 ? 'orange' : 'red');
-  document.getElementById('rNet').className = 'value ' + (net >= 0 ? 'green' : 'red');
-
-  document.getElementById('resultBox').classList.add('show');
-  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  ['step1-label','step2-label','step3-label','step4-label'].forEach((id,i) => {
+    document.getElementById(id).classList.toggle('active',
+      (i === 0 && b === 0) ||
+      (i === 1 && b > 0 && s === 0) ||
+      (i === 2 && b > 0 && s > 0) ||
+      (i === 3 && pct === 85)
+    );
+  });
 }
 
-function liveCalc() {
-  const buy = parseFloat(document.getElementById('buyAmt').value);
-  const sell = parseFloat(document.getElementById('sellAmt').value);
-  if (buy > 0 && sell > 0) calcTax();
+/* ── REAL-TIME PREVIEW ── */
+function onInput() {
+  updateProgress();
+  const buy  = +document.getElementById('buyAmount').value  || 0;
+  const sell = +document.getElementById('sellAmount').value || 0;
+  const fee  = +document.getElementById('feeAmount').value  || 0;
+  const useD = document.getElementById('deductionToggle').checked;
+
+  if (!buy && !sell) return;
+
+  const r = calcTax(buy, sell, fee, useD);
+  const card = document.getElementById('previewCard');
+  card.classList.toggle('has-value', buy > 0 && sell > 0);
+
+  const pEl = document.getElementById('prev-profit');
+  pEl.textContent = fmt(r.profit);
+  pEl.className   = 'preview-num ' + (r.profit >= 0 ? 'profit' : 'loss');
+
+  document.getElementById('prev-tax').textContent      = fmt(r.tax);
+  document.getElementById('prev-net').textContent      = fmt(r.net);
+  document.getElementById('prev-roi').textContent      = fmtP(r.roi);
+  document.getElementById('prev-effective').textContent = r.profit > 0 ? r.effective.toFixed(2) + '%' : '—';
+  document.getElementById('prev-taxBase').textContent  = fmt(r.taxBase);
 }
 
-function toggleFaq(el) {
-  const item = el.parentElement;
-  item.classList.toggle('open');
+/* ── AUTO FEE ── */
+function autoFee() {
+  const buy  = +document.getElementById('buyAmount').value  || 0;
+  const sell = +document.getElementById('sellAmount').value || 0;
+  const fee  = Math.round((buy + sell) * 0.0005);
+  document.getElementById('feeAmount').value = fee;
+  onInput();
+  showToast('✅ 업비트 수수료 0.05% 자동 계산됐어요');
 }
+function clearFee() {
+  document.getElementById('feeAmount').value = '';
+  onInput();
+}
+
+/* ── CALCULATE (Full) ── */
+function calculate() {
+  const buy  = +document.getElementById('buyAmount').value  || 0;
+  const sell = +document.getElementById('sellAmount').value || 0;
+  const fee  = +document.getElementById('feeAmount').value  || 0;
+  const useD = document.getElementById('deductionToggle').checked;
+
+  if (!buy || !sell) {
+    showToast('⚠️ 매수금액과 매도금액을 입력해주세요');
+    document.getElementById('buyAmount').focus();
+    return;
+  }
+
+  const r = calcTax(buy, sell, fee, useD);
+
+  /* Update progress to 100% */
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('step4-label').classList.add('active');
+
+  /* Fill result cards */
+  const profitEl = document.getElementById('r-profit');
+  profitEl.textContent = fmt(r.profit);
+  profitEl.className   = 'result-card-value ' + (r.profit >= 0 ? 'text-green' : 'text-red');
+
+  document.getElementById('r-taxBase').textContent    = fmt(r.taxBase);
+  document.getElementById('r-tax').textContent        = fmt(r.tax);
+  document.getElementById('r-net').textContent        = fmt(r.net);
+  document.getElementById('r-roi').textContent        = fmtP(r.roi);
+
+  const effEl = document.getElementById('r-effective');
+  effEl.textContent = r.profit > 0 ? r.effective.toFixed(2) + '%' : '0%';
+
+  /* Badge */
+  const badge = document.getElementById('resultBadge');
+  if (r.profit > 0) {
+    badge.textContent = '📈 수익 발생';
+    badge.className   = 'result-badge profit-badge';
+  } else if (r.profit < 0) {
+    badge.textContent = '📉 손실 발생';
+    badge.className   = 'result-badge loss-badge';
+  } else {
+    badge.textContent = '➡️ 수익 없음';
+    badge.className   = 'result-badge';
+  }
+
+  /* Emotion message */
+  const box = document.getElementById('emotionBox');
+  if (r.profit > 0 && r.tax === 0) {
+    box.className   = 'emotion-box zero-emotion';
+    box.innerHTML   = `🎉 <strong>수익이 났고, 세금도 0원입니다!</strong><br/>
+      연간 수익 <strong>${fmt(r.profit)}</strong>으로 250만원 기본공제 이내에요.<br/>
+      단, 다른 코인에서도 수익이 발생하면 합산되니 꼭 확인하세요.`;
+  } else if (r.profit > 0 && r.tax > 0) {
+    box.className   = 'emotion-box profit-emotion';
+    box.innerHTML   = `💰 <strong>수익 ${fmt(r.profit)} — 세금은 ${fmt(r.tax)}입니다.</strong><br/>
+      세후에도 <strong class="text-green">${fmt(r.net)}</strong>이 손에 남습니다. 훌륭해요!<br/>
+      <strong>${fmt(r.tax)}</strong>을 더 줄이고 싶다면 아래 절세 가이드를 확인해보세요. 👇`;
+  } else {
+    box.className   = 'emotion-box loss-emotion';
+    box.innerHTML   = `😊 <strong>손실이 발생했지만, 세금은 0원입니다.</strong><br/>
+      손실 구간에서는 세금이 없어요. 연내 다른 코인 수익과 상계하면 절세도 가능합니다.<br/>
+      <strong>Tax-Loss Harvesting</strong> 전략으로 손실을 활용해보세요. 👇`;
+  }
+
+  /* Show result section */
+  const rs = document.getElementById('resultSection');
+  rs.classList.add('visible');
+  setTimeout(() => rs.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+/* ── RESET ── */
+function resetCalc() {
+  ['buyAmount','sellAmount','feeAmount'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('deductionToggle').checked = true;
+  document.getElementById('progressFill').style.width = '10%';
+  document.getElementById('resultSection').classList.remove('visible');
+  ['prev-profit','prev-tax','prev-net','prev-roi','prev-effective','prev-taxBase']
+    .forEach(id => document.getElementById(id).textContent = '—');
+  document.getElementById('previewCard').classList.remove('has-value');
+  document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── SHARE ── */
+function shareKakao() {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('코린이도 10초 만에 2027 코인 세금 계산! 무료로 해보세요 👇');
+  showToast('💛 카카오톡 공유 링크 복사됐어요!');
+  navigator.clipboard.writeText(window.location.href).catch(() => {});
+}
+function copyResult() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    showToast('✅ 링크가 클립보드에 복사됐어요!');
+  }).catch(() => {
+    showToast('⚠️ 복사에 실패했어요. 주소창에서 직접 복사해주세요.');
+  });
+}
+
+/* ── LEAD FORM ── */
+function submitLead() {
+  const name  = document.getElementById('leadName').value.trim();
+  const email = document.getElementById('leadEmail').value.trim();
+  if (!name || !email) {
+    showToast('⚠️ 이름과 이메일을 입력해주세요');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('⚠️ 올바른 이메일 형식을 입력해주세요');
+    return;
+  }
+  showToast('📨 5분 이내 이메일로 발송됩니다! 스팸함도 확인해주세요 📬');
+  document.getElementById('leadName').value  = '';
+  document.getElementById('leadEmail').value = '';
+  document.getElementById('leadPhone').value = '';
+}
+
+/* ── TOAST ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ── FAQ ── */
+const faqs = [
+  {
+    q: '코인 세금은 언제부터 내나요?',
+    a: '현행 법률 기준 <strong>2027년 1월 1일부터</strong> 가상자산 양도소득세가 부과됩니다. 2027년 이후 코인을 매도해 수익이 발생하면 다음 해 5월에 종합소득세 신고를 통해 납부해야 합니다.'
+  },
+  {
+    q: '250만원 이하면 진짜 세금이 0원인가요?',
+    a: '맞습니다. <strong>연간 가상자산 수익이 250만원 이하</strong>이면 세금이 0원입니다. 여러 코인에서 발생한 수익과 손실을 모두 합산한 순이익 기준으로 판단합니다.'
+  },
+  {
+    q: '코인을 팔지 않고 보유만 해도 세금을 내야 하나요?',
+    a: '아닙니다. 코인을 <strong>실제로 매도(현금화)해 수익이 확정된 경우에만</strong> 세금이 부과됩니다. 보유만 하거나 평가익(미실현 수익) 상태에서는 세금이 발생하지 않습니다.'
+  },
+  {
+    q: '코인 손실이 나면 세금 혜택이 있나요?',
+    a: '네. 같은 과세연도 내에서 <strong>손실 코인과 수익 코인을 합산</strong>해 순이익에만 과세됩니다. 비트코인 수익 500만원 + 이더리움 손실 300만원 = 순이익 200만원 → 250만원 공제 적용 시 세금 0원입니다.'
+  },
+  {
+    q: '업비트, 빗썸, 바이낸스 모두 신고해야 하나요?',
+    a: '네. <strong>국내외 모든 거래소</strong>에서 발생한 수익을 합산해 신고해야 합니다. 해외 거래소 신고를 누락하면 가산세가 부과될 수 있습니다.'
+  },
+  {
+    q: '코인 수익 취득원가는 어떻게 계산하나요?',
+    a: '한국 세법에서는 <strong>이동평균법</strong>을 적용합니다. 여러 번 나눠 산 경우 모든 매수금액의 평균 취득단가를 기준으로 합니다. CSV 세금 계산기로 자동 계산할 수 있습니다.'
+  },
+  {
+    q: 'DCA랑 물타기, 세금 계산 방법이 다른가요?',
+    a: '세금 계산 기준은 동일합니다. 매수·매도 기준 이동평균법으로 취득원가를 산정하고, 매도 시 수익에 22%를 과세합니다. 다만 <strong>DCA 계산기</strong>를 이용하면 정기매수 상황에 맞는 평균단가를 더 정확하게 계산할 수 있습니다.'
+  }
+];
+
+const faqList = document.getElementById('faqList');
+faqs.forEach((f, i) => {
+  faqList.innerHTML += `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" onclick="toggleFaq(${i})">
+        <span>${f.q}</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">${f.a}</div>
+    </div>`;
+});
+function toggleFaq(i) {
+  const el = document.getElementById('faq-' + i);
+  el.classList.toggle('open');
+}
+
+/* ── TRADINGVIEW CHART ── */
+function initChart() {
+  if (typeof TradingView === 'undefined') return;
+  new TradingView.widget({
+    container_id: 'tradingview_chart',
+    symbol:       'UPBIT:BTCKRW',
+    interval:     'D',
+    timezone:     'Asia/Seoul',
+    theme:        'dark',
+    style:        '1',
+    locale:       'kr',
+    toolbar_bg:   '#141414',
+    enable_publishing: false,
+    hide_top_toolbar:  false,
+    hide_legend:       false,
+    save_image:        false,
+    height:            420,
+    width:             '100%',
+    studies: ['RSI@tv-basicstudies', 'MACD@tv-basicstudies'],
+    backgroundColor: '#141414',
+    gridColor:       'rgba(255,255,255,0.04)',
+  });
+}
+/* fallback: try after DOM ready if script already loaded */
+if (typeof TradingView !== 'undefined') initChart();
 </script>
+
 </body>
 </html>
