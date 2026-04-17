@@ -899,7 +899,7 @@
 
     <div style="margin-bottom:28px">
       <a href="#calculator" class="btn-primary">
-        🧮 지금 바로 내 세금 계산하기 →
+        🧮 지금 바로 내 예상 세금 계산하기 →
       </a>
     </div>
     <div class="hero-assurance">
@@ -1039,7 +1039,7 @@
     </p>
     <div style="text-align:center; margin-top:24px">
       <a href="#calculator" class="btn-primary" style="font-size:15px; padding:14px 32px">
-        🧮 내 정확한 세금 계산하기 →
+        🧮 내 예상 세금 계산하기 →
       </a>
     </div>
   </div>
@@ -1166,7 +1166,7 @@
       <!-- CALC BUTTON -->
       <div class="calc-cta-wrap">
         <button class="btn-calc" onclick="calculate()">
-          🧮 지금 바로 정확한 세금 계산하기
+          🧮 지금 바로 정확한 예상 세금 계산하기
         </button>
         <div class="btn-assurance">
           <span>🔒 개인정보 미수집</span>
@@ -1245,7 +1245,7 @@
         <div class="result-cta-icon">📥</div>
         <div class="result-cta-title">이 결과, 세금 더 줄일 수 있습니다</div>
         <div class="result-cta-desc">
-          합법적 절세 전략 3가지 + 2027 세금 완벽가이드 30페이지 PDF<br/>
+          "2027 가상자산 과세 제도 완벽가이드 30페이지 PDF"<br/>
           지금 이메일로 무료 받기
         </div>
         <div class="result-cta-btns">
@@ -1253,7 +1253,7 @@
             📄 절세 가이드 PDF 무료 받기 →
           </a>
           <a href="/consultation.html" class="btn-secondary" style="font-size:14px">
-            📞 세무사 무료 상담
+            📞 제휴 세무사 연결 서비스
           </a>
         </div>
       </div>
@@ -1388,7 +1388,7 @@
       </a>
       <a href="/consultation.html" class="tool-card">
         <div class="icon">📞</div>
-        <h3>세무사 무료 상담</h3>
+        <h3>제휴 세무사 연결 서비스</h3>
         <p>전문가 1:1 절세 전략 무료 상담</p>
       </a>
     </div>
@@ -1498,7 +1498,7 @@
         <h4>절세 전략</h4>
         <a href="/tools/tax-loss-harvesting.html">🌿 Tax-Loss Harvesting</a>
         <a href="/tools/kimchi-premium.html">🌶️ 김치프리미엄</a>
-        <a href="/consultation.html">📞 세무사 무료 상담</a>
+        <a href="/consultation.html">📞 제휴 세무사 연결 서비스</a>
       </div>
       <div class="footer-col">
         <h4>법적 고지</h4>
@@ -1517,7 +1517,7 @@
 
 <!-- STICKY BOTTOM BAR (Mobile) -->
 <div class="sticky-bottom">
-  <span class="sticky-bottom-text">💰 내 코인 세금 계산하기</span>
+  <span class="sticky-bottom-text">💰 내 코인 예상 세금 계산하기</span>
   <button class="sticky-bottom-cta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">
     무료 계산 →
   </button>
@@ -1830,79 +1830,330 @@ if (typeof TradingView !== 'undefined') initChart();
    라이트 모드 CSS 변수 오버라이드
 ============================================================ */
 body.light-mode {
-  --dark:   #f5f5f5;
-  --dark2:  #efefef;
-  --dark3:  #e8e8e8;
+  --dark:   #ffffff;
+  --dark2:  #f7f8fa;
+  --dark3:  #f0f2f5;
   --card:   #ffffff;
-  --border: #dddddd;
-  --text:   #111111;
-  --muted:  #666666;
-  background: #f5f5f5;
-  color: #111;
+  --border: #e8eaed;
+  --text:   #191919;
+  --muted:  #6b7684;
+  background: #ffffff;
+  color: #191919;
 }
-body.light-mode .topbar        { background: #fff; }
-body.light-mode .urgent-banner { /* 그대로 유지 */ }
-body.light-mode .ticker-wrap   { background: #fff; }
+
+/* ── 네비게이션 ── */
+body.light-mode .topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e8eaed;
+  box-shadow: 0 1px 8px rgba(0,0,0,.06);
+}
+body.light-mode .topbar-logo { color: var(--orange); }
+body.light-mode .topbar-nav a { color: #6b7684; }
+body.light-mode .topbar-nav a:hover,
+body.light-mode .topbar-nav a.active {
+  background: #f7f8fa;
+  color: var(--orange);
+}
+body.light-mode #themeToggle {
+  border-color: #e8eaed;
+  color: #191919;
+  background: #f7f8fa;
+}
+
+/* ── 긴급 배너 — 그대로 유지 ── */
+
+/* ── 히어로 섹션 ── */
 body.light-mode .hero {
-  background: radial-gradient(ellipse at 60% 0%, #fff3e0 0%, #f5f5f5 70%);
+  background: linear-gradient(180deg, #fff9f2 0%, #ffffff 100%);
 }
+body.light-mode .hero h1 { color: #191919; }
+body.light-mode .hero-sub { color: #6b7684; }
+body.light-mode .hero-assurance { color: #6b7684; }
+body.light-mode .hero-badge {
+  background: rgba(247,147,26,.08);
+  border-color: rgba(247,147,26,.25);
+  color: var(--orange);
+}
+
+/* ── 통계 스트립 ── */
+body.light-mode .stats-strip {
+  border-color: #e8eaed;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.light-mode .stat-item {
+  background: #ffffff;
+  border-right-color: #e8eaed;
+}
+body.light-mode .stat-label { color: #6b7684; }
+
+/* ── 공감 섹션 ── */
+body.light-mode .pain-section { background: #f7f8fa; }
+body.light-mode .pain-card {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+body.light-mode .pain-card p { color: #6b7684; }
+body.light-mode .pain-resolve {
+  background: linear-gradient(135deg,rgba(247,147,26,.06),rgba(247,147,26,.02));
+  border-color: rgba(247,147,26,.2);
+}
+
+/* ── 세금표 섹션 ── */
+body.light-mode .tax-table-section { background: #ffffff; }
+body.light-mode .tax-table th {
+  background: #f7f8fa;
+  color: #6b7684;
+  border-bottom: 2px solid #e8eaed;
+}
+body.light-mode .tax-table td {
+  background: #ffffff;
+  border-bottom: 1px solid #f0f2f5;
+  color: #191919;
+}
+body.light-mode .tax-table tr:hover td { background: #f7f8fa; }
+
+/* ── 계산기 섹션 ── */
+body.light-mode .calc-section { background: #f7f8fa; }
+body.light-mode .calc-wrap {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+body.light-mode .calc-title { color: #191919; }
+body.light-mode .calc-desc  { color: #6b7684; }
+
+/* 진행바 */
+body.light-mode .progress-bar-wrap { background: #f0f2f5; }
+body.light-mode .progress-step     { color: #adb5bd; }
+body.light-mode .progress-step.active { color: var(--orange); }
+
+/* 입력 필드 */
+body.light-mode .form-label { color: #191919; }
+body.light-mode .form-hint  { color: #6b7684; }
 body.light-mode .form-control {
-  background: #fff;
-  color: #111;
-  border-color: #ccc;
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaed;
+  color: #191919;
 }
 body.light-mode .form-control:focus {
+  background: #ffffff;
   border-color: var(--orange);
   box-shadow: 0 0 0 3px rgba(247,147,26,.1);
 }
-body.light-mode .result-card  { background: #fff; }
+body.light-mode .form-control::placeholder { color: #adb5bd; }
+body.light-mode .input-unit  { color: #adb5bd; }
+body.light-mode .input-micro { color: #6b7684; }
+
+/* 자동계산 버튼 */
+body.light-mode .deduction-row {
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaed;
+}
+body.light-mode .deduction-label { color: #191919; }
+
+/* 실시간 미리보기 */
 body.light-mode .preview-card {
-  background: linear-gradient(135deg,rgba(247,147,26,.06),rgba(247,147,26,.01));
+  background: #fff9f2;
+  border: 1.5px dashed rgba(247,147,26,.35);
 }
-body.light-mode .deduction-row { background: #fff; border-color: #ccc; }
-body.light-mode .faq-q         { background: #fff; color: #111; }
-body.light-mode .faq-a         { background: #fff; }
-body.light-mode .tax-table td  { background: #fff; }
-body.light-mode .tax-table th  { background: #f0f0f0; }
-body.light-mode .tax-table tr:hover td { background: #fafafa; }
-body.light-mode .formula-box   { background: #fff; }
-body.light-mode .example-box   { background: #fafafa; }
-body.light-mode .footer        { background: #e8e8e8; }
-body.light-mode .stat-item     { background: #fff; }
-body.light-mode .tool-card     { background: #fff; color: #111; }
-body.light-mode .pain-card     { background: #fff; }
-body.light-mode #themeToggle   { border-color: #ccc; color: #111; }
-</style>
+body.light-mode .preview-card.has-value {
+  background: #fff4e6;
+  border-style: solid;
+  border-color: rgba(247,147,26,.5);
+}
+body.light-mode .preview-title { color: #adb5bd; }
+body.light-mode .preview-lbl   { color: #6b7684; }
 
-<script>
-/* ============================================================
-   라이트 / 다크 모드 토글
-============================================================ */
-function toggleTheme() {
-  const body      = document.body;
-  const icon      = document.getElementById('themeIcon');
-  const label     = document.getElementById('themeLabel');
-  const isLight   = body.classList.toggle('light-mode');
+/* ── 결과 섹션 ── */
+body.light-mode .result-section .calc-wrap {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+}
+body.light-mode .result-title  { color: #191919; }
+body.light-mode .result-card {
+  background: #f7f8fa;
+  border: 1px solid #e8eaed;
+}
+body.light-mode .result-card.highlight {
+  background: #fff4e6;
+  border-color: var(--orange);
+}
+body.light-mode .result-card-label { color: #6b7684; }
+body.light-mode .result-card-sub   { color: #adb5bd; }
 
-  icon.textContent  = isLight ? '🌙' : '☀️';
-  label.textContent = isLight ? '다크' : '라이트';
-
-  // 선택값 저장 (새로고침해도 유지)
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+/* 감정 메시지 */
+body.light-mode .emotion-box.profit-emotion {
+  background: #f0fdf4;
+  border-color: rgba(0,200,83,.3);
+  color: #191919;
+}
+body.light-mode .emotion-box.loss-emotion {
+  background: #fff5f5;
+  border-color: rgba(229,57,53,.3);
+  color: #191919;
+}
+body.light-mode .emotion-box.zero-emotion {
+  background: #fff9f2;
+  border-color: rgba(247,147,26,.3);
+  color: #191919;
 }
 
-/* 페이지 로드시 저장된 테마 적용 */
-(function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.body.classList.add('light-mode');
-    document.addEventListener('DOMContentLoaded', () => {
-      const icon  = document.getElementById('themeIcon');
-      const label = document.getElementById('themeLabel');
-      if (icon)  icon.textContent  = '🌙';
-      if (label) label.textContent = '다크';
-    });
-  }
+/* 결과 CTA박스 */
+body.light-mode .result-cta-box {
+  background: #fff9f2;
+  border-color: rgba(247,147,26,.35);
+}
+body.light-mode .result-cta-title { color: #191919; }
+body.light-mode .result-cta-desc  { color: #6b7684; }
+
+/* ── 공유 버튼 ── */
+body.light-mode .btn-copy,
+body.light-mode .btn-reset {
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaed !important;
+  color: #191919;
+}
+body.light-mode .btn-copy:hover,
+body.light-mode .btn-reset:hover {
+  background: var(--orange);
+  border-color: var(--orange) !important;
+  color: #ffffff;
+}
+
+/* ── 차트 섹션 ── */
+body.light-mode .chart-section { background: #f7f8fa; }
+body.light-mode .chart-wrap { border-color: #e8eaed; }
+
+/* ── 공식 해설 섹션 ── */
+body.light-mode .formula-section { background: #ffffff; }
+body.light-mode .formula-box {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+body.light-mode .step-body h4 { color: #191919; }
+body.light-mode .step-body p  { color: #6b7684; }
+body.light-mode .formula-code {
+  background: #f7f8fa;
+  border: 1.5px solid #e8eaed;
+  color: var(--orange);
+}
+body.light-mode .example-box {
+  background: #f7f8fa;
+  border-color: #e8eaed;
+  border-left-color: var(--orange);
+}
+body.light-mode .example-title { color: var(--orange); }
+body.light-mode .example-row   { color: #191919; border-bottom-color: #e8eaed; }
+body.light-mode .example-row .val { color: #191919; }
+
+/* ── 관련 계산기 섹션 ── */
+body.light-mode .tools-section { background: #f7f8fa; }
+body.light-mode .tool-card {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  color: #191919;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+body.light-mode .tool-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 24px rgba(247,147,26,.12);
+  color: #191919;
+}
+body.light-mode .tool-card h3 { color: #191919; }
+body.light-mode .tool-card p  { color: #6b7684; }
+
+/* ── 리드폼 섹션 ── */
+body.light-mode .lead-section { background: #ffffff; }
+body.light-mode .lead-wrap {
+  background: linear-gradient(135deg, #fff9f2, #fff4e6);
+  border: 1.5px solid rgba(247,147,26,.3);
+  box-shadow: 0 4px 24px rgba(247,147,26,.08);
+}
+body.light-mode .lead-title   { color: #191919; }
+body.light-mode .lead-desc    { color: #6b7684; }
+body.light-mode .lead-benefit {
+  background: rgba(255,255,255,.8);
+  border: 1px solid rgba(247,147,26,.15);
+}
+body.light-mode .lead-benefit span { color: #191919; }
+body.light-mode .lead-input {
+  background: #ffffff;
+  border: 1.5px solid #e8eaed;
+  color: #191919;
+}
+body.light-mode .lead-input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(247,147,26,.1);
+}
+body.light-mode .lead-input::placeholder { color: #adb5bd; }
+body.light-mode .lead-consent { color: #adb5bd; }
+body.light-mode .lead-count   { color: #6b7684; }
+body.light-mode .live-badge {
+  background: rgba(229,57,53,.06);
+  border-color: rgba(229,57,53,.2);
+}
+
+/* ── FAQ 섹션 ── */
+body.light-mode .faq-section { background: #f7f8fa; }
+body.light-mode .faq-item {
+  border: 1px solid #e8eaed;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+body.light-mode .faq-q {
+  background: #ffffff;
+  color: #191919;
+}
+body.light-mode .faq-q:hover { background: #f7f8fa; }
+body.light-mode .faq-arrow   { background: #f0f2f5; color: #6b7684; }
+body.light-mode .faq-item.open .faq-arrow { background: var(--orange); color: #fff; }
+body.light-mode .faq-a {
+  background: #ffffff;
+  color: #6b7684;
+}
+
+/* ── 최종 CTA ── */
+body.light-mode .final-cta-section {
+  background: linear-gradient(180deg, #fff9f2 0%, #ffffff 100%);
+}
+body.light-mode .final-cta-section h2 { color: #191919; }
+body.light-mode .final-cta-section p  { color: #6b7684; }
+body.light-mode .final-tool-link {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  color: #6b7684;
+}
+body.light-mode .final-tool-link:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ── 푸터 ── */
+body.light-mode .footer {
+  background: #f7f8fa;
+  border-top: 1px solid #e8eaed;
+}
+body.light-mode .footer-col h4 { color: #191919; }
+body.light-mode .footer-col a  { color: #6b7684; }
+body.light-mode .footer-col a:hover { color: var(--orange); }
+body.light-mode .footer-bottom { color: #adb5bd; }
+
+/* ── section-title / section-desc ── */
+body.light-mode .section-title { color: #191919; }
+body.light-mode .section-desc  { color: #6b7684; }
+
+/* ── 스크롤바 ── */
+body.light-mode ::-webkit-scrollbar-track { background: #f7f8fa; }
+body.light-mode ::-webkit-scrollbar-thumb { background: #e8eaed; }
+
+/* ── 토스트 ── */
+body.light-mode .toast {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  color: #191919;
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
 })();
 </script>
 </body>
