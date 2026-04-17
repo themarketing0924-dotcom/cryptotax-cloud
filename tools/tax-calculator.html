@@ -530,10 +530,23 @@
        RELATED TOOLS SECTION
     ============================================================ */
     .tools-section { background: var(--dark2); }
-    .tools-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-      gap: 14px;
-    }
+   .tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
     .tool-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 12px; padding: 20px 16px;
