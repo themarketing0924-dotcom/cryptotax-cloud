@@ -644,6 +644,29 @@ body{
   </div>
 </div>
 
+
+<!-- 감정 공감 섹션 -->
+<div class="section fade-up" style="padding:32px 0 8px">
+  <h2 class="section-title" style="margin-bottom:20px">😰 이런 경험 있으신가요?</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div style="background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:24px;text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">😅</div>
+      <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:6px">매번 언제 살지<br>고민돼요</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.6">타이밍 잡다가 놓치고<br>후회한 적 많습니다</div>
+    </div>
+    <div style="background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:24px;text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">📉</div>
+      <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:6px">한 번에 샀다가<br>물렸어요</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.6">분할 매수를 알았더라면<br>평균단가가 달랐을 텐데</div>
+    </div>
+    <div style="background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:24px;text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">🤯</div>
+      <div style="font-weight:800;font-size:15px;color:var(--text);margin-bottom:6px">평균단가 계산이<br>너무 어려워요</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.6">회차마다 금액·가격 달라서<br>엑셀로도 헷갈립니다</div>
+    </div>
+  </div>
+</div>
+
 <!-- BTC 차트 -->
 <div class="chart-wrap" style="padding-top:24px;">
   <p style="font-size:13px;color:var(--text2);margin-bottom:8px;padding:0 4px;">📈 비트코인(BTC/KRW) 실시간 차트 — 현재가 확인 후 계산하세요</p>
@@ -653,6 +676,27 @@ body{
 <!-- 광고 1 -->
 <div style="padding:16px 20px;max-width:860px;margin:0 auto;">
   <div class="ad-wrap tall">광고 영역 (728×90) — 검색광고·애드센스</div>
+</div>
+
+
+<!-- 코인 히트맵 위젯 -->
+<div class="section fade-up" style="padding:16px 0">
+  <h2 class="section-title" style="margin-bottom:12px">🔥 실시간 코인 히트맵</h2>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:12px">DCA 매수 전 시장 전체 흐름을 한눈에 확인하세요</p>
+  <div id="dca-tv-heatmap"></div>
+  <script>
+  (function(){
+    var c=document.getElementById('dca-tv-heatmap');
+    if(!c)return;
+    c.innerHTML='<div class="tradingview-widget-container__widget" style="height:400px;width:100%;"></div>';
+    var s=document.createElement('script');
+    s.src='https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
+    s.async=true;
+    var theme=document.documentElement.getAttribute('data-theme')||'dark';
+    s.textContent=JSON.stringify({dataSource:"Crypto",blockSize:"market_cap_calc",blockColor:"change",locale:"kr",colorTheme:theme==='light'?'light':'dark',hasTopBar:false,isZoomEnabled:true,hasSymbolTooltip:true,width:"100%",height:400});
+    c.appendChild(s);
+  })();
+  </script>
 </div>
 
 <!-- DCA 계산기 -->
@@ -765,7 +809,52 @@ body{
 
 <!-- PDF 폼 -->
 <div class="section" id="pdfSection" style="padding-top:0;">
-  <div class="lead-form-wrap" id="pdfFormBox">
+  
+<!-- DCA 시뮬레이션 결과 예시 테이블 -->
+<div class="section fade-up" style="padding:16px 0">
+  <h2 class="section-title" style="margin-bottom:16px">📊 DCA 투자 기간별 시뮬레이션 예시</h2>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:14px">* BTC 연평균 수익률 50% 가정 시 예시 (실제 수익 보장 아님)</p>
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:14px">
+      <thead>
+        <tr>
+          <th style="padding:12px 16px;text-align:left;background:rgba(247,151,30,.12);border-bottom:2px solid var(--border);font-weight:800">투자기간</th>
+          <th style="padding:12px 16px;text-align:right;background:rgba(247,151,30,.12);border-bottom:2px solid var(--border);font-weight:800">총 투자금</th>
+          <th style="padding:12px 16px;text-align:right;background:rgba(247,151,30,.12);border-bottom:2px solid var(--border);font-weight:800">수익률 예시</th>
+          <th style="padding:12px 16px;text-align:right;background:rgba(247,151,30,.12);border-bottom:2px solid var(--border);font-weight:800">예상 세금 (22%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);font-weight:700">6개월 (월 50만)</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right">300만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e;font-weight:700">+25% → 375만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right">면세 (공제 내)</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);font-weight:700">1년 (월 50만)</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right">600만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e;font-weight:700">+50% → 900만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right;color:var(--orange);font-weight:700">약 66만원</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);font-weight:700">2년 (월 50만)</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right">1,200만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e;font-weight:700">+80% → 2,160만원</td>
+          <td style="padding:11px 16px;border-bottom:1px solid var(--border);text-align:right;color:var(--orange);font-weight:700">약 211만원</td>
+        </tr>
+        <tr>
+          <td style="padding:11px 16px;font-weight:700">4년 반감기 (월 50만)</td>
+          <td style="padding:11px 16px;text-align:right">2,400만원</td>
+          <td style="padding:11px 16px;text-align:right;color:#22c55e;font-weight:700">+200% → 7,200만원</td>
+          <td style="padding:11px 16px;text-align:right;color:#ef4444;font-weight:700">약 1,056만원</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="lead-form-wrap" id="pdfFormBox">
     <div style="font-size:40px;margin-bottom:10px;">📥</div>
     <h2>2027 코인 세금 완벽가이드 무료 받기</h2>
     <p>DCA 수익에 붙는 세금 22% 계산법·절세 전략 <strong>30페이지 PDF</strong><br>
@@ -914,7 +1003,15 @@ body{
 <!-- 📝 관련 블로그 -->
 <div class="section" style="padding-top:0;">
   <h2 class="section-title">📝 관련 블로그</h2>
-  <div class="blog-toss-grid">
+  
+<!-- 세금 카운트다운 배너 -->
+<div class="fade-up" style="background:linear-gradient(135deg,rgba(247,151,30,.15),rgba(247,151,30,.05));border:1.5px solid rgba(247,151,30,.35);border-radius:16px;padding:20px 24px;margin:16px 0;text-align:center">
+  <div style="font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.05em;margin-bottom:4px">⏰ 2027 가상자산 과세까지</div>
+  <div id="countdown-display" style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.5px">계산 중...</div>
+  <div style="font-size:13px;color:var(--text2);margin-top:4px">2027년 1월 1일부터 코인 수익에 <strong style="color:var(--orange)">22% 세금</strong>이 부과됩니다 — 지금 미리 계산하세요</div>
+</div>
+
+<div class="blog-toss-grid">
     <a href="https://cryptotax.cloud/blog/crypto-tax-abolition.html" class="blog-toss-card fade-up" style="animation-delay:0.05s">
       <div class="blog-toss-thumb" style="background:linear-gradient(135deg,#dc2626,#f87171);">⚖️</div>
       <div class="blog-toss-body">

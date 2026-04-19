@@ -382,6 +382,108 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   </div>
 </div>
 
+
+<!-- 감정 공감 섹션 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:16px">😰 이런 경험 있으신가요?</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <div style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">😮</div>
+      <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px">스테이킹 이자에도<br>세금이 붙는다고요?</div>
+      <div style="font-size:12px;color:var(--text-sub,var(--text2));line-height:1.6">2027년부터 스테이킹 수익도<br>과세 대상입니다</div>
+    </div>
+    <div style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">💸</div>
+      <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px">복리로 하면 얼마나<br>더 벌지 모르겠어요</div>
+      <div style="font-size:12px;color:var(--text-sub,var(--text2));line-height:1.6">단리와 복리의 차이를<br>직접 비교해 보세요</div>
+    </div>
+    <div style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-size:32px;margin-bottom:8px">🤔</div>
+      <div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px">APY가 뭔지<br>잘 모르겠어요</div>
+      <div style="font-size:12px;color:var(--text-sub,var(--text2));line-height:1.6">연 수익률 개념부터<br>쉽게 설명해 드립니다</div>
+    </div>
+  </div>
+</div>
+
+<!-- 스테이킹 수익 구간 테이블 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:14px">📊 원금별 스테이킹 예상 수익 (1년 단리 기준)</div>
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead>
+        <tr>
+          <th style="padding:10px 14px;text-align:left;background:rgba(88,166,255,.1);border-bottom:2px solid var(--border);font-weight:800">원금</th>
+          <th style="padding:10px 14px;text-align:right;background:rgba(88,166,255,.1);border-bottom:2px solid var(--border);font-weight:800">APY 5% 1년</th>
+          <th style="padding:10px 14px;text-align:right;background:rgba(88,166,255,.1);border-bottom:2px solid var(--border);font-weight:800">APY 10% 1년</th>
+          <th style="padding:10px 14px;text-align:right;background:rgba(88,166,255,.1);border-bottom:2px solid var(--border);font-weight:800">APY 20% 1년</th>
+          <th style="padding:10px 14px;text-align:right;background:rgba(88,166,255,.1);border-bottom:2px solid var(--border);font-weight:800">예상 세금 (22%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700">100만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">5만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">10만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">20만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right">면세</td></tr>
+        <tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700">500만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">25만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">50만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">100만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right">면세</td></tr>
+        <tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700">1,000만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">50만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">100만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">200만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--orange);font-weight:700">면세~33만</td></tr>
+        <tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700">5,000만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">250만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">500만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:#22c55e">1,000만원</td><td style="padding:9px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--orange);font-weight:700">0~165만원</td></tr>
+        <tr><td style="padding:9px 14px;font-weight:700">1억원</td><td style="padding:9px 14px;text-align:right;color:#22c55e">500만원</td><td style="padding:9px 14px;text-align:right;color:#22c55e">1,000만원</td><td style="padding:9px 14px;text-align:right;color:#22c55e">2,000만원</td><td style="padding:9px 14px;text-align:right;color:#ef4444;font-weight:700">55~385만원</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted,var(--text2));margin-top:10px">* 연 250만원 기본공제 후 초과분에 22% 부과 기준 / 실제 세금은 다를 수 있음</p>
+</div>
+
+<!-- TradingView ETH 차트 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:10px">📈 이더리움(ETH/KRW) 실시간 차트</div>
+  <p style="font-size:13px;color:var(--text-muted,var(--text2));margin-bottom:10px">스테이킹 코인 현재가를 확인한 뒤 수익을 계산하세요</p>
+  <iframe src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?locale=kr#%7B%22symbol%22%3A%22UPBIT%3AETHKRW%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22220%22%2C%22dateRange%22%3A%221M%22%2C%22colorTheme%22%3A%22dark%22%2C%22trendLineColor%22%3A%22%2358a6ff%22%2C%22underLineColor%22%3A%22rgba(88%2C166%2C255%2C0.1)%22%2C%22isTransparent%22%3Atrue%2C%22autosize%22%3Atrue%7D" title="ETH/KRW 실시간 차트" style="width:100%;height:220px;border:none;border-radius:10px"></iframe>
+</div>
+
+<!-- 코인 히트맵 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:10px">🔥 실시간 코인 히트맵</div>
+  <div id="staking-tv-heatmap"></div>
+  <script>
+  (function(){
+    var c=document.getElementById('staking-tv-heatmap');
+    if(!c)return;
+    c.innerHTML='<div class="tradingview-widget-container__widget" style="height:380px;width:100%;"></div>';
+    var s=document.createElement('script');
+    s.src='https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
+    s.async=true;
+    var theme=document.documentElement.getAttribute('data-theme')||'dark';
+    s.textContent=JSON.stringify({dataSource:"Crypto",blockSize:"market_cap_calc",blockColor:"change",locale:"kr",colorTheme:theme==='light'?'light':'dark',hasTopBar:false,isZoomEnabled:true,hasSymbolTooltip:true,width:"100%",height:380});
+    c.appendChild(s);
+  })();
+  </script>
+</div>
+
+<!-- PDF 리드캡처 섹션 -->
+<div class="card fade-up" style="margin-top:16px;border-color:rgba(88,166,255,.35);background:linear-gradient(135deg,rgba(88,166,255,.06),rgba(88,166,255,.02))">
+  <div style="text-align:center">
+    <div style="font-size:36px;margin-bottom:8px">📄</div>
+    <h2 style="font-size:20px;font-weight:900;margin-bottom:8px;color:var(--text)">스테이킹 수익 절세 가이드 30페이지 무료 받기</h2>
+    <p style="color:var(--text-muted,var(--text2));font-size:14px;margin-bottom:16px;line-height:1.7">2027 스테이킹 세금 신고 방법 · ETH/SOL/ATOM 절세 전략<br>국세청 신고서 작성 예시 포함 — 완전 무료</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px">
+      <span style="background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.25);border-radius:20px;font-size:12px;font-weight:700;padding:4px 12px">✅ ETH 스테이킹 신고법</span>
+      <span style="background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.25);border-radius:20px;font-size:12px;font-weight:700;padding:4px 12px">✅ 복리 수익 세금 계산</span>
+      <span style="background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.25);border-radius:20px;font-size:12px;font-weight:700;padding:4px 12px">✅ 250만원 공제 활용법</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;max-width:560px;margin:0 auto 10px">
+      <input type="text" placeholder="이름" style="padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-input,var(--bg));color:var(--text)">
+      <input type="email" placeholder="이메일" style="padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-input,var(--bg));color:var(--text)">
+      <input type="tel" placeholder="연락처 (선택)" style="padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg-input,var(--bg));color:var(--text)">
+    </div>
+    <button onclick="this.textContent='✅ 이메일로 발송됩니다!';this.style.background='#22c55e'" style="max-width:560px;width:100%;padding:14px;background:#58a6ff;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer">📥 무료 PDF 즉시 받기</button>
+  </div>
+</div>
+
+<!-- 세금 카운트다운 배너 -->
+<div class="fade-up" style="background:linear-gradient(135deg,rgba(88,166,255,.12),rgba(88,166,255,.04));border:1.5px solid rgba(88,166,255,.3);border-radius:14px;padding:18px 24px;margin:16px 0;text-align:center">
+  <div style="font-size:13px;font-weight:700;color:#58a6ff;letter-spacing:.05em;margin-bottom:4px">⏰ 2027 스테이킹 과세까지</div>
+  <div id="countdown-display" style="font-size:26px;font-weight:900;color:var(--text)">계산 중...</div>
+  <div style="font-size:13px;color:var(--text-muted,var(--text2));margin-top:4px">지금 스테이킹 수익을 계산하고 <strong style="color:#58a6ff">절세 전략</strong>을 준비하세요</div>
+</div>
+
 <!-- 세무사 상담 CTA -->
 <div class="card" style="border-color:rgba(88,166,255,.4);background:linear-gradient(135deg,rgba(88,166,255,.06),rgba(88,166,255,.02));">
   <div class="card-title">🧑‍💼 스테이킹 수익 세금, 미리 준비하세요</div>
@@ -453,12 +555,57 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 <div class="ad-slot">📢 광고 영역 (하단)</div>
 
-<div class="card">
-  <div class="card-title">📰 관련 가이드 & 절세 전략</div>
-  <a class="blog-link" href="https://cryptotax.cloud/blog/upbit-staking-guide.html">🏦 업비트 스테이킹 완전 가이드 — ETH·SOL·ADA 수익 극대화 →</a>
-  <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
-  <a class="blog-link" href="https://cryptotax.cloud/tools/tax-loss-harvesting.html">✂️ 손실 코인으로 세금 줄이기 — 절세 하베스팅 →</a>
+
+<!-- 블로그 카드 3개 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:16px">📰 스테이킹 관련 가이드</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <a href="/blog/coin-tax/eth-staking-tax.html" style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s">
+      <div style="height:100px;display:flex;align-items:center;justify-content:center;font-size:40px;background:rgba(88,166,255,.08)">Ξ</div>
+      <div style="padding:14px;flex:1">
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;background:rgba(88,166,255,.12);color:#58a6ff">세금</span>
+        <div style="font-size:13px;font-weight:800;color:var(--text);line-height:1.45;margin-bottom:4px">이더리움 스테이킹 세금 신고 방법</div>
+        <div style="font-size:12px;color:var(--text-muted,var(--text2))">ETH 스테이킹 이자수익 2027 세금신고 완벽 가이드</div>
+      </div>
+    </a>
+    <a href="/blog/investment/cosmos-staking.html" style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s">
+      <div style="height:100px;display:flex;align-items:center;justify-content:center;font-size:40px;background:rgba(34,197,94,.08)">⚛️</div>
+      <div style="padding:14px;flex:1">
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;background:rgba(34,197,94,.12);color:#22c55e">투자전략</span>
+        <div style="font-size:13px;font-weight:800;color:var(--text);line-height:1.45;margin-bottom:4px">코스모스 20% APY 스테이킹 실전 가이드</div>
+        <div style="font-size:12px;color:var(--text-muted,var(--text2))">ATOM 고수익 스테이킹 설정부터 세금까지</div>
+      </div>
+    </a>
+    <a href="/blog/investment/staking-vs-dca.html" style="background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s">
+      <div style="height:100px;display:flex;align-items:center;justify-content:center;font-size:40px;background:rgba(247,151,30,.08)">📊</div>
+      <div style="padding:14px;flex:1">
+        <span style="display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;background:rgba(247,151,30,.12);color:var(--orange,#f7971e)">비교분석</span>
+        <div style="font-size:13px;font-weight:800;color:var(--text);line-height:1.45;margin-bottom:4px">스테이킹 vs DCA 수익률 비교</div>
+        <div style="font-size:12px;color:var(--text-muted,var(--text2))">어떤 전략이 장기적으로 더 유리할까?</div>
+      </div>
+    </a>
+  </div>
 </div>
+
+<!-- 외부링크 카드 -->
+<div class="card fade-up" style="margin-top:16px">
+  <div class="card-title" style="margin-bottom:14px">🔗 공식 기관 바로가기</div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <a href="https://www.nts.go.kr/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .2s">
+      <span style="font-size:24px">🏛️</span>
+      <div><div style="font-weight:700;font-size:14px;color:var(--text)">국세청 — 가상자산 과세 안내</div><div style="font-size:12px;color:var(--text-muted,var(--text2))">nts.go.kr — 스테이킹 리워드 취득가액 기준</div></div>
+    </a>
+    <a href="https://www.fsc.go.kr/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .2s">
+      <span style="font-size:24px">🏦</span>
+      <div><div style="font-weight:700;font-size:14px;color:var(--text)">금융위원회 — 가상자산 규제 현황</div><div style="font-size:12px;color:var(--text-muted,var(--text2))">fsc.go.kr — 2027 가상자산 과세 법안</div></div>
+    </a>
+    <a href="https://coinlabs.kr/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:var(--bg-elevated,var(--bg3));border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .2s">
+      <span style="font-size:24px">💡</span>
+      <div><div style="font-weight:700;font-size:14px;color:var(--text)">코인랩스 — 코인 세금 데이터</div><div style="font-size:12px;color:var(--text-muted,var(--text2))">coinlabs.kr — 스테이킹 수익 자동 집계 서비스</div></div>
+    </a>
+  </div>
+</div>
+
 
 </div>
 
