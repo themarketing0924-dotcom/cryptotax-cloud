@@ -1,0 +1,164 @@
+당신은 시니어 한국어 프론트엔드 개발자입니다.
+프로젝트: cryptotax.cloud (순수 정적 HTML/CSS/JS, 프레임워크 없음)
+기준 페이지: tax-calculator.html (가장 완성도 높음)
+목표: 아래 4개 페이지를 tax-calculator.html과 동일한 구조·컬러·폰트·UI 패턴으로 통일
+
+=== 대상 파일 ===
+1. tools/kimchi-calculator.html
+2. tools/dca-calculator.html
+3. tools/staking-calculator.html
+4. (tax-calculator.html은 기준 파일 — 수정 최소화)
+
+=== PHASE 0 : 기준 파일 분석 ===
+tax-calculator.html을 읽어서 아래 항목을 추출하세요:
+- CSS 변수 전체 목록 (--orange, --dark, --card 등)
+- <nav> 마크업 전체
+- <footer> 마크업 전체
+- Hero 4-stat 박스 HTML 패턴
+- 감정 공감 섹션 HTML 패턴 (😱😤 박스)
+- 수익 구간 테이블 HTML 패턴
+- 4단계 계산 공식 해설 HTML 패턴
+- PDF 리드캡처 섹션 HTML
+- 실시간 결과 미리보기 6-항목 박스 패턴
+- 세금 카운트다운 JS 로직
+- TradingView 차트 위젯 코드
+
+=== PHASE 1 : 공통 에셋 생성 ===
+
+FILE: /assets/css/common.css
+- tax-calculator.html에서 추출한 CSS 변수를 :root에 통합
+- 다크 테마 기본, 라이트 테마 토글 지원 ([data-theme="light"] 선택자)
+- 반응형 그리드: .grid-2, .grid-3, .grid-4, .tools-grid (3열→2열→1열)
+- 카드 스타일: .stat-box, .signal-box, .step-card, .blog-card, .ext-link-card
+- 감정공감 박스: .pain-grid, .pain-card
+- 세금 구간 테이블: .tax-table (반응형)
+- 공식 해설 스텝: .formula-steps, .formula-step
+- 리드캡처: .lead-section, .lead-benefits (3×3 그리드)
+- 버튼: .btn-primary (오렌지), .btn-secondary
+- fade-up 애니메이션 클래스
+- 네비게이션 공통 스타일
+- 푸터 공통 스타일
+
+FILE: /assets/js/common.js
+- IntersectionObserver로 .fade-up 애니메이션 실행
+- 테마 토글: localStorage에 'theme' 저장, 페이지 로드 시 복원
+- 숫자 포맷터: formatKRW(num) → "1,234,567원"
+- 2027-01-01 카운트다운: updateCountdown() — id="countdown-display" 요소 업데이트
+- 관련 계산기 스티키 배너: PAGES 맵 기반으로 하단 배너 자동 생성
+  PAGES 맵:
+  { kimchi: [{title:'세금계산기',url:'/tools/tax-calculator.html',emoji:'🧮'},
+             {title:'DCA계산기',url:'/tools/dca-calculator.html',emoji:'📅'},
+             {title:'ROI계산기',url:'/tools/roi-calculator.html',emoji:'📊'}],
+    dca:    [{title:'세금계산기',url:'/tools/tax-calculator.html',emoji:'🧮'},
+             {title:'물타기계산기',url:'/tools/multa-calculator.html',emoji:'📉'},
+             {title:'김프계산기',url:'/tools/kimchi-calculator.html',emoji:'🌶️'}],
+    staking:[{title:'세금계산기',url:'/tools/tax-calculator.html',emoji:'🧮'},
+             {title:'ROI계산기',url:'/tools/roi-calculator.html',emoji:'📊'},
+             {title:'DCA계산기',url:'/tools/dca-calculator.html',emoji:'📅'}] }
+
+=== PHASE 2 : 각 페이지 공통 삽입 ===
+kimchi, dca, staking 3개 파일 모두에 적용:
+A. <head> 안에 추가:
+   <link rel="stylesheet" href="/assets/css/common.css">
+B. </body> 직전에 추가:
+   <script src="/assets/js/common.js"></script>
+C. 기존 <nav>를 tax-calculator.html의 <nav> 마크업으로 교체
+D. 기존 <footer>를 tax-calculator.html의 <footer> 마크업으로 교체
+
+=== PHASE 3 : 페이지별 구조 통일 ===
+
+【kimchi-calculator.html】
+현재 있는 것: Hero 4-stat ✅, 신호등 시스템 ✅, 차트 ✅, 히트맵 ✅, PDF리드 ✅
+추가해야 할 것:
+1. Hero 바로 아래 감정 공감 섹션 삽입 (.pain-grid 3열):
+   😱"김프가 뭔지 몰라서 손해봤어요" / 🤔"지금 몇 %인지 실시간으로 알고 싶어요" / 😤"세금까지 계산하기 너무 복잡해요"
+2. 수익 구간 테이블 → 김프 구간별 해석 테이블로 교체:
+   | 김프 구간 | 신호 | 시장 해석 | 권장 행동 |
+   0%미만(역프) 🔵 / 0~3% 🟢 / 3~8% 🟡 / 8%이상 🔴
+3. 세금 카운트다운 배너 삽입 (id="countdown-display" 사용)
+4. 블로그 카드 3개 삽입 (PDF리드 아래):
+   - "2027 김치프리미엄 세금 완벽 가이드" → /blog/coin-tax/kimchi-premium-tax.html
+   - "역프리미엄 저점 매수 전략" → /blog/investment/reverse-premium-strategy.html
+   - "업비트 vs 바이낸스 수수료 비교" → /blog/guide/upbit-binance-fee.html
+5. 외부링크 카드 3개 (FAQ 아래):
+   - 국세청 → https://www.nts.go.kr/
+   - 금융위원회 → https://www.fsc.go.kr/
+   - 코인랩스 → https://coinlabs.kr/
+6. .tools-grid 클래스로 관련 계산기 섹션 정렬
+
+【dca-calculator.html】
+현재 있는 것: Hero 4-stat ✅, 5단계 사용법 ✅, PDF리드 ✅, FAQ ✅
+추가해야 할 것:
+1. 감정 공감 섹션 (.pain-grid 3열):
+   😅"매번 언제 살지 고민돼요" / 📉"한 번에 샀다가 물렸어요" / 🤯"평균단가 계산이 너무 어려워요"
+2. 수익 구간 테이블 → DCA 시뮬레이션 결과 예시 테이블:
+   | 투자기간 | 총투자 | 수익률 예시 | 예상 세금 |
+   6개월 / 1년 / 2년 / 4년(반감기)
+3. TradingView 차트 위젯 삽입 (계산기 아래):
+   심볼: UPBIT:BTCKRW, 높이 400px, 다크테마
+4. 코인 히트맵 위젯 삽입 (차트 아래)
+5. 세금 카운트다운 배너
+6. 블로그 카드 3개:
+   - "DCA vs 물타기 차이 완벽 정리" → /blog/investment/dca-vs-multa.html
+   - "업비트 코인모으기 세금 계산법" → /blog/coin-tax/upbit-coin-save-tax.html
+   - "비트코인 4년 주기 DCA 수익 시뮬레이션" → /blog/investment/btc-4year-dca.html
+7. 외부링크 카드 3개 (kimchi와 동일 3곳)
+8. .tools-grid 관련 계산기 섹션
+
+【staking-calculator.html】
+현재 있는 것: APY 퀵선택 ✅, 공식 해설 ✅, APY표 ✅, FAQ ✅
+추가해야 할 것:
+1. Hero 4-stat 박스 (.grid-4) 상단 삽입:
+   💰원금보장형 스테이킹 | 📈최고APY 20.63% | 🔒연 250만 공제 | 🆓완전 무료
+2. 단계별 사용법 (4단계) 삽입:
+   ①코인 선택 → ②원금·APY·기간 입력 → ③이자방식(단리/복리) 선택 → ④세금 포함 최종 수익 확인
+3. 감정 공감 섹션:
+   😮"스테이킹 이자에도 세금이 붙는다고요?" / 💸"복리로 하면 얼마나 더 벌지 모르겠어요" / 🤔"APY가 뭔지 잘 모르겠어요"
+4. 수익 구간 테이블:
+   | 원금 | APY 5% 1년 | APY 10% 1년 | APY 20% 1년 | 예상세금 |
+   100만 / 500만 / 1000만 / 5000만 / 1억
+5. TradingView 차트 (ETH 기본, 심볼 UPBIT:ETHKRW)
+6. 히트맵 위젯
+7. PDF 리드캡처 섹션 (tax-calculator와 동일 구조, 제목만 변경):
+   "스테이킹 수익 절세 가이드 30페이지 무료 받기"
+8. 세금 카운트다운 배너
+9. 블로그 카드 3개:
+   - "이더리움 스테이킹 세금 신고 방법" → /blog/coin-tax/eth-staking-tax.html
+   - "코스모스 20% APY 스테이킹 실전 가이드" → /blog/investment/cosmos-staking.html
+   - "스테이킹 vs DCA 수익률 비교" → /blog/investment/staking-vs-dca.html
+10. 외부링크 카드 3개
+
+=== PHASE 4 : 품질 체크 ===
+모든 파일 완료 후 검증:
+- [ ] common.css 링크 존재 확인
+- [ ] common.js 링크 존재 확인
+- [ ] 감정 공감 섹션 3개 카드 표시
+- [ ] Hero stat 박스 4개 표시
+- [ ] 세금 카운트다운 작동 (2027-01-01 D-day)
+- [ ] TradingView 위젯 iframe 존재
+- [ ] PDF 리드캡처 폼 존재
+- [ ] 블로그 카드 3개 존재
+- [ ] 외부링크 3개 (국세청, 금융위, 코인랩스)
+- [ ] .tools-grid 클래스 존재
+- [ ] 반응형: 375px / 768px / 1024px 테스트
+- [ ] 기존 계산기 JS 로직 파괴 없음 확인
+
+=== 제약 조건 ===
+- React/Vue/Bootstrap 사용 금지
+- 기존 계산기 공식 로직 절대 수정 금지
+- 한국어 텍스트 유지
+- 다크 테마 기본, localStorage로 라이트 전환 유지
+- SEO 메타태그·JSON-LD·FAQ 스키마 보존
+- inline style은 class가 있으면 사용 금지
+- 각 파일 완료 후 파일 내용 전체 출력
+
+=== 실행 순서 ===
+1. tax-calculator.html 분석 (출력: 추출된 패턴 요약)
+2. /assets/css/common.css 생성
+3. /assets/js/common.js 생성
+4. kimchi-calculator.html 수정
+5. dca-calculator.html 수정
+6. staking-calculator.html 수정
+7. 품질 체크 리포트 출력
+
+각 단계 완료 시 "✅ PHASE N 완료" 메시지 출력 후 다음 단계 진행.
