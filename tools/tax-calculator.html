@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1139,6 +1139,12 @@ body.light-mode ::-webkit-scrollbar-thumb { background: #c8cdd4; }
 body.light-mode ::-webkit-scrollbar-thumb:hover { background: #f7931a; }
   </style>
 <link rel="stylesheet" href="/assets/css/common.css">
+<script>
+(function(){
+  var t=localStorage.getItem('ctc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
 </head>
 <body>
 

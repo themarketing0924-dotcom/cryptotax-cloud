@@ -2,24 +2,43 @@
 // CryptoTax.cloud — 공통 JavaScript
 // ============================================================
 
-// ① 테마 초기화 (FOUC 방지 — <head>에서 인라인 실행 권장)
+// ① 테마 초기화 (FOUC 방지)
 (function(){
   var t=localStorage.getItem('ctc-theme')||'dark';
   document.documentElement.setAttribute('data-theme',t);
-  window.addEventListener('DOMContentLoaded',function(){
-    var btn=document.getElementById('themeBtn');
-    if(btn)btn.textContent=t==='light'?'🌙 다크':'☀️ 라이트';
-  });
+  window.addEventListener('DOMContentLoaded',function(){ _applyThemeUI(t); });
 })();
 
-// ② 테마 토글
-function toggleTheme(){
-  var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
-  document.documentElement.setAttribute('data-theme',next);
-  localStorage.setItem('ctc-theme',next);
+// 테마 UI 요소 업데이트 (모든 페이지 버튼 패턴 통합)
+function _applyThemeUI(theme){
+  var isLight=theme==='light';
+  // 공통 버튼 (themeBtn)
   var btn=document.getElementById('themeBtn');
-  if(btn)btn.textContent=next==='light'?'🌙 다크':'☀️ 라이트';
+  if(btn)btn.textContent=isLight?'🌙 다크':'☀️ 라이트';
+  // tax-calculator 스타일 (themeIcon + themeLabel)
+  var icon=document.getElementById('themeIcon');
+  var label=document.getElementById('themeLabel');
+  if(icon)icon.textContent=isLight?'🌙':'☀️';
+  if(label)label.textContent=isLight?'다크':'라이트';
+  // 토글 트랙 클래스
+  var track=document.querySelector('.toggle-track');
+  if(track){track.classList.toggle('active',isLight);}
 }
+
+// ② 테마 토글 (전역 — 이미 페이지에 정의된 경우 UI 보완 래퍼로 덮어씀)
+(function(){
+  var _orig = window.toggleTheme; // 페이지별 기존 함수 백업
+  window.toggleTheme = function(){
+    var next = document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('ctc-theme', next);
+    _applyThemeUI(next);
+    // 페이지별 고유 로직 실행 (차트 리드로우 등)
+    if(typeof _orig === 'function' && _orig !== window.toggleTheme){
+      try{ _orig(); }catch(e){}
+    }
+  };
+})();
 
 // ③ 스크롤 애니메이션
 var _obs=new IntersectionObserver(function(entries){

@@ -570,6 +570,12 @@ footer a:hover { color: var(--accent); }
 </style>
   <link rel="stylesheet" href="/theme.css">
 <link rel="stylesheet" href="/assets/css/common.css">
+<script>
+(function(){
+  var t=localStorage.getItem('ctc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
 </head>
 <body>
 

@@ -349,8 +349,48 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
   .widget-wrap{padding:0 16px 24px;}
   .tax-cta-box{flex-direction:column;align-items:flex-start;}
 }
+
+/* ── Light mode override (모든 네이밍 체계 통합) ── */
+[data-theme="light"] {
+  /* Group A (--bg-surface, --bg-elevated) */
+  --bg-primary:#f8f9fa;--bg-card:#ffffff;--bg-card2:#f1f3f5;--bg-dark:#ffffff;
+  --bg-surface:#ffffff;--bg-elevated:#f1f3f5;--bg-input:#f1f3f5;
+  --primary:#f7971e;--primary-dark:#e8850f;
+  --text-primary:#111;--text-secondary:#444;--text-muted:#888;
+  --border-subtle:#e0e0e0;
+
+  /* Group B (--bg, --bg2, --bg3, --card, --point) */
+  --bg:#f8f9fa;--bg2:#ffffff;--bg3:#f1f3f5;
+  --card:#ffffff;--card2:#f1f3f5;
+  --text:#111;--text2:#444;--text3:#666;--muted:#999;
+  --border:#e0e0e0;--border2:#d0d0d0;
+  --point:#f7971e;--point2:#e8850f;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+
+  /* Group C (--accent) */
+  --accent:#f7971e;--accent2:#e8850f;
+
+  /* Group D (staking etc) */
+  --text-sub:#555;
+}
+[data-theme="light"] body{background:#f8f9fa;color:#111}
+[data-theme="light"] input,[data-theme="light"] select,[data-theme="light"] textarea{
+  background:#fff!important;color:#111!important;border-color:#d0d0d0!important}
+[data-theme="light"] .card,[data-theme="light"] .calc-card,
+[data-theme="light"] .section,[data-theme="light"] .card-box{
+  background:#fff!important;border-color:#e0e0e0!important}
+[data-theme="light"] table th{background:rgba(247,151,30,.12)!important;color:#111!important}
+[data-theme="light"] table td{color:#333!important;border-color:#e0e0e0!important}
+[data-theme="light"] table tr:nth-child(even) td{background:rgba(0,0,0,.02)!important}
+
 </style>
 <link rel="stylesheet" href="/assets/css/common.css">
+<script>
+(function(){
+  var t=localStorage.getItem('ctc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
 </head>
 <body>
 
