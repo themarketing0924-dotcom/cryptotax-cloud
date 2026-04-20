@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://cryptotax.cloud/</loc><lastmod>2026-04-19</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cryptotax.cloud/contact.html</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://cryptotax.cloud/about.html</loc><lastmod>2026-04-19</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://cryptotax.cloud/privacy-policy.html</loc><lastmod>2026-04-19</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://cryptotax.cloud/terms.html</loc><lastmod>2026-04-19</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://cryptotax.cloud/tools/tax-calculator.html</loc><lastmod>2026-04-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://cryptotax.cloud/tools/dca-calculator.html</loc><lastmod>2026-04-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://cryptotax.cloud/tools/multa-calculator.html</loc><lastmod>2026-04-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>

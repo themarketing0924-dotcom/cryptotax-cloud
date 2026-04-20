@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문의하기 | CryptoTax.cloud</title>
+<meta name="description" content="CryptoTax.cloud에 문의사항, 오류 신고, 광고 문의, 제휴 제안을 보내주세요. 빠르게 답변 드리겠습니다.">
+<link rel="canonical" href="https://cryptotax.cloud/contact.html">
+<link rel="stylesheet" href="/assets/css/common.css">
+<style>
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo',system-ui,sans-serif}
+.page-hero{background:linear-gradient(135deg,rgba(247,151,30,.1),transparent);border-bottom:1px solid var(--border);padding:52px 20px 40px;text-align:center}
+.page-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin:12px 0 10px;color:var(--text)}
+.page-hero p{color:var(--text2);font-size:.95rem;max-width:500px;margin:0 auto}
+.badge-pill{display:inline-block;background:rgba(247,151,30,.15);color:var(--orange,#f7931a);border:1px solid rgba(247,151,30,.3);border-radius:20px;padding:4px 14px;font-size:.8rem;font-weight:700;margin-bottom:12px}
+.contact-wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px;display:grid;gap:24px}
+@media(min-width:640px){.contact-wrap{grid-template-columns:1fr 1fr}}
+.contact-card{background:var(--card,#1a1a1a);border:1px solid var(--border,#2a2a2a);border-radius:16px;padding:28px 24px}
+.contact-card h2{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:6px}
+.contact-card p{font-size:.88rem;color:var(--text2,#aaa);line-height:1.7;margin-bottom:14px}
+.contact-link{display:inline-flex;align-items:center;gap:8px;background:var(--orange,#f7931a);color:#000;font-weight:800;font-size:.88rem;padding:10px 18px;border-radius:10px;text-decoration:none;transition:opacity .2s}
+.contact-link:hover{opacity:.85}
+.contact-link.blue{background:#58a6ff;color:#000}
+.contact-link.green{background:#3fb950;color:#000}
+.contact-link.gray{background:var(--bg3,#2a2a2a);color:var(--text)}
+/* 이메일 폼 */
+.form-wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+.form-card{background:var(--card,#1a1a1a);border:1px solid var(--border,#2a2a2a);border-radius:16px;padding:32px}
+.form-card h2{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:6px}
+.form-card p{font-size:.88rem;color:var(--text2);margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.83rem;font-weight:600;color:var(--text2);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg2,#111);border:1px solid var(--border,#333);border-radius:8px;padding:11px 14px;color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s;box-sizing:border-box}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange,#f7931a)}
+.form-group textarea{resize:vertical;min-height:120px;font-family:inherit}
+.form-row{display:grid;gap:14px}
+@media(min-width:540px){.form-row{grid-template-columns:1fr 1fr}}
+.submit-btn{width:100%;background:linear-gradient(135deg,#f7931a,#e8820a);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity .2s;margin-top:8px}
+.submit-btn:hover{opacity:.9}
+.form-note{font-size:.78rem;color:var(--muted,#666);margin-top:10px;text-align:center}
+/* FAQ */
+.faq-wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+.faq-title{font-size:1.2rem;font-weight:900;color:var(--text);margin-bottom:20px}
+.faq-item{border:1px solid var(--border,#2a2a2a);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.faq-q{background:var(--card,#1a1a1a);padding:14px 18px;cursor:pointer;font-size:.9rem;font-weight:700;color:var(--text);display:flex;justify-content:space-between;align-items:center}
+.faq-q:hover{background:var(--bg3,#222)}
+.faq-a{padding:14px 18px;background:var(--bg,#111);font-size:.86rem;color:var(--text2);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-arrow{transition:transform .2s;flex-shrink:0;margin-left:10px}
+</style>
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+<nav class="main-nav">
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-menu">
+    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
+    <a href="/tools/" class="nav-item">🧰 도구</a>
+    <a href="/blog/" class="nav-item">📝 블로그</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
+  </div>
+</nav>
+
+<!-- 히어로 -->
+<div class="page-hero">
+  <div class="badge-pill">📬 문의하기</div>
+  <h1>무엇이든 물어보세요</h1>
+  <p>계산기 오류 신고, 광고·제휴 문의, 콘텐츠 제안 등<br>빠르게 검토 후 답변 드리겠습니다</p>
+</div>
+
+<!-- 문의 채널 카드 -->
+<div class="contact-wrap">
+  <div class="contact-card">
+    <h2>📧 이메일 문의</h2>
+    <p>오류 신고·콘텐츠 제안·일반 문의는 이메일로 보내주세요. 영업일 기준 1~2일 내 답변합니다.</p>
+    <a href="mailto:contact@cryptotax.cloud" class="contact-link">contact@cryptotax.cloud</a>
+  </div>
+  <div class="contact-card">
+    <h2>💼 광고·제휴 문의</h2>
+    <p>배너 광고, 콘텐츠 협업, 파트너십 제안은 비즈니스 이메일로 문의해 주세요.</p>
+    <a href="mailto:biz@cryptotax.cloud" class="contact-link blue">biz@cryptotax.cloud</a>
+  </div>
+  <div class="contact-card">
+    <h2>💬 카카오톡 채널</h2>
+    <p>실시간 세금 Q&amp;A, 절세 팁을 카카오톡 채널에서 빠르게 확인하세요.</p>
+    <a href="https://open.kakao.com/cryptotaxcloud" target="_blank" rel="noopener" class="contact-link" style="background:#fee500;color:#000">카카오톡 채널 →</a>
+  </div>
+  <div class="contact-card">
+    <h2>✈️ 텔레그램</h2>
+    <p>코인 세금 뉴스, 법 개정 소식을 실시간으로 받아보세요. 구독자 무료 공개 채널입니다.</p>
+    <a href="https://t.me/cryptotaxcloud" target="_blank" rel="noopener" class="contact-link green">텔레그램 채널 →</a>
+  </div>
+</div>
+
+<!-- 이메일 폼 -->
+<div class="form-wrap">
+  <div class="form-card">
+    <h2>✉️ 직접 메시지 보내기</h2>
+    <p>아래 양식을 작성하면 이메일로 전달됩니다. 모든 항목을 성실히 기재해주시면 더 빠른 답변이 가능합니다.</p>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">이름 또는 닉네임 *</label>
+          <input type="text" id="name" name="name" placeholder="홍길동" required>
+        </div>
+        <div class="form-group">
+          <label for="email">이메일 주소 *</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="type">문의 유형 *</label>
+        <select id="type" name="type" required>
+          <option value="">-- 선택하세요 --</option>
+          <option value="bug">🐛 계산기 오류 신고</option>
+          <option value="content">📝 콘텐츠 오류·개선 제안</option>
+          <option value="biz">💼 광고·제휴 문의</option>
+          <option value="tax">💰 세금 계산 질문</option>
+          <option value="feature">🔧 기능 추가 요청</option>
+          <option value="etc">❓ 기타</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="subject">제목 *</label>
+        <input type="text" id="subject" name="subject" placeholder="간단한 제목을 입력해주세요" required>
+      </div>
+      <div class="form-group">
+        <label for="message">내용 *</label>
+        <textarea id="message" name="message" placeholder="문의 내용을 자세히 적어주세요. 오류 신고 시 어떤 계산기에서 어떤 증상이 발생했는지 알려주시면 더 빠른 해결이 가능합니다." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">📨 메시지 보내기</button>
+      <p class="form-note">* 개인정보는 문의 답변 목적으로만 사용되며, 처리 후 즉시 삭제됩니다.<br>
+      <a href="/privacy-policy.html" style="color:var(--orange)">개인정보처리방침 보기</a></p>
+    </form>
+    <div id="successMsg" style="display:none;background:rgba(63,185,80,.1);border:1px solid var(--green,#3fb950);border-radius:10px;padding:20px;text-align:center;margin-top:16px">
+      <p style="color:var(--green,#3fb950);font-weight:800;font-size:1.1rem">✅ 메시지가 전송되었습니다!</p>
+      <p style="color:var(--text2);font-size:.88rem;margin-top:6px">영업일 기준 1~2일 내 이메일로 답변 드리겠습니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap">
+  <div class="faq-title">❓ 자주 묻는 문의 유형</div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">계산기 결과가 실제 세금과 다를 수 있나요? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">네. 본 사이트의 모든 계산 결과는 <strong>참고용 추정치</strong>입니다. 실제 세금은 거래 방식, 취득원가 산정 방법, 수수료 처리 등 다양한 변수에 따라 달라집니다. 정확한 신고를 위해서는 <strong>세무사 상담 또는 국세청 홈택스</strong>를 이용하시기 바랍니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">광고를 올리려면 어떻게 해야 하나요? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">광고·제휴 문의는 <strong>biz@cryptotax.cloud</strong>로 연락해 주세요. 월 고정 배너 광고, 네이티브 콘텐츠 광고, 뉴스레터 광고 등 다양한 형태의 협력이 가능합니다. 평균 월 방문자 수와 애드센스 단가 데이터를 제공해 드립니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">콘텐츠 오류나 잘못된 정보를 발견했어요 <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">오류 신고를 보내주시면 신속히 검토 후 수정하겠습니다. 특히 세금 관련 법령이나 국세청 고시 기준에 오류가 있다면 우선순위로 처리합니다. <strong>contact@cryptotax.cloud</strong>로 해당 페이지 URL과 오류 내용을 보내주세요.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">새로운 계산기 기능을 추가해 달라는 요청이 가능한가요? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">물론입니다! 코인 투자자들에게 유용한 새 계산기 아이디어가 있으시면 문의 양식을 통해 제안해 주세요. 검토 후 반영 가능한 기능은 최대한 추가하겠습니다.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">2027년 코인 세금 신고 컨설팅이 가능한가요? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">CryptoTax.cloud는 세무 법인이 아니므로 공식 세금 상담 서비스를 제공하지 않습니다. 그러나 국세청 기준에 따른 <strong>계산 도구와 정보 가이드</strong>를 무료로 제공하며, 복잡한 신고 상황은 반드시 공인세무사와 상담하실 것을 권장드립니다.</div>
+  </div>
+</div>
+
+<!-- 하단 정보 -->
+<div style="max-width:760px;margin:0 auto;padding:0 20px 60px;text-align:center">
+  <div style="background:var(--card,#1a1a1a);border:1px solid var(--border,#2a2a2a);border-radius:16px;padding:32px">
+    <p style="font-size:.9rem;color:var(--text2,#aaa);margin-bottom:8px">📍 운영 정보</p>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.8">
+      서비스명: CryptoTax.cloud<br>
+      웹사이트: <a href="https://cryptotax.cloud" style="color:var(--orange)">https://cryptotax.cloud</a><br>
+      이메일: <a href="mailto:contact@cryptotax.cloud" style="color:var(--orange)">contact@cryptotax.cloud</a><br>
+      광고·제휴: <a href="mailto:biz@cryptotax.cloud" style="color:var(--orange)">biz@cryptotax.cloud</a><br>
+      운영시간: 평일 10:00 ~ 18:00 KST (주말·공휴일 제외)
+    </p>
+    <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="/privacy-policy.html" style="font-size:.82rem;color:var(--text2)">개인정보처리방침</a>
+      <a href="/terms.html" style="font-size:.82rem;color:var(--text2)">이용약관</a>
+      <a href="/about.html" style="font-size:.82rem;color:var(--text2)">서비스 소개</a>
+      <a href="/sitemap.xml" style="font-size:.82rem;color:var(--text2)">사이트맵</a>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="footer-links">
+    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
+    <a href="/tools/" class="footer-link">🧰 모든 도구</a>
+    <a href="/blog/" class="footer-link">📝 블로그</a>
+    <a href="/about.html" class="footer-link">ℹ️ 소개</a>
+    <a href="/contact.html" class="footer-link">📬 문의</a>
+    <a href="/privacy-policy.html" class="footer-link">개인정보처리방침</a>
+    <a href="/terms.html" class="footer-link">이용약관</a>
+  </div>
+  <p class="footer-copy">© 2026 CryptoTax.cloud · 참고용 · 실제 신고는 세무사 상담 권장</p>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  // 폼 데이터 수집
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var type = document.getElementById('type').value;
+  var subject = document.getElementById('subject').value;
+  var msg = document.getElementById('message').value;
+  // mailto 링크로 이메일 클라이언트 오픈 (정적 사이트 폼 처리)
+  var body = '이름: ' + name + '%0A이메일: ' + email + '%0A유형: ' + type + '%0A%0A내용:%0A' + encodeURIComponent(msg);
+  window.location.href = 'mailto:contact@cryptotax.cloud?subject=' + encodeURIComponent('[CryptoTax] ' + subject) + '&body=' + body;
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+</script>
+<script src="/assets/js/common.js"></script>
+</body>
+</html>
