@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270" viewBox="0 0 480 270">
+<defs></defs>
+<rect width="480" height="270" fill="#0a0a12"/>
+<rect x="0" y="0" width="480" height="3" fill="#f7931a"/>
+<circle cx="420" cy="30" r="100" fill="#f7931a" opacity=".05"/>
+<!-- 제목 -->
+<text x="28" y="55" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#f7931a">세금 계산 5단계</text>
+<!-- 스텝 박스들 -->
+<rect x="28" y="70" width="85" height="50" rx="8" fill="#1a1a1a" stroke="#f7931a" stroke-width="1"/>
+<text x="70" y="90" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">STEP1</text>
+<text x="70" y="108" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#f0f0f0" text-anchor="middle">매수가 확인</text>
+
+<text x="121" y="99" font-family="Arial,sans-serif" font-size="14" fill="#f7931a">→</text>
+
+<rect x="132" y="70" width="85" height="50" rx="8" fill="#1a1a1a" stroke="#f7931a" stroke-width="1"/>
+<text x="174" y="90" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">STEP2</text>
+<text x="174" y="108" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#f0f0f0" text-anchor="middle">매도가 확인</text>
+
+<text x="225" y="99" font-family="Arial,sans-serif" font-size="14" fill="#f7931a">→</text>
+
+<rect x="236" y="70" width="85" height="50" rx="8" fill="#1a1a1a" stroke="#f7931a" stroke-width="1"/>
+<text x="278" y="90" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">STEP3</text>
+<text x="278" y="108" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#f0f0f0" text-anchor="middle">수익 계산</text>
+
+<text x="329" y="99" font-family="Arial,sans-serif" font-size="14" fill="#f7931a">→</text>
+
+<rect x="340" y="70" width="110" height="50" rx="8" fill="#f7931a" opacity=".9"/>
+<text x="395" y="90" font-family="Arial,sans-serif" font-size="9" fill="#000" text-anchor="middle" font-weight="700">STEP5</text>
+<text x="395" y="110" font-family="Arial,sans-serif" font-size="10" font-weight="800" fill="#000" text-anchor="middle">세금 납부</text>
+
+<!-- 공식 -->
+<rect x="28" y="142" width="420" height="60" rx="10" fill="#111"/>
+<text x="238" y="166" font-family="Arial,sans-serif" font-size="11" fill="#aaa" text-anchor="middle">계산 공식</text>
+<text x="238" y="188" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="#f7931a" text-anchor="middle">(매도가 - 매수가 - 250만원) × 22%</text>
+
+<!-- 예시 -->
+<text x="28" y="228" font-family="Arial,sans-serif" font-size="11" fill="#666">예) 수익 1,000만원 →</text>
+<text x="190" y="228" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#f7931a">세금 165만원</text>
+<text x="310" y="228" font-family="Arial,sans-serif" font-size="10" fill="#555">(공제 250만 적용)</text>
+</svg>

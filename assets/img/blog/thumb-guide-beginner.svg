@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270" viewBox="0 0 480 270">
+<defs></defs>
+<rect width="480" height="270" fill="#080a0d"/>
+<rect x="0" y="0" width="480" height="3" fill="#3fb950"/>
+<circle cx="380" cy="240" r="120" fill="#3fb950" opacity=".05"/>
+<!-- 로켓 -->
+<text x="370" y="190" font-family="Arial,sans-serif" font-size="90" opacity=".15">🚀</text>
+<!-- 제목 -->
+<text x="28" y="52" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#3fb950">🌱 코린이 입문 가이드</text>
+<text x="28" y="70" font-family="Arial,sans-serif" font-size="11" fill="#888">코인 투자 처음이라면 여기서 시작하세요</text>
+<!-- 스텝 카드들 -->
+<rect x="28" y="90" width="90" height="100" rx="10" fill="#0f1a0f" stroke="#3fb950" stroke-width="1.5"/>
+<text x="73" y="120" font-family="Arial,sans-serif" font-size="22" text-anchor="middle">1️⃣</text>
+<text x="73" y="148" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#3fb950" text-anchor="middle">거래소</text>
+<text x="73" y="163" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#3fb950" text-anchor="middle">가입</text>
+<rect x="130" y="90" width="90" height="100" rx="10" fill="#111" stroke="#3fb950" stroke-width="1" opacity=".7"/>
+<text x="175" y="120" font-family="Arial,sans-serif" font-size="22" text-anchor="middle">2️⃣</text>
+<text x="175" y="148" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#aaa" text-anchor="middle">원화</text>
+<text x="175" y="163" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#aaa" text-anchor="middle">충전</text>
+<rect x="232" y="90" width="90" height="100" rx="10" fill="#111" stroke="#3fb950" stroke-width="1" opacity=".5"/>
+<text x="277" y="120" font-family="Arial,sans-serif" font-size="22" text-anchor="middle">3️⃣</text>
+<text x="277" y="148" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#aaa" text-anchor="middle">소액</text>
+<text x="277" y="163" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#aaa" text-anchor="middle">매수</text>
+<!-- 추천 시작 금액 -->
+<rect x="28" y="205" width="320" height="45" rx="10" fill="#111"/>
+<text x="48" y="225" font-family="Arial,sans-serif" font-size="10" fill="#888">추천 시작 금액</text>
+<text x="48" y="242" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#3fb950">10만원</text>
+<text x="120" y="242" font-family="Arial,sans-serif" font-size="11" fill="#aaa">으로 시작 → DCA 전략으로 꾸준히</text>
+</svg>

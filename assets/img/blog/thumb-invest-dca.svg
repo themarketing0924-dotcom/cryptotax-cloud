@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270" viewBox="0 0 480 270">
+<defs><linearGradient id="dcaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a"/><stop offset="1" stop-color="transparent"/></linearGradient></defs>
+<rect width="480" height="270" fill="#080c10"/>
+<rect x="0" y="0" width="480" height="3" fill="#f7931a"/>
+<!-- 차트 배경 -->
+<rect x="28" y="60" width="280" height="160" rx="8" fill="#0d1117"/>
+<!-- 차트선 (위로 올라가는 경로) -->
+<polyline points="48,195 85,185 122,170 159,165 196,145 233,140 270,120 285,110" stroke="#f7931a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- 차트 아래 채우기 -->
+<polygon points="48,210 85,200 122,185 159,180 196,160 233,155 270,135 285,125 285,210 48,210" fill="url(#dcaFill)" opacity=".3"/>
+<!-- DCA 매수 포인트 원들 -->
+<circle cx="85" cy="185" r="5" fill="#f7931a"/>
+<circle cx="159" cy="165" r="5" fill="#f7931a"/>
+<circle cx="233" cy="140" r="5" fill="#f7931a"/>
+<circle cx="270" cy="120" r="5" fill="#f7931a"/>
+<!-- 우측 정보 패널 -->
+<text x="330" y="85" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#f7931a">DCA 전략</text>
+<text x="330" y="103" font-family="Arial,sans-serif" font-size="10" fill="#666">Dollar Cost Averaging</text>
+<rect x="330" y="115" width="120" height="45" rx="8" fill="#111"/>
+<text x="390" y="132" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">평균 매수단가 절감</text>
+<text x="390" y="150" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#f7931a" text-anchor="middle">-18.4%</text>
+<rect x="330" y="170" width="120" height="45" rx="8" fill="#111"/>
+<text x="390" y="187" font-family="Arial,sans-serif" font-size="9" fill="#888" text-anchor="middle">10년 시뮬레이션</text>
+<text x="390" y="206" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#3fb950" text-anchor="middle">+847%</text>
+<!-- 제목 -->
+<text x="28" y="42" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#f0f0f0">정기매수로 단가를 낮춰라</text>
+<text x="28" y="240" font-family="Arial,sans-serif" font-size="10" fill="#555">월 10만원 × 12개월 = 변동성 완화 투자</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="270" viewBox="0 0 480 270">
+<defs></defs>
+<rect width="480" height="270" fill="#090d12"/>
+<rect x="0" y="0" width="480" height="3" fill="#58a6ff"/>
+<!-- 파이차트 -->
+<!-- BTC 60% (0도에서 216도) -->
+<path d="M 170 140 L 170 60 A 80 80 0 1 1 96 188 Z" fill="#f7931a"/>
+<!-- ETH 25% (216도에서 306도) -->
+<path d="M 170 140 L 96 188 A 80 80 0 0 1 170 60 A 80 80 0 0 0 96 92 Z" fill="#6366f1" opacity="0"/>
+<path d="M 170 140 L 96 188 A 80 80 0 0 1 135 68 Z" fill="#6366f1"/>
+<!-- ALT 15% (306도에서 360도) -->
+<path d="M 170 140 L 135 68 A 80 80 0 0 1 170 60 Z" fill="#3fb950"/>
+<!-- 가운데 -->
+<circle cx="170" cy="140" r="45" fill="#090d12"/>
+<text x="170" y="135" font-family="Arial,sans-serif" font-size="10" fill="#888" text-anchor="middle">포트폴리오</text>
+<text x="170" y="153" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="#f0f0f0" text-anchor="middle">비율</text>
+<!-- 범례 -->
+<rect x="290" y="80" width="12" height="12" rx="2" fill="#f7931a"/>
+<text x="310" y="91" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#f0f0f0">BTC</text>
+<text x="380" y="91" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="#f7931a">60%</text>
+<rect x="290" y="110" width="12" height="12" rx="2" fill="#6366f1"/>
+<text x="310" y="121" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#f0f0f0">ETH</text>
+<text x="380" y="121" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="#6366f1">25%</text>
+<rect x="290" y="140" width="12" height="12" rx="2" fill="#3fb950"/>
+<text x="310" y="151" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#f0f0f0">알트코인</text>
+<text x="380" y="151" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="#3fb950">15%</text>
+<!-- 제목 -->
+<text x="28" y="42" font-family="Arial,sans-serif" font-size="15" font-weight="900" fill="#58a6ff">💼 코인 포트폴리오 전략</text>
+<text x="28" y="220" font-family="Arial,sans-serif" font-size="10" fill="#555">BTC 60% · ETH 25% · 알트 15% — 기본 분산투자 비율</text>
+</svg>

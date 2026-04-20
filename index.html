@@ -175,7 +175,7 @@ a{text-decoration:none;color:inherit;}
 .hero h1{font-size:clamp(1.75rem,5.5vw,3.2rem);font-weight:900;line-height:1.2;margin-bottom:16px;color:var(--text-primary);letter-spacing:-0.03em;word-break:keep-all;}
 .hero h1 .highlight{background:linear-gradient(135deg,#f7931a,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{color:var(--text-secondary);font-size:clamp(0.95rem,2.2vw,1.1rem);font-weight:500;margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto;word-break:keep-all;line-height:1.7;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;}@media(min-width:480px){.hero-stats{grid-template-columns:repeat(4,1fr);max-width:560px;gap:14px;}}
 @media(max-width:479px){.hero-stats{grid-template-columns:repeat(2,1fr);max-width:320px;}}
 .hstat{text-align:center;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:14px 8px;}
 .hstat strong{display:block;font-size:1.5rem;font-weight:900;color:var(--orange);letter-spacing:-0.02em;}
@@ -213,7 +213,7 @@ a{text-decoration:none;color:inherit;}
 @media(min-width:768px){.section{padding:44px 32px;}}
 @media(min-width:1024px){.section{padding:52px 40px;}}
 .section-inner{max-width:920px;margin:0 auto;}
-.section-title{text-align:center;margin-bottom:40px;}
+.section-title{text-align:center;margin-bottom:32px;}
 .section-title h2{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:900;margin-bottom:8px;color:var(--text-primary);letter-spacing:-0.02em;word-break:keep-all;}
 .section-title p{color:var(--text-secondary);font-size:0.9rem;font-weight:500;word-break:keep-all;}
 /* ===== 도구 그리드 ===== */
@@ -227,6 +227,29 @@ a{text-decoration:none;color:inherit;}
 .tool-card .tc-name{font-size:0.88rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;word-break:keep-all;}
 .tool-card .tc-desc{font-size:0.74rem;color:var(--text-secondary);font-weight:500;}
 .tool-card .tc-badge{font-size:0.65rem;background:#f7931a20;color:var(--orange);border:1px solid var(--orange-border);border-radius:10px;padding:2px 7px;display:inline-block;margin-top:6px;font-weight:700;}
+/* ── tool-card 내부 클래스 별칭 (tool-* ↔ tc-*) ── */
+.tool-card .tool-icon,.tool-card .tc-icon{font-size:1.9rem;margin-bottom:9px;display:block;}
+.tool-card .tool-name,.tool-card .tc-name{font-size:0.88rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;word-break:keep-all;display:block;}
+.tool-card .tool-desc,.tool-card .tc-desc{font-size:0.74rem;color:var(--text-secondary);font-weight:500;word-break:keep-all;display:block;}
+.tool-card .tool-badge,.tool-card .tc-badge{font-size:0.65rem;background:#f7931a20;color:var(--orange);border:1px solid var(--orange-border);border-radius:10px;padding:2px 7px;display:inline-block;margin-top:6px;font-weight:700;}
+.tool-card{min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.tool-card .badge-new{background:#3fb95020;color:var(--green);border-color:var(--green-border);}
+.tool-card .badge-hot{background:#ef444420;color:#f85149;border-color:rgba(248,81,73,.3);}
+/* ── ad-slot 균형 개선 ── */
+.ad-slot{width:100%;box-sizing:border-box;padding:12px 20px;}
+@media(min-width:768px){.ad-slot{padding:16px 32px;}}
+@media(min-width:1024px){.ad-slot{padding:20px 40px;}}
+/* ── landing blog card 썸네일 ── */
+.blog-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px 10px 0 0;background:#111;margin-bottom:0;}
+.blog-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
+.blog-card:hover .blog-thumb img{transform:scale(1.04);}
+.blog-card{overflow:hidden;border-radius:14px;padding:0!important;display:flex;flex-direction:column;}
+.blog-card-inner{padding:16px 18px 18px;flex:1;}
+/* ── blog grid 균등 열 ── */
+.blog-grid{grid-auto-rows:1fr;}
+/* ── tools-grid max-width 컨테이너 ── */
+.tools-section-inner{max-width:960px;margin:0 auto;}
+
 /* ===== 시장 그리드 ===== */
 .market-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:920px;margin:0 auto;}
 @media(min-width:520px){.market-grid{grid-template-columns:repeat(2,1fr);}}
@@ -354,7 +377,10 @@ a{text-decoration:none;color:inherit;}
 .section-title{text-align:center;margin-bottom:24px;}
 .section-title h2{font-size:1.4rem;font-weight:800;margin-bottom:6px;color:var(--text-primary);}
 .section-title p{color:var(--text-secondary);font-size:0.88rem;}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;max-width:900px;margin:0 auto;}
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:960px;margin:0 auto;}
+@media(min-width:480px){.tools-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:768px){.tools-grid{grid-template-columns:repeat(4,1fr);gap:14px;}}
+@media(min-width:1024px){.tools-grid{grid-template-columns:repeat(4,1fr);gap:16px;}}
 .tool-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:14px;padding:22px 16px;transition:all 0.2s;display:block;text-align:center;}
 .tool-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 6px 20px #f7931a20;}
 .tool-card .tc-icon{font-size:1.8rem;margin-bottom:8px;}
@@ -1254,6 +1280,7 @@ a{text-decoration:none;color:inherit;}
   <div class="section-title" style="text-align:center;">
     <h2>🧰 무료 계산기 12종 모음</h2>
   <p>가상자산 거래소 투자자를 위한 필수 계산기 12종 — 회원가입 없이 즉시 사용, 완전 무료</p>
+  <div class="tools-section-inner">
   <div class="tools-grid">
 
     <!-- 1. 코인 세금 계산기 -->
@@ -1344,6 +1371,7 @@ a{text-decoration:none;color:inherit;}
     </a>
 
   </div>
+  </div><!-- /tools-section-inner -->
 </section>
 
 
@@ -1388,12 +1416,30 @@ a{text-decoration:none;color:inherit;}
     <p>세금·절세·전략·입문까지 — 코린이도 이해하는 쉬운 설명</p>
   </div>
   <div class="blog-grid">
-    <a class="blog-card" href="/blog/tax-guide-2027.html"><span class="blog-category cat-tax">⚖️ 세금</span><h3>2027 가상자산 세금 완벽 가이드</h3><p>22% 세율, 250만원 공제, 손익 통산까지 국세청 기준으로 쉽게 설명합니다.</p><span class="read-more">자세히 읽기 →</span></a>
-    <a class="blog-card" href="/blog/beginner-guide.html"><span class="blog-category cat-guide">📖 입문</span><h3>코린이 코인 투자 완전 시작 가이드</h3><p>코인 처음 시작하는 분들을 위한 A to Z 가이드.</p><span class="read-more">자세히 읽기 →</span></a>
-    <a class="blog-card" href="/blog/dca-strategy.html"><span class="blog-category cat-strategy">📅 전략</span><h3>비트코인 DCA 전략 완벽 가이드</h3><p>매달 10만원 투자하면 5년 후 얼마? 업비트 코인모으기 활용법 포함.</p><span class="read-more">자세히 읽기 →</span></a>
-    <a class="blog-card" href="/blog/upbit-staking-guide.html"><span class="blog-category cat-guide">🏦 스테이킹</span><h3>업비트 스테이킹 하는법 — ETH·SOL 이자 얼마?</h3><p>업비트에서 스테이킹으로 이자 받는 방법과 세금 처리까지 완벽 정리.</p><span class="read-more">자세히 읽기 →</span></a>
-    <a class="blog-card" href="/blog/kimchi-premium-guide.html"><span class="blog-category cat-strategy">🌶️ 전략</span><h3>김치 프리미엄 활용법</h3><p>김치 프리미엄의 원인, 역사적 패턴, 투자 참고 방법까지 데이터로 분석.</p><span class="read-more">자세히 읽기 →</span></a>
-    <a class="blog-card" href="/blog/averaging-strategy.html"><span class="blog-category cat-strategy">📊 전략</span><h3>코인 물타기 전략 가이드</h3><p>무한 물타기의 위험성과 올바른 추가 매수 전략. 평균단가 계산기 활용법.</p><span class="read-more">자세히 읽기 →</span></a>
+    <a class="blog-card" href="/blog/tax-guide-2027.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-tax-2027.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-tax">⚖️ 세금</span><h3>2027 가상자산 세금 완벽 가이드</h3><p>22% 세율, 250만원 공제, 손익 통산까지 국세청 기준으로 쉽게 설명합니다.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
+    <a class="blog-card" href="/blog/beginner-guide.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-guide-beginner.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-guide">📖 입문</span><h3>코린이 코인 투자 완전 시작 가이드</h3><p>코인 처음 시작하는 분들을 위한 A to Z 가이드.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
+    <a class="blog-card" href="/blog/dca-strategy.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-invest-dca.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-strategy">📅 전략</span><h3>비트코인 DCA 전략 완벽 가이드</h3><p>매달 10만원 투자하면 5년 후 얼마? 업비트 코인모으기 활용법 포함.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
+    <a class="blog-card" href="/blog/upbit-staking-guide.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-invest-staking.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-guide">🏦 스테이킹</span><h3>업비트 스테이킹 하는법 — ETH·SOL 이자 얼마?</h3><p>업비트에서 스테이킹으로 이자 받는 방법과 세금 처리까지 완벽 정리.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
+    <a class="blog-card" href="/blog/kimchi-premium-guide.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-invest-kimchi.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-strategy">🌶️ 전략</span><h3>김치 프리미엄 활용법</h3><p>김치 프리미엄의 원인, 역사적 패턴, 투자 참고 방법까지 데이터로 분석.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
+    <a class="blog-card" href="/blog/averaging-strategy.html">
+  <div class="blog-thumb"><img src="/assets/img/blog/thumb-invest-cut.svg" alt="썸네일" loading="lazy" width="480" height="270"></div>
+  <div class="blog-card-inner"><span class="blog-category cat-strategy">📊 전략</span><h3>코인 물타기 전략 가이드</h3><p>무한 물타기의 위험성과 올바른 추가 매수 전략. 평균단가 계산기 활용법.</p><span class="read-more">자세히 읽기 →</span></div>
+</a>
   </div>
 </section>
 
