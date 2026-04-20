@@ -616,8 +616,31 @@
   document.documentElement.setAttribute('data-theme',t);
 })();
 </script>
+<style>
+.main-nav{position:sticky;top:0;z-index:200;background:var(--bg-dark,#0a0a1a);border-bottom:1px solid var(--border,#222);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--primary,#f7931a)}
+.nav-menu{display:flex;gap:16px;font-size:.9rem}.nav-menu a{color:var(--text-secondary,#aaa);text-decoration:none}
+.nav-right .theme-btn{background:var(--bg-card,#1a1a2e);border:1px solid var(--border,#222);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text-primary,#e0e0e0)}
+.main-footer{background:var(--bg-card,#1a1a2e);border-top:1px solid var(--border,#222);padding:28px 20px;text-align:center;margin-top:40px}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:10px}
+.footer-link{font-size:.82rem;color:var(--text-muted,#666);text-decoration:none}
+.footer-copy{font-size:.76rem;color:var(--text-muted,#666)}
+</style>
 </head>
 <body>
+<!-- 상단바 -->
+<nav class="main-nav">
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-menu">
+    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
+    <a href="/tools/" class="nav-item">🧰 도구</a>
+    <a href="/blog/" class="nav-item">📝 블로그</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
+  </div>
+</nav>
+
 
 <!-- ============================
   ZONE 1: 신뢰 즉시 형성
@@ -1489,6 +1512,17 @@ loadLiveData();
 setInterval(loadLiveData, 30000);
 </script>
 
+<script src="/assets/js/common.js"></script>
+<footer class="main-footer">
+  <div class="footer-links">
+    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
+    <a href="/tools/kimchi-calculator.html" class="footer-link">🌶️ 김프(신버전)</a>
+    <a href="/tools/dca-calculator.html" class="footer-link">📈 DCA</a>
+    <a href="/tools/staking-calculator.html" class="footer-link">⚡ 스테이킹</a>
+    <a href="/blog/" class="footer-link">📝 블로그</a>
+  </div>
+  <p class="footer-copy">© 2026 CryptoTax.cloud · 참고용 · 실제 신고는 세무사 상담 권장</p>
+</footer>
 <script src="/assets/js/common.js"></script>
 </body>
 </html>

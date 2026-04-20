@@ -189,8 +189,37 @@
   document.documentElement.setAttribute('data-theme',t);
 })();
 </script>
+<style>
+.main-nav{position:sticky;top:0;z-index:100;background:var(--bg-surface,#111);border-bottom:1px solid var(--border,#2a2a2a);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.nav-logo{font-size:1.1rem;font-weight:900;color:var(--orange,#f7931a);text-decoration:none}
+.nav-menu{display:flex;gap:16px;font-size:.9rem}.nav-menu a{color:var(--text-sub,#aaa);text-decoration:none}
+.nav-right .theme-btn{background:var(--bg,#1a1a1a);border:1px solid var(--border,#2a2a2a);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.85rem;color:var(--text,#f0f0f0)}
+.pt-hero{text-align:center;padding:32px 20px 16px;max-width:860px;margin:0 auto}
+.pt-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;margin-bottom:8px}
+.pt-hero p{color:var(--text-sub,#aaa);font-size:.95rem}
+.main-footer{background:var(--bg-surface,#111);border-top:1px solid var(--border,#2a2a2a);padding:28px 20px;text-align:center;margin-top:40px}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:10px}
+.footer-link{font-size:.82rem;color:var(--text-sub,#aaa);text-decoration:none}
+.footer-copy{font-size:.76rem;color:var(--muted,#666)}
+</style>
 </head>
 <body>
+<!-- 상단바 -->
+<nav class="main-nav">
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-menu">
+    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
+    <a href="/tools/" class="nav-item">🧰 도구</a>
+    <a href="/blog/" class="nav-item">📝 블로그</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
+  </div>
+</nav>
+<div class="pt-hero">
+  <h1>💼 코인 포트폴리오 추적기</h1>
+  <p>보유 코인 수익률·손익·2027 예상 세금을 한눈에 — 완전 무료</p>
+</div>
 <div class="container">
 
     <div class="ad-area">📢 광고 영역 (728×90)</div>
@@ -472,6 +501,17 @@
         btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
     });
 </script>
+<script src="/assets/js/common.js"></script>
+<footer class="main-footer">
+  <div class="footer-links">
+    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
+    <a href="/tools/roi-calculator.html" class="footer-link">📊 수익률</a>
+    <a href="/tools/dca-calculator.html" class="footer-link">📈 DCA</a>
+    <a href="/tools/csv-tax-calculator.html" class="footer-link">📁 CSV세금</a>
+    <a href="/blog/" class="footer-link">📝 블로그</a>
+  </div>
+  <p class="footer-copy">© 2026 CryptoTax.cloud · 참고용 · 실제 신고는 세무사 상담 권장</p>
+</footer>
 <script src="/assets/js/common.js"></script>
 </body>
 </html>
