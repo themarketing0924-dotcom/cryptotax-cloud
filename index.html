@@ -187,12 +187,12 @@ a{text-decoration:none;color:inherit;}
 .cta-secondary:hover{background:var(--bg-elevated);border-color:var(--orange);color:var(--orange);}
 @media(min-width:520px){.cta-primary,.cta-secondary{width:auto;max-width:none;}}
 /* ===== 소셜 증거 바 ===== */
-.social-proof{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:28px 20px;}
-.social-proof-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:480px;margin:0 auto;}
-.sp-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-secondary);background:var(--bg-surface);border:1px solid var(--border-default);border-radius:10px;padding:12px 14px;text-align:left;}
-.sp-item strong{color:var(--text-primary);font-weight:700;}
+.social-proof{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:20px;}
+.social-proof-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:600px;margin:0 auto;}
+@media(min-width:640px){.social-proof-inner{grid-template-columns:repeat(4,1fr);max-width:860px;}}
+.sp-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-secondary);background:var(--bg-base);border:1px solid var(--border-default);border-radius:10px;padding:11px 13px;text-align:left;}
+.sp-item strong{color:var(--text-primary);font-weight:700;white-space:nowrap;}
 .sp-divider{display:none;}
-@media(max-width:480px){.social-proof-inner{max-width:100%;gap:8px;}.sp-item{font-size:0.78rem;padding:10px 12px;}}
 /* ===== 광고 슬롯 ===== */
 @media(min-width:768px){.ad-slot{padding:20px 32px;}}
 @media(min-width:1024px){.ad-slot{padding:20px 40px;}}
@@ -1133,15 +1133,16 @@ a{text-decoration:none;color:inherit;}
 <!-- ===== 소셜 증거 ===== -->
 <div class="social-proof">
   <div class="social-proof-inner">
-    <div class="sp-item"><span>✅</span><div><strong>국세청 공식 기준</strong> 적용</div></div>
-    <div class="sp-item"><span>🏛️</span><div><strong>소득세법 제87조의2</strong> 근거</div></div>
-    <div class="sp-item"><span>📥</span><div><strong>무료 절세 PDF</strong> · 이메일 즉시 발송</div></div>
-    <div class="sp-item"><span>📱</span><div><strong>모바일 최적화</strong> · 즉시 사용</div></div>
+    <div class="sp-item"><span>✅</span><div><strong>국세청 기준</strong> 적용</div></div>
+    <div class="sp-item"><span>🏛️</span><div><strong>소득세법</strong> 근거</div></div>
+    <div class="sp-item"><span>📥</span><div><strong>절세 PDF</strong> 무료 발송</div></div>
+    <div class="sp-item"><span>📱</span><div><strong>모바일</strong> 최적화</div></div>
+  </div>
 </div>
 
 <!-- ===== 카운트다운 ===== -->
-<div style="padding:0 20px;">
-<div class="urgency" style="max-width:880px;margin:0 auto 24px;">
+<div style="padding:20px 20px 0;">
+<div class="urgency" style="max-width:860px;margin:0 auto 0;">
   <h2>⏰ 2027년 가상자산 과세까지 남은 시간</h2>
   <div class="countdown-row">
     <div class="cd-unit"><div class="cd-num" id="cd-days">-</div><div class="cd-lbl">일</div></div>
