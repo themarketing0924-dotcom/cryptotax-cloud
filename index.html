@@ -289,6 +289,16 @@ a{text-decoration:none;color:inherit;}
 .share-btn{flex:1;padding:10px;border-radius:8px;border:none;cursor:pointer;font-size:0.84rem;font-weight:700;}
 .btn-kakao{background:#fee500;color:#000;}
 .btn-copy{background:var(--bg-elevated);color:var(--text-primary);transition:background var(--transition);}
+/* ===== 파트너 배너 (테마 적응형) ===== */
+.partner-banner{display:block;max-width:860px;margin:0 auto;border-radius:12px;overflow:hidden;text-decoration:none;border:1px solid var(--border-default);transition:border-color .2s;}
+.partner-banner:hover{border-color:var(--orange);}
+.partner-banner-inner{background:var(--bg-surface);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;flex-wrap:wrap;}
+.partner-icon{width:44px;height:44px;background:linear-gradient(135deg,#1565c0,#42a5f5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.partner-info{display:flex;align-items:center;gap:14px;flex:1;}
+.partner-name{font-size:.93rem;font-weight:700;color:var(--text-primary);margin-bottom:2px;}
+.partner-desc{font-size:.78rem;color:var(--text-secondary);}
+.partner-cta{background:linear-gradient(135deg,#1565c0,#42a5f5);color:#fff;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+.partner-label{font-size:.65rem;color:var(--text-muted);font-weight:500;display:block;text-align:right;padding:3px 8px 0;}
 /* ===== 이메일 섹션 ===== */
 .email-section{background:var(--email-bg);border:1px solid var(--blue-border);border-radius:16px;padding:32px 24px;text-align:center;margin:36px 20px;transition:background var(--transition);}
 @media(min-width:768px){.email-section{margin:44px 32px;padding:40px 32px;}}
@@ -1258,18 +1268,19 @@ a{text-decoration:none;color:inherit;}
   </div><!-- /section-inner -->
 </section>
 
-<!-- ===== 광고 슬롯 2 (계산기 결과 아래 — CTR 최고) ===== -->
+<!-- ===== 파트너 배너 2 (계산기 결과 아래) ===== -->
 <div class="ad-slot">
-  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener" style="text-decoration:none;display:block;max-width:860px;margin:0 auto;">
-    <div style="background:linear-gradient(90deg,#0d1117,#1a237e,#0d1117);border:1px solid rgba(100,181,246,0.25);border-radius:12px;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#1565c0,#42a5f5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧠</div>
+  <span class="partner-label">파트너</span>
+  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" class="partner-banner">
+    <div class="partner-banner-inner">
+      <div class="partner-info">
+        <div class="partner-icon">🧠</div>
         <div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.5);">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
+          <div class="partner-name">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
+          <div class="partner-desc">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
         </div>
       </div>
-      <div style="background:#1976d2;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;white-space:nowrap;flex-shrink:0;">무료 강의 보기 →</div>
+      <div class="partner-cta">무료 강의 보기 →</div>
     </div>
   </a>
 </div>
@@ -1411,18 +1422,19 @@ a{text-decoration:none;color:inherit;}
   </div>
 </section>
 
-<!-- ===== 광고 슬롯 3 (시장데이터 아래) ===== -->
+<!-- ===== 파트너 배너 3 (시장데이터 아래) ===== -->
 <div class="ad-slot">
-  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener" style="text-decoration:none;display:block;max-width:720px;margin:0 auto;">
-    <div style="background:linear-gradient(90deg,#0d1117,#1a237e,#0d1117);border:1px solid rgba(100,181,246,0.25);border-radius:12px;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#1565c0,#42a5f5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧠</div>
+  <span class="partner-label">파트너</span>
+  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" class="partner-banner">
+    <div class="partner-banner-inner">
+      <div class="partner-info">
+        <div class="partner-icon">🧠</div>
         <div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.5);">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
+          <div class="partner-name">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
+          <div class="partner-desc">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
         </div>
       </div>
-      <div style="background:#1976d2;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;white-space:nowrap;flex-shrink:0;">무료 강의 보기 →</div>
+      <div class="partner-cta">무료 강의 보기 →</div>
     </div>
   </a>
 </div>
@@ -1515,18 +1527,19 @@ a{text-decoration:none;color:inherit;}
   </div><!-- /section-inner -->
 </section>
 
-<!-- ===== 광고 슬롯 4 (하단) ===== -->
+<!-- ===== 파트너 배너 4 (하단) ===== -->
 <div class="ad-slot">
-  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener" style="text-decoration:none;display:block;max-width:860px;margin:0 auto;">
-    <div style="background:linear-gradient(90deg,#0d1117,#1a237e,#0d1117);border:1px solid rgba(100,181,246,0.25);border-radius:12px;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#1565c0,#42a5f5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧠</div>
+  <span class="partner-label">파트너</span>
+  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" class="partner-banner">
+    <div class="partner-banner-inner">
+      <div class="partner-info">
+        <div class="partner-icon">🧠</div>
         <div>
-          <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:2px;">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.5);">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
+          <div class="partner-name">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
+          <div class="partner-desc">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
         </div>
       </div>
-      <div style="background:#1976d2;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;white-space:nowrap;flex-shrink:0;">무료 강의 보기 →</div>
+      <div class="partner-cta">무료 강의 보기 →</div>
     </div>
   </a>
 </div>
