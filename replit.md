@@ -14,8 +14,9 @@
 ```
 index.html                  # 메인 랜딩 페이지 (★ 절대 건드리지 말 것)
 assets/
-  css/common.css            # 공통 CSS (CSS 변수, 컴포넌트 스타일)
-  js/common.js              # 공통 JS (테마 토글, 스크롤 애니메이션)
+  css/common.css            # 공통 CSS (CSS 변수, 컴포넌트 스타일, 티커, 애니메이션, 코인모달)
+  js/common.js              # 공통 JS (테마, 스크롤 애니메이션, 코인 티커 자동주입, CoinSearch 모달)
+  js/coin-data.js           # 업비트·빗썸 코인 데이터베이스 200개+ (COIN_DB, searchCoins)
   components/
     nav.html                # 공통 nav 참고용
     footer.html             # 공통 footer 참고용
