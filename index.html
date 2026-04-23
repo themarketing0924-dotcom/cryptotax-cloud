@@ -250,15 +250,7 @@ a{text-decoration:none;color:inherit;}
 /* ── tools-grid max-width 컨테이너 ── */
 .tools-section-inner{max-width:960px;margin:0 auto;}
 
-/* ===== 시장 그리드 ===== */
-.market-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:920px;margin:0 auto;}
-@media(min-width:520px){.market-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:768px){.market-grid{grid-template-columns:repeat(3,1fr);}}
-.market-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:14px;padding:18px;transition:all 0.2s;display:block;}
-.market-card:hover{border-color:var(--blue);transform:translateY(-2px);}
-.market-card .mc-title{font-size:0.9rem;color:var(--blue);font-weight:800;margin-bottom:7px;}
-.market-card .mc-desc{font-size:0.79rem;color:var(--text-secondary);font-weight:500;}
-.market-card .mc-live{font-size:0.68rem;background:#3fb95020;color:var(--green);border:1px solid var(--green-border);border-radius:8px;padding:2px 7px;display:inline-block;margin-top:7px;font-weight:700;}
+/* ===== 시장 그리드 — 하단에 정의 ===== */
 /* ===== 공포탐욕 위젯 ===== */
 .fg-widget{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:16px;padding:24px 28px;max-width:680px;margin:0 auto 20px;transition:background var(--transition),border-color var(--transition);}
 .fg-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
@@ -315,12 +307,7 @@ a{text-decoration:none;color:inherit;}
 .partner-desc{font-size:.78rem;color:var(--text-secondary);}
 .partner-cta{background:linear-gradient(135deg,#1565c0,#42a5f5);color:#fff;font-size:.82rem;font-weight:700;padding:9px 18px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
 .partner-label{font-size:.65rem;color:var(--text-muted);font-weight:500;display:block;text-align:right;padding:3px 8px 0;}
-/* ===== 이메일 섹션 ===== */
-.email-section{background:var(--email-bg);border:1px solid var(--blue-border);border-radius:16px;padding:32px 24px;text-align:center;margin:36px 20px;transition:background var(--transition);}
-@media(min-width:768px){.email-section{margin:44px 32px;padding:40px 32px;}}
-@media(min-width:1024px){.email-section{max-width:880px;margin:44px auto;}}
-.email-section h2{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:900;margin-bottom:8px;color:var(--text-primary);letter-spacing:-0.02em;word-break:keep-all;}
-.email-section p{color:var(--text-secondary);font-size:0.9rem;font-weight:500;margin-bottom:18px;word-break:keep-all;}
+/* ===== 이메일 섹션 — 하단에 정의 ===== */
 .email-form{display:flex;gap:8px;max-width:440px;margin:0 auto;flex-wrap:wrap;}
 .email-input{flex:1;min-width:200px;background:var(--input-bg);border:1px solid var(--border-default);border-radius:9px;padding:12px 15px;color:var(--text-primary);font-size:0.95rem;outline:none;transition:border-color 0.2s,background var(--transition);}
 .email-input:focus{border-color:var(--blue);}
@@ -413,9 +400,9 @@ a{text-decoration:none;color:inherit;}
 .tool-card .tc-name{font-size:0.88rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
 .tool-card .tc-desc{font-size:0.74rem;color:var(--text-secondary);}
 .tool-card .tc-badge{font-size:0.65rem;background:#f7931a20;color:var(--orange);border:1px solid var(--orange-border);border-radius:10px;padding:2px 7px;display:inline-block;margin-top:5px;}
-.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;margin:0 auto;}
-@media(max-width:767px){.market-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:479px){.market-grid{grid-template-columns:1fr;}}
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr)!important;gap:14px;width:100%;max-width:900px;margin:0 auto;box-sizing:border-box;}
+@media(max-width:767px){.market-grid{grid-template-columns:repeat(2,1fr)!important;}}
+@media(max-width:479px){.market-grid{grid-template-columns:1fr!important;}}
 .market-card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:14px;padding:18px;transition:all 0.2s;display:block;}
 .market-card:hover{border-color:var(--blue);transform:translateY(-2px);}
 .market-card .mc-title{font-size:0.88rem;color:var(--blue);font-weight:700;margin-bottom:6px;}
@@ -445,7 +432,9 @@ a{text-decoration:none;color:inherit;}
 .share-btn{flex:1;padding:9px;border-radius:8px;border:none;cursor:pointer;font-size:0.82rem;font-weight:600;}
 .btn-kakao{background:#fee500;color:#000;}
 .btn-copy{background:var(--bg-elevated);color:var(--text-primary);transition:background var(--transition);}
-.email-section{background:var(--email-bg);border:1px solid var(--blue-border);border-radius:16px;padding:28px;text-align:center;max-width:880px;margin:32px auto;transition:background var(--transition);}
+.email-section{background:var(--email-bg);border:1px solid var(--blue-border);border-radius:16px;padding:32px 28px;text-align:center;width:100%;max-width:880px;margin:32px auto;box-sizing:border-box;transition:background var(--transition);}
+@media(min-width:768px){.email-section{padding:40px 36px;}}
+
 .email-section h2{font-size:1.2rem;font-weight:800;margin-bottom:8px;color:var(--text-primary);}
 .email-section p{color:var(--text-secondary);font-size:0.88rem;margin-bottom:16px;}
 .email-form{display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;}
