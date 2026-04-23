@@ -85,11 +85,29 @@ img{max-width:100%;height:auto;border-radius:10px;margin:20px 0;box-shadow:0 2px
 code{background:#e2e8f0;padding:2px 6px;border-radius:4px;font-size:.85rem}
 @media(max-width:768px){.article{padding:24px 18px}h1{font-size:1.5rem}h2{font-size:1.25rem}}
 </style>
+<style>
+.article-featured-img{margin:0 0 32px;border-radius:14px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,.25)}
+.article-featured-img img{width:100%;height:auto;display:block;object-fit:cover}
+.article-featured-img figcaption{font-size:11px;color:#888;text-align:center;padding:7px 12px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.08)}
+</style>
 </head>
 <body>
 
 <div class="container">
 <article class="article">
+<figure class="article-featured-img fade-up">
+  <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=820&h=430&fit=crop&auto=format&q=80"
+       srcset="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=820&h=430&fit=crop&auto=format&q=80 820w, https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1640&h=860&fit=crop&auto=format&q=70 1640w"
+       sizes="(max-width:860px) 100vw, 820px"
+       alt="업비트 거래 내역 다운로드 방법 — 업비트 앱 CSV 엑셀 내보내기"
+       title="업비트 거래 내역 다운로드 방법 — 업비트 앱 CSV 엑셀 내보내기"
+       width="820" height="430"
+       loading="eager"
+       decoding="async"
+       fetchpriority="high">
+  <figcaption>업비트 앱과 PC에서 거래 내역 CSV 다운로드하는 방법</figcaption>
+</figure>
+
 
 <!-- 브레드크럼 -->
 <nav style="font-size:.85rem;color:var(--muted);margin-bottom:16px">

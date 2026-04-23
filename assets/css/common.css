@@ -379,6 +379,32 @@ details p{margin-top:12px;font-size:14px;line-height:1.8}
   .coin-modal{border-radius:20px 20px 0 0;max-height:85vh;width:100%}
 }
 
+/* ══════════════════════════════════════════════════════
+   ARTICLE FEATURED IMAGE — 블로그 대표 이미지
+══════════════════════════════════════════════════════ */
+.article-featured-img{
+  margin:0 0 36px;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--bg2);
+  box-shadow:0 8px 40px rgba(0,0,0,.3)
+}
+.article-featured-img img{
+  width:100%;height:auto;
+  display:block;
+  aspect-ratio:820/430;
+  object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1)
+}
+.article-featured-img:hover img{transform:scale(1.025)}
+.article-featured-img figcaption{
+  font-size:11px;color:var(--muted);
+  text-align:center;padding:7px 14px;
+  background:var(--bg2);border-top:1px solid var(--border);
+  line-height:1.5
+}
+[data-theme="light"] .article-featured-img{box-shadow:0 8px 40px rgba(0,0,0,.08)}
+
 /* ── 스크롤 여백 정리 ─────────────────────────────── */
 section{margin-bottom:64px}
 section:last-child{margin-bottom:0}

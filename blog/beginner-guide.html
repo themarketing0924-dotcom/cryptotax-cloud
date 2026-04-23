@@ -282,6 +282,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 @media(max-width:960px){.page-outer{grid-template-columns:1fr;}.sidebar{display:none;}.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:600px){.nav-links{display:none;}.article-title{font-size:1.4rem;}.page-outer{padding:20px 16px 60px;}.footer-grid{grid-template-columns:1fr;gap:16px;}.coin-grid{grid-template-columns:1fr 1fr;}}
 </style>
+<style>
+.article-featured-img{margin:0 0 32px;border-radius:14px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,.25)}
+.article-featured-img img{width:100%;height:auto;display:block;object-fit:cover}
+.article-featured-img figcaption{font-size:11px;color:#888;text-align:center;padding:7px 12px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.08)}
+</style>
 </head>
 <body>
 
@@ -310,6 +315,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:36px 24p
 
 <div class="page-outer">
 <article itemscope itemtype="https://schema.org/Article">
+<figure class="article-featured-img fade-up">
+  <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=820&h=430&fit=crop&auto=format&q=80"
+       srcset="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=820&h=430&fit=crop&auto=format&q=80 820w, https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=1640&h=860&fit=crop&auto=format&q=70 1640w"
+       sizes="(max-width:860px) 100vw, 820px"
+       alt="코인 초보 투자자 완전 입문 가이드 — 비트코인 업비트 처음 시작"
+       title="코인 초보 투자자 완전 입문 가이드 — 비트코인 업비트 처음 시작"
+       width="820" height="430"
+       loading="eager"
+       decoding="async"
+       fetchpriority="high">
+  <figcaption>코인 투자 처음 시작하는 분을 위한 완전 입문 가이드</figcaption>
+</figure>
+
 
   <span class="cat-badge">🎓 입문 가이드</span>
 
