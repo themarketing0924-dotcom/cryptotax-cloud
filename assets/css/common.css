@@ -262,33 +262,47 @@ details p{margin-top:12px;font-size:14px;line-height:1.8}
 [data-theme="light"] #ctc-ticker::after{background:linear-gradient(to left,#f1f3f5,transparent)}
 
 /* ══════════════════════════════════════════════════════
-   SCROLL ANIMATIONS — Toss 스타일
+   SCROLL ANIMATIONS — modujuso 스타일 자동 리빌
 ══════════════════════════════════════════════════════ */
-/* 기본 상태 */
-.fade-up{opacity:0;transform:translateY(32px);
-  transition:opacity .65s cubic-bezier(.22,1,.36,1),
-             transform .65s cubic-bezier(.22,1,.36,1)}
-.fade-left{opacity:0;transform:translateX(-32px);
-  transition:opacity .65s cubic-bezier(.22,1,.36,1),
-             transform .65s cubic-bezier(.22,1,.36,1)}
-.fade-right{opacity:0;transform:translateX(32px);
-  transition:opacity .65s cubic-bezier(.22,1,.36,1),
-             transform .65s cubic-bezier(.22,1,.36,1)}
+/* ── 자동 리빌 (JS가 .ctc-r 클래스 자동 부여) ──────── */
+.ctc-r{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),
+             transform .62s cubic-bezier(.22,1,.36,1);
+  will-change:opacity,transform;
+}
+.ctc-r.ctc-v{opacity:1;transform:none;}
+
+/* ── 기존 명시적 클래스 (하위 호환) ─────────────────── */
+.fade-up{opacity:0;transform:translateY(28px);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),
+             transform .62s cubic-bezier(.22,1,.36,1)}
+.fade-left{opacity:0;transform:translateX(-28px);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),
+             transform .62s cubic-bezier(.22,1,.36,1)}
+.fade-right{opacity:0;transform:translateX(28px);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),
+             transform .62s cubic-bezier(.22,1,.36,1)}
 .fade-in{opacity:0;
   transition:opacity .7s cubic-bezier(.22,1,.36,1)}
-.zoom-in{opacity:0;transform:scale(.94);
+.zoom-in{opacity:0;transform:scale(.95);
   transition:opacity .6s cubic-bezier(.22,1,.36,1),
              transform .6s cubic-bezier(.22,1,.36,1)}
-/* 보이는 상태 */
 .fade-up.visible,.fade-left.visible,.fade-right.visible,
-.fade-in.visible,.zoom-in.visible{
-  opacity:1;transform:none}
-/* 딜레이 유틸리티 */
-.delay-1{transition-delay:.1s}
-.delay-2{transition-delay:.2s}
-.delay-3{transition-delay:.3s}
-.delay-4{transition-delay:.4s}
-.delay-5{transition-delay:.5s}
+.fade-in.visible,.zoom-in.visible{opacity:1;transform:none}
+
+/* ── 딜레이 유틸리티 ─────────────────────────────────── */
+.delay-1{transition-delay:.07s}
+.delay-2{transition-delay:.14s}
+.delay-3{transition-delay:.21s}
+.delay-4{transition-delay:.28s}
+.delay-5{transition-delay:.35s}
+/* 접근성: 모션 감소 설정 */
+@media(prefers-reduced-motion:reduce){
+  .ctc-r,.fade-up,.fade-left,.fade-right,.fade-in,.zoom-in{
+    transition:none!important;opacity:1!important;transform:none!important}
+}
 /* 헤더/히어로 섹션 로딩 애니메이션 */
 .hero-anim-1{animation:heroFadeUp .7s cubic-bezier(.22,1,.36,1) .05s both}
 .hero-anim-2{animation:heroFadeUp .7s cubic-bezier(.22,1,.36,1) .15s both}

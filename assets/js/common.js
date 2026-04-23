@@ -35,24 +35,71 @@ function _applyThemeUI(theme){
   };
 })();
 
-// ③ 스크롤 애니메이션 — Toss 스타일 (fade-up / fade-left / fade-right / fade-in / zoom-in)
+// ③ 스크롤 자동 리빌 — modujuso 스타일 (전체 페이지 자동 감지)
 (function(){
-  var ANIM_CLASSES = ['.fade-up','.fade-left','.fade-right','.fade-in','.zoom-in'];
-  function initScrollAnim(){
-    var selector = ANIM_CLASSES.join(',');
-    var elements = document.querySelectorAll(selector);
-    if(!elements.length) return;
+  'use strict';
+
+  // ── 그리드 자식에 스태거 딜레이 적용할 부모 셀렉터 ──
+  var GRIDS = [
+    '.tools-grid','.market-grid','.blog-grid',
+    '.channels-grid','.exchange-grid','.hero-stats',
+    '.social-proof-inner','.tools-cards','.card-grid'
+  ].join(',');
+
+  // ── 개별 단독 리빌 셀렉터 ────────────────────────────
+  var SINGLES = [
+    '.section-title','.urgency','.fg-widget','.calc-section',
+    '.email-section','.faq-item','.partner-banner',
+    '.article-featured-img','.summary-box','.toc',
+    '.tool-hero','article>h2','article>h3',
+    'article>p','article>ul','article>ol',
+    'article>figure','.info-box','.warning-box',
+    '.adunit','.adsense-wrap'
+  ].join(',');
+
+  // ── 딜레이 단계 (초) ─────────────────────────────────
+  var STEP = 0.07, MAX_D = 0.35;
+
+  function addReveal(el, delay){
+    if(el.classList.contains('ctc-r')) return;
+    el.classList.add('ctc-r');
+    if(delay) el.style.transitionDelay = Math.min(delay, MAX_D) + 's';
+  }
+
+  function init(){
+    // 1) 그리드 자식 스태거
+    document.querySelectorAll(GRIDS).forEach(function(grid){
+      Array.from(grid.children).forEach(function(child, i){
+        addReveal(child, i * STEP);
+      });
+    });
+
+    // 2) 단독 요소
+    document.querySelectorAll(SINGLES).forEach(function(el){
+      addReveal(el, 0);
+    });
+
+    // 3) IntersectionObserver 등록
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){
-          e.target.classList.add('visible');
+          e.target.classList.add('ctc-v','visible');
           obs.unobserve(e.target);
         }
       });
-    },{threshold:0.12,rootMargin:'0px 0px -32px 0px'});
-    elements.forEach(function(el){ obs.observe(el); });
+    },{threshold:0.08, rootMargin:'0px 0px -36px 0px'});
+
+    // ctc-r 포함 기존 클래스 모두 관찰
+    document.querySelectorAll(
+      '.ctc-r,.fade-up,.fade-left,.fade-right,.fade-in,.zoom-in'
+    ).forEach(function(el){ obs.observe(el); });
   }
-  document.addEventListener('DOMContentLoaded', initScrollAnim);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 
 // ④ 코인 티커 자동 주입 (nav 바로 아래)

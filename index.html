@@ -1691,6 +1691,60 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer(
 })();
 
 function switchTab(tab,btn){['basic','simulate','netting'].forEach(t=>{const el=document.getElementById('tab-'+t);if(el)el.style.display=(t===tab)?'block':'none';});document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+
+/* ── 스크롤 자동 리빌 — modujuso 스타일 ───────────────────────── */
+(function(){
+  'use strict';
+  var STEP=0.07, MAX_D=0.35;
+
+  var GRIDS=[
+    '.tools-grid','.market-grid','.blog-grid',
+    '.channels-grid','.exchange-grid',
+    '.hero-stats','.social-proof-inner',
+    '.countdown-row','.hero-cta-row'
+  ].join(',');
+
+  var SINGLES=[
+    '.section-title','.urgency','.fg-widget','.calc-section',
+    '.email-section','.faq-item','.partner-banner',
+    '.breaking','.ad-slot .partner-banner',
+    '.exchange-grid'
+  ].join(',');
+
+  function addR(el,d){
+    if(!el||el.classList.contains('ctc-r')||el.classList.contains('hero-anim-1')) return;
+    el.classList.add('ctc-r');
+    if(d) el.style.transitionDelay=Math.min(d,MAX_D)+'s';
+  }
+
+  function init(){
+    /* 그리드 자식 스태거 */
+    document.querySelectorAll(GRIDS).forEach(function(g){
+      Array.from(g.children).forEach(function(c,i){ addR(c,i*STEP); });
+    });
+    /* 단독 요소 */
+    document.querySelectorAll(SINGLES).forEach(function(el){ addR(el,0); });
+    /* 기존 fade-up 등 호환 */
+    document.querySelectorAll('.fade-up,.fade-in,.fade-left,.fade-right,.zoom-in').forEach(function(el){
+      if(!el.classList.contains('ctc-r')) el.classList.add('ctc-r');
+    });
+
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('ctc-v','visible');
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.07, rootMargin:'0px 0px -40px 0px'});
+
+    document.querySelectorAll('.ctc-r').forEach(function(el){ obs.observe(el); });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else { init(); }
+})();
 function fmt(n){if(isNaN(n)||n===null)return'-';return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcTax(){const buy=parseFloat(document.getElementById('buyAmt').value)||0;const sell=parseFloat(document.getElementById('sellAmt').value)||0;const fee=parseFloat(document.getElementById('feeAmt').value)||0;if(!buy||!sell){alert('매수금액과 매도금액을 입력해주세요.');return;}const profit=sell-buy;const deduct=2500000;const taxBase=Math.max(0,profit-deduct-fee);const incomeTax=taxBase*0.20;const localTax=taxBase*0.02;const totalTax=incomeTax+localTax;const effRate=profit>0?(totalTax/profit*100).toFixed(2):0;const netProfit=profit-totalTax;document.getElementById('r-sell').textContent=fmt(sell);document.getElementById('r-buy').textContent=fmt(buy);document.getElementById('r-profit').textContent=fmt(profit);document.getElementById('r-fee').textContent=fee>0?'-'+fmt(fee):'0원';document.getElementById('r-base').textContent=fmt(taxBase);document.getElementById('r-income').textContent=fmt(incomeTax);document.getElementById('r-local').textContent=fmt(localTax);document.getElementById('r-total').textContent=fmt(totalTax);document.getElementById('r-rate').textContent=effRate+'%';document.getElementById('r-net').textContent=fmt(netProfit);document.getElementById('r-profit').style.color=profit>=0?'#3fb950':'#f85149';const box=document.getElementById('resultBox');box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function calcSimulate(){const income=parseFloat(document.getElementById('simIncome').value)||0;const loss=parseFloat(document.getElementById('simLoss').value)||0;if(!income){alert('예상 연간 수익을 입력해주세요.');return;}const deduct=2500000;const beforeBase=Math.max(0,income-deduct);const beforeTax=beforeBase*0.22;const afterBase=Math.max(0,income-deduct-loss);const afterTax=afterBase*0.22;const savedTax=beforeTax-afterTax;document.getElementById('sim-before').textContent=fmt(beforeTax);document.getElementById('sim-after').textContent=fmt(afterTax);document.getElementById('sim-save').textContent=fmt(savedTax)+' 절약!';const box=document.getElementById('simResultBox');box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'nearest'});}

@@ -876,3 +876,33 @@ button { font-family: var(--font-main); cursor: pointer; }
 .mb-16 { margin-bottom: 16px; }
 .mb-24 { margin-bottom: 24px; }
 .mb-32 { margin-bottom: 32px; }
+
+/* ══════════════════════════════════════════════════════
+   SCROLL REVEAL — modujuso 스타일 자동 리빌 애니메이션
+══════════════════════════════════════════════════════ */
+.ctc-r {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .62s cubic-bezier(.22,1,.36,1),
+              transform .62s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
+}
+.ctc-r.ctc-v { opacity: 1; transform: none; }
+
+/* 기존 클래스 호환 */
+.fade-up { opacity:0; transform:translateY(28px);
+  transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1); }
+.fade-up.visible,.fade-up.ctc-v { opacity:1; transform:none; }
+.fade-in { opacity:0;
+  transition:opacity .7s cubic-bezier(.22,1,.36,1); }
+.fade-in.visible,.fade-in.ctc-v { opacity:1; }
+.zoom-in { opacity:0; transform:scale(.95);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1); }
+.zoom-in.visible,.zoom-in.ctc-v { opacity:1; transform:none; }
+
+/* 접근성: 모션 감소 */
+@media (prefers-reduced-motion: reduce) {
+  .ctc-r, .fade-up, .fade-in, .zoom-in {
+    transition: none !important; opacity: 1 !important; transform: none !important;
+  }
+}
