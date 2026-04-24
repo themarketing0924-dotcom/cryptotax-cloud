@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "EAzf6r_v8dYon1jfGck9l"
+uri = "file://og-image.png"
+type = "image"
+title = "OG 썸네일 이미지 (1200×630)"
