@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<script>
+/* 테마 즉시 적용 — 폼 요소 흰색 깜빡임 방지 */
+(function(){
+  var t=localStorage.getItem('ctc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  document.documentElement.style.colorScheme=(t==='light')?'light':'dark';
+})();
+</script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-59PKBNRPBZ"></script>
 <script>
@@ -70,6 +78,7 @@
 </script>
 <style>
 :root {
+  color-scheme: dark;
   --bg-base:#0d1117; --bg-surface:#161b22; --bg-elevated:#1c2128; --bg-overlay:rgba(22,27,34,0.95);
   --text-primary:#e6edf3; --text-secondary:#8b949e; --text-muted:#484f58;
   --border-default:#30363d; --border-subtle:#21262d;
@@ -85,6 +94,7 @@
   --nav-border:#30363d; --footer-bg:#161b22; --transition:0.3s ease;
 }
 [data-theme="light"] {
+  color-scheme: light;
   --bg-base:#f6f8fa; --bg-surface:#ffffff; --bg-elevated:#f0f3f6; --bg-overlay:rgba(255,255,255,0.95);
   --text-primary:#1a1f2e; --text-secondary:#57606a; --text-muted:#8c959f;
   --border-default:#d0d7de; --border-subtle:#e8ecef;
@@ -1209,7 +1219,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
     </div>
     <div class="fg-footer">
       <span>출처: Alternative.me · 매일 업데이트</span>
-      <a href="/market/fear-greed.html">자세히 보기 →</a>
+      <a href="https://alternative.me/crypto/fear-and-greed-index/" target="_blank" rel="noopener">자세히 보기 →</a>
     </div>
   </div>
   <div class="calc-section">
@@ -1663,7 +1673,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 <script>
 (function initTheme(){const saved=localStorage.getItem('ctc-theme')||'dark';applyTheme(saved,false);})();
 function toggleTheme(){const current=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(current==='dark'?'light':'dark',true);}
-function applyTheme(theme,save){const root=document.documentElement;const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');const dIcon=document.getElementById('drawerThemeIcon');if(theme==='light'){root.setAttribute('data-theme','light');if(icon)icon.textContent='🌙';if(label)label.textContent='다크';if(dIcon)dIcon.textContent='🌙';}else{root.setAttribute('data-theme','dark');if(icon)icon.textContent='☀️';if(label)label.textContent='라이트';if(dIcon)dIcon.textContent='☀️';}if(save)localStorage.setItem('ctc-theme',theme);if(save&&window.reloadTVTicker)window.reloadTVTicker(theme);}
+function applyTheme(theme,save){const root=document.documentElement;const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');const dIcon=document.getElementById('drawerThemeIcon');if(theme==='light'){root.setAttribute('data-theme','light');root.style.colorScheme='light';if(icon)icon.textContent='🌙';if(label)label.textContent='다크';if(dIcon)dIcon.textContent='🌙';}else{root.setAttribute('data-theme','dark');root.style.colorScheme='dark';if(icon)icon.textContent='☀️';if(label)label.textContent='라이트';if(dIcon)dIcon.textContent='☀️';}if(save)localStorage.setItem('ctc-theme',theme);if(save&&window.reloadTVTicker)window.reloadTVTicker(theme);}
 
 /* ===== 햄버거 드로어 메뉴 ===== */
 function toggleDrawer(){const drawer=document.getElementById('mobileDrawer');const overlay=document.getElementById('drawerOverlay');const btn=document.getElementById('hamburgerBtn');const isOpen=drawer.classList.contains('open');if(isOpen){closeDrawer();}else{drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open');document.body.style.overflow='hidden';}}
