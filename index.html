@@ -188,10 +188,10 @@ a{text-decoration:none;color:inherit;}
 @media(min-width:520px){.cta-primary,.cta-secondary{width:auto;max-width:none;}}
 /* ===== 소셜 증거 바 ===== */
 .social-proof{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);padding:20px;}
-.social-proof-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:600px;margin:0 auto;}
-@media(min-width:640px){.social-proof-inner{grid-template-columns:repeat(4,1fr);max-width:860px;}}
-.sp-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-secondary);background:var(--bg-base);border:1px solid var(--border-default);border-radius:10px;padding:11px 13px;text-align:left;}
-.sp-item strong{color:var(--text-primary);font-weight:700;white-space:nowrap;}
+.social-proof-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:600px;margin:0 auto;}
+@media(min-width:640px){.social-proof-inner{grid-template-columns:repeat(4,1fr);max-width:860px;gap:14px;}}
+.sp-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-secondary);background:var(--bg-base);border:1px solid var(--border-default);border-radius:10px;padding:12px 14px;text-align:left;word-break:keep-all;}
+.sp-item strong{color:var(--text-primary);font-weight:700;}
 .sp-divider{display:none;}
 /* ===== 광고 슬롯 ===== */
 @media(min-width:768px){.ad-slot{padding:20px 32px;}}
@@ -415,9 +415,24 @@ a{text-decoration:none;color:inherit;}
 .tab-btn.active{background:var(--orange);color:#fff;font-weight:700;}
 .form-group{margin-bottom:14px;}
 .form-label{display:block;font-size:0.83rem;color:var(--text-secondary);margin-bottom:5px;font-weight:500;}
-.form-input{width:100%;background:var(--input-bg);border:1px solid var(--border-default);border-radius:8px;padding:11px 14px;color:var(--text-primary);font-size:1rem;outline:none;transition:border-color 0.2s,background var(--transition),color var(--transition);}
-.form-input:focus{border-color:var(--orange);}
+.form-input{width:100%;background:var(--input-bg);border:1px solid var(--border-default);border-radius:8px;padding:11px 14px;color:var(--text-primary);font-size:1rem;outline:none;transition:border-color 0.2s,background var(--transition),color var(--transition);-webkit-appearance:none;appearance:none;}
+.form-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px #f7931a15;}
 .form-input::placeholder{color:var(--text-muted);}
+/* ── 다크모드 입력창 강제 적용 ── */
+:root:not([data-theme="light"]) .form-input,
+[data-theme="dark"] .form-input{
+  background-color:#161b22!important;
+  color:#e6edf3!important;
+  border-color:#30363d!important;
+  color-scheme:dark;
+}
+:root:not([data-theme="light"]) .form-input::placeholder,
+[data-theme="dark"] .form-input::placeholder{color:#6e7681!important;}
+:root:not([data-theme="light"]) .form-input:focus,
+[data-theme="dark"] .form-input:focus{border-color:var(--orange)!important;box-shadow:0 0 0 3px #f7931a20!important;}
+/* select 드롭다운 화살표 */
+select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b949e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+[data-theme="light"] select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23656d76' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");}
 .calc-btn{width:100%;background:linear-gradient(135deg,#f7931a,#e8820a);color:#fff;border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;margin-top:8px;transition:opacity 0.2s;}
 .calc-btn:hover{opacity:0.9;}
 .result-box{background:var(--result-bg);border:1px solid var(--border-default);border-radius:12px;padding:18px;margin-top:16px;display:none;transition:background var(--transition),border-color var(--transition);}
@@ -1102,7 +1117,7 @@ a{text-decoration:none;color:inherit;}
     script.type='text/javascript';
     script.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
     script.async=true;
-    script.text=JSON.stringify({symbols:TV_SYMBOLS,showSymbolLogo:true,isTransparent:false,displayMode:"adaptive",colorTheme:theme||'dark',locale:"ko"});
+    script.text=JSON.stringify({symbols:TV_SYMBOLS,showSymbolLogo:true,isTransparent:true,displayMode:"adaptive",colorTheme:theme||'dark',locale:"ko"});
     container.appendChild(script);
     wrap.appendChild(container);
   };
@@ -1145,7 +1160,7 @@ a{text-decoration:none;color:inherit;}
 </div>
 
 <!-- ===== 카운트다운 ===== -->
-<div style="padding:20px 20px 0;">
+<div style="padding:24px 20px 0;">
 <div class="urgency" style="max-width:860px;margin:0 auto 0;">
   <h2>⏰ 2027년 가상자산 과세까지 남은 시간</h2>
   <div class="countdown-row">
