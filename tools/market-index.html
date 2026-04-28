@@ -77,27 +77,6 @@ nav {
 .theme-btn { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:6px 14px; cursor:pointer; color:var(--sub2); font-size:.8rem; font-family:var(--font); font-weight:600; transition:all .2s; margin-left:8px; }
 .theme-btn:hover { border-color:var(--primary); color:var(--primary); }
 
-/* ── TICKER ── */
-.ticker-bar {
-  background: linear-gradient(90deg, var(--card), var(--card2));
-  border-bottom: 1px solid var(--border);
-  height: 38px; overflow:hidden; display:flex; align-items:center;
-  position: relative;
-}
-.ticker-bar::before, .ticker-bar::after {
-  content:''; position:absolute; top:0; bottom:0; width:60px; z-index:2;
-}
-.ticker-bar::before { left:0; background: linear-gradient(to right, var(--card), transparent); }
-.ticker-bar::after  { right:0; background: linear-gradient(to left, var(--card), transparent); }
-.ticker-track { display:flex; animation: ticker 60s linear infinite; white-space:nowrap; }
-.ticker-track:hover { animation-play-state:paused; }
-@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-.t-item { padding:0 28px; font-family:var(--mono); font-size:.76rem; display:flex; gap:8px; align-items:center; }
-.t-sym { color:var(--sub2); font-weight:700; }
-.t-price { color:var(--text); }
-.t-up { color:var(--green); }
-.t-dn { color:var(--red); }
-
 /* ── HERO ── */
 .hero {
   padding: 48px 24px 32px;
@@ -360,15 +339,35 @@ footer { background:var(--card); border-top:1px solid var(--border); padding:28p
   </div>
 </nav>
 
-<!-- TICKER -->
-<div class="ticker-bar">
-  <div class="ticker-track" id="tickerTrack">
-    <span class="t-item"><span class="t-sym">BTC</span><span class="t-price" id="t-btc">...</span><span class="t-up" id="t-btc-c">...</span></span>
-    <span class="t-item"><span class="t-sym">ETH</span><span class="t-price" id="t-eth">...</span><span class="t-up" id="t-eth-c">...</span></span>
-    <span class="t-item"><span class="t-sym">SOL</span><span class="t-price" id="t-sol">...</span><span class="t-up" id="t-sol-c">...</span></span>
-    <span class="t-item" style="color:var(--sub)">데이터 로딩 중...</span>
-  </div>
-</div>
+<!-- TradingView Ticker Tape (index.html 동일) -->
+<div class="ticker-wrap" id="tv-ticker-wrap"></div>
+<script>
+(function(){
+  var TV_SYMBOLS=[
+    {proName:"BINANCE:BTCUSDT",title:"비트코인"},
+    {proName:"BINANCE:ETHUSDT",title:"이더리움"},
+    {proName:"BINANCE:XRPUSDT",title:"리플"},
+    {proName:"BINANCE:SOLUSDT",title:"솔라나"},
+    {proName:"BINANCE:ADAUSDT",title:"에이다"},
+    {proName:"BINANCE:DOGEUSDT",title:"도지코인"},
+    {proName:"BINANCE:DOTUSDT",title:"폴카닷"},
+    {proName:"BINANCE:AVAXUSDT",title:"아발란체"},
+    {proName:"BINANCE:LINKUSDT",title:"체인링크"},
+    {proName:"BINANCE:MATICUSDT",title:"폴리곤"}
+  ];
+  var theme=localStorage.getItem('ctc-theme')||'dark';
+  var wrap=document.getElementById('tv-ticker-wrap');
+  var container=document.createElement('div');
+  container.className='tradingview-widget-container';
+  var script=document.createElement('script');
+  script.type='text/javascript';
+  script.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+  script.async=true;
+  script.text=JSON.stringify({symbols:TV_SYMBOLS,showSymbolLogo:true,isTransparent:true,displayMode:"adaptive",colorTheme:theme,locale:"ko"});
+  container.appendChild(script);
+  wrap.appendChild(container);
+})();
+</script>
 
 <!-- HERO -->
 <div class="hero">
@@ -901,13 +900,6 @@ async function loadCoins() {
     document.getElementById('altVal').innerHTML = `<span class="${altCls}">${score}</span>`;
     document.getElementById('altTag').innerHTML = `<span class="${altCls}">${altTag}</span>`;
     document.getElementById('altDesc').textContent = altDesc;
-
-    // Ticker update
-    const tickerItems = coins.slice(0,10).map(c => {
-      const ch = c.price_change_percentage_24h || 0;
-      return `<span class="t-item"><span class="t-sym">${c.symbol.toUpperCase()}</span><span class="t-price">${c.current_price.toLocaleString()}원</span><span class="${ch>=0?'t-up':'t-dn'}">${chgStr(ch)}</span></span>`;
-    }).join('');
-    document.getElementById('tickerTrack').innerHTML = tickerItems + tickerItems;
 
     // Coin table
     const tbody = document.getElementById('coinBody');
