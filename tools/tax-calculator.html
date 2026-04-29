@@ -1163,6 +1163,7 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
   </div>
 </nav>
 
+<div class="ctc-tool-ticker-wrap" id="ctc-main-ticker" style="display:block!important;height:46px!important;overflow:hidden!important;background:#161b22;border-bottom:1px solid #30363d;width:100%;position:relative;"><div class="ctc-tool-ticker-track" style="display:flex;align-items:center;height:46px;white-space:nowrap;animation:ctcTickerScroll 35s linear infinite;"><span class="ctc-tool-ticker-item"><span class="t-short">BTC</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ETH</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BNB</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">XRP</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">SOL</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">DOGE</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ADA</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">TRX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">AVAX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">LINK</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BTC</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ETH</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BNB</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">XRP</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">SOL</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">DOGE</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ADA</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">TRX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">AVAX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">LINK</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span></div></div>
 <!-- ============================================================
      URGENT BANNER
 ============================================================ -->
@@ -1174,7 +1175,7 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
 <!-- ============================================================
      TICKER TAPE (TradingView)
 ============================================================ -->
-<div class="ticker-wrap">
+<div class="ticker-wrap" style="display:none!important;height:0;overflow:hidden;">
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
     <script type="text/javascript"
@@ -2557,5 +2558,6 @@ function toggleTheme() {
 })();
 </script>
 <script src="/assets/js/common.js"></script>
+<script src="/assets/js/ctc-ticker.js"></script>
 </body>
 </html>

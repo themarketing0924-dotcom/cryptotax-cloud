@@ -459,3 +459,148 @@ section:last-child{margin-bottom:0}
   section{margin-bottom:44px}
   .container{padding-bottom:60px}
 }
+
+/* ══════════════════════════════════════════════════════
+   한국어 독자 최적화 타이포그래피
+   — 30~50대 한국 암호화폐 투자자 가독성 기준
+   — 데스크톱 / 아이패드 / 모바일 3-tier 대응
+══════════════════════════════════════════════════════ */
+
+/* 전역 한국어 설정 */
+html {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── 도구 페이지 공통 섹션 타이틀 ── */
+.section-title {
+  word-break: keep-all;
+  letter-spacing: -0.4px;
+  line-height: 1.35;
+}
+
+/* ── 단락·라벨 한국어 가독성 ── */
+.hero-sub,
+.section p,
+.faq-a,
+.howto-text p,
+.formula-box > p,
+.lead-form-wrap > p {
+  word-break: keep-all;
+  line-height: 1.75;
+}
+
+/* ── 결과값 숫자: tabular-nums (정렬 선명) ── */
+.r-value,
+.result-item .value,
+.stat-num,
+.s-num,
+.result-big .value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══ 데스크톱 1280px+ ══ */
+@media (min-width: 1280px) {
+  body { font-size: 16px; line-height: 1.72; }
+  .section-title { font-size: 24px; margin-bottom: 22px; }
+  .hero h1 { letter-spacing: -0.6px; }
+  .hero-sub { font-size: 16px; }
+  .form-group label { font-size: 14px; font-weight: 700; }
+  .form-group input,
+  .form-group select { font-size: 15px; }
+  .calc-btn,
+  .cta-btn,
+  .lead-submit { font-size: 17px; min-height: 52px; }
+  .faq-q { font-size: 16px; line-height: 1.5; }
+  .faq-a { font-size: 15px; }
+  .howto-text h4 { font-size: 16px; }
+  .howto-text p { font-size: 15px; line-height: 1.75; }
+}
+
+/* ══ 아이패드 Pro 1024~1279px ══ */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  body { font-size: 15px; line-height: 1.7; }
+  .section-title { font-size: 22px; }
+  .hero-sub { font-size: 15px; }
+  .calc-btn,
+  .cta-btn,
+  .lead-submit { font-size: 16px; min-height: 50px; }
+}
+
+/* ══ 아이패드 Air/Mini 768~1024px ══ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body { font-size: 15px; line-height: 1.7; }
+  .section-title { font-size: 20px; margin-bottom: 16px; }
+  .hero-sub { font-size: 14px; }
+  .form-group input,
+  .form-group select { font-size: 15px; min-height: 48px; }
+  .calc-btn,
+  .cta-btn,
+  .lead-submit { font-size: 16px; min-height: 50px; }
+  .faq-q { font-size: 15px; }
+  .result-item .r-label,
+  .result-item .label { font-size: 12px; }
+}
+
+/* ══ 모바일 ~767px ══ */
+@media (max-width: 767px) {
+  body { font-size: 14px; line-height: 1.68; }
+  .section-title { font-size: 18px; margin-bottom: 14px; letter-spacing: -0.3px; }
+  .hero h1 { letter-spacing: -0.4px; line-height: 1.35; }
+  .hero-sub { font-size: 13px; line-height: 1.7; }
+  .form-group label { font-size: 13px; font-weight: 700; }
+  .form-group input,
+  .form-group select,
+  .lead-inputs input { font-size: 16px !important; min-height: 48px; }
+  .calc-btn,
+  .cta-btn,
+  .lead-submit { font-size: 16px; min-height: 52px; font-weight: 900; }
+  .faq-q { font-size: 14px; line-height: 1.5; padding: 14px 0; }
+  .faq-a { font-size: 13px; line-height: 1.7; }
+  .howto-text h4 { font-size: 14px; }
+  .howto-text p { font-size: 13px; }
+  .result-item .r-value,
+  .result-item .value { font-size: 18px; }
+  .stat-badge .s-num,
+  .s-num { font-size: 20px; }
+  .stat-badge .s-label,
+  .s-label { font-size: 11px; }
+  .disclaimer p,
+  .formula-example,
+  .geo-summary p { font-size: 12px !important; }
+}
+
+/* ══ 소형 모바일 ~375px ══ */
+@media (max-width: 375px) {
+  .section-title { font-size: 17px; }
+  .calc-btn,
+  .cta-btn,
+  .lead-submit { font-size: 15px; }
+  .form-row { grid-template-columns: 1fr !important; }
+  .stats-row { grid-template-columns: repeat(2,1fr) !important; }
+}
+
+/* ── 접근성: 모바일 입력 필드 zoom 방지 (16px 보장) ── */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ── 히트맵 위젯 갭 제거 ── */
+.tradingview-widget-container {
+  margin-top: 0 !important;
+}

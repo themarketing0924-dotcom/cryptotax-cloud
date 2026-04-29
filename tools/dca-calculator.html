@@ -680,21 +680,55 @@ body{
 
 
 <!-- 코인 히트맵 위젯 -->
-<div class="section fade-up" style="padding:16px 0">
-  <h2 class="section-title" style="margin-bottom:12px">🔥 실시간 코인 히트맵</h2>
-  <p style="font-size:13px;color:var(--text2);margin-bottom:12px">DCA 매수 전 시장 전체 흐름을 한눈에 확인하세요</p>
-  <div id="dca-tv-heatmap"></div>
+<div class="section" style="padding:12px 0 0">
+  <h2 class="section-title" style="margin-bottom:6px">🔥 실시간 코인 히트맵</h2>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:0;line-height:1.6">DCA 매수 전 시장 전체 흐름을 한눈에 확인하세요</p>
+  <div id="dca-tv-heatmap" style="overflow:hidden;margin-top:-2px;"></div>
   <script>
   (function(){
     var c=document.getElementById('dca-tv-heatmap');
     if(!c)return;
-    c.innerHTML='<div class="tradingview-widget-container__widget" style="height:400px;width:100%;"></div>';
+    var theme=document.documentElement.getAttribute('data-theme')||'dark';
+    var wrap=document.createElement('div');
+    wrap.className='tradingview-widget-container';
+    wrap.style.cssText='overflow:hidden;position:relative;';
+    var inner=document.createElement('div');
+    inner.className='tradingview-widget-container__widget';
+    inner.style.cssText='height:460px;width:100%;';
+    wrap.appendChild(inner);
+    c.appendChild(wrap);
     var s=document.createElement('script');
     s.src='https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
     s.async=true;
-    var theme=document.documentElement.getAttribute('data-theme')||'dark';
-    s.textContent=JSON.stringify({dataSource:"Crypto",blockSize:"market_cap_calc",blockColor:"change",locale:"kr",colorTheme:theme==='light'?'light':'dark',hasTopBar:false,isZoomEnabled:true,hasSymbolTooltip:true,width:"100%",height:400});
-    c.appendChild(s);
+    s.textContent=JSON.stringify({
+      dataSource:"Crypto",blockSize:"market_cap_calc",blockColor:"change",
+      locale:"kr",colorTheme:theme==='light'?'light':'dark',
+      hasTopBar:false,isZoomEnabled:true,hasSymbolTooltip:true,
+      width:"100%",height:460
+    });
+    wrap.appendChild(s);
+    document.addEventListener('themeChange',function(e){
+      var t2=e.detail||'dark';
+      c.innerHTML='';
+      var w2=document.createElement('div');
+      w2.className='tradingview-widget-container';
+      w2.style.cssText='overflow:hidden;position:relative;';
+      var i2=document.createElement('div');
+      i2.className='tradingview-widget-container__widget';
+      i2.style.cssText='height:460px;width:100%;';
+      w2.appendChild(i2);
+      c.appendChild(w2);
+      var s2=document.createElement('script');
+      s2.src='https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
+      s2.async=true;
+      s2.textContent=JSON.stringify({
+        dataSource:"Crypto",blockSize:"market_cap_calc",blockColor:"change",
+        locale:"kr",colorTheme:t2==='light'?'light':'dark',
+        hasTopBar:false,isZoomEnabled:true,hasSymbolTooltip:true,
+        width:"100%",height:460
+      });
+      w2.appendChild(s2);
+    });
   })();
   </script>
 </div>
@@ -1441,5 +1475,6 @@ function toggleFaq(el) {
 </footer>
 
 <script src="/assets/js/common.js"></script>
+<script src="/assets/js/ctc-ticker.js"></script>
 </body>
 </html>
