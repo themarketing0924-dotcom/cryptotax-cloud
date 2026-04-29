@@ -861,37 +861,7 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
 </div>
 <script>
 (function(){
-  const saved = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-
-  function buildTicker(theme) {
-    const c = document.getElementById('tv-ticker');
-    if(!c) return;
-    c.innerHTML = '';
-    const wrap = document.createElement('div');
-    wrap.className = 'tradingview-widget-container';
-    wrap.style.width = '100%';
-    const inner = document.createElement('div');
-    inner.className = 'tradingview-widget-container__widget';
-    wrap.appendChild(inner);
-    const s = document.createElement('script');
-    s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-    s.async = true;
-    s.textContent = JSON.stringify({
-      symbols: [
-        {proName:"UPBIT:BTCKRW", title:"BTC 업비트"},
-        {proName:"BINANCE:BTCUSDT", title:"BTC 바이낸스"},
-        {proName:"UPBIT:ETHKRW", title:"ETH"},
-        {proName:"UPBIT:XRPKRW", title:"XRP"},
-        {proName:"UPBIT:SOLKRW", title:"SOL"},
-        {proName:"FX_IDC:USDKRW", title:"달러/원"}
-      ],
-      showSymbolLogo: true, isTransparent: false,
-      displayMode: "adaptive", colorTheme: theme, locale: "kr"
-    });
-    wrap.appendChild(s);
-    c.appendChild(wrap);
-  }
+  const saved = localStorage.getItem('ctc-theme') || 'dark';
 
   function buildChart(theme) {
     const c = document.getElementById('tv-chart');
@@ -930,24 +900,12 @@ body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic 
     c.appendChild(s);
   }
 
-  function toggleTheme(){
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    const btn = document.querySelector('.theme-btn');
-    if(btn) btn.textContent = next === 'dark' ? '☀️ 라이트' : '🌙 다크';
-    buildTicker(next);
-    buildChart(next);
-    buildHeatmap(next);
-  }
-
-  window.toggleTheme = toggleTheme;
+  document.addEventListener('themeChange', function(e){
+    buildChart(e.detail);
+    buildHeatmap(e.detail);
+  });
 
   document.addEventListener('DOMContentLoaded', function(){
-    const btn = document.querySelector('.theme-btn');
-    if(btn) btn.textContent = saved === 'dark' ? '☀️ 라이트' : '🌙 다크';
-    buildTicker(saved);
     buildChart(saved);
     buildHeatmap(saved);
   });
