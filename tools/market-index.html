@@ -22,12 +22,12 @@
   --bg-base:#0d1117; --bg-surface:#161b22; --bg-elevated:#1c2128; --bg-overlay:rgba(22,27,34,0.95);
   --text-primary:#e6edf3; --text-secondary:#8b949e; --text-muted:#484f58;
   --border-default:#30363d; --border-subtle:#21262d;
-  --orange:#f7931a; --orange-dim:#2a1500; --orange-border:#f7931a40;
+  --orange:#FF8C00; --orange-dim:#2a1500; --orange-border:#FF8C0040;
   --blue:#58a6ff; --blue-dim:#0a1a2a; --blue-border:#58a6ff40;
   --green:#3fb950; --green-dim:#0a2a0a; --green-border:#3fb95040;
   --red:#f85149; --red-dim:#2a0a0a; --red-border:#f8514940;
   --purple:#a855f7; --yellow:#ffd700;
-  --hero-bg:radial-gradient(ellipse at 50% 0%,#f7931a08 0%,transparent 70%);
+  --hero-bg:radial-gradient(ellipse at 50% 0%,#FF8C0008 0%,transparent 70%);
   --nav-border:#30363d; --transition:0.3s ease;
 }
 [data-theme="light"] {
@@ -36,7 +36,7 @@
   --text-primary:#1a1f2e; --text-secondary:#57606a; --text-muted:#8c959f;
   --border-default:#d0d7de; --border-subtle:#e8ecef;
   --orange-dim:#fff3e0; --blue-dim:#e8f3ff; --green-dim:#e6f9ec; --red-dim:#fef0f0;
-  --hero-bg:radial-gradient(ellipse at 50% 0%,#f7931a12 0%,transparent 70%);
+  --hero-bg:radial-gradient(ellipse at 50% 0%,#FF8C0012 0%,transparent 70%);
   --nav-border:#d0d7de;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -57,7 +57,7 @@ a{text-decoration:none;color:inherit;}
 .nav-links{display:flex;gap:4px;align-items:center;}
 .nav-links a{color:var(--text-secondary);font-size:0.84rem;font-weight:600;padding:6px 12px;border-radius:7px;
   transition:all var(--transition);}
-.nav-links a:hover,.nav-links a.active{background:#f7931a15;color:var(--orange);}
+.nav-links a:hover,.nav-links a.active{background:#FF8C0015;color:var(--orange);}
 .theme-toggle{background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:50px;
   cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 14px;font-size:0.82rem;
   color:var(--text-secondary);transition:all var(--transition);}
@@ -86,7 +86,7 @@ a{text-decoration:none;color:inherit;}
 .hbadge.blue{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);}
 .hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;line-height:1.2;margin-bottom:14px;
   letter-spacing:-0.03em;word-break:keep-all;}
-.hero h1 .highlight{background:linear-gradient(135deg,#f7931a,#ffd700);-webkit-background-clip:text;
+.hero h1 .highlight{background:linear-gradient(135deg,#FF8C00,#ffd700);-webkit-background-clip:text;
   -webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{color:var(--text-secondary);font-size:clamp(0.95rem,2vw,1.08rem);font-weight:500;
   margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto;word-break:keep-all;}
@@ -235,10 +235,10 @@ a{text-decoration:none;color:inherit;}
   letter-spacing:-0.04em;}
 .dday-unit{font-size:0.84rem;color:var(--text-secondary);font-weight:600;margin:4px 0;}
 .dday-info{font-size:0.78rem;color:var(--text-secondary);margin-bottom:16px;}
-.btn-cta{display:inline-block;background:linear-gradient(135deg,#f7931a,#e8820a);color:#fff;
+.btn-cta{display:inline-block;background:linear-gradient(135deg,#FF8C00,#e67e00);color:#fff;
   font-weight:800;font-size:0.9rem;border-radius:10px;padding:12px 24px;
-  transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 14px #f7931a40;}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px #f7931a60;}
+  transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 14px #FF8C0040;}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px #FF8C0060;}
 
 /* GAINERS/LOSERS */
 .gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
@@ -288,7 +288,7 @@ a{text-decoration:none;color:inherit;}
   padding:18px 10px;text-align:center;text-decoration:none;color:var(--text-primary);
   font-size:0.84rem;font-weight:700;transition:all var(--transition);
   display:flex;flex-direction:column;gap:6px;align-items:center;}
-.tool-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 6px 20px #f7931a20;}
+.tool-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 6px 20px #FF8C0020;}
 .tool-card .tc-icon{font-size:1.7rem;}
 .tool-card .tc-name{font-size:0.86rem;font-weight:800;color:var(--text-primary);}
 .tool-card .tc-desc{font-size:0.72rem;color:var(--text-secondary);font-weight:500;}

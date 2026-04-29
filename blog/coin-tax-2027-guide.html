@@ -106,6 +106,7 @@
 .article-featured-img img{width:100%;height:auto;display:block;object-fit:cover}
 .article-featured-img figcaption{font-size:11px;color:#888;text-align:center;padding:7px 12px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.08)}
 </style>
+<link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
 
@@ -430,5 +431,6 @@
   function toggleTheme(){const h=document.documentElement,b=document.querySelector('.theme-btn');if(h.dataset.theme==='dark'){h.dataset.theme='light';b.textContent='☀️ 라이트'}else{h.dataset.theme='dark';b.textContent='🌙 다크'}}
   function toggleFaq(btn){const a=btn.nextElementSibling,o=a.classList.contains('show');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('show'));document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));if(!o){a.classList.add('show');btn.classList.add('open')}}
 </script>
+<script src="/assets/js/common.js"></script>
 </body>
 </html>

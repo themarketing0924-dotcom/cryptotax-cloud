@@ -43,7 +43,7 @@
    CSS 변수 & 기본 리셋
 ═══════════════════════════════════════ */
 :root {
-  --point:#f7931a; --point-dark:#e6820f; --point-light:#fff3e0;
+  --point:#FF8C00; --point-dark:#e6820f; --point-light:#fff3e0;
   --bg:#ffffff; --bg2:#f8f9fa; --bg3:#f0f0f0;
   --card:#ffffff; --border:#e0e0e0;
   --text:#1a1a1a; --text2:#555555; --text3:#888888;
@@ -555,7 +555,7 @@ body{
   /* Group A (--bg-surface, --bg-elevated) */
   --bg-primary:#f8f9fa;--bg-card:#ffffff;--bg-card2:#f1f3f5;--bg-dark:#ffffff;
   --bg-surface:#ffffff;--bg-elevated:#f1f3f5;--bg-input:#f1f3f5;
-  --primary:#f7971e;--primary-dark:#e8850f;
+  --primary:#FF8C00;--primary-dark:#e67e00;
   --text-primary:#111;--text-secondary:#444;--text-muted:#888;
   --border-subtle:#e0e0e0;
 
@@ -564,11 +564,11 @@ body{
   --card:#ffffff;--card2:#f1f3f5;
   --text:#111;--text2:#444;--text3:#666;--muted:#999;
   --border:#e0e0e0;--border2:#d0d0d0;
-  --point:#f7971e;--point2:#e8850f;
+  --point:#FF8C00;--point2:#e67e00;
   --shadow:0 2px 12px rgba(0,0,0,.08);
 
   /* Group C (--accent) */
-  --accent:#f7971e;--accent2:#e8850f;
+  --accent:#FF8C00;--accent2:#e67e00;
 
   /* Group D (staking etc) */
   --text-sub:#555;
@@ -1271,7 +1271,7 @@ async function downloadExcel() {
     '<div style="font-size:48px;margin-bottom:16px;">📊</div>' +
     '<p style="font-size:20px;font-weight:800;color:var(--point);margin-bottom:8px;">DB 저장 완료!</p>' +
     '<p style="font-size:14px;color:#888;margin-bottom:24px;">아래 버튼을 눌러 엑셀 파일을 다운로드하세요.</p>' +
-    '<button onclick="doDownload()" style="padding:16px 40px;background:#f7931a;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;">📥 엑셀 다운로드</button>' +
+    '<button onclick="doDownload()" style="padding:16px 40px;background:#FF8C00;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;">📥 엑셀 다운로드</button>' +
     '</div>';
 }
 
@@ -1308,7 +1308,7 @@ function doDownload() {
   document.getElementById('excelFormWrap').innerHTML =
     '<div style="text-align:center;padding:32px 20px;">' +
     '<div style="font-size:56px;margin-bottom:12px;">✅</div>' +
-    '<p style="font-size:20px;font-weight:800;color:#f7931a;margin-bottom:8px;">다운로드 완료!</p>' +
+    '<p style="font-size:20px;font-weight:800;color:#FF8C00;margin-bottom:8px;">다운로드 완료!</p>' +
     '<p style="font-size:14px;color:#888;">엑셀 파일이 저장되었습니다.<br>세무사 상담·신고 시 참고자료로 활용하세요 📋</p>' +
     '</div>';
 }

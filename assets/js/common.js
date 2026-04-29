@@ -312,3 +312,32 @@ function initStickyNav(){
   setTimeout(function(){nav.style.bottom='0';},5000);
 }
 document.addEventListener('DOMContentLoaded',initStickyNav);
+
+// ⑧ 법적 면책 문구 자동 주입 — 모든 푸터 상단에 삽입
+(function(){
+  var DISCLAIMER_TEXT = '본 서비스는 세무사법을 준수하며, 제공되는 데이터는 시뮬레이션 결과입니다. 최종 신고는 <strong>파트너 세무사</strong>와 상담하세요.';
+  var DISCLAIMER_ID   = 'ctc-legal-disclaimer';
+
+  function inject(){
+    if(document.getElementById(DISCLAIMER_ID)) return;
+    var div = document.createElement('div');
+    div.id = DISCLAIMER_ID;
+    div.className = 'ctc-legal-disclaimer';
+    div.innerHTML = '⚖️ ' + DISCLAIMER_TEXT;
+
+    // 1순위: footer 또는 .main-footer 맨 앞에 삽입
+    var footer = document.querySelector('footer') || document.querySelector('.main-footer');
+    if(footer){
+      footer.insertBefore(div, footer.firstChild);
+      return;
+    }
+    // 2순위: body 맨 마지막 자식 앞에 삽입
+    document.body.appendChild(div);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', inject);
+  } else {
+    inject();
+  }
+})();

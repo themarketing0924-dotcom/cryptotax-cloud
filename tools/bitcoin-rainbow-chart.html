@@ -46,7 +46,7 @@
   --text:#e8e8f0;
   --text-sub:#9999bb;
   --text-muted:#6666aa;
-  --orange:#f7931a;
+  --orange:#FF8C00;
   --orange-dim:rgba(247,147,26,.12);
   --green:#3fb950;
   --red:#f85149;
@@ -453,7 +453,7 @@ footer{
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-dot" style="background:#e8820a;"></div>
+        <div class="tl-dot" style="background:#e67e00;"></div>
         <div class="tl-content">
           <div class="tl-year">2016년 7월 — 2차 반감기</div>
           <div class="tl-title">두 번째 강세장 🚀</div>
@@ -891,26 +891,26 @@ function drawRainbowChart(currentPrice){
       ctx.setLineDash([6, 4]);
       ctx.moveTo(PAD.left, y);
       ctx.lineTo(PAD.left + cW, y);
-      ctx.strokeStyle = '#f7931a';
+      ctx.strokeStyle = '#FF8C00';
       ctx.lineWidth = 2;
       ctx.stroke();
       ctx.setLineDash([]);
 
       // 현재가 레이블
-      ctx.fillStyle = '#f7931a';
+      ctx.fillStyle = '#FF8C00';
       ctx.font = 'bold 11px sans-serif';
       ctx.textAlign = 'right';
       const label = '현재 ' + Math.round(currentPrice / 10000) + '만원';
       const tw = ctx.measureText(label).width + 10;
       ctx.fillStyle = 'rgba(247,147,26,0.15)';
       ctx.fillRect(PAD.left + cW - tw - 4, y - 10, tw + 8, 18);
-      ctx.fillStyle = '#f7931a';
+      ctx.fillStyle = '#FF8C00';
       ctx.fillText(label, PAD.left + cW, y + 4);
 
       // 현재가 점
       ctx.beginPath();
       ctx.arc(xOf(new Date()), y, 5, 0, Math.PI * 2);
-      ctx.fillStyle = '#f7931a';
+      ctx.fillStyle = '#FF8C00';
       ctx.fill();
       ctx.strokeStyle = isDark ? '#0d0d1a' : '#ffffff';
       ctx.lineWidth = 2;

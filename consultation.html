@@ -19,7 +19,7 @@
 .form-input:focus{border-color:var(--orange);}
 select.form-input{background:var(--bg-base);color:var(--text-primary);}
 textarea.form-input{min-height:120px;resize:vertical;}
-.submit-btn{width:100%;background:linear-gradient(135deg,#f7931a,#e8820a);color:#fff;border:none;border-radius:10px;padding:16px;font-size:1.05rem;font-weight:800;cursor:pointer;margin-top:8px;transition:opacity 0.2s;}
+.submit-btn{width:100%;background:linear-gradient(135deg,#FF8C00,#e8820a);color:#fff;border:none;border-radius:10px;padding:16px;font-size:1.05rem;font-weight:800;cursor:pointer;margin-top:8px;transition:opacity 0.2s;}
 .submit-btn:hover{opacity:0.9;}
 .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:0 auto 40px;padding:0 20px;}
 @media(max-width:600px){.benefits{grid-template-columns:1fr;}}
@@ -29,6 +29,7 @@ textarea.form-input{min-height:120px;resize:vertical;}
 .benefit-card p{font-size:0.8rem;color:var(--text-secondary);}
 .success-msg{display:none;background:var(--green-dim);border:1px solid var(--green-border);border-radius:10px;padding:20px;text-align:center;color:var(--green);font-weight:700;margin-top:16px;}
 </style>
+<link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
 
@@ -155,5 +156,6 @@ function submitConsult(){
   }, 5000);
 }
 </script>
+<script src="/assets/js/common.js"></script>
 </body>
 </html>
