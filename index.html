@@ -966,24 +966,50 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 [data-theme="light"] .ad-chart-bars { opacity: 0.15; }
 [data-theme="light"] .ad-bg-deco { opacity: 0.08; }
 
-/* ── TradingView 틱커 — 다크모드 배경 플리커 방지 ── */
-#tv-ticker-wrap{
-  background:var(--bg-base);
-  border-bottom:1px solid var(--border-subtle);
-  min-height:46px;
+/* ── 커스텀 코인 틱커 ── */
+#ctc-ticker{
+  background:var(--bg-surface);
+  border-bottom:1px solid var(--border-default);
+  padding:0;
   overflow:hidden;
+  height:44px;
+  position:relative;
   transition:background var(--transition),border-color var(--transition);
 }
-#tv-ticker-wrap .tradingview-widget-container{
-  background:transparent!important;
+#ctc-ticker-track{
+  display:flex;
+  align-items:center;
+  gap:0;
+  height:44px;
+  white-space:nowrap;
+  animation:ticker-scroll 40s linear infinite;
+  will-change:transform;
 }
-#tv-ticker-wrap iframe{
-  background:transparent!important;
-  color-scheme:dark;
+#ctc-ticker:hover #ctc-ticker-track{animation-play-state:paused;}
+@keyframes ticker-scroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
 }
-[data-theme="light"] #tv-ticker-wrap iframe{
-  color-scheme:light;
+.ctc-ticker-item{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:0 20px;
+  height:44px;
+  border-right:1px solid var(--border-subtle);
+  font-size:0.8rem;
+  font-weight:600;
+  white-space:nowrap;
+  flex-shrink:0;
 }
+.ctc-ticker-name{color:var(--text-secondary);font-weight:700;font-size:0.75rem;}
+.ctc-ticker-price{color:var(--text-primary);font-weight:800;font-variant-numeric:tabular-nums;}
+.ctc-ticker-change.pos{color:var(--green);}
+.ctc-ticker-change.neg{color:var(--red);}
+.ctc-ticker-change.neu{color:var(--text-muted);}
+.ctc-ticker-logo{width:18px;height:18px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+[data-theme="light"] #ctc-ticker{background:#f0f3f6;border-bottom-color:var(--border-default);}
+[data-theme="light"] .ctc-ticker-item{border-right-color:var(--border-default);}
 /* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
 button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.nav-cta,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
 .cta-secondary{min-height:48px;}
@@ -1136,38 +1162,74 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
   </div>
 </div>
 
-<!-- 개선된 TradingView 위젯 (TOP 10) -->
-<div id="tv-ticker-wrap"></div>
+<!-- 커스텀 코인 틱커 — 다크/라이트 완전 대응 -->
+<div id="ctc-ticker" aria-label="실시간 코인 시세">
+  <div id="ctc-ticker-track"></div>
+</div>
 <script>
 (function(){
-  var TV_SYMBOLS=[
-    {proName:"BINANCE:BTCUSDT",title:"비트코인"},
-    {proName:"BINANCE:ETHUSDT",title:"이더리움"},
-    {proName:"BINANCE:XRPUSDT",title:"리플"},
-    {proName:"BINANCE:SOLUSDT",title:"솔라나"},
-    {proName:"BINANCE:ADAUSDT",title:"에이다"},
-    {proName:"BINANCE:DOGEUSDT",title:"도지코인"},
-    {proName:"BINANCE:DOTUSDT",title:"폴카닷"},
-    {proName:"BINANCE:AVAXUSDT",title:"아발란체"},
-    {proName:"BINANCE:LINKUSDT",title:"체인링크"},
-    {proName:"BINANCE:MATICUSDT",title:"폴리곤"}
+  var COINS=[
+    {sym:'BTCUSDT', name:'비트코인',  logo:'https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png'},
+    {sym:'ETHUSDT', name:'이더리움',  logo:'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png'},
+    {sym:'XRPUSDT', name:'리플',      logo:'https://assets.coingecko.com/coins/images/44/thumb/xrp-symbol-white-128.png'},
+    {sym:'SOLUSDT', name:'솔라나',    logo:'https://assets.coingecko.com/coins/images/4128/thumb/solana.png'},
+    {sym:'ADAUSDT', name:'에이다',    logo:'https://assets.coingecko.com/coins/images/975/thumb/cardano.png'},
+    {sym:'DOGEUSDT',name:'도지코인', logo:'https://assets.coingecko.com/coins/images/5/thumb/dogecoin.png'},
+    {sym:'AVAXUSDT',name:'아발란체', logo:'https://assets.coingecko.com/coins/images/12559/thumb/Avalanche_Circle_RedWhite_Trans.png'},
+    {sym:'LINKUSDT',name:'체인링크', logo:'https://assets.coingecko.com/coins/images/877/thumb/chainlink-new-logo.png'},
+    {sym:'DOTUSDT', name:'폴카닷',   logo:'https://assets.coingecko.com/coins/images/12171/thumb/polkadot.png'},
+    {sym:'MATICUSDT',name:'폴리곤',  logo:'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png'}
   ];
-  window.reloadTVTicker=function(theme){
-    var wrap=document.getElementById('tv-ticker-wrap');
-    if(!wrap)return;
-    wrap.innerHTML='';
-    var container=document.createElement('div');
-    container.className='tradingview-widget-container';
-    var script=document.createElement('script');
-    script.type='text/javascript';
-    script.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-    script.async=true;
-    script.text=JSON.stringify({symbols:TV_SYMBOLS,showSymbolLogo:true,isTransparent:true,displayMode:"adaptive",colorTheme:theme||'dark',locale:"ko"});
-    container.appendChild(script);
-    wrap.appendChild(container);
-  };
-  var initTheme=localStorage.getItem('ctc-theme')||'dark';
-  window.reloadTVTicker(initTheme);
+
+  function fmt(n){
+    n=parseFloat(n);
+    if(n>=1000) return n.toLocaleString('ko-KR',{minimumFractionDigits:0,maximumFractionDigits:0});
+    if(n>=1)    return n.toLocaleString('ko-KR',{minimumFractionDigits:2,maximumFractionDigits:4});
+    return n.toFixed(6);
+  }
+
+  function buildTrack(data){
+    var map={};
+    data.forEach(function(d){map[d.symbol]=d;});
+    var items=COINS.map(function(c){
+      var d=map[c.sym];
+      if(!d) return '';
+      var chg=parseFloat(d.priceChangePercent);
+      var cls=chg>0?'pos':chg<0?'neg':'neu';
+      var sign=chg>0?'+':'';
+      return '<div class="ctc-ticker-item">'
+        +'<img class="ctc-ticker-logo" src="'+c.logo+'" alt="'+c.name+'" loading="lazy" onerror="this.style.display=\'none\'">'
+        +'<span class="ctc-ticker-name">'+c.name+'</span>'
+        +'<span class="ctc-ticker-price">$'+fmt(d.lastPrice)+'</span>'
+        +'<span class="ctc-ticker-change '+cls+'">'+sign+chg.toFixed(2)+'%</span>'
+        +'</div>';
+    }).join('');
+    /* 무한 루프를 위해 2벌 복사 */
+    return items+items;
+  }
+
+  function render(data){
+    var track=document.getElementById('ctc-ticker-track');
+    if(track) track.innerHTML=buildTrack(data);
+  }
+
+  function fetchPrices(){
+    var syms=JSON.stringify(COINS.map(function(c){return '"'+c.sym+'"'}).join(',').replace(/"/g,'').split(',').map(function(s){return s;}));
+    var url='https://api.binance.com/api/v3/ticker/24hr?symbols=['
+      +COINS.map(function(c){return '%22'+c.sym+'%22';}).join(',')
+      +']';
+    fetch(url)
+      .then(function(r){return r.json();})
+      .then(function(data){render(data);})
+      .catch(function(){
+        /* API 실패 시 정적 플레이스홀더 표시 */
+        var track=document.getElementById('ctc-ticker-track');
+        if(track) track.innerHTML='<div class="ctc-ticker-item" style="color:var(--text-muted);padding:0 24px">실시간 시세 로딩 중...</div>';
+      });
+  }
+
+  fetchPrices();
+  setInterval(fetchPrices, 30000); /* 30초마다 갱신 */
 })();
 </script>
 
@@ -1739,7 +1801,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <script>
 (function initTheme(){const saved=localStorage.getItem('ctc-theme')||'dark';applyTheme(saved,false);})();
 function toggleTheme(){const current=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(current==='dark'?'light':'dark',true);}
-function applyTheme(theme,save){const root=document.documentElement;const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');const dIcon=document.getElementById('drawerThemeIcon');if(theme==='light'){root.setAttribute('data-theme','light');root.style.colorScheme='light';if(icon)icon.textContent='🌙';if(label)label.textContent='다크';if(dIcon)dIcon.textContent='🌙';}else{root.setAttribute('data-theme','dark');root.style.colorScheme='dark';if(icon)icon.textContent='☀️';if(label)label.textContent='라이트';if(dIcon)dIcon.textContent='☀️';}if(save)localStorage.setItem('ctc-theme',theme);if(save&&window.reloadTVTicker)window.reloadTVTicker(theme);}
+function applyTheme(theme,save){const root=document.documentElement;const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');const dIcon=document.getElementById('drawerThemeIcon');if(theme==='light'){root.setAttribute('data-theme','light');root.style.colorScheme='light';if(icon)icon.textContent='🌙';if(label)label.textContent='다크';if(dIcon)dIcon.textContent='🌙';}else{root.setAttribute('data-theme','dark');root.style.colorScheme='dark';if(icon)icon.textContent='☀️';if(label)label.textContent='라이트';if(dIcon)dIcon.textContent='☀️';}if(save)localStorage.setItem('ctc-theme',theme);}
 
 /* ===== 햄버거 드로어 메뉴 ===== */
 function toggleDrawer(){const drawer=document.getElementById('mobileDrawer');const overlay=document.getElementById('drawerOverlay');const btn=document.getElementById('hamburgerBtn');const isOpen=drawer.classList.contains('open');if(isOpen){closeDrawer();}else{drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open');document.body.style.overflow='hidden';}}
