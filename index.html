@@ -181,6 +181,9 @@ a{text-decoration:none;color:inherit;}
 .hbadge.green{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);}
 .hbadge.orange{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-border);}
 .hbadge.blue{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);}
+.hbadge.red{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.3);}
+[data-theme="light"] .hbadge.red{background:rgba(239,68,68,.08);color:#dc2626;border-color:rgba(239,68,68,.22);}
+.hero-sub strong{color:var(--orange);font-weight:800;}
 /* 타이틀 — 바이낸스처럼 강렬하게 */
 .hero h1{font-size:clamp(1.75rem,5.5vw,3.2rem);font-weight:900;line-height:1.2;margin-bottom:16px;color:var(--text-primary);letter-spacing:-0.03em;word-break:keep-all;}
 .hero h1 .highlight{background:linear-gradient(135deg,#FF8C00,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -1154,20 +1157,20 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge-row">
+      <span class="hbadge red">⚡ 2027 과세 D-246</span>
       <span class="hbadge green">✅ 국세청 기준 적용</span>
-      <span class="hbadge orange">🎁 12종 완전 무료</span>
       <span class="hbadge blue">📥 무료 PDF 즉시 발송</span>
     </div>
-    <h1>코인 투자자라면<br><span class="highlight">한 번쯤 꼭 확인해야 할</span><br>무료 계산기 모음</h1>
-    <p class="hero-sub">세금·수익률·물타기·DCA·스테이킹·김치프리미엄<br>업비트·빗썸 투자자가 궁금한 모든 것을 무료로 계산하세요</p>
+    <h1>2027년 세금 22%,<br><span class="highlight">당신의 수익을 지키는</span><br>무료 계산기 모음</h1>
+    <p class="hero-sub">세금·수익률·물타기·DCA·스테이킹·김치프리미엄<br>업비트·빗썸 투자자가 궁금한 모든 것을 <strong>10초 만에</strong> 계산하세요</p>
     <div class="hero-stats">
-      <div class="hstat"><strong>12종</strong><span>무료 계산기</span></div>
+      <div class="hstat"><strong>22%</strong><span>2027 과세율</span></div>
       <div class="hstat"><strong>1,326만</strong><span>한국 코인 투자자</span></div>
-      <div class="hstat"><strong>0원</strong><span>완전 무료</span></div>
-      <div class="hstat"><strong>100%</strong><span>무료 서비스</span></div>
+      <div class="hstat"><strong>12종</strong><span>무료 계산기</span></div>
+      <div class="hstat"><strong>10초</strong><span>즉시 계산</span></div>
     </div>
     <div class="hero-cta-row">
-      <a class="cta-primary" href="#calculator">💰 지금 세금 계산하기</a>
+      <a class="cta-primary" href="#calculator" onclick="event.preventDefault();document.getElementById('calculator')?.scrollIntoView({behavior:'smooth'})">💰 무료 세금 계산 시작하기</a>
       <a class="cta-secondary" href="#tools">🧰 모든 계산기 보기</a>
     </div>
   </div>
