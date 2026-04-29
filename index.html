@@ -966,6 +966,24 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 [data-theme="light"] .ad-chart-bars { opacity: 0.15; }
 [data-theme="light"] .ad-bg-deco { opacity: 0.08; }
 
+/* ── TradingView 틱커 — 다크모드 배경 플리커 방지 ── */
+#tv-ticker-wrap{
+  background:var(--bg-base);
+  border-bottom:1px solid var(--border-subtle);
+  min-height:46px;
+  overflow:hidden;
+  transition:background var(--transition),border-color var(--transition);
+}
+#tv-ticker-wrap .tradingview-widget-container{
+  background:transparent!important;
+}
+#tv-ticker-wrap iframe{
+  background:transparent!important;
+  color-scheme:dark;
+}
+[data-theme="light"] #tv-ticker-wrap iframe{
+  color-scheme:light;
+}
 /* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
 button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.nav-cta,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
 .cta-secondary{min-height:48px;}
