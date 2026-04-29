@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비트코인 레인보우 차트 2025 무료 | BTC 고점·저점 타이밍 분석 — CryptoTax.cloud</title>
+<meta name="description" content="비트코인 레인보우 차트로 BTC 매수·매도 타이밍을 분석하세요. 로그 회귀 곡선 기반 장기 가치평가 도구. 한국어 완전 무료 제공.">
+<meta name="keywords" content="비트코인 레인보우 차트, BTC 레인보우 차트, 비트코인 고점, 비트코인 저점, 비트코인 매수 타이밍, 비트코인 장기 전망, 코인 차트 분석">
+<link rel="canonical" href="https://cryptotax.cloud/market/bitcoin-rainbow-chart.html">
+<meta property="og:title" content="비트코인 레인보우 차트 — BTC 매수·매도 타이밍 분석 | CryptoTax.cloud">
+<meta property="og:description" content="로그 회귀 기반 비트코인 레인보우 차트. BTC 현재가가 어느 구간에 있는지 즉시 확인.">
+<meta property="og:url" content="https://cryptotax.cloud/market/bitcoin-rainbow-chart.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"비트코인 레인보우 차트",
+  "url":"https://cryptotax.cloud/market/bitcoin-rainbow-chart.html",
+  "description":"로그 회귀 곡선 기반 비트코인 장기 가치평가 차트. BTC 매수·매도 타이밍 분석 도구.",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"All",
+  "inLanguage":"ko-KR",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"비트코인 레인보우 차트란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"비트코인 레인보우 차트는 로그 회귀 곡선 위에 9개의 색상 밴드를 겹쳐 BTC가 고평가·저평가 구간 중 어디에 있는지 시각적으로 보여주는 장기 가치평가 도구입니다."}},
+    {"@type":"Question","name":"레인보우 차트로 매수 타이밍을 알 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"차트 하단(파란색·녹색 구간)은 역사적으로 저평가 구간으로 매수 기회로 여겨졌고, 상단(빨간색 구간)은 과열 구간으로 분산 매도 타이밍으로 활용됩니다. 단, 투자 조언이 아닌 참고 도구입니다."}}
+  ]
+}
+</script>
+<style>
+/* ===== DCA 계산기와 동일한 디자인 시스템 ===== */
+:root{
+  --bg:#0d0d1a;
+  --bg-surface:#1a1a2e;
+  --bg-elevated:#24243e;
+  --text:#e8e8f0;
+  --text-sub:#9999bb;
+  --text-muted:#6666aa;
+  --orange:#FF8C00;
+  --orange-dim:rgba(247,147,26,.12);
+  --green:#3fb950;
+  --red:#f85149;
+  --blue:#58a6ff;
+  --border:#2a2a4a;
+  --border-subtle:#1e1e3a;
+  --shadow:0 4px 24px rgba(0,0,0,.45);
+  --tr:.25s ease;
+  --radius:14px;
+}
+[data-theme="light"]{
+  --bg:#f6f8fa;
+  --bg-surface:#ffffff;
+  --bg-elevated:#f0f2f5;
+  --text:#1a1a2e;
+  --text-sub:#57606a;
+  --text-muted:#8c959f;
+  --border:#d0d7de;
+  --border-subtle:#e8eaed;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;min-height:100vh;
+  transition:background var(--tr),color var(--tr);
+}
+a{text-decoration:none;color:inherit;}
+
+/* ===== NAV ===== */
+nav{
+  background:var(--bg-surface);border-bottom:1px solid var(--border);
+  padding:0 24px;height:60px;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:1000;
+  backdrop-filter:blur(10px);transition:background var(--tr),border-color var(--tr);
+}
+.nav-logo{font-size:1.15rem;font-weight:800;color:var(--orange);}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-links a{color:var(--text-sub);font-size:.82rem;padding:5px 10px;border-radius:7px;transition:all .2s;}
+.nav-links a:hover{color:var(--orange);background:var(--orange-dim);}
+.nav-back{background:var(--bg-elevated);border:1px solid var(--border);border-radius:7px;padding:5px 12px;font-size:.82rem;color:var(--text-sub);}
+.theme-toggle{
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:50px;cursor:pointer;display:flex;align-items:center;
+  gap:5px;padding:5px 11px;font-size:.8rem;color:var(--text-sub);
+  transition:all var(--tr);
+}
+.theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
+.toggle-track{width:32px;height:17px;background:var(--border);border-radius:20px;position:relative;transition:background var(--tr);}
+[data-theme="light"] .toggle-track{background:var(--orange);}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform var(--tr);box-shadow:0 1px 3px rgba(0,0,0,.3);}
+[data-theme="light"] .toggle-thumb{transform:translateX(15px);}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb{padding:10px 24px;font-size:.8rem;color:var(--text-muted);max-width:960px;margin:0 auto;}
+.breadcrumb a{color:var(--text-muted);}
+.breadcrumb a:hover{color:var(--orange);}
+
+/* ===== HERO ===== */
+.hero{
+  padding:40px 24px 28px;text-align:center;
+  background:radial-gradient(ellipse at 50% -20%,rgba(247,147,26,.07) 0%,transparent 65%);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-dim);color:var(--orange);
+  border:1px solid rgba(247,147,26,.3);border-radius:20px;
+  padding:5px 16px;font-size:.78rem;font-weight:700;
+  margin-bottom:14px;letter-spacing:.03em;
+}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.25;margin-bottom:10px;letter-spacing:-.03em;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero p{color:var(--text-sub);font-size:.95rem;max-width:560px;margin:0 auto 20px;line-height:1.7;}
+.hero-stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:8px;}
+.hstat .hv{font-size:1.25rem;font-weight:800;color:var(--orange);}
+.hstat .hl{font-size:.72rem;color:var(--text-muted);}
+
+/* ===== CONTAINER & CARD ===== */
+.container{max-width:960px;margin:0 auto;padding:0 20px 64px;}
+.card{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;margin-bottom:20px;
+  box-shadow:var(--shadow);transition:background var(--tr),border-color var(--tr);
+}
+.card-title{font-size:1rem;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:8px;color:var(--text);}
+
+/* ===== 현재가 입력 & 밴드 결과 ===== */
+.price-input-wrap{
+  display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px;
+}
+.price-input-wrap .form-group{flex:1;min-width:200px;}
+.form-group label{display:block;font-size:.82rem;font-weight:700;color:var(--text-sub);margin-bottom:6px;}
+.form-group input{
+  width:100%;padding:13px 15px;border:1.5px solid var(--border);
+  border-radius:10px;background:var(--bg-elevated);color:var(--text);
+  font-size:1.05rem;font-family:inherit;transition:border-color .2s,background var(--tr);
+}
+.form-group input:focus{outline:none;border-color:var(--orange);}
+.form-group input::placeholder{color:var(--text-muted);}
+.fetch-btn{
+  padding:13px 20px;background:var(--bg-elevated);border:1.5px solid var(--border);
+  border-radius:10px;color:var(--text-sub);font-size:.88rem;font-weight:700;
+  cursor:pointer;white-space:nowrap;transition:all .2s;
+}
+.fetch-btn:hover{border-color:var(--orange);color:var(--orange);}
+.calc-btn{
+  width:100%;padding:16px;
+  background:linear-gradient(135deg,var(--orange),#e8860f);
+  color:#fff;border:none;border-radius:11px;font-size:1.05rem;
+  font-weight:800;cursor:pointer;transition:all .2s;
+  letter-spacing:.3px;box-shadow:0 4px 20px rgba(247,147,26,.3);
+  margin-top:4px;
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(247,147,26,.45);}
+
+/* ===== 현재 구간 결과 배지 ===== */
+.band-result{
+  display:none;border-radius:12px;padding:20px 24px;
+  margin-bottom:20px;text-align:center;
+  border:2px solid transparent;
+}
+.band-result .br-emoji{font-size:2.8rem;margin-bottom:8px;}
+.band-result .br-label{font-size:1.4rem;font-weight:900;margin-bottom:4px;}
+.band-result .br-sub{font-size:.9rem;opacity:.85;}
+.band-result .br-price{font-size:1rem;font-weight:700;margin-top:8px;opacity:.9;}
+
+/* ===== 레인보우 차트 캔버스 ===== */
+.chart-wrap{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--bg-elevated);border:1px solid var(--border);}
+.chart-wrap canvas{display:block;width:100%;height:auto;}
+.chart-loading{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+  background:var(--bg-elevated);border-radius:12px;
+  font-size:.9rem;color:var(--text-sub);
+}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.chart-note{font-size:.75rem;color:var(--text-muted);margin-top:10px;text-align:center;}
+
+/* ===== 레인보우 범례 ===== */
+.legend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:16px;}
+.legend-item{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:10px;border:1px solid var(--border);
+  background:var(--bg-elevated);transition:all .2s;cursor:default;
+}
+.legend-item:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.legend-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.legend-text .lt-label{font-size:.82rem;font-weight:800;color:var(--text);}
+.legend-text .lt-desc{font-size:.74rem;color:var(--text-muted);margin-top:1px;}
+
+/* ===== 통계 그리드 ===== */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
+@media(min-width:600px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+.stat-item{
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:12px;padding:16px;text-align:center;
+  transition:background var(--tr);
+}
+.stat-item .s-label{font-size:.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;}
+.stat-item .s-value{font-size:1.25rem;font-weight:900;letter-spacing:-.02em;}
+.s-value.orange{color:var(--orange);}
+.s-value.green{color:var(--green);}
+.s-value.red{color:var(--red);}
+.s-value.blue{color:var(--blue);}
+
+/* ===== 사이클 타임라인 ===== */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:14px 0;border-bottom:1px solid var(--border-subtle);
+}
+.tl-item:last-child{border:none;}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;flex-shrink:0;
+  margin-top:5px;
+}
+.tl-content .tl-year{font-size:.8rem;font-weight:700;color:var(--text-muted);margin-bottom:2px;}
+.tl-content .tl-title{font-size:.9rem;font-weight:800;color:var(--text);margin-bottom:3px;}
+.tl-content .tl-desc{font-size:.82rem;color:var(--text-sub);line-height:1.6;}
+
+/* ===== SEO 박스 ===== */
+.seo-box{
+  background:var(--bg-surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;margin-bottom:20px;
+  transition:background var(--tr);
+}
+.seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;color:var(--text);}
+.seo-box h3{font-size:.9rem;font-weight:800;margin:16px 0 8px;color:var(--text);}
+.seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
+
+/* ===== 공식 박스 ===== */
+.formula-explain{
+  background:var(--bg-elevated);border-left:3px solid var(--orange);
+  border-radius:0 10px 10px 0;padding:16px 18px;
+  margin:12px 0;font-size:.85rem;line-height:1.9;color:var(--text-sub);
+}
+.formula-explain .fe-title{font-weight:800;color:var(--text);margin-bottom:6px;font-size:.9rem;}
+.formula-explain code{
+  background:rgba(247,147,26,.15);color:var(--orange);
+  padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;
+}
+
+/* ===== 외부 링크 ===== */
+.ext-links{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ext-link{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;
+  background:var(--bg-elevated);border:1px solid var(--border);
+  border-radius:9px;color:var(--text-sub);font-size:.83rem;transition:all .2s;
+}
+.ext-link:hover{border-color:var(--blue);color:var(--blue);}
+.ext-badge{
+  background:rgba(88,166,255,.12);color:var(--blue);
+  border-radius:5px;padding:2px 7px;font-size:.71rem;font-weight:700;flex-shrink:0;
+}
+
+/* ===== FAQ ===== */
+.faq-item{border-bottom:1px solid var(--border-subtle);}
+.faq-q{
+  padding:15px 0;cursor:pointer;font-weight:700;font-size:.92rem;
+  display:flex;justify-content:space-between;align-items:center;
+  color:var(--text);transition:color .2s;
+}
+.faq-q:hover{color:var(--orange);}
+.faq-a{padding:0 0 14px;color:var(--text-sub);font-size:.88rem;line-height:1.75;display:none;}
+
+/* ===== 관련 도구 ===== */
+.tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:580px){.tool-links{grid-template-columns:1fr 1fr;}}
+.tool-link{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:14px 8px;background:var(--bg-elevated);
+  border:1px solid var(--border);border-radius:11px;
+  color:var(--text);font-size:.8rem;font-weight:700;
+  text-align:center;transition:all .2s;
+}
+.tool-link:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px);}
+.tool-link .icon{font-size:1.4rem;}
+
+/* ===== 광고 슬롯 ===== */
+.ad-slot{
+  background:var(--bg-surface);border:1px dashed var(--border);
+  border-radius:10px;padding:18px;text-align:center;
+  color:var(--text-muted);font-size:.78rem;margin:18px 0;
+  min-height:90px;display:flex;align-items:center;justify-content:center;
+}
+
+/* ===== 블로그 링크 ===== */
+.blog-link{
+  display:block;padding:14px 16px;background:var(--bg-elevated);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-size:.88rem;font-weight:600;
+  transition:all .2s;margin-bottom:10px;
+}
+.blog-link:hover{border-color:var(--orange);color:var(--orange);}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--bg-surface);border-top:1px solid var(--border);
+  padding:28px 20px;text-align:center;transition:background var(--tr);
+}
+.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
+.footer-links a{color:var(--text-muted);font-size:.82rem;}
+.footer-links a:hover{color:var(--orange);}
+.footer-copy{font-size:.76rem;color:var(--text-muted);}
+
+/* ===== 경고 배너 ===== */
+.disclaimer-box{
+  background:rgba(88,166,255,.07);border:1px solid rgba(88,166,255,.2);
+  border-radius:10px;padding:14px 16px;font-size:.82rem;
+  color:var(--text-sub);line-height:1.7;margin-bottom:20px;
+}
+.disclaimer-box strong{color:var(--blue);}
+
+/* ===== 반응형 ===== */
+@media(max-width:480px){
+  nav{padding:0 14px;}
+  .breadcrumb{padding:10px 14px;}
+  .hero{padding:28px 16px 20px;}
+  .container{padding:0 14px 48px;}
+  .card{padding:18px;}
+  .price-input-wrap{flex-direction:column;}
+  .fetch-btn{width:100%;}
+}
+</style>
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax<span style="color:var(--text-sub)">.cloud</span></a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/" class="nav-back">← 홈</a>
+    <a href="https://cryptotax.cloud/tools/">계산기</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환">
+    <span id="themeIcon">☀️</span>
+    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    <span id="themeLabel">라이트</span>
+  </button>
+</nav>
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+  <a href="https://cryptotax.cloud/">홈</a> ›
+  <a href="https://cryptotax.cloud/market/">시장 데이터</a> ›
+  비트코인 레인보우 차트
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge">🌈 실시간 BTC 차트</div>
+  <h1>비트코인 <em>레인보우 차트</em></h1>
+  <p>로그 회귀 곡선 기반 장기 가치평가 도구<br>BTC가 지금 어느 구간에 있는지 즉시 확인하세요</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hv">9단계</div><div class="hl">색상 밴드</div></div>
+    <div class="hstat"><div class="hv">로그</div><div class="hl">회귀 분석</div></div>
+    <div class="hstat"><div class="hv">0원</div><div class="hl">완전 무료</div></div>
+    <div class="hstat"><div class="hv">실시간</div><div class="hl">BTC 현재가</div></div>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTAINER ===== -->
+<div class="container">
+
+  <div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+  <!-- ===== 현재가 확인 & 구간 분석 ===== -->
+  <div class="card">
+    <div class="card-title">₿ 현재 BTC 레인보우 구간 확인</div>
+    <div class="price-input-wrap">
+      <div class="form-group">
+        <label>BTC 현재가 (원)</label>
+        <input type="number" id="btcPrice" placeholder="예: 130,000,000" inputmode="numeric">
+      </div>
+      <button class="fetch-btn" onclick="fetchBTCPrice()">🔄 시세 불러오기</button>
+    </div>
+    <button class="calc-btn" onclick="analyzeRainbow()">🌈 레인보우 구간 분석하기</button>
+
+    <!-- 구간 결과 배지 -->
+    <div class="band-result" id="bandResult">
+      <div class="br-emoji" id="brEmoji">🔵</div>
+      <div class="br-label" id="brLabel">분석 중...</div>
+      <div class="br-sub" id="brSub"></div>
+      <div class="br-price" id="brPrice"></div>
+    </div>
+  </div>
+
+  <!-- ===== 실시간 통계 ===== -->
+  <div class="stats-grid" id="statsGrid" style="display:none;">
+    <div class="stat-item">
+      <div class="s-label">현재 BTC 가격</div>
+      <div class="s-value orange" id="stat-price">—</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">현재 레인보우 구간</div>
+      <div class="s-value" id="stat-band">—</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">ATH 대비</div>
+      <div class="s-value blue" id="stat-ath">—</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">다음 반감기</div>
+      <div class="s-value green" id="stat-halving">—</div>
+    </div>
+  </div>
+
+  <!-- ===== 레인보우 차트 ===== -->
+  <div class="card">
+    <div class="card-title">📊 비트코인 레인보우 차트 (로그 회귀)</div>
+    <div class="disclaimer-box">
+      ⚠️ <strong>참고 목적 전용:</strong> 이 차트는 과거 데이터 기반 시각화 도구이며 투자 조언이 아닙니다. 미래 가격을 보장하지 않습니다.
+    </div>
+    <div class="chart-wrap" id="chartWrap">
+      <div class="chart-loading" id="chartLoading">
+        <div class="spinner"></div>
+        <span>차트 로딩 중...</span>
+      </div>
+      <canvas id="rainbowCanvas"></canvas>
+    </div>
+    <p class="chart-note">※ 로그 회귀 곡선 기반 시각화 · 데이터 출처: CoinGecko API · 매일 업데이트</p>
+
+    <!-- 레전드 -->
+    <div class="legend-grid" id="legendGrid"></div>
+  </div>
+
+  <div class="ad-slot" style="min-height:260px">📢 광고 영역 (차트 하단 — CTR 최고)</div>
+
+  <!-- ===== 비트코인 사이클 타임라인 ===== -->
+  <div class="card">
+    <div class="card-title">📅 비트코인 가격 사이클 타임라인</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#1a6b3c;"></div>
+        <div class="tl-content">
+          <div class="tl-year">2012년 11월 — 1차 반감기</div>
+          <div class="tl-title">첫 번째 강세장 시작 💎</div>
+          <div class="tl-desc">블록 보상 50 → 25 BTC 감소. BTC 가격 약 12달러 → 1,100달러(약 91배) 상승. 레인보우 차트 '불 기운이 만들어지는 시기' 구간.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#e67e00;"></div>
+        <div class="tl-content">
+          <div class="tl-year">2016년 7월 — 2차 반감기</div>
+          <div class="tl-title">두 번째 강세장 🚀</div>
+          <div class="tl-desc">블록 보상 25 → 12.5 BTC 감소. 약 650달러 → 20,000달러(약 30배) 상승. 2017년 말 버블 구간. 레인보우 차트 최상단 '버블' 구간 진입.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#3fb950;"></div>
+        <div class="tl-content">
+          <div class="tl-year">2020년 5월 — 3차 반감기</div>
+          <div class="tl-title">세 번째 강세장 📈</div>
+          <div class="tl-desc">블록 보상 12.5 → 6.25 BTC 감소. 약 8,500달러 → 69,000달러(약 8배) 상승. 기관 투자자 대거 유입. 2021년 11월 ATH 달성.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#58a6ff;"></div>
+        <div class="tl-content">
+          <div class="tl-year">2024년 4월 — 4차 반감기</div>
+          <div class="tl-title">현재 사이클 진행 중 🌈</div>
+          <div class="tl-desc">블록 보상 6.25 → 3.125 BTC 감소. 비트코인 현물 ETF 승인으로 기관 자금 대규모 유입. 역대 최고가 경신 후 조정 진행 중.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#6b5b95;"></div>
+        <div class="tl-content">
+          <div class="tl-year">2028년 예상 — 5차 반감기</div>
+          <div class="tl-title">다음 반감기 예정 ⏳</div>
+          <div class="tl-desc">블록 보상 3.125 → 1.5625 BTC 감소 예정. 역사적 패턴에 따르면 반감기 이후 12~18개월 내 강세장 진입 경향.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 공식 해설 ===== -->
+  <div class="seo-box">
+    <h2>📐 레인보우 차트 작동 원리 — 로그 회귀 공식 완전 이해</h2>
+
+    <div class="formula-explain">
+      <div class="fe-title">① 로그 회귀 곡선 공식</div>
+      <code>Price(t) = 10^(a × ln(t) + b)</code>
+      <p style="margin-top:8px">여기서 <strong>t</strong>는 비트코인 제네시스 블록(2009.01.03)으로부터 경과한 일수이며, <strong>a</strong>와 <strong>b</strong>는 과거 가격 데이터를 통해 추정된 회귀 계수입니다. 비트코인 가격은 장기적으로 로그 스케일에서 선형 추세를 따르는 경향이 있습니다.</p>
+    </div>
+
+    <div class="formula-explain" style="border-left-color:var(--green)">
+      <div class="fe-title">② 9개 색상 밴드 구성</div>
+      <p>로그 회귀 곡선을 기준으로 위아래로 <strong>8개의 오프셋 밴드</strong>를 추가하여 총 9개 구간을 형성합니다. 각 밴드는 역사적으로 시장 과열도와 상관관계를 보입니다.</p>
+      <code>밴드[n] = 기준 곡선 × (1 + n × 오프셋 계수)</code>
+    </div>
+
+    <div class="formula-explain" style="border-left-color:var(--blue)">
+      <div class="fe-title">③ 레인보우 차트의 한계</div>
+      <p>레인보우 차트는 과거 패턴 기반 시각화 도구입니다. 과거에 밴드 내에 머물렀다고 해서 미래에도 동일하게 작동한다는 보장은 없습니다. 반드시 다른 지표(거래량, 온체인 데이터, 매크로 환경)와 함께 참고하세요.</p>
+    </div>
+
+    <h3>🔗 공신력 있는 정보 출처</h3>
+    <div class="ext-links">
+      <a href="https://www.blockchaincenter.net/en/bitcoin-rainbow-chart/" target="_blank" rel="noopener" class="ext-link">
+        <span class="ext-badge">원본</span>Bitcoin Rainbow Chart 원조 사이트 — blockchaincenter.net →
+      </a>
+      <a href="https://bitcointalk.org/index.php?topic=831547.0" target="_blank" rel="noopener" class="ext-link">
+        <span class="ext-badge">BitcoinTalk</span>로그 회귀 원본 스레드 — bitcointalk.org →
+      </a>
+      <a href="https://www.coingecko.com/en/coins/bitcoin" target="_blank" rel="noopener" class="ext-link">
+        <span class="ext-badge">CoinGecko</span>비트코인 실시간 가격 데이터 — coingecko.com →
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== FAQ ===== -->
+  <div class="card">
+    <div class="card-title">❓ 자주 묻는 질문</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">비트코인 레인보우 차트란 무엇인가요? <span>▼</span></div>
+      <div class="faq-a">비트코인 레인보우 차트는 BTC의 장기 가격 움직임을 로그 회귀 곡선 위에 9개 색상 밴드로 나타낸 시각화 도구입니다. 각 색상은 시장 과열도를 나타내며, 파란색·녹색 구간은 역사적 저평가, 빨간색·주황색 구간은 고평가를 의미합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">레인보우 차트로 매수 타이밍을 알 수 있나요? <span>▼</span></div>
+      <div class="faq-a">레인보우 차트는 참고 도구일 뿐 정확한 매수·매도 타이밍을 보장하지 않습니다. 다만 역사적으로 파란색 구간('거의 세일')에서 매수하고 빨간색 구간('진지하게 매도')에서 분산 매도한 투자자들이 좋은 성과를 낸 경향이 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">현재 BTC는 레인보우 차트 어느 구간인가요? <span>▼</span></div>
+      <div class="faq-a">위 '레인보우 구간 분석하기' 버튼을 클릭하거나 시세를 직접 입력하면 현재 BTC가 9개 구간 중 어디에 해당하는지 즉시 확인할 수 있습니다. 실시간 가격을 불러오려면 '시세 불러오기' 버튼을 이용하세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">반감기와 레인보우 차트의 관계는? <span>▼</span></div>
+      <div class="faq-a">역사적으로 비트코인 반감기(약 4년 주기) 이후 강세장이 형성되며 레인보우 차트 상단 구간에 진입하는 경향이 있었습니다. 2024년 4차 반감기 이후 현재 사이클이 진행 중입니다. 다음 반감기는 2028년 예정입니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">비트코인 수익에도 세금이 붙나요? <span>▼</span></div>
+      <div class="faq-a">네. 2027년부터 비트코인을 포함한 가상자산 양도소득세(22%)가 부과됩니다. 연간 수익 250만원까지는 기본공제로 세금이 없습니다. 위 세금 계산기로 미리 예상 세금을 확인하세요.</div>
+    </div>
+  </div>
+
+  <!-- ===== 관련 도구 ===== -->
+  <div class="card">
+    <div class="card-title">🧰 관련 무료 계산기 & 시장 지표</div>
+    <div class="tool-links">
+      <a href="https://cryptotax.cloud/market/fear-greed.html" class="tool-link"><span class="icon">😨</span>공포·탐욕 지수</a>
+      <a href="https://cryptotax.cloud/market/dominance.html" class="tool-link"><span class="icon">₿</span>BTC 도미넌스</a>
+      <a href="https://cryptotax.cloud/market/altseason.html" class="tool-link"><span class="icon">🚀</span>알트코인 시즌</a>
+      <a href="https://cryptotax.cloud/market/halving-countdown.html" class="tool-link"><span class="icon">⏱️</span>반감기 카운트다운</a>
+      <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 적립식 계산기</a>
+      <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>코인 세금 계산기</a>
+    </div>
+  </div>
+
+  <!-- ===== 블로그 가이드 ===== -->
+  <div class="card">
+    <div class="card-title">📰 관련 가이드</div>
+    <a class="blog-link" href="https://cryptotax.cloud/blog/bitcoin-rainbow-chart-guide.html">🌈 비트코인 레인보우 차트 완전 가이드 — 9개 구간 해석법 →</a>
+    <a class="blog-link" href="https://cryptotax.cloud/blog/dca-strategy.html">📅 비트코인 DCA 전략 완벽 가이드 — 매달 투자하면 얼마? →</a>
+    <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
+  </div>
+
+  <div class="ad-slot">📢 광고 영역 (하단)</div>
+
+</div><!-- /container -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="https://cryptotax.cloud/">홈</a>
+    <a href="https://cryptotax.cloud/tools/">계산기 모음</a>
+    <a href="https://cryptotax.cloud/market/">시장 데이터</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 CryptoTax.cloud — 본 차트는 참고용이며 투자 조언이 아닙니다. 투자 결정은 본인의 판단으로 하세요.
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+/* ===== 테마 ===== */
+(function(){
+  const t = localStorage.getItem('ctc-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  updateThemeUI(t);
+})();
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('ctc-theme', next);
+  updateThemeUI(next);
+  drawRainbowChart(); // 테마 바뀌면 차트 다시 그리기
+}
+function updateThemeUI(t){
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(t === 'light'){
+    if(icon)  icon.textContent  = '🌙';
+    if(label) label.textContent = '다크';
+  } else {
+    if(icon)  icon.textContent  = '☀️';
+    if(label) label.textContent = '라이트';
+  }
+}
+
+/* ===== FAQ ===== */
+function toggleFaq(el){
+  const a = el.nextElementSibling;
+  const open = a.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(x => x.style.display = 'none');
+  if(!open) a.style.display = 'block';
+}
+
+/* ===== 레인보우 밴드 설정 ===== */
+const BANDS = [
+  { label:'최대 버블 구간',    emoji:'🔴', desc:'진지하게 매도하세요 (SELL)',       color:'#c0392b', bg:'rgba(192,57,43,0.15)',  multiplier:1.0   },
+  { label:'버블이 심각해요',   emoji:'🟠', desc:'FOMO가 절정에 달했어요',           color:'#e67e22', bg:'rgba(230,126,34,0.15)', multiplier:0.85  },
+  { label:'버블일 수도 있어요',emoji:'🟡', desc:'이게 버블인가요?',                  color:'#f1c40f', bg:'rgba(241,196,15,0.15)', multiplier:0.72  },
+  { label:'HODL 구간',         emoji:'🟢', desc:'HODL! 흔들리지 마세요',             color:'#2ecc71', bg:'rgba(46,204,113,0.15)', multiplier:0.60  },
+  { label:'아직 저렴해요',     emoji:'🔵', desc:'여전히 저렴한 편입니다',            color:'#27ae60', bg:'rgba(39,174,96,0.15)',  multiplier:0.50  },
+  { label:'축적 구간',         emoji:'💙', desc:'분할 매수를 시작하세요',             color:'#3498db', bg:'rgba(52,152,219,0.15)', multiplier:0.41  },
+  { label:'매수 구간',         emoji:'🫐', desc:'좋은 매수 기회입니다',              color:'#2980b9', bg:'rgba(41,128,185,0.15)', multiplier:0.33  },
+  { label:'거의 세일 중',      emoji:'🟣', desc:'역사적 저점 구간입니다',            color:'#8e44ad', bg:'rgba(142,68,173,0.15)', multiplier:0.26  },
+  { label:'화재 세일',         emoji:'🫧', desc:'역대 최저 구간! Basically a Fire Sale', color:'#6c3483', bg:'rgba(108,52,131,0.15)', multiplier:0.20 },
+];
+
+/* ===== 로그 회귀 기준가 계산 ===== */
+// 제네시스 블록: 2009-01-03
+// 공식: price = 10^(5.84 × log10(days) - 17.01)  (Trolololo 원본 기반)
+const GENESIS = new Date('2009-01-03').getTime();
+function getRegressionPrice(date){
+  const days = (date.getTime() - GENESIS) / 86400000;
+  if(days <= 0) return 0;
+  return Math.pow(10, 5.84 * Math.log10(days) - 17.01);
+}
+
+/* ===== 특정 날짜의 밴드별 가격 계산 (KRW, 환율 1400 적용) ===== */
+const USD_KRW = 1380; // 대략적 환율, 실제 API로 받아오면 더 정확
+function getBandPrices(date){
+  const baseUSD = getRegressionPrice(date);
+  return BANDS.map(b => ({
+    ...b,
+    priceUSD: baseUSD * b.multiplier,
+    priceKRW: baseUSD * b.multiplier * USD_KRW
+  }));
+}
+
+/* ===== BTC 시세 불러오기 (CoinGecko) ===== */
+async function fetchBTCPrice(){
+  const btn = document.querySelector('.fetch-btn');
+  btn.textContent = '⏳ 불러오는 중...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw,usd');
+    const data = await res.json();
+    const krw = data.bitcoin.krw;
+    document.getElementById('btcPrice').value = krw;
+    btn.textContent = '✅ 불러오기 완료!';
+    setTimeout(() => { btn.textContent = '🔄 시세 불러오기'; btn.disabled = false; }, 2000);
+  } catch(e) {
+    btn.textContent = '❌ 실패 — 직접 입력';
+    btn.disabled = false;
+  }
+}
+
+/* ===== 레인보우 구간 분석 ===== */
+function analyzeRainbow(){
+  const price = parseFloat(document.getElementById('btcPrice').value);
+  if(!price || price <= 0){
+    alert('BTC 현재가를 입력해주세요.');
+    return;
+  }
+
+  const today = new Date();
+  const bandPrices = getBandPrices(today);
+  
+  // 현재 구간 찾기 (가장 높은 밴드부터 내려오며 비교)
+  let currentBand = BANDS[BANDS.length - 1]; // 기본: 최하단
+  let currentBandIdx = BANDS.length - 1;
+
+  for(let i = 0; i < bandPrices.length; i++){
+    if(price >= bandPrices[i].priceKRW){
+      currentBand = BANDS[i];
+      currentBandIdx = i;
+      break;
+    }
+  }
+
+  // 배지 표시
+  const result = document.getElementById('bandResult');
+  result.style.display = 'block';
+  result.style.background = currentBand.bg;
+  result.style.borderColor = currentBand.color;
+  document.getElementById('brEmoji').textContent  = currentBand.emoji;
+  document.getElementById('brLabel').textContent  = currentBand.label;
+  document.getElementById('brSub').textContent    = currentBand.desc;
+  document.getElementById('brPrice').textContent  = `현재가: ${Math.round(price).toLocaleString('ko-KR')}원`;
+
+  // ATH (2024년 기준 약 1억 4,500만원)
+  const ATH_KRW = 145000000;
+  const athPct = ((price / ATH_KRW - 1) * 100).toFixed(1);
+
+  // 다음 반감기
+  const nextHalving = new Date('2028-03-31');
+  const daysLeft = Math.ceil((nextHalving - today) / 86400000);
+
+  // 통계 표시
+  const sg = document.getElementById('statsGrid');
+  sg.style.display = 'grid';
+  document.getElementById('stat-price').textContent  = Math.round(price).toLocaleString('ko-KR') + '원';
+  document.getElementById('stat-band').textContent   = currentBand.emoji + ' ' + currentBand.label;
+  document.getElementById('stat-band').style.color   = currentBand.color;
+  document.getElementById('stat-ath').textContent    = (parseFloat(athPct) >= 0 ? '+' : '') + athPct + '%';
+  document.getElementById('stat-ath').style.color    = parseFloat(athPct) >= 0 ? 'var(--green)' : 'var(--red)';
+  document.getElementById('stat-halving').textContent = daysLeft + '일 후';
+
+  // 차트 그리기
+  drawRainbowChart(price);
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ===== 레인보우 차트 그리기 ===== */
+let chartData = null; // 가격 데이터 캐시
+
+function drawRainbowChart(currentPrice){
+  const canvas = document.getElementById('rainbowCanvas');
+  const loading = document.getElementById('chartLoading');
+  const isDark   = document.documentElement.getAttribute('data-theme') !== 'light';
+
+  const W = canvas.parentElement.clientWidth;
+  const H = Math.round(W * 0.52);
+  canvas.width  = W * 2; // retina
+  canvas.height = H * 2;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(2, 2);
+
+  const PAD = { top: 30, right: 20, bottom: 40, left: 72 };
+  const cW = W - PAD.left - PAD.right;
+  const cH = H - PAD.top  - PAD.bottom;
+
+  // 날짜 범위: 2012-01-01 ~ 2028-12-31
+  const startDate = new Date('2012-01-01');
+  const endDate   = new Date('2028-12-31');
+  const totalDays = (endDate - startDate) / 86400000;
+
+  function xOf(date){ return PAD.left + (date - startDate) / (endDate - startDate) * cW; }
+
+  // 로그 스케일 설정
+  const logMin = Math.log10(100);       // $100
+  const logMax = Math.log10(20000000);  // $20M (극단값 표시용)
+  function yOf(priceUSD){
+    if(priceUSD <= 0) return PAD.top + cH;
+    const l = Math.log10(priceUSD);
+    return PAD.top + cH - (l - logMin) / (logMax - logMin) * cH;
+  }
+
+  // ── 배경 ──
+  ctx.fillStyle = isDark ? '#0d0d1a' : '#f6f8fa';
+  ctx.fillRect(0, 0, W, H);
+
+  // ── 그리드 (y축 로그) ──
+  const gridPrices = [100, 1000, 10000, 100000, 1000000, 10000000];
+  const gridLabels = ['$100','$1K','$10K','$100K','$1M','$10M'];
+  ctx.strokeStyle = isDark ? '#2a2a4a' : '#e0e4ea';
+  ctx.lineWidth = 0.8;
+  ctx.font = '10px sans-serif';
+  ctx.fillStyle = isDark ? '#6666aa' : '#8c959f';
+  ctx.textAlign = 'right';
+  gridPrices.forEach((p, i) => {
+    const y = yOf(p);
+    if(y < PAD.top || y > PAD.top + cH) return;
+    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + cW, y); ctx.stroke();
+    ctx.fillText(gridLabels[i], PAD.left - 6, y + 3);
+  });
+
+  // ── 연도 레이블 (x축) ──
+  ctx.textAlign = 'center';
+  ctx.fillStyle = isDark ? '#6666aa' : '#8c959f';
+  for(let y = 2013; y <= 2028; y += 2){
+    const d = new Date(y + '-01-01');
+    const x = xOf(d);
+    ctx.beginPath(); ctx.moveTo(x, PAD.top); ctx.lineTo(x, PAD.top + cH);
+    ctx.strokeStyle = isDark ? '#2a2a4a' : '#e0e4ea';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+    ctx.fillText(y, x, H - 10);
+  }
+
+  // ── 레인보우 밴드 (순서대로 채우기) ──
+  const bandColors = [
+    '#c0392b','#e67e22','#f39c12','#f1c40f',
+    '#2ecc71','#27ae60','#3498db','#8e44ad','#6c3483'
+  ];
+
+  // 날짜 배열 생성 (30일 간격)
+  const dates = [];
+  for(let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 30)){
+    dates.push(new Date(d));
+  }
+
+  // 각 밴드의 상단 경계를 계산
+  const multipliers = [1.0, 0.85, 0.72, 0.60, 0.50, 0.41, 0.33, 0.26, 0.20, 0.0];
+
+  for(let b = 0; b < 9; b++){
+    ctx.beginPath();
+    let started = false;
+
+    // 상단 선 (왼→오)
+    dates.forEach(date => {
+      const base = getRegressionPrice(date);
+      const pUSD = base * multipliers[b];
+      const x = xOf(date), y = yOf(pUSD);
+      if(!started){ ctx.moveTo(x, y); started = true; }
+      else ctx.lineTo(x, y);
+    });
+
+    // 하단 선 (오→왼)
+    for(let i = dates.length - 1; i >= 0; i--){
+      const date = dates[i];
+      const base = getRegressionPrice(date);
+      const pUSD = base * multipliers[b + 1];
+      const x = xOf(date), y = yOf(pUSD);
+      ctx.lineTo(x, y);
+    }
+
+    ctx.closePath();
+    ctx.fillStyle = bandColors[b] + '55'; // 투명도 55
+    ctx.fill();
+
+    // 밴드 테두리
+    ctx.beginPath();
+    dates.forEach((date, i) => {
+      const base = getRegressionPrice(date);
+      const pUSD = base * multipliers[b];
+      const x = xOf(date), y = yOf(pUSD);
+      if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = bandColors[b] + 'aa';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // ── 반감기 수직선 ──
+  const halvings = [
+    { date: new Date('2012-11-28'), label: '1차 반감기' },
+    { date: new Date('2016-07-09'), label: '2차 반감기' },
+    { date: new Date('2020-05-11'), label: '3차 반감기' },
+    { date: new Date('2024-04-20'), label: '4차 반감기' },
+    { date: new Date('2028-03-31'), label: '5차(예상)' },
+  ];
+  halvings.forEach(h => {
+    const x = xOf(h.date);
+    if(x < PAD.left || x > PAD.left + cW) return;
+    ctx.beginPath();
+    ctx.setLineDash([5, 4]);
+    ctx.moveTo(x, PAD.top);
+    ctx.lineTo(x, PAD.top + cH);
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.2)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.save();
+    ctx.translate(x + 4, PAD.top + 12);
+    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(h.label, 0, 0);
+    ctx.restore();
+  });
+
+  // ── 현재가 수평선 (입력된 경우) ──
+  if(currentPrice && currentPrice > 0){
+    const priceUSD = currentPrice / USD_KRW;
+    const y = yOf(priceUSD);
+    if(y >= PAD.top && y <= PAD.top + cH){
+      ctx.beginPath();
+      ctx.setLineDash([6, 4]);
+      ctx.moveTo(PAD.left, y);
+      ctx.lineTo(PAD.left + cW, y);
+      ctx.strokeStyle = '#FF8C00';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // 현재가 레이블
+      ctx.fillStyle = '#FF8C00';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'right';
+      const label = '현재 ' + Math.round(currentPrice / 10000) + '만원';
+      const tw = ctx.measureText(label).width + 10;
+      ctx.fillStyle = 'rgba(247,147,26,0.15)';
+      ctx.fillRect(PAD.left + cW - tw - 4, y - 10, tw + 8, 18);
+      ctx.fillStyle = '#FF8C00';
+      ctx.fillText(label, PAD.left + cW, y + 4);
+
+      // 현재가 점
+      ctx.beginPath();
+      ctx.arc(xOf(new Date()), y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = '#FF8C00';
+      ctx.fill();
+      ctx.strokeStyle = isDark ? '#0d0d1a' : '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  // ── 오늘 날짜 수직선 ──
+  const todayX = xOf(new Date());
+  if(todayX >= PAD.left && todayX <= PAD.left + cW){
+    ctx.beginPath();
+    ctx.setLineDash([3, 3]);
+    ctx.moveTo(todayX, PAD.top);
+    ctx.lineTo(todayX, PAD.top + cH);
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.3)';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('오늘', todayX, PAD.top + cH + 28);
+  }
+
+  // 로딩 숨기기
+  loading.style.display = 'none';
+
+  // 범례 업데이트
+  buildLegend(currentPrice);
+}
+
+/* ===== 범례 생성 ===== */
+function buildLegend(currentPrice){
+  const grid = document.getElementById('legendGrid');
+  const today = new Date();
+  const bandPrices = getBandPrices(today);
+
+  grid.innerHTML = BANDS.map((b, i) => {
+    const krw = bandPrices[i].priceKRW;
+    const isCurrent = currentPrice &&
+      (i === 0 ? currentPrice >= bandPrices[0].priceKRW :
+       i === BANDS.length - 1 ? currentPrice < bandPrices[i].priceKRW :
+       currentPrice >= bandPrices[i].priceKRW && currentPrice < bandPrices[i-1].priceKRW);
+
+    return `<div class="legend-item" style="${isCurrent ? 'border-color:'+b.color+';box-shadow:0 0 12px '+b.color+'40' : ''}">
+      <div class="legend-dot" style="background:${b.color}"></div>
+      <div class="legend-text">
+        <div class="lt-label">${b.emoji} ${b.label}</div>
+        <div class="lt-desc">${Math.round(krw/10000).toLocaleString()}만원 이상 ${isCurrent ? '<span style="color:'+b.color+';font-weight:800"> ← 현재</span>':''}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ===== 초기 로드 ===== */
+window.addEventListener('load', () => {
+  drawRainbowChart();
+  // 자동으로 현재 시세 불러오기
+  fetchBTCPrice().then(() => {
+    // 시세 불러온 후 바로 분석
+    setTimeout(() => analyzeRainbow(), 500);
+  }).catch(() => {});
+});
+
+window.addEventListener('resize', () => {
+  const price = parseFloat(document.getElementById('btcPrice').value) || 0;
+  drawRainbowChart(price || undefined);
+});
+</script>
+<script src="/assets/js/common.js"></script>
+<script src="/assets/js/ctc-ticker.js"></script>
+</body>
+</html>
