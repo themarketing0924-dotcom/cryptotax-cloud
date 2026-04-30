@@ -1136,21 +1136,6 @@ let currentExchange = 'upbit';
 let parsedTransactions = [];
 let calcResults = null;
 
-function toggleTheme() {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('themeBtn').textContent = isDark ? '🌞 라이트' : '🌙 다크';
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-}
-(function() {
-  const saved = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('themeBtn');
-    if (btn) btn.textContent = saved === 'dark' ? '🌙 다크' : '🌞 라이트';
-  });
-})();
 
 function selectExchange(ex) {
   currentExchange = ex;

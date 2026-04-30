@@ -2528,35 +2528,6 @@ body.light-mode .toast {
 }
 })();
 </script>
-  <script>
-// 라이트/다크 모드 토글
-function toggleTheme() {
-  const body = document.body;
-  const icon = document.getElementById('themeIcon');
-  const label = document.getElementById('themeLabel');
-  if (body.classList.contains('light-mode')) {
-    body.classList.remove('light-mode');
-    if(icon) icon.textContent = '☀️';
-    if(label) label.textContent = '라이트';
-    localStorage.setItem('theme','dark');
-  } else {
-    body.classList.add('light-mode');
-    if(icon) icon.textContent = '🌙';
-    if(label) label.textContent = '다크';
-    localStorage.setItem('theme','light');
-  }
-}
-// 저장된 테마 불러오기
-(function(){
-  if(localStorage.getItem('theme')==='light'){
-    document.body.classList.add('light-mode');
-    const icon=document.getElementById('themeIcon');
-    const label=document.getElementById('themeLabel');
-    if(icon) icon.textContent='🌙';
-    if(label) label.textContent='다크';
-  }
-})();
-</script>
 <script src="/assets/js/common.js"></script>
 <script src="/assets/js/ctc-ticker.js"></script>
 </body>
