@@ -75,7 +75,7 @@ a{text-decoration:none;color:inherit;}
 @keyframes scroll-left{0%{transform:translateX(30%)}100%{transform:translateX(-100%)}}
 
 /* TICKER WRAP */
-.ticker-wrap .tradingview-widget-container{min-height:46px;}
+#ctc-tv-ticker{min-height:46px;}
 
 /* HERO */
 .hero{padding:52px 24px 40px;text-align:center;background:var(--hero-bg);}
@@ -355,27 +355,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
   <span class="breaking-text">🇰🇷 2027년 1월 1일부터 코인 양도차익 22% 세율 적용 · 250만원 기본공제 · 지금 세금 미리 계산하세요 → <a href="/tools/tax-calculator.html" style="color:inherit;text-decoration:underline">세금 계산기 바로가기</a></span>
 </div>
 
-<!-- TradingView Ticker Tape -->
-<div class="ticker-wrap" id="tv-ticker-wrap"></div>
-<script>
-(function(){
-  var syms=[
-    {proName:"BINANCE:BTCUSDT",title:"비트코인"},{proName:"BINANCE:ETHUSDT",title:"이더리움"},
-    {proName:"BINANCE:XRPUSDT",title:"리플"},{proName:"BINANCE:SOLUSDT",title:"솔라나"},
-    {proName:"BINANCE:ADAUSDT",title:"에이다"},{proName:"BINANCE:DOGEUSDT",title:"도지코인"},
-    {proName:"BINANCE:DOTUSDT",title:"폴카닷"},{proName:"BINANCE:AVAXUSDT",title:"아발란체"},
-    {proName:"BINANCE:LINKUSDT",title:"체인링크"},{proName:"BINANCE:BNBUSDT",title:"BNB"}
-  ];
-  var th=localStorage.getItem('ctc-theme')||'dark';
-  var wrap=document.getElementById('tv-ticker-wrap');
-  var c=document.createElement('div');c.className='tradingview-widget-container';
-  var s=document.createElement('script');s.type='text/javascript';s.async=true;
-  s.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-  s.text=JSON.stringify({symbols:syms,showSymbolLogo:true,isTransparent:true,
-    displayMode:"adaptive",colorTheme:th,locale:"ko"});
-  c.appendChild(s);wrap.appendChild(c);
-})();
-</script>
 
 <!-- HERO -->
 <div class="hero">
