@@ -322,6 +322,11 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 .footer-links a:hover{color:var(--orange);}
 .footer-copy{font-size:0.75rem;color:var(--text-muted);}
 
+/* LEAD FORM MOBILE */
+@media(max-width:720px){
+  #leadFormGrid{grid-template-columns:1fr!important;}
+}
+
 /* SPINNER */
 .spinner{width:18px;height:18px;border:2px solid var(--border-default);
   border-top-color:var(--orange);border-radius:50%;
@@ -346,8 +351,8 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 
 <!-- BREAKING BAR -->
 <div class="breaking">
-  <span class="breaking-badge">⚡ D-DAY</span>
-  <span class="breaking-text">🇰🇷 2027년 1월 1일부터 코인 양도차익 22% 세율 적용 · 250만원 기본공제 · 지금 세금 미리 계산하세요 → cryptotax.cloud · 공포지수 낮을수록 절세 타이밍 · 시장 지표로 매수·매도 판단에 활용</span>
+  <span class="breaking-badge">⚡ 2027 과세</span>
+  <span class="breaking-text">🇰🇷 2027년 1월 1일부터 코인 양도차익 22% 세율 적용 · 250만원 기본공제 · 지금 세금 미리 계산하세요 → <a href="/tools/tax-calculator.html" style="color:inherit;text-decoration:underline">세금 계산기 바로가기</a></span>
 </div>
 
 <!-- TradingView Ticker Tape -->
@@ -552,29 +557,24 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <p class="heatmap-note">※ 칸 크기 = 시가총액 / 빨간색 = 하락 / 초록색 = 상승 · TradingView 실시간 제공</p>
     </div>
 
-    <!-- COIN SCREENER -->
-    <div class="sec-label" style="margin-top:0">🔍 코인 스크리너 — 가격·등락률·시총·거래량 필터</div>
+    <!-- ADVANCED CHART -->
+    <div class="sec-label" style="margin-top:0">📈 코인 차트 — 종목 직접 검색해서 보기</div>
+    <div class="widget-frame" style="margin-bottom:16px">
+      <div class="widget-header">
+        <span class="widget-title">📈 트레이딩뷰 차트 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">검색창에 코인 심볼 입력 (예: BTC, ETH, XRP)</span>
+      </div>
+      <div id="tv-chart-wrap" style="height:500px;width:100%"></div>
+    </div>
+
+    <!-- CRYPTO MARKET -->
+    <div class="sec-label" style="margin-top:0">🌐 실시간 코인 시장 — 가격·등락률·시총</div>
     <div class="widget-frame">
       <div class="widget-header">
-        <span class="widget-title">🔍 암호화폐 스크리너 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView · 전체 코인 필터링</span>
+        <span class="widget-title">🌐 암호화폐 마켓 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView · 무료 실시간</span>
       </div>
-      <div class="tradingview-widget-container" id="screenerContainer">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-        {
-          "width": "100%",
-          "height": 550,
-          "defaultColumn": "overview",
-          "defaultScreen": "top_gainers",
-          "screenerType": "crypto_mkt",
-          "displayCurrency": "USD",
-          "colorTheme": "dark",
-          "locale": "kr",
-          "isTransparent": false
-        }
-        </script>
-      </div>
+      <div id="tv-market-wrap" style="height:550px;width:100%"></div>
     </div>
   </div>
 
@@ -601,7 +601,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <div class="dday-num" id="ddayNum">—</div>
       <div class="dday-unit">일 남음</div>
       <div class="dday-info">22% 세율 · 250만원 기본공제</div>
-      <a href="https://cryptotax.cloud/" class="btn-cta">세금 미리 계산 →</a>
+      <a href="/tools/tax-calculator.html" class="btn-cta">세금 미리 계산 →</a>
     </div>
 
     <!-- 급등·급락 -->
@@ -635,18 +635,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       </div>
     </div>
 
-    <!-- BTC/KRW 미니 차트 -->
-    <div class="widget-frame">
-      <div class="widget-header">
-        <span class="widget-title">₿ BTC/KRW 30일 차트</span>
-      </div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"UPBIT:BTCKRW","width":"100%","height":220,"locale":"kr","dateRange":"1M","colorTheme":"dark","isTransparent":false,"autosize":true}
-        </script>
-      </div>
-    </div>
 
   </div><!-- /sidebar -->
 </div><!-- /layout -->
@@ -698,6 +686,53 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
   </div>
 </div>
 
+<!-- LEAD FORM -->
+<div class="sec-label">📬 주간 시장 동향 리포트</div>
+<div style="background:linear-gradient(135deg,var(--bg-surface),var(--bg-elevated));border:1px solid var(--border-default);border-radius:16px;padding:32px 28px;margin-bottom:28px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-20px;right:-20px;font-size:6rem;opacity:0.05;pointer-events:none;">📊</div>
+  <div id="leadFormGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+    <div>
+      <h3 style="font-size:1.25rem;font-weight:900;margin-bottom:10px;line-height:1.3;word-break:keep-all;">이번 주 코인 상승·하락 동향<br><span style="color:var(--orange)">무료 리포트 받기</span></h3>
+      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;word-break:keep-all;margin-bottom:16px;">
+        매주 월요일, 공포·탐욕 지수 + 알트시즌 + 급등·급락 코인 분석을 이메일로 보내드립니다.
+        광고 없이 순수 시장 데이터만 담습니다.
+      </p>
+      <ul style="list-style:none;font-size:0.82rem;color:var(--text-secondary);display:flex;flex-direction:column;gap:6px;">
+        <li>✅ 공포·탐욕 주간 흐름 분석</li>
+        <li>✅ 급등·급락 TOP 5 코인</li>
+        <li>✅ 절세 타이밍 체크리스트</li>
+        <li>✅ 완전 무료 · 구독 취소 자유</li>
+      </ul>
+    </div>
+    <div>
+      <form id="leadForm" onsubmit="submitLead(event)" style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;color:var(--text-muted);display:block;margin-bottom:5px;">이름 (선택)</label>
+          <input type="text" id="leadName" placeholder="홍길동" maxlength="20"
+            style="width:100%;padding:11px 14px;border-radius:9px;border:1px solid var(--border-default);
+            background:var(--bg-base);color:var(--text-primary);font-size:0.9rem;font-family:inherit;outline:none;
+            transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border-default)'">
+        </div>
+        <div>
+          <label style="font-size:0.78rem;font-weight:700;color:var(--text-muted);display:block;margin-bottom:5px;">이메일 주소 <span style="color:var(--red)">*</span></label>
+          <input type="email" id="leadEmail" placeholder="example@email.com" required
+            style="width:100%;padding:11px 14px;border-radius:9px;border:1px solid var(--border-default);
+            background:var(--bg-base);color:var(--text-primary);font-size:0.9rem;font-family:inherit;outline:none;
+            transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border-default)'">
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:9px;font-size:0.78rem;color:var(--text-secondary)">
+          <input type="checkbox" id="leadAgree" required style="margin-top:2px;accent-color:var(--orange);flex-shrink:0;">
+          <label for="leadAgree">마케팅 수신에 동의합니다. <a href="/privacy-policy.html" style="color:var(--orange);text-decoration:underline;">개인정보처리방침</a></label>
+        </div>
+        <button type="submit" class="btn-cta" style="width:100%;padding:13px;font-size:0.95rem;border:none;cursor:pointer;">
+          📩 무료 리포트 신청하기
+        </button>
+        <div id="leadMsg" style="display:none;font-size:0.85rem;font-weight:700;text-align:center;padding:10px;border-radius:8px;"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- FAQ -->
 <div class="sec-label">❓ 지표 이해하기 (초보자 가이드)</div>
 <div style="margin-bottom:28px">
@@ -736,14 +771,19 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 </div><!-- /wrap -->
 
 <footer>
+  <div style="font-size:0.76rem;color:var(--text-muted);background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:8px;padding:10px 16px;margin-bottom:16px;max-width:900px;margin-left:auto;margin-right:auto;line-height:1.65;">
+    ⚠️ <strong>투자 위험 안내:</strong> 본 페이지에서 제공하는 시장 지수·차트·지표는 <strong>투자 참고용</strong>이며, 투자 권유가 아닙니다.
+    암호화폐 투자는 원금 손실 위험이 있으며, 모든 투자 결정과 그에 따른 손익은 <strong>투자자 본인의 책임</strong>입니다.
+    CryptoTax.cloud는 본 데이터를 근거로 한 투자 결과에 대해 어떠한 법적 책임도 지지 않습니다.
+  </div>
   <div class="footer-links">
-    <a href="https://cryptotax.cloud/">홈</a>
-    <a href="https://cryptotax.cloud/tools/">도구</a>
-    <a href="https://cryptotax.cloud/blog/">블로그</a>
-    <a href="https://cryptotax.cloud/about.html">소개</a>
-    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
-    <a href="https://cryptotax.cloud/terms.html">이용약관</a>
-    <a href="https://cryptotax.cloud/disclaimer.html">면책조항</a>
+    <a href="/">홈</a>
+    <a href="/tools/">도구</a>
+    <a href="/blog/">블로그</a>
+    <a href="/about.html">소개</a>
+    <a href="/privacy-policy.html">개인정보처리방침</a>
+    <a href="/terms.html">이용약관</a>
+    <a href="/disclaimer.html">면책조항</a>
   </div>
   <div class="footer-copy">
     © 2026 CryptoTax.cloud · 데이터: CoinGecko · Alternative.me · TradingView · 참고용 정보 ·
@@ -752,6 +792,44 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 </footer>
 
 <script>
+/* TV WIDGETS — theme-aware */
+(function(){
+  var th = localStorage.getItem('ctc-theme')||'dark';
+
+  /* Advanced Chart */
+  var chartWrap = document.getElementById('tv-chart-wrap');
+  if(chartWrap){
+    var cc=document.createElement('div');cc.className='tradingview-widget-container';
+    cc.style.height='100%';cc.style.width='100%';
+    var cw=document.createElement('div');cw.className='tradingview-widget-container__widget';
+    cw.style.height='calc(100% - 32px)';cw.style.width='100%';
+    var cs=document.createElement('script');cs.type='text/javascript';cs.async=true;
+    cs.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    cs.text=JSON.stringify({
+      autosize:true,symbol:'BINANCE:BTCUSDT',interval:'D',timezone:'Asia/Seoul',
+      theme:th,style:'1',locale:'kr',allow_symbol_change:true,
+      calendar:false,height:500,width:'100%',hide_side_toolbar:false
+    });
+    cc.appendChild(cw);cc.appendChild(cs);chartWrap.appendChild(cc);
+  }
+
+  /* Cryptocurrency Market */
+  var mktWrap = document.getElementById('tv-market-wrap');
+  if(mktWrap){
+    var mc=document.createElement('div');mc.className='tradingview-widget-container';
+    mc.style.height='100%';mc.style.width='100%';
+    var mw=document.createElement('div');mw.className='tradingview-widget-container__widget';
+    mw.style.height='calc(100% - 32px)';mw.style.width='100%';
+    var ms=document.createElement('script');ms.type='text/javascript';ms.async=true;
+    ms.src='https://s3.tradingview.com/external-embedding/embed-widget-cryptocurrency-market.js';
+    ms.text=JSON.stringify({
+      width:'100%',height:550,defaultColumn:'overview',screenerType:'crypto_mkt',
+      displayCurrency:'USD',colorTheme:th,locale:'kr',isTransparent:false
+    });
+    mc.appendChild(mw);mc.appendChild(ms);mktWrap.appendChild(mc);
+  }
+})();
+
 /* THEME */
 const root = document.documentElement;
 function applyTheme(t) {
@@ -994,6 +1072,30 @@ function setAlert(fg, alt, btcDom) {
   else if(btcDom!==null&&btcDom>=62){type='warn';msg=`₿ BTC 도미넌스 ${btcDom.toFixed(1)}% — 강한 BTC 집중 구간입니다.`;}
   if(msg){el.className=`alert-banner show ${type}`;txt.textContent=msg;}
   else{el.className='alert-banner';}
+}
+
+/* LEAD FORM */
+function submitLead(e) {
+  e.preventDefault();
+  const email = document.getElementById('leadEmail').value.trim();
+  const name  = document.getElementById('leadName').value.trim();
+  const msg   = document.getElementById('leadMsg');
+  const btn   = e.target.querySelector('button[type=submit]');
+  if(!email) return;
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+  /* Formspree 연결 전까지 임시 처리 — mailto 링크 방식 */
+  const sub = encodeURIComponent('CryptoTax.cloud 주간 시장 동향 리포트 신청');
+  const body = encodeURIComponent(`이름: ${name||'미입력'}\n이메일: ${email}\n\n위 정보로 주간 리포트를 신청합니다.`);
+  window.open(`mailto:contact@cryptotax.cloud?subject=${sub}&body=${body}`);
+  msg.style.display = 'block';
+  msg.style.background = 'var(--green-dim)';
+  msg.style.color = 'var(--green)';
+  msg.style.border = '1px solid var(--green-border)';
+  msg.textContent = '✅ 신청해 주셔서 감사합니다! 매주 월요일에 리포트를 보내드립니다.';
+  e.target.reset();
+  btn.textContent = '📩 무료 리포트 신청하기';
+  btn.disabled = false;
 }
 
 /* FAQ */
