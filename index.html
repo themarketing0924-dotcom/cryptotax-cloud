@@ -1787,6 +1787,5 @@ function shareKakao(){alert('카카오 공유 기능은 Kakao SDK 연동 후 활
 function submitEmail(){const email=document.getElementById('emailInput').value.trim();const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(email)){alert('올바른 이메일 주소를 입력해주세요.');return;}alert('감사합니다! 📧\n'+email+'으로 무료 가이드를 보내드리겠습니다.');document.getElementById('emailInput').value='';}
 window.addEventListener('scroll',()=>{const btn=document.getElementById('scrollTop');if(btn)btn.style.display=window.scrollY>400?'block':'none';});
 </script>
-<script src="/assets/js/ctc-ticker.js"></script>
 </body>
 </html>

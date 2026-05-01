@@ -67,19 +67,6 @@ a{text-decoration:none;color:inherit;}
 body > a[href*="tradingview"]{display:none!important;}
 body > div.tradingview-widget-container > a{display:none!important;}
 
-/* 커스텀 티커 */
-#ctc-tv-ticker{height:44px;overflow:hidden;background:var(--card-bg);border-bottom:1px solid var(--border-default);display:flex;align-items:center;}
-.ctc-ticker-track{display:flex;align-items:center;gap:0;white-space:nowrap;animation:ctc-scroll 40s linear infinite;will-change:transform;}
-.ctc-ticker-track:hover{animation-play-state:paused;}
-@keyframes ctc-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ctc-tick-item{display:inline-flex;align-items:center;gap:6px;padding:0 24px;font-size:0.82rem;border-right:1px solid var(--border-default);cursor:default;}
-.ctc-tick-sym{font-weight:700;color:var(--text-primary);}
-.ctc-tick-name{color:var(--text-muted);font-size:0.75rem;}
-.ctc-tick-price{color:var(--text-primary);font-variant-numeric:tabular-nums;}
-.ctc-tick-chg{font-size:0.75rem;font-variant-numeric:tabular-nums;padding:1px 5px;border-radius:3px;}
-.ctc-tick-chg.up{background:rgba(22,199,132,.15);color:#16c784;}
-.ctc-tick-chg.dn{background:rgba(234,57,67,.12);color:#ea3943;}
-.ctc-ticker-loader{padding:0 20px;color:var(--text-muted);font-size:0.82rem;}
 
 /* HERO */
 .hero{padding:52px 24px 40px;text-align:center;background:var(--hero-bg);}
@@ -341,7 +328,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
-<body data-no-ticker>
+<body>
 
 <!-- TradingView fallback 차단 스크립트 (Replit 중첩 iframe 환경) -->
 <script>
@@ -381,13 +368,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     </button>
   </div>
 </nav>
-
-<!-- 커스텀 실시간 티커 (Binance API) -->
-<div id="ctc-tv-ticker">
-  <div class="ctc-ticker-track" id="tickerTrack">
-    <span class="ctc-ticker-loader">시세 로딩 중...</span>
-  </div>
-</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -888,7 +868,11 @@ function applyTheme(t) {
 const saved = localStorage.getItem('ctc-theme') || 'dark';
 applyTheme(saved);
 function toggleTheme() {
-  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  /* common.js가 실제 토글·localStorage·themeChange 이벤트를 처리함
+     여기서는 버튼 레이블만 현재 data-theme에 맞게 갱신 */
+  var t = root.getAttribute('data-theme');
+  var btn = document.getElementById('themeBtn');
+  if(btn) btn.innerHTML = t === 'dark' ? '<span>☀️</span> 라이트' : '<span>🌙</span> 다크';
 }
 
 /* D-DAY */
@@ -1216,64 +1200,8 @@ setInterval(loadAll, 5 * 60 * 1000);
   document.addEventListener('themeChange',function(e){rebuildScreener(e.detail);});
 })();
 </script>
-<script src="/assets/js/common.js"></script>
+<script src="/assets/js/common.js?v=1777647743"></script>
 
-<!-- 커스텀 실시간 티커 -->
-<script>
-(function(){
-  var COINS=[
-    {sym:'BTCUSDT',label:'BTC',name:'비트코인'},
-    {sym:'ETHUSDT',label:'ETH',name:'이더리움'},
-    {sym:'XRPUSDT',label:'XRP',name:'리플'},
-    {sym:'SOLUSDT',label:'SOL',name:'솔라나'},
-    {sym:'ADAUSDT',label:'ADA',name:'에이다'},
-    {sym:'DOGEUSDT',label:'DOGE',name:'도지코인'},
-    {sym:'AVAXUSDT',label:'AVAX',name:'아발란체'},
-    {sym:'LINKUSDT',label:'LINK',name:'체인링크'},
-    {sym:'DOTUSDT',label:'DOT',name:'폴카닷'},
-    {sym:'BNBUSDT',label:'BNB',name:'BNB'}
-  ];
-  function fmt(n){
-    if(n>=1000) return n.toLocaleString('en-US',{maximumFractionDigits:2});
-    if(n>=1) return n.toFixed(4);
-    return n.toPrecision(4);
-  }
-  function buildHTML(items){
-    var html='';
-    for(var i=0;i<items.length;i++){
-      var d=items[i];
-      var cls=parseFloat(d.chg)>=0?'up':'dn';
-      var sign=parseFloat(d.chg)>=0?'+':'';
-      html+='<span class="ctc-tick-item">'+
-        '<span class="ctc-tick-sym">'+d.label+'</span>'+
-        '<span class="ctc-tick-name">'+d.name+'</span>'+
-        '<span class="ctc-tick-price">$'+fmt(parseFloat(d.price))+'</span>'+
-        '<span class="ctc-tick-chg '+cls+'">'+sign+parseFloat(d.chg).toFixed(2)+'%</span>'+
-        '</span>';
-    }
-    return html;
-  }
-  function loadTicker(){
-    var symbols=JSON.stringify(COINS.map(function(c){return '"'+c.sym+'"'})).replace(/\\"/g,'"');
-    var url='https://api.binance.com/api/v3/ticker/24hr?symbols=['+COINS.map(function(c){return '%22'+c.sym+'%22'}).join(',')+']';
-    fetch(url).then(function(r){return r.json();}).then(function(data){
-      var map={};
-      data.forEach(function(d){map[d.symbol]=d;});
-      var items=COINS.map(function(c){
-        var d=map[c.sym]||{};
-        return {label:c.label,name:c.name,price:d.lastPrice||'—',chg:d.priceChangePercent||'0'};
-      });
-      var html=buildHTML(items);
-      var track=document.getElementById('tickerTrack');
-      if(track){track.innerHTML=html+html;}  /* 두 번 반복 = 끊김 없는 루프 */
-    }).catch(function(){
-      /* API 실패 시 로더 유지 */
-    });
-  }
-  loadTicker();
-  setInterval(loadTicker,30000);
-})();
-</script>
 
 </body>
 </html>

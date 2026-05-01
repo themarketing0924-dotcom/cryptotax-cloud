@@ -21,21 +21,15 @@ function _applyThemeUI(theme){
   if(track){track.classList.toggle('active',isLight);}
 }
 
-// ② 테마 토글
-(function(){
-  var _orig = window.toggleTheme;
-  window.toggleTheme = function(){
-    var next = document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('ctc-theme', next);
-    _applyThemeUI(next);
-    // 히트맵 등 테마 감지 위젯에 알림
-    try{ document.dispatchEvent(new CustomEvent('themeChange',{detail:next})); }catch(e){}
-    if(typeof _orig === 'function' && _orig !== window.toggleTheme){
-      try{ _orig(); }catch(e){}
-    }
-  };
-})();
+// ② 테마 토글 — localStorage 기반 전 페이지 동기화
+window.toggleTheme = function(){
+  var next = document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme', next);
+  document.documentElement.style.colorScheme = next;
+  localStorage.setItem('ctc-theme', next);
+  _applyThemeUI(next);
+  try{ document.dispatchEvent(new CustomEvent('themeChange',{detail:next})); }catch(e){}
+};
 
 // ③ 스크롤 자동 리빌 — modujuso 스타일 (전체 페이지 자동 감지)
 (function(){
@@ -104,71 +98,87 @@ function _applyThemeUI(theme){
   }
 })();
 
-// ④ 코인 티커 자동 주입 (nav 바로 아래)
+// ④ TradingView 티커테이프 자동 주입 — 전 페이지 통일 (nav 바로 아래)
 (function(){
-  var TICKER_COINS = [
-    {s:'BTC', n:'비트코인',  icon:'₿',  ex:['U','B']},
-    {s:'ETH', n:'이더리움',  icon:'Ξ',  ex:['U','B']},
-    {s:'XRP', n:'리플',      icon:'✕',  ex:['U','B']},
-    {s:'SOL', n:'솔라나',    icon:'◎',  ex:['U','B']},
-    {s:'ADA', n:'에이다',    icon:'₳',  ex:['U','B']},
-    {s:'AVAX',n:'아발란체',  icon:'△',  ex:['U','B']},
-    {s:'DOT', n:'폴카닷',    icon:'●',  ex:['U','B']},
-    {s:'MATIC',n:'폴리곤',   icon:'⬟',  ex:['U','B']},
-    {s:'LINK',n:'체인링크',  icon:'⬡',  ex:['U','B']},
-    {s:'DOGE',n:'도지코인',  icon:'Ð',  ex:['U','B']},
-    {s:'ATOM',n:'코스모스',  icon:'⚛',  ex:['U','B']},
-    {s:'NEAR',n:'니어',      icon:'N',  ex:['U','B']},
-    {s:'UNI', n:'유니스왑',  icon:'🦄', ex:['U','B']},
-    {s:'LTC', n:'라이트코인',icon:'Ł',  ex:['U','B']},
-    {s:'SHIB',n:'시바이누',  icon:'🐶', ex:['U','B']},
-    {s:'APT', n:'앱토스',    icon:'A',  ex:['U','B']},
-    {s:'SUI', n:'수이',      icon:'S',  ex:['U','B']},
-    {s:'ARB', n:'아비트럼',  icon:'Ⓐ',  ex:['U','B']},
-    {s:'OP',  n:'옵티미즘',  icon:'Ⓞ',  ex:['U','B']},
-    {s:'INJ', n:'인젝티브',  icon:'I',  ex:['U','B']},
-    {s:'TIA', n:'셀레스티아',icon:'T',  ex:['U','B']},
-    {s:'TON', n:'톤코인',    icon:'◈',  ex:['U','B']},
-    {s:'PEPE',n:'페페',      icon:'🐸', ex:['U','B']},
-    {s:'WEMIX',n:'위믹스',   icon:'W',  ex:['U','B']},
-    {s:'BORA',n:'보라',      icon:'B',  ex:['U','B']},
+  var WRAP_ID = 'ctc-tv-ticker';
+  var SYMBOLS = [
+    {proName:'BINANCE:BTCUSDT',  title:'비트코인'},
+    {proName:'BINANCE:ETHUSDT',  title:'이더리움'},
+    {proName:'BINANCE:XRPUSDT',  title:'리플'},
+    {proName:'BINANCE:SOLUSDT',  title:'솔라나'},
+    {proName:'BINANCE:ADAUSDT',  title:'에이다'},
+    {proName:'BINANCE:DOGEUSDT', title:'도지코인'},
+    {proName:'BINANCE:AVAXUSDT', title:'아발란체'},
+    {proName:'BINANCE:LINKUSDT', title:'체인링크'},
+    {proName:'BINANCE:DOTUSDT',  title:'폴카닷'},
+    {proName:'BINANCE:BNBUSDT',  title:'BNB'}
   ];
 
-  function makeBadges(ex){
-    return ex.map(function(e){
-      return '<span class="ex-badge ex-'+(e==='U'?'upbit':'bithumb')+'">'+(e==='U'?'U':'B')+'</span>';
-    }).join('');
+  function getTheme(){
+    var t = document.documentElement.getAttribute('data-theme') || localStorage.getItem('ctc-theme');
+    return t === 'light' ? 'light' : 'dark';
   }
 
-  function buildTicker(){
-    if(document.getElementById('ctc-ticker')) return;
-    // 이미 자체 가격 티커바가 있는 페이지는 건너뜀
-    if(document.querySelector('.ticker-wrap, .ctc-tool-ticker-wrap, [data-no-ticker]')) return;
-    var items = TICKER_COINS.concat(TICKER_COINS).map(function(c){
-      return '<div class="ticker-item">'
-        +'<span class="ticker-icon">'+c.icon+'</span>'
-        +'<span class="ticker-sym">'+c.s+'</span>'
-        +'<span class="ticker-name">'+c.n+'</span>'
-        +'<span class="ticker-ex">'+makeBadges(c.ex)+'</span>'
-        +'</div>';
-    }).join('');
+  function removeOldTickers(){
+    ['ctc-ticker','ctc-ticker-track'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    document.querySelectorAll('.ctc-tool-ticker-wrap,.ticker-wrap').forEach(function(el){
+      if(el.parentNode) el.parentNode.removeChild(el);
+    });
+  }
 
-    var bar = document.createElement('div');
-    bar.id = 'ctc-ticker';
-    bar.innerHTML = '<div class="ticker-track">'+items+'</div>';
+  function buildTicker(theme){
+    if(document.querySelector('[data-no-ticker]')) return;
+    var old = document.getElementById(WRAP_ID);
+    if(old && old.parentNode) old.parentNode.removeChild(old);
 
-    // nav 뒤에 삽입 (nav, header, .main-nav 모두 지원)
-    var nav = document.querySelector('nav') ||
-              document.querySelector('header') ||
-              document.querySelector('.main-nav');
+    removeOldTickers();
+
+    var wrap = document.createElement('div');
+    wrap.id = WRAP_ID;
+    wrap.className = 'tradingview-widget-container';
+    wrap.style.cssText = 'width:100%;height:56px;max-height:56px;overflow:hidden;';
+
+    var inner = document.createElement('div');
+    inner.className = 'tradingview-widget-container__widget';
+    inner.style.cssText = 'height:56px;max-height:56px;overflow:hidden;';
+    wrap.appendChild(inner);
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbols: SYMBOLS,
+      showSymbolLogo: true,
+      isTransparent: false,
+      displayMode: 'adaptive',
+      locale: 'kr',
+      colorTheme: theme || getTheme()
+    });
+    wrap.appendChild(script);
+
+    var nav = document.querySelector('nav.main-nav') || document.querySelector('nav') || document.querySelector('header');
     if(nav && nav.parentNode){
-      nav.parentNode.insertBefore(bar, nav.nextSibling);
+      nav.parentNode.insertBefore(wrap, nav.nextSibling);
     } else {
-      document.body.insertBefore(bar, document.body.firstChild);
+      document.body.insertBefore(wrap, document.body.firstChild);
     }
   }
 
-  document.addEventListener('DOMContentLoaded', buildTicker);
+  document.addEventListener('themeChange', function(e){
+    buildTicker(e.detail || getTheme());
+  });
+
+  function init(){
+    if(document.getElementById(WRAP_ID)) return;
+    buildTicker(getTheme());
+  }
+
+  if(document.body){ init(); }
+  else { document.addEventListener('DOMContentLoaded', init); }
 })();
 
 // ⑤ 숫자 포맷터
