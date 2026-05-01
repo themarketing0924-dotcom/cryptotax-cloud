@@ -573,6 +573,46 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <div id="tv-chart-wrap" style="height:620px;width:100%"></div>
     </div>
 
+    <!-- CRYPTO SCREENER -->
+    <div class="sec-label" style="margin-top:0">🔍 암호화폐 스크리너 — 급등·급락·시총·거래량 필터</div>
+    <div class="widget-frame" style="margin-bottom:16px">
+      <div class="widget-header">
+        <span class="widget-title">🔍 암호화폐 스크리너 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 실시간 · 전체 코인 필터링</span>
+      </div>
+      <div id="tvScreenerHost">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="width:100%">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/crypto-coins-screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Screener</span></a><span class="trademark"> by TradingView</span></div>
+          <script id="tvScreenerInitScript" type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+          {
+            "market": "crypto",
+            "showToolbar": true,
+            "defaultColumn": "overview",
+            "defaultScreen": "general",
+            "isTransparent": false,
+            "locale": "en",
+            "colorTheme": "dark",
+            "width": "100%",
+            "height": 550
+          }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+      </div>
+      <!-- 초기 테마 적용: TradingView async 스크립트보다 먼저 실행됨 -->
+      <script>
+      (function(){
+        var th=localStorage.getItem('ctc-theme')||'dark';
+        if(th==='light'){
+          var s=document.getElementById('tvScreenerInitScript');
+          if(s){try{var c=JSON.parse(s.textContent);c.colorTheme='light';s.textContent=JSON.stringify(c);}catch(e){}}
+        }
+      })();
+      </script>
+    </div>
+
   </div>
 
   <!-- SIDEBAR -->
@@ -1147,6 +1187,34 @@ async function loadAll() {
 
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
+
+/* 스크리너 테마 변경 리빌드 */
+(function(){
+  var SCREENER_CFG={market:'crypto',showToolbar:true,defaultColumn:'overview',defaultScreen:'general',isTransparent:false,locale:'en',width:'100%',height:550};
+  function rebuildScreener(theme){
+    var host=document.getElementById('tvScreenerHost');
+    if(!host) return;
+    var wrap=document.createElement('div');
+    wrap.className='tradingview-widget-container';
+    wrap.style.width='100%';
+    var inner=document.createElement('div');
+    inner.className='tradingview-widget-container__widget';
+    wrap.appendChild(inner);
+    var copy=document.createElement('div');
+    copy.className='tradingview-widget-copyright';
+    copy.innerHTML='<a href="https://www.tradingview.com/crypto-coins-screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Screener</span></a><span class="trademark"> by TradingView</span>';
+    wrap.appendChild(copy);
+    var s=document.createElement('script');
+    s.type='text/javascript';
+    s.src='https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
+    s.async=true;
+    s.textContent=JSON.stringify(Object.assign({},SCREENER_CFG,{colorTheme:theme}));
+    wrap.appendChild(s);
+    host.innerHTML='';
+    host.appendChild(wrap);
+  }
+  document.addEventListener('themeChange',function(e){rebuildScreener(e.detail);});
+})();
 </script>
 <script src="/assets/js/common.js"></script>
 
