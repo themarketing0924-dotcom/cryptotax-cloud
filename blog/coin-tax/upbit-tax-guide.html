@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/assets/css/common.css">
 <script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
-<body>
+<body data-no-ticker>
 <nav class="main-nav">
   <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
   <div class="nav-menu">
@@ -51,7 +51,7 @@
 </div>
 
 <article style="max-width:820px;margin:0 auto;padding:0 20px 60px">
-<figure class="article-featured-img fade-up">
+<figure class="article-featured-img">
   <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=820&h=430&fit=crop&auto=format&q=80"
        srcset="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=820&h=430&fit=crop&auto=format&q=80 820w, https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?w=1640&h=860&fit=crop&auto=format&q=70 1640w"
        sizes="(max-width:860px) 100vw, 820px"
@@ -66,6 +66,15 @@
 
 
   <div class="summary-box"><div style="font-size:12px;color:var(--orange);font-weight:700;margin-bottom:8px">📌 핵심 요약</div><ul style="font-size:14px;line-height:1.9;padding-left:16px"><li>업비트 앱 → 프로필 → 거래 내역에서 CSV 파일 다운로드</li><li>업비트 수수료 0.05%는 취득원가·양도금액에 포함 가능</li><li>CSV 파일을 세금 계산기에 업로드하면 취득원가 자동 계산</li><li>업비트 원화 출금 내역도 반드시 확인 필요</li></ul></div>
+
+<div style="background:var(--bg2);border-radius:10px;padding:16px 20px;margin:20px 0;font-size:13px;line-height:2">
+  <div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">이 글과 함께 읽으면 좋은 글</div>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <a href="/blog/coin-tax/250man-exemption.html" style="color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:var(--orange)">→</span> <span>250만원 기본공제 완전 이해 — 공제 조건·활용법 총정리</span></a>
+    <a href="/blog/investment/tax-loss-harvesting.html" style="color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:var(--orange)">→</span> <span>Tax-Loss Harvesting — 손실 코인으로 합법 절세하는 법</span></a>
+    <a href="/blog/coin-tax/hometax-guide.html" style="color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px"><span style="color:var(--orange)">→</span> <span>홈택스 가상자산 신고 방법 — 단계별 완전 가이드</span></a>
+  </div>
+</div>
   <nav class="toc">
       <div style="font-weight:700;margin-bottom:10px">📋 목차</div>
       <ol style="padding-left:18px;font-size:14px;line-height:2">
@@ -73,8 +82,6 @@
         <li><a href="#faq">자주 묻는 질문</a></li>
       </ol>
     </nav>
-  <div class="grid-3 fade-up" style="margin:28px 0"><div class="stat-box"><span class="stat-num">0.05%</span><span class="stat-label">업비트 거래 수수료</span></div><div class="stat-box"><span class="stat-num">250만원</span><span class="stat-label">연 기본공제</span></div><div class="stat-box"><span class="stat-num">22%</span><span class="stat-label">양도소득세율</span></div></div>
-
   <div class="adsense-wrap">광고 영역</div>
 
   
@@ -82,7 +89,7 @@
     <p>업비트 앱에서 거래 내역 CSV를 다운로드하는 방법입니다. ① 업비트 앱 실행 → 하단 메뉴 '더보기' 탭. ② '거래 내역' 선택 → 기간 설정 (세금 신고 해당 연도 전체). ③ '내보내기' 또는 'CSV 다운로드' 선택. ④ 이메일 또는 앱으로 파일 수신. PC 웹 버전(upbit.com)에서도 동일하게 다운로드 가능합니다. 다운로드 시 매수·매도 내역과 수수료가 포함된 CSV 파일을 받게 됩니다. 이 파일을 CSV 세금 계산기에 업로드하면 취득원가와 세금이 자동으로 계산됩니다.</p>
     <h2 id="s2" style="font-size:20px;margin:40px 0 16px">업비트 수수료 0.05% 처리 방법</h2>
     <p>업비트의 거래 수수료는 0.05%로, 매수와 매도 시 각각 부과됩니다. 세법상 이 수수료는 취득원가(매수 수수료)와 양도 비용(매도 수수료)으로 처리할 수 있습니다. 예를 들어 1,000만원어치 비트코인을 매수할 때 수수료 5,000원이 발생하면 취득원가는 10,005,000원이 됩니다. 매도 시에도 마찬가지로 수수료를 양도 비용에서 차감합니다. 수수료를 정확히 반영하면 과세표준이 낮아져 세금을 줄일 수 있습니다. CSV 파일에 수수료가 포함되어 있으므로 CSV 세금 계산기를 이용하면 자동 처리됩니다.</p>
-    <div class="calc-cta fade-up">
+    <div class="calc-cta">
       <div style="font-size:24px;margin-bottom:8px">📁</div>
       <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px">CSV 세금 계산기 지금 무료로 계산하기</div>
       <div style="font-size:13px;color:var(--text-sub);margin-bottom:16px">업비트 CSV를 업로드하면 취득원가와 세금을 자동 계산합니다</div>
@@ -118,11 +125,9 @@
       </details>
 
   <div class="adsense-wrap">광고 영역</div>
-
-<div id="ctc-related"></div>
 </article>
 
-<section class="fade-up" style="max-width:820px;margin:0 auto;padding:0 20px 40px">
+<section  style="max-width:820px;margin:0 auto;padding:0 20px 40px">
   <div class="section-header">
     <span class="badge">🧮 관련 계산기</span>
     <h2>바로 계산해보세요</h2>
@@ -144,7 +149,7 @@
   </div>
 </section>
 
-<section class="fade-up" style="max-width:820px;margin:0 auto;padding:0 20px 60px">
+<section  style="max-width:820px;margin:0 auto;padding:0 20px 60px">
   <div class="section-header">
     <span class="badge">📝 관련 글</span>
     <h2>함께 읽으면 좋은 글</h2>
@@ -175,7 +180,7 @@
   </div>
 </section>
 
-<section class="fade-up" style="padding:40px 0">
+<section  style="padding:40px 0">
   <div style="max-width:700px;margin:0 auto;padding:0 20px">
     <div class="section-header">
       <span class="badge">🏛️ 공식 출처</span>
@@ -225,6 +230,5 @@
   <p class="footer-copy">© 2026 CryptoTax.cloud · 국세청 기준 적용 · 참고용 · 실제 신고는 세무사 상담 권장</p>
 </footer>
 <script src="/assets/js/common.js?v=1777647743"></script>
-<script src="/assets/js/related-posts.js"></script>
 </body>
 </html>

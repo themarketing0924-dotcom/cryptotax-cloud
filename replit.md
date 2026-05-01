@@ -55,6 +55,28 @@ robots.txt                  # 크롤러 설정
 - 세액 = 과세표준 × 22%
 - 취득원가: 이동평균법
 
+## 블로그 아티클 표준 (현재 적용)
+
+### 아티클 페이지 구조 (닐파텔 스타일)
+1. `<body data-no-ticker>` — 아티클 페이지에는 TradingView 티커 없음 (blog/index.html만 허용)
+2. 스크롤 애니메이션 없음 — `fade-up` 클래스 사용 안 함
+3. 통계 박스(stat-box) 없음 — 목차 다음 바로 본문 진행
+4. summary-box → 관련 글 3줄 → 목차 → 본문 순서
+5. 하단: 관련 계산기 3개 + 함께 읽으면 좋은 글 3개 + 공식 출처 3개
+6. 외부링크: 본문 내 핵심 용어에 위키백과·나무위키·국세청·coinlabs.kr 1-3개 삽입
+
+### 썸네일 기준 (신규 아티클)
+- 한국 투자자 선호 유형: 차트+텍스트 오버레이, 밝은 그래픽, 직관적 키워드 표시
+- Unsplash 대신 코인 관련 직접 이미지 또는 그래프 사용 권장
+
+### 주요 외부링크 (SEO 신뢰 신호)
+- 국세청 가상자산: https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412
+- 금융위원회: https://www.fsc.go.kr/no010101
+- 코인랩스 용어집: https://coinlabs.kr/terms
+- 위키백과 한국어: https://ko.wikipedia.org
+- 나무위키: https://namu.wiki
+- 홈택스: https://www.hometax.go.kr
+
 ## 완료된 작업
 
 1. Replit 서빙 설정 (Python3 HTTP 5000)
@@ -64,3 +86,4 @@ robots.txt                  # 크롤러 설정
 5. Phase 3: blog/index.html (40개 카드 + 카테고리 필터)
 6. Phase 4: 블로그 포스트 40편 생성 (세금15 + 투자전략15 + 입문가이드10)
 7. Phase 5: sitemap.xml (55개 URL) + robots.txt 업데이트
+8. Phase 6: 전체 아티클 페이지 표준화 — 티커 제거, 애니메이션 제거, stat-box 제거, 관련글 블록 삽입, 외부링크 추가
