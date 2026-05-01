@@ -1154,7 +1154,9 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
 <nav class="main-nav">
   <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
   <div class="nav-menu">
-    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
+    <a href="/" class="nav-item">홈</a>
+    <a href="/tools/tax-calculator.html" class="nav-item active">💰 세금계산기</a>
+    <a href="/tools/market-index.html" class="nav-item">🌡️ 시장지수</a>
     <a href="/tools/" class="nav-item">🧰 도구</a>
     <a href="/blog/" class="nav-item">📝 블로그</a>
   </div>
@@ -1163,7 +1165,6 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
   </div>
 </nav>
 
-<div class="ctc-tool-ticker-wrap" id="ctc-main-ticker" style="display:block!important;height:46px!important;overflow:hidden!important;background:#161b22;border-bottom:1px solid #30363d;width:100%;position:relative;"><div class="ctc-tool-ticker-track" style="display:flex;align-items:center;height:46px;white-space:nowrap;animation:ctcTickerScroll 35s linear infinite;"><span class="ctc-tool-ticker-item"><span class="t-short">BTC</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ETH</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BNB</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">XRP</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">SOL</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">DOGE</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ADA</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">TRX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">AVAX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">LINK</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BTC</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ETH</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">BNB</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">XRP</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">SOL</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">DOGE</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">ADA</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">TRX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">AVAX</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span><span class="ctc-tool-ticker-item"><span class="t-short">LINK</span><span class="t-price">$—</span><span class="t-chg t-neu">—</span></span></div></div>
 <!-- ============================================================
      URGENT BANNER
 ============================================================ -->
@@ -1172,36 +1173,6 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
   <span class="countdown" id="countdown">계산 중...</span> 남았습니다
 </div>
 
-<!-- ============================================================
-     TICKER TAPE (TradingView)
-============================================================ -->
-<div class="ticker-wrap" style="display:none!important;height:0;overflow:hidden;">
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript"
-      src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-      async>
-    {
-      "symbols": [
-        {"proName":"BINANCE:BTCUSDT","title":"비트코인"},
-        {"proName":"BINANCE:ETHUSDT","title":"이더리움"},
-        {"proName":"BINANCE:XRPUSDT","title":"리플"},
-        {"proName":"BINANCE:SOLUSDT","title":"솔라나"},
-        {"proName":"BINANCE:DOGEUSDT","title":"도지코인"},
-        {"proName":"BINANCE:BNBUSDT","title":"BNB"},
-        {"proName":"BINANCE:ADAUSDT","title":"에이다"},
-        {"proName":"UPBIT:BTCKRW","title":"BTC/KRW"},
-        {"proName":"UPBIT:ETHKRW","title":"ETH/KRW"}
-      ],
-      "showSymbolLogo": true,
-      "isTransparent": true,
-      "displayMode": "adaptive",
-      "colorTheme": "dark",
-      "locale": "kr"
-    }
-    </script>
-  </div>
-</div>
 
 <!-- ============================================================
      HERO SECTION
