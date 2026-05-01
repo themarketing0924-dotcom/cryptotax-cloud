@@ -558,13 +558,13 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     </div>
 
     <!-- ADVANCED CHART -->
-    <div class="sec-label" style="margin-top:0">📈 코인 차트 — 종목 직접 검색해서 보기</div>
+    <div class="sec-label" style="margin-top:0">📈 코인 차트 — 볼린저 밴드 · RSI · 종목 직접 검색</div>
     <div class="widget-frame" style="margin-bottom:16px">
       <div class="widget-header">
-        <span class="widget-title">📈 트레이딩뷰 차트 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">검색창에 코인 심볼 입력 (예: BTC, ETH, XRP)</span>
+        <span class="widget-title">📈 BTC/USDT 1시간봉 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">볼린저밴드 · RSI · 검색창에서 코인 변경 가능</span>
       </div>
-      <div id="tv-chart-wrap" style="height:500px;width:100%"></div>
+      <div id="tv-chart-wrap" style="height:620px;width:100%"></div>
     </div>
 
     <!-- CRYPTO SCREENER -->
@@ -796,7 +796,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 (function(){
   var th = localStorage.getItem('ctc-theme')||'dark';
 
-  /* Advanced Chart */
+  /* Advanced Chart — BTC 1H | BB + RSI */
   var chartWrap = document.getElementById('tv-chart-wrap');
   if(chartWrap){
     var cc=document.createElement('div');cc.className='tradingview-widget-container';
@@ -806,9 +806,33 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     var cs=document.createElement('script');cs.type='text/javascript';cs.async=true;
     cs.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
     cs.text=JSON.stringify({
-      autosize:true,symbol:'BINANCE:BTCUSDT',interval:'D',timezone:'Asia/Seoul',
-      theme:th,style:'1',locale:'kr',allow_symbol_change:true,
-      calendar:false,height:500,width:'100%',hide_side_toolbar:false
+      autosize:true,
+      symbol:'BINANCE:BTCUSDT',
+      interval:'60',
+      timezone:'Asia/Seoul',
+      theme:th,
+      style:'1',
+      locale:'kr',
+      allow_symbol_change:true,
+      calendar:false,
+      hide_side_toolbar:false,
+      withdateranges:true,
+      studies:[
+        'RSI@tv-basicstudies',
+        'BB@tv-basicstudies'
+      ],
+      time_frames:[
+        {text:'5m', resolution:'5',  description:'5분봉'},
+        {text:'30m',resolution:'30', description:'30분봉'},
+        {text:'1H', resolution:'60', description:'1시간봉'},
+        {text:'4H', resolution:'240',description:'4시간봉'},
+        {text:'1D', resolution:'1D', description:'일봉'}
+      ],
+      height:620,
+      width:'100%',
+      show_popup_button:true,
+      popup_width:'1000',
+      popup_height:'700'
     });
     cc.appendChild(cw);cc.appendChild(cs);chartWrap.appendChild(cc);
   }
