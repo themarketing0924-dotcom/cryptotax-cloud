@@ -1177,8 +1177,9 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
   <div class="fg-widget">
     <div class="fg-header">
       <span class="fg-badge">LIVE</span>
-      <span class="fg-title-text">현재 코인 시장 공포·탐욕 지수</span>
+      <span class="fg-title-text">오늘 코인 시장 공포·탐욕 지수</span>
     </div>
+    <p style="font-size:.78rem;color:var(--text-secondary);margin:0 0 12px;line-height:1.5;">코인 투자자들의 심리를 0~100 숫자로 표현합니다. <strong>숫자가 낮을수록 공포</strong>(저가 매수 기회로 해석), <strong>높을수록 탐욕</strong>(고점 주의 신호)으로 읽습니다.</p>
     <div class="fg-body">
       <div class="fg-score-col">
         <div class="fg-value" id="fg-value">--</div>
@@ -1189,14 +1190,14 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
           <div class="fg-bar-thumb" id="fg-bar-thumb" style="left:0%"></div>
         </div>
         <div class="fg-bar-labels">
-          <span>Extreme Fear</span><span>Fear</span><span>Neutral</span><span>Greed</span><span>Extreme Greed</span>
+          <span>극도 공포</span><span>공포</span><span>중립</span><span>탐욕</span><span>극도 탐욕</span>
         </div>
         <div class="fg-zones" id="fg-zones">
-          <span class="fg-zone" style="background:#f8514920;color:#f85149">0–24 Extreme Fear</span>
-          <span class="fg-zone" style="background:#e67e0020;color:#e67e00">25–44 Fear</span>
-          <span class="fg-zone" style="background:#ffd70020;color:#d4a017">45–55 Neutral</span>
-          <span class="fg-zone" style="background:#3fb95020;color:#3fb950">56–75 Greed</span>
-          <span class="fg-zone" style="background:#58a6ff20;color:#58a6ff">76–100 Extreme Greed</span>
+          <span class="fg-zone" style="background:#f8514920;color:#f85149">0–24 극도 공포</span>
+          <span class="fg-zone" style="background:#e67e0020;color:#e67e00">25–44 공포</span>
+          <span class="fg-zone" style="background:#ffd70020;color:#d4a017">45–55 중립</span>
+          <span class="fg-zone" style="background:#3fb95020;color:#3fb950">56–75 탐욕</span>
+          <span class="fg-zone" style="background:#58a6ff20;color:#58a6ff">76–100 극도 탐욕</span>
         </div>
       </div>
     </div>
@@ -1698,9 +1699,10 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer(
 
 (function(){
   const clr=function(v){return v<=25?'#f85149':v<=44?'#e67e00':v<=55?'#ffd700':v<=75?'#3fb950':'#58a6ff';};
+  const KO={'Extreme Fear':'극도 공포','Fear':'공포','Neutral':'중립','Greed':'탐욕','Extreme Greed':'극도 탐욕'};
   fetch('https://api.alternative.me/fng/?limit=1').then(r=>r.json()).then(data=>{
     const v=parseInt(data.data[0].value);
-    const c=data.data[0].value_classification;
+    const c=KO[data.data[0].value_classification]||data.data[0].value_classification;
     const el=document.getElementById('fg-value');
     const lb=document.getElementById('fg-label');
     const thumb=document.getElementById('fg-bar-thumb');
