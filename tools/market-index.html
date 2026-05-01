@@ -567,12 +567,12 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <div id="tv-chart-wrap" style="height:500px;width:100%"></div>
     </div>
 
-    <!-- CRYPTO MARKET -->
-    <div class="sec-label" style="margin-top:0">🌐 실시간 코인 시장 — 가격·등락률·시총</div>
+    <!-- CRYPTO SCREENER -->
+    <div class="sec-label" style="margin-top:0">🔍 코인 스크리너 — 급등·급락·시총·거래량 필터</div>
     <div class="widget-frame">
       <div class="widget-header">
-        <span class="widget-title">🌐 암호화폐 마켓 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView · 무료 실시간</span>
+        <span class="widget-title">🔍 암호화폐 스크리너 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 무료 위젯 · 전체 코인 필터링</span>
       </div>
       <div id="tv-market-wrap" style="height:550px;width:100%"></div>
     </div>
@@ -813,18 +813,17 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     cc.appendChild(cw);cc.appendChild(cs);chartWrap.appendChild(cc);
   }
 
-  /* Cryptocurrency Market */
+  /* Crypto Screener (무료 위젯) */
   var mktWrap = document.getElementById('tv-market-wrap');
   if(mktWrap){
     var mc=document.createElement('div');mc.className='tradingview-widget-container';
     mc.style.height='100%';mc.style.width='100%';
     var mw=document.createElement('div');mw.className='tradingview-widget-container__widget';
-    mw.style.height='calc(100% - 32px)';mw.style.width='100%';
     var ms=document.createElement('script');ms.type='text/javascript';ms.async=true;
-    ms.src='https://s3.tradingview.com/external-embedding/embed-widget-cryptocurrency-market.js';
+    ms.src='https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
     ms.text=JSON.stringify({
-      width:'100%',height:550,defaultColumn:'overview',screenerType:'crypto_mkt',
-      displayCurrency:'USD',colorTheme:th,locale:'kr',isTransparent:false
+      width:'100%',height:550,defaultColumn:'overview',defaultScreen:'top_gainers',
+      screenerType:'crypto_mkt',displayCurrency:'USD',colorTheme:th,locale:'kr',isTransparent:false
     });
     mc.appendChild(mw);mc.appendChild(ms);mktWrap.appendChild(mc);
   }
