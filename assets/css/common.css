@@ -604,3 +604,19 @@ body {
 .tradingview-widget-container {
   margin-top: 0 !important;
 }
+
+/* ── 글로벌 TradingView 티커 고정 높이 + 폴백 텍스트 숨김 ── */
+#ctc-tv-ticker {
+  height: 56px !important;
+  max-height: 56px !important;
+  overflow: hidden !important;
+}
+#ctc-tv-ticker .tradingview-widget-container__widget {
+  height: 56px !important;
+  max-height: 56px !important;
+  overflow: hidden !important;
+}
+/* iframe 로딩 전 폴백 텍스트(코인 목록 세로 나열) 숨김 */
+#ctc-tv-ticker .tradingview-widget-container__widget > :not(iframe) {
+  display: none !important;
+}

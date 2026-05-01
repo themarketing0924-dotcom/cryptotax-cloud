@@ -63,19 +63,23 @@ a{text-decoration:none;color:inherit;}
   color:var(--text-secondary);transition:all var(--transition);}
 .theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
 
-/* BREAKING BAR — 과세 카운트다운 */
-.breaking{background:linear-gradient(90deg,#1a0a00,#2a1200);border-bottom:1px solid var(--orange-border);
-  padding:9px 24px;display:flex;align-items:center;gap:10px;overflow:hidden;}
-[data-theme="light"] .breaking{background:linear-gradient(90deg,#fff3e0,#fff8f0);}
-.breaking-badge{background:var(--red);color:#fff;font-size:0.72rem;font-weight:800;
-  padding:3px 9px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
-.breaking-text{font-size:0.83rem;font-weight:600;color:#ffd700;white-space:nowrap;
-  animation:scroll-left 28s linear infinite;}
-[data-theme="light"] .breaking-text{color:#b35c00;}
-@keyframes scroll-left{0%{transform:translateX(30%)}100%{transform:translateX(-100%)}}
+/* TradingView fallback 차단 — Replit 환경에서 body에 직접 삽입됨 */
+body > a[href*="tradingview"]{display:none!important;}
+body > div.tradingview-widget-container > a{display:none!important;}
 
-/* TICKER WRAP */
-#ctc-tv-ticker{min-height:46px;}
+/* 커스텀 티커 */
+#ctc-tv-ticker{height:44px;overflow:hidden;background:var(--card-bg);border-bottom:1px solid var(--border-default);display:flex;align-items:center;}
+.ctc-ticker-track{display:flex;align-items:center;gap:0;white-space:nowrap;animation:ctc-scroll 40s linear infinite;will-change:transform;}
+.ctc-ticker-track:hover{animation-play-state:paused;}
+@keyframes ctc-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ctc-tick-item{display:inline-flex;align-items:center;gap:6px;padding:0 24px;font-size:0.82rem;border-right:1px solid var(--border-default);cursor:default;}
+.ctc-tick-sym{font-weight:700;color:var(--text-primary);}
+.ctc-tick-name{color:var(--text-muted);font-size:0.75rem;}
+.ctc-tick-price{color:var(--text-primary);font-variant-numeric:tabular-nums;}
+.ctc-tick-chg{font-size:0.75rem;font-variant-numeric:tabular-nums;padding:1px 5px;border-radius:3px;}
+.ctc-tick-chg.up{background:rgba(22,199,132,.15);color:#16c784;}
+.ctc-tick-chg.dn{background:rgba(234,57,67,.12);color:#ea3943;}
+.ctc-ticker-loader{padding:0 20px;color:var(--text-muted);font-size:0.82rem;}
 
 /* HERO */
 .hero{padding:52px 24px 40px;text-align:center;background:var(--hero-bg);}
@@ -275,7 +279,10 @@ a{text-decoration:none;color:inherit;}
 .widget-badge{font-size:0.66rem;background:var(--green-dim);color:var(--green);
   border:1px solid var(--green-border);border-radius:6px;padding:2px 8px;
   font-weight:800;animation:pulse-green 2s infinite;}
-.heatmap-note{font-size:0.76rem;color:var(--text-muted);padding:10px 18px;}
+.hm-tile{border-radius:6px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:default;transition:filter .2s;}
+.hm-tile:hover{filter:brightness(1.2);}
+.hm-tile-sym{font-size:0.78rem;font-weight:700;color:#fff;}
+.hm-tile-chg{font-size:0.72rem;color:rgba(255,255,255,.9);}
 .hl-grad{display:flex;align-items:center;gap:8px;padding:8px 18px 12px;}
 .hl-grad-bar{height:10px;flex:1;border-radius:5px;
   background:linear-gradient(90deg,#f85149 0%,#f97316 25%,var(--text-muted) 50%,#3fb950 75%,#00d4aa 100%);}
@@ -334,7 +341,33 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
-<body>
+<body data-no-ticker>
+
+<!-- TradingView fallback 차단 스크립트 (Replit 중첩 iframe 환경) -->
+<script>
+(function(){
+  function removeTVFallback(){
+    document.querySelectorAll('body > a').forEach(function(el){
+      el.style.display='none';
+      el.setAttribute('aria-hidden','true');
+    });
+  }
+  var obs=new MutationObserver(function(muts){
+    var changed=false;
+    muts.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeName==='A'&&n.parentNode===document.body){
+          n.style.display='none';
+          n.setAttribute('aria-hidden','true');
+          changed=true;
+        }
+      });
+    });
+  });
+  if(document.body){obs.observe(document.body,{childList:true});}
+  else{document.addEventListener('DOMContentLoaded',function(){obs.observe(document.body,{childList:true});removeTVFallback();});}
+})();
+</script>
 
 <!-- NAV -->
 <nav class="nav">
@@ -349,12 +382,12 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
   </div>
 </nav>
 
-<!-- BREAKING BAR -->
-<div class="breaking">
-  <span class="breaking-badge">⚡ 2027 과세</span>
-  <span class="breaking-text">🇰🇷 2027년 1월 1일부터 코인 양도차익 22% 세율 적용 · 250만원 기본공제 · 지금 세금 미리 계산하세요 → <a href="/tools/tax-calculator.html" style="color:inherit;text-decoration:underline">세금 계산기 바로가기</a></span>
+<!-- 커스텀 실시간 티커 (Binance API) -->
+<div id="ctc-tv-ticker">
+  <div class="ctc-ticker-track" id="tickerTrack">
+    <span class="ctc-ticker-loader">시세 로딩 중...</span>
+  </div>
 </div>
-
 
 <!-- HERO -->
 <div class="hero">
@@ -515,25 +548,19 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 <!-- HEATMAP + SIDEBAR LAYOUT -->
 <div class="layout">
   <div>
-    <!-- HEATMAP -->
-    <div class="sec-label" style="margin-top:0">🔥 암호화폐 히트맵 — 크기=시가총액 · 색상=24h 등락률</div>
+    <!-- 커스텀 코인 히트맵 -->
+    <div class="sec-label" style="margin-top:0">🔥 실시간 코인 등락 현황 — 시가총액 TOP 코인</div>
     <div class="widget-frame" style="margin-bottom:16px">
       <div class="widget-header">
-        <span class="widget-title">🗺️ 시가총액 기준 히트맵 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 제공</span>
+        <span class="widget-title">🗺️ 코인 등락률 히트맵 <span class="widget-badge">LIVE</span></span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">CoinGecko 실시간 · 5분 자동 갱신</span>
       </div>
-      <div class="tradingview-widget-container" style="height:480px;width:100%">
-        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-        {"dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"change","locale":"kr","colorTheme":"dark","hasTopBar":false,"isDataSetEnabled":false,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":"480"}
-        </script>
-      </div>
+      <div id="coinHeatmap" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px;padding:12px;min-height:180px;"></div>
       <div class="hl-grad">
         <span class="hl-grad-lbl" style="color:#f85149">-10%↓ 하락</span>
         <div class="hl-grad-bar"></div>
         <span class="hl-grad-lbl" style="color:#00d4aa">+10%↑ 상승</span>
       </div>
-      <p class="heatmap-note">※ 칸 크기 = 시가총액 / 빨간색 = 하락 / 초록색 = 상승 · TradingView 실시간 제공</p>
     </div>
 
     <!-- ADVANCED CHART -->
@@ -546,15 +573,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <div id="tv-chart-wrap" style="height:620px;width:100%"></div>
     </div>
 
-    <!-- CRYPTO SCREENER -->
-    <div class="sec-label" style="margin-top:0">🔍 코인 스크리너 — 급등·급락·시총·거래량 필터</div>
-    <div class="widget-frame">
-      <div class="widget-header">
-        <span class="widget-title">🔍 암호화폐 스크리너 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 무료 위젯 · 전체 코인 필터링</span>
-      </div>
-      <div id="tv-market-wrap" style="height:550px;width:100%"></div>
-    </div>
   </div>
 
   <!-- SIDEBAR -->
@@ -816,20 +834,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     cc.appendChild(cw);cc.appendChild(cs);chartWrap.appendChild(cc);
   }
 
-  /* Crypto Screener (무료 위젯) */
-  var mktWrap = document.getElementById('tv-market-wrap');
-  if(mktWrap){
-    var mc=document.createElement('div');mc.className='tradingview-widget-container';
-    mc.style.height='100%';mc.style.width='100%';
-    var mw=document.createElement('div');mw.className='tradingview-widget-container__widget';
-    var ms=document.createElement('script');ms.type='text/javascript';ms.async=true;
-    ms.src='https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
-    ms.text=JSON.stringify({
-      width:'100%',height:550,defaultColumn:'overview',defaultScreen:'top_gainers',
-      screenerType:'crypto_mkt',displayCurrency:'USD',colorTheme:th,locale:'kr',isTransparent:false
-    });
-    mc.appendChild(mw);mc.appendChild(ms);mktWrap.appendChild(mc);
-  }
 })();
 
 /* THEME */
@@ -1003,6 +1007,24 @@ async function loadCoins() {
       if(l) glGrid.innerHTML += `<div class="gl-item l"><span class="gl-name">${l.symbol.toUpperCase()}</span><span class="gl-chg">${(l.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
     }
 
+    /* 코인 히트맵 */
+    const hm = document.getElementById('coinHeatmap');
+    if(hm) {
+      hm.innerHTML = '';
+      coins.slice(0,20).forEach(c => {
+        const chg = c.price_change_percentage_24h || 0;
+        const intensity = Math.min(Math.abs(chg)/10, 1);
+        const bg = chg >= 0
+          ? `rgba(${Math.round(63-intensity*43)},${Math.round(185+intensity*20)},${Math.round(80+intensity*20)},${0.35+intensity*0.55})`
+          : `rgba(${Math.round(200+intensity*55)},${Math.round(89-intensity*60)},${Math.round(71-intensity*40)},${0.35+intensity*0.55})`;
+        const sign = chg >= 0 ? '+' : '';
+        hm.innerHTML += `<div class="hm-tile" style="background:${bg}" title="${c.name}">
+          <span class="hm-tile-sym">${c.symbol.toUpperCase()}</span>
+          <span class="hm-tile-chg">${sign}${chg.toFixed(1)}%</span>
+        </div>`;
+      });
+    }
+
     return { altScore: score };
   } catch(e) { return null; }
 }
@@ -1127,6 +1149,63 @@ loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 </script>
 <script src="/assets/js/common.js"></script>
-<script src="/assets/js/ctc-ticker.js"></script>
+
+<!-- 커스텀 실시간 티커 -->
+<script>
+(function(){
+  var COINS=[
+    {sym:'BTCUSDT',label:'BTC',name:'비트코인'},
+    {sym:'ETHUSDT',label:'ETH',name:'이더리움'},
+    {sym:'XRPUSDT',label:'XRP',name:'리플'},
+    {sym:'SOLUSDT',label:'SOL',name:'솔라나'},
+    {sym:'ADAUSDT',label:'ADA',name:'에이다'},
+    {sym:'DOGEUSDT',label:'DOGE',name:'도지코인'},
+    {sym:'AVAXUSDT',label:'AVAX',name:'아발란체'},
+    {sym:'LINKUSDT',label:'LINK',name:'체인링크'},
+    {sym:'DOTUSDT',label:'DOT',name:'폴카닷'},
+    {sym:'BNBUSDT',label:'BNB',name:'BNB'}
+  ];
+  function fmt(n){
+    if(n>=1000) return n.toLocaleString('en-US',{maximumFractionDigits:2});
+    if(n>=1) return n.toFixed(4);
+    return n.toPrecision(4);
+  }
+  function buildHTML(items){
+    var html='';
+    for(var i=0;i<items.length;i++){
+      var d=items[i];
+      var cls=parseFloat(d.chg)>=0?'up':'dn';
+      var sign=parseFloat(d.chg)>=0?'+':'';
+      html+='<span class="ctc-tick-item">'+
+        '<span class="ctc-tick-sym">'+d.label+'</span>'+
+        '<span class="ctc-tick-name">'+d.name+'</span>'+
+        '<span class="ctc-tick-price">$'+fmt(parseFloat(d.price))+'</span>'+
+        '<span class="ctc-tick-chg '+cls+'">'+sign+parseFloat(d.chg).toFixed(2)+'%</span>'+
+        '</span>';
+    }
+    return html;
+  }
+  function loadTicker(){
+    var symbols=JSON.stringify(COINS.map(function(c){return '"'+c.sym+'"'})).replace(/\\"/g,'"');
+    var url='https://api.binance.com/api/v3/ticker/24hr?symbols=['+COINS.map(function(c){return '%22'+c.sym+'%22'}).join(',')+']';
+    fetch(url).then(function(r){return r.json();}).then(function(data){
+      var map={};
+      data.forEach(function(d){map[d.symbol]=d;});
+      var items=COINS.map(function(c){
+        var d=map[c.sym]||{};
+        return {label:c.label,name:c.name,price:d.lastPrice||'—',chg:d.priceChangePercent||'0'};
+      });
+      var html=buildHTML(items);
+      var track=document.getElementById('tickerTrack');
+      if(track){track.innerHTML=html+html;}  /* 두 번 반복 = 끊김 없는 루프 */
+    }).catch(function(){
+      /* API 실패 시 로더 유지 */
+    });
+  }
+  loadTicker();
+  setInterval(loadTicker,30000);
+})();
+</script>
+
 </body>
 </html>

@@ -46,10 +46,11 @@
     var wrap = document.createElement('div');
     wrap.id = WRAP_ID;
     wrap.className = 'tradingview-widget-container';
-    wrap.style.cssText = 'width:100%;line-height:0;overflow:hidden;';
+    wrap.style.cssText = 'width:100%;height:56px;max-height:56px;line-height:0;overflow:hidden;';
 
     var inner = document.createElement('div');
     inner.className = 'tradingview-widget-container__widget';
+    inner.style.cssText = 'height:56px;max-height:56px;overflow:hidden;';
     wrap.appendChild(inner);
 
     var script = document.createElement('script');
