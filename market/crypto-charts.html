@@ -502,20 +502,81 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <div class="bubble-wrap">
       <div class="bubble-header">
         <div>
-          <div class="bh-title">🫧 CryptoBubbles — 실시간 버블차트</div>
-          <div class="bh-desc">버블 크기=시가총액 · 색상=등락률 · 클릭=상세정보</div>
+          <div class="bh-title">🫧 TradingView 시장 개요 — TOP 코인 실시간</div>
+          <div class="bh-desc">가격 · 등락률 · 스파크라인 · 시가총액 한눈에</div>
         </div>
-        <div class="bubble-period-tabs">
-          <button class="bptab active" onclick="changeBubblePeriod(this)">1시간</button>
-          <button class="bptab" onclick="changeBubblePeriod(this)">24시간</button>
-          <button class="bptab" onclick="changeBubblePeriod(this)">7일</button>
-          <button class="bptab" onclick="changeBubblePeriod(this)">30일</button>
-        </div>
+        <a href="https://cryptobubbles.net" target="_blank" rel="noopener noreferrer"
+           style="font-size:.78rem;color:var(--orange);border:1px solid var(--orange);border-radius:6px;padding:5px 12px;font-weight:700;white-space:nowrap;text-decoration:none;">
+          🫧 버블차트 직접 보기 →
+        </a>
       </div>
-      <div class="bubble-iframe-wrap">
-        <iframe id="bubbleIframe" src="https://cryptobubbles.net" loading="lazy" allowfullscreen title="암호화폐 버블차트"></iframe>
-      </div>
+      <div id="tvMarketOverviewHost" style="height:600px;width:100%;"></div>
     </div>
+    <script>
+    (function(){
+      var th=localStorage.getItem('ctc-theme')||'dark';
+      var host=document.getElementById('tvMarketOverviewHost');
+      if(!host) return;
+      var wrap=document.createElement('div');
+      wrap.className='tradingview-widget-container';
+      wrap.style.cssText='height:600px;width:100%;';
+      var inner=document.createElement('div');
+      inner.className='tradingview-widget-container__widget';
+      inner.style.cssText='height:100%;width:100%;';
+      wrap.appendChild(inner);
+      var s=document.createElement('script');
+      s.type='text/javascript';
+      s.async=true;
+      s.src='https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+      s.innerHTML=JSON.stringify({
+        colorTheme:th,
+        dateRange:'1D',
+        showChart:true,
+        locale:'kr',
+        width:'100%',
+        height:600,
+        largeChartUrl:'',
+        isTransparent:false,
+        showSymbolLogo:true,
+        showFloatingTooltip:true,
+        plotLineColorGrowing:'rgba(41,98,255,1)',
+        plotLineColorFalling:'rgba(41,98,255,1)',
+        gridLineColor:'rgba(240,243,250,0)',
+        scaleFontColor:'rgba(120,123,134,1)',
+        belowLineFillColorGrowing:'rgba(41,98,255,0.12)',
+        belowLineFillColorFalling:'rgba(41,98,255,0.12)',
+        belowLineFillColorGrowingBottom:'rgba(41,98,255,0)',
+        belowLineFillColorFallingBottom:'rgba(41,98,255,0)',
+        symbolActiveColor:'rgba(41,98,255,0.12)',
+        tabs:[
+          {title:'주요 코인',symbols:[
+            {s:'BINANCE:BTCUSDT',d:'비트코인'},
+            {s:'BINANCE:ETHUSDT',d:'이더리움'},
+            {s:'BINANCE:XRPUSDT',d:'리플'},
+            {s:'BINANCE:SOLUSDT',d:'솔라나'},
+            {s:'BINANCE:BNBUSDT',d:'BNB'},
+            {s:'BINANCE:DOGEUSDT',d:'도지코인'},
+            {s:'BINANCE:ADAUSDT',d:'에이다'},
+            {s:'BINANCE:AVAXUSDT',d:'아발란체'},
+            {s:'BINANCE:LINKUSDT',d:'체인링크'},
+            {s:'BINANCE:DOTUSDT',d:'폴카닷'}
+          ],originalTitle:'주요 코인'},
+          {title:'알트코인',symbols:[
+            {s:'BINANCE:MATICUSDT',d:'폴리곤'},
+            {s:'BINANCE:UNIUSDT',d:'유니스왑'},
+            {s:'BINANCE:APTUSDT',d:'앱토스'},
+            {s:'BINANCE:ARBUSDT',d:'아비트럼'},
+            {s:'BINANCE:OPUSDT',d:'옵티미즘'},
+            {s:'BINANCE:SUIUSDT',d:'수이'},
+            {s:'BINANCE:INJUSDT',d:'인젝티브'},
+            {s:'BINANCE:ATOMUSDT',d:'코스모스'}
+          ],originalTitle:'알트코인'}
+        ]
+      });
+      wrap.appendChild(s);
+      host.appendChild(wrap);
+    })();
+    </script>
 
     <!-- 버블차트 읽는 법 -->
     <div class="card">
