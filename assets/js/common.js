@@ -301,30 +301,6 @@ window.CoinSearch = (function(){
   return { init:init, open:open, close:close, _search:_search, _setCategory:_setCategory, _pick:_pick };
 })();
 
-// ⑦ 하단 관련 계산기 네비게이션 (5초 후 표시)
-var RELATED={
-  'tax-calculator':     [{e:'💧',t:'물타기',u:'/tools/multa-calculator.html'},{e:'✂️',t:'절세 하베스팅',u:'/tools/tax-loss-harvesting.html'},{e:'📁',t:'CSV 세금',u:'/tools/csv-tax-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'}],
-  'dca-calculator':     [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'💧',t:'물타기',u:'/tools/multa-calculator.html'},{e:'📊',t:'수익률',u:'/tools/roi-calculator.html'},{e:'⚡',t:'스테이킹',u:'/tools/staking-calculator.html'}],
-  'multa-calculator':   [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'📊',t:'수익률',u:'/tools/roi-calculator.html'},{e:'✂️',t:'절세',u:'/tools/tax-loss-harvesting.html'}],
-  'kimchi-calculator':  [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'📊',t:'수익률',u:'/tools/roi-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'🏦',t:'거래소비교',u:'/tools/exchange-compare.html'}],
-  'csv-tax-calculator': [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'✂️',t:'절세',u:'/tools/tax-loss-harvesting.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'💧',t:'물타기',u:'/tools/multa-calculator.html'}],
-  'tax-loss-harvesting':[{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'📁',t:'CSV 세금',u:'/tools/csv-tax-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'📊',t:'수익률',u:'/tools/roi-calculator.html'}],
-  'roi-calculator':     [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'🔧',t:'수수료',u:'/tools/fee-calculator.html'},{e:'🎯',t:'목표가',u:'/tools/target-price-calculator.html'}],
-  'staking-calculator': [{e:'💰',t:'세금 계산',u:'/tools/tax-calculator.html'},{e:'📊',t:'수익률',u:'/tools/roi-calculator.html'},{e:'📈',t:'DCA',u:'/tools/dca-calculator.html'},{e:'💧',t:'물타기',u:'/tools/multa-calculator.html'}],
-};
-function initStickyNav(){
-  var path=window.location.pathname;
-  var key=Object.keys(RELATED).find(function(k){return path.includes(k);});
-  var links=RELATED[key]||RELATED['tax-calculator'];
-  var nav=document.createElement('div');
-  nav.id='sticky-calc-nav';
-  nav.innerHTML='<span style="font-size:11px;color:var(--muted);white-space:nowrap">🧰 관련:</span>'
-    +links.map(function(l){return '<a href="'+l.u+'" class="sticky-link">'+l.e+' '+l.t+'</a>';}).join('')
-    +'<button onclick="this.parentElement.style.bottom=\'-80px\'" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:0 4px">×</button>';
-  document.body.appendChild(nav);
-  setTimeout(function(){nav.style.bottom='0';},5000);
-}
-document.addEventListener('DOMContentLoaded',initStickyNav);
 
 // ⑧ 법적 면책 문구 자동 주입 — 모든 푸터 상단에 삽입
 (function(){
