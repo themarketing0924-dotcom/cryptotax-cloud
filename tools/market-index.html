@@ -528,19 +528,14 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 <!-- HEATMAP + SIDEBAR LAYOUT -->
 <div class="layout">
   <div>
-    <!-- 커스텀 코인 히트맵 -->
+    <!-- TradingView 암호화폐 히트맵 -->
     <div class="sec-label" style="margin-top:0">🔥 실시간 코인 등락 현황 — 시가총액 TOP 코인</div>
     <div class="widget-frame" style="margin-bottom:16px">
       <div class="widget-header">
         <span class="widget-title">🗺️ 코인 등락률 히트맵 <span class="widget-badge">LIVE</span></span>
-        <span style="font-size:0.76rem;color:var(--text-muted)">CoinGecko 실시간 · 5분 자동 갱신</span>
+        <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 실시간</span>
       </div>
-      <div id="coinHeatmap" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px;padding:12px;min-height:180px;"></div>
-      <div class="hl-grad">
-        <span class="hl-grad-lbl" style="color:#f85149">-10%↓ 하락</span>
-        <div class="hl-grad-bar"></div>
-        <span class="hl-grad-lbl" style="color:#00d4aa">+10%↑ 상승</span>
-      </div>
+      <div id="tvHeatmapHost" style="min-height:500px;width:100%"></div>
     </div>
 
     <!-- ADVANCED CHART -->
@@ -813,6 +808,40 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 (function(){
   var th = localStorage.getItem('ctc-theme')||'dark';
 
+  /* Crypto Heatmap */
+  var hmHost = document.getElementById('tvHeatmapHost');
+  if(hmHost){
+    var hmC = document.createElement('div');
+    hmC.className = 'tradingview-widget-container';
+    hmC.style.width = '100%';
+    hmC.style.height = '500px';
+    var hmW = document.createElement('div');
+    hmW.className = 'tradingview-widget-container__widget';
+    hmW.style.width = '100%';
+    hmW.style.height = '100%';
+    var hmS = document.createElement('script');
+    hmS.type = 'text/javascript';
+    hmS.async = true;
+    hmS.src = 'https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js';
+    hmS.text = JSON.stringify({
+      dataSource: 'Crypto',
+      blockSize: 'market_cap_calc',
+      blockColor: 'change',
+      locale: 'ko',
+      colorTheme: th,
+      hasTopBar: false,
+      isDataSetEnabled: false,
+      isZoomEnabled: true,
+      hasSymbolTooltip: true,
+      isMonoSize: false,
+      width: '100%',
+      height: 500
+    });
+    hmC.appendChild(hmW);
+    hmC.appendChild(hmS);
+    hmHost.appendChild(hmC);
+  }
+
   /* Advanced Chart — BTC 1H | BB + RSI */
   var chartWrap = document.getElementById('tv-chart-wrap');
   if(chartWrap){
@@ -1029,24 +1058,6 @@ async function loadCoins() {
       const g=top3g[i]; const l=top3l[i];
       if(g) glGrid.innerHTML += `<div class="gl-item g"><span class="gl-name">${g.symbol.toUpperCase()}</span><span class="gl-chg">+${(g.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
       if(l) glGrid.innerHTML += `<div class="gl-item l"><span class="gl-name">${l.symbol.toUpperCase()}</span><span class="gl-chg">${(l.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
-    }
-
-    /* 코인 히트맵 */
-    const hm = document.getElementById('coinHeatmap');
-    if(hm) {
-      hm.innerHTML = '';
-      coins.slice(0,20).forEach(c => {
-        const chg = c.price_change_percentage_24h || 0;
-        const intensity = Math.min(Math.abs(chg)/10, 1);
-        const bg = chg >= 0
-          ? `rgba(${Math.round(63-intensity*43)},${Math.round(185+intensity*20)},${Math.round(80+intensity*20)},${0.35+intensity*0.55})`
-          : `rgba(${Math.round(200+intensity*55)},${Math.round(89-intensity*60)},${Math.round(71-intensity*40)},${0.35+intensity*0.55})`;
-        const sign = chg >= 0 ? '+' : '';
-        hm.innerHTML += `<div class="hm-tile" style="background:${bg}" title="${c.name}">
-          <span class="hm-tile-sym">${c.symbol.toUpperCase()}</span>
-          <span class="hm-tile-chg">${sign}${chg.toFixed(1)}%</span>
-        </div>`;
-      });
     }
 
     return { altScore: score };
