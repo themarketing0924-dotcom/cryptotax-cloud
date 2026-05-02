@@ -369,7 +369,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       <a href="/blog/">📰 블로그</a>
       <a href="/tools/tax-calculator.html" class="ctc-nav-cta">무료 계산 →</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div><span id="themeLabel">라이트</span></button>
+    <button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div></button><button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
 </div>
 </nav>
@@ -775,8 +775,10 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
   var th = localStorage.getItem('ctc-theme')||'dark';
 
   /* Crypto Heatmap */
-  var hmHost = document.getElementById('tvHeatmapHost');
-  if(hmHost){
+  function buildHeatmap(theme) {
+    var hmHost = document.getElementById('tvHeatmapHost');
+    if(!hmHost) return;
+    hmHost.innerHTML = '';
     var hmC = document.createElement('div');
     hmC.className = 'tradingview-widget-container';
     hmC.style.width = '100%';
@@ -794,7 +796,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
       blockSize: 'market_cap_calc',
       blockColor: 'change',
       locale: 'ko',
-      colorTheme: th,
+      colorTheme: theme,
       hasTopBar: false,
       isDataSetEnabled: false,
       isZoomEnabled: true,
@@ -807,6 +809,8 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     hmC.appendChild(hmS);
     hmHost.appendChild(hmC);
   }
+  buildHeatmap(th);
+  document.addEventListener('themeChange', function(e){ buildHeatmap(e.detail||'dark'); });
 
   /* Crypto Screener */
   function buildScreener(theme) {

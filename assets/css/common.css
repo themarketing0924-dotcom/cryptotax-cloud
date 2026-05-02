@@ -607,6 +607,7 @@ body {
 /* ===== 테마 토글 버튼 ===== */
 .theme-toggle{background:var(--bg-elevated,#1c2128);border:1px solid var(--border,#30363d);border-radius:50px;cursor:pointer;display:flex;align-items:center;gap:5px;padding:5px 11px;font-size:.8rem;color:var(--text-sub,#8b949e);transition:all .2s;white-space:nowrap;flex-shrink:0;}
 .theme-toggle:hover{border-color:var(--orange,#FF8C00);color:var(--orange,#FF8C00);}
+.ctc-theme-icon-only{padding:5px 8px;gap:4px;}
 .toggle-track{width:32px;height:17px;background:var(--border,#30363d);border-radius:20px;position:relative;transition:background .2s;}
 [data-theme="light"] .toggle-track{background:var(--orange,#FF8C00);}
 .toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}

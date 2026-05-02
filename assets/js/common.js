@@ -14,11 +14,12 @@ function _applyThemeUI(theme){
   var btn=document.getElementById('themeBtn');
   if(btn)btn.textContent=isLight?'🌙 다크':'☀️ 라이트';
   var icon=document.getElementById('themeIcon');
-  var label=document.getElementById('themeLabel');
   if(icon)icon.textContent=isLight?'🌙':'☀️';
-  if(label)label.textContent=isLight?'다크':'라이트';
-  var track=document.querySelector('.toggle-track');
-  if(track){track.classList.toggle('active',isLight);}
+  document.querySelectorAll('.toggle-track').forEach(function(track){
+    track.classList.toggle('active',isLight);
+  });
+  var drawerIcon=document.getElementById('ctcDrawerThemeIcon');
+  if(drawerIcon)drawerIcon.textContent=isLight?'🌙':'☀️';
 }
 
 // ② 테마 토글 — localStorage 기반 전 페이지 동기화
@@ -505,14 +506,87 @@ document.addEventListener('DOMContentLoaded',initStickyNav);
       '<a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>'+
       '<div class="ctc-nav-right">'+
         '<div class="ctc-nav-links">'+links+'</div>'+
-        '<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
+        '<button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
           '<span id="themeIcon">☀️</span>'+
           '<div class="toggle-track"><div class="toggle-thumb"></div></div>'+
-          '<span id="themeLabel">라이트</span>'+
+        '</button>'+
+        '<button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기">'+
+          '<span></span><span></span><span></span>'+
         '</button>'+
       '</div>'+
     '</div>';
   }
+
+  function drawerHTML(){
+    return '<div class="drawer-overlay" id="ctcDrawerOverlay" onclick="ctcCloseDrawer()"></div>'+
+    '<div class="mobile-drawer" id="ctcMobileDrawer">'+
+      '<div class="drawer-header">'+
+        '<span class="drawer-logo">₿ CryptoTax<span>.cloud</span></span>'+
+        '<button class="drawer-close" onclick="ctcCloseDrawer()">✕</button>'+
+      '</div>'+
+      '<div class="drawer-body">'+
+        '<div class="drawer-section-title">🧮 세금 계산기</div>'+
+        '<a class="drawer-item" href="/tools/tax-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">💰</span><span class="di-label">코인 세금 계산기</span><span class="di-badge">무료</span></a>'+
+        '<a class="drawer-item" href="/tools/roi-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">📈</span><span class="di-label">수익률 계산기</span></a>'+
+        '<a class="drawer-item" href="/tools/fee-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">💸</span><span class="di-label">수수료 비교 계산기</span></a>'+
+        '<a class="drawer-item" href="/tools/csv-tax-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">📋</span><span class="di-label">거래내역 CSV 계산기</span></a>'+
+        '<div class="drawer-divider"></div>'+
+        '<div class="drawer-section-title">🧰 투자 도구</div>'+
+        '<a class="drawer-item" href="/tools/" onclick="ctcCloseDrawer()"><span class="di-icon">🛠️</span><span class="di-label">전체 도구 보기</span><span class="di-badge">26종</span></a>'+
+        '<a class="drawer-item" href="/tools/dca-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">📅</span><span class="di-label">DCA 적립식 계산기</span></a>'+
+        '<a class="drawer-item" href="/tools/multa-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">📊</span><span class="di-label">물타기 계산기</span></a>'+
+        '<a class="drawer-item" href="/tools/staking-calculator.html" onclick="ctcCloseDrawer()"><span class="di-icon">🏦</span><span class="di-label">스테이킹 이자 계산기</span></a>'+
+        '<a class="drawer-item" href="/tools/김치프리미엄.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌶️</span><span class="di-label">김치프리미엄 계산기</span></a>'+
+        '<div class="drawer-divider"></div>'+
+        '<div class="drawer-section-title">📊 시장 데이터</div>'+
+        '<a class="drawer-item" href="/tools/market-index.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌡️</span><span class="di-label">시장지수 대시보드</span><span class="di-badge">LIVE</span></a>'+
+        '<a class="drawer-item" href="/market/crypto-charts.html" onclick="ctcCloseDrawer()"><span class="di-icon">💹</span><span class="di-label">실시간 코인 차트</span><span class="di-badge">LIVE</span></a>'+
+        '<a class="drawer-item" href="/market/bitcoin-rainbow-chart.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌈</span><span class="di-label">비트코인 레인보우 차트</span></a>'+
+        '<div class="drawer-divider"></div>'+
+        '<div class="drawer-section-title">📰 블로그</div>'+
+        '<a class="drawer-item" href="/blog/" onclick="ctcCloseDrawer()"><span class="di-icon">📰</span><span class="di-label">전체 글 보기</span></a>'+
+        '<a class="drawer-item" href="/blog/beginner-guide.html" onclick="ctcCloseDrawer()"><span class="di-icon">🔰</span><span class="di-label">코인 세금 입문 가이드</span></a>'+
+        '<a class="drawer-item" href="/blog/coin-tax/2027-guide.html" onclick="ctcCloseDrawer()"><span class="di-icon">📅</span><span class="di-label">2027 세금 완벽 가이드</span><span class="di-badge">NEW</span></a>'+
+        '<div class="drawer-divider"></div>'+
+        '<div class="drawer-section-title">ℹ️ 사이트 정보</div>'+
+        '<a class="drawer-item" href="/about.html" onclick="ctcCloseDrawer()"><span class="di-icon">👋</span><span class="di-label">서비스 소개</span></a>'+
+        '<a class="drawer-item" href="/contact.html" onclick="ctcCloseDrawer()"><span class="di-icon">📬</span><span class="di-label">문의하기</span></a>'+
+        '<div class="drawer-divider"></div>'+
+        '<div class="drawer-theme-row">'+
+          '<span class="drawer-theme-label"><span id="ctcDrawerThemeIcon">☀️</span> 테마 설정</span>'+
+          '<button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환" style="border:none;background:none;padding:0">'+
+            '<div class="toggle-track"><div class="toggle-thumb"></div></div>'+
+          '</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="drawer-footer">'+
+        '<a class="drawer-cta" href="/tools/tax-calculator.html" onclick="ctcCloseDrawer()">💰 무료 세금 계산하기</a>'+
+      '</div>'+
+    '</div>';
+  }
+
+  window.ctcOpenDrawer=function(){
+    var d=document.getElementById('ctcMobileDrawer');
+    var o=document.getElementById('ctcDrawerOverlay');
+    var h=document.getElementById('ctcHamburger');
+    if(d)d.classList.add('open');
+    if(o)o.classList.add('open');
+    if(h)h.classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.ctcCloseDrawer=function(){
+    var d=document.getElementById('ctcMobileDrawer');
+    var o=document.getElementById('ctcDrawerOverlay');
+    var h=document.getElementById('ctcHamburger');
+    if(d)d.classList.remove('open');
+    if(o)o.classList.remove('open');
+    if(h)h.classList.remove('open');
+    document.body.style.overflow='';
+  };
+  window.ctcToggleDrawer=function(){
+    var d=document.getElementById('ctcMobileDrawer');
+    d&&d.classList.contains('open')?ctcCloseDrawer():ctcOpenDrawer();
+  };
 
   function footerHTML(){
     var cols=FOOTER_COLS.map(function(col){
@@ -540,6 +614,13 @@ document.addEventListener('DOMContentLoaded',initStickyNav);
     if(footer&&!footer.classList.contains('ctc-footer')){
       footer.className='ctc-footer';
       footer.innerHTML=footerHTML();
+    }
+    /* 드로어 주입 — 중복 방지 */
+    if(!document.getElementById('ctcMobileDrawer')){
+      var tmp=document.createElement('div');
+      tmp.innerHTML=drawerHTML();
+      while(tmp.firstChild){document.body.appendChild(tmp.firstChild);}
+      _applyThemeUI(localStorage.getItem('ctc-theme')||'dark');
     }
   }
 
