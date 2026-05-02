@@ -612,15 +612,23 @@ body {
 .toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
 [data-theme="light"] .toggle-thumb{transform:translateX(15px);}
 
-/* ===== 표준 CTC 네비게이션 ===== */
-.ctc-nav{position:sticky;top:0;z-index:1000;background:var(--bg-nav,var(--bg-surface));border-bottom:1px solid var(--border-default);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s,border-color .3s;}
-.ctc-nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 20px;height:56px;gap:12px;}
-.ctc-nav-logo{color:var(--orange);font-weight:900;font-size:1.15rem;text-decoration:none;white-space:nowrap;flex-shrink:0;letter-spacing:-.02em;}
-.ctc-nav-logo span{color:var(--blue,#4a9eff);}
-.ctc-nav-links{display:flex;gap:3px;align-items:center;flex:1;justify-content:flex-end;}
+/* ===== 표준 CTC 네비게이션 (랜딩 페이지와 동일 구조) ===== */
+.ctc-nav{position:sticky;top:0;z-index:1000;background:var(--bg-overlay,rgba(13,17,23,.92));border-bottom:1px solid var(--border-default);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:0;height:60px;display:flex;align-items:center;transition:background .3s,border-color .3s;}
+@media(min-width:768px){.ctc-nav{height:64px;}}
+.ctc-nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+@media(min-width:768px){.ctc-nav-inner{padding:0 32px;}}
+@media(min-width:1024px){.ctc-nav-inner{padding:0 40px;}}
+.ctc-nav-logo{color:var(--orange);font-weight:900;font-size:1.2rem;text-decoration:none;white-space:nowrap;flex-shrink:0;letter-spacing:-.02em;display:flex;align-items:center;gap:0;}
+.ctc-nav-logo span{color:var(--blue,#58a6ff);}
+.ctc-nav-right{display:flex;align-items:center;gap:8px;}
+.ctc-nav-links{display:flex;gap:4px;flex-wrap:nowrap;align-items:center;}
 .ctc-nav-links a{color:var(--text-secondary);font-size:.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all .2s;border:1px solid transparent;text-decoration:none;white-space:nowrap;}
-.ctc-nav-links a:hover{background:rgba(255,140,0,.08);color:var(--orange);border-color:rgba(255,140,0,.25);}
-@media(max-width:640px){.ctc-nav-links a:not(:first-child):not(:last-child){display:none;}}
+.ctc-nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:rgba(255,140,0,.3);}
+.ctc-nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;padding:6px 14px!important;border-radius:7px!important;}
+.ctc-nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,140,0,.3);}
+@media(max-width:680px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
+@media(max-width:480px){.ctc-nav-links{display:none;}}
+[data-theme="light"] .ctc-nav{background:rgba(255,255,255,.92);}
 
 /* ===== 표준 CTC 푸터 ===== */
 .ctc-footer{background:var(--footer-bg,var(--bg-surface));border-top:1px solid var(--border-default);padding:44px 20px 28px;margin-top:40px;transition:background .3s,border-color .3s;}

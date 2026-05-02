@@ -464,6 +464,7 @@ document.addEventListener('DOMContentLoaded',initStickyNav);
     {href:'/tools/',label:'💰 계산기'},
     {href:'/tools/market-index.html',label:'🌡️ 시장지수'},
     {href:'/blog/',label:'📰 블로그'},
+    {href:'/tools/tax-calculator.html',label:'무료 계산 →',cta:true},
   ];
   var FOOTER_COLS=[
     {title:'₿ CryptoTax.cloud',brand:true,content:'한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 적용 · 무료 사용.'},
@@ -496,10 +497,14 @@ document.addEventListener('DOMContentLoaded',initStickyNav);
   ];
 
   function navHTML(){
-    var links=NAV_LINKS.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+    var links=NAV_LINKS.map(function(l){
+      var cls=l.cta?' class="ctc-nav-cta"':'';
+      return'<a href="'+l.href+'"'+cls+'>'+l.label+'</a>';
+    }).join('');
     return'<div class="ctc-nav-inner">'+
       '<a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>'+
-      '<div class="ctc-nav-links">'+links+
+      '<div class="ctc-nav-right">'+
+        '<div class="ctc-nav-links">'+links+'</div>'+
         '<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
           '<span id="themeIcon">☀️</span>'+
           '<div class="toggle-track"><div class="toggle-thumb"></div></div>'+
