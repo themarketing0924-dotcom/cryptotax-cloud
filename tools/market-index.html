@@ -327,6 +327,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
   animation:spin .7s linear infinite;display:inline-block;}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
+<link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
 
@@ -357,16 +358,17 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 </script>
 
 <!-- NAV -->
-<nav class="nav">
-  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax<span>.cloud</span></a>
-  <div class="nav-links">
-    <a href="https://cryptotax.cloud/">홈</a>
-    <a href="https://cryptotax.cloud/tools/" class="active">도구</a>
-    <a href="https://cryptotax.cloud/blog/">블로그</a>
-    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
-      <span id="themeIcon">☀️</span> 라이트
-    </button>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-links">
+    <a href="/">← 홈</a>
+    <a href="/tools/">💰 계산기</a>
+    <a href="/tools/market-index.html">🌡️ 시장지수</a>
+    <a href="/blog/">📰 블로그</a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div><span id="themeLabel">라이트</span></button>
   </div>
+</div>
 </nav>
 
 <!-- HERO -->
@@ -782,25 +784,16 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
 
 </div><!-- /wrap -->
 
-<footer>
-  <div style="font-size:0.76rem;color:var(--text-muted);background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:8px;padding:10px 16px;margin-bottom:16px;max-width:900px;margin-left:auto;margin-right:auto;line-height:1.65;">
-    ⚠️ <strong>투자 위험 안내:</strong> 본 페이지에서 제공하는 시장 지수·차트·지표는 <strong>투자 참고용</strong>이며, 투자 권유가 아닙니다.
-    암호화폐 투자는 원금 손실 위험이 있으며, 모든 투자 결정과 그에 따른 손익은 <strong>투자자 본인의 책임</strong>입니다.
-    CryptoTax.cloud는 본 데이터를 근거로 한 투자 결과에 대해 어떠한 법적 책임도 지지 않습니다.
+<footer class="ctc-footer">
+<div class="ctc-footer-inner">
+  <div class="ctc-footer-grid">
+    <div class="ctc-footer-col"><h4>₿ CryptoTax.cloud</h4><p>한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 적용 · 무료 사용.</p></div>
+    <div class="ctc-footer-col"><h4>계산기 도구</h4><a href="/tools/tax-calculator.html">코인 세금 계산기</a><a href="/tools/roi-calculator.html">수익률 계산기</a><a href="/tools/staking-calculator.html">스테이킹 이자 계산기</a><a href="/tools/multa-calculator.html">물타기 계산기</a><a href="/tools/dca-calculator.html">DCA 적립식 계산기</a><a href="/tools/satoshi-calculator.html">사토시 환산기</a></div>
+    <div class="ctc-footer-col"><h4>시장 데이터</h4><a href="/market/crypto-charts.html">코인 히트맵·버블차트</a><a href="/market/bitcoin-rainbow-chart.html">비트코인 레인보우 차트</a><a href="/tools/market-index.html">시장지수 대시보드</a></div>
+    <div class="ctc-footer-col"><h4>블로그 · 문의</h4><a href="/blog/">블로그 홈</a><a href="/blog/coin-tax/2027-guide.html">2027 세금 가이드</a><a href="/contact.html">문의하기</a><a href="/about.html">서비스 소개</a></div>
   </div>
-  <div class="footer-links">
-    <a href="/">홈</a>
-    <a href="/tools/">도구</a>
-    <a href="/blog/">블로그</a>
-    <a href="/about.html">소개</a>
-    <a href="/privacy-policy.html">개인정보처리방침</a>
-    <a href="/terms.html">이용약관</a>
-    <a href="/disclaimer.html">면책조항</a>
-  </div>
-  <div class="footer-copy">
-    © 2026 CryptoTax.cloud · 데이터: CoinGecko · Alternative.me · TradingView · 참고용 정보 ·
-    <a href="mailto:contact@cryptotax.cloud" style="color:var(--text-muted)">contact@cryptotax.cloud</a>
-  </div>
+  <div class="ctc-footer-bottom"><div class="ctc-footer-legal"><a href="/about.html">사이트 소개</a><a href="/privacy-policy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책조항</a><a href="/sitemap.html">사이트맵</a></div><div class="ctc-footer-copy">© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div></div>
+</div>
 </footer>
 
 <script>
@@ -1211,7 +1204,7 @@ setInterval(loadAll, 5 * 60 * 1000);
   document.addEventListener('themeChange',function(e){rebuildScreener(e.detail);});
 })();
 </script>
-<script src="/assets/js/common.js?v=1777647743"></script>
+<script src="/assets/js/common.js?v=1777697830"></script>
 
 
 </body>

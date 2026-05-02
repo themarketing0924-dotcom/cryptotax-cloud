@@ -453,3 +453,90 @@ document.addEventListener('DOMContentLoaded',initStickyNav);
     inject();
   }
 })();
+
+// ⑩ 표준 Nav + Footer 자동 주입 (data-no-ctc-nav 속성 있으면 스킵)
+(function(){
+  'use strict';
+  if(document.body.hasAttribute('data-no-ctc-nav')) return;
+
+  var NAV_LINKS=[
+    {href:'/',label:'← 홈'},
+    {href:'/tools/',label:'💰 계산기'},
+    {href:'/tools/market-index.html',label:'🌡️ 시장지수'},
+    {href:'/blog/',label:'📰 블로그'},
+  ];
+  var FOOTER_COLS=[
+    {title:'₿ CryptoTax.cloud',brand:true,content:'한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 적용 · 무료 사용.'},
+    {title:'계산기 도구',links:[
+      {href:'/tools/tax-calculator.html',label:'코인 세금 계산기'},
+      {href:'/tools/roi-calculator.html',label:'수익률 계산기'},
+      {href:'/tools/staking-calculator.html',label:'스테이킹 이자 계산기'},
+      {href:'/tools/multa-calculator.html',label:'물타기 계산기'},
+      {href:'/tools/dca-calculator.html',label:'DCA 적립식 계산기'},
+      {href:'/tools/satoshi-calculator.html',label:'사토시 환산기'},
+    ]},
+    {title:'시장 데이터',links:[
+      {href:'/market/crypto-charts.html',label:'코인 히트맵·버블차트'},
+      {href:'/market/bitcoin-rainbow-chart.html',label:'비트코인 레인보우 차트'},
+      {href:'/tools/market-index.html',label:'시장지수 대시보드'},
+    ]},
+    {title:'블로그 · 문의',links:[
+      {href:'/blog/',label:'블로그 홈'},
+      {href:'/blog/coin-tax/2027-guide.html',label:'2027 세금 가이드'},
+      {href:'/contact.html',label:'문의하기'},
+      {href:'/about.html',label:'서비스 소개'},
+    ]},
+  ];
+  var LEGAL=[
+    {href:'/about.html',label:'사이트 소개'},
+    {href:'/privacy-policy.html',label:'개인정보처리방침'},
+    {href:'/terms.html',label:'이용약관'},
+    {href:'/disclaimer.html',label:'면책조항'},
+    {href:'/sitemap.html',label:'사이트맵'},
+  ];
+
+  function navHTML(){
+    var links=NAV_LINKS.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+    return'<div class="ctc-nav-inner">'+
+      '<a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>'+
+      '<div class="ctc-nav-links">'+links+
+        '<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
+          '<span id="themeIcon">☀️</span>'+
+          '<div class="toggle-track"><div class="toggle-thumb"></div></div>'+
+          '<span id="themeLabel">라이트</span>'+
+        '</button>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function footerHTML(){
+    var cols=FOOTER_COLS.map(function(col){
+      var inner=col.brand?'<p>'+col.content+'</p>':col.links.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+      return'<div class="ctc-footer-col"><h4>'+col.title+'</h4>'+inner+'</div>';
+    }).join('');
+    var legal=LEGAL.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+    return'<div class="ctc-footer-inner">'+
+      '<div class="ctc-footer-grid">'+cols+'</div>'+
+      '<div class="ctc-footer-bottom">'+
+        '<div class="ctc-footer-legal">'+legal+'</div>'+
+        '<div class="ctc-footer-copy">© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function run(){
+    var nav=document.querySelector('nav.main-nav')||document.querySelector('nav:not(.toc):not(.ctc-nav)');
+    if(nav&&!nav.classList.contains('ctc-nav')){
+      nav.className='ctc-nav';
+      nav.innerHTML=navHTML();
+      _applyThemeUI(localStorage.getItem('ctc-theme')||'dark');
+    }
+    var footer=document.querySelector('footer.main-footer')||document.querySelector('footer:not(.ctc-footer)');
+    if(footer&&!footer.classList.contains('ctc-footer')){
+      footer.className='ctc-footer';
+      footer.innerHTML=footerHTML();
+    }
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}else{run();}
+})();

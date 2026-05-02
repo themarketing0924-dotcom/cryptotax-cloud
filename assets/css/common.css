@@ -31,6 +31,8 @@
   --orange-dim:rgba(255,140,0,.12);--orange-border:rgba(255,140,0,.35);
   /* 테두리/그림자 */
   --border:#30363d;--border2:#21262d;--border-subtle:#21262d;
+  --border-default:#30363d;
+  --bg-nav:#161b22;
   --radius:12px;--shadow:0 4px 24px rgba(0,0,0,.5);
   /* 폰트 */
   font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',system-ui,-apple-system,sans-serif;
@@ -50,6 +52,8 @@
   --point:#FF8C00;--point2:#e67e00;
   --primary:#FF8C00;--primary-dark:#e67e00;
   --border:#d0d7de;--border2:#e8ecef;--border-subtle:#e8ecef;
+  --border-default:#d0d7de;
+  --bg-nav:#ffffff;
   --shadow:0 4px 24px rgba(0,0,0,.08)
 }
 
@@ -599,6 +603,40 @@ body {
     font-size: 16px !important;
   }
 }
+
+/* ===== 테마 토글 버튼 ===== */
+.theme-toggle{background:var(--bg-elevated,#1c2128);border:1px solid var(--border,#30363d);border-radius:50px;cursor:pointer;display:flex;align-items:center;gap:5px;padding:5px 11px;font-size:.8rem;color:var(--text-sub,#8b949e);transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.theme-toggle:hover{border-color:var(--orange,#FF8C00);color:var(--orange,#FF8C00);}
+.toggle-track{width:32px;height:17px;background:var(--border,#30363d);border-radius:20px;position:relative;transition:background .2s;}
+[data-theme="light"] .toggle-track{background:var(--orange,#FF8C00);}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+[data-theme="light"] .toggle-thumb{transform:translateX(15px);}
+
+/* ===== 표준 CTC 네비게이션 ===== */
+.ctc-nav{position:sticky;top:0;z-index:1000;background:var(--bg-nav,var(--bg-surface));border-bottom:1px solid var(--border-default);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s,border-color .3s;}
+.ctc-nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 20px;height:56px;gap:12px;}
+.ctc-nav-logo{color:var(--orange);font-weight:900;font-size:1.15rem;text-decoration:none;white-space:nowrap;flex-shrink:0;letter-spacing:-.02em;}
+.ctc-nav-logo span{color:var(--blue,#4a9eff);}
+.ctc-nav-links{display:flex;gap:3px;align-items:center;flex:1;justify-content:flex-end;}
+.ctc-nav-links a{color:var(--text-secondary);font-size:.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all .2s;border:1px solid transparent;text-decoration:none;white-space:nowrap;}
+.ctc-nav-links a:hover{background:rgba(255,140,0,.08);color:var(--orange);border-color:rgba(255,140,0,.25);}
+@media(max-width:640px){.ctc-nav-links a:not(:first-child):not(:last-child){display:none;}}
+
+/* ===== 표준 CTC 푸터 ===== */
+.ctc-footer{background:var(--footer-bg,var(--bg-surface));border-top:1px solid var(--border-default);padding:44px 20px 28px;margin-top:40px;transition:background .3s,border-color .3s;}
+.ctc-footer-inner{max-width:960px;margin:0 auto;}
+.ctc-footer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 20px;margin-bottom:32px;}
+@media(min-width:600px){.ctc-footer-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:900px){.ctc-footer-grid{grid-template-columns:repeat(4,1fr);}}
+.ctc-footer-col h4{font-size:.87rem;font-weight:800;color:var(--orange);margin:0 0 12px;letter-spacing:.01em;}
+.ctc-footer-col p{font-size:.81rem;color:var(--text-secondary);line-height:1.65;margin:0;}
+.ctc-footer-col a{display:block;font-size:.82rem;color:var(--text-secondary);text-decoration:none;margin-bottom:7px;transition:color .2s;}
+.ctc-footer-col a:hover{color:var(--text-primary,var(--text));}
+.ctc-footer-bottom{border-top:1px solid var(--border-subtle,var(--border-default));padding-top:20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
+.ctc-footer-legal{display:flex;gap:16px;flex-wrap:wrap;}
+.ctc-footer-legal a{font-size:.79rem;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+.ctc-footer-legal a:hover{color:var(--text-secondary);}
+.ctc-footer-copy{font-size:.76rem;color:var(--text-muted);}
 
 /* ── 히트맵 위젯 갭 제거 ── */
 .tradingview-widget-container {

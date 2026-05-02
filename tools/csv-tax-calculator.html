@@ -580,16 +580,17 @@ footer a:hover { color: var(--accent); }
 <body>
 
 <!-- ===== 네비게이션 ===== -->
-<nav class="main-nav">
-  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
-  <div class="nav-menu">
-    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
-    <a href="/tools/" class="nav-item">🧰 도구</a>
-    <a href="/blog/" class="nav-item">📝 블로그</a>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-links">
+    <a href="/">← 홈</a>
+    <a href="/tools/">💰 계산기</a>
+    <a href="/tools/market-index.html">🌡️ 시장지수</a>
+    <a href="/blog/">📰 블로그</a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div><span id="themeLabel">라이트</span></button>
   </div>
-  <div class="nav-right">
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
-  </div>
+</div>
 </nav>
 
 <!-- ===== 히어로 ===== -->
@@ -1017,26 +1018,16 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 </section>
-<footer class="main-footer">
-  <div class="footer-links">
-    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
-    <a href="/tools/dca-calculator.html" class="footer-link">📈 DCA</a>
-    <a href="/tools/multa-calculator.html" class="footer-link">💧 물타기</a>
-    <a href="/tools/kimchi-calculator.html" class="footer-link">🌶️ 김프</a>
-    <a href="/tools/csv-tax-calculator.html" class="footer-link">📁 CSV세금</a>
-    <a href="/tools/tax-loss-harvesting.html" class="footer-link">✂️ 절세</a>
-    <a href="/tools/roi-calculator.html" class="footer-link">📊 수익률</a>
-    <a href="/tools/staking-calculator.html" class="footer-link">⚡ 스테이킹</a>
-    <a href="/blog/" class="footer-link">📝 블로그</a>
-    <a href="/privacy-policy.html" class="footer-link">개인정보처리방침</a>
-    <a href="/terms.html" class="footer-link">이용약관</a>
+<footer class="ctc-footer">
+<div class="ctc-footer-inner">
+  <div class="ctc-footer-grid">
+    <div class="ctc-footer-col"><h4>₿ CryptoTax.cloud</h4><p>한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 적용 · 무료 사용.</p></div>
+    <div class="ctc-footer-col"><h4>계산기 도구</h4><a href="/tools/tax-calculator.html">코인 세금 계산기</a><a href="/tools/roi-calculator.html">수익률 계산기</a><a href="/tools/staking-calculator.html">스테이킹 이자 계산기</a><a href="/tools/multa-calculator.html">물타기 계산기</a><a href="/tools/dca-calculator.html">DCA 적립식 계산기</a><a href="/tools/satoshi-calculator.html">사토시 환산기</a></div>
+    <div class="ctc-footer-col"><h4>시장 데이터</h4><a href="/market/crypto-charts.html">코인 히트맵·버블차트</a><a href="/market/bitcoin-rainbow-chart.html">비트코인 레인보우 차트</a><a href="/tools/market-index.html">시장지수 대시보드</a></div>
+    <div class="ctc-footer-col"><h4>블로그 · 문의</h4><a href="/blog/">블로그 홈</a><a href="/blog/coin-tax/2027-guide.html">2027 세금 가이드</a><a href="/contact.html">문의하기</a><a href="/about.html">서비스 소개</a></div>
   </div>
-  <div style="display:flex;justify-content:center;gap:20px;margin-bottom:16px">
-    <a href="https://www.nts.go.kr" target="_blank" rel="noopener" class="footer-link">🏛️ 국세청</a>
-    <a href="https://www.fsc.go.kr" target="_blank" rel="noopener" class="footer-link">⚖️ 금융위원회</a>
-    <a href="https://coinlabs.kr" target="_blank" rel="noopener" class="footer-link" style="color:var(--orange)">🔬 코인랩스</a>
-  </div>
-  <p class="footer-copy">© 2026 CryptoTax.cloud · 국세청 기준 적용 · 참고용 · 실제 신고는 세무사 상담 권장</p>
+  <div class="ctc-footer-bottom"><div class="ctc-footer-legal"><a href="/about.html">사이트 소개</a><a href="/privacy-policy.html">개인정보처리방침</a><a href="/terms.html">이용약관</a><a href="/disclaimer.html">면책조항</a><a href="/sitemap.html">사이트맵</a></div><div class="ctc-footer-copy">© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div></div>
+</div>
 </footer>
 
 
@@ -1554,6 +1545,6 @@ function fmtKRW(n) {
 }
 </script>
 
-<script src="/assets/js/common.js?v=1777647743"></script>
+<script src="/assets/js/common.js?v=1777697830"></script>
 </body>
 </html>
