@@ -560,37 +560,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
         <span class="widget-title">🔍 암호화폐 스크리너 <span class="widget-badge">LIVE</span></span>
         <span style="font-size:0.76rem;color:var(--text-muted)">TradingView 실시간 · 전체 코인 필터링</span>
       </div>
-      <div id="tvScreenerHost">
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container" style="width:100%">
-          <div class="tradingview-widget-container__widget"></div>
-          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/crypto-coins-screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Screener</span></a><span class="trademark"> by TradingView</span></div>
-          <script id="tvScreenerInitScript" type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-          {
-            "market": "crypto",
-            "showToolbar": true,
-            "defaultColumn": "overview",
-            "defaultScreen": "general",
-            "isTransparent": false,
-            "locale": "en",
-            "colorTheme": "dark",
-            "width": "100%",
-            "height": 550
-          }
-          </script>
-        </div>
-        <!-- TradingView Widget END -->
-      </div>
-      <!-- 초기 테마 적용: TradingView async 스크립트보다 먼저 실행됨 -->
-      <script>
-      (function(){
-        var th=localStorage.getItem('ctc-theme')||'dark';
-        if(th==='light'){
-          var s=document.getElementById('tvScreenerInitScript');
-          if(s){try{var c=JSON.parse(s.textContent);c.colorTheme='light';s.textContent=JSON.stringify(c);}catch(e){}}
-        }
-      })();
-      </script>
+      <div id="tvScreenerHost"></div>
     </div>
 
   </div>
@@ -837,6 +807,37 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border-default);
     hmC.appendChild(hmS);
     hmHost.appendChild(hmC);
   }
+
+  /* Crypto Screener */
+  function buildScreener(theme) {
+    var host = document.getElementById('tvScreenerHost');
+    if(!host) return;
+    host.innerHTML = '';
+    var sc = document.createElement('div');
+    sc.className = 'tradingview-widget-container';
+    sc.style.width = '100%';
+    var sw = document.createElement('div');
+    sw.className = 'tradingview-widget-container__widget';
+    var ss = document.createElement('script');
+    ss.type = 'text/javascript';
+    ss.async = true;
+    ss.src = 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
+    ss.text = JSON.stringify({
+      defaultColumn: 'overview',
+      screener_type: 'crypto_mkt',
+      displayCurrency: 'USD',
+      colorTheme: theme,
+      isTransparent: false,
+      locale: 'kr',
+      width: '100%',
+      height: 550
+    });
+    sc.appendChild(sw);
+    sc.appendChild(ss);
+    host.appendChild(sc);
+  }
+  buildScreener(th);
+  document.addEventListener('themeChange', function(e){ buildScreener(e.detail||'dark'); });
 
   /* Advanced Chart — BTC 1H | BB + RSI */
   var chartWrap = document.getElementById('tv-chart-wrap');
@@ -1179,33 +1180,6 @@ async function loadAll() {
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 
-/* 스크리너 테마 변경 리빌드 */
-(function(){
-  var SCREENER_CFG={market:'crypto',showToolbar:true,defaultColumn:'overview',defaultScreen:'general',isTransparent:false,locale:'en',width:'100%',height:550};
-  function rebuildScreener(theme){
-    var host=document.getElementById('tvScreenerHost');
-    if(!host) return;
-    var wrap=document.createElement('div');
-    wrap.className='tradingview-widget-container';
-    wrap.style.width='100%';
-    var inner=document.createElement('div');
-    inner.className='tradingview-widget-container__widget';
-    wrap.appendChild(inner);
-    var copy=document.createElement('div');
-    copy.className='tradingview-widget-copyright';
-    copy.innerHTML='<a href="https://www.tradingview.com/crypto-coins-screener/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto Screener</span></a><span class="trademark"> by TradingView</span>';
-    wrap.appendChild(copy);
-    var s=document.createElement('script');
-    s.type='text/javascript';
-    s.src='https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
-    s.async=true;
-    s.textContent=JSON.stringify(Object.assign({},SCREENER_CFG,{colorTheme:theme}));
-    wrap.appendChild(s);
-    host.innerHTML='';
-    host.appendChild(wrap);
-  }
-  document.addEventListener('themeChange',function(e){rebuildScreener(e.detail);});
-})();
 </script>
 <script src="/assets/js/common.js?v=1777697830"></script>
 
