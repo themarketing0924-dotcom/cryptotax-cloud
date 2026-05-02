@@ -501,14 +501,14 @@ body{
   .calc-toss-title{font-size:13px;}
   .calc-toss-desc{font-size:10px;margin-top:2px;}
 
-  /* 블로그 → 1열 */
-  .blog-toss-grid{grid-template-columns:1fr;gap:12px;}
-  .blog-toss-thumb{height:90px;font-size:36px;}
-  .blog-toss-body{padding:14px;}
-  .blog-toss-tag{font-size:10px;padding:2px 8px;}
-  .blog-toss-title{font-size:14px;line-height:1.4;}
-  .blog-toss-desc{font-size:12px;}
-  .blog-toss-more{font-size:12px;}
+  /* 블로그 → 2열 유지 */
+  .blog-toss-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .blog-toss-thumb{height:72px;font-size:30px;}
+  .blog-toss-body{padding:11px;}
+  .blog-toss-tag{font-size:10px;padding:2px 7px;}
+  .blog-toss-title{font-size:12px;line-height:1.4;}
+  .blog-toss-desc{font-size:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .blog-toss-more{font-size:11px;}
 
   /* FAQ */
   .faq-q{font-size:14px;padding:14px 0;line-height:1.5;}
@@ -1083,6 +1083,42 @@ body{
         <span class="blog-toss-tag tag-strategy">절세 전략</span>
         <div class="blog-toss-title">2026년 연말 전 반드시 해야 할 절세 체크리스트</div>
         <div class="blog-toss-desc">손실 코인 매도 타이밍, 연도 분산 매도 전략, 배우자 증여 활용 절세법 총정리.</div>
+        <span class="blog-toss-more">자세히 보기 →</span>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/blog/dca-vs-lump-sum.html" class="blog-toss-card fade-up" style="animation-delay:0.25s">
+      <div class="blog-toss-thumb" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">📊</div>
+      <div class="blog-toss-body">
+        <span class="blog-toss-tag tag-guide" style="background:rgba(124,58,237,.15);color:#a78bfa;">투자 비교</span>
+        <div class="blog-toss-title">DCA vs 일시투자, 어떤 전략이 더 유리할까?</div>
+        <div class="blog-toss-desc">시뮬레이션으로 검증한 두 전략의 수익률·리스크 비교 분석.</div>
+        <span class="blog-toss-more">자세히 보기 →</span>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/blog/bitcoin-dca-backtest.html" class="blog-toss-card fade-up" style="animation-delay:0.30s">
+      <div class="blog-toss-thumb" style="background:linear-gradient(135deg,#f59e0b,#fde68a);">₿</div>
+      <div class="blog-toss-body">
+        <span class="blog-toss-tag tag-strategy" style="background:rgba(245,158,11,.15);color:#f59e0b;">백테스트</span>
+        <div class="blog-toss-title">비트코인 DCA 5년 백테스트 — 실제 수익은?</div>
+        <div class="blog-toss-desc">2019~2024년 매월 10만 원 적립 시 실제 수익률과 최대 낙폭 분석.</div>
+        <span class="blog-toss-more">자세히 보기 →</span>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/blog/crypto-gift-tax.html" class="blog-toss-card fade-up" style="animation-delay:0.35s">
+      <div class="blog-toss-thumb" style="background:linear-gradient(135deg,#ec4899,#f9a8d4);">🎁</div>
+      <div class="blog-toss-body">
+        <span class="blog-toss-tag tag-guide" style="background:rgba(236,72,153,.15);color:#ec4899;">세금 가이드</span>
+        <div class="blog-toss-title">코인 가족 증여로 세금 줄이는 법</div>
+        <div class="blog-toss-desc">배우자·자녀 증여 공제 한도 활용으로 합법적으로 절세하는 방법.</div>
+        <span class="blog-toss-more">자세히 보기 →</span>
+      </div>
+    </a>
+    <a href="https://cryptotax.cloud/blog/loss-harvesting-guide.html" class="blog-toss-card fade-up" style="animation-delay:0.40s">
+      <div class="blog-toss-thumb" style="background:linear-gradient(135deg,#0891b2,#67e8f9);">📉</div>
+      <div class="blog-toss-body">
+        <span class="blog-toss-tag tag-strategy" style="background:rgba(8,145,178,.15);color:#0891b2;">손실 활용</span>
+        <div class="blog-toss-title">손실 코인 매도로 세금 0원 만들기</div>
+        <div class="blog-toss-desc">손실 실현을 통해 과세 대상 수익을 줄이는 Tax-Loss Harvesting 전략.</div>
         <span class="blog-toss-more">자세히 보기 →</span>
       </div>
     </a>
