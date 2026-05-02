@@ -652,8 +652,9 @@ body {
 .drawer-overlay.open{display:block;}
 .mobile-drawer{position:fixed;top:0;right:-320px;width:300px;max-width:92vw;height:100vh;z-index:1999;
   background:var(--bg-surface,#161b22);border-left:1px solid var(--border-default,#30363d);
-  overflow-y:auto;transition:right .3s ease;display:flex;flex-direction:column;}
-.mobile-drawer.open{right:0;}
+  overflow-y:auto;transition:right .3s ease;display:flex;flex-direction:column;
+  visibility:hidden;pointer-events:none;}
+.mobile-drawer.open{right:0;visibility:visible;pointer-events:auto;}
 .drawer-header{display:flex;align-items:center;justify-content:space-between;
   padding:16px 18px;border-bottom:1px solid var(--border-default,#30363d);}
 .drawer-logo{font-weight:900;font-size:1rem;color:var(--orange,#FF8C00);}

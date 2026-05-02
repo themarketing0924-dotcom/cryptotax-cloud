@@ -1082,20 +1082,52 @@ async function loadBreadth() {
 
 /* SIGNAL */
 function computeSignal(fg, alt, btcDom) {
-  if(fg===null||alt===null) return;
   const box=document.getElementById('signalBox');
   const main=document.getElementById('signalMain');
   const sub=document.getElementById('signalSub');
+
+  /* DOM 폴백 — API 실패 시 이미 표시된 숫자를 읽어서 사용 */
+  if(fg===null){
+    const t=document.getElementById('fgVal')?.textContent?.trim();
+    const v=parseInt(t); if(!isNaN(v)&&v>0) fg=v;
+  }
+  if(alt===null){
+    const t=document.getElementById('altVal')?.textContent?.trim();
+    const v=parseInt(t); if(!isNaN(v)) alt=v;
+  }
+
   let signal='',color='',desc='';
-  if(fg<=25&&alt<=40){signal='🟢 강력 매수 신호';color='rgba(63,185,80,.12)';desc='공포 구간 + BTC 시즌 → 분할 매수 고려';}
-  else if(fg<=40&&alt>=60){signal='🟡 주의 필요';color='rgba(255,215,0,.1)';desc='공포 중이지만 알트 유입 → 선별적 접근';}
-  else if(fg>=75&&alt>=75){signal='🔴 과열 경고';color='rgba(248,81,73,.12)';desc='극단탐욕 + 알트시즌 → 수익 실현 검토';}
-  else if(fg>=60&&btcDom>=55){signal='🟠 BTC 강세 유지';color='rgba(247,147,26,.12)';desc='탐욕 + BTC 지배력 상승 → BTC 보유 유리';}
-  else if(alt>=75){signal='🟣 알트시즌 진입';color='rgba(168,85,247,.12)';desc='알트코인이 BTC를 아웃퍼폼 중';}
-  else{signal='⚪ 중립 관망';color='rgba(72,79,88,.15)';desc='뚜렷한 시그널 없음 → 관망 또는 DCA';}
+
+  if(fg!==null&&alt!==null){
+    /* 전체 시그널 */
+    if(fg<=25&&alt<=40)      {signal='🟢 강력 매수 신호';color='rgba(63,185,80,.12)';desc='공포 구간 + BTC 시즌 → 분할 매수 고려';}
+    else if(fg<=40&&alt>=60) {signal='🟡 주의 필요';color='rgba(255,215,0,.1)';desc='공포 중이지만 알트 유입 → 선별적 접근';}
+    else if(fg>=75&&alt>=75) {signal='🔴 과열 경고';color='rgba(248,81,73,.12)';desc='극단탐욕 + 알트시즌 → 수익 실현 검토';}
+    else if(fg>=60&&btcDom&&btcDom>=55){signal='🟠 BTC 강세 유지';color='rgba(247,147,26,.12)';desc='탐욕 + BTC 지배력 상승 → BTC 보유 유리';}
+    else if(alt>=75)         {signal='🟣 알트시즌 진입';color='rgba(168,85,247,.12)';desc='알트코인이 BTC를 아웃퍼폼 중';}
+    else                     {signal='⚪ 중립 관망';color='rgba(72,79,88,.15)';desc='뚜렷한 시그널 없음 → 관망 또는 DCA';}
+  } else if(fg!==null){
+    /* 공포·탐욕만 있는 경우 */
+    if(fg<=25)      {signal='🟢 극단공포 구간';color='rgba(63,185,80,.12)';desc='공포지수 '+fg+'점 — 역사적 저가 매수 구간';}
+    else if(fg<=40) {signal='🟡 공포 구간';color='rgba(255,215,0,.1)';desc='공포지수 '+fg+'점 — 신중한 분할 접근 권장';}
+    else if(fg>=75) {signal='🔴 극단탐욕 구간';color='rgba(248,81,73,.12)';desc='공포지수 '+fg+'점 — 고점 매수 주의';}
+    else if(fg>=60) {signal='🟠 탐욕 구간';color='rgba(247,147,26,.12)';desc='공포지수 '+fg+'점 — 과도한 레버리지 주의';}
+    else            {signal='⚪ 중립 구간';color='rgba(72,79,88,.15)';desc='공포지수 '+fg+'점 — 방향성 탐색 중';}
+  } else if(alt!==null){
+    /* 알트시즌만 있는 경우 */
+    if(alt>=75)     {signal='🟣 알트시즌 진입';color='rgba(168,85,247,.12)';desc='알트 시즌지수 '+alt+'점 — 알트코인 강세';}
+    else if(alt<=25){signal='₿ BTC 독주 시장';color='rgba(247,147,26,.12)';desc='알트 시즌지수 '+alt+'점 — BTC 집중 우세';}
+    else            {signal='⚪ 혼합 시장';color='rgba(72,79,88,.15)';desc='알트 시즌지수 '+alt+'점 — 선별적 접근 필요';}
+  } else {
+    main.textContent='⚪ 데이터 불러오는 중';
+    sub.textContent='API 응답 대기 — 잠시 후 자동 업데이트됩니다';
+    return;
+  }
+
   box.style.background=color;
   box.style.borderColor=color.replace('.12','.35').replace('.1','.3').replace('.15','.3');
-  main.textContent=signal; sub.textContent=desc;
+  main.textContent=signal;
+  sub.textContent=desc;
 }
 
 /* ALERT */
@@ -1146,9 +1178,18 @@ function toggleFaq(el) {
 /* MAIN */
 async function loadAll() {
   document.getElementById('lastUpdate').textContent = '⏳ 업데이트 중...';
+
+  /* 개별 API 완료 즉시 시그널 업데이트 — 부분 데이터로도 표시 */
+  let _fg=null, _alt=null, _btcDom=null;
+  function refreshSignal(){ computeSignal(_fg, _alt, _btcDom); }
+
   const [fg, globalData, coinsData, breadth] = await Promise.all([
-    loadFG(), loadGlobal(), loadCoins(), loadBreadth()
+    loadFG().then(v=>{ _fg=v; refreshSignal(); return v; }),
+    loadGlobal().then(v=>{ _btcDom=v?.btcDom??null; refreshSignal(); return v; }),
+    loadCoins().then(v=>{ _alt=v?.altScore??null; refreshSignal(); return v; }),
+    loadBreadth()
   ]);
+
   const alt = coinsData?.altScore ?? null;
   const btcDom = globalData?.btcDom ?? null;
   setAlert(fg, alt, btcDom);
