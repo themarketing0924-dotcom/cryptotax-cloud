@@ -977,6 +977,71 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 [data-theme="light"] .ctc-legal-disclaimer{background:rgba(255,140,0,.05);border-color:rgba(255,140,0,.18);color:#57606a;}
 
 /* ── Google Fonts Pretendard 로딩 ── */
+
+/* ════════════════════════════════════════
+   TOSS-STYLE ENHANCEMENTS
+════════════════════════════════════════ */
+
+/* Nav: SVG icon alignment */
+.nav-links a{display:inline-flex;align-items:center;gap:5px;}
+.nav-icon{width:14px;height:14px;flex-shrink:0;opacity:.7;transition:opacity var(--transition);}
+.nav-links a:hover .nav-icon{opacity:1;}
+
+/* Nav: scroll elevation */
+.nav{transition:background var(--transition),border-color var(--transition),box-shadow .3s;}
+.nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,.16);}
+[data-theme="light"] .nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+
+/* Section H2 Toss icon */
+.section-title h2{display:flex;align-items:center;justify-content:center;gap:10px;}
+.h2-icon{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--orange-dim);flex-shrink:0;}
+.h2-icon svg{width:20px;height:20px;color:var(--orange);}
+.h2-icon-blue{background:rgba(88,166,255,.15)!important;}
+.h2-icon-blue svg{color:var(--blue)!important;}
+.h2-icon-green{background:rgba(63,185,80,.15)!important;}
+.h2-icon-green svg{color:var(--green)!important;}
+.h2-icon-purple{background:rgba(168,85,247,.15)!important;}
+.h2-icon-purple svg{color:#a855f7!important;}
+
+/* Email section */
+.email-section h2{display:flex;align-items:center;justify-content:center;gap:10px;font-size:clamp(1.3rem,3vw,1.65rem)!important;}
+.email-section h2 .h2-icon{background:rgba(88,166,255,.15);}
+.email-section h2 .h2-icon svg{color:var(--blue);}
+
+/* Hero badges SVG */
+.hbadge{display:inline-flex;align-items:center;gap:5px;}
+.hbadge svg{width:12px;height:12px;flex-shrink:0;}
+
+/* Social proof icon box */
+.sp-icon-box{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sp-icon-box svg{width:16px;height:16px;}
+
+/* Tool card Toss icon box (index.html용) */
+.tc-icon-box{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;flex-shrink:0;}
+.tc-icon-box svg{width:26px;height:26px;}
+
+/* ── Typography (Korean standard) ── */
+.hero h1{font-size:clamp(2rem,5.5vw,3.2rem)!important;letter-spacing:-.03em;}
+.section-title h2{font-size:clamp(1.5rem,3.5vw,2rem)!important;letter-spacing:-.02em;}
+.section-title p{font-size:.93rem;}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.15rem)!important;line-height:1.75;}
+.hstat strong{font-size:1.6rem;}
+.hstat span{font-size:.74rem;}
+.blog-card h3{font-size:1.04rem!important;font-weight:800;line-height:1.45;}
+.blog-card p{font-size:.83rem;}
+.ex-info h4{font-size:.95rem!important;font-weight:800;}
+.footer-col h4{font-size:.9rem;font-weight:800;letter-spacing:.01em;}
+@media(max-width:479px){
+  .hero h1{font-size:1.9rem!important;}
+  .section-title h2{font-size:1.45rem!important;}
+}
+
+/* ── Hero page-load fade-up ── */
+.hero-badge-row{animation:heroFadeUp .65s cubic-bezier(.22,1,.36,1) .05s both;}
+.hero h1{animation:heroFadeUp .65s cubic-bezier(.22,1,.36,1) .18s both;}
+.hero-sub{animation:heroFadeUp .65s cubic-bezier(.22,1,.36,1) .3s both;}
+.hero-stats{animation:heroFadeUp .65s cubic-bezier(.22,1,.36,1) .42s both;}
+.hero-cta-row{animation:heroFadeUp .65s cubic-bezier(.22,1,.36,1) .54s both;}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -989,11 +1054,11 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
     <a class="nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="#calculator">💰 세금계산기</a>
-        <a href="/tools/">🧰 도구모음</a>
-        <a href="/tools/market-index.html">🌡️ 시장지수</a>
-        <a href="/blog/">📰 블로그</a>
-        <a href="#faq">❓ FAQ</a>
+        <a href="#calculator"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>세금계산기</a>
+        <a href="/tools/"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>도구모음</a>
+        <a href="/tools/market-index.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>시장지수</a>
+        <a href="/blog/"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>블로그</a>
+        <a href="#faq"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
         <a href="#calculator" class="nav-cta">무료 계산 →</a>
       </div>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">
@@ -1170,9 +1235,9 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge-row">
-      <span class="hbadge red">⚡ 2027 과세 D-246</span>
-      <span class="hbadge green">✅ 국세청 기준 적용</span>
-      <span class="hbadge blue">📥 무료 PDF 즉시 발송</span>
+      <span class="hbadge red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>2027 과세 D-<span id="hero-dday">-</span></span>
+      <span class="hbadge green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>국세청 기준 적용</span>
+      <span class="hbadge blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>무료 PDF 즉시 발송</span>
     </div>
     <h1>2027년 세금 22%,<br><span class="highlight">당신의 수익을 지키는</span><br>무료 계산기 모음</h1>
     <p class="hero-sub">세금·수익률·물타기·DCA·스테이킹·김치프리미엄<br>업비트·빗썸 투자자가 궁금한 모든 것을 <strong>10초 만에</strong> 계산하세요</p>
@@ -1192,10 +1257,10 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== 소셜 증거 ===== -->
 <div class="social-proof">
   <div class="social-proof-inner">
-    <div class="sp-item"><span>✅</span><div><strong>국세청 기준</strong> 적용</div></div>
-    <div class="sp-item"><span>🏛️</span><div><strong>소득세법</strong> 근거</div></div>
-    <div class="sp-item"><span>📥</span><div><strong>절세 PDF</strong> 무료 발송</div></div>
-    <div class="sp-item"><span>📱</span><div><strong>모바일</strong> 최적화</div></div>
+    <div class="sp-item"><span class="sp-icon-box" style="background:#3fb95022"><svg viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><div><strong>국세청 기준</strong> 적용</div></div>
+    <div class="sp-item"><span class="sp-icon-box" style="background:#58a6ff22"><svg viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span><div><strong>소득세법</strong> 근거</div></div>
+    <div class="sp-item"><span class="sp-icon-box" style="background:#FF8C0022"><svg viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span><div><strong>절세 PDF</strong> 무료 발송</div></div>
+    <div class="sp-item"><span class="sp-icon-box" style="background:#a855f722"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span><div><strong>모바일</strong> 최적화</div></div>
   </div>
 </div>
 
@@ -1218,7 +1283,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <section class="section" id="calculator">
   <div class="section-inner">
   <div class="section-title">
-    <h2>💰 코인 세금 계산기 2027</h2>
+    <h2><span class="h2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></span>코인 세금 계산기 2027</h2>
     <p>업비트·빗썸 가상자산 양도소득세 — 매수·매도금액 입력 즉시 계산, 완전 무료</p>
   </div>
   <div class="fg-widget">
@@ -1372,7 +1437,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 
 <!-- ===== 이메일 CTA ===== -->
 <div class="email-section">
-  <h2>📥 무료 절세 가이드 PDF 받기</h2>
+  <h2><span class="h2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>무료 절세 가이드 PDF 받기</h2>
   <div class="gift-list">
     <span class="gift-item">✅ 2027 세금 완벽 가이드 30p</span>
     <span class="gift-item">✅ 절세 체크리스트</span>
@@ -1390,7 +1455,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <section class="section" id="tools" style="padding-top:52px;padding-bottom:52px;">
   <div class="section-inner">
   <div class="section-title" style="text-align:center;">
-    <h2>🧰 무료 계산기 12종 모음</h2>
+    <h2><span class="h2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>무료 계산기 12종 모음</h2>
     <p>가상자산 거래소 투자자를 위한 필수 계산기 12종 — 회원가입 없이 즉시 사용, 완전 무료</p>
   </div>
   <div class="tools-section-inner">
@@ -1398,7 +1463,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 
     <!-- 1. 코인 세금 계산기 -->
     <a href="https://cryptotax.cloud/tools/tax-calculator.html" class="tool-card">
-      <div class="tool-icon">💰</div>
+      <span class="tc-icon-box" style="background:#FF8C0022"><svg viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
       <div class="tool-name">코인 세금 계산기</div>
       <div class="tool-desc">2027 양도소득세 자동 계산</div>
       <span class="tool-badge badge-hot">🔥 인기 1위</span>
@@ -1406,14 +1471,14 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 
     <!-- 2. 수익률 계산기 -->
     <a href="https://cryptotax.cloud/tools/roi-calculator.html" class="tool-card">
-      <div class="tool-icon">📈</div>
+      <span class="tc-icon-box" style="background:#22c55e22"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
       <div class="tool-name">수익률 계산기</div>
       <div class="tool-desc">매수가·매도가 → 손익 계산</div>
     </a>
 
     <!-- 3. 스테이킹 이자 계산기 -->
     <a href="https://cryptotax.cloud/tools/staking-calculator.html" class="tool-card">
-      <div class="tool-icon">🏦</div>
+      <span class="tc-icon-box" style="background:#3b82f622"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
       <div class="tool-name">스테이킹 이자 계산기</div>
       <div class="tool-desc">APY → 날별 누적 그래프</div>
       <span class="tool-badge badge-new">⭐ NEW</span>
@@ -1421,63 +1486,63 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 
     <!-- 4. 물타기 계산기 -->
     <a href="https://cryptotax.cloud/tools/multa-calculator.html" class="tool-card">
-      <div class="tool-icon">📊</div>
+      <span class="tc-icon-box" style="background:#0ea5e922"><svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 8v4l3 3"/></svg></span>
       <div class="tool-name">물타기 계산기</div>
       <div class="tool-desc">추가 매수 후 평균단가 계산</div>
     </a>
 
     <!-- 5. DCA 적립식 계산기 -->
     <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-card">
-      <div class="tool-icon">📅</div>
+      <span class="tc-icon-box" style="background:#a855f722"><svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
       <div class="tool-name">DCA 적립식 계산기</div>
       <div class="tool-desc">월 적립 → 누적 자산 예측</div>
     </a>
 
     <!-- 6. 김치 프리미엄 계산기 -->
     <a href="https://cryptotax.cloud/tools/kimchi-calculator.html" class="tool-card">
-      <div class="tool-icon">🌶️</div>
+      <span class="tc-icon-box" style="background:#ef444422"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
       <div class="tool-name">김치 프리미엄 계산기</div>
       <div class="tool-desc">국내외 가격 차이 % 계산</div>
     </a>
 
     <!-- 7. 수수료 비교 계산기 -->
     <a href="https://cryptotax.cloud/tools/fee-calculator.html" class="tool-card">
-      <div class="tool-icon">💸</div>
+      <span class="tc-icon-box" style="background:#f59e0b22"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
       <div class="tool-name">수수료 비교 계산기</div>
       <div class="tool-desc">업비트·빗썸·바이낸스 비교</div>
     </a>
 
     <!-- 8. 목표가 역산 계산기 -->
     <a href="https://cryptotax.cloud/tools/target-price-calculator.html" class="tool-card">
-      <div class="tool-icon">🎯</div>
+      <span class="tc-icon-box" style="background:#f9731622"><svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
       <div class="tool-name">목표가 역산 계산기</div>
       <div class="tool-desc">목표 수익률 → 매도가 계산</div>
     </a>
 
     <!-- 9. 손실 회복 계산기 -->
     <a href="https://cryptotax.cloud/tools/loss-recovery-calculator.html" class="tool-card">
-      <div class="tool-icon">🔄</div>
+      <span class="tc-icon-box" style="background:#10b98122"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.54"/></svg></span>
       <div class="tool-name">손실 회복 계산기</div>
       <div class="tool-desc">본전까지 필요 상승률 계산</div>
     </a>
 
     <!-- 10. 코인 원화 환산기 -->
     <a href="https://cryptotax.cloud/tools/krw-converter.html" class="tool-card">
-      <div class="tool-icon">💱</div>
+      <span class="tc-icon-box" style="background:#38bdf822"><svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
       <div class="tool-name">코인 원화 환산기</div>
       <div class="tool-desc">코인 수량 → 실시간 원화 계산</div>
     </a>
 
     <!-- 11. 시가총액 계산기 -->
     <a href="https://cryptotax.cloud/tools/market-cap-calculator.html" class="tool-card">
-      <div class="tool-icon">📉</div>
+      <span class="tc-icon-box" style="background:#6366f122"><svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
       <div class="tool-name">시가총액 계산기</div>
       <div class="tool-desc">가격 × 유통량 → 시총 계산</div>
     </a>
 
     <!-- 12. 사토시 환산기 -->
     <a href="https://cryptotax.cloud/tools/satoshi-calculator.html" class="tool-card">
-      <div class="tool-icon">⚡</div>
+      <span class="tc-icon-box" style="background:#f7931a22"><svg viewBox="0 0 24 24" fill="none" stroke="#f7931a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
       <div class="tool-name">사토시 환산기</div>
       <div class="tool-desc">1만원으로 비트코인 몇 사토시?</div>
       <span class="tool-badge badge-new">⭐ NEW</span>
@@ -1494,7 +1559,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== 시장 데이터 ===== -->
 <section class="section" id="market">
   <div class="section-title">
-    <h2>📊 실시간 시장 데이터</h2>
+    <h2><span class="h2-icon h2-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>실시간 시장 데이터</h2>
     <p>코인 시장의 흐름을 한눈에 파악하세요</p>
   </div>
   <div class="market-grid">
@@ -1527,7 +1592,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== 블로그 ===== -->
 <section class="section" id="blog">
   <div class="section-title">
-    <h2>📰 코인 투자 가이드</h2>
+    <h2><span class="h2-icon h2-icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>코인 투자 가이드</h2>
     <p>세금·절세·전략·입문까지 — 코린이도 이해하는 쉬운 설명</p>
   </div>
   <div class="blog-grid">
@@ -1561,7 +1626,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== 거래소 비교 ===== -->
 <section class="section" id="exchange">
   <div class="section-title">
-    <h2>🏦 주요 거래소 비교</h2>
+    <h2><span class="h2-icon h2-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><rect x="5" y="11" width="4" height="11"/><rect x="10" y="7" width="4" height="15"/><rect x="15" y="15" width="4" height="7"/><line x1="3" y1="4" x2="21" y2="4"/></svg></span>주요 거래소 비교</h2>
     <p>수수료·지원 코인 수·세금 신고 지원 현황</p>
   </div>
   <div class="exchange-grid">
@@ -1575,7 +1640,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== FAQ ===== -->
 <section class="section" id="faq">
   <div class="section-title">
-    <h2>❓ 자주 묻는 질문</h2>
+    <h2><span class="h2-icon h2-icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>자주 묻는 질문</h2>
     <p>코린이들이 가장 많이 찾는 질문 모음</p>
   </div>
   <div class="faq-list">
@@ -1598,7 +1663,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <section class="section" id="channels">
   <div class="section-inner">
   <div class="section-title">
-    <h2>📢 공식 채널</h2>
+    <h2><span class="h2-icon h2-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.44 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>공식 채널</h2>
     <p>최신 세금 소식·절세 팁을 가장 빠르게 받아보세요</p>
   </div>
   <div class="channels-grid">
@@ -1832,7 +1897,8 @@ function toggleFaq(el){const answer=el.nextElementSibling;const isOpen=answer.cl
 function copyResult(){const rows=document.querySelectorAll('#resultBox .result-row');let text='=== CryptoTax.cloud 세금 계산 결과 ===\n';rows.forEach(r=>{const l=r.querySelector('.rl');const v=r.querySelector('.rv');if(l&&v)text+=l.textContent+': '+v.textContent+'\n';});text+='\n출처: https://cryptotax.cloud/';navigator.clipboard.writeText(text).then(()=>alert('결과가 클립보드에 복사되었습니다!')).catch(()=>alert('복사 실패 — 직접 선택 후 Ctrl+C 해주세요.'));}
 function shareKakao(){alert('카카오 공유 기능은 Kakao SDK 연동 후 활성화됩니다.\nhttps://cryptotax.cloud/');}
 function submitEmail(){const email=document.getElementById('emailInput').value.trim();const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(email)){alert('올바른 이메일 주소를 입력해주세요.');return;}alert('감사합니다! 📧\n'+email+'으로 무료 가이드를 보내드리겠습니다.');document.getElementById('emailInput').value='';}
-window.addEventListener('scroll',()=>{const btn=document.getElementById('scrollTop');if(btn)btn.style.display=window.scrollY>400?'block':'none';});
+window.addEventListener('scroll',()=>{const btn=document.getElementById('scrollTop');if(btn)btn.style.display=window.scrollY>400?'block':'none';const nav=document.querySelector('.nav');if(nav)nav.classList.toggle('scrolled',window.scrollY>40);});
+(function(){const dd=document.getElementById('hero-dday');if(!dd)return;const tax=new Date('2027-01-01');const today=new Date();today.setHours(0,0,0,0);const diff=Math.ceil((tax-today)/(1000*60*60*24));dd.textContent=diff>0?diff:'0';})();
 </script>
 </body>
 </html>
