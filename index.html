@@ -544,8 +544,9 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   .cd-num{font-size:1.4rem;}
 }
 /* ================================================
-   파트너 광고 배너 v2.0
+   파트너 광고 배너 v3.0 — 브랜드 SVG 로고 탑재
    완전 반응형: iPhone / Galaxy / iPad / Desktop
+   배너 높이: 148px(모바일) ~ 172px(데스크탑)
    ================================================ */
 
 /* ── 섹션 래퍼 ── */
@@ -560,9 +561,9 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 /* ── 배너 래퍼 ── */
 .ad-banner-wrapper {
   position: relative;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.25);
   user-select: none;
   -webkit-user-select: none;
 }
@@ -570,7 +571,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 /* ── 슬라이더 트랙 ── */
 .ad-slider-track {
   display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
   will-change: transform;
 }
 
@@ -583,333 +584,250 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   outline: none;
 }
 
-/* ── 슬라이드 내부 레이아웃 ── */
+/* ── 슬라이드 내부 레이아웃 (flex 3열: 로고 | 본문 | CTA) ── */
 .ad-slide-inner {
   position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 16px 28px;
-  min-height: 110px;
+  gap: 16px;
+  padding: 20px 20px 36px;
+  min-height: 148px;
   overflow: hidden;
   box-sizing: border-box;
 }
-@media (min-width: 480px)  { .ad-slide-inner { padding: 18px 20px 30px; gap: 14px; min-height: 118px; } }
-@media (min-width: 768px)  { .ad-slide-inner { padding: 22px 32px 30px; gap: 20px; min-height: 124px; grid-template-columns: auto 1fr auto; } }
-@media (min-width: 1024px) { .ad-slide-inner { padding: 24px 44px 30px; gap: 28px; min-height: 128px; } }
-
-/* 모바일에서 2줄 레이아웃 */
-@media (max-width: 479px) {
-  .ad-slide-inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    padding: 14px 14px 30px;
-    gap: 8px;
-  }
-  .ad-logo-wrap  { grid-column: 1; grid-row: 1; }
-  .ad-body       { grid-column: 1 / 3; grid-row: 2; }
-  .ad-cta-wrap   { grid-column: 2; grid-row: 1; align-self: start; }
-}
+@media (min-width: 480px)  { .ad-slide-inner { padding: 22px 24px 36px; gap: 20px; min-height: 156px; } }
+@media (min-width: 768px)  { .ad-slide-inner { padding: 26px 36px 36px; gap: 28px; min-height: 164px; } }
+@media (min-width: 1024px) { .ad-slide-inner { padding: 30px 52px 36px; gap: 36px; min-height: 172px; } }
 
 /* ── 배경 테마 ── */
-/* 빗썸: 화이트 배경 */
-.ad-bithumb  { background: #ffffff; border: 1px solid #FFE0CC; }
-/* 바이낸스: 블랙 배경 */
+.ad-bithumb  { background: #ffffff; border: 1px solid #FFD9BC; }
 .ad-binance  { background: #0B0E11; }
-/* 더코인랩스: 화이트 배경 */
-.ad-coinlabs { background: #ffffff; border: 1px solid #FFF0C0; }
+.ad-coinlabs { background: #ffffff; border: 1px solid #FFE499; }
+[data-theme="dark"]  .ad-bithumb  { background: #ffffff; border-color: #FFD9BC; }
+[data-theme="dark"]  .ad-coinlabs { background: #ffffff; border-color: #FFE499; }
+[data-theme="light"] .ad-binance  { background: #0B0E11; }
 
-/* ── 배경 데코 원형 그라데이션 ── */
+/* ── 배경 그라데이션 데코 ── */
 .ad-bg-deco {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   pointer-events: none;
   right: -60px;
-  top: -80px;
-  opacity: 0.12;
+  top: -120px;
 }
-.ad-bg-bithumb  { background: radial-gradient(circle, #FF8C00, transparent 70%); opacity: 0.06 !important; }
-.ad-bg-coinlabs { background: radial-gradient(circle, #F0A500, transparent 70%); opacity: 0.08 !important; }
-.ad-bg-binance  { background: radial-gradient(circle, #f0b90b, transparent 70%); }
+.ad-bg-bithumb  { background: radial-gradient(circle, #FF8C00, transparent 65%); opacity: 0.06; }
+.ad-bg-coinlabs { background: radial-gradient(circle, #F0A500, transparent 65%); opacity: 0.07; }
+.ad-bg-binance  { background: radial-gradient(circle, #f0b90b, transparent 65%); opacity: 0.13; }
 
 /* ── 로고 영역 ── */
-.ad-logo-wrap {
+.ad-logo-area {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   flex-shrink: 0;
+  width: 88px;
 }
-.ad-exchange-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.logo-icon {
-  font-size: 2rem;
-  line-height: 1;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-}
-@media (min-width: 768px) { .logo-icon { font-size: 2.4rem; } }
+@media (min-width: 480px)  { .ad-logo-area { width: 96px; } }
+@media (min-width: 768px)  { .ad-logo-area { width: 112px; } }
+@media (min-width: 1024px) { .ad-logo-area { width: 122px; } }
+@media (max-width: 359px)  { .ad-logo-area { width: 72px; } }
 
-.logo-name {
+/* SVG 로고 크기 */
+.ad-logo-svg {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
   display: block;
-  font-size: 1rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
-.logo-name-kr {
+@media (min-width: 768px)  { .ad-logo-svg { width: 58px; height: 58px; } }
+@media (min-width: 1024px) { .ad-logo-svg { width: 64px; height: 64px; } }
+@media (max-width: 359px)  { .ad-logo-svg { width: 44px; height: 44px; } }
+
+/* 브랜드명 */
+.ad-brand-name {
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-align: center;
+  line-height: 1.2;
   display: block;
-  font-size: 0.68rem;
+}
+.ad-brand-kr {
+  font-size: 0.63rem;
   font-weight: 600;
   opacity: 0.65;
   margin-top: 1px;
+  display: block;
+  text-align: center;
 }
-@media (min-width: 768px) { .logo-name { font-size: 1.12rem; } }
+@media (min-width: 768px) { .ad-brand-name { font-size: 0.92rem; } .ad-brand-kr { font-size: 0.7rem; } }
 
-.bithumb-logo  .logo-name { color: #FF5A00; }
-.coinlabs-logo .logo-name { color: #D48A00; }
-.binance-logo  .logo-name { color: #f0b90b; }
-.bithumb-logo  .logo-name-kr { color: #FF5A00; }
-.coinlabs-logo .logo-name-kr { color: #D48A00; }
-.binance-logo  .logo-name-kr { color: #f0b90b; }
-/* 화이트 BG 슬라이드 헤드라인 */
-.ad-bithumb  .ad-headline { color: #1a1a1a; }
-.ad-coinlabs .ad-headline { color: #1a1a1a; }
-.ad-binance  .ad-headline { color: #F0B90B; }
-/* 화이트 BG 서브텍스트 */
-.ad-bithumb  .ad-sub-item { color: #555; }
-.ad-coinlabs .ad-sub-item { color: #555; }
-.ad-bithumb  .ad-sub-item b { color: #111; }
-.ad-coinlabs .ad-sub-item b { color: #111; }
-/* 화이트 BG AD라벨 */
-.ad-bithumb  .ad-label,
-.ad-coinlabs .ad-label { color: #aaa; background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
-/* 화이트 BG 유저카운트 */
-.ad-bithumb  .ad-user-count,
-.ad-coinlabs .ad-user-count { color: #777; }
+.ad-bithumb  .ad-brand-name,
+.ad-bithumb  .ad-brand-kr  { color: #FF5A00; }
+.ad-binance  .ad-brand-name,
+.ad-binance  .ad-brand-kr  { color: #F0B90B; }
+.ad-coinlabs .ad-brand-name,
+.ad-coinlabs .ad-brand-kr  { color: #C68A00; }
 
-/* LIVE 배지 */
-.ad-live-badge {
-  display: flex;
+/* 배지 */
+.ad-badge {
+  display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #3fb950;
-  background: rgba(63,185,80,0.12);
-  border: 1px solid rgba(63,185,80,0.3);
-  border-radius: 20px;
+  letter-spacing: 0.05em;
   padding: 2px 8px;
+  border-radius: 20px;
   white-space: nowrap;
 }
-.ad-live-blue   { color: #58a6ff; background: rgba(88,166,255,0.12); border-color: rgba(88,166,255,0.3); }
-.ad-live-yellow { color: #f0b90b; background: rgba(240,185,11,0.12); border-color: rgba(240,185,11,0.3); }
-
-/* ── 펄스 도트 ── */
-.pulse-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulseAnim 1.5s ease-in-out infinite;
-}
-.pulse-green  { background: #3fb950; box-shadow: 0 0 0 0 rgba(63,185,80,0.6); }
-.pulse-blue   { background: #58a6ff; box-shadow: 0 0 0 0 rgba(88,166,255,0.6); }
-.pulse-yellow { background: #f0b90b; box-shadow: 0 0 0 0 rgba(240,185,11,0.6); }
+.ad-badge-orange { color: #FF5A00; background: rgba(255,90,0,0.1);   border: 1px solid rgba(255,90,0,0.25); }
+.ad-badge-yellow { color: #F0B90B; background: rgba(240,185,11,0.12); border: 1px solid rgba(240,185,11,0.3); }
+.ad-badge-gold   { color: #C68A00; background: rgba(212,138,0,0.1);  border: 1px solid rgba(212,138,0,0.25); }
 
 @keyframes pulseAnim {
-  0%   { transform: scale(1);    opacity: 1; }
-  50%  { transform: scale(0.65); opacity: 0.4; }
-  100% { transform: scale(1);    opacity: 1; }
+  0%,100% { transform:scale(1);    opacity:1;   }
+  50%      { transform:scale(0.65); opacity:0.4; }
 }
 
-/* ── 메인 바디 ── */
+/* ── 본문 영역 ── */
 .ad-body {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
-/* 리워드 배지 */
-.ad-reward-badge {
+/* 태그 라인 */
+.ad-tag {
   display: inline-flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 3px 11px;
   border-radius: 20px;
   width: fit-content;
   white-space: nowrap;
 }
-.ad-reward-orange { background: rgba(255,90,0,0.1); color: #FF5A00; border: 1px solid rgba(255,90,0,0.25); }
-.ad-reward-blue   { background: rgba(88,166,255,0.18); color: #58a6ff; border: 1px solid rgba(88,166,255,0.35); }
-.ad-reward-yellow { background: rgba(240,185,11,0.12); color: #C68A00; border: 1px solid rgba(240,185,11,0.3); }
-.ad-reward-yellow-dark { background: rgba(240,185,11,0.18); color: #f0b90b; border: 1px solid rgba(240,185,11,0.4); }
-@media (min-width: 768px) { .ad-reward-badge { font-size: 0.82rem; } }
+@media (min-width: 768px) { .ad-tag { font-size: 0.8rem; } }
+.ad-bithumb  .ad-tag { background: rgba(255,90,0,0.09);   color: #FF5A00; border: 1px solid rgba(255,90,0,0.2); }
+.ad-binance  .ad-tag { background: rgba(240,185,11,0.14); color: #F0B90B; border: 1px solid rgba(240,185,11,0.3); }
+.ad-coinlabs .ad-tag { background: rgba(212,138,0,0.09);  color: #C68A00; border: 1px solid rgba(212,138,0,0.2); }
 
 /* 헤드라인 */
 .ad-headline {
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 900;
-  color: #e6edf3;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  line-height: 1.32;
+  letter-spacing: -0.025em;
   word-break: keep-all;
 }
-@media (min-width: 480px)  { .ad-headline { font-size: 1.08rem; } }
-@media (min-width: 768px)  { .ad-headline { font-size: 1.2rem; } }
-@media (min-width: 1024px) { .ad-headline { font-size: 1.28rem; } }
+@media (min-width: 480px)  { .ad-headline { font-size: 1.2rem;  } }
+@media (min-width: 768px)  { .ad-headline { font-size: 1.36rem; } }
+@media (min-width: 1024px) { .ad-headline { font-size: 1.48rem; } }
+.ad-bithumb  .ad-headline,
+.ad-coinlabs .ad-headline { color: #1a1a1a; }
+.ad-binance  .ad-headline { color: #F0B90B; }
 
-/* 서브 리스트 */
-.ad-sub-list {
+/* 서브 항목 */
+.ad-bullets {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-}
-.ad-sub-item {
-  font-size: 0.72rem;
-  color: #8b949e;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-@media (min-width: 768px) {
-  .ad-sub-list { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
-  .ad-sub-item { font-size: 0.78rem; white-space: normal; }
-}
-.ad-sub-item b { color: #e6edf3; }
-
-/* 유저 카운트 */
-.ad-user-count {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.7rem;
-  color: #8b949e;
-  font-weight: 600;
+  gap: 3px;
   margin-top: 2px;
 }
-.ad-count-num {
-  font-weight: 800;
-  color: #3fb950;
+@media (min-width: 768px) { .ad-bullets { flex-direction: row; flex-wrap: wrap; gap: 2px 14px; } }
+.ad-bullet {
+  font-size: 0.76rem;
+  font-weight: 500;
+  word-break: keep-all;
+  line-height: 1.45;
 }
-.ad-coinlabs .ad-count-num { color: #58a6ff; }
-.ad-binance  .ad-count-num { color: #f0b90b; }
+@media (min-width: 768px) { .ad-bullet { font-size: 0.8rem; } }
+.ad-bithumb  .ad-bullet { color: #555; }
+.ad-coinlabs .ad-bullet { color: #555; }
+.ad-binance  .ad-bullet { color: #848E9C; }
+.ad-bithumb  .ad-bullet b { color: #1a1a1a; font-weight: 800; }
+.ad-coinlabs .ad-bullet b { color: #1a1a1a; font-weight: 800; }
+.ad-binance  .ad-bullet b { color: #F0B90B;  font-weight: 800; }
 
 /* ── CTA 영역 ── */
 .ad-cta-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
 }
+@media (max-width: 479px) { .ad-cta-wrap { display: none; } }
+
 .ad-cta-btn {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  padding: 10px 14px;
+  padding: 13px 20px;
   border-radius: 12px;
   text-align: center;
   line-height: 1.4;
   white-space: nowrap;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   cursor: pointer;
+  min-width: 100px;
 }
-@media (min-width: 480px)  { .ad-cta-btn { font-size: 0.84rem; padding: 11px 18px; } }
-@media (min-width: 768px)  { .ad-cta-btn { font-size: 0.9rem;  padding: 13px 22px; } }
-@media (min-width: 1024px) { .ad-cta-btn { font-size: 0.95rem; padding: 14px 26px; } }
-
+@media (min-width: 768px)  { .ad-cta-btn { font-size: 0.92rem; padding: 14px 24px; min-width: 112px; } }
+@media (min-width: 1024px) { .ad-cta-btn { font-size: 0.96rem; padding: 15px 28px; min-width: 120px; } }
 .ad-slide:hover .ad-cta-btn { transform: translateY(-3px); }
 
-.cta-bithumb {
-  background: linear-gradient(135deg, #FF8C00, #e8720a);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(247,147,26,0.45);
-}
-.ad-slide:hover .cta-bithumb  { box-shadow: 0 7px 22px rgba(247,147,26,0.65); }
-
-.cta-coinlabs {
-  background: linear-gradient(135deg, #58a6ff, #0e8ae9);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(88,166,255,0.35);
-}
-.ad-slide:hover .cta-coinlabs { box-shadow: 0 7px 22px rgba(88,166,255,0.55); }
-
-.cta-binance {
-  background: linear-gradient(135deg, #f0b90b, #d4a009);
-  color: #0a0800;
-  box-shadow: 0 4px 16px rgba(240,185,11,0.4);
-}
+.cta-bithumb  { background: linear-gradient(135deg,#FF8C00,#e8720a); color: #fff; box-shadow: 0 4px 16px rgba(255,90,0,0.4); }
+.cta-binance  { background: linear-gradient(135deg,#f0b90b,#d4a009); color: #0a0800; box-shadow: 0 4px 16px rgba(240,185,11,0.4); }
+.cta-coinlabs { background: linear-gradient(135deg,#D48A00,#B87A00); color: #fff; box-shadow: 0 4px 16px rgba(212,138,0,0.4); }
+.ad-slide:hover .cta-bithumb  { box-shadow: 0 7px 22px rgba(255,90,0,0.6); }
 .ad-slide:hover .cta-binance  { box-shadow: 0 7px 22px rgba(240,185,11,0.6); }
+.ad-slide:hover .cta-coinlabs { box-shadow: 0 7px 22px rgba(212,138,0,0.6); }
 
-/* 코드 박스 */
-.ad-code-box {
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: rgba(247,147,26,0.8);
-  background: rgba(247,147,26,0.08);
-  border: 1px solid rgba(247,147,26,0.2);
-  border-radius: 6px;
-  padding: 3px 8px;
+/* 코드 태그 */
+.ad-code-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 7px;
   white-space: nowrap;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
-.ad-code-blue   { color: rgba(88,166,255,0.8);  background: rgba(88,166,255,0.08);  border-color: rgba(88,166,255,0.2); }
-.ad-code-yellow { color: rgba(240,185,11,0.8);  background: rgba(240,185,11,0.08);  border-color: rgba(240,185,11,0.2); }
-@media (min-width: 768px) { .ad-code-box { font-size: 0.68rem; } }
+@media (min-width: 768px) { .ad-code-tag { font-size: 0.74rem; } }
+.ad-bithumb  .ad-code-tag { color: #FF5A00; background: rgba(255,90,0,0.08);   border: 1px solid rgba(255,90,0,0.2); }
+.ad-binance  .ad-code-tag { color: #F0B90B; background: rgba(240,185,11,0.1);  border: 1px solid rgba(240,185,11,0.25); }
+.ad-coinlabs .ad-code-tag { color: #C68A00; background: rgba(212,138,0,0.08); border: 1px solid rgba(212,138,0,0.2); }
 
-/* ── 차트 애니메이션 바 ── */
-.ad-chart-bars {
+/* ── AD 라벨 ── */
+.ad-label {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  padding: 0 12px 4px;
+  top: 7px;
+  left: 9px;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(139,148,158,0.7);
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(48,54,61,0.5);
+  border-radius: 4px;
+  padding: 1px 5px;
+  z-index: 20;
   pointer-events: none;
-  opacity: 0.1;
 }
-@media (max-width: 479px) { .ad-chart-bars { display: none; } }
-
-.bar {
-  display: block;
-  width: 5px;
-  border-radius: 3px 3px 0 0;
-  animation: barUp 2s ease-in-out infinite;
-}
-.bar-orange { background: #FF8C00; }
-.bar-blue   { background: #58a6ff; }
-.bar-yellow { background: #f0b90b; }
-
-.b1 { height: 18px; animation-delay: 0s;    }
-.b2 { height: 32px; animation-delay: 0.25s; }
-.b3 { height: 22px; animation-delay: 0.1s;  }
-.b4 { height: 42px; animation-delay: 0.4s;  }
-.b5 { height: 28px; animation-delay: 0.15s; }
-.b6 { height: 38px; animation-delay: 0.3s;  }
-.b7 { height: 24px; animation-delay: 0.5s;  }
-
-@keyframes barUp {
-  0%, 100% { transform: scaleY(1);    opacity: 0.7; }
-  50%       { transform: scaleY(1.6); opacity: 1;   }
-}
+.ad-bithumb  .ad-label,
+.ad-coinlabs .ad-label { color: #bbb; background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
 
 /* ── 도트 네비게이션 ── */
 .ad-dots {
   position: absolute;
-  bottom: 8px;
+  bottom: 9px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -920,18 +838,17 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.18);
   border: none;
   cursor: pointer;
   padding: 0;
   transition: all 0.35s ease;
 }
 .ad-dot.active {
-  width: 24px;
+  width: 26px;
   border-radius: 4px;
   background: #FF5A00;
 }
-/* 활성 슬라이드별 도트 색상 */
 .ad-banner-wrapper[data-active="1"] .ad-dot.active { background: #F0B90B; }
 .ad-banner-wrapper[data-active="2"] .ad-dot.active { background: #D48A00; }
 
@@ -943,7 +860,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.1);
   color: #e6edf3;
   font-size: 1.3rem;
@@ -956,11 +873,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   padding: 0;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
-.ad-arrow:hover {
-  background: rgba(247,147,26,0.35);
-  border-color: rgba(247,147,26,0.6);
-  transform: translateY(-60%) scale(1.1);
-}
+.ad-arrow:hover { background: rgba(247,147,26,0.35); border-color: rgba(247,147,26,0.6); transform: translateY(-60%) scale(1.1); }
 @media (min-width: 640px) { .ad-arrow { display: flex; } }
 .ad-prev { left: 10px; }
 .ad-next { right: 10px; }
@@ -975,39 +888,16 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   border-radius: 0 2px 2px 0;
   width: 0%;
   z-index: 15;
-  transition: width 0.1s linear;
+  transition: width 0.08s linear;
 }
 
-/* ── AD 라벨 ── */
-.ad-label {
-  position: absolute;
-  top: 7px;
-  left: 9px;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: rgba(139,148,158,0.7);
-  background: rgba(0,0,0,0.25);
-  border: 1px solid rgba(48,54,61,0.6);
-  border-radius: 4px;
-  padding: 1px 5px;
-  z-index: 20;
-  pointer-events: none;
-}
-
-/* ── 라이트 모드 대응 ── */
-/* 빗썸·코인랩스는 라이트/다크 무관하게 항상 흰 배경 유지 */
-[data-theme="dark"] .ad-bithumb  { background: #ffffff; border-color: #FFE0CC; }
-[data-theme="dark"] .ad-coinlabs { background: #ffffff; border-color: #FFF0C0; }
-/* 바이낸스는 항상 블랙 */
-[data-theme="light"] .ad-binance  { background: #0B0E11; }
-[data-theme="light"] .ad-binance .ad-headline { color: #F0B90B; }
-[data-theme="light"] .ad-bithumb  .ad-headline { color: #1a1a1a; }
+/* ── 라이트/다크 모드 ── */
+[data-theme="light"] .ad-binance  .ad-headline { color: #F0B90B; }
+[data-theme="light"] .ad-bithumb  .ad-headline,
 [data-theme="light"] .ad-coinlabs .ad-headline { color: #1a1a1a; }
-[data-theme="light"] .ad-bithumb  .ad-sub-item,
-[data-theme="light"] .ad-coinlabs .ad-sub-item { color: #555; }
-[data-theme="light"] .ad-arrow { background: rgba(255,255,255,0.8); border-color: #d0d7de; color: #1a1f2e; }
-[data-theme="light"] .ad-chart-bars { opacity: 0.15; }
+[data-theme="light"] .ad-bithumb  .ad-bullet,
+[data-theme="light"] .ad-coinlabs .ad-bullet   { color: #555; }
+[data-theme="light"] .ad-arrow { background: rgba(255,255,255,0.85); border-color: #d0d7de; color: #1a1f2e; }
 
 /* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
 button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.nav-cta,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
@@ -1471,135 +1361,155 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <!-- ===== 🔄 제휴 파트너 로테이션 배너 ===== -->
 <section class="ad-banner-section">
   <div class="ad-banner-wrapper" id="adBanner" data-active="0">
-
     <div class="ad-slider-track" id="adTrack">
 
-      <!-- ── SLIDE 0: 빗썸 (화이트 BG / 오렌지 텍스트) ── -->
-      <a class="ad-slide ad-bithumb" href="https://m.bithumb.com/react/referral/guide?referral=JD68T20OTV" target="_blank" rel="noopener sponsored" onclick="return true;">
+      <!-- ══════════════════════════════════════
+           SLIDE 0 : 빗썸  (화이트 BG / 오렌지)
+           ══════════════════════════════════════ -->
+      <a class="ad-slide ad-bithumb"
+         href="https://m.bithumb.com/react/referral/guide?referral=JD68T20OTV"
+         target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
           <div class="ad-bg-deco ad-bg-bithumb"></div>
-          <!-- 로고 -->
-          <div class="ad-logo-wrap bithumb-logo">
-            <div class="ad-exchange-logo">
-              <span class="logo-icon">🔴</span>
-              <div>
-                <span class="logo-name">Bithumb</span>
-                <span class="logo-name-kr">빗썸</span>
-              </div>
-            </div>
-            <div class="ad-live-badge" style="background:rgba(255,90,0,0.1);color:#FF5A00;border-color:rgba(255,90,0,0.25);">
-              <span class="pulse-dot" style="background:#FF5A00;"></span>친구초대
-            </div>
+
+          <!-- 브랜드 로고 -->
+          <div class="ad-logo-area">
+            <svg class="ad-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="빗썸 로고">
+              <!-- 오렌지 라운드 사각 배경 -->
+              <rect x="1" y="1" width="54" height="54" rx="13" fill="#FF5A00"/>
+              <!-- 흰색 b 레터폼 -->
+              <rect x="15" y="13" width="6" height="30" rx="3" fill="white"/>
+              <path d="M21 13 C21 13 35 13 35 22 C35 31 21 31 21 31" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 29 C21 29 37 29 37 38 C37 47 21 44 21 44" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ad-brand-name">bithumb</span>
+            <span class="ad-brand-kr">빗썸</span>
+            <span class="ad-badge ad-badge-orange">
+              <span style="width:5px;height:5px;border-radius:50%;background:#FF5A00;display:inline-block;flex-shrink:0;animation:pulseAnim 1.5s ease-in-out infinite;"></span>친구초대
+            </span>
           </div>
+
           <!-- 본문 -->
           <div class="ad-body">
-            <div class="ad-reward-badge ad-reward-orange">🎁 친구초대 코드 — 수수료 우대 혜택</div>
+            <div class="ad-tag">🎁 친구초대 코드 — 수수료 우대 혜택</div>
             <div class="ad-headline">빗썸 초대코드 입력하고<br><strong style="color:#FF5A00;">거래 수수료 혜택</strong> 받기</div>
-            <div class="ad-sub-list">
-              <span class="ad-sub-item">✅ 초대코드 <b>JD68T20OTV</b></span>
-              <span class="ad-sub-item">✅ 원화 직접 입출금 · 한국 2위 거래소</span>
-              <span class="ad-sub-item">✅ 비트코인·이더리움·알트코인 즉시 거래</span>
+            <div class="ad-bullets">
+              <span class="ad-bullet">✅ 초대코드 <b>JD68T20OTV</b></span>
+              <span class="ad-bullet">✅ 원화 직접 입출금 · 한국 2위 거래소</span>
+              <span class="ad-bullet">✅ 비트코인·이더리움·알트코인 즉시 거래</span>
             </div>
           </div>
+
           <!-- CTA -->
           <div class="ad-cta-wrap">
             <div class="ad-cta-btn cta-bithumb">초대코드로<br>가입하기 →</div>
-            <div class="ad-code-box" style="color:#FF5A00;background:rgba(255,90,0,0.08);border-color:rgba(255,90,0,0.2);">JD68T20OTV</div>
+            <div class="ad-code-tag">JD68T20OTV</div>
           </div>
-          <!-- 차트 바 데코 -->
-          <div class="ad-chart-bars">
-            <span class="bar bar-orange b1"></span><span class="bar bar-orange b2"></span>
-            <span class="bar bar-orange b3"></span><span class="bar bar-orange b4"></span>
-            <span class="bar bar-orange b5"></span><span class="bar bar-orange b6"></span>
-            <span class="bar bar-orange b7"></span>
-          </div>
+
+          <div class="ad-label">AD</div>
         </div>
-        <div class="ad-label">AD</div>
       </a>
 
-      <!-- ── SLIDE 1: 바이낸스 (블랙 BG / 옐로우 텍스트) ── -->
-      <a class="ad-slide ad-binance" href="https://www.binance.com/register?ref=36462416" target="_blank" rel="noopener sponsored" onclick="return true;">
+      <!-- ══════════════════════════════════════
+           SLIDE 1 : 바이낸스  (블랙 BG / 옐로우)
+           ══════════════════════════════════════ -->
+      <a class="ad-slide ad-binance"
+         href="https://www.binance.com/register?ref=36462416"
+         target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
           <div class="ad-bg-deco ad-bg-binance"></div>
-          <!-- 로고 -->
-          <div class="ad-logo-wrap binance-logo">
-            <div class="ad-exchange-logo">
-              <span class="logo-icon">🟡</span>
-              <div>
-                <span class="logo-name">Binance</span>
-                <span class="logo-name-kr">바이낸스</span>
-              </div>
-            </div>
-            <div class="ad-live-badge ad-live-yellow">
-              <span class="pulse-dot pulse-yellow"></span>친구초대
-            </div>
+
+          <!-- 브랜드 로고 -->
+          <div class="ad-logo-area">
+            <svg class="ad-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="바이낸스 로고">
+              <!-- Binance 5-diamond 패턴 (공식 마크) -->
+              <!-- 위 소형 다이아몬드 -->
+              <polygon points="28,4 33,9 28,14 23,9"   fill="#F0B90B"/>
+              <!-- 아래 소형 다이아몬드 -->
+              <polygon points="28,42 33,47 28,52 23,47" fill="#F0B90B"/>
+              <!-- 왼 소형 다이아몬드 -->
+              <polygon points="4,28  9,23  14,28 9,33"  fill="#F0B90B"/>
+              <!-- 오른 소형 다이아몬드 -->
+              <polygon points="42,28 47,23 52,28 47,33" fill="#F0B90B"/>
+              <!-- 중앙 대형 다이아몬드 -->
+              <polygon points="28,14 42,28 28,42 14,28" fill="#F0B90B"/>
+            </svg>
+            <span class="ad-brand-name">BINANCE</span>
+            <span class="ad-brand-kr">바이낸스</span>
+            <span class="ad-badge ad-badge-yellow">
+              <span style="width:5px;height:5px;border-radius:50%;background:#F0B90B;display:inline-block;flex-shrink:0;animation:pulseAnim 1.5s ease-in-out infinite;"></span>친구초대
+            </span>
           </div>
+
           <!-- 본문 -->
           <div class="ad-body">
-            <div class="ad-reward-badge ad-reward-yellow-dark">💰 신규 가입 + 수수료 20% 환급</div>
+            <div class="ad-tag">💰 신규 가입 + 수수료 20% 환급</div>
             <div class="ad-headline">바이낸스 레퍼럴 가입으로<br><strong style="color:#F0B90B;">수수료 20% 절감</strong></div>
-            <div class="ad-sub-list">
-              <span class="ad-sub-item" style="color:#848E9C;">✅ 레퍼럴 코드 <b style="color:#F0B90B;">36462416</b></span>
-              <span class="ad-sub-item" style="color:#848E9C;">✅ 글로벌 1위 · 600+ 코인 거래</span>
-              <span class="ad-sub-item" style="color:#848E9C;">✅ 친구 초대 시 추가 리워드</span>
+            <div class="ad-bullets">
+              <span class="ad-bullet">✅ 레퍼럴 코드 <b>36462416</b></span>
+              <span class="ad-bullet">✅ 글로벌 1위 · 600+ 코인 거래</span>
+              <span class="ad-bullet">✅ 친구 초대 시 추가 리워드</span>
             </div>
           </div>
+
           <!-- CTA -->
           <div class="ad-cta-wrap">
             <div class="ad-cta-btn cta-binance">레퍼럴 코드로<br>가입하기 →</div>
-            <div class="ad-code-box ad-code-yellow">ref: 36462416</div>
+            <div class="ad-code-tag">ref: 36462416</div>
           </div>
-          <!-- 차트 바 데코 -->
-          <div class="ad-chart-bars">
-            <span class="bar bar-yellow b1"></span><span class="bar bar-yellow b2"></span>
-            <span class="bar bar-yellow b3"></span><span class="bar bar-yellow b4"></span>
-            <span class="bar bar-yellow b5"></span><span class="bar bar-yellow b6"></span>
-            <span class="bar bar-yellow b7"></span>
-          </div>
+
+          <div class="ad-label">AD</div>
         </div>
-        <div class="ad-label">AD</div>
       </a>
 
-      <!-- ── SLIDE 2: 더코인랩스 (화이트 BG / 골드 텍스트) ── -->
-      <a class="ad-slide ad-coinlabs" href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" onclick="return true;">
+      <!-- ══════════════════════════════════════
+           SLIDE 2 : 더코인랩스  (화이트 BG / 골드)
+           ══════════════════════════════════════ -->
+      <a class="ad-slide ad-coinlabs"
+         href="https://www.thecoinlabs.com/"
+         target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
           <div class="ad-bg-deco ad-bg-coinlabs"></div>
-          <!-- 로고 -->
-          <div class="ad-logo-wrap coinlabs-logo">
-            <div class="ad-exchange-logo">
-              <span class="logo-icon">🏆</span>
-              <div>
-                <span class="logo-name">CoinLabs</span>
-                <span class="logo-name-kr">더코인랩스</span>
-              </div>
-            </div>
-            <div class="ad-live-badge" style="background:rgba(212,138,0,0.1);color:#C68A00;border-color:rgba(212,138,0,0.25);">
-              <span class="pulse-dot" style="background:#D48A00;"></span>파트너
-            </div>
+
+          <!-- 브랜드 로고 -->
+          <div class="ad-logo-area">
+            <svg class="ad-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="더코인랩스 로고">
+              <!-- 글로브 / 코인 원형 마크 -->
+              <circle cx="28" cy="28" r="25" fill="#FFFBEE" stroke="#D48A00" stroke-width="2.5"/>
+              <!-- 위도선 -->
+              <ellipse cx="28" cy="28" rx="25" ry="13" stroke="#D48A00" stroke-width="1.8" fill="none"/>
+              <!-- 경도선 -->
+              <ellipse cx="28" cy="28" rx="14" ry="25" stroke="#D48A00" stroke-width="1.8" fill="none"/>
+              <!-- 적도선 -->
+              <line x1="3" y1="28" x2="53" y2="28" stroke="#D48A00" stroke-width="1.8"/>
+              <!-- 중간 원 -->
+              <circle cx="28" cy="28" r="25" stroke="#D48A00" stroke-width="2.5" fill="none"/>
+            </svg>
+            <span class="ad-brand-name">CoinLabs</span>
+            <span class="ad-brand-kr">더코인랩스</span>
+            <span class="ad-badge ad-badge-gold">
+              <span style="width:5px;height:5px;border-radius:50%;background:#D48A00;display:inline-block;flex-shrink:0;animation:pulseAnim 1.5s ease-in-out infinite;"></span>파트너
+            </span>
           </div>
+
           <!-- 본문 -->
           <div class="ad-body">
-            <div class="ad-reward-badge ad-reward-yellow">🎓 코인 투자 전략 파트너 추천</div>
+            <div class="ad-tag">🎓 코인 투자 전략 파트너 추천</div>
             <div class="ad-headline">더코인랩스에서<br><strong style="color:#D48A00;">AI 블록체인 교육</strong> 시작하기</div>
-            <div class="ad-sub-list">
-              <span class="ad-sub-item">✅ 국내 최고 블록체인 투자 교육</span>
-              <span class="ad-sub-item">✅ AI 분석 도구 · 프리미엄 리서치</span>
-              <span class="ad-sub-item">✅ CryptoTax.cloud 공식 파트너</span>
+            <div class="ad-bullets">
+              <span class="ad-bullet">✅ 국내 최고 블록체인 투자 교육</span>
+              <span class="ad-bullet">✅ AI 분석 도구 · 프리미엄 리서치</span>
+              <span class="ad-bullet">✅ CryptoTax.cloud 공식 파트너</span>
             </div>
           </div>
+
           <!-- CTA -->
           <div class="ad-cta-wrap">
-            <div class="ad-cta-btn" style="background:linear-gradient(135deg,#D48A00,#B87A00);color:#fff;box-shadow:0 4px 16px rgba(212,138,0,0.35);">무료로<br>시작하기 →</div>
+            <div class="ad-cta-btn cta-coinlabs">무료로<br>시작하기 →</div>
           </div>
-          <!-- 차트 바 데코 -->
-          <div class="ad-chart-bars">
-            <span class="bar b1" style="background:#D48A00;"></span><span class="bar b2" style="background:#D48A00;"></span>
-            <span class="bar b3" style="background:#D48A00;"></span><span class="bar b4" style="background:#D48A00;"></span>
-            <span class="bar b5" style="background:#D48A00;"></span><span class="bar b6" style="background:#D48A00;"></span>
-            <span class="bar b7" style="background:#D48A00;"></span>
-          </div>
+
+          <div class="ad-label">AD</div>
         </div>
-        <div class="ad-label">AD</div>
       </a>
 
     </div><!-- /ad-slider-track -->
