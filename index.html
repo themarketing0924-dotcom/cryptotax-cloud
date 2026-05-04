@@ -552,11 +552,11 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 /* ── 섹션 래퍼 ── */
 .ad-banner-section {
   width: 100%;
-  padding: 8px 16px;
+  padding: 10px 16px 14px;
   box-sizing: border-box;
 }
-@media (min-width: 768px)  { .ad-banner-section { padding: 12px 32px; } }
-@media (min-width: 1024px) { .ad-banner-section { padding: 16px 40px; max-width: 860px; margin: 0 auto; } }
+@media (min-width: 768px)  { .ad-banner-section { padding: 14px 32px 18px; } }
+@media (min-width: 1024px) { .ad-banner-section { padding: 16px 40px 20px; max-width: 860px; margin: 0 auto; } }
 
 /* ── 배너 래퍼 ── */
 .ad-banner-wrapper {
@@ -607,19 +607,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 [data-theme="dark"]  .ad-coinlabs { background: #ffffff; border-color: #FFE499; }
 [data-theme="light"] .ad-binance  { background: #0B0E11; }
 
-/* ── 배경 그라데이션 데코 ── */
-.ad-bg-deco {
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  pointer-events: none;
-  right: -60px;
-  top: -120px;
-}
-.ad-bg-bithumb  { background: radial-gradient(circle, #FF8C00, transparent 65%); opacity: 0.06; }
-.ad-bg-coinlabs { background: radial-gradient(circle, #F0A500, transparent 65%); opacity: 0.07; }
-.ad-bg-binance  { background: radial-gradient(circle, #f0b90b, transparent 65%); opacity: 0.13; }
+/* ad-bg-deco removed */
 
 /* ── 로고 영역 ── */
 .ad-logo-area {
@@ -1370,17 +1358,17 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
          href="https://m.bithumb.com/react/referral/guide?referral=JD68T20OTV"
          target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
-          <div class="ad-bg-deco ad-bg-bithumb"></div>
 
           <!-- 브랜드 로고 -->
           <div class="ad-logo-area">
             <svg class="ad-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="빗썸 로고">
-              <!-- 오렌지 라운드 사각 배경 -->
               <rect x="1" y="1" width="54" height="54" rx="13" fill="#FF5A00"/>
-              <!-- 흰색 b 레터폼 -->
-              <rect x="15" y="13" width="6" height="30" rx="3" fill="white"/>
-              <path d="M21 13 C21 13 35 13 35 22 C35 31 21 31 21 31" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21 29 C21 29 37 29 37 38 C37 47 21 44 21 44" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- vertical stroke -->
+              <rect x="14" y="12" width="7" height="32" rx="3.5" fill="white"/>
+              <!-- upper bowl -->
+              <path d="M21 12 Q36 12 36 21 Q36 30 21 30" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <!-- lower bowl (bigger) -->
+              <path d="M21 28 Q38 28 38 38 Q38 46 21 44" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
             </svg>
             <span class="ad-brand-name">bithumb</span>
             <span class="ad-brand-kr">빗썸</span>
@@ -1417,22 +1405,21 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
          href="https://www.binance.com/register?ref=36462416"
          target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
-          <div class="ad-bg-deco ad-bg-binance"></div>
 
           <!-- 브랜드 로고 -->
           <div class="ad-logo-area">
             <svg class="ad-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="바이낸스 로고">
-              <!-- Binance 5-diamond 패턴 (공식 마크) -->
-              <!-- 위 소형 다이아몬드 -->
-              <polygon points="28,4 33,9 28,14 23,9"   fill="#F0B90B"/>
-              <!-- 아래 소형 다이아몬드 -->
-              <polygon points="28,42 33,47 28,52 23,47" fill="#F0B90B"/>
-              <!-- 왼 소형 다이아몬드 -->
-              <polygon points="4,28  9,23  14,28 9,33"  fill="#F0B90B"/>
-              <!-- 오른 소형 다이아몬드 -->
-              <polygon points="42,28 47,23 52,28 47,33" fill="#F0B90B"/>
+              <circle cx="28" cy="28" r="27" fill="#1C1F26"/>
               <!-- 중앙 대형 다이아몬드 -->
-              <polygon points="28,14 42,28 28,42 14,28" fill="#F0B90B"/>
+              <polygon points="28,15 40,28 28,41 16,28" fill="#F0B90B"/>
+              <!-- 위 소형 다이아몬드 -->
+              <polygon points="28,5 32,9 28,13 24,9"    fill="#F0B90B"/>
+              <!-- 아래 소형 다이아몬드 -->
+              <polygon points="28,43 32,47 28,51 24,47" fill="#F0B90B"/>
+              <!-- 왼 소형 다이아몬드 -->
+              <polygon points="4,28  8,24 12,28  8,32"  fill="#F0B90B"/>
+              <!-- 오른 소형 다이아몬드 -->
+              <polygon points="44,28 48,24 52,28 48,32" fill="#F0B90B"/>
             </svg>
             <span class="ad-brand-name">BINANCE</span>
             <span class="ad-brand-kr">바이낸스</span>
@@ -1469,7 +1456,6 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
          href="https://www.thecoinlabs.com/"
          target="_blank" rel="noopener sponsored">
         <div class="ad-slide-inner">
-          <div class="ad-bg-deco ad-bg-coinlabs"></div>
 
           <!-- 브랜드 로고 -->
           <div class="ad-logo-area">
