@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>업비트·빗썸 거래내역 CSV 완전 활용법 — 2027년 코인 세금 미리 계산하기</title>
+  <meta name="description" content="업비트·빗썸 거래내역 CSV 다운로드 방법부터 세금 계산까지 단계별 가이드. 취득가액 계산, 손익통산 계산, 무료 세금 계산기 연동 방법을 정리했습니다.">
+  <meta name="keywords" content="업비트 CSV 다운로드, 빗썸 거래내역, 코인 세금 계산, 가상자산 세금 신고, 업비트 세금, 빗썸 세금, 코인 거래내역 정리">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="CryptoTax.cloud">
+  <link rel="canonical" href="https://cryptotax.cloud/blog/upbit-bithumb-csv-tax-prep-2027.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="업비트·빗썸 CSV 완전 활용법 — 2027년 코인 세금 미리 계산하기">
+  <meta property="og:description" content="업비트·빗썸 거래내역 CSV 다운로드부터 세금 계산까지 단계별 완전 가이드.">
+  <meta property="og:url" content="https://cryptotax.cloud/blog/upbit-bithumb-csv-tax-prep-2027.html">
+  <meta property="og:image" content="https://cryptotax.cloud/assets/og-tax.png">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"업비트·빗썸 거래내역 CSV 완전 활용법 — 2027년 코인 세금 미리 계산하기","description":"업비트 빗썸 CSV 다운로드 및 세금 계산 완전 가이드","author":{"@type":"Organization","name":"CryptoTax.cloud"},"publisher":{"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud"},"datePublished":"2025-05-03","dateModified":"2025-05-03","mainEntityOfPage":"https://cryptotax.cloud/blog/upbit-bithumb-csv-tax-prep-2027.html"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"업비트 거래내역 CSV는 어디서 다운받나요?","acceptedAnswer":{"@type":"Answer","text":"업비트 앱 또는 PC → 입출금/거래내역 → 거래내역 조회 → 전체 내역 다운로드(CSV). 최대 3개월씩 나눠 다운로드 후 합쳐야 합니다."}},{"@type":"Question","name":"거래내역이 너무 많으면 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"기간별로 나눠 여러 파일을 다운로드한 후, 엑셀에서 합칩니다. 업비트는 3개월 단위, 빗썸은 6개월 단위로 다운로드가 가능합니다."}},{"@type":"Question","name":"취득가액을 모르면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"취득가액을 알 수 없는 경우, 법적으로 2025년 12월 31일 시가의 80%를 취득가액으로 간주할 수 있습니다. 정확한 거래내역을 확보하는 것이 세금을 줄이는 데 유리합니다."}}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1117;--bg-surface:#1a1d2e;--bg-card:#1e2235;--text:#e8eaf6;--text-muted:#8892b0;--text-dim:#5a6380;--primary:#f7931a;--primary-glow:rgba(247,147,26,0.15);--accent:#00d4aa;--accent-glow:rgba(0,212,170,0.12);--danger:#ff4757;--danger-glow:rgba(255,71,87,0.12);--success:#2ed573;--success-glow:rgba(46,213,115,0.12);--border:#2a2d3e;--radius:12px;--tr:0.2s ease;--max-w:860px}
+    [data-theme="light"]{--bg:#f8f9ff;--bg-surface:#ffffff;--bg-card:#f0f2ff;--text:#1a1d2e;--text-muted:#4a5580;--text-dim:#8892b0;--border:#e0e3f0}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px}
+    a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+    nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 20px;position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+    .nav-logo{font-weight:700;font-size:18px;color:var(--primary)}
+    .nav-links{display:flex;gap:20px}.nav-links a{color:var(--text-muted);font-size:14px}.nav-links a:hover{color:var(--primary);text-decoration:none}
+    @media(max-width:600px){.nav-links{display:none}}
+    .breadcrumb{max-width:var(--max-w);margin:16px auto;padding:0 20px;font-size:13px;color:var(--text-dim)}.breadcrumb a{color:var(--text-dim)}.breadcrumb span{margin:0 6px}
+    .hero{background:linear-gradient(135deg,#0a001a 0%,var(--bg-surface) 60%,#001a10 100%);border-bottom:1px solid var(--border);padding:56px 20px 48px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,var(--primary-glow) 0%,transparent 60%);pointer-events:none}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#000;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+    .hero h1{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.3;margin-bottom:16px;max-width:720px;margin-left:auto;margin-right:auto}
+    .hero h1 .kw{color:var(--primary)}.hero h1 .gr{color:var(--success)}
+    .hero-sub{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto 28px}
+    .hero-meta{font-size:13px;color:var(--text-dim);margin-top:20px}
+    .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#000;font-weight:800;font-size:16px;padding:14px 32px;border-radius:50px;transition:transform var(--tr);box-shadow:0 4px 20px rgba(247,147,26,0.4)}.hero-cta:hover{transform:translateY(-2px);text-decoration:none}
+    .article{max-width:var(--max-w);margin:0 auto;padding:32px 20px 80px}
+    .section{margin-bottom:52px}
+    .section-title{font-size:22px;font-weight:800;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--primary);display:flex;align-items:center;gap:10px}
+    .num{background:var(--primary);color:#000;font-size:12px;font-weight:800;padding:3px 9px;border-radius:20px;flex-shrink:0}
+    p{margin-bottom:16px;line-height:1.85}
+    h3{font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--accent)}
+    h4{font-size:15px;font-weight:700;margin:16px 0 8px}
+    .step-list{list-style:none;padding:0;counter-reset:steps}
+    .step-list li{counter-increment:steps;display:flex;gap:16px;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;align-items:flex-start}
+    .step-list li::before{content:counter(steps);background:var(--primary);color:#000;font-weight:800;font-size:14px;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .step-list .content strong{display:block;font-size:15px;margin-bottom:4px}
+    .step-list .content p{margin:0;font-size:14px;color:var(--text-muted)}
+    .step-list .content .tip{font-size:13px;color:var(--accent);margin-top:6px;font-weight:600}
+    .tbl{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+    .tbl th{background:var(--primary);color:#000;padding:10px 14px;text-align:center;font-weight:700}
+    .tbl td{padding:10px 14px;border-bottom:1px solid var(--border);text-align:center}
+    .tbl tr:nth-child(even) td{background:var(--bg-card)}
+    .highlight{background:var(--primary-glow);border:1px solid var(--primary);border-radius:var(--radius);padding:20px 24px;margin:24px 0}
+    .highlight .h-title{font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+    .danger-box{background:var(--danger-glow);border:1px solid var(--danger);border-radius:var(--radius);padding:20px 24px;margin:24px 0}
+    .danger-box .d-title{font-size:12px;font-weight:700;color:var(--danger);margin-bottom:8px}
+    .accent-box{background:var(--accent-glow);border:1px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:24px 0}
+    .accent-box .a-title{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px}
+    .exchange-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+    @media(max-width:500px){.exchange-compare{grid-template-columns:1fr}}
+    .ex-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    .ex-card .ex-name{font-weight:800;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .ex-card .ex-item{font-size:13px;color:var(--text-muted);padding:4px 0;border-bottom:1px solid var(--border)}
+    .ex-card .ex-item:last-child{border-bottom:none}
+    .ex-card .ex-item strong{color:var(--text)}
+    .calc-cta{background:linear-gradient(135deg,var(--primary-glow),var(--bg-card));border:2px solid var(--primary);border-radius:16px;padding:32px;text-align:center;margin:40px 0}
+    .calc-cta h3{color:var(--primary);font-size:20px;margin:0 0 10px}
+    .calc-cta p{color:var(--text-muted);margin-bottom:20px;font-size:15px}
+    .related{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:48px}
+    .related h3{font-size:16px;font-weight:700;margin-bottom:16px}
+    .related-list{list-style:none;padding:0}
+    .related-list li{padding:8px 0;border-bottom:1px solid var(--border)}.related-list li:last-child{border-bottom:none}
+    footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:32px 20px;text-align:center;font-size:13px;color:var(--text-dim);margin-top:60px}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">₿ CryptoTax<span style="color:var(--text-muted)">.cloud</span></a>
+    <div class="nav-links">
+      <a href="/#calculator">세금계산기</a>
+      <a href="/tools/">도구모음</a>
+      <a href="/blog/">블로그</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">홈</a><span>›</span>
+  <a href="/blog/">블로그</a><span>›</span>
+  업비트·빗썸 CSV 세금 준비 가이드
+</div>
+
+<div class="hero">
+  <span class="hero-badge">📥 단계별 가이드</span>
+  <h1><span class="kw">업비트·빗썸 거래내역</span>으로<br>2027년 <span class="gr">세금 미리 계산</span>하는 법</h1>
+  <p class="hero-sub">CSV 다운로드 → 취득가액 확인 → 손익통산 → 세금 계산까지 한 번에</p>
+  <a href="/#calculator" class="hero-cta">📊 무료 세금 계산기 사용하기</a>
+  <p class="hero-meta">CryptoTax.cloud · 2025년 5월 3일</p>
+</div>
+
+<article class="article">
+
+  <div class="danger-box">
+    <div class="d-title">⚡ 지금 바로 해야 하는 이유</div>
+    <p style="margin:0">거래소는 과거 거래내역을 영구 보관하지 않을 수 있습니다. 특히 서비스가 변경되거나 종료되면 내역 복구가 불가능합니다. <strong>지금 당장 전체 거래내역을 다운로드해 안전한 곳에 보관</strong>하세요.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">1</span>거래소별 CSV 다운로드 방법</div>
+    <div class="exchange-compare">
+      <div class="ex-card">
+        <div class="ex-name">🟠 업비트</div>
+        <div class="ex-item"><strong>경로:</strong> 앱 → 거래 → 거래내역 → 다운로드</div>
+        <div class="ex-item"><strong>PC:</strong> 업비트 웹 → 마이페이지 → 거래내역</div>
+        <div class="ex-item"><strong>기간:</strong> 최대 3개월 단위</div>
+        <div class="ex-item"><strong>형식:</strong> CSV (엑셀 열기 가능)</div>
+        <div class="ex-item"><strong>포함 정보:</strong> 거래일시, 코인명, 수량, 단가, 수수료</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-name">🔵 빗썸</div>
+        <div class="ex-item"><strong>경로:</strong> 앱 → 자산 → 거래내역 → 내보내기</div>
+        <div class="ex-item"><strong>PC:</strong> 빗썸 웹 → 거래내역 → 엑셀 다운로드</div>
+        <div class="ex-item"><strong>기간:</strong> 최대 6개월 단위</div>
+        <div class="ex-item"><strong>형식:</strong> CSV/XLS</div>
+        <div class="ex-item"><strong>포함 정보:</strong> 거래일시, 종류, 수량, 체결가격, 수수료</div>
+      </div>
+    </div>
+    <div class="accent-box">
+      <div class="a-title">💡 전체 내역 받는 팁</div>
+      <p style="margin:0">업비트는 3개월씩, 빗썸은 6개월씩 나눠 다운로드해야 합니다. 처음 가입한 날부터 현재까지 <strong>전 기간을 빠짐없이</strong> 받아야 취득가액 계산이 정확합니다. 엑셀에서 여러 파일을 합쳐 하나의 파일로 관리하세요.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">2</span>CSV 데이터로 세금 계산하기 — 5단계</div>
+    <ul class="step-list">
+      <li>
+        <div class="content">
+          <strong>전체 매도 거래 목록 추출</strong>
+          <p>CSV에서 '매도' 거래만 필터링합니다. 업비트는 거래유형 컬럼에서 '매도', 빗썸은 '판매' 항목을 선택합니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="content">
+          <strong>코인별 취득가액(평균 매수단가) 계산</strong>
+          <p>같은 코인을 여러 번 산 경우 평균 단가를 계산해야 합니다. 공식: 총 매수금액 ÷ 총 매수 수량 = 평균 취득가액.</p>
+          <div class="tip">→ 물타기 계산기로 평균 단가를 바로 계산할 수 있습니다.</div>
+        </div>
+      </li>
+      <li>
+        <div class="content">
+          <strong>수익/손실 계산</strong>
+          <p>(매도금액 - 취득가액 - 수수료) = 해당 거래 손익. 각 거래별로 계산 후 코인별로 합산합니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="content">
+          <strong>손익통산 — 수익과 손실 합산</strong>
+          <p>모든 코인의 손익을 더합니다. 수익 코인과 손실 코인을 상계해 순이익을 구합니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="content">
+          <strong>기본공제 250만 원 적용 후 세금 계산</strong>
+          <p>순이익 - 250만 원 = 과세소득. 과세소득 × 22% = 납부 세금.</p>
+          <div class="tip">→ 무료 세금 계산기에 수익·손실 입력하면 자동으로 계산됩니다.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">3</span>취득가액을 모를 때 — 의제취득가액 제도</div>
+    <p>오래전에 구매해 취득가액 기록이 없거나, 거래소 이전으로 내역이 없는 경우 정부가 제공하는 <strong>의제취득가액</strong> 제도를 사용할 수 있습니다.</p>
+    <div class="highlight">
+      <div class="h-title">📌 의제취득가액이란?</div>
+      <p>취득가액을 알 수 없는 경우, <strong>2025년 12월 31일 기준 시가의 80%</strong>를 취득가액으로 인정해줍니다. 예를 들어 2025년 말 BTC가 1억 원이면 취득가액 = 8,000만 원으로 인정. 단, 실제 취득가액이 더 높다면 실제 금액이 유리합니다.</p>
+    </div>
+    <table class="tbl">
+      <thead><tr><th>취득가액 확인 방법</th><th>적용 기준</th><th>유리한 경우</th></tr></thead>
+      <tbody>
+        <tr><td>실제 거래내역 기준</td><td>CSV의 실제 매수가</td><td>취득가액이 시가 80%보다 높을 때</td></tr>
+        <tr><td>의제취득가액</td><td>2025년 말 시가 × 80%</td><td>초기 구매가가 낮아 세금이 많이 나올 때</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">4</span>자주 묻는 질문</div>
+    <h3>Q. 업비트에서 빗썸으로 코인을 옮기면 어떻게 계산하나요?</h3>
+    <p>거래소 간 전송(입출금)은 매도가 아니므로 과세 이벤트가 아닙니다. 업비트에서 구매한 취득가액이 빗썸에서 매도할 때도 그대로 적용됩니다. 다만 내역 추적을 위해 전송 기록도 보관하는 것이 좋습니다.</p>
+    <h3>Q. 바이낸스 등 해외 거래소 내역도 합산해야 하나요?</h3>
+    <p>네, 국내외 모든 거래소에서 발생한 수익을 합산해 신고해야 합니다. 해외 거래소는 국세청과 정보 공유 협약이 확대되고 있어 누락 시 가산세 위험이 있습니다.</p>
+    <h3>Q. 수수료는 어떻게 처리하나요?</h3>
+    <p>거래 수수료는 필요경비로 인정돼 손익 계산 시 차감됩니다. CSV에 포함된 수수료 항목을 빠짐없이 반영하면 절세에 도움이 됩니다.</p>
+  </div>
+
+  <div class="calc-cta">
+    <h3>📊 거래내역 입력 → 세금 즉시 계산</h3>
+    <p>매수가·매도가·수수료를 입력하면 손익통산 포함 실제 세금을 바로 계산해드립니다. 완전 무료.</p>
+    <a href="/#calculator" class="hero-cta" style="display:inline-flex">무료 세금 계산기 시작하기 →</a>
+  </div>
+
+  <div class="related">
+    <h3>📚 관련 글</h3>
+    <ul class="related-list">
+      <li><a href="/blog/coin-tax-loss-offset-guide.html">손익통산으로 세금 줄이기 완전 가이드</a></li>
+      <li><a href="/blog/coin-tax-deadline-countdown-2027.html">코인 세금 D-246 카운트다운 체크리스트</a></li>
+      <li><a href="/blog/coin-tax-abolition-bill-2027.html">국민의힘 가상자산 과세 폐지 법안 분석</a></li>
+      <li><a href="/blog/upbit-csv-download-guide-2027.html">업비트 CSV 다운로드 상세 가이드</a></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <p>© 2025 CryptoTax.cloud — 대한민국 코인 투자자를 위한 무료 세금 계산기</p>
+  <p style="margin-top:8px"><a href="/">홈</a> · <a href="/tools/">계산기 모음</a> · <a href="/blog/">블로그</a></p>
+  <p style="margin-top:12px;font-size:12px">본 콘텐츠는 정보 제공 목적이며 법률·세무 전문 조언이 아닙니다.</p>
+</footer>
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+</body>
+</html>
