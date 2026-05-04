@@ -130,11 +130,11 @@ a{text-decoration:none;color:inherit;}
 .nav{background:var(--bg-overlay);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--nav-border);position:sticky;top:0;z-index:1000;transition:background var(--transition),border-color var(--transition);gap:10px;}
 @media(min-width:768px){.nav{padding:0 32px;height:64px;}}
 @media(min-width:1024px){.nav{padding:0 40px;max-width:100%;}}
-.nav-inner{width:100%;max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;}
 .nav-logo{color:var(--orange);font-weight:900;font-size:1.2rem;display:flex;align-items:center;gap:6px;flex-shrink:0;letter-spacing:-0.02em;}
 .nav-logo span{color:var(--blue);}
 .nav-right{display:flex;align-items:center;gap:8px;}
-.nav-links{display:flex;gap:4px;flex-wrap:nowrap;}
+.nav-links{display:flex;gap:4px;flex-wrap:nowrap;justify-content:center;}
 .nav-links a{color:var(--text-secondary);font-size:0.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all var(--transition);border:1px solid transparent;white-space:nowrap;}
 .nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:var(--orange-border);}
 .nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;border-radius:7px;padding:6px 14px!important;}
@@ -983,68 +983,72 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <nav class="nav">
   <div class="nav-inner">
     <a class="nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <!-- 세금계산기 (직접 링크) -->
-        <a href="#calculator"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>세금계산기</a>
 
-        <!-- 도구모음 드롭다운 -->
-        <div class="nav-dropdown">
-          <a href="/tools/" class="nav-dropdown-trigger">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            도구모음
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="/tools/tax-calculator.html"><span class="dd-icon">💰</span>코인 세금 계산기<span class="dd-badge">무료</span></a>
-            <a href="/tools/dca-calculator.html"><span class="dd-icon">📅</span>DCA 적립식 계산기</a>
-            <a href="/tools/multa-calculator.html"><span class="dd-icon">📊</span>물타기 계산기</a>
-            <a href="/tools/staking-calculator.html"><span class="dd-icon">🏦</span>스테이킹 이자 계산기</a>
-            <a href="/tools/kimchi-calculator.html"><span class="dd-icon">🌶️</span>김치프리미엄 계산기</a>
-            <a href="/tools/roi-calculator.html"><span class="dd-icon">📈</span>수익률 계산기</a>
-            <a href="/tools/satoshi-calculator.html"><span class="dd-icon">₿</span>사토시 환산기</a>
-            <div class="dd-divider"></div>
-            <a href="/tools/" class="dd-all"><span class="dd-icon">🛠️</span>전체 도구 보기 →</a>
-          </div>
+    <!-- ▼ 중앙 네비 링크 (3-column grid 중간 컬럼) -->
+    <div class="nav-links">
+      <!-- 세금계산기 (직접 링크) -->
+      <a href="#calculator"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>세금계산기</a>
+
+      <!-- 도구모음 드롭다운 -->
+      <div class="nav-dropdown">
+        <a href="/tools/" class="nav-dropdown-trigger">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          도구모음
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/tools/tax-calculator.html"><span class="dd-icon">💰</span>코인 세금 계산기<span class="dd-badge">무료</span></a>
+          <a href="/tools/dca-calculator.html"><span class="dd-icon">📅</span>DCA 적립식 계산기</a>
+          <a href="/tools/multa-calculator.html"><span class="dd-icon">📊</span>물타기 계산기</a>
+          <a href="/tools/staking-calculator.html"><span class="dd-icon">🏦</span>스테이킹 이자 계산기</a>
+          <a href="/tools/kimchi-calculator.html"><span class="dd-icon">🌶️</span>김치프리미엄 계산기</a>
+          <a href="/tools/roi-calculator.html"><span class="dd-icon">📈</span>수익률 계산기</a>
+          <a href="/tools/satoshi-calculator.html"><span class="dd-icon">₿</span>사토시 환산기</a>
+          <div class="dd-divider"></div>
+          <a href="/tools/" class="dd-all"><span class="dd-icon">🛠️</span>전체 도구 보기 →</a>
         </div>
-
-        <!-- 시장지수 드롭다운 -->
-        <div class="nav-dropdown">
-          <a href="/tools/market-index.html" class="nav-dropdown-trigger">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            시장데이터
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="/tools/market-index.html"><span class="dd-icon">🌡️</span>공포·탐욕 지수<span class="dd-new">LIVE</span></a>
-            <a href="/tools/market/crypto-charts.html"><span class="dd-icon">💹</span>실시간 코인 차트<span class="dd-new">LIVE</span></a>
-            <a href="/market/bitcoin-rainbow-chart.html"><span class="dd-icon">🌈</span>비트코인 레인보우 차트</a>
-            <a href="/market/crypto-charts.html"><span class="dd-icon">🗺️</span>코인 히트맵</a>
-          </div>
-        </div>
-
-        <!-- 블로그 드롭다운 -->
-        <div class="nav-dropdown">
-          <a href="/blog/" class="nav-dropdown-trigger">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            블로그
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
-          </a>
-          <div class="nav-dropdown-menu">
-            <a href="/blog/coin-tax/2027-guide.html"><span class="dd-icon">🏛️</span>코인 세금 가이드</a>
-            <a href="/blog/coin-tax/250man-exemption.html"><span class="dd-icon">💸</span>250만원 공제 완벽 정리</a>
-            <a href="/blog/coin-tax/no-report-penalty.html"><span class="dd-icon">⚠️</span>무신고 가산세 계산</a>
-            <a href="/blog/investment/dca-strategy.html"><span class="dd-icon">📈</span>투자 전략</a>
-            <a href="/blog/guide/beginner-guide.html"><span class="dd-icon">🔰</span>입문 가이드</a>
-            <a href="/blog/virtual-asset-tax-2027-guide.html"><span class="dd-icon">📅</span>2027 세금 완벽 가이드<span class="dd-new">NEW</span></a>
-            <div class="dd-divider"></div>
-            <a href="/blog/" class="dd-all"><span class="dd-icon">📰</span>전체 글 보기 →</a>
-          </div>
-        </div>
-
-        <a href="#faq"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
-        <a href="#calculator" class="nav-cta">무료 계산 →</a>
       </div>
+
+      <!-- 시장지수 드롭다운 -->
+      <div class="nav-dropdown">
+        <a href="/tools/market-index.html" class="nav-dropdown-trigger">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          시장데이터
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/tools/market-index.html"><span class="dd-icon">🌡️</span>공포·탐욕 지수<span class="dd-new">LIVE</span></a>
+          <a href="/tools/market/crypto-charts.html"><span class="dd-icon">💹</span>실시간 코인 차트<span class="dd-new">LIVE</span></a>
+          <a href="/market/bitcoin-rainbow-chart.html"><span class="dd-icon">🌈</span>비트코인 레인보우 차트</a>
+          <a href="/market/crypto-charts.html"><span class="dd-icon">🗺️</span>코인 히트맵</a>
+        </div>
+      </div>
+
+      <!-- 블로그 드롭다운 -->
+      <div class="nav-dropdown">
+        <a href="/blog/" class="nav-dropdown-trigger">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          블로그
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px;margin-left:1px;"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/blog/coin-tax/2027-guide.html"><span class="dd-icon">🏛️</span>코인 세금 가이드</a>
+          <a href="/blog/coin-tax/250man-exemption.html"><span class="dd-icon">💸</span>250만원 공제 완벽 정리</a>
+          <a href="/blog/coin-tax/no-report-penalty.html"><span class="dd-icon">⚠️</span>무신고 가산세 계산</a>
+          <a href="/blog/investment/dca-strategy.html"><span class="dd-icon">📈</span>투자 전략</a>
+          <a href="/blog/guide/beginner-guide.html"><span class="dd-icon">🔰</span>입문 가이드</a>
+          <a href="/blog/virtual-asset-tax-2027-guide.html"><span class="dd-icon">📅</span>2027 세금 완벽 가이드<span class="dd-new">NEW</span></a>
+          <div class="dd-divider"></div>
+          <a href="/blog/" class="dd-all"><span class="dd-icon">📰</span>전체 글 보기 →</a>
+        </div>
+      </div>
+
+      <a href="#faq"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
+    </div>
+
+    <!-- ▼ 우측 액션 영역 (CTA + 테마 + 햄버거) -->
+    <div class="nav-right">
+      <a href="#calculator" class="nav-cta">무료 계산 →</a>
       <button class="theme-toggle theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">
         <span id="themeIcon" class="theme-svg-wrap">
           <svg id="sunSvg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="2.5" r="1.5"/><circle cx="12" cy="21.5" r="1.5"/><circle cx="2.5" cy="12" r="1.5"/><circle cx="21.5" cy="12" r="1.5"/><circle cx="5.39" cy="5.39" r="1.2"/><circle cx="18.61" cy="18.61" r="1.2"/><circle cx="5.39" cy="18.61" r="1.2"/><circle cx="18.61" cy="5.39" r="1.2"/></svg>
