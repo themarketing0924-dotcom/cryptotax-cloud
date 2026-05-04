@@ -13,8 +13,10 @@ function _applyThemeUI(theme){
   var isLight=theme==='light';
   var btn=document.getElementById('themeBtn');
   if(btn)btn.textContent=isLight?'🌙 다크':'☀️ 라이트';
-  var icon=document.getElementById('themeIcon');
-  if(icon)icon.textContent=isLight?'🌙':'☀️';
+  var sunSvg=document.getElementById('sunSvg');
+  var moonSvg=document.getElementById('moonSvg');
+  if(sunSvg)sunSvg.style.display=isLight?'none':'';
+  if(moonSvg)moonSvg.style.display=isLight?'':'none';
   document.querySelectorAll('.toggle-track').forEach(function(track){
     track.classList.toggle('active',isLight);
   });
@@ -482,9 +484,11 @@ window.CoinSearch = (function(){
       '<a class="ctc-nav-logo" href="/">₿ CryptoTax<span>.cloud</span></a>'+
       '<div class="ctc-nav-right">'+
         '<div class="ctc-nav-links">'+links+'</div>'+
-        '<button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
-          '<span id="themeIcon">☀️</span>'+
-          '<div class="toggle-track"><div class="toggle-thumb"></div></div>'+
+        '<button class="theme-toggle ctc-theme-icon-only theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
+          '<span id="themeIcon" class="theme-svg-wrap">'+
+            '<svg id="sunSvg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="2.5" r="1.5"/><circle cx="12" cy="21.5" r="1.5"/><circle cx="2.5" cy="12" r="1.5"/><circle cx="21.5" cy="12" r="1.5"/><circle cx="5.39" cy="5.39" r="1.2"/><circle cx="18.61" cy="18.61" r="1.2"/><circle cx="5.39" cy="18.61" r="1.2"/><circle cx="18.61" cy="5.39" r="1.2"/></svg>'+
+            '<svg id="moonSvg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'+
+          '</span>'+
         '</button>'+
         '<button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기">'+
           '<span></span><span></span><span></span>'+

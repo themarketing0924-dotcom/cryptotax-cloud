@@ -528,17 +528,27 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 .footer-col a:hover{color:var(--text-primary);}
 .footer-col p{color:var(--text-secondary);}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-default),transparent);margin:8px 0;}
+/* 태블릿 (769~1023px): 드롭다운 숨기고 햄버거 노출 */
+@media(min-width:769px) and (max-width:1023px){
+  .nav-dropdown{display:none;}
+  .hamburger-btn{display:flex!important;}
+  .nav-right{gap:6px;}
+}
 @media(max-width:768px){
   .nav-links{display:none;}
   .hamburger-btn{display:flex;}
   .cd-num{font-size:1.7rem;}
   .countdown-row{gap:8px;}
-  /* ✅ 수정: 모바일에서 외부 버튼 숨기고 간격 줄이기 */
   .nav .theme-toggle { display: none; }
   .drawer-item { padding: 10px 20px; gap: 10px; }
   .drawer-section-title { padding: 10px 20px 4px; }
   .theme-toggle .toggle-label{display:none;}
 }
+/* 아이콘 전용 테마 버튼 */
+.theme-icon-only{padding:8px!important;width:38px;height:38px;justify-content:center;gap:0!important;border-radius:10px!important;}
+.theme-icon-only .toggle-track,.theme-icon-only .toggle-label{display:none!important;}
+.theme-svg-wrap{display:flex;align-items:center;justify-content:center;line-height:1;}
+.theme-svg-wrap svg{display:block;}
 @media(max-width:479px){
   .cd-unit{min-width:60px;padding:10px 12px;}
   .cd-num{font-size:1.4rem;}
@@ -1035,10 +1045,11 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
         <a href="#faq"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
         <a href="#calculator" class="nav-cta">무료 계산 →</a>
       </div>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">
-        <span class="toggle-icon" id="themeIcon">☀️</span>
-        <div class="toggle-track"><div class="toggle-thumb"></div></div>
-        <span class="toggle-label" id="themeLabel">라이트</span>
+      <button class="theme-toggle theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">
+        <span id="themeIcon" class="theme-svg-wrap">
+          <svg id="sunSvg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="2.5" r="1.5"/><circle cx="12" cy="21.5" r="1.5"/><circle cx="2.5" cy="12" r="1.5"/><circle cx="21.5" cy="12" r="1.5"/><circle cx="5.39" cy="5.39" r="1.2"/><circle cx="18.61" cy="18.61" r="1.2"/><circle cx="5.39" cy="18.61" r="1.2"/><circle cx="18.61" cy="5.39" r="1.2"/></svg>
+          <svg id="moonSvg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
       </button>
       <!-- 햄버거 버튼 -->
       <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleDrawer()" aria-label="메뉴 열기">
@@ -1888,7 +1899,7 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
 <script>
 (function initTheme(){const saved=localStorage.getItem('ctc-theme')||'dark';applyTheme(saved,false);})();
 function toggleTheme(){const current=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(current==='dark'?'light':'dark',true);}
-function applyTheme(theme,save){const root=document.documentElement;const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');const dIcon=document.getElementById('drawerThemeIcon');if(theme==='light'){root.setAttribute('data-theme','light');root.style.colorScheme='light';if(icon)icon.textContent='🌙';if(label)label.textContent='다크';if(dIcon)dIcon.textContent='🌙';}else{root.setAttribute('data-theme','dark');root.style.colorScheme='dark';if(icon)icon.textContent='☀️';if(label)label.textContent='라이트';if(dIcon)dIcon.textContent='☀️';}if(save)localStorage.setItem('ctc-theme',theme);if(window.__buildIdxTicker)window.__buildIdxTicker(theme);}
+function applyTheme(theme,save){const root=document.documentElement;const dIcon=document.getElementById('drawerThemeIcon');const sunSvg=document.getElementById('sunSvg');const moonSvg=document.getElementById('moonSvg');if(theme==='light'){root.setAttribute('data-theme','light');root.style.colorScheme='light';if(sunSvg)sunSvg.style.display='none';if(moonSvg)moonSvg.style.display='';if(dIcon)dIcon.textContent='🌙';document.querySelectorAll('.toggle-track').forEach(t=>t.classList.add('active'));}else{root.setAttribute('data-theme','dark');root.style.colorScheme='dark';if(sunSvg)sunSvg.style.display='';if(moonSvg)moonSvg.style.display='none';if(dIcon)dIcon.textContent='☀️';document.querySelectorAll('.toggle-track').forEach(t=>t.classList.remove('active'));}if(save)localStorage.setItem('ctc-theme',theme);if(window.__buildIdxTicker)window.__buildIdxTicker(theme);}
 
 /* ===== 햄버거 드로어 메뉴 ===== */
 function toggleDrawer(){const drawer=document.getElementById('mobileDrawer');const overlay=document.getElementById('drawerOverlay');const btn=document.getElementById('hamburgerBtn');const isOpen=drawer.classList.contains('open');if(isOpen){closeDrawer();}else{drawer.classList.add('open');overlay.classList.add('open');btn.classList.add('open');document.body.style.overflow='hidden';}}
