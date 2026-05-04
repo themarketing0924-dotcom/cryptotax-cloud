@@ -13,11 +13,26 @@
   <meta property="og:title" content="손익통산으로 코인 세금 줄이기 — 손실이 절세가 되는 원리">
   <meta property="og:description" content="손실 중인 코인을 팔아 세금을 줄이는 손익통산 전략 완전 가이드. 계산 예시 포함.">
   <meta property="og:url" content="https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html">
-  <meta property="og:image" content="https://cryptotax.cloud/assets/og-tax.png">
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="손익통산으로 코인 세금 줄이기 — 손실이 절세 무기가 되는 법">
+  <meta name="twitter:description" content="내 포트폴리오 안에 이미 절세 도구가 있습니다. 손익통산 원리·계산 예시·워시세일 없는 한국 세법 총정리.">
+  <meta name="twitter:image" content="https://cryptotax.cloud/assets/img/blog/loss-portfolio.png">
+  <meta property="article:published_time" content="2025-05-03T09:00:00+09:00">
+  <meta property="article:modified_time" content="2025-05-03T09:00:00+09:00">
+  <meta property="article:author" content="CryptoTax.cloud">
+  <meta property="article:section" content="절세 전략">
+  <meta property="article:tag" content="코인 손익통산">
+  <meta property="article:tag" content="가상자산 절세">
+  <meta property="og:image" content="https://cryptotax.cloud/assets/img/blog/loss-portfolio.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="코인 손익통산으로 세금 줄이기">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"손익통산으로 코인 세금 줄이기 완전 가이드","description":"가상자산 손익통산 절세 전략 완전 정리","author":{"@type":"Organization","name":"CryptoTax.cloud"},"publisher":{"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud"},"datePublished":"2025-05-03","dateModified":"2025-05-03","mainEntityOfPage":"https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html"}
+  {"@context":"https://schema.org","@type":"Article","headline":"손익통산으로 코인 세금 줄이기 완전 가이드","description":"가상자산 손익통산 절세 전략 완전 정리","image":"https://cryptotax.cloud/assets/img/blog/loss-portfolio.png","author":{"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud"},"publisher":{"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud","logo":{"@type":"ImageObject","url":"https://cryptotax.cloud/assets/img/logo.png"}},"datePublished":"2025-05-03","dateModified":"2025-05-03","mainEntityOfPage":"https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html","keywords":"코인 손익통산, 가상자산 손익통산, 코인 손실 절세"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},{"@type":"ListItem","position":2,"name":"블로그","item":"https://cryptotax.cloud/blog/"},{"@type":"ListItem","position":3,"name":"손익통산 절세 가이드","item":"https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html"}]}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"손익통산이란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"여러 가상자산의 수익과 손실을 합산해 순이익을 계산하는 방식입니다. 예를 들어 비트코인에서 500만 원 이익, 알트코인에서 300만 원 손실이면 과세 대상은 200만 원(기본공제 250만 원 이하라 세금 0원)이 됩니다."}},{"@type":"Question","name":"손실 이월 공제는 되나요?","acceptedAnswer":{"@type":"Answer","text":"현행 법안 기준으로 가상자산 손실은 당해 연도 내 손익통산만 허용되며, 다음 해로 이월 공제는 불가능합니다. 해외주식(5년 이월 허용)에 비해 불리한 부분입니다."}},{"@type":"Question","name":"손실 코인을 팔고 바로 다시 사도 되나요?","acceptedAnswer":{"@type":"Answer","text":"가능합니다. 한국 세법상 미국처럼 '워시세일 규정'이 없어, 손실 실현 후 같은 코인을 즉시 재매수해도 손실 공제가 유지됩니다. 단, 새로운 취득가액은 재매수 가격 기준으로 갱신됩니다."}}]}
@@ -80,6 +95,8 @@
     .related-list{list-style:none;padding:0}
     .related-list li{padding:8px 0;border-bottom:1px solid var(--border)}.related-list li:last-child{border-bottom:none}
     footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:32px 20px;text-align:center;font-size:13px;color:var(--text-dim);margin-top:60px}
+    .article-img{width:100%;border-radius:var(--radius);margin:24px 0;display:block;box-shadow:0 6px 24px rgba(0,0,0,0.35);object-fit:cover}
+    .img-caption{text-align:center;font-size:13px;color:var(--text-dim);margin:-16px 0 28px;font-style:italic}
   </style>
 </head>
 <body>
@@ -110,6 +127,9 @@
 
 <article class="article">
 
+  <img src="/assets/img/blog/loss-portfolio.png" alt="가상자산 포트폴리오 손익통산 세금 절감 전략" class="article-img" loading="eager" width="1200" height="675">
+  <p class="img-caption">내 포트폴리오 안에 이미 절세 도구가 있습니다 — 손익통산으로 세금을 합법적으로 줄일 수 있습니다.</p>
+
   <div class="section">
     <div class="section-title"><span class="num">1</span>손익통산이란? — 핵심 개념 이해</div>
     <p>손익통산이란 <strong>같은 과세 기간(1년) 내에 발생한 여러 가상자산의 이익과 손실을 합산</strong>해 순이익을 계산하는 방식입니다. 쉽게 말해, 비트코인에서 번 돈에서 이더리움에서 잃은 돈을 빼고 나머지에만 세금을 내는 것입니다.</p>
@@ -134,6 +154,9 @@
     </div>
     <p>800만 원의 비트코인 수익이 있었지만, 손익통산 후 순이익이 200만 원으로 줄었고, 기본공제 250만 원 이하라 <strong>세금이 0원</strong>이 됩니다.</p>
 
+  <img src="/assets/img/blog/loss-calculator.png" alt="비트코인 세금 계산기 원화 손익통산" class="article-img" loading="lazy" width="1200" height="675">
+  <p class="img-caption">수익 코인과 손실 코인을 합산해 계산하면 실제 납부 세금이 크게 줄어듭니다.</p>
+
     <h3>예시 B: 손익통산으로 세금을 크게 줄인 경우</h3>
     <div class="example">
       <div class="e-title">📊 손익통산 전후 비교</div>
@@ -157,6 +180,9 @@
     </div>
     <h3>전략 2: 수익 실현 시기 분산</h3>
     <p>한 해에 수익이 몰리면 세금도 커집니다. 수익이 큰 코인을 2년에 나눠 팔면 기본공제를 두 번(총 500만 원) 받을 수 있습니다. 단, 가격 변동 리스크를 고려해야 합니다.</p>
+  <img src="/assets/img/blog/loss-strategy.png" alt="연말 코인 세금 손익통산 전략 달력" class="article-img" loading="lazy" width="1200" height="675">
+  <p class="img-caption">연말 전 손실 코인을 전략적으로 매도하면 당해 연도 세금을 크게 줄일 수 있습니다.</p>
+
     <h3>전략 3: 공제 한도 최대 활용</h3>
     <p>연간 250만 원 기본공제를 매년 꽉 채워 활용하는 것이 중요합니다. 수익이 없는 해에 공제가 소멸되므로, 매년 조금씩 수익을 실현하는 분산 전략이 유리합니다.</p>
     <table class="tbl">

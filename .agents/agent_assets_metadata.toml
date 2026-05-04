@@ -1,5 +1,94 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "FNdb_AOG58MMQ8ud4oLHO"
+uri = "file://assets/img/blog/abolition-hero.png"
+type = "image"
+title = "korean parliament crypto tax"
+
+[[generated]]
+id = "a7P4mnqa4lmIGm4Eg4ZuE"
+uri = "file://assets/img/blog/abolition-law.png"
+type = "image"
+title = "bitcoin tax law document"
+
+[[generated]]
+id = "fb9taQcvRqT3SsmAEOElA"
+uri = "file://assets/img/blog/abolition-investors.png"
+type = "image"
+title = "korean investors crypto analysis"
+
+[[generated]]
+id = "VC9ljRJpmTcSzs2H9tEpA"
+uri = "file://assets/img/blog/countdown-timer.png"
+type = "image"
+title = "countdown timer bitcoin 2027"
+
+[[generated]]
+id = "n1ZkdEn82vj_Nerd7zWJR"
+uri = "file://assets/img/blog/countdown-checklist.png"
+type = "image"
+title = "tax checklist preparation desk"
+
+[[generated]]
+id = "sCDmnAfgLmT8UeC81Bdfo"
+uri = "file://assets/img/blog/countdown-mobile.png"
+type = "image"
+title = "korean smartphone crypto tax app"
+
+[[generated]]
+id = "CEGjWMtLKs0fW5C22d4qb"
+uri = "file://assets/img/blog/equity-scales.png"
+type = "image"
+title = "scales justice stock bitcoin tax"
+
+[[generated]]
+id = "GLSxSSTNUIzO3iEqzVNwg"
+uri = "file://assets/img/blog/equity-stock.png"
+type = "image"
+title = "korean stock market celebration"
+
+[[generated]]
+id = "vIMtr8OmXJmWuVckVKLLi"
+uri = "file://assets/img/blog/equity-controversy.png"
+type = "image"
+title = "stock vs crypto tax fairness"
+
+[[generated]]
+id = "W2cpkkWQHL6ItAJF6VQVj"
+uri = "file://assets/img/blog/loss-portfolio.png"
+type = "image"
+title = "crypto loss profit portfolio"
+
+[[generated]]
+id = "eFqE_4sNJLLJgd9vuBrSa"
+uri = "file://assets/img/blog/loss-calculator.png"
+type = "image"
+title = "bitcoin tax calculator korean won"
+
+[[generated]]
+id = "26ze5BwkeIXReKw5W9alO"
+uri = "file://assets/img/blog/loss-strategy.png"
+type = "image"
+title = "year end tax strategy calendar"
+
+[[generated]]
+id = "-aHe_yTG04mfbI9reoHz3"
+uri = "file://assets/img/blog/csv-exchange.png"
+type = "image"
+title = "korean crypto exchange interface"
+
+[[generated]]
+id = "egU0ZSVXQDtz-ptvcsaW_"
+uri = "file://assets/img/blog/csv-spreadsheet.png"
+type = "image"
+title = "crypto csv spreadsheet transactions"
+
+[[generated]]
+id = "vXLipQhmiLZlF8t9r7MZ_"
+uri = "file://assets/img/blog/csv-taxfiling.png"
+type = "image"
+title = "korean person hometax tax filing"
 
 [[outputs]]
 id = "EAzf6r_v8dYon1jfGck9l"
