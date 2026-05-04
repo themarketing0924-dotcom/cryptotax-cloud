@@ -128,7 +128,15 @@
   </script>
 
   <!-- ====================================================
-       ⑥ 폰트 & 스타일 (수정 금지)
+       ⑥ 구글 애드센스 — 승인 후 ca-pub-ID만 교체하면 바로 작동
+       ▶ 현재는 주석 처리됨. 애드센스 승인 받으면 주석 해제!
+       ==================================================== -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-【YOUR_PUBLISHER_ID】" crossorigin="anonymous"></script>
+  -->
+
+  <!-- ====================================================
+       ⑦ 폰트 & 스타일 (수정 금지)
        ==================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -182,6 +190,9 @@
     .related-list{list-style:none;padding:0}
     .related-list li{padding:8px 0;border-bottom:1px solid var(--border)}.related-list li:last-child{border-bottom:none}
     footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:32px 20px;text-align:center;font-size:13px;color:var(--text-dim);margin-top:60px}
+    /* 애드센스 광고 컨테이너 */
+    .ad-slot{max-width:var(--max-w);margin:0 auto;padding:8px 20px;text-align:center}
+    .ad-slot-label{font-size:10px;color:var(--text-dim);text-align:center;margin-bottom:4px;letter-spacing:1px}
   </style>
 </head>
 <body>
@@ -222,6 +233,23 @@
     <div class="meta">CryptoTax.cloud · 【YYYY년 M월 D일】</div>
   </div>
 </div>
+
+<!-- ============================================================
+     광고 슬롯 1 — 히어로 아래 (노출수 최다, 수익 1위)
+     애드센스 승인 후 주석 해제
+     ============================================================ -->
+<!--
+<div class="ad-slot">
+  <div class="ad-slot-label">ADVERTISEMENT</div>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-【YOUR_PUBLISHER_ID】"
+       data-ad-slot="【AD_SLOT_ID_1】"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+-->
 
 <!-- ============================================================
      본문 아티클
@@ -272,6 +300,20 @@
   <img src="/assets/img/blog/【이미지2.png】" alt="【이미지2 설명】" class="article-img" loading="lazy" width="1200" height="675">
   <p class="img-caption">【이미지2 캡션】</p>
 
+  <!-- ── 광고 슬롯 2 — 본문 중간 (읽다가 자연 노출, 수익 2위) ──
+       애드센스 승인 후 주석 해제
+  <div class="ad-slot" style="margin:24px 0">
+    <div class="ad-slot-label">ADVERTISEMENT</div>
+    <ins class="adsbygoogle"
+         style="display:block;text-align:center"
+         data-ad-client="ca-pub-【YOUR_PUBLISHER_ID】"
+         data-ad-slot="【AD_SLOT_ID_2】"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
   <!-- ── 섹션 3 ────────────────────────────── -->
   <div class="section">
     <div class="section-title"><span class="num">3</span>【섹션3 제목】</div>
@@ -298,6 +340,20 @@
   <!-- 결론 이미지 -->
   <img src="/assets/img/blog/【이미지3.png】" alt="【이미지3 설명】" class="article-img" loading="lazy" width="1200" height="675">
   <p class="img-caption">【이미지3 캡션】</p>
+
+  <!-- ── 광고 슬롯 3 — CTA 직전 (이탈 전 마지막 노출, 수익 3위) ──
+       애드센스 승인 후 주석 해제
+  <div class="ad-slot" style="margin:24px 0">
+    <div class="ad-slot-label">ADVERTISEMENT</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-【YOUR_PUBLISHER_ID】"
+         data-ad-slot="【AD_SLOT_ID_3】"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
 
   <!-- ── 세금 계산기 CTA (수정 금지) ──────── -->
   <div class="calc-cta">
