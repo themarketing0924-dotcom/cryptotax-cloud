@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CryptoTax.cloud — 코인 세금·투자 가이드</title>
+    <link>https://cryptotax.cloud</link>
+    <description>2027년 가상자산 양도소득세 22% 무료 계산기. 업비트·빗썸 코린이를 위한 코인 세금·투자 완전 가이드.</description>
+    <language>ko</language>
+    <lastBuildDate>Sun, 04 May 2026 21:00:00 +0900</lastBuildDate>
+    <atom:link href="https://cryptotax.cloud/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://cryptotax.cloud/og-image.png</url>
+      <title>CryptoTax.cloud</title>
+      <link>https://cryptotax.cloud</link>
+    </image>
+
+    <item>
+      <title>코인 세금 2027 완벽 가이드 | 22% 과세·250만원 공제 계산법</title>
+      <link>https://cryptotax.cloud/blog/coin-tax-2027-guide.html</link>
+      <description>2027년 가상자산 양도소득세 22%, 250만원 공제, 얼마부터 내야 하는지 완벽 정리. 무료 세금 계산기로 내 세금 3초 만에 확인.</description>
+      <pubDate>Sun, 04 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-tax-2027-guide.html</guid>
+    </item>
+
+    <item>
+      <title>가상자산 세금 2027 완벽 가이드 | 22% 계산·홈택스 신고까지</title>
+      <link>https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html</link>
+      <description>2027년 1월 시행 가상자산 세금 완벽 정리. 22% 세율 계산법, 250만원 기본공제, 홈택스 신고 방법, 무신고 가산세까지 한 페이지로 끝내세요.</description>
+      <pubDate>Sun, 04 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html</guid>
+    </item>
+
+    <item>
+      <title>코인 세금 계산 방법 5단계 | 매수·매도·수수료 완벽 가이드</title>
+      <link>https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html</link>
+      <description>코인 세금 계산을 5단계로 완전 정복. 비트코인 1억원 기준 실제 계산 예시, 총평균법, 수수료 공제까지 완벽 가이드.</description>
+      <pubDate>Sat, 03 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-tax-calculation-5-steps.html</guid>
+    </item>
+
+    <item>
+      <title>손익통산으로 코인 세금 줄이기 — 손실이 절세가 되는 원리</title>
+      <link>https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html</link>
+      <description>가상자산 손익통산 완전 가이드. 손실 중인 코인을 팔아 세금을 줄이는 방법, 계산 예시, 주의사항까지. 2027년 과세 전 꼭 알아야 할 절세 전략.</description>
+      <pubDate>Sat, 03 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-tax-loss-offset-guide.html</guid>
+    </item>
+
+    <item>
+      <title>업비트·빗썸 거래내역 CSV 완전 활용법 — 2027년 코인 세금 미리 계산</title>
+      <link>https://cryptotax.cloud/blog/upbit-bithumb-csv-tax-prep-2027.html</link>
+      <description>업비트·빗썸 거래내역 CSV 다운로드부터 세금 계산까지. 2027년 신고 전 미리 준비하는 방법을 단계별로 안내합니다.</description>
+      <pubDate>Fri, 02 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/upbit-bithumb-csv-tax-prep-2027.html</guid>
+    </item>
+
+    <item>
+      <title>코인 세금 D-day 카운트다운 — 2027년 과세 전 반드시 해야 할 10가지</title>
+      <link>https://cryptotax.cloud/blog/coin-tax-deadline-countdown-2027.html</link>
+      <description>2027년 1월 1일 가상자산 과세 시행까지 남은 날. 과세 전 반드시 해야 할 절세 준비 10가지를 체크리스트로 정리했습니다.</description>
+      <pubDate>Fri, 02 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-tax-deadline-countdown-2027.html</guid>
+    </item>
+
+    <item>
+      <title>국민의힘 가상자산 과세 폐지 법안 — 2027년 코인 세금 정말 없어지나?</title>
+      <link>https://cryptotax.cloud/blog/coin-tax-abolition-bill-2027.html</link>
+      <description>가상자산 과세 폐지 법안 발의 현황과 실제 시행 가능성 분석. 과세가 없어질 가능성과 대비 전략을 현실적으로 정리합니다.</description>
+      <pubDate>Thu, 01 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-tax-abolition-bill-2027.html</guid>
+    </item>
+
+    <item>
+      <title>솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세 계산법</title>
+      <link>https://cryptotax.cloud/blog/solana-staking-tax.html</link>
+      <description>솔라나 스테이킹 보상에 붙는 2027년 세금 계산법. 연 6% APY 기준 실제 세금 예시와 절세 방법까지 완벽 가이드.</description>
+      <pubDate>Thu, 01 May 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/solana-staking-tax.html</guid>
+    </item>
+
+    <item>
+      <title>비트코인 매달 10만원씩 DCA 적립 — 10년 뒤 얼마?</title>
+      <link>https://cryptotax.cloud/blog/bitcoin-dca-10years.html</link>
+      <description>비트코인에 매달 10만원씩 정기 적립(DCA)하면 10년 뒤 얼마가 될까? 실제 수익 시뮬레이션과 세금 계산까지 한번에 확인.</description>
+      <pubDate>Wed, 30 Apr 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/bitcoin-dca-10years.html</guid>
+    </item>
+
+    <item>
+      <title>김치프리미엄 1000만원 차익 세금 신고 | 2027년 22% 과세 가이드</title>
+      <link>https://cryptotax.cloud/blog/kimchi-premium-1000-tax-guide.html</link>
+      <description>김치프리미엄 차익 거래로 수익이 났다면 2027년부터 세금 신고 의무가 있습니다. 1000만원 차익 기준 실제 세금 계산 예시.</description>
+      <pubDate>Wed, 30 Apr 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/kimchi-premium-1000-tax-guide.html</guid>
+    </item>
+
+    <item>
+      <title>코인 물타기 평균단가 계산하는 법 완벽 정리 2027</title>
+      <link>https://cryptotax.cloud/blog/coin-multa-average-price.html</link>
+      <description>코인 물타기 후 평균단가를 정확히 계산하는 방법. 2회·3회 분할 매수 예시와 무료 물타기 계산기 제공.</description>
+      <pubDate>Tue, 29 Apr 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/coin-multa-average-price.html</guid>
+    </item>
+
+    <item>
+      <title>메타마스크 세금 신고 방법 | DeFi 지갑 거래 추적</title>
+      <link>https://cryptotax.cloud/blog/metamask-tax-guide.html</link>
+      <description>메타마스크 DeFi 거래의 2027년 세금 신고 방법. 지갑 거래 내역 추출부터 세금 계산까지 단계별 가이드.</description>
+      <pubDate>Tue, 29 Apr 2026 09:00:00 +0900</pubDate>
+      <guid>https://cryptotax.cloud/blog/metamask-tax-guide.html</guid>
+    </item>
+
+  </channel>
+</rss>
