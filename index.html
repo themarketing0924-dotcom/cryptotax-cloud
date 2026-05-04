@@ -614,9 +614,12 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 }
 
 /* ── 배경 테마 ── */
-.ad-bithumb  { background: linear-gradient(135deg, #110500 0%, #2a0d00 50%, #1a0800 100%); }
-.ad-coinlabs { background: linear-gradient(135deg, #00091a 0%, #001833 50%, #000d22 100%); }
-.ad-binance  { background: linear-gradient(135deg, #110f00 0%, #2a2400 50%, #1a1800 100%); }
+/* 빗썸: 화이트 배경 */
+.ad-bithumb  { background: #ffffff; border: 1px solid #FFE0CC; }
+/* 바이낸스: 블랙 배경 */
+.ad-binance  { background: #0B0E11; }
+/* 더코인랩스: 화이트 배경 */
+.ad-coinlabs { background: #ffffff; border: 1px solid #FFF0C0; }
 
 /* ── 배경 데코 원형 그라데이션 ── */
 .ad-bg-deco {
@@ -629,8 +632,8 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   top: -80px;
   opacity: 0.12;
 }
-.ad-bg-bithumb  { background: radial-gradient(circle, #FF8C00, transparent 70%); }
-.ad-bg-coinlabs { background: radial-gradient(circle, #58a6ff, transparent 70%); }
+.ad-bg-bithumb  { background: radial-gradient(circle, #FF8C00, transparent 70%); opacity: 0.06 !important; }
+.ad-bg-coinlabs { background: radial-gradient(circle, #F0A500, transparent 70%); opacity: 0.08 !important; }
 .ad-bg-binance  { background: radial-gradient(circle, #f0b90b, transparent 70%); }
 
 /* ── 로고 영역 ── */
@@ -669,12 +672,27 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 }
 @media (min-width: 768px) { .logo-name { font-size: 1.12rem; } }
 
-.bithumb-logo  .logo-name { color: #FF8C00; }
-.coinlabs-logo .logo-name { color: #58a6ff; }
+.bithumb-logo  .logo-name { color: #FF5A00; }
+.coinlabs-logo .logo-name { color: #D48A00; }
 .binance-logo  .logo-name { color: #f0b90b; }
-.bithumb-logo  .logo-name-kr { color: #FF8C00; }
-.coinlabs-logo .logo-name-kr { color: #58a6ff; }
+.bithumb-logo  .logo-name-kr { color: #FF5A00; }
+.coinlabs-logo .logo-name-kr { color: #D48A00; }
 .binance-logo  .logo-name-kr { color: #f0b90b; }
+/* 화이트 BG 슬라이드 헤드라인 */
+.ad-bithumb  .ad-headline { color: #1a1a1a; }
+.ad-coinlabs .ad-headline { color: #1a1a1a; }
+.ad-binance  .ad-headline { color: #F0B90B; }
+/* 화이트 BG 서브텍스트 */
+.ad-bithumb  .ad-sub-item { color: #555; }
+.ad-coinlabs .ad-sub-item { color: #555; }
+.ad-bithumb  .ad-sub-item b { color: #111; }
+.ad-coinlabs .ad-sub-item b { color: #111; }
+/* 화이트 BG AD라벨 */
+.ad-bithumb  .ad-label,
+.ad-coinlabs .ad-label { color: #aaa; background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
+/* 화이트 BG 유저카운트 */
+.ad-bithumb  .ad-user-count,
+.ad-coinlabs .ad-user-count { color: #777; }
 
 /* LIVE 배지 */
 .ad-live-badge {
@@ -733,9 +751,10 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   width: fit-content;
   white-space: nowrap;
 }
-.ad-reward-orange { background: rgba(247,147,26,0.18); color: #FF8C00; border: 1px solid rgba(247,147,26,0.35); }
+.ad-reward-orange { background: rgba(255,90,0,0.1); color: #FF5A00; border: 1px solid rgba(255,90,0,0.25); }
 .ad-reward-blue   { background: rgba(88,166,255,0.18); color: #58a6ff; border: 1px solid rgba(88,166,255,0.35); }
-.ad-reward-yellow { background: rgba(240,185,11,0.18); color: #f0b90b; border: 1px solid rgba(240,185,11,0.35); }
+.ad-reward-yellow { background: rgba(240,185,11,0.12); color: #C68A00; border: 1px solid rgba(240,185,11,0.3); }
+.ad-reward-yellow-dark { background: rgba(240,185,11,0.18); color: #f0b90b; border: 1px solid rgba(240,185,11,0.4); }
 @media (min-width: 768px) { .ad-reward-badge { font-size: 0.82rem; } }
 
 /* 헤드라인 */
@@ -901,7 +920,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.15);
   border: none;
   cursor: pointer;
   padding: 0;
@@ -910,11 +929,11 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 .ad-dot.active {
   width: 24px;
   border-radius: 4px;
-  background: #FF8C00;
+  background: #FF5A00;
 }
 /* 활성 슬라이드별 도트 색상 */
-.ad-banner-wrapper[data-active="1"] .ad-dot.active { background: #58a6ff; }
-.ad-banner-wrapper[data-active="2"] .ad-dot.active { background: #f0b90b; }
+.ad-banner-wrapper[data-active="1"] .ad-dot.active { background: #F0B90B; }
+.ad-banner-wrapper[data-active="2"] .ad-dot.active { background: #D48A00; }
 
 /* ── 화살표 ── */
 .ad-arrow {
@@ -977,17 +996,18 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 }
 
 /* ── 라이트 모드 대응 ── */
-[data-theme="light"] .ad-bithumb  { background: linear-gradient(135deg, #fff3e0, #ffe5c0); }
-[data-theme="light"] .ad-coinlabs { background: linear-gradient(135deg, #e8f3ff, #c8e4ff); }
-[data-theme="light"] .ad-binance  { background: linear-gradient(135deg, #fffbe0, #fff0a0); }
-[data-theme="light"] .ad-headline { color: #1a1f2e; }
-[data-theme="light"] .ad-sub-item { color: #57606a; }
-[data-theme="light"] .ad-sub-item b { color: #1a1f2e; }
-[data-theme="light"] .ad-user-count { color: #57606a; }
+/* 빗썸·코인랩스는 라이트/다크 무관하게 항상 흰 배경 유지 */
+[data-theme="dark"] .ad-bithumb  { background: #ffffff; border-color: #FFE0CC; }
+[data-theme="dark"] .ad-coinlabs { background: #ffffff; border-color: #FFF0C0; }
+/* 바이낸스는 항상 블랙 */
+[data-theme="light"] .ad-binance  { background: #0B0E11; }
+[data-theme="light"] .ad-binance .ad-headline { color: #F0B90B; }
+[data-theme="light"] .ad-bithumb  .ad-headline { color: #1a1a1a; }
+[data-theme="light"] .ad-coinlabs .ad-headline { color: #1a1a1a; }
+[data-theme="light"] .ad-bithumb  .ad-sub-item,
+[data-theme="light"] .ad-coinlabs .ad-sub-item { color: #555; }
 [data-theme="light"] .ad-arrow { background: rgba(255,255,255,0.8); border-color: #d0d7de; color: #1a1f2e; }
-[data-theme="light"] .ad-label { color: #8c959f; background: rgba(255,255,255,0.6); border-color: #d0d7de; }
 [data-theme="light"] .ad-chart-bars { opacity: 0.15; }
-[data-theme="light"] .ad-bg-deco { opacity: 0.08; }
 
 /* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
 button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.nav-cta,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
@@ -1448,22 +1468,156 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
   </div><!-- /section-inner -->
 </section>
 
-<!-- ===== 파트너 배너 2 (계산기 결과 아래) ===== -->
-<div class="ad-slot">
-  <span class="partner-label">파트너</span>
-  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" class="partner-banner">
-    <div class="partner-banner-inner">
-      <div class="partner-info">
-        <div class="partner-icon">🧠</div>
-        <div>
-          <div class="partner-name">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
-          <div class="partner-desc">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
+<!-- ===== 🔄 제휴 파트너 로테이션 배너 ===== -->
+<section class="ad-banner-section">
+  <div class="ad-banner-wrapper" id="adBanner" data-active="0">
+
+    <div class="ad-slider-track" id="adTrack">
+
+      <!-- ── SLIDE 0: 빗썸 (화이트 BG / 오렌지 텍스트) ── -->
+      <a class="ad-slide ad-bithumb" href="https://m.bithumb.com/react/referral/guide?referral=JD68T20OTV" target="_blank" rel="noopener sponsored" onclick="return true;">
+        <div class="ad-slide-inner">
+          <div class="ad-bg-deco ad-bg-bithumb"></div>
+          <!-- 로고 -->
+          <div class="ad-logo-wrap bithumb-logo">
+            <div class="ad-exchange-logo">
+              <span class="logo-icon">🔴</span>
+              <div>
+                <span class="logo-name">Bithumb</span>
+                <span class="logo-name-kr">빗썸</span>
+              </div>
+            </div>
+            <div class="ad-live-badge" style="background:rgba(255,90,0,0.1);color:#FF5A00;border-color:rgba(255,90,0,0.25);">
+              <span class="pulse-dot" style="background:#FF5A00;"></span>친구초대
+            </div>
+          </div>
+          <!-- 본문 -->
+          <div class="ad-body">
+            <div class="ad-reward-badge ad-reward-orange">🎁 친구초대 코드 — 수수료 우대 혜택</div>
+            <div class="ad-headline">빗썸 초대코드 입력하고<br><strong style="color:#FF5A00;">거래 수수료 혜택</strong> 받기</div>
+            <div class="ad-sub-list">
+              <span class="ad-sub-item">✅ 초대코드 <b>JD68T20OTV</b></span>
+              <span class="ad-sub-item">✅ 원화 직접 입출금 · 한국 2위 거래소</span>
+              <span class="ad-sub-item">✅ 비트코인·이더리움·알트코인 즉시 거래</span>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="ad-cta-wrap">
+            <div class="ad-cta-btn cta-bithumb">초대코드로<br>가입하기 →</div>
+            <div class="ad-code-box" style="color:#FF5A00;background:rgba(255,90,0,0.08);border-color:rgba(255,90,0,0.2);">JD68T20OTV</div>
+          </div>
+          <!-- 차트 바 데코 -->
+          <div class="ad-chart-bars">
+            <span class="bar bar-orange b1"></span><span class="bar bar-orange b2"></span>
+            <span class="bar bar-orange b3"></span><span class="bar bar-orange b4"></span>
+            <span class="bar bar-orange b5"></span><span class="bar bar-orange b6"></span>
+            <span class="bar bar-orange b7"></span>
+          </div>
         </div>
-      </div>
-      <div class="partner-cta">무료 강의 보기 →</div>
+        <div class="ad-label">AD</div>
+      </a>
+
+      <!-- ── SLIDE 1: 바이낸스 (블랙 BG / 옐로우 텍스트) ── -->
+      <a class="ad-slide ad-binance" href="https://www.binance.com/register?ref=36462416" target="_blank" rel="noopener sponsored" onclick="return true;">
+        <div class="ad-slide-inner">
+          <div class="ad-bg-deco ad-bg-binance"></div>
+          <!-- 로고 -->
+          <div class="ad-logo-wrap binance-logo">
+            <div class="ad-exchange-logo">
+              <span class="logo-icon">🟡</span>
+              <div>
+                <span class="logo-name">Binance</span>
+                <span class="logo-name-kr">바이낸스</span>
+              </div>
+            </div>
+            <div class="ad-live-badge ad-live-yellow">
+              <span class="pulse-dot pulse-yellow"></span>친구초대
+            </div>
+          </div>
+          <!-- 본문 -->
+          <div class="ad-body">
+            <div class="ad-reward-badge ad-reward-yellow-dark">💰 신규 가입 + 수수료 20% 환급</div>
+            <div class="ad-headline">바이낸스 레퍼럴 가입으로<br><strong style="color:#F0B90B;">수수료 20% 절감</strong></div>
+            <div class="ad-sub-list">
+              <span class="ad-sub-item" style="color:#848E9C;">✅ 레퍼럴 코드 <b style="color:#F0B90B;">36462416</b></span>
+              <span class="ad-sub-item" style="color:#848E9C;">✅ 글로벌 1위 · 600+ 코인 거래</span>
+              <span class="ad-sub-item" style="color:#848E9C;">✅ 친구 초대 시 추가 리워드</span>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="ad-cta-wrap">
+            <div class="ad-cta-btn cta-binance">레퍼럴 코드로<br>가입하기 →</div>
+            <div class="ad-code-box ad-code-yellow">ref: 36462416</div>
+          </div>
+          <!-- 차트 바 데코 -->
+          <div class="ad-chart-bars">
+            <span class="bar bar-yellow b1"></span><span class="bar bar-yellow b2"></span>
+            <span class="bar bar-yellow b3"></span><span class="bar bar-yellow b4"></span>
+            <span class="bar bar-yellow b5"></span><span class="bar bar-yellow b6"></span>
+            <span class="bar bar-yellow b7"></span>
+          </div>
+        </div>
+        <div class="ad-label">AD</div>
+      </a>
+
+      <!-- ── SLIDE 2: 더코인랩스 (화이트 BG / 골드 텍스트) ── -->
+      <a class="ad-slide ad-coinlabs" href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" onclick="return true;">
+        <div class="ad-slide-inner">
+          <div class="ad-bg-deco ad-bg-coinlabs"></div>
+          <!-- 로고 -->
+          <div class="ad-logo-wrap coinlabs-logo">
+            <div class="ad-exchange-logo">
+              <span class="logo-icon">🏆</span>
+              <div>
+                <span class="logo-name">CoinLabs</span>
+                <span class="logo-name-kr">더코인랩스</span>
+              </div>
+            </div>
+            <div class="ad-live-badge" style="background:rgba(212,138,0,0.1);color:#C68A00;border-color:rgba(212,138,0,0.25);">
+              <span class="pulse-dot" style="background:#D48A00;"></span>파트너
+            </div>
+          </div>
+          <!-- 본문 -->
+          <div class="ad-body">
+            <div class="ad-reward-badge ad-reward-yellow">🎓 코인 투자 전략 파트너 추천</div>
+            <div class="ad-headline">더코인랩스에서<br><strong style="color:#D48A00;">AI 블록체인 교육</strong> 시작하기</div>
+            <div class="ad-sub-list">
+              <span class="ad-sub-item">✅ 국내 최고 블록체인 투자 교육</span>
+              <span class="ad-sub-item">✅ AI 분석 도구 · 프리미엄 리서치</span>
+              <span class="ad-sub-item">✅ CryptoTax.cloud 공식 파트너</span>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="ad-cta-wrap">
+            <div class="ad-cta-btn" style="background:linear-gradient(135deg,#D48A00,#B87A00);color:#fff;box-shadow:0 4px 16px rgba(212,138,0,0.35);">무료로<br>시작하기 →</div>
+          </div>
+          <!-- 차트 바 데코 -->
+          <div class="ad-chart-bars">
+            <span class="bar b1" style="background:#D48A00;"></span><span class="bar b2" style="background:#D48A00;"></span>
+            <span class="bar b3" style="background:#D48A00;"></span><span class="bar b4" style="background:#D48A00;"></span>
+            <span class="bar b5" style="background:#D48A00;"></span><span class="bar b6" style="background:#D48A00;"></span>
+            <span class="bar b7" style="background:#D48A00;"></span>
+          </div>
+        </div>
+        <div class="ad-label">AD</div>
+      </a>
+
+    </div><!-- /ad-slider-track -->
+
+    <!-- 도트 네비게이션 -->
+    <div class="ad-dots" id="adDots">
+      <button class="ad-dot active" onclick="adGoSlide(0)" aria-label="빗썸"></button>
+      <button class="ad-dot"        onclick="adGoSlide(1)" aria-label="바이낸스"></button>
+      <button class="ad-dot"        onclick="adGoSlide(2)" aria-label="더코인랩스"></button>
     </div>
-  </a>
-</div>
+    <!-- 진행 바 -->
+    <div class="ad-progress-bar" id="adProgress"></div>
+    <!-- 화살표 -->
+    <button class="ad-arrow ad-prev" onclick="adGoSlide(adCur-1)" aria-label="이전">‹</button>
+    <button class="ad-arrow ad-next" onclick="adGoSlide(adCur+1)" aria-label="다음">›</button>
+
+  </div><!-- /ad-banner-wrapper -->
+</section>
 
 <!-- ===== 이메일 CTA ===== -->
 <div class="email-section">
@@ -1602,21 +1756,25 @@ button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.
   </div>
 </section>
 
-<!-- ===== 파트너 배너 3 (시장데이터 아래) ===== -->
-<div class="ad-slot">
-  <span class="partner-label">파트너</span>
-  <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" class="partner-banner">
-    <div class="partner-banner-inner">
-      <div class="partner-info">
-        <div class="partner-icon">🧠</div>
-        <div>
-          <div class="partner-name">TheCoinLabs — 대한민국 1위 AI 블록체인 교육</div>
-          <div class="partner-desc">블록체인 투자, AI로 제대로 배우면 결과가 달라집니다</div>
-        </div>
-      </div>
-      <div class="partner-cta">무료 강의 보기 →</div>
-    </div>
-  </a>
+<!-- ===== 파트너 배너 (시장데이터 아래 — 미니 버전) ===== -->
+<div class="ad-slot" style="padding:8px 16px;">
+  <div style="display:flex;gap:10px;max-width:860px;margin:0 auto;flex-wrap:wrap;">
+    <a href="https://m.bithumb.com/react/referral/guide?referral=JD68T20OTV" target="_blank" rel="noopener sponsored" style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #FFE0CC;border-radius:10px;padding:10px 14px;text-decoration:none;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(255,90,0,0.15)'" onmouseout="this.style.boxShadow='none'">
+      <span style="font-size:1.4rem;">🔴</span>
+      <div><div style="font-size:.8rem;font-weight:800;color:#FF5A00;">빗썸 친구초대</div><div style="font-size:.72rem;color:#888;">코드: JD68T20OTV · 수수료 우대</div></div>
+      <span style="margin-left:auto;font-size:.75rem;font-weight:700;color:#FF5A00;white-space:nowrap;">가입 →</span>
+    </a>
+    <a href="https://www.binance.com/register?ref=36462416" target="_blank" rel="noopener sponsored" style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;background:#0B0E11;border:1px solid #2a2100;border-radius:10px;padding:10px 14px;text-decoration:none;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(240,185,11,0.2)'" onmouseout="this.style.boxShadow='none'">
+      <span style="font-size:1.4rem;">🟡</span>
+      <div><div style="font-size:.8rem;font-weight:800;color:#F0B90B;">바이낸스 친구초대</div><div style="font-size:.72rem;color:#848E9C;">ref: 36462416 · 수수료 20% 절감</div></div>
+      <span style="margin-left:auto;font-size:.75rem;font-weight:700;color:#F0B90B;white-space:nowrap;">가입 →</span>
+    </a>
+    <a href="https://www.thecoinlabs.com/" target="_blank" rel="noopener sponsored" style="flex:1;min-width:180px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #FFF0C0;border-radius:10px;padding:10px 14px;text-decoration:none;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(212,138,0,0.15)'" onmouseout="this.style.boxShadow='none'">
+      <span style="font-size:1.4rem;">🏆</span>
+      <div><div style="font-size:.8rem;font-weight:800;color:#D48A00;">더코인랩스</div><div style="font-size:.72rem;color:#888;">AI 블록체인 교육 파트너</div></div>
+      <span style="margin-left:auto;font-size:.75rem;font-weight:700;color:#D48A00;white-space:nowrap;">방문 →</span>
+    </a>
+  </div>
 </div>
 
 <!-- ===== 블로그 ===== -->
@@ -1929,6 +2087,55 @@ function shareKakao(){alert('카카오 공유 기능은 Kakao SDK 연동 후 활
 function submitEmail(){const email=document.getElementById('emailInput').value.trim();const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(email)){alert('올바른 이메일 주소를 입력해주세요.');return;}alert('감사합니다! 📧\n'+email+'으로 무료 가이드를 보내드리겠습니다.');document.getElementById('emailInput').value='';}
 window.addEventListener('scroll',()=>{const btn=document.getElementById('scrollTop');if(btn)btn.style.display=window.scrollY>400?'block':'none';const nav=document.querySelector('.nav');if(nav)nav.classList.toggle('scrolled',window.scrollY>40);});
 (function(){const dd=document.getElementById('hero-dday');if(!dd)return;const tax=new Date('2027-01-01');const today=new Date();today.setHours(0,0,0,0);const diff=Math.ceil((tax-today)/(1000*60*60*24));dd.textContent=diff>0?diff:'0';})();
+
+/* ===== 제휴 파트너 배너 자동 슬라이더 ===== */
+var adCur=0;
+(function(){
+  var TOTAL=3,DURATION=5000,TICK=40;
+  var track=document.getElementById('adTrack');
+  var wrapper=document.getElementById('adBanner');
+  var dots=document.querySelectorAll('#adDots .ad-dot');
+  var bar=document.getElementById('adProgress');
+  var prog=0,pTimer=null,paused=false;
+
+  function goSlide(n){
+    adCur=((n%TOTAL)+TOTAL)%TOTAL;
+    if(track)track.style.transform='translateX(-'+(adCur*100)+'%)';
+    if(wrapper)wrapper.setAttribute('data-active',adCur);
+    dots.forEach(function(d,i){d.classList.toggle('active',i===adCur);});
+    resetProgress();
+  }
+  window.adGoSlide=goSlide;
+
+  function resetProgress(){
+    clearInterval(pTimer);
+    prog=0;
+    if(bar)bar.style.width='0%';
+    pTimer=setInterval(function(){
+      if(paused)return;
+      prog+=100/(DURATION/TICK);
+      if(bar)bar.style.width=Math.min(prog,100)+'%';
+      if(prog>=100){clearInterval(pTimer);goSlide(adCur+1);}
+    },TICK);
+  }
+
+  /* 호버 시 일시 정지 */
+  var wrapper2=document.getElementById('adBanner');
+  if(wrapper2){
+    wrapper2.addEventListener('mouseenter',function(){paused=true;});
+    wrapper2.addEventListener('mouseleave',function(){paused=false;});
+    /* 터치 스와이프 지원 */
+    var tx=0;
+    wrapper2.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;paused=true;},{passive:true});
+    wrapper2.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-tx;
+      if(Math.abs(dx)>40)goSlide(adCur+(dx<0?1:-1));
+      paused=false;
+    },{passive:true});
+  }
+
+  goSlide(0);
+})();
 </script>
 </body>
 </html>
