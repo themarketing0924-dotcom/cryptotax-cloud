@@ -2,7 +2,20 @@
 // CryptoTax.cloud — 공통 JavaScript
 // ============================================================
 
-// ⓪ GA4 서브 페이지 자동 주입 (메인 외 페이지용)
+// ⓪-1 네이버 애널리틱스 자동 주입
+(function(){
+  var s=document.createElement('script');
+  s.type='text/javascript';
+  s.src='//wcs.pstatic.net/wcslog.js';
+  s.onload=function(){
+    if(!window.wcs_add) window.wcs_add={};
+    window.wcs_add['wa']='9e2830d2453b30';
+    if(window.wcs) wcs_do();
+  };
+  document.head.appendChild(s);
+})();
+
+// ⓪-2 GA4 서브 페이지 자동 주입 (메인 외 페이지용)
 (function(){
   if(document.querySelector('script[src*="googletagmanager"]')) return;
   var s=document.createElement('script');
