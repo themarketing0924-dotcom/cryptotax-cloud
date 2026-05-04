@@ -2,6 +2,20 @@
 // CryptoTax.cloud — 공통 JavaScript
 // ============================================================
 
+// ⓪ GA4 서브 페이지 자동 주입 (메인 외 페이지용)
+(function(){
+  if(document.querySelector('script[src*="googletagmanager"]')) return;
+  var s=document.createElement('script');
+  s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-59PKBNRPBZ';
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-59PKBNRPBZ');
+})();
+
 // ① 테마 초기화 (FOUC 방지)
 (function(){
   var t=localStorage.getItem('ctc-theme')||'dark';
