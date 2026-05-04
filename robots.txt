@@ -1,4 +1,59 @@
+# ================================================================
+# CryptoTax.cloud — robots.txt
+# 전체 크롤러 허용 + 검색엔진별 개별 설정
+# ================================================================
+
+# ── 모든 크롤러 기본 설정 ──
 User-agent: *
 Allow: /
+Disallow: /attached_assets/
+Disallow: /.git/
+Disallow: /.local/
+Disallow: /cryptotax-optimized.zip
+Crawl-delay: 1
 
+# ── 구글봇 (Google) ──
+User-agent: Googlebot
+Allow: /
+Disallow: /attached_assets/
+Disallow: /.git/
+Disallow: /.local/
+
+# ── 구글 이미지봇 ──
+User-agent: Googlebot-Image
+Allow: /assets/img/
+Allow: /og-image.png
+
+# ── 네이버봇 Yeti (Naver) ──
+User-agent: Yeti
+Allow: /
+Disallow: /attached_assets/
+Disallow: /.git/
+Crawl-delay: 1
+
+# ── 다음봇 (Daum/Kakao) ──
+User-agent: Daumoa
+Allow: /
+Crawl-delay: 1
+
+# ── 빙봇 (Bing/Microsoft) ──
+User-agent: bingbot
+Allow: /
+Disallow: /attached_assets/
+Crawl-delay: 1
+
+# ── ChatGPT 크롤러 (OpenAI) ──
+User-agent: GPTBot
+Allow: /
+Disallow: /attached_assets/
+
+# ── Anthropic Claude 크롤러 ──
+User-agent: ClaudeBot
+Allow: /
+
+# ── 야후봇 ──
+User-agent: Slurp
+Allow: /
+
+# ── Sitemap 위치 ──
 Sitemap: https://cryptotax.cloud/sitemap.xml
