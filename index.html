@@ -146,8 +146,9 @@ a{text-decoration:none;color:inherit;}
 .nav-links{display:flex;gap:4px;flex-wrap:nowrap;justify-content:center;}
 .nav-links a{color:var(--text-secondary);font-size:0.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all var(--transition);border:1px solid transparent;white-space:nowrap;}
 .nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:var(--orange-border);}
-.nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;border-radius:7px;padding:6px 14px!important;}
+.nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;border-radius:7px;padding:0 14px!important;height:36px;min-height:36px!important;line-height:36px;font-size:0.82rem;display:inline-flex;align-items:center;white-space:nowrap;}
 .nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px #FF8C0040;}
+@media(max-width:380px){.nav-cta{font-size:0.75rem;padding:0 10px!important;}}
 /* ===== 데스크톱 드롭다운 메뉴 ===== */
 .nav-dropdown{position:relative;display:flex;align-items:center;}
 .nav-dropdown-trigger{display:flex;align-items:center;gap:3px;color:var(--text-secondary);font-size:0.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all var(--transition);border:1px solid transparent;white-space:nowrap;cursor:pointer;}
@@ -907,7 +908,7 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 [data-theme="light"] .ad-arrow { background: rgba(255,255,255,0.85); border-color: #d0d7de; color: #1a1f2e; }
 
 /* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
-button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.nav-cta,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
+button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
 .cta-secondary{min-height:48px;}
 .calc-btn{min-height:48px!important;}
 
