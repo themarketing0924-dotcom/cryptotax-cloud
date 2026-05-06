@@ -640,7 +640,7 @@ article li{margin-bottom:6px;}
 .ctc-nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
 @media(min-width:768px){.ctc-nav-inner{padding:0 32px;}}
 @media(min-width:1024px){.ctc-nav-inner{padding:0 40px;}}
-.ctc-nav-logo{color:var(--orange);font-weight:900;font-size:1.1rem;text-decoration:none;white-space:nowrap;flex-shrink:0;letter-spacing:-.02em;display:flex;align-items:center;gap:7px;}
+.ctc-nav-logo{color:var(--orange);font-weight:900;font-size:1.1rem;text-decoration:none;white-space:nowrap;flex-shrink:0;letter-spacing:-.02em;display:flex;align-items:center;gap:4px;}
 .ctc-nav-logo span{color:var(--blue,#58a6ff);}
 @media(min-width:768px){.ctc-nav-logo{font-size:1.15rem;}}
 @media(min-width:1024px){.ctc-nav-logo{font-size:1.2rem;}}
