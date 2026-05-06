@@ -76,14 +76,14 @@ a:hover{text-decoration:underline;}
 .breadcrumb a{color:var(--text-muted);}
 
 /* HERO */
-.hero{max-width:960px;margin:0 auto;padding:52px 20px 36px;text-align:center;}
+.hero{max-width:960px;margin:0 auto;padding:52px 20px 36px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(255,140,0,.07) 0%,transparent 68%);}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.28);color:var(--orange);font-size:.78rem;font-weight:700;padding:5px 16px;border-radius:100px;margin-bottom:20px;letter-spacing:.02em;}
-.hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.25;margin-bottom:14px;letter-spacing:-.02em;}
-.hero h1 span{color:var(--orange);}
-.hero p{font-size:1rem;color:var(--text-sub);max-width:520px;margin:0 auto 32px;line-height:1.7;}
+.hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.25;margin-bottom:14px;letter-spacing:-.03em;word-break:keep-all;color:var(--text);}
+.hero h1 .highlight{background:linear-gradient(135deg,#FF8C00,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:clamp(.95rem,2.2vw,1.05rem);color:var(--text-sub);max-width:520px;margin:0 auto 32px;line-height:1.7;word-break:keep-all;}
 .hero-stats{display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap;background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;padding:20px 0;max-width:600px;margin:0 auto;}
 .hero-stat{flex:1;min-width:120px;padding:4px 20px;text-align:center;}
-.hero-stat strong{display:block;font-size:1.9rem;font-weight:900;color:var(--orange);letter-spacing:-.03em;line-height:1.1;}
+.hero-stat strong{display:block;font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,#FF8C00,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.03em;line-height:1.1;}
 .hero-stat span{font-size:.72rem;color:var(--text-muted);margin-top:4px;display:block;}
 .stat-divider{width:1px;height:40px;background:var(--border);}
 @media(max-width:480px){.stat-divider{display:none;}.hero-stat{min-width:90px;padding:8px 12px;}}
@@ -186,7 +186,7 @@ a:hover{text-decoration:underline;}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">🧰 19종 완전 무료 · 개인정보 미수집</div>
-  <h1>코린이도 바로 쓰는<br><span>무료 코인 계산기 19종</span></h1>
+  <h1>코린이도 바로 쓰는<br><span class="highlight">무료 코인 계산기 19종</span></h1>
   <p>세금·수익률·DCA·물타기·스테이킹·김치 프리미엄까지<br>업비트·빗썸 투자자를 위한 모든 계산기, 완전 무료</p>
   <div class="hero-stats">
     <div class="hero-stat"><strong>19종</strong><span>무료 계산기</span></div>
