@@ -508,7 +508,7 @@ window.CoinSearch = (function(){
       return'<a href="'+l.href+'"'+cls+'>'+l.label+'</a>';
     }).join('');
     return'<div class="ctc-nav-inner">'+
-      '<a class="ctc-nav-logo" href="/"><span class="ctc-nav-logo-icon"><img src="/assets/img/logo-icon.png" alt="CryptoTax 로고"></span>₿ CryptoTax<span>.cloud</span></a>'+
+      '<a class="ctc-nav-logo" href="/"><span class="ctc-nav-logo-icon"><img src="/assets/img/logo-icon-crop.png" alt="CryptoTax 로고"></span>₿ CryptoTax<span>.cloud</span></a>'+
       '<div class="ctc-nav-right">'+
         '<div class="ctc-nav-links">'+links+'</div>'+
         '<button class="theme-toggle ctc-theme-icon-only theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">'+
