@@ -629,16 +629,20 @@
 </head>
 <body>
 <!-- 상단바 -->
-<nav class="main-nav">
-  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
-  <div class="nav-menu">
-    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
-    <a href="/tools/" class="nav-item">🧰 도구</a>
-    <a href="/blog/" class="nav-item">📝 블로그</a>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/">&#8383; CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-right">
+    <div class="ctc-nav-links">
+      <a href="/">← 홈</a>
+      <a href="/tools/">💰 계산기</a>
+      <a href="/tools/market-index.html">🌡️ 시장지수</a>
+      <a href="/blog/">📰 블로그</a>
+      <a href="/tools/tax-calculator.html" class="ctc-nav-cta">무료 계산 →</a>
+    </div>
+    <button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div></button><button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
-  <div class="nav-right">
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
-  </div>
+</div>
 </nav>
 
 
@@ -653,27 +657,6 @@
 </div>
 
 <!-- 티커테이프 위젯 -->
-<div class="tradingview-widget-container" style="display:none!important;height:0;overflow:hidden;">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" 
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-    "symbols": [
-      {"proName":"UPBIT:BTCKRW","title":"BTC 업비트"},
-      {"proName":"BINANCE:BTCUSDT","title":"BTC 바이낸스"},
-      {"proName":"UPBIT:ETHKRW","title":"ETH"},
-      {"proName":"UPBIT:XRPKRW","title":"XRP"},
-      {"proName":"UPBIT:SOLKRW","title":"SOL"},
-      {"proName":"FX_IDC:USDKRW","title":"달러환율"}
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": false,
-    "displayMode": "adaptive",
-    "colorTheme": "dark",
-    "locale": "kr"
-  }
-  </script>
-</div>
 
 <!-- ============================
   ZONE 2: HOOK 헤드라인 + AEO

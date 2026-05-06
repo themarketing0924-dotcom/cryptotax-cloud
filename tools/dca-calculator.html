@@ -84,8 +84,6 @@ body{
 /* ═══════════════════════════════════════
    티커
 ═══════════════════════════════════════ */
-.ticker-wrap{background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;height:46px;}
-.ticker-track{display:flex;gap:32px;animation:ticker 30s linear infinite;height:36px;align-items:center;padding:0 20px;white-space:nowrap;}
 .ticker-track:hover{animation-play-state:paused;}
 .ticker-item{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
 .ticker-item .t-name{color:var(--text2);}
@@ -615,23 +613,6 @@ body{
 </nav>
 </div>
 
-<!-- 티커 -->
-<div class="ticker-wrap">
-  <div class="ticker-track" id="tickerTrack">
-    <span class="ticker-item"><span class="t-name">BTC</span><span class="t-price" id="t-btc">-</span><span id="t-btc-c"></span></span>
-    <span class="ticker-item"><span class="t-name">ETH</span><span class="t-price" id="t-eth">-</span><span id="t-eth-c"></span></span>
-    <span class="ticker-item"><span class="t-name">XRP</span><span class="t-price" id="t-xrp">-</span><span id="t-xrp-c"></span></span>
-    <span class="ticker-item"><span class="t-name">SOL</span><span class="t-price" id="t-sol">-</span><span id="t-sol-c"></span></span>
-    <span class="ticker-item"><span class="t-name">DOGE</span><span class="t-price" id="t-doge">-</span><span id="t-doge-c"></span></span>
-    <span class="ticker-item"><span class="t-name">ADA</span><span class="t-price" id="t-ada">-</span><span id="t-ada-c"></span></span>
-    <span class="ticker-item"><span class="t-name">BTC</span><span class="t-price" id="t-btc2">-</span><span id="t-btc-c2"></span></span>
-    <span class="ticker-item"><span class="t-name">ETH</span><span class="t-price" id="t-eth2">-</span><span id="t-eth-c2"></span></span>
-    <span class="ticker-item"><span class="t-name">XRP</span><span class="t-price" id="t-xrp2">-</span><span id="t-xrp-c2"></span></span>
-    <span class="ticker-item"><span class="t-name">SOL</span><span class="t-price" id="t-sol2">-</span><span id="t-sol-c2"></span></span>
-    <span class="ticker-item"><span class="t-name">DOGE</span><span class="t-price" id="t-doge2">-</span><span id="t-doge-c2"></span></span>
-    <span class="ticker-item"><span class="t-name">ADA</span><span class="t-price" id="t-ada2">-</span><span id="t-ada-c2"></span></span>
-  </div>
-</div>
 
 <!-- 히어로 -->
 <div class="hero">
