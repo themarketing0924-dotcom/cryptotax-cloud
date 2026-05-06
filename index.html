@@ -152,7 +152,7 @@ a{text-decoration:none;color:inherit;}
 .nav-links{display:flex;gap:4px;flex-wrap:nowrap;justify-content:center;}
 .nav-links a{color:var(--text-secondary);font-size:0.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all var(--transition);border:1px solid transparent;white-space:nowrap;}
 .nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:var(--orange-border);}
-.nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;border-radius:8px!important;padding:0 14px!important;height:36px!important;min-height:36px!important;max-height:36px;line-height:36px;font-size:0.82rem;display:inline-flex!important;align-items:center;white-space:nowrap;box-sizing:border-box;}
+.nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;border-radius:8px!important;padding:0 14px!important;height:34px!important;min-height:34px!important;max-height:34px!important;line-height:34px!important;font-size:0.82rem;display:inline-flex!important;align-items:center;white-space:nowrap;box-sizing:border-box!important;vertical-align:middle;}
 .nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px #FF8C0040;}
 @media(max-width:380px){.nav-cta{font-size:0.75rem;padding:0 10px!important;}}
 /* ===== 데스크톱 드롭다운 메뉴 ===== */
@@ -172,10 +172,10 @@ a{text-decoration:none;color:inherit;}
 .dd-divider{height:1px;background:var(--border-subtle,var(--border-default));margin:4px 8px;}
 .dd-all{font-weight:700!important;color:var(--orange)!important;}
 .dd-all:hover{background:#FF8C0022!important;}
-/* ===== 햄버거 메뉴 ===== */
-.hamburger-btn{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:8px;width:36px;height:36px;min-height:36px!important;cursor:pointer;padding:0;transition:all var(--transition);flex-shrink:0;}
-.hamburger-btn:hover{border-color:var(--orange);background:var(--orange-dim);}
-.hamburger-btn span{display:block;width:18px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s ease;}
+/* ===== 햄버거 메뉴 — 바이낸스 스타일 (박스 없음) ===== */
+.hamburger-btn{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:transparent!important;border:none!important;border-radius:0!important;width:40px;height:34px!important;min-height:unset!important;max-height:34px!important;cursor:pointer;padding:0;transition:opacity var(--transition);flex-shrink:0;}
+.hamburger-btn:hover{opacity:0.7;background:transparent!important;}
+.hamburger-btn span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s ease;}
 .hamburger-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .hamburger-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -913,10 +913,13 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 [data-theme="light"] .ad-coinlabs .ad-bullet   { color: #555; }
 [data-theme="light"] .ad-arrow { background: rgba(255,255,255,0.85); border-color: #d0d7de; color: #1a1f2e; }
 
-/* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 ── */
-button,input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.drawer-cta,.tab-btn,.share-btn,.theme-toggle{min-height:48px;}
+/* ── 버튼 최소 높이 48px — 모바일 클릭 편의성 (nav 버튼 제외) ── */
+input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-btn,.drawer-cta,.tab-btn,.share-btn,.theme-toggle,.cta-primary{min-height:48px;}
 .cta-secondary{min-height:48px;}
 .calc-btn{min-height:48px!important;}
+/* ── nav 버튼 전용 — 전역 규칙 완전 차단 ── */
+.nav-right .nav-cta,.nav-right .theme-icon-only,.nav-right .hamburger-btn,
+.hamburger-btn{min-height:unset!important;}
 
 /* ── 법적 면책 문구 스타일 ── */
 .ctc-legal-disclaimer{background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.22);border-radius:8px;padding:10px 16px;max-width:860px;margin:0 auto 20px;font-size:12px;color:var(--text-secondary);line-height:1.65;text-align:center;font-weight:500;}

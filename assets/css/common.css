@@ -622,11 +622,17 @@ article li{margin-bottom:6px;}
 .theme-svg-wrap svg{display:block;}
 .theme-toggle.theme-icon-only:hover .theme-svg-wrap{color:var(--orange,#FF8C00);}
 
-/* ===== ctc-nav 햄버거 반응형 ===== */
+/* ===== ctc-nav 햄버거 반응형 — 바이낸스 스타일 (박스 없음) ===== */
 @media(max-width:1023px){#ctcHamburger{display:flex!important;}}
 @media(min-width:1024px){#ctcHamburger{display:none;}}
-/* 햄버거·테마토글 — 전역 48px 오버라이드, 정사각형 유지 */
-#ctcHamburger,.hamburger-btn{width:36px!important;height:36px!important;min-height:36px!important;border-radius:8px;}
+/* 햄버거 — 전역 min-height 차단 + 박스 제거 */
+#ctcHamburger,.hamburger-btn{
+  width:40px!important;height:34px!important;min-height:unset!important;max-height:34px!important;
+  background:transparent!important;border:none!important;border-radius:0!important;
+  padding:0!important;transition:opacity .2s;
+}
+#ctcHamburger:hover,.hamburger-btn:hover{opacity:.65;background:transparent!important;}
+#ctcHamburger span,.hamburger-btn span{display:block;width:22px;height:2px;background:var(--text-primary,#f0f0f0);border-radius:2px;transition:all .3s ease;}
 
 /* ===== 표준 CTC 네비게이션 (랜딩 페이지와 동일 구조) ===== */
 .ctc-nav{position:sticky;top:0;z-index:1000;background:var(--bg-overlay,rgba(13,17,23,.92));border-bottom:1px solid var(--border-default);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:0;height:60px;display:flex;align-items:center;transition:background .3s,border-color .3s;}
@@ -646,10 +652,10 @@ article li{margin-bottom:6px;}
 .ctc-nav-links{display:flex;gap:4px;flex-wrap:nowrap;align-items:center;}
 .ctc-nav-links a{color:var(--text-secondary);font-size:.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all .2s;border:1px solid transparent;text-decoration:none;white-space:nowrap;}
 .ctc-nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:rgba(255,140,0,.3);}
-.ctc-nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;padding:0 14px!important;border-radius:8px!important;height:36px!important;min-height:36px!important;max-height:36px;line-height:36px;display:inline-flex!important;align-items:center;font-size:.82rem;box-sizing:border-box;}
+.ctc-nav-cta{background:var(--orange)!important;color:#000!important;font-weight:800!important;padding:0 14px!important;border-radius:8px!important;height:34px!important;min-height:unset!important;max-height:34px!important;line-height:34px!important;display:inline-flex!important;align-items:center;font-size:.82rem;box-sizing:border-box!important;vertical-align:middle;}
 .ctc-nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,140,0,.3);}
-/* nav 내 버튼 — 전역 48px 오버라이드, 정사각형 유지 */
-.ctc-nav button,.ctc-nav-right button{min-height:36px!important;height:36px!important;max-height:36px;}
+/* ctc-nav 내 모든 버튼 — 전역 min-height 차단 */
+.ctc-nav button,.ctc-nav-right button,.ctc-nav-right a{min-height:unset!important;}
 @media(max-width:680px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
 @media(max-width:480px){.ctc-nav-links{display:none;}}
 [data-theme="light"] .ctc-nav{background:rgba(255,255,255,.92);}
