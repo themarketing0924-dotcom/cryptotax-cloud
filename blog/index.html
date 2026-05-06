@@ -41,16 +41,20 @@ body{background:var(--bg)}
 <script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
-<nav class="main-nav">
-  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
-  <div class="nav-menu">
-    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
-    <a href="/tools/" class="nav-item">🧰 도구</a>
-    <a href="/blog/" class="nav-item active">📝 블로그</a>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/">&#8383; CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-right">
+    <div class="ctc-nav-links">
+      <a href="/">← 홈</a>
+      <a href="/tools/">💰 계산기</a>
+      <a href="/tools/market-index.html">🌡️ 시장지수</a>
+      <a href="/blog/">📰 블로그</a>
+      <a href="/tools/tax-calculator.html" class="ctc-nav-cta">무료 계산 →</a>
+    </div>
+    <button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div></button><button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
-  <div class="nav-right">
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
-  </div>
+</div>
 </nav>
 
 <div class="blog-hero">
