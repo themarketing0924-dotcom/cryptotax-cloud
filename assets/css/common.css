@@ -479,6 +479,19 @@ body {
   line-height: 1.35;
 }
 
+/* ══ FAQ 표준 스타일 (모든 도구 페이지 공통) ══ */
+.faq-section{padding:40px 20px;max-width:720px;margin:0 auto;}
+.faq-item{border:1px solid var(--border)!important;border-radius:10px!important;margin-bottom:8px!important;overflow:hidden;transition:border-color .2s;}
+.faq-item:hover{border-color:var(--orange);}
+.faq-q{padding:16px 18px!important;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--text)!important;display:flex!important;justify-content:space-between;align-items:center;user-select:none;gap:12px;line-height:1.5;background:var(--card)!important;transition:background .2s;border:none!important;width:100%;}
+.faq-q:hover{background:var(--bg2)!important;color:var(--orange)!important;}
+.faq-icon,.faq-arrow{flex-shrink:0;color:var(--orange);transition:transform .25s;font-size:1rem;}
+.faq-a{font-size:.87rem!important;color:var(--text2)!important;line-height:1.75;max-height:0!important;overflow:hidden;display:block!important;transition:max-height .35s ease,padding .35s ease,opacity .35s ease;padding:0 18px!important;opacity:0;background:var(--bg)!important;}
+.faq-a a{color:var(--orange);}
+.faq-item.open .faq-icon,.faq-item.open .faq-arrow{transform:rotate(45deg);}
+.faq-item.open .faq-q{color:var(--orange)!important;}
+.faq-item.open .faq-a{max-height:600px!important;padding:12px 18px 16px!important;opacity:1;}
+
 /* ── 단락·라벨 한국어 가독성 ── */
 .hero-sub,
 .section p,

@@ -640,3 +640,12 @@ window.CoinSearch = (function(){
 
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}else{run();}
 })();
+
+// ⑨ 전역 toggleFaq — 페이지별 미정의 시 공통 함수 사용
+if(!window.toggleFaq){
+  window.toggleFaq=function(el){
+    var item=el.closest?el.closest('.faq-item'):el.parentElement;
+    if(!item||!item.classList.contains('faq-item')) item=el.parentElement;
+    item.classList.toggle('open');
+  };
+}
