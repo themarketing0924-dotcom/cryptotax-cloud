@@ -59,4 +59,4 @@ Allow: /
 Sitemap: https://cryptotax.cloud/sitemap.xml
 
 # ── 다음 웹마스터 인증 PIN ──
-#DaumWebMasterTool:bf7d9f6ecbd3630d13bcb0f070ceffcffbfbd14ab7ef39c824b995495c1dd6aa:/WAX4rdMdqgPrRyc5jjv5g==
+DaumWebMasterTool:bf7d9f6ecbd3630d13bcb0f070ceffcffbfbd14ab7ef39c824b995495c1dd6aa:/WAX4rdMdqgPrRyc5jjv5g==
