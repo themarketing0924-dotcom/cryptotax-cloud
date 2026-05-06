@@ -661,7 +661,7 @@ article li{margin-bottom:6px;}
 .ctc-nav-logo-icon img{width:100%;height:100%;object-fit:contain;}
 @media(min-width:768px){.ctc-nav-logo-icon{width:32px;height:32px;}}
 @media(max-width:480px){.ctc-nav-logo-icon{width:26px;height:26px;}}
-.ctc-nav-right{display:flex;align-items:center;gap:8px;}
+.ctc-nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;}
 .ctc-nav-links{display:flex;gap:4px;flex-wrap:nowrap;align-items:center;}
 .ctc-nav-links a{color:var(--text-secondary);font-size:.82rem;font-weight:600;padding:6px 11px;border-radius:7px;transition:all .2s;border:1px solid transparent;text-decoration:none;white-space:nowrap;}
 .ctc-nav-links a:hover{background:#FF8C0015;color:var(--orange);border-color:rgba(255,140,0,.3);}
@@ -669,8 +669,10 @@ article li{margin-bottom:6px;}
 .ctc-nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,140,0,.3);}
 /* ctc-nav 내 모든 버튼 — 전역 min-height 차단 */
 .ctc-nav button,.ctc-nav-right button,.ctc-nav-right a{min-height:unset!important;}
+/* 680px 이하: 일반 링크 숨기고 CTA만 유지 */
 @media(max-width:680px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
-@media(max-width:480px){.ctc-nav-links{display:none;}}
+/* 480px 이하: ctc-nav-links 자체는 유지하되 CTA만 표시 (links 숨기지 않음) */
+@media(max-width:480px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
 [data-theme="light"] .ctc-nav{background:rgba(255,255,255,.92);}
 
 /* ===== 표준 CTC 푸터 ===== */
