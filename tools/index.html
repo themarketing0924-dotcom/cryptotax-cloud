@@ -95,12 +95,12 @@ a:hover{text-decoration:underline;}
 .notice{max-width:960px;margin:0 auto 4px;padding:0 20px;}
 .notice-inner{background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.2);border-radius:10px;padding:12px 18px;font-size:.82rem;color:var(--text-sub);}
 
-/* FILTER */
-.filter-wrap{max-width:960px;margin:20px auto 0;padding:0 20px;text-align:center;}
-.filter-label{font-size:.8rem;color:var(--text-muted);margin-bottom:8px;}
-.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
-.filter-tab{padding:7px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:20px;font-size:.82rem;font-weight:600;color:var(--text-sub);cursor:pointer;transition:all var(--tr);}
-.filter-tab.active,.filter-tab:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
+/* FILTER NAV */
+.filter-wrap{width:100%;background:var(--bg-surface);border-bottom:1px solid var(--border);margin:0 0 4px;}
+.filter-label{display:none;}
+.filter-tabs{max-width:960px;margin:0 auto;display:flex;justify-content:center;gap:0;padding:0 20px;}
+.filter-tab{padding:14px 22px;background:transparent;border:none;border-bottom:2px solid transparent;border-radius:0;font-size:.9rem;font-weight:700;color:var(--text-sub);cursor:pointer;transition:all var(--tr);white-space:nowrap;}
+.filter-tab.active,.filter-tab:hover{color:var(--orange);border-bottom-color:var(--orange);background:transparent;}
 
 /* SECTION TITLE */
 .section-title{max-width:960px;margin:28px auto 0;padding:0 20px;font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px;}
@@ -201,7 +201,6 @@ a:hover{text-decoration:underline;}
 
 <!-- FILTER -->
 <div class="filter-wrap">
-  <div class="filter-label">필터:</div>
   <div class="filter-tabs">
     <div class="filter-tab active" onclick="filterCards('all', this)">🧰 전체 보기</div>
     <div class="filter-tab" onclick="filterCards('tax', this)">💰 세금</div>
