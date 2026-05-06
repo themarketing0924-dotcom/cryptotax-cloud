@@ -43,6 +43,13 @@ body{background:var(--bg)}
 .blog-card:hover .blog-card-thumb img{transform:scale(1.04);}
 .blog-card{overflow:hidden;border-radius:12px;display:flex;flex-direction:column;padding:0!important;}
 .blog-card-body{padding:14px 16px 16px;}
+/* 페이지네이션 */
+.pagination{display:flex;justify-content:center;align-items:center;gap:6px;padding:8px 0 48px;flex-wrap:wrap;}
+.pg-btn{min-width:36px;height:36px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text-sub);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;}
+.pg-btn:hover{border-color:var(--orange);color:var(--orange);}
+.pg-btn.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+.pg-btn:disabled{opacity:.35;cursor:default;pointer-events:none;}
+.pg-ellipsis{color:var(--text-sub);padding:0 4px;line-height:36px;}
 </style>
 <script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
@@ -141,6 +148,7 @@ body{background:var(--bg)}
     <a href="/blog/guide/exchange-fee-compare.html" class="blog-card" data-cat="입문가이드"><div class="blog-card-thumb"><img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=480&h=270&fit=crop&auto=format&q=80" alt="썸네일" loading="lazy" width="480" height="270"></div><div class="blog-card-body"><span class="blog-card-tag" style="color:var(--green)">입문</span><div class="blog-card-title">거래소 수수료 비교</div><div class="blog-card-desc">업비트·빗썸·코인원 수수료 비교, 어디가 유리할까</div></div></a>
     <a href="/blog/guide/tax-timeline.html" class="blog-card" data-cat="입문가이드"><div class="blog-card-thumb"><img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=480&h=270&fit=crop&auto=format&q=80" alt="썸네일" loading="lazy" width="480" height="270"></div><div class="blog-card-body"><span class="blog-card-tag" style="color:var(--blue)">입문</span><div class="blog-card-title">2027 코인 세금 일정표</div><div class="blog-card-desc">신고 기간, 납부 기한, 준비 서류까지 한눈에</div></div></a>
   </div>
+  <div id="pagination" class="pagination"></div>
 </div>
 
 <footer class="main-footer">
@@ -165,18 +173,106 @@ body{background:var(--bg)}
 
 <script src="/assets/js/common.js?v=1777697830"></script>
 <script>
-function filterCat(cat,btn){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  var cards=document.querySelectorAll('.blog-card[data-cat]');
-  var count=0;
-  cards.forEach(function(card){
-    if(cat==='all'||card.getAttribute('data-cat')===cat){card.classList.remove('hidden');count++;}
-    else{card.classList.add('hidden');}
-  });
-  var label=cat==='all'?'전체':cat;
-  document.getElementById('postCount').textContent=label+' '+count+'개 글';
+var ITEMS_PER_PAGE = 24;
+var currentPage = 1;
+var currentCat = 'all';
+
+function getAllCards() {
+  return Array.from(document.querySelectorAll('#blogGrid .blog-card[data-cat]'));
 }
+
+function getFilteredCards() {
+  return getAllCards().filter(function(c) {
+    return currentCat === 'all' || c.getAttribute('data-cat') === currentCat;
+  });
+}
+
+function render(skipScroll) {
+  var filtered = getFilteredCards();
+  var total = filtered.length;
+  var totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+  if (currentPage > totalPages) currentPage = 1;
+  var start = (currentPage - 1) * ITEMS_PER_PAGE;
+  var end = start + ITEMS_PER_PAGE;
+
+  /* 카드 표시 */
+  getAllCards().forEach(function(c) { c.style.display = 'none'; });
+  filtered.forEach(function(c, i) {
+    c.style.display = (i >= start && i < end) ? '' : 'none';
+  });
+
+  /* 카운트 */
+  var label = currentCat === 'all' ? '전체' : currentCat;
+  document.getElementById('postCount').textContent =
+    label + ' ' + total + '개 글 (' + currentPage + ' / ' + totalPages + ' 페이지)';
+
+  /* 페이지네이션 */
+  renderPagination(totalPages);
+
+  /* 페이지 이동 시에만 스크롤 */
+  if (!skipScroll) {
+    document.getElementById('blogGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function renderPagination(totalPages) {
+  var el = document.getElementById('pagination');
+  if (totalPages <= 1) { el.innerHTML = ''; return; }
+  var html = '';
+
+  /* 이전 버튼 */
+  html += '<button class="pg-btn" onclick="goPage(' + (currentPage - 1) + ')"' +
+    (currentPage === 1 ? ' disabled' : '') + '>← 이전</button>';
+
+  /* 페이지 번호 */
+  var pages = buildPageRange(currentPage, totalPages);
+  pages.forEach(function(p) {
+    if (p === '…') {
+      html += '<span class="pg-ellipsis">…</span>';
+    } else {
+      html += '<button class="pg-btn' + (p === currentPage ? ' active' : '') +
+        '" onclick="goPage(' + p + ')">' + p + '</button>';
+    }
+  });
+
+  /* 다음 버튼 */
+  html += '<button class="pg-btn" onclick="goPage(' + (currentPage + 1) + ')"' +
+    (currentPage === totalPages ? ' disabled' : '') + '>다음 →</button>';
+
+  el.innerHTML = html;
+}
+
+function buildPageRange(cur, total) {
+  if (total <= 7) {
+    var arr = [];
+    for (var i = 1; i <= total; i++) arr.push(i);
+    return arr;
+  }
+  var pages = [1];
+  if (cur > 3) pages.push('…');
+  var from = Math.max(2, cur - 1);
+  var to = Math.min(total - 1, cur + 1);
+  for (var i = from; i <= to; i++) pages.push(i);
+  if (cur < total - 2) pages.push('…');
+  pages.push(total);
+  return pages;
+}
+
+function goPage(p) {
+  currentPage = p;
+  render();
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  currentCat = cat;
+  currentPage = 1;
+  render();
+}
+
+/* 초기 렌더 (스크롤 없이) */
+render(true);
 </script>
 </body>
 </html>
