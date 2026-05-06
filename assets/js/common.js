@@ -473,7 +473,7 @@ window.CoinSearch = (function(){
     {href:'/tools/tax-calculator.html',label:'무료 계산 →',cta:true},
   ];
   var FOOTER_COLS=[
-    {title:'₿ CryptoTax.cloud',brand:true,content:'한국 가상자산 투자자를 위한<br>무료 계산기·세금 가이드 허브.<br>국세청 기준 적용 · 무료 사용.'},
+    {title:'CryptoTax.cloud',brand:true,content:'한국 가상자산 투자자를 위한<br>무료 계산기·정보 가이드 허브.<br>국세청 기준 적용 · 무료 사용.'},
     {title:'계산기 도구',links:[
       {href:'/tools/tax-calculator.html',label:'코인 세금 계산기'},
       {href:'/tools/roi-calculator.html',label:'수익률 계산기'},
@@ -492,6 +492,13 @@ window.CoinSearch = (function(){
       {href:'/blog/coin-tax/2027-guide.html',label:'2027 세금 가이드'},
       {href:'/contact.html',label:'문의하기'},
       {href:'/about.html',label:'서비스 소개'},
+    ]},
+    {title:'블록체인 교육',links:[
+      {href:'https://www.thecoinlabs.com/',label:'TheCoinLabs 홈',external:true},
+      {href:'https://www.thecoinlabs.com/',label:'블록체인 기초 강의',external:true},
+      {href:'https://www.thecoinlabs.com/',label:'암호화폐 투자 교육',external:true},
+      {href:'https://www.thecoinlabs.com/',label:'AI 분석 · 뉴스',external:true},
+      {href:'https://www.thecoinlabs.com/',label:'커뮤니티 참여',external:true},
     ]},
   ];
   var LEGAL=[
@@ -597,7 +604,7 @@ window.CoinSearch = (function(){
 
   function footerHTML(){
     var cols=FOOTER_COLS.map(function(col){
-      var inner=col.brand?'<p>'+col.content+'</p>':col.links.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+      var inner=col.brand?'<p>'+col.content+'</p>':col.links.map(function(l){var ext=l.external?' target="_blank" rel="noopener"':'';return'<a href="'+l.href+'"'+ext+'>'+l.label+'</a>';}).join('');
       return'<div class="ctc-footer-col"><h4>'+col.title+'</h4>'+inner+'</div>';
     }).join('');
     var legal=LEGAL.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
