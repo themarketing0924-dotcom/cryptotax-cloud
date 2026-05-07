@@ -473,32 +473,54 @@ window.CoinSearch = (function(){
     {href:'/tools/tax-calculator.html',label:'무료 계산 →',cta:true},
   ];
   var FOOTER_COLS=[
-    {title:'CryptoTax.cloud',brand:true,content:'한국 가상자산 투자자를 위한<br>무료 계산기·정보 가이드 허브.<br>국세청 기준 적용 · 무료 사용.'},
-    {title:'계산기 도구',links:[
-      {href:'/tools/tax-calculator.html',label:'코인 세금 계산기'},
-      {href:'/tools/roi-calculator.html',label:'수익률 계산기'},
-      {href:'/tools/staking-calculator.html',label:'스테이킹 이자 계산기'},
-      {href:'/tools/multa-calculator.html',label:'물타기 계산기'},
-      {href:'/tools/dca-calculator.html',label:'DCA 적립식 계산기'},
-      {href:'/tools/satoshi-calculator.html',label:'사토시 환산기'},
-    ]},
+    {title:'블로그',groups:[
+      {sub:'세금 신고',links:[
+        {href:'/blog/coin-tax/2027-guide.html',label:'2027 코인 세금 완전정복'},
+        {href:'/blog/coin-tax/hometax-filing.html',label:'홈택스 신고 방법'},
+        {href:'/blog/coin-tax/basic-deduction-250.html',label:'250만원 기본공제'},
+        {href:'/blog/coin-tax/bitcoin-sale-tax.html',label:'비트코인 매도 세금'},
+      ]},
+      {sub:'투자 전략',links:[
+        {href:'/blog/investment/dca-strategy.html',label:'DCA 투자 전략'},
+        {href:'/blog/investment/bitcoin-halving.html',label:'비트코인 반감기'},
+        {href:'/blog/investment/multa-timing.html',label:'물타기 타이밍'},
+      ]},
+      {sub:'입문 가이드',links:[
+        {href:'/blog/guide/coin-beginner.html',label:'코인 입문 완전정복'},
+        {href:'/blog/guide/upbit-signup.html',label:'업비트 가입 방법'},
+      ]},
+    ],more:{href:'/blog/',label:'→ 전체 글 보기'}},
+    {title:'계산기 도구',groups:[
+      {sub:'세금 계산',links:[
+        {href:'/tools/tax-calculator.html',label:'코인 세금 계산기'},
+        {href:'/tools/csv-tax-calculator.html',label:'CSV 세금 계산기'},
+        {href:'/tools/tax-loss-harvesting.html',label:'손실 절세 최적화'},
+        {href:'/tools/portfolio-calculator.html',label:'포트폴리오 계산기'},
+        {href:'/tools/fee-calculator.html',label:'거래소 세금 비교'},
+      ]},
+      {sub:'투자 계산',links:[
+        {href:'/tools/roi-calculator.html',label:'수익률 계산기'},
+        {href:'/tools/dca-calculator.html',label:'DCA 적립식 계산기'},
+        {href:'/tools/multa-calculator.html',label:'물타기 계산기'},
+        {href:'/tools/staking-calculator.html',label:'스테이킹 이자 계산기'},
+        {href:'/tools/kimchi-calculator.html',label:'김치 프리미엄 계산기'},
+        {href:'/tools/satoshi-calculator.html',label:'사토시 환산기'},
+        {href:'/tools/market-cap-calculator.html',label:'시가총액 계산기'},
+        {href:'/tools/krw-converter.html',label:'코인 원화 환산기'},
+      ]},
+    ],more:{href:'/tools/',label:'→ 전체 19종 보기'}},
     {title:'시장 데이터',links:[
+      {href:'/tools/market-index.html',label:'코인 시장 지수'},
       {href:'/market/crypto-charts.html',label:'코인 히트맵·버블차트'},
       {href:'/market/bitcoin-rainbow-chart.html',label:'비트코인 레인보우 차트'},
-      {href:'/tools/market-index.html',label:'시장지수 대시보드'},
     ]},
-    {title:'블로그 · 문의',links:[
-      {href:'/blog/',label:'블로그 홈'},
-      {href:'/blog/coin-tax/2027-guide.html',label:'2027 세금 가이드'},
-      {href:'/contact.html',label:'문의하기'},
+    {title:'회사 소개',links:[
       {href:'/about.html',label:'서비스 소개'},
-    ]},
-    {title:'블록체인 교육',links:[
-      {href:'https://www.thecoinlabs.com/',label:'TheCoinLabs 홈',external:true},
-      {href:'https://www.thecoinlabs.com/',label:'블록체인 기초 강의',external:true},
-      {href:'https://www.thecoinlabs.com/',label:'암호화폐 투자 교육',external:true},
-      {href:'https://www.thecoinlabs.com/',label:'AI 분석 · 뉴스',external:true},
-      {href:'https://www.thecoinlabs.com/',label:'커뮤니티 참여',external:true},
+      {href:'/contact.html',label:'문의하기'},
+      {href:'/about.html',label:'비즈니스 제휴'},
+      {href:'/privacy-policy.html',label:'개인정보처리방침'},
+      {href:'/terms.html',label:'이용약관'},
+      {href:'/sitemap.html',label:'사이트맵'},
     ]},
   ];
   var LEGAL=[
@@ -601,15 +623,29 @@ window.CoinSearch = (function(){
 
   function footerHTML(){
     var cols=FOOTER_COLS.map(function(col){
-      var inner=col.brand?'<p>'+col.content+'</p>':col.links.map(function(l){var ext=l.external?' target="_blank" rel="noopener"':'';return'<a href="'+l.href+'"'+ext+'>'+l.label+'</a>';}).join('');
+      var inner='';
+      if(col.groups){
+        col.groups.forEach(function(g){
+          inner+='<span class="ctc-footer-sub">'+g.sub+'</span>';
+          inner+=g.links.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
+        });
+        if(col.more){inner+='<a class="ctc-footer-more" href="'+col.more.href+'">'+col.more.label+'</a>';}
+      } else {
+        inner=col.links.map(function(l){var ext=l.external?' target="_blank" rel="noopener"':'';return'<a href="'+l.href+'"'+ext+'>'+l.label+'</a>';}).join('');
+      }
       return'<div class="ctc-footer-col"><h4>'+col.title+'</h4>'+inner+'</div>';
     }).join('');
     var legal=LEGAL.map(function(l){return'<a href="'+l.href+'">'+l.label+'</a>';}).join('');
     return'<div class="ctc-footer-inner">'+
+      '<div class="ctc-footer-brand">'+
+        '<a class="ctc-footer-logo" href="/"><img src="/assets/img/logo-icon-crop.png" alt="CryptoTax 로고" width="26" height="26">CryptoTax<span>.cloud</span></a>'+
+        '<p>한국 코인 투자자를 위한 무료 세금 계산기·정보 가이드 허브.</p>'+
+        '<p class="ctc-footer-disclaimer">국세청 기준 적용 · 개인정보 미수집 · 계산 결과는 참고용이며 정확한 세금 신고는 세무사 상담을 권장합니다.</p>'+
+      '</div>'+
       '<div class="ctc-footer-grid">'+cols+'</div>'+
       '<div class="ctc-footer-bottom">'+
         '<div class="ctc-footer-legal">'+legal+'</div>'+
-        '<div class="ctc-footer-copy">© 2026 CryptoTax.cloud — 계산 결과는 참고용이며 정확한 세금은 세무사 상담을 권장합니다.</div>'+
+        '<div class="ctc-footer-copy">© 2026 CryptoTax.cloud — 계산 결과는 참고용입니다.</div>'+
       '</div>'+
     '</div>';
   }
