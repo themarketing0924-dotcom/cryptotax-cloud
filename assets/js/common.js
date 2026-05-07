@@ -494,6 +494,7 @@ window.CoinSearch = (function(){
       {href:'/tools/staking-calculator.html',label:'스테이킹 이자 계산기'},
       {href:'/tools/satoshi-calculator.html',label:'사토시 환산기'},
       {href:'/tools/market-cap-calculator.html',label:'시가총액 계산기'},
+      {href:'/tools/krw-calculator.html',label:'코인 원화 환산기'},
       {href:'/tools/',label:'→ 전체 19종 보기'},
     ]},
     {title:'시장 데이터',links:[
