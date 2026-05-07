@@ -470,7 +470,7 @@ window.CoinSearch = (function(){
     {href:'/tools/',label:'💰 계산기'},
     {href:'/tools/market-index.html',label:'🌡️ 시장지수'},
     {href:'/blog/',label:'📰 블로그'},
-    {href:'/tools/tax-calculator.html',label:'무료 계산 →',cta:true},
+    {href:'/tools/tax-calculator.html',label:'무료 계산',cta:true},
   ];
   var FOOTER_COLS=[
     {title:'블로그',groups:[
