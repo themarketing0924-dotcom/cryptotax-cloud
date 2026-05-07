@@ -576,11 +576,12 @@ select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://
 @media(min-width:769px) and (max-width:1023px){
   .nav-links{display:none;}
   .hamburger-btn{display:flex!important;}
-  .nav-right{gap:6px;}
+  .nav-right{gap:6px;grid-column:3;margin-left:auto;}
 }
 @media(max-width:768px){
   .nav-links{display:none;}
   .hamburger-btn{display:flex;}
+  .nav-right{grid-column:3;margin-left:auto;}
   .cd-num{font-size:1.7rem;}
   .countdown-row{gap:8px;}
   .nav .theme-toggle { display: none; }
