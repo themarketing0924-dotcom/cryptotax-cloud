@@ -669,10 +669,11 @@ article li{margin-bottom:6px;}
 .ctc-nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,140,0,.3);}
 /* ctc-nav 내 모든 버튼 — 전역 min-height 차단 */
 .ctc-nav button,.ctc-nav-right button,.ctc-nav-right a{min-height:unset!important;}
-/* 680px 이하: 일반 링크 숨기고 CTA만 유지 */
-@media(max-width:680px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
-/* 480px 이하: ctc-nav-links 자체는 유지하되 CTA만 표시 (links 숨기지 않음) */
-@media(max-width:480px){.ctc-nav-links a:not(.ctc-nav-cta){display:none;}}
+/* 1023px 이하(태블릿·모바일): 링크 전체 숨기고 햄버거만 표시 */
+@media(max-width:1023px){.ctc-nav-links{display:none!important;}}
+@media(min-width:1024px){.ctc-nav-links{display:flex;}}
+/* ctc-nav 테마 토글 — 트랙+썸 스타일 (랜딩페이지와 동일) */
+.ctc-nav .theme-toggle{border:none!important;background:none!important;padding:0!important;cursor:pointer;display:flex;align-items:center;}
 [data-theme="light"] .ctc-nav{background:rgba(255,255,255,.92);}
 
 /* ===== 표준 CTC 푸터 ===== */
