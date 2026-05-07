@@ -670,8 +670,11 @@ article li{margin-bottom:6px;}
 .ctc-nav-cta:hover{background:#e67e00!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,140,0,.3);}
 /* ctc-nav 내 모든 버튼 — 전역 min-height 차단 */
 .ctc-nav button,.ctc-nav-right button,.ctc-nav-right a{min-height:unset!important;}
-/* 1023px 이하(태블릿·모바일): 링크 전체 숨기고 햄버거만 표시 */
-@media(max-width:1023px){.ctc-nav-links{display:none!important;}}
+/* 1023px 이하(태블릿·모바일): 일반 링크 숨기고 CTA만 유지, 토글도 숨김(드로어에서 접근) */
+@media(max-width:1023px){
+  .ctc-nav-links a:not(.ctc-nav-cta){display:none!important;}
+  .ctc-nav #themeToggle{display:none!important;}
+}
 @media(min-width:1024px){.ctc-nav-links{display:flex;}}
 /* ctc-nav 테마 토글 — 트랙+썸 스타일 (랜딩페이지와 동일) */
 .ctc-nav .theme-toggle{border:none!important;background:none!important;padding:0!important;cursor:pointer;display:flex;align-items:center;}
