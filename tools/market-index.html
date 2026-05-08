@@ -1100,12 +1100,15 @@ function initDomHistChart() {
   el.appendChild(script);
 }
 
-/* COINS */
-async function loadCoins() {
+/* COINS + BREADTH — 단일 호출로 합산 (CoinGecko Rate Limit 방지) */
+async function loadCoinsAndBreadth() {
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h,7d&locale=ko');
+    /* top 100개 KRW, 24h+7d 변동률 한 번에 */
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h,7d');
+    if(!res.ok) throw new Error('HTTP '+res.status);
     const coins = await res.json();
 
+    /* ── BTC / ETH 현재가 ── */
     const btc = coins.find(c => c.id === 'bitcoin');
     const eth = coins.find(c => c.id === 'ethereum');
     if(btc) {
@@ -1121,11 +1124,11 @@ async function loadCoins() {
       document.getElementById('sEthC').style.color = chgColor(ec);
     }
 
-    /* Alt season */
+    /* ── 알트시즌 지수 (7일 수익률 기준) ── */
     const btcChg7 = btc?.price_change_percentage_7d_in_currency || 0;
     const alts = coins.filter(c => c.id !== 'bitcoin');
     const above = alts.filter(c => (c.price_change_percentage_7d_in_currency||0) > btcChg7).length;
-    const score = Math.round((above/alts.length)*100);
+    const score = alts.length ? Math.round((above/alts.length)*100) : 50;
     document.getElementById('altNeedle').style.left = score + '%';
     const altCls = score>=75?'c-alt':score<=25?'c-btc':'c-mix';
     const altTag = score>=75?'🚀 알트코인 시즌!':score<=25?'₿ 비트코인 시즌':'🔀 혼합 시장';
@@ -1136,27 +1139,21 @@ async function loadCoins() {
     document.getElementById('altTag').innerHTML = `<span class="${altCls}">${altTag}</span>`;
     document.getElementById('altDesc').textContent = altDesc;
 
-    /* Gainers/Losers */
+    /* ── 상승/하락 TOP 3 ── */
     const sorted = [...coins].sort((a,b)=>(b.price_change_percentage_24h||0)-(a.price_change_percentage_24h||0));
     const top3g = sorted.slice(0,3);
     const top3l = sorted.slice(-3).reverse();
     const glGrid = document.getElementById('glGrid');
-    glGrid.innerHTML = '';
-    for(let i=0;i<3;i++){
-      const g=top3g[i]; const l=top3l[i];
-      if(g) glGrid.innerHTML += `<div class="gl-item g"><span class="gl-name">${g.symbol.toUpperCase()}</span><span class="gl-chg">+${(g.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
-      if(l) glGrid.innerHTML += `<div class="gl-item l"><span class="gl-name">${l.symbol.toUpperCase()}</span><span class="gl-chg">${(l.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
+    if(glGrid) {
+      glGrid.innerHTML = '';
+      for(let i=0;i<3;i++){
+        const g=top3g[i]; const l=top3l[i];
+        if(g) glGrid.innerHTML += `<div class="gl-item g"><span class="gl-name">${g.symbol.toUpperCase()}</span><span class="gl-chg">+${(g.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
+        if(l) glGrid.innerHTML += `<div class="gl-item l"><span class="gl-name">${l.symbol.toUpperCase()}</span><span class="gl-chg">${(l.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
+      }
     }
 
-    return { altScore: score };
-  } catch(e) { return null; }
-}
-
-/* MARKET BREADTH */
-async function loadBreadth() {
-  try {
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h');
-    const coins = await res.json();
+    /* ── 시장 브레드스 (동일 데이터 재활용) ── */
     const total = coins.length;
     const c1 = coins.filter(c=>(c.price_change_percentage_24h||0)<=-10).length;
     const c2 = coins.filter(c=>{const v=c.price_change_percentage_24h||0;return v>-10&&v<=-2;}).length;
@@ -1167,27 +1164,29 @@ async function loadBreadth() {
     const dnCount = c1 + c2;
     const pct = Math.round(upCount / total * 100);
 
-    document.getElementById('breadthUpCount').textContent = upCount;
-    document.getElementById('breadthDnCount').textContent = dnCount;
-    document.getElementById('breadthPct').textContent = pct + '%';
-    document.getElementById('breadthPct').style.color = pct>=60?'#3fb950':pct>=40?'#ffd700':'#f85149';
-    document.getElementById('breadthBar').style.width = pct + '%';
-
-    const map = pct>=80?['매우 높음 🚀','#00d4aa']:pct>=60?['높음 📈','#3fb950']:pct>=40?['중간 ➡️','#ffd700']:pct>=20?['낮음 📉','#f97316']:['매우 낮음 🔴','#f85149'];
-    const lbl = document.getElementById('breadthLabel');
-    lbl.textContent = map[0];
-    lbl.style.background = map[1]+'22';
-    lbl.style.color = map[1];
-    lbl.style.border = '1px solid '+map[1]+'44';
-
-    const setCell = (id, pid, count) => {
-      document.getElementById(id).textContent = count;
-      document.getElementById(pid).textContent = Math.round(count/total*100)+'%';
+    const bUp = document.getElementById('breadthUpCount');
+    const bDn = document.getElementById('breadthDnCount');
+    const bPct = document.getElementById('breadthPct');
+    const bBar = document.getElementById('breadthBar');
+    const bLbl = document.getElementById('breadthLabel');
+    if(bUp) bUp.textContent = upCount;
+    if(bDn) bDn.textContent = dnCount;
+    if(bPct){ bPct.textContent = pct+'%'; bPct.style.color = pct>=60?'#3fb950':pct>=40?'#ffd700':'#f85149'; }
+    if(bBar) bBar.style.width = pct+'%';
+    if(bLbl){
+      const map = pct>=80?['매우 높음 🚀','#00d4aa']:pct>=60?['높음 📈','#3fb950']:pct>=40?['중간 ➡️','#ffd700']:pct>=20?['낮음 📉','#f97316']:['매우 낮음 🔴','#f85149'];
+      bLbl.textContent=map[0]; bLbl.style.background=map[1]+'22';
+      bLbl.style.color=map[1]; bLbl.style.border='1px solid '+map[1]+'44';
+    }
+    const setCell=(id,pid,count)=>{
+      const a=document.getElementById(id); const b=document.getElementById(pid);
+      if(a) a.textContent=count;
+      if(b) b.textContent=Math.round(count/total*100)+'%';
     };
     setCell('bc1','bp1',c1); setCell('bc2','bp2',c2); setCell('bc3','bp3',c3);
     setCell('bc4','bp4',c4); setCell('bc5','bp5',c5);
 
-    return pct;
+    return { altScore: score, breadthPct: pct };
   } catch(e) { return null; }
 }
 
@@ -1286,20 +1285,24 @@ function toggleFaq(el) {
   if(!isOpen){ans.classList.add('open');el.classList.add('active');}
 }
 
-/* MAIN */
+/* MAIN — CoinGecko 호출을 직렬화해서 Rate Limit 방지 */
 async function loadAll() {
   document.getElementById('lastUpdate').textContent = '⏳ 업데이트 중...';
 
-  /* 개별 API 완료 즉시 시그널 업데이트 — 부분 데이터로도 표시 */
   let _fg=null, _alt=null, _btcDom=null;
   function refreshSignal(){ computeSignal(_fg, _alt, _btcDom); }
 
-  const [fg, globalData, coinsData, breadth] = await Promise.all([
+  /* 1) alternative.me + CoinGecko global 동시 (도메인이 다르므로 안전) */
+  const [fg, globalData] = await Promise.all([
     loadFG().then(v=>{ _fg=v; refreshSignal(); return v; }),
-    loadGlobal().then(v=>{ _btcDom=v?.btcDom??null; refreshSignal(); return v; }),
-    loadCoins().then(v=>{ _alt=v?.altScore??null; refreshSignal(); return v; }),
-    loadBreadth()
+    loadGlobal().then(v=>{ _btcDom=v?.btcDom??null; refreshSignal(); return v; })
   ]);
+
+  /* 2) CoinGecko coins/markets — global 완료 후 500ms 딜레이로 순차 호출 */
+  await new Promise(r => setTimeout(r, 500));
+  const coinsData = await loadCoinsAndBreadth();
+  _alt = coinsData?.altScore ?? null;
+  refreshSignal();
 
   const alt = coinsData?.altScore ?? null;
   const btcDom = globalData?.btcDom ?? null;
