@@ -32,6 +32,13 @@
 }
 </script>
 <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"코인 수익률 계산기 사용 방법","description":"코인 매수·매도 금액으로 ROI와 세후 순수익을 계산하는 방법","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"코인 수익률 계산기 (무료)"}],"step":[
+  {"@type":"HowToStep","position":1,"name":"매수·매도 금액 입력","text":"코인을 살 때 낸 총 매수금액과 팔 때 받은 총 매도금액을 원화로 입력하세요. 수수료는 선택 입력입니다."},
+  {"@type":"HowToStep","position":2,"name":"ROI % 확인","text":"수익금액과 ROI(%)가 즉시 계산됩니다. 플러스면 수익, 마이너스면 손실입니다."},
+  {"@type":"HowToStep","position":3,"name":"세후 순수익 확인","text":"2027년 기준 22% 양도소득세·250만원 공제 후 실제 수령 금액이 자동 계산됩니다. 수익이 250만원 이하라면 세금 0원입니다."}
+]}
+</script>
+<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
   {"@type":"Question","name":"ROI(수익률)는 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"ROI = (매도금액 − 매수금액 − 수수료) ÷ 매수금액 × 100 으로 계산됩니다. 예를 들어 100만원에 사서 150만원에 팔면 ROI = 50%입니다."}},
   {"@type":"Question","name":"코인 세금은 언제부터 부과되나요?","acceptedAnswer":{"@type":"Answer","text":"2027년 1월 1일부터 가상자산 양도소득세가 부과됩니다. 연간 250만원 기본공제 후 초과 수익의 22%(소득세 20% + 지방세 2%)가 과세됩니다."}}
@@ -201,6 +208,13 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
   .card{padding:18px;}
   .cta-consult{flex-direction:column;text-align:center;}
 }
+.howto-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-bottom:20px;}
+.howto-title{font-size:.75rem;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;}
+.howto-steps{display:flex;gap:14px;flex-wrap:wrap;}
+.howto-step{flex:1;min-width:180px;display:flex;align-items:flex-start;gap:10px;}
+.step-num{width:26px;height:26px;background:var(--orange);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0;margin-top:1px;}
+.step-body strong{color:var(--text);display:block;font-size:.87rem;margin-bottom:3px;}
+.step-body span{color:var(--text-sub);font-size:.82rem;line-height:1.55;}
 </style>
 <link rel="stylesheet" href="/assets/css/common.css">
 </head>
@@ -249,6 +263,35 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 <!-- AD TOP -->
 <div class="ad-slot"><!-- Google AdSense 상단 728×90 -->📢 광고 영역</div>
+
+<!-- 이렇게 사용하세요 -->
+<div class="howto-box" itemscope itemtype="https://schema.org/HowTo">
+  <meta itemprop="name" content="코인 수익률 계산기 사용 방법">
+  <div class="howto-title">📋 이렇게 사용하세요 — 코인 수익률(ROI) 계산기</div>
+  <div class="howto-steps">
+    <div class="howto-step" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+      <div class="step-num" aria-label="1단계">1</div>
+      <div class="step-body">
+        <strong itemprop="name">매수·매도 금액 입력</strong>
+        <span itemprop="text">코인을 살 때 낸 <strong>총 매수금액</strong>과 팔 때 받은 <strong>총 매도금액</strong>을 원화로 입력하세요. 수수료는 선택 입력입니다.</span>
+      </div>
+    </div>
+    <div class="howto-step" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+      <div class="step-num" aria-label="2단계">2</div>
+      <div class="step-body">
+        <strong itemprop="name">ROI % 확인</strong>
+        <span itemprop="text">수익금액과 <strong>ROI(%)</strong>가 즉시 계산됩니다. 플러스면 수익, 마이너스면 손실입니다.</span>
+      </div>
+    </div>
+    <div class="howto-step" itemprop="step" itemscope itemtype="https://schema.org/HowToStep">
+      <div class="step-num" aria-label="3단계">3</div>
+      <div class="step-body">
+        <strong itemprop="name">세후 순수익 확인</strong>
+        <span itemprop="text">2027년 기준 <strong>22% 양도소득세</strong>·250만원 공제 후 실제 수령 금액이 자동 계산됩니다. 수익이 250만원 이하라면 세금 0원입니다.</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CALCULATOR CARD -->
 <div class="card">

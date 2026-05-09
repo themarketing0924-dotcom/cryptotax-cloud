@@ -559,6 +559,7 @@ window.CoinSearch = (function(){
         '<a class="drawer-item" href="/tools/김치프리미엄.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌶️</span><span class="di-label">김치프리미엄 계산기</span></a>'+
         '<div class="drawer-divider"></div>'+
         '<div class="drawer-section-title">📊 시장 데이터</div>'+
+        '<a class="drawer-item" href="/tools/hot-coins.html" onclick="ctcCloseDrawer()"><span class="di-icon">🚀</span><span class="di-label">업비트 급등·급락 순위</span><span class="di-new">LIVE</span></a>'+
         '<a class="drawer-item" href="/tools/market-index.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌡️</span><span class="di-label">시장지수 대시보드</span><span class="di-new">LIVE</span></a>'+
         '<a class="drawer-item" href="/market/crypto-charts.html" onclick="ctcCloseDrawer()"><span class="di-icon">💹</span><span class="di-label">실시간 코인 차트</span><span class="di-new">LIVE</span></a>'+
         '<a class="drawer-item" href="/market/bitcoin-rainbow-chart.html" onclick="ctcCloseDrawer()"><span class="di-icon">🌈</span><span class="di-label">비트코인 레인보우 차트</span></a>'+
