@@ -95,3 +95,9 @@ id = "EAzf6r_v8dYon1jfGck9l"
 uri = "file://og-image.png"
 type = "image"
 title = "OG 썸네일 이미지 (1200×630)"
+
+[[outputs]]
+id = "wG3jEGLEP6mKgKr-4DYdV"
+uri = "file://site-build-template.md"
+type = "text"
+title = "사이트 빌드 프롬프트 템플릿"
