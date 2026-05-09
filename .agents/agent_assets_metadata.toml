@@ -101,3 +101,9 @@ id = "wG3jEGLEP6mKgKr-4DYdV"
 uri = "file://site-build-template.md"
 type = "text"
 title = "사이트 빌드 프롬프트 템플릿"
+
+[[outputs]]
+id = "27tzx4gHJlYBrhP_0lmRu"
+uri = "file://lecture-prompt-guide.md"
+type = "text"
+title = "강의용 단계별 프롬프트 가이드"
