@@ -1167,6 +1167,33 @@ body.light-mode ::-webkit-scrollbar-thumb:hover { background: #FF8C00; }
   document.documentElement.setAttribute('data-theme',t);
 })();
 </script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HowTo",
+  "name":"코인 세금 계산하는 방법 (2027년)",
+  "description":"2027년부터 시행되는 가상자산 양도소득세를 직접 계산하는 방법을 단계별로 설명합니다.",
+  "totalTime":"PT2M",
+  "estimatedCost":{"@type":"MonetaryAmount","currency":"KRW","value":"0"},
+  "tool":[{"@type":"HowToTool","name":"코인 세금 계산기 (무료)"}],
+  "step":[
+    {"@type":"HowToStep","position":1,"name":"총 양도차익 입력","text":"한 해 동안 코인을 판 금액에서 이동평균 취득원가와 수수료를 뺀 총 수익을 입력합니다."},
+    {"@type":"HowToStep","position":2,"name":"기본공제 250만원 적용","text":"연간 기본공제 250만원을 차감합니다. 수익이 250만원 이하이면 세금이 0원입니다."},
+    {"@type":"HowToStep","position":3,"name":"세율 22% 적용","text":"과세표준(수익 - 250만원)에 22%(소득세 20% + 지방소득세 2%)를 곱합니다."},
+    {"@type":"HowToStep","position":4,"name":"납부 세액 확인","text":"계산 결과가 납부해야 할 세금입니다. 다음 해 5월 종합소득세 신고 기간에 홈택스에서 신고합니다."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "speakable":{"@type":"SpeakableSpecification","cssSelector":["#geo-facts","h1",".calc-hero-title"]},
+  "name":"코인 세금 계산기 2027",
+  "url":"https://cryptotax.cloud/"
+}
+</script>
 </head>
 <body>
 
