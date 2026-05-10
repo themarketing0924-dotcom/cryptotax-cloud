@@ -15,6 +15,16 @@
   document.head.appendChild(s);
 })();
 
+// ⓪-1b Google AdSense 자동 주입
+(function(){
+  if(document.querySelector('script[src*="pagead2.googlesyndication.com"]')) return;
+  var s=document.createElement('script');
+  s.async=true;
+  s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9721493540498478';
+  s.crossOrigin='anonymous';
+  document.head.appendChild(s);
+})();
+
 // ⓪-2 GA4 서브 페이지 자동 주입 (메인 외 페이지용)
 (function(){
   if(document.querySelector('script[src*="googletagmanager"]')) return;
