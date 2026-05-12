@@ -371,7 +371,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 }
 </style>
 </head>
-<body data-no-ticker>
+<body>
 
 <!-- ===== NAV ===== -->
 <nav>
@@ -387,13 +387,6 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <span id="themeLabel">라이트</span>
   </button>
 </nav>
-
-<!-- ===== 실시간 코인 티커 ===== -->
-<div class="ticker-bar">
-  <div class="ticker-inner" id="tickerInner">
-    <div class="ticker-item"><span class="ticker-coin">BTC</span><span class="ticker-price">로딩 중...</span></div>
-  </div>
-</div>
 
 <!-- ===== BREADCRUMB ===== -->
 <div class="breadcrumb">
@@ -828,6 +821,18 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">코린이가 처음 봐야 할 도구 순서는? <span>▼</span></div>
       <div class="faq-a">① <strong>히트맵</strong>으로 전체 시장 분위기 확인 (초록 많으면 상승장, 빨간색 많으면 하락장) → ② <strong>공포·탐욕 지수</strong>로 지금이 공포 구간인지 탐욕 구간인지 확인 → ③ <strong>BTC 실시간 차트</strong>에서 이동평균선 위/아래 위치 확인 → ④ 투자 결정 시 <strong>DCA 계산기</strong>로 분할 매수 계획 수립.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">RSI 지표는 어떻게 해석하나요? <span>▼</span></div>
+      <div class="faq-a">RSI(상대강도지수)는 0~100 범위로 표시됩니다. <strong>RSI 70 이상</strong>이면 과매수(과열) 신호로 단기 조정 가능성이 높고, <strong>RSI 30 이하</strong>이면 과매도(저평가) 신호로 반등 가능성이 있습니다. 단, 강한 상승장에서는 RSI가 70 이상을 장기간 유지할 수도 있으므로 단독 지표로만 판단하지 말고 이동평균선·MACD와 함께 활용하세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">BTC 도미넌스가 높아지면 알트코인은 어떻게 되나요? <span>▼</span></div>
+      <div class="faq-a">BTC 도미넌스(전체 코인 시총 중 BTC 비중)가 높아지면 자금이 비트코인으로 집중된다는 의미입니다. 이 경우 알트코인은 상대적으로 소외되어 하락하거나 횡보하는 경향이 있습니다. 반대로 도미넌스가 낮아지면 알트코인 시즌(알트시즌)이 올 가능성이 높습니다. 현재 BTC 도미넌스는 위 시장 심리 요약 카드에서 확인할 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">공포·탐욕 지수 20 이하면 어떻게 해야 하나요? <span>▼</span></div>
+      <div class="faq-a">공포·탐욕 지수 20 이하(<strong>극단적 공포</strong> 구간)는 역사적으로 장기 투자자에게 좋은 매수 기회였던 경우가 많습니다. 워런 버핏의 "남들이 공포에 떨 때 욕심을 내라"는 원칙이 코인 시장에도 적용됩니다. 단, 한 번에 전액 투입하는 것보다 <a href="/tools/dca-calculator.html" style="color:var(--orange)">DCA 계산기</a>로 분할 매수 계획을 세우는 것이 리스크 관리에 효과적입니다.</div>
     </div>
 
   </div>
