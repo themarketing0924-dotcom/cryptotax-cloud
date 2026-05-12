@@ -21,16 +21,16 @@
 - --bg-surface: #1a1a2e (카드 배경)
 - --bg-elevated: #24243e (버튼/입력 배경)
 - --text: #e8e8f0 (기본 텍스트)
-- --text-sub: #9999bb (보조 텍스트)
-- --text-muted: #6666aa (약한 텍스트)
-- --green: #3fb950 (상승/성공)
+- --text-sub: #9999bb (보조 `ㅡㅊ텍스트)
+- --text-muted: #6666aa (약한 호텍스트)
+- --green: #3fb950 (상승/성공)ㅕㅌ
 - --red: #f85149 (하락/경고)
 - --blue: #58a6ff (정보)
-- --border: #2a2a4a (테두리)
+- --border: #2a2a4a`쇼 (테두리)
 - 라이트모드: [data-theme="light"] 셀렉터로 오버라이드
 - 폰트: Pretendard CDN (https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css)
-
-프로젝트 구조:
+ㅎ
+ㅂㅎㅋㅌㅅㅂ프로젝트 구조:>>--
 assets/
   css/common.css    — 공통 CSS (nav, footer, drawer, 티커, 컴포넌트)
   js/common.js      — 공통 JS (테마 토글, 스크롤 애니메이션, 코인 티커 자동주입, 햄버거 드로어)
