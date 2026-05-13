@@ -1027,32 +1027,51 @@ async function loadFG() {
   }
 }
 
-/* GLOBAL */
+/* GLOBAL — CryptoCompare top10 + Alternative.me */
 async function loadGlobal() {
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/global');
-    const { data } = await res.json();
-    const mcp = data.market_cap_percentage || {};
-    const bd = parseFloat((mcp.btc||0).toFixed(1));
+    // CryptoCompare top 100 → 시가총액 합산으로 도미넌스 + 전체 시총 추정
+    const cmRes = await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD');
+    if(!cmRes.ok) throw new Error('CMP '+cmRes.status);
+    const cmJson = await cmRes.json();
 
-    /* 도미넌스 스택 바 업데이트 */
-    const coins = [
-      { seg:'dsbBtc', leg:'legBtc', name:'BTC', pct:mcp.btc||0 },
-      { seg:'dsbEth', leg:'legEth', name:'ETH', pct:mcp.eth||0 },
-      { seg:'dsbBnb', leg:'legBnb', name:'BNB', pct:mcp.bnb||0 },
-      { seg:'dsbSol', leg:'legSol', name:'SOL', pct:mcp.sol||0 },
-      { seg:'dsbXrp', leg:'legXrp', name:'XRP', pct:mcp.xrp||0 },
+    let btcMcap=0, ethMcap=0, bnbMcap=0, solMcap=0, xrpMcap=0, topTotal=0, totalVol=0;
+    (cmJson.Data||[]).forEach(c=>{
+      const raw = c.RAW?.USD; if(!raw) return;
+      const m = raw.MKTCAP||0; topTotal+=m;
+      totalVol += raw.VOLUME24HOURTO||0;
+      const n = c.CoinInfo.Name;
+      if(n==='BTC') btcMcap=m;
+      else if(n==='ETH') ethMcap=m;
+      else if(n==='BNB') bnbMcap=m;
+      else if(n==='SOL') solMcap=m;
+      else if(n==='XRP') xrpMcap=m;
+    });
+
+    const totalMcap = topTotal; // top 100 합산 (전체의 ~90%+)
+    const ref = totalMcap || 1;
+    const btcDomPct = btcMcap/ref*100;
+    const ethDomPct = ethMcap/ref*100;
+    const bnbDomPct = bnbMcap/ref*100;
+    const solDomPct = solMcap/ref*100;
+    const xrpDomPct = xrpMcap/ref*100;
+    const bd = parseFloat(btcDomPct.toFixed(1));
+    const activeCoins = (cmJson.Data||[]).length;
+
+    const bars = [
+      { seg:'dsbBtc', leg:'legBtc', name:'BTC', pct:btcDomPct },
+      { seg:'dsbEth', leg:'legEth', name:'ETH', pct:ethDomPct },
+      { seg:'dsbBnb', leg:'legBnb', name:'BNB', pct:bnbDomPct },
+      { seg:'dsbSol', leg:'legSol', name:'SOL', pct:solDomPct },
+      { seg:'dsbXrp', leg:'legXrp', name:'XRP', pct:xrpDomPct },
     ];
-    const topSum = coins.reduce((a,c) => a+c.pct, 0);
-    const rest = Math.max(0, 100 - topSum);
-    coins.push({ seg:'dsbRest', leg:'legRest', name:'기타', pct:rest });
-
-    coins.forEach(c => {
-      const p = parseFloat(c.pct.toFixed(1));
-      const seg = document.getElementById(c.seg);
-      const leg = document.getElementById(c.leg);
-      if(seg){ seg.style.width = p + '%'; seg.textContent = p>5 ? c.name+' '+p+'%' : p>2 ? c.name : ''; }
-      if(leg){ leg.textContent = c.name+' '+p+'%'; }
+    const topSum = bars.reduce((a,c)=>a+c.pct,0);
+    bars.push({ seg:'dsbRest', leg:'legRest', name:'기타', pct:Math.max(0,100-topSum) });
+    bars.forEach(c=>{
+      const p=parseFloat(c.pct.toFixed(1));
+      const seg=document.getElementById(c.seg); const leg=document.getElementById(c.leg);
+      if(seg){ seg.style.width=p+'%'; seg.textContent=p>5?c.name+' '+p+'%':p>2?c.name:''; }
+      if(leg){ leg.textContent=c.name+' '+p+'%'; }
     });
 
     const domTag = bd>=60?'BTC 강세 구간':bd>=50?'BTC 우세':bd>=40?'혼합 시장':'알트 강세';
@@ -1063,17 +1082,12 @@ async function loadGlobal() {
     document.getElementById('domTag').textContent = domTag;
     document.getElementById('domDesc').textContent = domDesc;
 
-    const mcap = data.total_market_cap?.usd || 0;
-    const vol  = data.total_volume?.usd || 0;
-    const chg  = data.market_cap_change_percentage_24h_usd || 0;
-    document.getElementById('sMcap').textContent = fmtUSD(mcap);
-    document.getElementById('sMcapC').textContent = chgStr(chg);
-    document.getElementById('sMcapC').style.color = chgColor(chg);
-    document.getElementById('sVol').textContent = fmtUSD(vol);
-    document.getElementById('sCoins').textContent = (data.active_cryptocurrencies||0).toLocaleString()+'개';
+    document.getElementById('sMcap').textContent = fmtUSD(totalMcap);
+    document.getElementById('sMcapC').textContent = '상위 100개 합산';
+    document.getElementById('sVol').textContent = fmtUSD(totalVol);
+    document.getElementById('sCoins').textContent = '100개+';
     const dirEl = document.getElementById('sDir');
-    dirEl.textContent = chg >= 0 ? '▲ 상승' : '▼ 하락';
-    dirEl.style.color = chgColor(chg);
+    dirEl.textContent = btcDomPct >= 50 ? '₿ BTC 우세' : '🚀 알트 시즌';
 
     return { btcDom: bd };
   } catch(e) { return null; }
@@ -1105,34 +1119,43 @@ function initDomHistChart() {
   el.appendChild(script);
 }
 
-/* COINS + BREADTH — 단일 호출로 합산 (CoinGecko Rate Limit 방지) */
+/* COINS + BREADTH — Upbit KRW + CryptoCompare top100 */
 async function loadCoinsAndBreadth() {
   try {
-    /* top 100개 KRW, 24h+7d 변동률 한 번에 */
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h,7d');
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    const coins = await res.json();
-
-    /* ── BTC / ETH 현재가 ── */
-    const btc = coins.find(c => c.id === 'bitcoin');
-    const eth = coins.find(c => c.id === 'ethereum');
-    if(btc) {
-      document.getElementById('sBtc').textContent = btc.current_price.toLocaleString()+'원';
-      const bc = btc.price_change_percentage_24h || 0;
+    /* BTC / ETH KRW 가격 — Upbit */
+    const upRes = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH');
+    if(!upRes.ok) throw new Error('Upbit '+upRes.status);
+    const upList = await upRes.json();
+    const upMap = {};
+    upList.forEach(t=>{ upMap[t.market]=t; });
+    const btcKrw = upMap['KRW-BTC'];
+    const ethKrw = upMap['KRW-ETH'];
+    if(btcKrw){
+      document.getElementById('sBtc').textContent = btcKrw.trade_price.toLocaleString()+'원';
+      const bc = btcKrw.signed_change_rate*100;
       document.getElementById('sBtcC').textContent = chgStr(bc);
       document.getElementById('sBtcC').style.color = chgColor(bc);
     }
-    if(eth) {
-      document.getElementById('sEth').textContent = eth.current_price.toLocaleString()+'원';
-      const ec = eth.price_change_percentage_24h || 0;
+    if(ethKrw){
+      document.getElementById('sEth').textContent = ethKrw.trade_price.toLocaleString()+'원';
+      const ec = ethKrw.signed_change_rate*100;
       document.getElementById('sEthC').textContent = chgStr(ec);
       document.getElementById('sEthC').style.color = chgColor(ec);
     }
 
-    /* ── 알트시즌 지수 (7일 수익률 기준) ── */
-    const btcChg7 = btc?.price_change_percentage_7d_in_currency || 0;
-    const alts = coins.filter(c => c.id !== 'bitcoin');
-    const above = alts.filter(c => (c.price_change_percentage_7d_in_currency||0) > btcChg7).length;
+    /* 상위 100개 24h 등락률 — CryptoCompare */
+    const cmRes = await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD');
+    if(!cmRes.ok) throw new Error('CMP '+cmRes.status);
+    const cmJson = await cmRes.json();
+    const coins = (cmJson.Data||[]).map(c=>({
+      symbol: c.CoinInfo.Name,
+      chg24: c.RAW?.USD?.CHANGEPCT24HOUR||0,
+    }));
+
+    /* ── 알트시즌 지수 (24h 기준 — 7d 대체) ── */
+    const btcChg24 = btcKrw ? btcKrw.signed_change_rate*100 : 0;
+    const alts = coins.filter(c=>c.symbol!=='BTC' && c.symbol!=='USDT' && c.symbol!=='USDC' && c.symbol!=='BUSD');
+    const above = alts.filter(c=>c.chg24>btcChg24).length;
     const score = alts.length ? Math.round((above/alts.length)*100) : 50;
     document.getElementById('altNeedle').style.left = score + '%';
     const altCls = score>=75?'c-alt':score<=25?'c-btc':'c-mix';
@@ -1145,29 +1168,29 @@ async function loadCoinsAndBreadth() {
     document.getElementById('altDesc').textContent = altDesc;
 
     /* ── 상승/하락 TOP 3 ── */
-    const sorted = [...coins].sort((a,b)=>(b.price_change_percentage_24h||0)-(a.price_change_percentage_24h||0));
+    const sorted = [...coins].sort((a,b)=>b.chg24-a.chg24);
     const top3g = sorted.slice(0,3);
     const top3l = sorted.slice(-3).reverse();
     const glGrid = document.getElementById('glGrid');
-    if(glGrid) {
-      glGrid.innerHTML = '';
+    if(glGrid){
+      glGrid.innerHTML='';
       for(let i=0;i<3;i++){
         const g=top3g[i]; const l=top3l[i];
-        if(g) glGrid.innerHTML += `<div class="gl-item g"><span class="gl-name">${g.symbol.toUpperCase()}</span><span class="gl-chg">+${(g.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
-        if(l) glGrid.innerHTML += `<div class="gl-item l"><span class="gl-name">${l.symbol.toUpperCase()}</span><span class="gl-chg">${(l.price_change_percentage_24h||0).toFixed(1)}%</span></div>`;
+        if(g) glGrid.innerHTML+=`<div class="gl-item g"><span class="gl-name">${g.symbol}</span><span class="gl-chg">+${g.chg24.toFixed(1)}%</span></div>`;
+        if(l) glGrid.innerHTML+=`<div class="gl-item l"><span class="gl-name">${l.symbol}</span><span class="gl-chg">${l.chg24.toFixed(1)}%</span></div>`;
       }
     }
 
-    /* ── 시장 브레드스 (동일 데이터 재활용) ── */
+    /* ── 시장 브레드스 ── */
     const total = coins.length;
-    const c1 = coins.filter(c=>(c.price_change_percentage_24h||0)<=-10).length;
-    const c2 = coins.filter(c=>{const v=c.price_change_percentage_24h||0;return v>-10&&v<=-2;}).length;
-    const c3 = coins.filter(c=>{const v=c.price_change_percentage_24h||0;return v>-2&&v<2;}).length;
-    const c4 = coins.filter(c=>{const v=c.price_change_percentage_24h||0;return v>=2&&v<10;}).length;
-    const c5 = coins.filter(c=>(c.price_change_percentage_24h||0)>=10).length;
-    const upCount = c4 + c5;
-    const dnCount = c1 + c2;
-    const pct = Math.round(upCount / total * 100);
+    const c1 = coins.filter(c=>c.chg24<=-10).length;
+    const c2 = coins.filter(c=>c.chg24>-10&&c.chg24<=-2).length;
+    const c3 = coins.filter(c=>c.chg24>-2&&c.chg24<2).length;
+    const c4 = coins.filter(c=>c.chg24>=2&&c.chg24<10).length;
+    const c5 = coins.filter(c=>c.chg24>=10).length;
+    const upCount = c4+c5;
+    const dnCount = c1+c2;
+    const pct = Math.round(upCount/total*100);
 
     const bUp = document.getElementById('breadthUpCount');
     const bDn = document.getElementById('breadthDnCount');

@@ -663,15 +663,16 @@ function getBandPrices(date){
   }));
 }
 
-/* ===== BTC 시세 불러오기 (CoinGecko) ===== */
+/* ===== BTC 시세 불러오기 (Upbit KRW) ===== */
 async function fetchBTCPrice(){
   const btn = document.querySelector('.fetch-btn');
   btn.textContent = '⏳ 불러오는 중...';
   btn.disabled = true;
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw,usd');
+    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC');
+    if(!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const krw = data.bitcoin.krw;
+    const krw = data[0].trade_price;
     document.getElementById('btcPrice').value = krw;
     btn.textContent = '✅ 불러오기 완료!';
     setTimeout(() => { btn.textContent = '🔄 시세 불러오기'; btn.disabled = false; }, 2000);

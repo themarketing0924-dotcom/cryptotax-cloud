@@ -395,15 +395,26 @@ function switchMode(m){
 
 async function fetchRefPrices(){
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=krw&include_market_cap=true');
-    const data = await res.json();
-    if(data.bitcoin){
-      document.getElementById('refBtcPrice').textContent = fmtKrw(data.bitcoin.krw);
-      document.getElementById('refBtcCap').textContent   = fmtBig(data.bitcoin.krw_market_cap);
+    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH');
+    if(!res.ok) throw new Error(res.status);
+    const list = await res.json();
+    const map = {};
+    list.forEach(t => { map[t.market] = t; });
+    if(map['KRW-BTC']){
+      document.getElementById('refBtcPrice').textContent = fmtKrw(map['KRW-BTC'].trade_price);
+      document.getElementById('refBtcCap').textContent   = '—';
     }
-    if(data.ethereum){
-      document.getElementById('refEthPrice').textContent = fmtKrw(data.ethereum.krw);
-      document.getElementById('refEthCap').textContent   = fmtBig(data.ethereum.krw_market_cap);
+    if(map['KRW-ETH']){
+      document.getElementById('refEthPrice').textContent = fmtKrw(map['KRW-ETH'].trade_price);
+      document.getElementById('refEthCap').textContent   = '—';
+    }
+    // 시가총액: CryptoCompare 에서 별도 조회
+    const cmpRes = await fetch('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=KRW');
+    if(cmpRes.ok){
+      const cmpData = await cmpRes.json();
+      const raw = cmpData.RAW || {};
+      if(raw.BTC && raw.BTC.KRW) document.getElementById('refBtcCap').textContent = fmtBig(raw.BTC.KRW.MKTCAP || 0);
+      if(raw.ETH && raw.ETH.KRW) document.getElementById('refEthCap').textContent = fmtBig(raw.ETH.KRW.MKTCAP || 0);
     }
   } catch(e){}
 }

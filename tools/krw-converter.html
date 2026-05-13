@@ -366,9 +366,27 @@ function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 let livePrices = {};
 
 async function fetchPrices(){
+  // Upbit 시장 코드 → CoinGecko ID 매핑 (내부 livePrices 키 호환)
+  const UPBIT_MAP = {
+    'KRW-BTC':  'bitcoin',
+    'KRW-ETH':  'ethereum',
+    'KRW-XRP':  'ripple',
+    'KRW-SOL':  'solana',
+    'KRW-DOGE': 'dogecoin',
+    'KRW-ADA':  'cardano',
+    'KRW-AVAX': 'avalanche-2',
+    'KRW-DOT':  'polkadot',
+  };
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,solana,dogecoin,cardano,avalanche-2,polkadot&vs_currencies=krw');
-    livePrices = await res.json();
+    const markets = Object.keys(UPBIT_MAP).join(',');
+    const res = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`);
+    if(!res.ok) throw new Error(res.status);
+    const list = await res.json();
+    livePrices = {};
+    list.forEach(t => {
+      const id = UPBIT_MAP[t.market];
+      if(id) livePrices[id] = { krw: t.trade_price };
+    });
     document.getElementById('lBTC').textContent  = livePrices.bitcoin    ? livePrices.bitcoin.krw.toLocaleString('ko-KR')+'원'    : '-';
     document.getElementById('lETH').textContent  = livePrices.ethereum   ? livePrices.ethereum.krw.toLocaleString('ko-KR')+'원'   : '-';
     document.getElementById('lXRP').textContent  = livePrices.ripple     ? livePrices.ripple.krw.toLocaleString('ko-KR')+'원'     : '-';

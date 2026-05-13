@@ -947,7 +947,7 @@ const COINS = [
   {id:'ethereum',    sym:'ETH', kid:'eth'},
   {id:'ripple',      sym:'XRP', kid:'xrp'},
   {id:'solana',      sym:'SOL', kid:'sol'},
-  {id:'binancecoin', sym:'BNB', kid:'bnb'},
+  {id:'dogecoin', sym:'DOGE', kid:'doge'},
 ];
 
 function fmtKrw(v){
@@ -958,28 +958,31 @@ function fmtKrw(v){
 
 async function fetchMarketData(){
   try{
-    const ids = COINS.map(c=>c.id).join(',');
-    const res  = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=krw&include_24hr_change=true&include_market_cap=true`);
-    const data = await res.json();
-    let totalChg=0, totalMcap=0;
+    const markets=COINS.map(c=>'KRW-'+c.sym).join(',');
+    const res=await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`);
+    if(!res.ok) throw new Error(res.status);
+    const list=await res.json();
+    const upMap={};
+    list.forEach(t=>{ upMap[t.market]=t; });
+    const fakeData={};
+    let totalChg=0, count=0;
     COINS.forEach(c=>{
-      const d = data[c.id]; if(!d) return;
-      const chg = d.krw_24h_change;
-      totalChg  += chg;
-      totalMcap += d.krw_market_cap||0;
-      const pe = document.getElementById('p-'+c.kid);
-      const ce = document.getElementById('c-'+c.kid);
-      if(pe) pe.textContent = fmtKrw(d.krw);
+      const t=upMap['KRW-'+c.sym]; if(!t) return;
+      const price=t.trade_price;
+      const chg=t.signed_change_rate*100;
+      totalChg+=chg; count++;
+      fakeData[c.id]={krw:price, krw_24h_change:chg};
+      const pe=document.getElementById('p-'+c.kid);
+      const ce=document.getElementById('c-'+c.kid);
+      if(pe) pe.textContent=fmtKrw(price);
       if(ce){ ce.textContent=(chg>=0?'+':'')+chg.toFixed(2)+'%'; ce.className='ms-chg '+(chg>=0?'up':'dn'); }
     });
-    const avgChg = totalChg/COINS.length;
-    const mce = document.getElementById('market-chg');
-    const mee = document.getElementById('market-emoji');
+    const avgChg=count>0?totalChg/count:0;
+    const mce=document.getElementById('market-chg');
+    const mee=document.getElementById('market-emoji');
     if(mce){ mce.textContent=(avgChg>=0?'+':'')+avgChg.toFixed(2)+'%'; mce.style.color=avgChg>=0?'var(--green)':'var(--red)'; }
     if(mee) mee.textContent=avgChg>=0?'📈':'📉';
-    const tme = document.getElementById('total-mcap');
-    if(tme) tme.textContent=(totalMcap/1e12).toFixed(2)+'조';
-    buildTicker(data);
+    buildTicker(fakeData);
   }catch(e){ console.warn('시세 오류',e); }
 }
 
@@ -1020,10 +1023,14 @@ async function fetchFearGreed(){
 
 async function fetchDominance(){
   try{
-    const res  = await fetch('https://api.coingecko.com/api/v3/global');
-    const data = await res.json();
-    const dom  = data.data.market_cap_percentage.btc;
-    const dv   = document.getElementById('dom-val');
+    const res=await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD');
+    if(!res.ok) return;
+    const json=await res.json();
+    const coins=json.Data||[];
+    let total=0, btcMcap=0;
+    coins.forEach(c=>{ const m=c.RAW&&c.RAW.USD&&c.RAW.USD.MKTCAP||0; total+=m; if(c.CoinInfo.Name==='BTC') btcMcap=m; });
+    const dom=total>0?(btcMcap/total*100):0;
+    const dv=document.getElementById('dom-val');
     if(dv) dv.textContent=dom.toFixed(1)+'%';
   }catch(e){}
 }

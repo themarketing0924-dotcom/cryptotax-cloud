@@ -824,23 +824,32 @@ async function loadFearGreed() {
   }
 }
 
-/* ── GLOBAL DATA (도미넌스 + 시장통계) ── */
+/* ── GLOBAL DATA (도미넌스 + 시장통계) — CryptoCompare top100 ── */
 async function loadGlobal() {
   try {
-    const r = await fetch('https://api.coingecko.com/api/v3/global');
-    const d = r.ok ? await r.json() : null;
-    if (!d) throw new Error();
-    const data = d.data;
+    const r = await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD');
+    if(!r.ok) throw new Error('CMP '+r.status);
+    const json = await r.json();
+    const coins = json.Data || [];
 
-    const btcDom = data.market_cap_percentage.btc?.toFixed(1) || '—';
-    const ethDom = data.market_cap_percentage.eth?.toFixed(1) || '—';
-    const othersDom = (100 - (data.market_cap_percentage.btc || 0) - (data.market_cap_percentage.eth || 0)).toFixed(1);
+    let totalMcap=0, totalVol=0, btcMcap=0, ethMcap=0;
+    coins.forEach(c => {
+      const raw = c.RAW?.USD; if(!raw) return;
+      const m = raw.MKTCAP||0; totalMcap+=m;
+      totalVol += raw.VOLUME24HOURTO||0;
+      const n = c.CoinInfo.Name;
+      if(n==='BTC') btcMcap=m;
+      else if(n==='ETH') ethMcap=m;
+    });
 
-    document.getElementById('domBtc').textContent = btcDom + '%';
-    document.getElementById('domEth').textContent = ethDom + '%';
-    document.getElementById('domOthers').textContent = othersDom + '%';
+    const btcD = totalMcap>0 ? btcMcap/totalMcap*100 : 0;
+    const ethD = totalMcap>0 ? ethMcap/totalMcap*100 : 0;
+    const othersD = Math.max(0, 100-btcD-ethD);
 
-    const btcD = parseFloat(btcDom);
+    document.getElementById('domBtc').textContent = btcD.toFixed(1) + '%';
+    document.getElementById('domEth').textContent = ethD.toFixed(1) + '%';
+    document.getElementById('domOthers').textContent = othersD.toFixed(1) + '%';
+
     const domStatus = btcD >= 60 ? '비트코인 강세 구간' : btcD >= 50 ? '비트코인 우세' : btcD >= 40 ? '혼합 시장' : '알트코인 강세';
     const domDesc = btcD >= 60 ? 'BTC 도미넌스가 높습니다. 자금이 비트코인에 집중되어 있습니다.'
                   : btcD >= 50 ? '비트코인이 시장을 주도하고 있지만 알트코인도 일부 강세입니다.'
@@ -849,18 +858,15 @@ async function loadGlobal() {
     document.getElementById('domStatus').textContent = domStatus;
     document.getElementById('domDesc').textContent = domDesc;
 
-    const mcap = data.total_market_cap?.usd || 0;
-    const vol = data.total_volume?.usd || 0;
-    document.getElementById('totalMcap').textContent = fmtUsd(mcap);
-    document.getElementById('totalVol').textContent = fmtUsd(vol);
-    document.getElementById('activeCrypto').textContent = (data.active_cryptocurrencies || 0).toLocaleString() + '개';
+    document.getElementById('totalMcap').textContent = fmtUsd(totalMcap);
+    document.getElementById('totalVol').textContent = fmtUsd(totalVol);
+    document.getElementById('activeCrypto').textContent = coins.length + '개+';
 
-    const mcapChange = data.market_cap_change_percentage_24h_usd || 0;
     const dirEl = document.getElementById('marketDir');
-    dirEl.textContent = mcapChange >= 0 ? `상승 +${mcapChange.toFixed(1)}%` : `하락 ${mcapChange.toFixed(1)}%`;
-    dirEl.style.color = mcapChange >= 0 ? 'var(--success)' : 'var(--danger)';
+    dirEl.textContent = btcD >= 50 ? '₿ BTC 우세' : '🚀 알트 시즌';
+    dirEl.style.color = btcD >= 50 ? 'var(--warning)' : 'var(--success)';
 
-    return { btcDom: btcD, ethDom: parseFloat(ethDom) };
+    return { btcDom: btcD, ethDom: ethD };
   } catch(e) {
     ['domBtc','domEth','domOthers','totalMcap','totalVol','activeCrypto'].forEach(id => {
       document.getElementById(id).textContent = '—';
@@ -869,70 +875,86 @@ async function loadGlobal() {
   }
 }
 
-/* ── COIN LIST ── */
+/* ── COIN LIST — Upbit KRW + CryptoCompare top20 ── */
 async function loadCoins() {
   try {
-    const r = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h,7d&locale=ko');
-    const coins = r.ok ? await r.json() : null;
-    if (!coins) throw new Error();
+    // BTC/ETH KRW 가격 — Upbit
+    const UPBIT_SYMS = ['BTC','ETH','XRP','SOL','ADA','DOGE','AVAX','DOT','LINK','MATIC'];
+    const upRes = await fetch('https://api.upbit.com/v1/ticker?markets=' + UPBIT_SYMS.map(s=>'KRW-'+s).join(','));
+    if(!upRes.ok) throw new Error('Upbit '+upRes.status);
+    const upList = await upRes.json();
+    const upMap = {};
+    upList.forEach(t=>{ upMap[t.market]=t; });
+
+    const btcT = upMap['KRW-BTC'];
+    const ethT = upMap['KRW-ETH'];
+    if(btcT) document.getElementById('btcPrice').textContent = btcT.trade_price.toLocaleString() + '원';
+    if(ethT) document.getElementById('ethPrice').textContent = ethT.trade_price.toLocaleString() + '원';
+
+    // 상위 20개 코인 — CryptoCompare (24h 변동률 + 시총 + 아이콘)
+    const cmRes = await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD');
+    if(!cmRes.ok) throw new Error('CMP '+cmRes.status);
+    const cmJson = await cmRes.json();
+    const coins = (cmJson.Data||[]).map(c=>({
+      rank:  cmJson.Data.indexOf(c)+1,
+      name:  c.CoinInfo.FullName,
+      sym:   c.CoinInfo.Name,
+      logo:  `https://www.cryptocompare.com${c.CoinInfo.ImageUrl}`,
+      chg24: c.RAW?.USD?.CHANGEPCT24HOUR||0,
+      mcap:  c.RAW?.USD?.MKTCAP||0,
+      priceUsd: c.RAW?.USD?.PRICE||0,
+    }));
 
     // 티커
-    const ticker = coins.slice(0, 10).map(c => {
-      const chg = c.price_change_percentage_24h || 0;
-      const cls = chg >= 0 ? 'up' : 'dn';
-      const sign = chg >= 0 ? '+' : '';
-      return `<span class="ticker-item">${c.symbol.toUpperCase()} <span class="${cls}">${sign}${chg.toFixed(2)}%</span></span>`;
+    const ticker = coins.slice(0,10).map(c=>{
+      const chg=c.chg24; const cls=chg>=0?'up':'dn'; const sign=chg>=0?'+':'';
+      return `<span class="ticker-item">${c.sym} <span class="${cls}">${sign}${chg.toFixed(2)}%</span></span>`;
     }).join('');
     document.getElementById('tickerTrack').innerHTML = ticker + ticker;
 
-    // BTC/ETH 현재가
-    const btc = coins.find(c => c.id === 'bitcoin');
-    const eth = coins.find(c => c.id === 'ethereum');
-    if (btc) document.getElementById('btcPrice').textContent = btc.current_price.toLocaleString() + '원';
-    if (eth) document.getElementById('ethPrice').textContent = eth.current_price.toLocaleString() + '원';
-
-    // 알트시즌 계산 (BTC 제외 상위 코인 중 BTC보다 7일 수익률 높은 비율)
-    const btcChange7d = btc?.price_change_percentage_7d_in_currency || 0;
-    const altCoins = coins.filter(c => c.id !== 'bitcoin');
-    const altAbove = altCoins.filter(c => (c.price_change_percentage_7d_in_currency || 0) > btcChange7d).length;
-    const altScore = Math.round((altAbove / altCoins.length) * 100);
+    // 알트시즌 (24h 기준)
+    const btcChg24 = btcT ? btcT.signed_change_rate*100 : (coins.find(c=>c.sym==='BTC')?.chg24||0);
+    const altCoins = coins.filter(c=>c.sym!=='BTC'&&c.sym!=='USDT'&&c.sym!=='USDC'&&c.sym!=='BUSD');
+    const altAbove = altCoins.filter(c=>c.chg24>btcChg24).length;
+    const altScore = altCoins.length>0 ? Math.round((altAbove/altCoins.length)*100) : 50;
 
     document.getElementById('altNeedle').style.left = altScore + '%';
-    document.getElementById('altValue').innerHTML = `<span class="${altScore >= 75 ? 'alt-season' : altScore <= 25 ? 'btc-season' : 'mixed'}">${altScore}</span>`;
-    const altLabel = altScore >= 75 ? '🚀 알트코인 시즌!' : altScore <= 25 ? '₿ 비트코인 시즌' : '🔀 혼합 시장';
-    const altCls = altScore >= 75 ? 'alt-season' : altScore <= 25 ? 'btc-season' : 'mixed';
+    document.getElementById('altValue').innerHTML = `<span class="${altScore>=75?'alt-season':altScore<=25?'btc-season':'mixed'}">${altScore}</span>`;
+    const altLabel = altScore>=75?'🚀 알트코인 시즌!':altScore<=25?'₿ 비트코인 시즌':'🔀 혼합 시장';
+    const altCls = altScore>=75?'alt-season':altScore<=25?'btc-season':'mixed';
     document.getElementById('altStatus').innerHTML = `<span class="${altCls}">${altLabel}</span>`;
-    document.getElementById('altDesc').textContent = altScore >= 75
+    document.getElementById('altDesc').textContent = altScore>=75
       ? `상위 코인의 ${altScore}%가 BTC보다 강합니다. 알트코인이 강세입니다.`
-      : altScore <= 25 ? `상위 코인의 ${100-altScore}%가 BTC보다 약합니다. 비트코인이 주도합니다.`
+      : altScore<=25 ? `상위 코인의 ${100-altScore}%가 BTC보다 약합니다. 비트코인이 주도합니다.`
       : `시장이 혼재 상태입니다. 코인별 선별적 접근이 필요합니다.`;
 
-    // 테이블
+    // 테이블 — Upbit KRW 가격 우선, 없으면 USD 표시
     const tbody = document.getElementById('coinTableBody');
     tbody.innerHTML = '';
-    coins.forEach((c, i) => {
-      const chg24 = c.price_change_percentage_24h || 0;
-      const chg7d = c.price_change_percentage_7d_in_currency || 0;
+    coins.forEach((c,i)=>{
+      const chg24=c.chg24;
+      const upTicker = upMap['KRW-'+c.sym];
+      const priceStr = upTicker ? upTicker.trade_price.toLocaleString()+'원' : '$'+c.priceUsd.toLocaleString(undefined,{maximumFractionDigits:2});
       tbody.innerHTML += `
         <tr>
           <td>
             <div class="coin-name-cell">
               <span class="coin-rank">${i+1}</span>
-              <img class="coin-icon" src="${c.image}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">
+              <img class="coin-icon" src="${c.logo}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">
               <div>
                 <div class="coin-name">${c.name}</div>
-                <div class="coin-sym">${c.symbol.toUpperCase()}</div>
+                <div class="coin-sym">${c.sym}</div>
               </div>
             </div>
           </td>
-          <td><strong>${c.current_price.toLocaleString()}원</strong></td>
+          <td><strong>${priceStr}</strong></td>
           <td><span class="up-badge ${chg24>=0?'pos':'neg'}">${chg24>=0?'+':''}${chg24.toFixed(2)}%</span></td>
-          <td><span class="up-badge ${chg7d>=0?'pos':'neg'}">${chg7d>=0?'+':''}${chg7d.toFixed(2)}%</span></td>
-          <td style="font-size:.8rem;color:var(--sub)">${fmtUsd(c.market_cap)}</td>
+          <td><span class="up-badge ${chg24>=0?'pos':'neg'}">${chg24>=0?'+':''}${chg24.toFixed(2)}%</span></td>
+          <td style="font-size:.8rem;color:var(--sub)">${fmtUsd(c.mcap)}</td>
         </tr>`;
     });
 
-    return { altScore, btcChange7d };
+    return { altScore, btcChange7d: btcChg24 };
   } catch(e) {
     document.getElementById('coinTableBody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--sub)">데이터 로드 실패. 잠시 후 새로고침해주세요.</td></tr>';
     document.getElementById('tickerTrack').innerHTML = '<span class="ticker-item">시세 로드 실패 — 새로고침해주세요</span>';

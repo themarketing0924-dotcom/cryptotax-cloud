@@ -668,15 +668,16 @@ function getBandPrices(date){
   }));
 }
 
-/* ===== BTC 시세 불러오기 (CoinGecko) ===== */
+/* ===== BTC 시세 불러오기 (Upbit KRW) ===== */
 async function fetchBTCPrice(){
   const btn = document.querySelector('.fetch-btn');
   btn.textContent = '⏳ 불러오는 중...';
   btn.disabled = true;
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw,usd');
+    const res = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC');
+    if(!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const krw = data.bitcoin.krw;
+    const krw = data[0].trade_price;
     document.getElementById('btcPrice').value = krw;
     btn.textContent = '✅ 불러오기 완료!';
     setTimeout(() => { btn.textContent = '🔄 시세 불러오기'; btn.disabled = false; }, 2000);
@@ -1001,13 +1002,16 @@ function buildLegend(currentPrice){
   }).join('');
 }
 
-/* ===== BTC 역사적 가격 조회 (CoinGecko 주간 데이터) ===== */
+/* ===== BTC 역사적 가격 조회 (CryptoCompare 주간 종가) ===== */
 async function fetchHistoricalBTC(){
   try {
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=weekly');
+    const res = await fetch('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=2000&aggregate=7');
     if(!res.ok) return;
-    const data = await res.json();
-    historicalPrices = data.prices || [];
+    const json = await res.json();
+    const raw = (json.Data && json.Data.Data) ? json.Data.Data : [];
+    historicalPrices = raw
+      .filter(d => d.close > 0)
+      .map(d => [d.time * 1000, d.close]);
   } catch(e){}
 }
 

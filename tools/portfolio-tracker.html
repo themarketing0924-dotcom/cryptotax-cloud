@@ -421,18 +421,20 @@
 </div>
 
 <script>
-    // 코인 시세 (CoinGecko API)
-    const COIN_IDS = { BTC: 'bitcoin', ETH: 'ethereum', XRP: 'ripple', SOL: 'solana', ADA: 'cardano', DOGE: 'dogecoin' };
+    // 코인 시세 (Upbit API)
+    const COIN_MARKETS = { BTC: 'KRW-BTC', ETH: 'KRW-ETH', XRP: 'KRW-XRP', SOL: 'KRW-SOL', ADA: 'KRW-ADA', DOGE: 'KRW-DOGE' };
     let prices = {};
 
     async function fetchPrices() {
         try {
-            const ids = Object.values(COIN_IDS).join(',');
-            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=krw`);
-            const data = await res.json();
-            for (const [sym, id] of Object.entries(COIN_IDS)) {
-                if (data[id]) prices[sym] = data[id].krw;
-            }
+            const markets = Object.values(COIN_MARKETS).join(',');
+            const res = await fetch(`https://api.upbit.com/v1/ticker?markets=${markets}`);
+            if(!res.ok) throw new Error(res.status);
+            const list = await res.json();
+            list.forEach(t => {
+                const sym = Object.keys(COIN_MARKETS).find(k => COIN_MARKETS[k] === t.market);
+                if(sym) prices[sym] = t.trade_price;
+            });
         } catch(e) { console.log('시세 로딩 실패', e); }
     }
     fetchPrices();

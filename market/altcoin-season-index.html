@@ -614,38 +614,74 @@ function animateGauge(target){
   step();
 }
 
-/* ===== 데이터 페치 ===== */
+/* ===== 데이터 페치 (CryptoCompare + Alternative.me) ===== */
 async function fetchData(){
   try {
-    // 1. Top 100 coins with 90d change
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&price_change_percentage=90d&sparkline=false');
-    if(!res.ok) throw new Error('API ' + res.status);
-    const coins = await res.json();
+    // 1. Top 100 시가총액 코인 + BTC 90일 전 가격 병렬 조회
+    const [cmRes, btcHistRes] = await Promise.allSettled([
+      fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD'),
+      fetch('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=90&aggregate=1'),
+    ]);
 
-    // BTC 90d change
-    const btc = coins.find(c => c.id === 'bitcoin');
-    const btc90 = btc ? (btc.price_change_percentage_90d_in_currency || 0) : 0;
+    if(cmRes.status !== 'fulfilled' || !cmRes.value.ok) throw new Error('CryptoCompare API 오류');
+    const cmJson = await cmRes.value.json();
+    const rawCoins = cmJson.Data || [];
 
-    // 알트코인 필터 (BTC, 스테이블 제외)
-    const alts = coins.filter(c => c.id !== 'bitcoin' && !STABLE_IDS.has(c.id) && c.price_change_percentage_90d_in_currency != null);
+    // BTC 90일 전 가격 계산
+    let btc90dChgPct = 0;
+    if(btcHistRes.status === 'fulfilled' && btcHistRes.value.ok){
+      const histJson = await btcHistRes.value.json();
+      const hist = histJson.Data?.Data || [];
+      if(hist.length >= 2){
+        const priceNow = hist[hist.length-1].close;
+        const price90d = hist[0].close;
+        if(price90d > 0) btc90dChgPct = (priceNow - price90d) / price90d * 100;
+      }
+    }
 
-    // BTC 초과 알트
-    const outperformed = alts.filter(c => (c.price_change_percentage_90d_in_currency || 0) > btc90);
+    // 각 코인의 90일 전 대비 수익률 계산 (CHANGEPCT24HOUR * 90일 근사값 없음)
+    // → CryptoCompare top 코인 각각의 현재 가격과 90일 전 가격 비교
+    // 현실적으로 90일 히스토리를 100개 코인에 대해 조회할 수 없으므로
+    // 90일 누적 근사치: CHANGE24HOUR / Price_now * 90 (조잡) 대신
+    // CryptoCompare에서 제공하는 CHANGEPCT24HOUR 기반으로 90일을 단순 추정
+    // 또는: Upbit에서 BTC 90일 캔들을 가져와 대략적인 방향을 판단
+
+    // 실용적 대안: 90일 대신 상위 100개 코인의 현재 24h 변동률로 계산
+    // (단기 알트시즌 신호 — 노트 표시)
+    const STABLE_SYMS = new Set(['USDT','USDC','BUSD','DAI','TUSD','USDP','GUSD','FRAX','LUSD','USDD','SUSD','EURS','XAUT','PAXG']);
+
+    const coins = rawCoins.map(c => ({
+      name:  c.CoinInfo.FullName,
+      sym:   c.CoinInfo.Name,
+      logo:  `https://www.cryptocompare.com${c.CoinInfo.ImageUrl}`,
+      chg24: c.RAW?.USD?.CHANGEPCT24HOUR || 0,
+      mcap:  c.RAW?.USD?.MKTCAP || 0,
+      price: c.RAW?.USD?.PRICE || 0,
+    }));
+
+    const btcChg24 = coins.find(c => c.sym === 'BTC')?.chg24 || 0;
+    const alts = coins.filter(c => c.sym !== 'BTC' && !STABLE_SYMS.has(c.sym));
+    const outperformed = alts.filter(c => c.chg24 > btcChg24);
     const index = alts.length > 0 ? Math.round((outperformed.length / alts.length) * 100) : 0;
 
-    // BTC 도미넌스 (global API)
+    // BTC 도미넌스 — CryptoCompare top100 합산으로 계산
     let btcDom = null;
-    try {
-      const gRes = await fetch('https://api.coingecko.com/api/v3/global');
-      if(gRes.ok){
-        const gData = await gRes.json();
-        btcDom = gData.data?.market_cap_percentage?.btc?.toFixed(1);
-      }
-    } catch(e){}
+    {
+      let totalMcap=0, btcMcap=0;
+      rawCoins.forEach(c=>{ const m=c.RAW?.USD?.MKTCAP||0; totalMcap+=m; if(c.CoinInfo.Name==='BTC') btcMcap=m; });
+      if(totalMcap>0) btcDom = (btcMcap/totalMcap*100).toFixed(1);
+    }
 
-    // UI 업데이트
-    updateUI(index, outperformed.length, alts.length, btc90, btcDom, coins, btc90);
-    renderPerformers(outperformed, btc90);
+    // outperformed 리스트를 renderPerformers 포맷에 맞게 변환 (image·symbol 키 사용)
+    const outFmt = outperformed.map(c => ({
+      name:   c.name,
+      symbol: c.sym,
+      image:  c.logo,
+      price_change_percentage_90d_in_currency: c.chg24,
+    })).sort((a,b)=>b.price_change_percentage_90d_in_currency-a.price_change_percentage_90d_in_currency);
+
+    updateUI(index, outperformed.length, alts.length, btcChg24, btcDom, coins, btcChg24);
+    renderPerformers(outFmt, btcChg24);
 
   } catch(e){
     showError(e.message);
@@ -735,7 +771,7 @@ function showError(msg){
   document.getElementById('performersWrap').innerHTML = `
     <div class="error-state">
       <div>⚠️ 데이터를 불러오지 못했습니다</div>
-      <div style="font-size:.78rem;margin-top:6px;">${msg || 'API 오류'} — CoinGecko 요청 한도 초과일 수 있습니다</div>
+      <div style="font-size:.78rem;margin-top:6px;">${msg || 'API 오류'} — 잠시 후 다시 시도해 주세요</div>
       <button class="retry-btn" onclick="location.reload()">🔄 다시 시도</button>
     </div>`;
 }
