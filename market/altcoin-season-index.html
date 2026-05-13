@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알트코인 시즌 지수 실시간 2025 | 지금 비트시즌? 알트시즌? — CryptoTax.cloud</title>
+<meta name="description" content="알트코인 시즌 지수 실시간 확인. 상위 100개 코인의 90일 성과로 비트시즌·알트시즌을 판단합니다. 코린이도 쉽게 이해하는 시장 국면 분석 도구.">
+<meta name="keywords" content="알트코인 시즌, 알트시즌 지수, 비트시즌, altcoin season index, BTC 도미넌스, 코인 시장 국면, 알트코인 투자 전략">
+<link rel="canonical" href="https://cryptotax.cloud/market/altcoin-season-index.html">
+<meta property="og:title" content="알트코인 시즌 지수 실시간 — 지금 비트시즌? 알트시즌? | CryptoTax.cloud">
+<meta property="og:description" content="상위 100개 코인의 90일 성과로 알트코인 시즌을 실시간 측정합니다. 무료, 한국어.">
+<meta property="og:url" content="https://cryptotax.cloud/market/altcoin-season-index.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
+<meta property="og:site_name" content="코인세금계산기 CryptoTax.cloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="알트코인 시즌 지수 실시간 | CryptoTax.cloud">
+<meta name="twitter:description" content="지금 비트시즌인가요? 알트시즌인가요? 실시간으로 확인하세요.">
+<meta name="twitter:image" content="https://cryptotax.cloud/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"알트코인 시즌 지수","url":"https://cryptotax.cloud/market/altcoin-season-index.html","description":"상위 100개 코인의 90일 성과로 알트코인 시즌 vs 비트코인 시즌을 실시간 판단하는 도구.","applicationCategory":"FinanceApplication","operatingSystem":"All","inLanguage":"ko-KR","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"알트코인 시즌 지수란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"상위 100개 암호화폐 중 지난 90일 동안 비트코인보다 수익률이 높은 코인의 비율로 계산됩니다. 75 이상이면 알트코인 시즌, 25 이하면 비트코인 시즌으로 판단합니다."}},{"@type":"Question","name":"알트코인 시즌은 언제 시작되나요?","acceptedAnswer":{"@type":"Answer","text":"일반적으로 비트코인 강세장이 무르익은 후 BTC 도미넌스가 하락하기 시작하면 알트코인으로 자금이 이동합니다. 역사적으로 비트코인 반감기 이후 6~18개월 시점에 알트시즌이 찾아왔습니다."}}]}
+</script>
+<style>
+:root{
+  --bg:#0d0d1a;--bg-surface:#1a1a2e;--bg-elevated:#24243e;
+  --text:#e8e8f0;--text-sub:#9999bb;--text-muted:#6666aa;
+  --orange:#FF8C00;--orange-dim:rgba(247,147,26,.12);
+  --green:#3fb950;--red:#f85149;--blue:#58a6ff;--purple:#bc8cff;
+  --border:#2a2a4a;--border-subtle:#1e1e3a;
+  --shadow:0 4px 24px rgba(0,0,0,.45);--tr:.25s ease;--radius:14px;
+}
+[data-theme="light"]{
+  --bg:#f6f8fa;--bg-surface:#ffffff;--bg-elevated:#f0f2f5;
+  --text:#1a1a2e;--text-sub:#57606a;--text-muted:#8c959f;
+  --border:#d0d7de;--border-subtle:#e8eaed;--shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background var(--tr),color var(--tr);}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000;backdrop-filter:blur(10px);transition:background var(--tr),border-color var(--tr);}
+.nav-logo{font-size:1.15rem;font-weight:800;color:var(--orange);}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-links a{color:var(--text-sub);font-size:.82rem;padding:5px 10px;border-radius:7px;transition:all .2s;}
+.nav-links a:hover{color:var(--orange);background:var(--orange-dim);}
+.theme-toggle{background:var(--bg-elevated);border:1px solid var(--border);border-radius:50px;cursor:pointer;display:flex;align-items:center;gap:5px;padding:5px 11px;font-size:.8rem;color:var(--text-sub);transition:all var(--tr);}
+.theme-toggle:hover{border-color:var(--orange);color:var(--orange);}
+.toggle-track{width:32px;height:17px;background:var(--border);border-radius:20px;position:relative;transition:background var(--tr);}
+[data-theme="light"] .toggle-track{background:var(--orange);}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;background:#fff;border-radius:50%;transition:transform var(--tr);box-shadow:0 1px 3px rgba(0,0,0,.3);}
+[data-theme="light"] .toggle-thumb{transform:translateX(15px);}
+
+/* BREADCRUMB */
+.breadcrumb{padding:10px 24px;font-size:.8rem;color:var(--text-muted);max-width:980px;margin:0 auto;}
+.breadcrumb a{color:var(--text-muted);}
+.breadcrumb a:hover{color:var(--orange);}
+
+/* HERO */
+.hero{padding:36px 24px 24px;text-align:center;background:radial-gradient(ellipse at 50% -20%,rgba(188,140,255,.08) 0%,transparent 65%);}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(188,140,255,.12);color:var(--purple);border:1px solid rgba(188,140,255,.3);border-radius:20px;padding:5px 16px;font-size:.78rem;font-weight:700;margin-bottom:14px;letter-spacing:.03em;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;line-height:1.25;margin-bottom:10px;letter-spacing:-.03em;}
+.hero h1 em{color:var(--purple);font-style:normal;}
+.hero p{color:var(--text-sub);font-size:.95rem;max-width:560px;margin:0 auto 20px;line-height:1.7;}
+.hero-stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
+.hstat .hv{font-size:1.2rem;font-weight:800;color:var(--purple);}
+.hstat .hl{font-size:.72rem;color:var(--text-muted);}
+
+/* CONTAINER & CARD */
+.container{max-width:980px;margin:0 auto;padding:0 20px 64px;}
+.card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;box-shadow:var(--shadow);transition:background var(--tr),border-color var(--tr);}
+.card-title{font-size:1rem;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:8px;color:var(--text);}
+
+/* GAUGE */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;gap:0;padding:8px 0;}
+.gauge-canvas-container{position:relative;width:100%;max-width:360px;margin:0 auto;}
+.gauge-canvas-container canvas{display:block;width:100%;height:auto;}
+.gauge-labels{display:flex;justify-content:space-between;width:100%;max-width:360px;margin:-8px auto 0;padding:0 8px;}
+.gauge-label{font-size:.7rem;font-weight:700;color:var(--text-muted);}
+.gauge-center{text-align:center;margin-top:-4px;}
+.gauge-score-num{font-size:3.2rem;font-weight:900;letter-spacing:-.04em;line-height:1;}
+.gauge-score-max{font-size:1.1rem;color:var(--text-muted);font-weight:600;}
+.gauge-phase{display:inline-block;margin-top:10px;padding:6px 20px;border-radius:30px;font-size:.9rem;font-weight:800;letter-spacing:.02em;}
+.gauge-update{font-size:.73rem;color:var(--text-muted);margin-top:8px;}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
+@media(min-width:600px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+.stat-item{background:var(--bg-elevated);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;transition:background var(--tr);}
+.s-label{font-size:.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;}
+.s-value{font-size:1.2rem;font-weight:900;letter-spacing:-.02em;}
+.s-sub{font-size:.72rem;color:var(--text-muted);margin-top:2px;}
+
+/* TOP PERFORMERS */
+.performers-loading{text-align:center;padding:32px;color:var(--text-muted);}
+.spinner{display:inline-block;width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:8px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.performers-table{width:100%;border-collapse:collapse;font-size:.85rem;}
+.performers-table th{text-align:left;padding:8px 10px;color:var(--text-muted);font-size:.73rem;font-weight:700;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em;}
+.performers-table td{padding:10px;border-bottom:1px solid var(--border-subtle);vertical-align:middle;}
+.performers-table tr:last-child td{border-bottom:none;}
+.performers-table tr:hover td{background:var(--bg-elevated);}
+.coin-cell{display:flex;align-items:center;gap:8px;}
+.coin-img{width:26px;height:26px;border-radius:50%;background:var(--bg-elevated);}
+.coin-name{font-weight:700;font-size:.88rem;}
+.coin-sym{color:var(--text-muted);font-size:.75rem;text-transform:uppercase;}
+.change-pos{color:var(--green);font-weight:800;}
+.change-neg{color:var(--red);font-weight:800;}
+.vs-badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:.72rem;font-weight:700;}
+.vs-pos{background:rgba(63,185,80,.12);color:var(--green);}
+.vs-neg{background:rgba(248,81,73,.1);color:var(--red);}
+.performers-more{text-align:center;padding:12px 0 0;font-size:.8rem;color:var(--text-muted);}
+
+/* PHASE GUIDE */
+.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media(max-width:540px){.phase-grid{grid-template-columns:1fr;}}
+.phase-card{border-radius:12px;padding:18px;border:1px solid transparent;transition:all .2s;}
+.phase-card:hover{transform:translateY(-2px);}
+.phase-card.btc{background:rgba(41,128,185,.08);border-color:rgba(41,128,185,.25);}
+.phase-card.neutral-low{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.25);}
+.phase-card.neutral-high{background:rgba(243,156,18,.08);border-color:rgba(243,156,18,.25);}
+.phase-card.alt{background:rgba(231,76,60,.08);border-color:rgba(231,76,60,.25);}
+.phase-range{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;opacity:.7;}
+.phase-name{font-size:1rem;font-weight:900;margin-bottom:8px;}
+.phase-desc{font-size:.83rem;color:var(--text-sub);line-height:1.65;margin-bottom:10px;}
+.phase-action{font-size:.8rem;font-weight:700;padding:6px 10px;border-radius:7px;display:inline-block;}
+.phase-card.btc .phase-action{background:rgba(41,128,185,.15);color:#58a6ff;}
+.phase-card.neutral-low .phase-action{background:rgba(39,174,96,.15);color:#3fb950;}
+.phase-card.neutral-high .phase-action{background:rgba(243,156,18,.15);color:#f39c12;}
+.phase-card.alt .phase-action{background:rgba(231,76,60,.15);color:#f85149;}
+
+/* HOW IT WORKS */
+.formula-box{background:var(--bg-elevated);border-left:3px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 18px;margin:14px 0;font-size:.85rem;color:var(--text-sub);line-height:1.9;}
+.formula-box code{background:rgba(188,140,255,.15);color:var(--purple);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:.84rem;}
+
+/* SEO */
+.seo-box{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;transition:background var(--tr);}
+.seo-box h2{font-size:.98rem;font-weight:800;margin-bottom:12px;}
+.seo-box h3{font-size:.9rem;font-weight:800;margin:16px 0 8px;}
+.seo-box p{font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px;}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border-subtle);}
+.faq-q{padding:15px 0;cursor:pointer;font-weight:700;font-size:.92rem;display:flex;justify-content:space-between;align-items:center;color:var(--text);transition:color .2s;}
+.faq-q:hover{color:var(--purple);}
+.faq-a{padding:0 0 14px;color:var(--text-sub);font-size:.88rem;line-height:1.75;display:none;}
+
+/* TOOL LINKS */
+.tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:580px){.tool-links{grid-template-columns:1fr 1fr;}}
+.tool-link{display:flex;flex-direction:column;align-items:center;gap:5px;padding:14px 8px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:11px;color:var(--text);font-size:.8rem;font-weight:700;text-align:center;transition:all .2s;}
+.tool-link:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);}
+.tool-link .icon{font-size:1.4rem;}
+.blog-link{display:block;padding:14px 16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.88rem;font-weight:600;transition:all .2s;margin-bottom:10px;}
+.blog-link:hover{border-color:var(--purple);color:var(--purple);}
+
+/* AD SLOT */
+.ad-slot{background:var(--bg-surface);border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--text-muted);font-size:.78rem;margin:18px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+
+/* DISCLAIMER */
+.disclaimer-box{background:rgba(88,166,255,.07);border:1px solid rgba(88,166,255,.2);border-radius:10px;padding:14px 16px;font-size:.82rem;color:var(--text-sub);line-height:1.7;margin-bottom:20px;}
+.disclaimer-box strong{color:var(--blue);}
+
+/* ERROR STATE */
+.error-state{text-align:center;padding:32px 20px;color:var(--text-muted);}
+.retry-btn{margin-top:12px;padding:10px 22px;background:var(--orange);color:#fff;border:none;border-radius:9px;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.retry-btn:hover{opacity:.85;}
+
+/* FOOTER */
+footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:28px 20px;text-align:center;transition:background var(--tr);}
+.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
+.footer-links a{color:var(--text-muted);font-size:.82rem;}
+.footer-links a:hover{color:var(--purple);}
+.footer-copy{font-size:.76rem;color:var(--text-muted);}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  nav{padding:0 14px;}
+  .hero{padding:24px 16px 18px;}
+  .container{padding:0 14px 48px;}
+  .card{padding:18px;}
+  .performers-table th:nth-child(4),.performers-table td:nth-child(4){display:none;}
+}
+</style>
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://cryptotax.cloud/" class="nav-logo">₿ CryptoTax<span style="color:var(--text-sub)">.cloud</span></a>
+  <div class="nav-links">
+    <a href="https://cryptotax.cloud/" style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:7px;padding:5px 12px;font-size:.82rem;color:var(--text-sub);">← 홈</a>
+    <a href="https://cryptotax.cloud/tools/">계산기</a>
+    <a href="https://cryptotax.cloud/blog/">블로그</a>
+  </div>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환">
+    <span id="themeIcon">☀️</span>
+    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    <span id="themeLabel">라이트</span>
+  </button>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://cryptotax.cloud/">홈</a> ›
+  <a href="https://cryptotax.cloud/market/">시장 데이터</a> ›
+  알트코인 시즌 지수
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🌊 실시간 시장 국면 분석</div>
+  <h1>알트코인 <em>시즌 지수</em></h1>
+  <p>지금 비트시즌인가요? 알트시즌인가요?<br>상위 100개 코인의 90일 성과로 실시간 판단합니다</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hv">100점</div><div class="hl">알트시즌 만점</div></div>
+    <div class="hstat"><div class="hv">90일</div><div class="hl">측정 기간</div></div>
+    <div class="hstat"><div class="hv">상위 100</div><div class="hl">코인 기준</div></div>
+    <div class="hstat"><div class="hv">0원</div><div class="hl">완전 무료</div></div>
+  </div>
+</section>
+
+<!-- CONTAINER -->
+<div class="container">
+
+  <div class="ad-slot">📢 광고 영역 (728×90)</div>
+
+  <!-- GAUGE CARD -->
+  <div class="card">
+    <div class="card-title">🌊 알트코인 시즌 지수 — 실시간</div>
+    <div class="disclaimer-box">
+      ⚠️ <strong>참고 목적 전용:</strong> 이 지수는 상위 100개 코인의 90일 수익률 기반 참고 지표이며 투자 조언이 아닙니다.
+    </div>
+
+    <div class="gauge-wrap" id="gaugeWrap">
+      <div class="gauge-canvas-container">
+        <canvas id="gaugeCanvas" width="720" height="420" style="width:360px;height:210px;"></canvas>
+      </div>
+      <div class="gauge-labels">
+        <span class="gauge-label" style="color:#2980b9;">● 비트시즌</span>
+        <span class="gauge-label" style="color:#27ae60;">● 중립</span>
+        <span class="gauge-label" style="color:#f39c12;">● 중립</span>
+        <span class="gauge-label" style="color:#e74c3c;">● 알트시즌</span>
+      </div>
+      <div class="gauge-center">
+        <div id="gaugeScore">
+          <span class="gauge-score-num" id="scoreNum" style="color:var(--text-muted);">—</span>
+          <span class="gauge-score-max"> / 100</span>
+        </div>
+        <div class="gauge-phase" id="phaseBadge" style="background:var(--bg-elevated);color:var(--text-muted);">데이터 로딩 중...</div>
+        <div class="gauge-update" id="gaugeUpdateTime"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS GRID -->
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="s-label">알트시즌 지수</div>
+      <div class="s-value" id="statIndex" style="color:var(--purple);">—</div>
+      <div class="s-sub" id="statIndexSub">계산 중...</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">시장 국면</div>
+      <div class="s-value" id="statPhase">—</div>
+      <div class="s-sub" id="statPhaseSub"></div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">BTC 초과 알트</div>
+      <div class="s-value" id="statAltCount" style="color:var(--green);">—</div>
+      <div class="s-sub">상위 100개 중</div>
+    </div>
+    <div class="stat-item">
+      <div class="s-label">BTC 90일 수익</div>
+      <div class="s-value" id="statBtc90">—</div>
+      <div class="s-sub">기준값</div>
+    </div>
+  </div>
+
+  <!-- TOP PERFORMERS -->
+  <div class="card">
+    <div class="card-title">🏆 BTC 초과 수익 알트코인 Top 10 (90일)</div>
+    <div id="performersWrap">
+      <div class="performers-loading">
+        <div class="spinner"></div>
+        <div>데이터 불러오는 중...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="min-height:250px;">📢 광고 영역 (차트 하단 — CTR 최고)</div>
+
+  <!-- PHASE GUIDE -->
+  <div class="card">
+    <div class="card-title">📖 시장 국면별 투자 전략 — 코린이 가이드</div>
+    <p style="font-size:.85rem;color:var(--text-sub);margin-bottom:18px;line-height:1.7;">알트코인 시즌 지수에 따라 시장 국면이 달라집니다. 각 구간별로 어떻게 대응해야 할지 알아보세요.</p>
+    <div class="phase-grid">
+      <div class="phase-card btc">
+        <div class="phase-range" style="color:#2980b9;">지수 0 ~ 25</div>
+        <div class="phase-name">🔵 비트코인 시즌</div>
+        <div class="phase-desc">비트코인이 시장을 압도합니다. 알트코인 대부분이 BTC 대비 하락하거나 부진한 구간입니다. 알트코인 분산보다 BTC 중심 포지션이 유리합니다.</div>
+        <div class="phase-action">✅ 전략: BTC 집중 보유, 알트 비중 최소화</div>
+      </div>
+      <div class="phase-card neutral-low">
+        <div class="phase-range" style="color:#27ae60;">지수 25 ~ 50</div>
+        <div class="phase-name">🟢 중립 (BTC 우세)</div>
+        <div class="phase-desc">시장이 BTC와 알트코인 사이에서 균형을 잡는 구간입니다. 일부 알트코인이 BTC를 초과하기 시작합니다. 선별적 알트 진입을 고려할 수 있습니다.</div>
+        <div class="phase-action">✅ 전략: BTC 60~70%, 우량 알트 30~40%</div>
+      </div>
+      <div class="phase-card neutral-high">
+        <div class="phase-range" style="color:#f39c12;">지수 50 ~ 75</div>
+        <div class="phase-name">🟡 중립 (알트 우세)</div>
+        <div class="phase-desc">알트코인이 BTC를 초과하는 비율이 높아집니다. 알트시즌 진입 신호일 수 있습니다. 다만 변동성이 커지므로 리스크 관리가 필요합니다.</div>
+        <div class="phase-action">⚠️ 전략: 알트 비중 확대, 손절선 설정 필수</div>
+      </div>
+      <div class="phase-card alt">
+        <div class="phase-range" style="color:#e74c3c;">지수 75 ~ 100</div>
+        <div class="phase-name">🔴 알트코인 시즌!</div>
+        <div class="phase-desc">상위 100개 중 75% 이상이 BTC를 이겼습니다. 알트코인 강세장입니다. 동시에 과열 신호일 수 있으므로 수익 실현과 절세 전략을 병행하세요.</div>
+        <div class="phase-action">⚠️ 전략: 수익 실현 + 세금 미리 계산</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:14px;background:var(--bg-elevated);border-radius:10px;font-size:.83rem;color:var(--text-sub);line-height:1.7;">
+      💡 <strong style="color:var(--orange);">알트시즌 수익 실현 전에 꼭 확인!</strong> 알트코인 양도차익에도 2027년부터 22% 세금이 부과됩니다.
+      <a href="/tools/tax-calculator.html" style="color:var(--orange);font-weight:700;margin-left:4px;">→ 세금 미리 계산하기</a>
+    </div>
+  </div>
+
+  <!-- HOW IT'S CALCULATED -->
+  <div class="card">
+    <div class="card-title">🔢 알트코인 시즌 지수 계산 방법</div>
+    <p style="font-size:.87rem;color:var(--text-sub);line-height:1.8;margin-bottom:14px;">
+      이 지수는 <a href="https://coinmarketcap.com/charts/altcoin-season-index/" target="_blank" rel="noopener" style="color:var(--blue);">CoinMarketCap 알트코인 시즌 지수</a>와 동일한 방식으로 계산됩니다.
+    </p>
+    <div class="formula-box">
+      <div style="font-weight:800;color:var(--text);margin-bottom:8px;">📐 계산 공식</div>
+      <code>지수 = (BTC 초과 알트코인 수 ÷ 전체 측정 알트코인 수) × 100</code>
+      <div style="margin-top:12px;font-size:.83rem;line-height:1.9;">
+        <strong style="color:var(--text);">측정 조건</strong><br>
+        ① 시가총액 기준 상위 100개 코인 기준<br>
+        ② 스테이블코인(USDT·USDC 등) 제외<br>
+        ③ 비트코인(BTC) 제외<br>
+        ④ <strong>기간: 최근 90일(3개월)</strong> 수익률 비교<br>
+        ⑤ 각 알트코인의 90일 수익률 > BTC 90일 수익률이면 카운트
+      </div>
+    </div>
+    <p style="font-size:.85rem;color:var(--text-sub);line-height:1.8;">
+      예시: 상위 100개 중 스테이블코인 10개 제외 → 측정 대상 90개. 이 중 67개가 BTC보다 높은 90일 수익률을 기록하면 지수 = <strong style="color:var(--purple);">74점</strong> (중립 구간).
+    </p>
+    <p style="font-size:.83rem;color:var(--text-muted);margin-top:8px;">
+      ※ 데이터 출처: CoinGecko API (무료) · 매 페이지 로드시 실시간 업데이트
+    </p>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-box">
+    <h2>알트코인 시즌이란? 코린이를 위한 완전 설명</h2>
+    <h3>🌊 알트시즌이 오는 이유</h3>
+    <p>비트코인 강세장이 충분히 진행되면 "비트코인만으로는 더 큰 수익을 얻기 어렵다"는 심리가 형성됩니다. 이때 자금이 이더리움, 솔라나, 리플 등 <a href="https://namu.wiki/w/%EC%95%8C%ED%8A%B8%EC%BD%94%EC%9D%B8" target="_blank" rel="noopener" style="color:var(--blue);">알트코인</a>으로 이동하며 알트시즌이 시작됩니다.</p>
+    <h3>📅 역사적 알트시즌 패턴</h3>
+    <p>역사적으로 비트코인 반감기(약 4년 주기) 이후 6~18개월 시점에 알트시즌이 찾아왔습니다. 2021년 알트시즌에는 이더리움이 +1,000%, 솔라나가 +10,000% 이상 상승했습니다. 그러나 알트시즌은 비트시즌보다 변동성이 훨씬 크고 짧게 끝나는 경향이 있어 주의가 필요합니다.</p>
+    <h3>⚠️ 알트시즌의 함정</h3>
+    <p>알트코인 상승은 빠르고 하락도 극단적입니다. 알트시즌 고점에서 매수하면 -80~-95%까지 하락하는 경우도 있습니다. 알트시즌 지수가 75 이상으로 올라가면 점차 수익 실현과 절세 전략을 병행하는 것이 중요합니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener" style="color:var(--blue);">국세청 가상자산 세금 안내</a>도 미리 확인하세요.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <div class="card-title">❓ 자주 묻는 질문 (FAQ)</div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">알트코인 시즌 지수 75 이상이면 무조건 팔아야 하나요? <span>▼</span></div>
+      <div class="faq-a">지수 75 이상은 과열 신호지만 반드시 매도해야 한다는 뜻은 아닙니다. 역사적으로 알트시즌 지수가 75를 넘어도 수개월간 지속된 경우가 많습니다. 단, 이 구간에서는 <strong>수익 실현 계획을 미리 세우고</strong>, 매도 시 발생하는 양도세(22%)를 계산해두는 것이 중요합니다. <a href="/tools/tax-calculator.html" style="color:var(--purple);">세금 계산기 바로가기</a></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">BTC 도미넌스와 알트시즌 지수의 차이는? <span>▼</span></div>
+      <div class="faq-a">BTC 도미넌스는 전체 코인 시가총액 중 BTC가 차지하는 비율입니다. 알트시즌 지수는 상위 100개 코인 중 <strong>90일 수익률이 BTC보다 높은 코인의 비율</strong>입니다. 도미넌스는 시총 기반, 지수는 수익률 기반이라 서로 다른 관점에서 시장을 봅니다. 보통 도미넌스 하락 = 알트시즌 지수 상승 방향으로 연동되는 경향이 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">알트시즌에 어떤 알트코인에 투자해야 하나요? <span>▼</span></div>
+      <div class="faq-a">이 지수는 투자 추천 서비스가 아닙니다. 일반적으로 알트시즌에는 시가총액이 크고 거래량이 활발한 이더리움(ETH), 솔라나(SOL), 리플(XRP) 등이 먼저 상승하는 경향이 있습니다. 소형 알트코인은 상승폭이 크지만 리스크도 극단적으로 높습니다. 업비트에 상장된 코인 위주로 검토하되 반드시 본인이 리서치한 코인에만 투자하세요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">지수가 0에 가까울 때 알트코인을 사면 저점 매수인가요? <span>▼</span></div>
+      <div class="faq-a">지수 0~25(비트시즌)는 알트코인이 BTC 대비 부진한 구간입니다. 장기적 관점에서는 저점 매수 기회가 될 수 있지만, 비트시즌은 더 길게 지속될 수 있습니다. 한 번에 전액 투입보다는 <a href="/tools/dca-calculator.html" style="color:var(--purple);">DCA(분할 매수)</a> 전략으로 리스크를 분산하는 것을 권장합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">스테이블코인은 왜 계산에서 제외하나요? <span>▼</span></div>
+      <div class="faq-a">USDT, USDC 등 스테이블코인은 달러 가치에 연동되어 가격이 거의 변하지 않습니다. 따라서 BTC 대비 수익률이 사실상 의미가 없어 알트시즌 지수 계산에서 제외합니다. 지수는 순수하게 가격 변동이 있는 암호화폐만 측정합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">알트코인 수익에도 세금이 붙나요? <span>▼</span></div>
+      <div class="faq-a">네, 2027년부터 알트코인을 포함한 모든 가상자산 양도소득세 22%(소득세 20% + 지방소득세 2%)가 부과됩니다. 연간 250만원까지는 기본공제가 적용됩니다. 알트시즌에 큰 수익이 발생할 수 있는 만큼 <a href="/tools/tax-calculator.html" style="color:var(--purple);">미리 세금을 계산</a>해두는 것이 중요합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">알트시즌 지수가 업데이트되는 주기는? <span>▼</span></div>
+      <div class="faq-a">이 페이지는 방문할 때마다 CoinGecko API를 통해 실시간으로 데이터를 가져와 계산합니다. 별도의 새로고침 없이 페이지 접속 시마다 최신 데이터가 반영됩니다. CoinGecko는 코인 가격을 1~5분 간격으로 업데이트합니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">비트코인 도미넌스 차트는 어디서 볼 수 있나요? <span>▼</span></div>
+      <div class="faq-a">현재 BTC 도미넌스는 위 통계 카드에서 확인할 수 있습니다. 더 자세한 도미넌스 역사 차트는 <a href="/market/crypto-charts.html" style="color:var(--purple);">코인 차트 분석 페이지</a>에서 TradingView 차트를 통해 확인하세요.</div>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="card">
+    <div class="card-title">🛠️ 함께 쓰면 좋은 계산기</div>
+    <div class="tool-links" style="margin-bottom:20px;">
+      <a class="tool-link" href="/tools/tax-calculator.html"><span class="icon">💰</span>세금 계산기</a>
+      <a class="tool-link" href="/tools/dca-calculator.html"><span class="icon">📅</span>DCA 계산기</a>
+      <a class="tool-link" href="/tools/roi-calculator.html"><span class="icon">📈</span>수익률 계산기</a>
+      <a class="tool-link" href="/tools/multa-calculator.html"><span class="icon">📊</span>물타기 계산기</a>
+      <a class="tool-link" href="/market/bitcoin-rainbow-chart.html"><span class="icon">🌈</span>레인보우 차트</a>
+      <a class="tool-link" href="/tools/tax-loss-harvesting.html"><span class="icon">🌿</span>절세 하베스팅</a>
+    </div>
+    <div class="card-title" style="margin-top:4px;">📚 함께 읽으면 좋은 글</div>
+    <a class="blog-link" href="/blog/investment/dca-strategy.html">→ DCA 적립식 투자 전략 완전 정복</a>
+    <a class="blog-link" href="/blog/investment/bitcoin-halving.html">→ 비트코인 반감기와 알트시즌의 관계</a>
+    <a class="blog-link" href="/blog/coin-tax/2027-guide.html">→ 2027 코인 세금 완전정복 가이드</a>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-links">
+    <a href="/about.html">서비스 소개</a>
+    <a href="/privacy-policy.html">개인정보처리방침</a>
+    <a href="/terms.html">이용약관</a>
+    <a href="/disclaimer.html">면책조항</a>
+    <a href="/sitemap.html">사이트맵</a>
+  </div>
+  <div class="footer-copy">© 2025 CryptoTax.cloud — 한국 코인 투자자를 위한 무료 세금 계산기</div>
+</footer>
+
+<script>
+/* ===== 테마 ===== */
+(function(){
+  const t = localStorage.getItem('ctc-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  updateThemeUI(t);
+})();
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('ctc-theme', next);
+  updateThemeUI(next);
+  if(typeof gaugeCurrent !== 'undefined') drawGauge(gaugeCurrent);
+}
+function updateThemeUI(t){
+  const icon = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(t==='light'){ if(icon) icon.textContent='🌙'; if(label) label.textContent='다크'; }
+  else { if(icon) icon.textContent='☀️'; if(label) label.textContent='라이트'; }
+}
+
+/* ===== FAQ ===== */
+function toggleFaq(el){
+  const a = el.nextElementSibling;
+  const open = a.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(x => x.style.display='none');
+  if(!open) a.style.display = 'block';
+}
+
+/* ===== 스테이블코인 ID 목록 ===== */
+const STABLE_IDS = new Set([
+  'tether','usd-coin','binance-usd','dai','true-usd','pax-usd',
+  'gemini-dollar','frax','liquity-usd','usdd','first-digital-usd',
+  'paypal-usd','origin-dollar','crvusd','euro-coin','stasis-eurs',
+  'terrausd','neutrino','fei-usd','tribe-2','mim','alchemix-usd',
+  'dola-borrowing-right','usds','wrapped-steth','staked-ether'
+]);
+
+/* ===== 게이지 그리기 ===== */
+let gaugeCurrent = 0;
+let gaugeTarget = 0;
+let gaugeAnimId = null;
+
+function drawGauge(score){
+  const canvas = document.getElementById('gaugeCanvas');
+  const ctx = canvas.getContext('2d');
+  const DPR = window.devicePixelRatio || 1;
+  const CW = 360, CH = 210;
+  canvas.width = CW * DPR; canvas.height = CH * DPR;
+  canvas.style.width = CW + 'px'; canvas.style.height = CH + 'px';
+  ctx.scale(DPR, DPR);
+
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const cx = CW / 2, cy = CH - 18;
+  const Ro = 148, Ri = 88;
+
+  ctx.clearRect(0, 0, CW, CH);
+
+  // 배경 호
+  ctx.beginPath();
+  ctx.arc(cx, cy, Ro + 12, Math.PI, 0);
+  ctx.arc(cx, cy, Ri - 12, 0, Math.PI, true);
+  ctx.closePath();
+  ctx.fillStyle = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)';
+  ctx.fill();
+
+  // 4구간 색상 밴드
+  const zones = [
+    {from:0,  to:25,  color:'#2980b9'},
+    {from:25, to:50,  color:'#27ae60'},
+    {from:50, to:75,  color:'#f39c12'},
+    {from:75, to:100, color:'#e74c3c'},
+  ];
+  const GAP = 0.025;
+  zones.forEach(z => {
+    const sa = Math.PI * (1 - z.to / 100) + GAP;
+    const ea = Math.PI * (1 - z.from / 100) - GAP;
+    ctx.beginPath();
+    ctx.arc(cx, cy, Ro, sa, ea);
+    ctx.arc(cx, cy, Ri, ea, sa, true);
+    ctx.closePath();
+    ctx.fillStyle = z.color + 'dd';
+    ctx.fill();
+  });
+
+  // 진행 오버레이 (현재 score까지 밝게)
+  if(score > 0){
+    const sa = Math.PI;
+    const ea = Math.PI * (1 - score / 100);
+    ctx.beginPath();
+    ctx.arc(cx, cy, Ro - 2, sa, ea > sa ? sa + 0.01 : ea);
+    ctx.arc(cx, cy, Ri + 2, ea > sa ? sa + 0.01 : ea, sa, true);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    ctx.fill();
+  }
+
+  // 눈금
+  for(let i = 0; i <= 20; i++){
+    const ang = Math.PI * (1 - i / 20);
+    const isMain = i % 5 === 0;
+    const r1 = Ro + (isMain ? 14 : 8);
+    const r2 = Ro + 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(ang)*r1, cy + Math.sin(ang)*r1);
+    ctx.lineTo(cx + Math.cos(ang)*r2, cy + Math.sin(ang)*r2);
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.25)';
+    ctx.lineWidth = isMain ? 2 : 1;
+    ctx.stroke();
+    if(isMain){
+      const lv = i * 5;
+      const lx = cx + Math.cos(ang) * (r1 + 14);
+      const ly = cy + Math.sin(ang) * (r1 + 14) + 4;
+      ctx.font = `bold 11px sans-serif`;
+      ctx.fillStyle = isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.45)';
+      ctx.textAlign = 'center';
+      ctx.fillText(lv, lx, ly);
+    }
+  }
+
+  // 바늘
+  const needleAngle = Math.PI * (1 - score / 100);
+  const needleColor = getPhaseColor(score);
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(needleAngle);
+  // 바늘 그림자
+  ctx.shadowColor = needleColor;
+  ctx.shadowBlur = 8;
+  ctx.beginPath();
+  ctx.moveTo(-8, 0);
+  ctx.lineTo(Ro - 10, 0);
+  ctx.strokeStyle = needleColor;
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+  ctx.restore();
+
+  // 중앙 원
+  ctx.beginPath();
+  ctx.arc(cx, cy, 13, 0, Math.PI * 2);
+  ctx.fillStyle = isDark ? '#1a1a2e' : '#ffffff';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(cx, cy, 9, 0, Math.PI * 2);
+  ctx.fillStyle = needleColor;
+  ctx.fill();
+}
+
+function getPhaseColor(score){
+  if(score <= 25) return '#2980b9';
+  if(score <= 50) return '#27ae60';
+  if(score <= 75) return '#f39c12';
+  return '#e74c3c';
+}
+
+function getPhaseInfo(score){
+  if(score <= 25) return {name:'₿ 비트코인 시즌', bg:'rgba(41,128,185,.18)', color:'#58a6ff'};
+  if(score <= 50) return {name:'🟢 중립 (BTC 우세)', bg:'rgba(39,174,96,.18)', color:'#3fb950'};
+  if(score <= 75) return {name:'🟡 중립 (알트 우세)', bg:'rgba(243,156,18,.18)', color:'#f39c12'};
+  return {name:'🌊 알트코인 시즌!', bg:'rgba(231,76,60,.18)', color:'#f85149'};
+}
+
+function animateGauge(target){
+  gaugeTarget = target;
+  if(gaugeAnimId) cancelAnimationFrame(gaugeAnimId);
+  function step(){
+    const diff = gaugeTarget - gaugeCurrent;
+    if(Math.abs(diff) < 0.3){ gaugeCurrent = gaugeTarget; drawGauge(gaugeCurrent); return; }
+    gaugeCurrent += diff * 0.07;
+    drawGauge(gaugeCurrent);
+    gaugeAnimId = requestAnimationFrame(step);
+  }
+  step();
+}
+
+/* ===== 데이터 페치 ===== */
+async function fetchData(){
+  try {
+    // 1. Top 100 coins with 90d change
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&price_change_percentage=90d&sparkline=false');
+    if(!res.ok) throw new Error('API ' + res.status);
+    const coins = await res.json();
+
+    // BTC 90d change
+    const btc = coins.find(c => c.id === 'bitcoin');
+    const btc90 = btc ? (btc.price_change_percentage_90d_in_currency || 0) : 0;
+
+    // 알트코인 필터 (BTC, 스테이블 제외)
+    const alts = coins.filter(c => c.id !== 'bitcoin' && !STABLE_IDS.has(c.id) && c.price_change_percentage_90d_in_currency != null);
+
+    // BTC 초과 알트
+    const outperformed = alts.filter(c => (c.price_change_percentage_90d_in_currency || 0) > btc90);
+    const index = alts.length > 0 ? Math.round((outperformed.length / alts.length) * 100) : 0;
+
+    // BTC 도미넌스 (global API)
+    let btcDom = null;
+    try {
+      const gRes = await fetch('https://api.coingecko.com/api/v3/global');
+      if(gRes.ok){
+        const gData = await gRes.json();
+        btcDom = gData.data?.market_cap_percentage?.btc?.toFixed(1);
+      }
+    } catch(e){}
+
+    // UI 업데이트
+    updateUI(index, outperformed.length, alts.length, btc90, btcDom, coins, btc90);
+    renderPerformers(outperformed, btc90);
+
+  } catch(e){
+    showError(e.message);
+  }
+}
+
+function updateUI(index, outCount, total, btc90, btcDom, coins, btc90raw){
+  // 게이지
+  animateGauge(index);
+
+  // 점수 텍스트
+  const scoreEl = document.getElementById('scoreNum');
+  const phaseInfo = getPhaseInfo(index);
+  scoreEl.textContent = index;
+  scoreEl.style.color = phaseInfo.color;
+
+  // 국면 배지
+  const badge = document.getElementById('phaseBadge');
+  badge.textContent = phaseInfo.name;
+  badge.style.background = phaseInfo.bg;
+  badge.style.color = phaseInfo.color;
+
+  // 업데이트 시간
+  const now = new Date();
+  document.getElementById('gaugeUpdateTime').textContent =
+    `업데이트: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+
+  // 통계
+  document.getElementById('statIndex').textContent = index + '점';
+  document.getElementById('statIndex').style.color = phaseInfo.color;
+  document.getElementById('statIndexSub').textContent = index <= 25 ? '비트코인 시즌' : index <= 50 ? '중립 구간' : index <= 75 ? '중립 상단' : '알트코인 시즌';
+
+  document.getElementById('statPhase').textContent = phaseInfo.name;
+  document.getElementById('statPhase').style.color = phaseInfo.color;
+  document.getElementById('statPhaseSub').textContent = `지수 ${index}/100`;
+
+  document.getElementById('statAltCount').textContent = `${outCount}개`;
+  document.getElementById('statAltCount').style.color = outCount > total/2 ? 'var(--green)' : 'var(--orange)';
+
+  const btcEl = document.getElementById('statBtc90');
+  btcEl.textContent = (btc90raw >= 0 ? '+' : '') + btc90raw.toFixed(1) + '%';
+  btcEl.style.color = btc90raw >= 0 ? 'var(--green)' : 'var(--red)';
+}
+
+function renderPerformers(outperformed, btc90){
+  const top10 = outperformed
+    .sort((a,b) => (b.price_change_percentage_90d_in_currency||0) - (a.price_change_percentage_90d_in_currency||0))
+    .slice(0, 10);
+
+  if(top10.length === 0){
+    document.getElementById('performersWrap').innerHTML = '<div class="error-state">현재 BTC를 초과한 알트코인 데이터가 없습니다.</div>';
+    return;
+  }
+
+  const rows = top10.map((c, i) => {
+    const ch90 = c.price_change_percentage_90d_in_currency || 0;
+    const vs = ch90 - btc90;
+    return `<tr>
+      <td style="color:var(--text-muted);font-size:.8rem;text-align:center;">${i+1}</td>
+      <td><div class="coin-cell">
+        <img class="coin-img" src="${c.image}" alt="${c.name}" onerror="this.style.display='none'">
+        <div><div class="coin-name">${c.name}</div><div class="coin-sym">${c.symbol.toUpperCase()}</div></div>
+      </div></td>
+      <td class="${ch90>=0?'change-pos':'change-neg'}">${ch90>=0?'+':''}${ch90.toFixed(1)}%</td>
+      <td><span class="vs-badge ${vs>=0?'vs-pos':'vs-neg'}">${vs>=0?'+':''}${vs.toFixed(1)}%</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('performersWrap').innerHTML = `
+    <table class="performers-table">
+      <thead><tr>
+        <th style="text-align:center;">#</th>
+        <th>코인</th>
+        <th>90일 수익</th>
+        <th>BTC 대비</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="performers-more">※ 시가총액 상위 100개 기준 · BTC 초과 수익 코인만 표시</div>`;
+}
+
+function showError(msg){
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  drawGauge(0);
+  document.getElementById('scoreNum').textContent = '—';
+  document.getElementById('phaseBadge').textContent = '데이터 로드 실패';
+  document.getElementById('performersWrap').innerHTML = `
+    <div class="error-state">
+      <div>⚠️ 데이터를 불러오지 못했습니다</div>
+      <div style="font-size:.78rem;margin-top:6px;">${msg || 'API 오류'} — CoinGecko 요청 한도 초과일 수 있습니다</div>
+      <button class="retry-btn" onclick="location.reload()">🔄 다시 시도</button>
+    </div>`;
+}
+
+/* ===== 초기 로드 ===== */
+window.addEventListener('load', () => {
+  drawGauge(0);
+  fetchData();
+});
+</script>
+<script src="/assets/js/common.js?v=1778588210"></script>
+</body>
+</html>

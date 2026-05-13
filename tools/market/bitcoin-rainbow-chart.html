@@ -744,6 +744,7 @@ function analyzeRainbow(){
 
 /* ===== 레인보우 차트 그리기 ===== */
 let chartData = null; // 가격 데이터 캐시
+let historicalPrices = null; // CoinGecko BTC 주간 역사적 가격 [[ts, usd],...]
 
 function drawRainbowChart(currentPrice){
   const canvas = document.getElementById('rainbowCanvas');
@@ -866,6 +867,29 @@ function drawRainbowChart(currentPrice){
     ctx.stroke();
   }
 
+  // ── 실제 BTC 가격선 (역사적 데이터) ──
+  if(historicalPrices && historicalPrices.length > 0){
+    ctx.beginPath();
+    let pStarted = false;
+    historicalPrices.forEach(function(pt){
+      const date = new Date(pt[0]);
+      if(date < startDate) return;
+      if(date > new Date()) return;
+      const x = xOf(date);
+      const y = yOf(pt[1]);
+      if(y < PAD.top - 2){ pStarted = false; return; }
+      if(y > PAD.top + cH + 2){ pStarted = false; return; }
+      if(!pStarted){ ctx.moveTo(x, y); pStarted = true; }
+      else ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.88)' : 'rgba(0,0,0,0.82)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+
   // ── 반감기 수직선 ──
   const halvings = [
     { date: new Date('2012-11-28'), label: '1차 반감기' },
@@ -977,14 +1001,27 @@ function buildLegend(currentPrice){
   }).join('');
 }
 
+/* ===== BTC 역사적 가격 조회 (CoinGecko 주간 데이터) ===== */
+async function fetchHistoricalBTC(){
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=weekly');
+    if(!res.ok) return;
+    const data = await res.json();
+    historicalPrices = data.prices || [];
+  } catch(e){}
+}
+
 /* ===== 초기 로드 ===== */
-window.addEventListener('load', () => {
-  drawRainbowChart();
-  // 자동으로 현재 시세 불러오기
-  fetchBTCPrice().then(() => {
-    // 시세 불러온 후 바로 분석
-    setTimeout(() => analyzeRainbow(), 500);
-  }).catch(() => {});
+window.addEventListener('load', async () => {
+  drawRainbowChart(); // 밴드만 먼저 표시
+  await Promise.allSettled([fetchHistoricalBTC(), fetchBTCPrice()]);
+  const price = parseFloat(document.getElementById('btcPrice').value) || 0;
+  if(price > 0){
+    drawRainbowChart(price);
+    analyzeRainbow();
+  } else {
+    drawRainbowChart();
+  }
 });
 
 window.addEventListener('resize', () => {

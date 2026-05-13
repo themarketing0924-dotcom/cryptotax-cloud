@@ -511,6 +511,7 @@ window.CoinSearch = (function(){
       {href:'/tools/market-index.html',label:'코인 시장 지수'},
       {href:'/market/crypto-charts.html',label:'코인 히트맵·버블차트'},
       {href:'/market/bitcoin-rainbow-chart.html',label:'비트코인 레인보우 차트'},
+      {href:'/market/altcoin-season-index.html',label:'알트코인 시즌 지수'},
     ]},
     {title:'회사 소개',links:[
       {href:'/about.html',label:'서비스 소개'},
