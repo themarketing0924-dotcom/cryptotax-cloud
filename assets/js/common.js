@@ -103,6 +103,9 @@ window.toggleTheme = function(){
   }
 
   function init(){
+    // 블로그 아티클 페이지(data-no-ticker)에서는 스크롤 애니메이션 비활성화
+    if(document.body && document.body.hasAttribute('data-no-ticker')) return;
+
     // 1) 그리드 자식 스태거
     document.querySelectorAll(GRIDS).forEach(function(grid){
       Array.from(grid.children).forEach(function(child, i){
