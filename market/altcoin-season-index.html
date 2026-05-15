@@ -431,7 +431,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <h3>📅 역사적 알트시즌 패턴</h3>
     <p>역사적으로 비트코인 반감기(약 4년 주기) 이후 6~18개월 시점에 알트시즌이 찾아왔습니다. 2021년 알트시즌에는 이더리움이 +1,000%, 솔라나가 +10,000% 이상 상승했습니다. 그러나 알트시즌은 비트시즌보다 변동성이 훨씬 크고 짧게 끝나는 경향이 있어 주의가 필요합니다.</p>
     <h3>⚠️ 알트시즌의 함정</h3>
-    <p>알트코인 상승은 빠르고 하락도 극단적입니다. 알트코인 상승은 빠르고 하락도 극단적입니다. 알트시즌 고점에서 매수하면 -80~-95%까지 하락하는 경우도 있습니다. 알트시즌 지수가 75 이상으로 올라가면 점차 수익 실현과 절세 전략을 병행하는 것이 중요합니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener" style="color:var(--blue);">국세청 가상자산 세금 안내</a>도 미리 확인하세요.</p>
+    <p>알트코인 상승은 빠르고 하락도 극단적입니다. 알트시즌 고점에서 매수하면 -80~-95%까지 하락하는 경우도 있습니다. 알트시즌 지수가 75 이상으로 올라가면 점차 수익 실현과 절세 전략을 병행하는 것이 중요합니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener" style="color:var(--blue);">국세청 가상자산 세금 안내</a>도 미리 확인하세요.</p>
   </div>
 
   <!-- FAQ -->
@@ -820,14 +820,17 @@ async function fetchData(){
     const out24h = alts.filter(c => c.chg24 > btcChg24);
     const index24h = alts.length > 0 ? Math.round(out24h.length / alts.length * 100) : 0;
 
-    /* 4. 상위 20 알트코인 histoday limit=120 병렬 조회
-          (90d 지수 계산 + 히스토리 차트 양쪽에 사용) */
-    const altCoins = alts.slice(0, 20);
-    const altFetches = altCoins.map(c =>
-      fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${encodeURIComponent(c.sym)}&tsym=USD&limit=120`)
+    /* 4. 전체 알트코인 histoday 병렬 조회
+          - 첫 10개: limit=120 (히스토리 차트용 121포인트 필요)
+          - 나머지: limit=90 (90일 수익률 계산으로 충분)
+          → 90일 지수 계산 + 히스토리 차트 + 전체 성과표 모두 활용 */
+    const altCoins = alts; /* 상위 50 중 전체 알트 (~44개) */
+    const altFetches = altCoins.map((c, idx) => {
+      const lim = idx < 10 ? 120 : 90;
+      return fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${encodeURIComponent(c.sym)}&tsym=USD&limit=${lim}`)
         .then(r => r.ok ? r.json() : null)
-        .catch(() => null)
-    );
+        .catch(() => null);
+    });
     const altResults = await Promise.allSettled(altFetches);
 
     /* 5. 90일 수익률 계산 */
@@ -996,16 +999,25 @@ function updateUI(index90, outCount, total, btc90, btcDom, index24h, out24hCount
 }
 
 /* ===== 성과표 (정렬 가능) ===== */
-let _perfCoins = [];
-let _perfBtc90 = 0;
-let _sortField = 'ret90';
-let _sortAsc   = false;
+let _perfCoins  = [];
+let _perfBtc90  = 0;
+let _sortField  = 'ret90';
+let _sortAsc    = false;
+let _top10Syms  = new Set(); /* 정렬 불변: 90일 BTC 초과 상위 10 심볼 */
 
 function renderPerformers(coins, btc90){
   _perfCoins = coins;
   _perfBtc90 = btc90;
   _sortField  = 'ret90';
   _sortAsc    = false;
+  /* top-10 집합을 한 번만 계산 — UI 정렬과 무관하게 고정 */
+  _top10Syms = new Set(
+    coins
+      .filter(c => c.ret90 !== null && c.vs !== null && c.vs > 0)
+      .sort((a, b) => b.vs - a.vs)
+      .slice(0, 10)
+      .map(c => c.sym)
+  );
   _renderTable();
 }
 
@@ -1030,7 +1042,7 @@ function _renderTable(){
     const ret  = c.ret90;
     const vs   = c.vs;
     /* 90일 데이터 실측 기반 top10 하이라이트: ret90 있고 BTC 초과인 코인 중 상위 10 */
-    const isTop10 = ret !== null && vs !== null && vs > 0 && rank <= 10;
+    const isTop10 = _top10Syms.has(c.sym);
     const retStr = ret === null ? 'N/A'
       : (ret >= 0 ? '+' : '') + ret.toFixed(1) + '%';
     const vsStr  = vs === null ? '<span class="vs-badge" style="color:var(--text-muted)">N/A</span>'
