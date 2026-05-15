@@ -79,8 +79,26 @@ robots.txt                  # 크롤러 설정
         /blog/guide/upbit-beginner-guide.html
 ```
 
+### 새 아티클 발행 전 체크리스트
+```
+[ ] <title> — 키워드 포함, 30~60자
+[ ] <meta name="description"> — 120~160자, 핵심 키워드 앞에 배치
+[ ] <link rel="canonical"> — 실제 배포 URL로 수정
+[ ] og:title / og:description / og:image 수정
+[ ] article:published_time / article:modified_time 수정 (ISO 8601)
+[ ] JSON-LD Article — headline, datePublished, keywords 수정
+[ ] JSON-LD FAQPage — 실제 FAQ 3~5개로 교체 (없으면 블록 삭제)
+[ ] JSON-LD BreadcrumbList — 카테고리·슬러그 수정
+[ ] 섬네일 이미지 경로 수정 (/assets/img/blog/[slug]-hero.jpg)
+[ ] <body data-no-ticker> 유지 확인 (TradingView 티커 + 스크롤 애니메이션 비활성화)
+[ ] fade-up 등 스크롤 애니메이션 클래스 미사용 확인
+[ ] sitemap.xml 에 새 URL 추가
+```
+
 ### 아티클 구조 (BabyPips·닐파텔 정보형 스타일)
-1. `<body data-no-ticker>` — TradingView 티커 없음 (★필수, common.js 애니메이션도 자동 비활성화)
+1. `<body data-no-ticker>` — TradingView 티커 없음 ★필수.
+   **중요:** `data-no-ticker` 는 common.js IntersectionObserver(스크롤 리빌 애니메이션)도 함께 비활성화합니다.
+   이 속성이 없으면 아티클 본문 요소에 `.ctc-r` 클래스가 추가되어 레이아웃이 깨질 수 있습니다.
 2. **히어로 섹션 없음** — 전체화면 다크 히어로·CTA 버튼 금지
 3. 아티클 헤더 구조: 브레드크럼 → 카테고리 배지 → H1 → 저자/날짜/읽기시간 메타
 4. 섬네일 이미지: `<figure>` + `<figcaption>`, max-height 440px
