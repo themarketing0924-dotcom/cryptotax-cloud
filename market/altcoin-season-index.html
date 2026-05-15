@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>알트코인 시즌 지수 실시간 2025 | 지금 비트시즌? 알트시즌? — CryptoTax.cloud</title>
-<meta name="description" content="알트코인 시즌 지수 실시간 확인. 상위 100개 코인의 90일 성과로 비트시즌·알트시즌을 판단합니다. 코린이도 쉽게 이해하는 시장 국면 분석 도구.">
+<meta name="description" content="알트코인 시즌 지수 실시간 확인. 상위 50개 코인의 실제 90일 성과로 비트시즌·알트시즌을 판단합니다. 30일 히스토리 차트 · 코인별 90일 수익률 표 포함.">
 <meta name="keywords" content="알트코인 시즌, 알트시즌 지수, 비트시즌, altcoin season index, BTC 도미넌스, 코인 시장 국면, 알트코인 투자 전략">
 <link rel="canonical" href="https://cryptotax.cloud/market/altcoin-season-index.html">
 <meta property="og:title" content="알트코인 시즌 지수 실시간 — 지금 비트시즌? 알트시즌? | CryptoTax.cloud">
-<meta property="og:description" content="상위 100개 코인의 90일 성과로 알트코인 시즌을 실시간 측정합니다. 무료, 한국어.">
+<meta property="og:description" content="상위 50개 코인의 실제 90일 수익률로 알트코인 시즌을 실시간 측정합니다. 무료, 한국어.">
 <meta property="og:url" content="https://cryptotax.cloud/market/altcoin-season-index.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://cryptotax.cloud/og-image.png">
@@ -19,10 +19,10 @@
 <meta name="twitter:image" content="https://cryptotax.cloud/og-image.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"알트코인 시즌 지수","url":"https://cryptotax.cloud/market/altcoin-season-index.html","description":"상위 100개 코인의 90일 성과로 알트코인 시즌 vs 비트코인 시즌을 실시간 판단하는 도구.","applicationCategory":"FinanceApplication","operatingSystem":"All","inLanguage":"ko-KR","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"알트코인 시즌 지수","url":"https://cryptotax.cloud/market/altcoin-season-index.html","description":"상위 50개 코인의 실제 90일 수익률로 알트코인 시즌 vs 비트코인 시즌을 실시간 판단하는 도구.","applicationCategory":"FinanceApplication","operatingSystem":"All","inLanguage":"ko-KR","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"알트코인 시즌 지수란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"상위 100개 암호화폐 중 지난 90일 동안 비트코인보다 수익률이 높은 코인의 비율로 계산됩니다. 75 이상이면 알트코인 시즌, 25 이하면 비트코인 시즌으로 판단합니다."}},{"@type":"Question","name":"알트코인 시즌은 언제 시작되나요?","acceptedAnswer":{"@type":"Answer","text":"일반적으로 비트코인 강세장이 무르익은 후 BTC 도미넌스가 하락하기 시작하면 알트코인으로 자금이 이동합니다. 역사적으로 비트코인 반감기 이후 6~18개월 시점에 알트시즌이 찾아왔습니다."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"알트코인 시즌 지수란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"상위 50개 암호화폐 중 지난 90일 동안 비트코인보다 수익률이 높은 코인의 비율로 계산됩니다. 75 이상이면 알트코인 시즌, 25 이하면 비트코인 시즌으로 판단합니다."}},{"@type":"Question","name":"알트코인 시즌은 언제 시작되나요?","acceptedAnswer":{"@type":"Answer","text":"일반적으로 비트코인 강세장이 무르익은 후 BTC 도미넌스가 하락하기 시작하면 알트코인으로 자금이 이동합니다. 역사적으로 비트코인 반감기 이후 6~18개월 시점에 알트시즌이 찾아왔습니다."}}]}
 </script>
 <style>
 :root{
@@ -89,12 +89,28 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 .gauge-update{font-size:.73rem;color:var(--text-muted);margin-top:8px;}
 
 /* STATS GRID */
-.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px;}
 @media(min-width:600px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
 .stat-item{background:var(--bg-elevated);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;transition:background var(--tr);}
 .s-label{font-size:.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;}
 .s-value{font-size:1.2rem;font-weight:900;letter-spacing:-.02em;}
 .s-sub{font-size:.72rem;color:var(--text-muted);margin-top:2px;}
+
+/* 24H SIGNAL CARD */
+.signal-row{margin-bottom:20px;}
+.signal-card{background:var(--bg-elevated);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;transition:background var(--tr);}
+.signal-card .sc-label{font-size:.72rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+.signal-card .sc-value{font-size:1.15rem;font-weight:900;}
+.signal-card .sc-sub{font-size:.75rem;color:var(--text-muted);}
+.signal-divider{width:1px;height:32px;background:var(--border);flex-shrink:0;}
+@media(max-width:540px){.signal-divider{display:none;}.signal-card{gap:10px;}}
+
+/* HISTORY CHART */
+.history-chart-wrap{width:100%;position:relative;}
+.history-chart-wrap canvas{width:100% !important;display:block;border-radius:8px;}
+.chart-zone-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:.74rem;color:var(--text-muted);}
+.chart-zone-legend span{display:flex;align-items:center;gap:5px;}
+.chart-zone-legend i{display:inline-block;width:12px;height:4px;border-radius:2px;}
 
 /* TOP PERFORMERS */
 .performers-loading{text-align:center;padding:32px;color:var(--text-muted);}
@@ -102,19 +118,31 @@ nav{background:var(--bg-surface);border-bottom:1px solid var(--border);padding:0
 @keyframes spin{to{transform:rotate(360deg);}}
 .performers-table{width:100%;border-collapse:collapse;font-size:.85rem;}
 .performers-table th{text-align:left;padding:8px 10px;color:var(--text-muted);font-size:.73rem;font-weight:700;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em;}
+.performers-table th.sortable{cursor:pointer;user-select:none;white-space:nowrap;}
+.performers-table th.sortable:hover{color:var(--purple);}
 .performers-table td{padding:10px;border-bottom:1px solid var(--border-subtle);vertical-align:middle;}
 .performers-table tr:last-child td{border-bottom:none;}
 .performers-table tr:hover td{background:var(--bg-elevated);}
+.performers-table tr.top-row td{background:rgba(188,140,255,.07);}
+.performers-table tr.top-row:hover td{background:rgba(188,140,255,.13);}
+.rank-cell{text-align:center;font-size:.8rem;color:var(--text-muted);width:36px;}
 .coin-cell{display:flex;align-items:center;gap:8px;}
 .coin-img{width:26px;height:26px;border-radius:50%;background:var(--bg-elevated);}
 .coin-name{font-weight:700;font-size:.88rem;}
 .coin-sym{color:var(--text-muted);font-size:.75rem;text-transform:uppercase;}
 .change-pos{color:var(--green);font-weight:800;}
 .change-neg{color:var(--red);font-weight:800;}
+.change-na{color:var(--text-muted);font-weight:600;}
 .vs-badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:.72rem;font-weight:700;}
 .vs-pos{background:rgba(63,185,80,.12);color:var(--green);}
 .vs-neg{background:rgba(248,81,73,.1);color:var(--red);}
 .performers-more{text-align:center;padding:12px 0 0;font-size:.8rem;color:var(--text-muted);}
+
+/* TABLE CONTROLS */
+.table-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.sort-btn{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.78rem;font-weight:700;color:var(--text-sub);cursor:pointer;transition:all .2s;}
+.sort-btn:hover{border-color:var(--purple);color:var(--purple);}
+.sort-btn.active{border-color:var(--purple);color:var(--purple);background:rgba(188,140,255,.1);}
 
 /* PHASE GUIDE */
 .phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
@@ -217,11 +245,11 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 <section class="hero">
   <div class="hero-badge">🌊 실시간 시장 국면 분석</div>
   <h1>알트코인 <em>시즌 지수</em></h1>
-  <p>지금 비트시즌인가요? 알트시즌인가요?<br>상위 100개 코인의 90일 성과로 실시간 판단합니다</p>
+  <p>지금 비트시즌인가요? 알트시즌인가요?<br>상위 50개 코인의 <strong>실제 90일 수익률</strong>로 실시간 판단합니다</p>
   <div class="hero-stats">
     <div class="hstat"><div class="hv">100점</div><div class="hl">알트시즌 만점</div></div>
-    <div class="hstat"><div class="hv">90일</div><div class="hl">측정 기간</div></div>
-    <div class="hstat"><div class="hv">상위 100</div><div class="hl">코인 기준</div></div>
+    <div class="hstat"><div class="hv">90일</div><div class="hl">실제 측정 기간</div></div>
+    <div class="hstat"><div class="hv">상위 50</div><div class="hl">코인 기준</div></div>
     <div class="hstat"><div class="hv">0원</div><div class="hl">완전 무료</div></div>
   </div>
 </section>
@@ -233,9 +261,9 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
   <!-- GAUGE CARD -->
   <div class="card">
-    <div class="card-title">🌊 알트코인 시즌 지수 — 실시간</div>
+    <div class="card-title">🌊 알트코인 시즌 지수 — 실시간 (90일 기준)</div>
     <div class="disclaimer-box">
-      ⚠️ <strong>참고 목적 전용:</strong> 이 지수는 상위 100개 코인의 90일 수익률 기반 참고 지표이며 투자 조언이 아닙니다.
+      ⚠️ <strong>참고 목적 전용:</strong> 이 지수는 시가총액 상위 50개 코인의 실제 90일 수익률 기반 참고 지표이며 투자 조언이 아닙니다.
     </div>
 
     <div class="gauge-wrap" id="gaugeWrap">
@@ -259,10 +287,10 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
   </div>
 
-  <!-- STATS GRID -->
+  <!-- STATS GRID (90일 기준) -->
   <div class="stats-grid">
     <div class="stat-item">
-      <div class="s-label">알트시즌 지수</div>
+      <div class="s-label">알트시즌 지수 (90일)</div>
       <div class="s-value" id="statIndex" style="color:var(--purple);">—</div>
       <div class="s-sub" id="statIndexSub">계산 중...</div>
     </div>
@@ -272,9 +300,9 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
       <div class="s-sub" id="statPhaseSub"></div>
     </div>
     <div class="stat-item">
-      <div class="s-label">BTC 초과 알트</div>
+      <div class="s-label">BTC 초과 알트 (90일)</div>
       <div class="s-value" id="statAltCount" style="color:var(--green);">—</div>
-      <div class="s-sub">상위 100개 중</div>
+      <div class="s-sub" id="statAltCountSub">계산 중...</div>
     </div>
     <div class="stat-item">
       <div class="s-label">BTC 90일 수익</div>
@@ -283,9 +311,46 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
   </div>
 
-  <!-- TOP PERFORMERS -->
+  <!-- 24H 단기 신호 카드 -->
+  <div class="signal-row">
+    <div class="signal-card">
+      <div>
+        <div class="sc-label">⚡ 오늘의 단기 신호 (24H)</div>
+        <div style="font-size:.78rem;color:var(--text-muted);margin-top:2px;">24시간 변동률 기반 단기 알트 강세 여부</div>
+      </div>
+      <div class="signal-divider"></div>
+      <div style="text-align:center;">
+        <div class="sc-value" id="statSignal24" style="color:var(--text-muted);">—</div>
+        <div class="sc-sub" id="statSignal24Sub">로딩 중...</div>
+      </div>
+      <div class="signal-divider"></div>
+      <div style="text-align:center;min-width:90px;">
+        <div class="sc-value" id="statSignal24Phase" style="color:var(--text-muted);font-size:.9rem;">—</div>
+        <div class="sc-sub">24h 국면</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY CHART CARD -->
   <div class="card">
-    <div class="card-title">🏆 BTC 초과 수익 알트코인 Top 10 (90일)</div>
+    <div class="card-title">📈 알트시즌 지수 히스토리 — 최근 30일</div>
+    <div id="historyChartWrap" class="history-chart-wrap">
+      <div class="performers-loading">
+        <div class="spinner"></div>
+        <div>히스토리 데이터 계산 중...</div>
+      </div>
+    </div>
+    <div class="chart-zone-legend" id="chartLegend" style="display:none;">
+      <span><i style="background:#2980b9;"></i> 비트시즌 (0~25)</span>
+      <span><i style="background:#27ae60;"></i> 중립 하단 (25~50)</span>
+      <span><i style="background:#f39c12;"></i> 중립 상단 (50~75)</span>
+      <span><i style="background:#e74c3c;"></i> 알트시즌 (75~100)</span>
+    </div>
+  </div>
+
+  <!-- TOP 50 PERFORMERS -->
+  <div class="card">
+    <div class="card-title">🏆 시가총액 상위 50코인 90일 성과표</div>
     <div id="performersWrap">
       <div class="performers-loading">
         <div class="spinner"></div>
@@ -322,7 +387,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
       <div class="phase-card alt">
         <div class="phase-range" style="color:#e74c3c;">지수 75 ~ 100</div>
         <div class="phase-name">🔴 알트코인 시즌!</div>
-        <div class="phase-desc">상위 100개 중 75% 이상이 BTC를 이겼습니다. 알트코인 강세장입니다. 동시에 과열 신호일 수 있으므로 수익 실현과 절세 전략을 병행하세요.</div>
+        <div class="phase-desc">상위 50개 중 75% 이상이 BTC를 이겼습니다. 알트코인 강세장입니다. 동시에 과열 신호일 수 있으므로 수익 실현과 절세 전략을 병행하세요.</div>
         <div class="phase-action">⚠️ 전략: 수익 실현 + 세금 미리 계산</div>
       </div>
     </div>
@@ -340,21 +405,21 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </p>
     <div class="formula-box">
       <div style="font-weight:800;color:var(--text);margin-bottom:8px;">📐 계산 공식</div>
-      <code>지수 = (BTC 초과 알트코인 수 ÷ 전체 측정 알트코인 수) × 100</code>
+      <code>지수 = (BTC 초과 알트코인 수 ÷ 측정 알트코인 총수) × 100</code>
       <div style="margin-top:12px;font-size:.83rem;line-height:1.9;">
         <strong style="color:var(--text);">측정 조건</strong><br>
-        ① 시가총액 기준 상위 100개 코인 기준<br>
-        ② 스테이블코인(USDT·USDC 등) 제외<br>
-        ③ 비트코인(BTC) 제외<br>
-        ④ <strong>기간: 최근 90일(3개월)</strong> 수익률 비교<br>
-        ⑤ 각 알트코인의 90일 수익률 > BTC 90일 수익률이면 카운트
+        ① 시가총액 기준 상위 50개 코인 기준 (스테이블코인 제외)<br>
+        ② 비트코인(BTC) 제외<br>
+        ③ <strong>기간: 실제 90일(3개월)</strong> — CryptoCompare histoday API로 일별 종가 조회<br>
+        ④ 각 알트코인의 90일 수익률 > BTC 90일 수익률이면 카운트<br>
+        ⑤ 상위 20개 알트코인 개별 조회 후 Promise.allSettled 병렬 처리
       </div>
     </div>
     <p style="font-size:.85rem;color:var(--text-sub);line-height:1.8;">
-      예시: 상위 100개 중 스테이블코인 10개 제외 → 측정 대상 90개. 이 중 67개가 BTC보다 높은 90일 수익률을 기록하면 지수 = <strong style="color:var(--purple);">74점</strong> (중립 구간).
+      예시: 상위 50개 중 스테이블코인 5개 제외 → 측정 대상 약 44개. 이 중 33개가 BTC보다 높은 90일 수익률을 기록하면 지수 = <strong style="color:var(--purple);">75점</strong> (알트시즌 진입).
     </p>
     <p style="font-size:.83rem;color:var(--text-muted);margin-top:8px;">
-      ※ 데이터 출처: CoinGecko API (무료) · 매 페이지 로드시 실시간 업데이트
+      ※ 데이터 출처: CryptoCompare API · 매 페이지 로드시 실시간 업데이트
     </p>
   </div>
 
@@ -366,7 +431,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     <h3>📅 역사적 알트시즌 패턴</h3>
     <p>역사적으로 비트코인 반감기(약 4년 주기) 이후 6~18개월 시점에 알트시즌이 찾아왔습니다. 2021년 알트시즌에는 이더리움이 +1,000%, 솔라나가 +10,000% 이상 상승했습니다. 그러나 알트시즌은 비트시즌보다 변동성이 훨씬 크고 짧게 끝나는 경향이 있어 주의가 필요합니다.</p>
     <h3>⚠️ 알트시즌의 함정</h3>
-    <p>알트코인 상승은 빠르고 하락도 극단적입니다. 알트시즌 고점에서 매수하면 -80~-95%까지 하락하는 경우도 있습니다. 알트시즌 지수가 75 이상으로 올라가면 점차 수익 실현과 절세 전략을 병행하는 것이 중요합니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener" style="color:var(--blue);">국세청 가상자산 세금 안내</a>도 미리 확인하세요.</p>
+    <p>알트코인 상승은 빠르고 하락도 극단적입니다. 알트코인 상승은 빠르고 하락도 극단적입니다. 알트시즌 고점에서 매수하면 -80~-95%까지 하락하는 경우도 있습니다. 알트시즌 지수가 75 이상으로 올라가면 점차 수익 실현과 절세 전략을 병행하는 것이 중요합니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener" style="color:var(--blue);">국세청 가상자산 세금 안내</a>도 미리 확인하세요.</p>
   </div>
 
   <!-- FAQ -->
@@ -378,7 +443,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">BTC 도미넌스와 알트시즌 지수의 차이는? <span>▼</span></div>
-      <div class="faq-a">BTC 도미넌스는 전체 코인 시가총액 중 BTC가 차지하는 비율입니다. 알트시즌 지수는 상위 100개 코인 중 <strong>90일 수익률이 BTC보다 높은 코인의 비율</strong>입니다. 도미넌스는 시총 기반, 지수는 수익률 기반이라 서로 다른 관점에서 시장을 봅니다. 보통 도미넌스 하락 = 알트시즌 지수 상승 방향으로 연동되는 경향이 있습니다.</div>
+      <div class="faq-a">BTC 도미넌스는 전체 코인 시가총액 중 BTC가 차지하는 비율입니다. 알트시즌 지수는 상위 50개 코인 중 <strong>90일 수익률이 BTC보다 높은 코인의 비율</strong>입니다. 도미넌스는 시총 기반, 지수는 수익률 기반이라 서로 다른 관점에서 시장을 봅니다. 보통 도미넌스 하락 = 알트시즌 지수 상승 방향으로 연동되는 경향이 있습니다.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">알트시즌에 어떤 알트코인에 투자해야 하나요? <span>▼</span></div>
@@ -398,7 +463,7 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">알트시즌 지수가 업데이트되는 주기는? <span>▼</span></div>
-      <div class="faq-a">이 페이지는 방문할 때마다 CoinGecko API를 통해 실시간으로 데이터를 가져와 계산합니다. 별도의 새로고침 없이 페이지 접속 시마다 최신 데이터가 반영됩니다. CoinGecko는 코인 가격을 1~5분 간격으로 업데이트합니다.</div>
+      <div class="faq-a">이 페이지는 방문할 때마다 CryptoCompare API를 통해 실시간으로 데이터를 가져와 계산합니다. 별도의 새로고침 없이 페이지 접속 시마다 최신 데이터가 반영됩니다. CryptoCompare는 코인 가격을 1~5분 간격으로 업데이트합니다.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">비트코인 도미넌스 차트는 어디서 볼 수 있나요? <span>▼</span></div>
@@ -450,6 +515,7 @@ function toggleTheme(){
   localStorage.setItem('ctc-theme', next);
   updateThemeUI(next);
   if(typeof gaugeCurrent !== 'undefined') drawGauge(gaugeCurrent);
+  if(typeof historyScores !== 'undefined' && historyScores.length > 0) drawHistoryCanvas(historyScores, historyLabels);
 }
 function updateThemeUI(t){
   const icon = document.getElementById('themeIcon');
@@ -466,14 +532,16 @@ function toggleFaq(el){
   if(!open) a.style.display = 'block';
 }
 
-/* ===== 스테이블코인 ID 목록 ===== */
-const STABLE_IDS = new Set([
-  'tether','usd-coin','binance-usd','dai','true-usd','pax-usd',
-  'gemini-dollar','frax','liquity-usd','usdd','first-digital-usd',
-  'paypal-usd','origin-dollar','crvusd','euro-coin','stasis-eurs',
-  'terrausd','neutrino','fei-usd','tribe-2','mim','alchemix-usd',
-  'dola-borrowing-right','usds','wrapped-steth','staked-ether'
+/* ===== 스테이블코인 심볼 목록 ===== */
+const STABLE_SYMS = new Set([
+  'USDT','USDC','BUSD','DAI','TUSD','USDP','GUSD','FRAX','LUSD','USDD',
+  'SUSD','EURS','XAUT','PAXG','USDS','FDUSD','PYUSD','USDE','USDX',
+  'CRVUSD','EURC','EURT','USDN','MIM','DOLA','USDJ','VAI','CUSD'
 ]);
+
+/* ===== 히스토리 차트 전역 저장 ===== */
+let historyScores = [];
+let historyLabels = [];
 
 /* ===== 게이지 그리기 ===== */
 let gaugeCurrent = 0;
@@ -495,7 +563,6 @@ function drawGauge(score){
 
   ctx.clearRect(0, 0, CW, CH);
 
-  // 배경 호
   ctx.beginPath();
   ctx.arc(cx, cy, Ro + 12, Math.PI, 0);
   ctx.arc(cx, cy, Ri - 12, 0, Math.PI, true);
@@ -503,7 +570,6 @@ function drawGauge(score){
   ctx.fillStyle = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)';
   ctx.fill();
 
-  // 4구간 색상 밴드
   const zones = [
     {from:0,  to:25,  color:'#2980b9'},
     {from:25, to:50,  color:'#27ae60'},
@@ -522,7 +588,6 @@ function drawGauge(score){
     ctx.fill();
   });
 
-  // 진행 오버레이 (현재 score까지 밝게)
   if(score > 0){
     const sa = Math.PI;
     const ea = Math.PI * (1 - score / 100);
@@ -534,7 +599,6 @@ function drawGauge(score){
     ctx.fill();
   }
 
-  // 눈금
   for(let i = 0; i <= 20; i++){
     const ang = Math.PI * (1 - i / 20);
     const isMain = i % 5 === 0;
@@ -550,20 +614,18 @@ function drawGauge(score){
       const lv = i * 5;
       const lx = cx + Math.cos(ang) * (r1 + 14);
       const ly = cy + Math.sin(ang) * (r1 + 14) + 4;
-      ctx.font = `bold 11px sans-serif`;
+      ctx.font = 'bold 11px sans-serif';
       ctx.fillStyle = isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.45)';
       ctx.textAlign = 'center';
       ctx.fillText(lv, lx, ly);
     }
   }
 
-  // 바늘
   const needleAngle = Math.PI * (1 - score / 100);
   const needleColor = getPhaseColor(score);
   ctx.save();
   ctx.translate(cx, cy);
   ctx.rotate(needleAngle);
-  // 바늘 그림자
   ctx.shadowColor = needleColor;
   ctx.shadowBlur = 8;
   ctx.beginPath();
@@ -576,7 +638,6 @@ function drawGauge(score){
   ctx.shadowBlur = 0;
   ctx.restore();
 
-  // 중앙 원
   ctx.beginPath();
   ctx.arc(cx, cy, 13, 0, Math.PI * 2);
   ctx.fillStyle = isDark ? '#1a1a2e' : '#ffffff';
@@ -614,42 +675,135 @@ function animateGauge(target){
   step();
 }
 
-/* ===== 데이터 페치 (CryptoCompare + Alternative.me) ===== */
+/* ===== 히스토리 차트 그리기 ===== */
+function drawHistoryCanvas(scores, labels){
+  const wrap = document.getElementById('historyChartWrap');
+  if(!wrap) return;
+
+  let canvas = wrap.querySelector('canvas');
+  if(!canvas){
+    canvas = document.createElement('canvas');
+    wrap.innerHTML = '';
+    wrap.appendChild(canvas);
+  }
+
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const DPR = window.devicePixelRatio || 1;
+  const CW = wrap.offsetWidth || 700;
+  const CH = 200;
+  canvas.width = CW * DPR;
+  canvas.height = CH * DPR;
+  canvas.style.width = '100%';
+  canvas.style.height = CH + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(DPR, DPR);
+
+  const pad = { top:16, right:16, bottom:34, left:40 };
+  const w = CW - pad.left - pad.right;
+  const h = CH - pad.top - pad.bottom;
+
+  ctx.clearRect(0, 0, CW, CH);
+
+  const textColor = isDark ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.35)';
+  const gridColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+
+  /* 구간 배경색 */
+  const zoneBands = [
+    {min:0,  max:25,  color: isDark ? 'rgba(41,128,185,0.09)'  : 'rgba(41,128,185,0.06)'},
+    {min:25, max:50,  color: isDark ? 'rgba(39,174,96,0.08)'   : 'rgba(39,174,96,0.05)'},
+    {min:50, max:75,  color: isDark ? 'rgba(243,156,18,0.09)'  : 'rgba(243,156,18,0.06)'},
+    {min:75, max:100, color: isDark ? 'rgba(231,76,60,0.10)'   : 'rgba(231,76,60,0.07)'},
+  ];
+  zoneBands.forEach(z => {
+    const y1 = pad.top + h - (z.max / 100 * h);
+    const y2 = pad.top + h - (z.min / 100 * h);
+    ctx.fillStyle = z.color;
+    ctx.fillRect(pad.left, y1, w, y2 - y1);
+  });
+
+  /* 수평 그리드 + Y 레이블 */
+  [0, 25, 50, 75, 100].forEach(v => {
+    const y = pad.top + h - (v / 100 * h);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(pad.left + w, y);
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.fillStyle = textColor;
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(v, pad.left - 6, y + 4);
+  });
+
+  const n = scores.length;
+  if(n < 2) return;
+
+  const getX = i => pad.left + (i / (n - 1)) * w;
+  const getY = v => pad.top + h - (Math.max(0, Math.min(100, v)) / 100 * h);
+
+  /* 그라디언트 채우기 */
+  const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + h);
+  grad.addColorStop(0, 'rgba(188,140,255,0.28)');
+  grad.addColorStop(1, 'rgba(188,140,255,0)');
+  ctx.beginPath();
+  ctx.moveTo(getX(0), getY(scores[0]));
+  for(let i = 1; i < n; i++) ctx.lineTo(getX(i), getY(scores[i]));
+  ctx.lineTo(getX(n-1), pad.top + h);
+  ctx.lineTo(getX(0), pad.top + h);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  /* 라인 */
+  ctx.beginPath();
+  ctx.moveTo(getX(0), getY(scores[0]));
+  for(let i = 1; i < n; i++) ctx.lineTo(getX(i), getY(scores[i]));
+  ctx.strokeStyle = '#bc8cff';
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  /* 오늘 점 */
+  const lx = getX(n-1), ly = getY(scores[n-1]);
+  ctx.beginPath(); ctx.arc(lx, ly, 5.5, 0, Math.PI*2);
+  ctx.fillStyle = '#bc8cff'; ctx.fill();
+  ctx.beginPath(); ctx.arc(lx, ly, 2.5, 0, Math.PI*2);
+  ctx.fillStyle = isDark ? '#1a1a2e' : '#fff'; ctx.fill();
+
+  /* X 레이블 (약 6개) */
+  ctx.fillStyle = textColor;
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  const step = Math.max(1, Math.round((n - 1) / 5));
+  for(let i = 0; i < n; i += step){
+    ctx.fillText(labels[i], getX(i), pad.top + h + 18);
+  }
+  ctx.fillText(labels[n-1], getX(n-1), pad.top + h + 18);
+}
+
+/* ===== 데이터 페치 ===== */
 async function fetchData(){
-  try {
-    // 1. Top 100 시가총액 코인 + BTC 90일 전 가격 병렬 조회
+  try{
+    /* 1. Top 50 시가총액 + BTC 120일 히스토리 병렬 조회 */
     const [cmRes, btcHistRes] = await Promise.allSettled([
-      fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=100&tsym=USD'),
-      fetch('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=90&aggregate=1'),
+      fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=50&tsym=USD'),
+      fetch('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=120'),
     ]);
 
     if(cmRes.status !== 'fulfilled' || !cmRes.value.ok) throw new Error('CryptoCompare API 오류');
     const cmJson = await cmRes.value.json();
     const rawCoins = cmJson.Data || [];
 
-    // BTC 90일 전 가격 계산
-    let btc90dChgPct = 0;
+    /* BTC 히스토리: limit=120 → 121포인트, [0]=120일전 … [120]=오늘 */
+    let btcHist = [];
     if(btcHistRes.status === 'fulfilled' && btcHistRes.value.ok){
-      const histJson = await btcHistRes.value.json();
-      const hist = histJson.Data?.Data || [];
-      if(hist.length >= 2){
-        const priceNow = hist[hist.length-1].close;
-        const price90d = hist[0].close;
-        if(price90d > 0) btc90dChgPct = (priceNow - price90d) / price90d * 100;
-      }
+      const bj = await btcHistRes.value.json();
+      btcHist = bj.Data?.Data || [];
     }
 
-    // 각 코인의 90일 전 대비 수익률 계산 (CHANGEPCT24HOUR * 90일 근사값 없음)
-    // → CryptoCompare top 코인 각각의 현재 가격과 90일 전 가격 비교
-    // 현실적으로 90일 히스토리를 100개 코인에 대해 조회할 수 없으므로
-    // 90일 누적 근사치: CHANGE24HOUR / Price_now * 90 (조잡) 대신
-    // CryptoCompare에서 제공하는 CHANGEPCT24HOUR 기반으로 90일을 단순 추정
-    // 또는: Upbit에서 BTC 90일 캔들을 가져와 대략적인 방향을 판단
-
-    // 실용적 대안: 90일 대신 상위 100개 코인의 현재 24h 변동률로 계산
-    // (단기 알트시즌 신호 — 노트 표시)
-    const STABLE_SYMS = new Set(['USDT','USDC','BUSD','DAI','TUSD','USDP','GUSD','FRAX','LUSD','USDD','SUSD','EURS','XAUT','PAXG']);
-
+    /* 2. 코인 목록 파싱 */
     const coins = rawCoins.map(c => ({
       name:  c.CoinInfo.FullName,
       sym:   c.CoinInfo.Name,
@@ -661,110 +815,264 @@ async function fetchData(){
 
     const btcChg24 = coins.find(c => c.sym === 'BTC')?.chg24 || 0;
     const alts = coins.filter(c => c.sym !== 'BTC' && !STABLE_SYMS.has(c.sym));
-    const outperformed = alts.filter(c => c.chg24 > btcChg24);
-    const index = alts.length > 0 ? Math.round((outperformed.length / alts.length) * 100) : 0;
 
-    // BTC 도미넌스 — CryptoCompare top100 합산으로 계산
-    let btcDom = null;
-    {
-      let totalMcap=0, btcMcap=0;
-      rawCoins.forEach(c=>{ const m=c.RAW?.USD?.MKTCAP||0; totalMcap+=m; if(c.CoinInfo.Name==='BTC') btcMcap=m; });
-      if(totalMcap>0) btcDom = (btcMcap/totalMcap*100).toFixed(1);
+    /* 3. 24H 단기 신호 (기존 방식 유지) */
+    const out24h = alts.filter(c => c.chg24 > btcChg24);
+    const index24h = alts.length > 0 ? Math.round(out24h.length / alts.length * 100) : 0;
+
+    /* 4. 상위 20 알트코인 histoday limit=120 병렬 조회
+          (90d 지수 계산 + 히스토리 차트 양쪽에 사용) */
+    const altCoins = alts.slice(0, 20);
+    const altFetches = altCoins.map(c =>
+      fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${encodeURIComponent(c.sym)}&tsym=USD&limit=120`)
+        .then(r => r.ok ? r.json() : null)
+        .catch(() => null)
+    );
+    const altResults = await Promise.allSettled(altFetches);
+
+    /* 5. 90일 수익률 계산 */
+    let btc90d = 0;
+    if(btcHist.length >= 91){
+      const n = btcHist.length - 1; /* = 120 */
+      const p0 = btcHist[n - 90].close;
+      const p1 = btcHist[n].close;
+      if(p0 > 0) btc90d = (p1 - p0) / p0 * 100;
     }
 
-    // outperformed 리스트를 renderPerformers 포맷에 맞게 변환 (image·symbol 키 사용)
-    const outFmt = outperformed.map(c => ({
-      name:   c.name,
-      symbol: c.sym,
-      image:  c.logo,
-      price_change_percentage_90d_in_currency: c.chg24,
-    })).sort((a,b)=>b.price_change_percentage_90d_in_currency-a.price_change_percentage_90d_in_currency);
+    const altsWith90d = [];
+    altCoins.forEach((coin, i) => {
+      const res = altResults[i];
+      if(res.status !== 'fulfilled' || !res.value) return;
+      const hist = res.value.Data?.Data || [];
+      if(hist.length < 91) return;
+      const n = hist.length - 1;
+      const p0 = hist[n - 90].close;
+      const p1 = hist[n].close;
+      if(p0 <= 0) return;
+      const ret90 = (p1 - p0) / p0 * 100;
+      altsWith90d.push({ ...coin, ret90, hist });
+    });
 
-    updateUI(index, outperformed.length, alts.length, btcChg24, btcDom, coins, btcChg24);
-    renderPerformers(outFmt, btcChg24);
+    /* 6. 진짜 알트시즌 지수 (90일 실데이터) */
+    const beating90 = altsWith90d.filter(c => c.ret90 > btc90d);
+    const index90 = altsWith90d.length > 0
+      ? Math.round(beating90.length / altsWith90d.length * 100) : 0;
 
-  } catch(e){
+    /* 7. BTC 도미넌스 (top50 합산) */
+    let btcDom = null;
+    { let total=0, btcM=0;
+      rawCoins.forEach(c => { const m=c.RAW?.USD?.MKTCAP||0; total+=m; if(c.CoinInfo.Name==='BTC') btcM=m; });
+      if(total>0) btcDom = (btcM/total*100).toFixed(1);
+    }
+
+    /* 8. 히스토리 차트 — 최근 30일 일별 지수
+          chartAlts: hist.length >= 121 인 코인만 (상위 10개 사용) */
+    const chartAlts = altsWith90d.slice(0, 10).filter(c => c.hist && c.hist.length >= 121);
+    computeAndDrawHistory(btcHist, chartAlts);
+
+    /* 9. 상위 50코인 90일 성과표 구성
+          altsWith90d에 없는 코인은 ret90=null */
+    const retMap = new Map(altsWith90d.map(c => [c.sym, c.ret90]));
+    const perf50 = alts.map(c => ({
+      ...c,
+      ret90: retMap.has(c.sym) ? retMap.get(c.sym) : null,
+      vs:    retMap.has(c.sym) ? retMap.get(c.sym) - btc90d : null,
+    })).sort((a, b) => {
+      if(a.ret90 === null && b.ret90 === null) return 0;
+      if(a.ret90 === null) return 1;
+      if(b.ret90 === null) return -1;
+      return b.ret90 - a.ret90;
+    });
+
+    updateUI(index90, beating90.length, altsWith90d.length,
+             btc90d, btcDom, index24h, out24h.length, alts.length);
+    renderPerformers(perf50, btc90d);
+
+  }catch(e){
     showError(e.message);
   }
 }
 
-function updateUI(index, outCount, total, btc90, btcDom, coins, btc90raw){
-  // 게이지
-  animateGauge(index);
+/* ===== 히스토리 차트 계산 및 렌더 ===== */
+function computeAndDrawHistory(btcHist, chartAlts){
+  const wrap = document.getElementById('historyChartWrap');
 
-  // 점수 텍스트
+  if(btcHist.length < 121 || chartAlts.length === 0){
+    wrap.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text-muted);">히스토리 데이터가 부족합니다 (최소 121일 필요)</div>';
+    return;
+  }
+
+  const scores = [];
+  const labels = [];
+  const btcN = btcHist.length - 1; /* = 120 */
+
+  /* k=0: 30일 전 기준점, k=30: 오늘 */
+  for(let k = 0; k <= 30; k++){
+    const end   = btcN - 30 + k; /* 90+k (k=0→90, k=30→120) */
+    const start = end - 90;      /* 0+k  (k=0→0,  k=30→30)  */
+    if(start < 0 || end >= btcHist.length) continue;
+
+    const bp0 = btcHist[start].close, bp1 = btcHist[end].close;
+    if(bp0 <= 0) continue;
+    const btcRet = (bp1 - bp0) / bp0 * 100;
+
+    let cnt = 0, valid = 0;
+    for(const alt of chartAlts){
+      if(!alt.hist || alt.hist.length <= end) continue;
+      const ap0 = alt.hist[start].close, ap1 = alt.hist[end].close;
+      if(ap0 <= 0) continue;
+      valid++;
+      if((ap1 - ap0) / ap0 * 100 > btcRet) cnt++;
+    }
+    const score = valid > 0 ? Math.round(cnt / valid * 100) : 0;
+    scores.push(score);
+
+    /* X 레이블: UNIX timestamp → M/D */
+    const d = new Date(btcHist[end].time * 1000);
+    labels.push(`${d.getMonth()+1}/${d.getDate()}`);
+  }
+
+  if(scores.length < 2){
+    wrap.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text-muted);">히스토리 데이터 계산 실패</div>';
+    return;
+  }
+
+  /* 전역 저장 (테마 전환 시 재렌더) */
+  historyScores = scores;
+  historyLabels = labels;
+
+  /* 캔버스 삽입 후 그리기 */
+  wrap.innerHTML = '<canvas></canvas>';
+  document.getElementById('chartLegend').style.display = 'flex';
+  drawHistoryCanvas(scores, labels);
+}
+
+/* ===== UI 업데이트 ===== */
+function updateUI(index90, outCount, total, btc90, btcDom, index24h, out24hCount, total24h){
+  animateGauge(index90);
+
   const scoreEl = document.getElementById('scoreNum');
-  const phaseInfo = getPhaseInfo(index);
-  scoreEl.textContent = index;
+  const phaseInfo = getPhaseInfo(index90);
+  scoreEl.textContent = index90;
   scoreEl.style.color = phaseInfo.color;
 
-  // 국면 배지
   const badge = document.getElementById('phaseBadge');
   badge.textContent = phaseInfo.name;
   badge.style.background = phaseInfo.bg;
   badge.style.color = phaseInfo.color;
 
-  // 업데이트 시간
   const now = new Date();
   document.getElementById('gaugeUpdateTime').textContent =
     `업데이트: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
 
-  // 통계
-  document.getElementById('statIndex').textContent = index + '점';
+  document.getElementById('statIndex').textContent = index90 + '점';
   document.getElementById('statIndex').style.color = phaseInfo.color;
-  document.getElementById('statIndexSub').textContent = index <= 25 ? '비트코인 시즌' : index <= 50 ? '중립 구간' : index <= 75 ? '중립 상단' : '알트코인 시즌';
+  document.getElementById('statIndexSub').textContent = `${total}개 알트 실측 기준`;
 
   document.getElementById('statPhase').textContent = phaseInfo.name;
   document.getElementById('statPhase').style.color = phaseInfo.color;
-  document.getElementById('statPhaseSub').textContent = `지수 ${index}/100`;
+  document.getElementById('statPhaseSub').textContent = `지수 ${index90}/100`;
 
-  document.getElementById('statAltCount').textContent = `${outCount}개`;
-  document.getElementById('statAltCount').style.color = outCount > total/2 ? 'var(--green)' : 'var(--orange)';
+  const altEl = document.getElementById('statAltCount');
+  altEl.textContent = `${outCount}/${total}개`;
+  altEl.style.color = outCount > total/2 ? 'var(--green)' : 'var(--orange)';
+  document.getElementById('statAltCountSub').textContent = '90일 BTC 초과';
 
   const btcEl = document.getElementById('statBtc90');
-  btcEl.textContent = (btc90raw >= 0 ? '+' : '') + btc90raw.toFixed(1) + '%';
-  btcEl.style.color = btc90raw >= 0 ? 'var(--green)' : 'var(--red)';
+  btcEl.textContent = (btc90 >= 0 ? '+' : '') + btc90.toFixed(1) + '%';
+  btcEl.style.color = btc90 >= 0 ? 'var(--green)' : 'var(--red)';
+
+  /* 24H 단기 신호 */
+  const pi24 = getPhaseInfo(index24h);
+  const sig24El = document.getElementById('statSignal24');
+  if(sig24El){
+    sig24El.textContent = index24h + '점';
+    sig24El.style.color = pi24.color;
+  }
+  const sig24Sub = document.getElementById('statSignal24Sub');
+  if(sig24Sub) sig24Sub.textContent = `${out24hCount}/${total24h}개 24h BTC 초과`;
+  const sig24Phase = document.getElementById('statSignal24Phase');
+  if(sig24Phase){ sig24Phase.textContent = pi24.name; sig24Phase.style.color = pi24.color; }
 }
 
-function renderPerformers(outperformed, btc90){
-  const top10 = outperformed
-    .sort((a,b) => (b.price_change_percentage_90d_in_currency||0) - (a.price_change_percentage_90d_in_currency||0))
-    .slice(0, 10);
+/* ===== 성과표 (정렬 가능) ===== */
+let _perfCoins = [];
+let _perfBtc90 = 0;
+let _sortField = 'ret90';
+let _sortAsc   = false;
 
-  if(top10.length === 0){
-    document.getElementById('performersWrap').innerHTML = '<div class="error-state">현재 BTC를 초과한 알트코인 데이터가 없습니다.</div>';
-    return;
-  }
+function renderPerformers(coins, btc90){
+  _perfCoins = coins;
+  _perfBtc90 = btc90;
+  _sortField  = 'ret90';
+  _sortAsc    = false;
+  _renderTable();
+}
 
-  const rows = top10.map((c, i) => {
-    const ch90 = c.price_change_percentage_90d_in_currency || 0;
-    const vs = ch90 - btc90;
-    return `<tr>
-      <td style="color:var(--text-muted);font-size:.8rem;text-align:center;">${i+1}</td>
+function setSort(field){
+  if(_sortField === field){ _sortAsc = !_sortAsc; }
+  else { _sortField = field; _sortAsc = false; }
+  _renderTable();
+}
+
+function _renderTable(){
+  const sorted = [..._perfCoins].sort((a, b) => {
+    const av = a[_sortField], bv = b[_sortField];
+    if(av === null && bv === null) return 0;
+    if(av === null) return 1;
+    if(bv === null) return -1;
+    return _sortAsc ? av - bv : bv - av;
+  });
+
+  /* 정렬 후 순위 재계산 */
+  const rows = sorted.map((c, i) => {
+    const rank = i + 1;
+    const ret  = c.ret90;
+    const vs   = c.vs;
+    /* 90일 데이터 실측 기반 top10 하이라이트: ret90 있고 BTC 초과인 코인 중 상위 10 */
+    const isTop10 = ret !== null && vs !== null && vs > 0 && rank <= 10;
+    const retStr = ret === null ? 'N/A'
+      : (ret >= 0 ? '+' : '') + ret.toFixed(1) + '%';
+    const vsStr  = vs === null ? '<span class="vs-badge" style="color:var(--text-muted)">N/A</span>'
+      : `<span class="vs-badge ${vs >= 0 ? 'vs-pos' : 'vs-neg'}">${vs >= 0 ? '+' : ''}${vs.toFixed(1)}%</span>`;
+    const retClass = ret === null ? 'change-na' : ret >= 0 ? 'change-pos' : 'change-neg';
+    return `<tr class="${isTop10 ? 'top-row' : ''}">
+      <td class="rank-cell">${rank}</td>
       <td><div class="coin-cell">
-        <img class="coin-img" src="${c.image}" alt="${c.name}" onerror="this.style.display='none'">
-        <div><div class="coin-name">${c.name}</div><div class="coin-sym">${c.symbol.toUpperCase()}</div></div>
+        <img class="coin-img" src="${c.logo}" alt="${c.name}" onerror="this.style.display='none'">
+        <div><div class="coin-name">${c.name}</div><div class="coin-sym">${c.sym}</div></div>
       </div></td>
-      <td class="${ch90>=0?'change-pos':'change-neg'}">${ch90>=0?'+':''}${ch90.toFixed(1)}%</td>
-      <td><span class="vs-badge ${vs>=0?'vs-pos':'vs-neg'}">${vs>=0?'+':''}${vs.toFixed(1)}%</span></td>
+      <td class="${retClass}">${retStr}</td>
+      <td>${vsStr}</td>
     </tr>`;
   }).join('');
 
+  const mkBtn = (field, label) => {
+    const active = _sortField === field;
+    const arrow = active ? (_sortAsc ? ' ▲' : ' ▼') : ' ↕';
+    return `<button class="sort-btn${active?' active':''}" onclick="setSort('${field}')">${label}${arrow}</button>`;
+  };
+
   document.getElementById('performersWrap').innerHTML = `
+    <div class="table-controls">
+      ${mkBtn('ret90','90일 수익')}
+      ${mkBtn('vs','BTC 대비')}
+      ${mkBtn('mcap','시가총액 순')}
+    </div>
     <table class="performers-table">
       <thead><tr>
         <th style="text-align:center;">#</th>
         <th>코인</th>
-        <th>90일 수익</th>
-        <th>BTC 대비</th>
+        <th class="sortable" onclick="setSort('ret90')">90일 수익${_sortField==='ret90'?(_sortAsc?' ▲':' ▼'):' ↕'}</th>
+        <th class="sortable" onclick="setSort('vs')">BTC 대비${_sortField==='vs'?(_sortAsc?' ▲':' ▼'):' ↕'}</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>
-    <div class="performers-more">※ 시가총액 상위 100개 기준 · BTC 초과 수익 코인만 표시</div>`;
+    <div class="performers-more">※ 시가총액 상위 50개 · 스테이블코인 제외 · 보라색 행: 90일 BTC 초과 상위 10개</div>`;
 }
 
+/* ===== 에러 표시 ===== */
 function showError(msg){
-  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
   drawGauge(0);
   document.getElementById('scoreNum').textContent = '—';
   document.getElementById('phaseBadge').textContent = '데이터 로드 실패';
@@ -774,6 +1082,8 @@ function showError(msg){
       <div style="font-size:.78rem;margin-top:6px;">${msg || 'API 오류'} — 잠시 후 다시 시도해 주세요</div>
       <button class="retry-btn" onclick="location.reload()">🔄 다시 시도</button>
     </div>`;
+  document.getElementById('historyChartWrap').innerHTML =
+    '<div style="text-align:center;padding:32px;color:var(--text-muted);">히스토리 로드 실패</div>';
 }
 
 /* ===== 초기 로드 ===== */
