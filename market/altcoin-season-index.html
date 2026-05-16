@@ -785,6 +785,42 @@ function drawHistoryCanvas(scores, labels){
 
 /* ===== 데이터 페치 ===== */
 async function fetchData(){
+  const CACHE_KEY = 'ctc-asi-cache-v1';
+  const CACHE_TTL = 30 * 60 * 1000;
+
+  try{
+    const raw = localStorage.getItem(CACHE_KEY);
+    if(raw){
+      const cached = JSON.parse(raw);
+      const valid =
+        typeof cached.ts === 'number' &&
+        Array.isArray(cached.uiArgs) && cached.uiArgs.length === 8 &&
+        Array.isArray(cached.perf50) &&
+        Array.isArray(cached.scores) &&
+        Array.isArray(cached.labels);
+      if(valid && Date.now() - cached.ts < CACHE_TTL){
+        updateUI(...cached.uiArgs);
+        renderPerformers(cached.perf50, cached.btc90d);
+        if(cached.scores.length >= 2){
+          historyScores = cached.scores;
+          historyLabels = cached.labels;
+          const wrap = document.getElementById('historyChartWrap');
+          wrap.innerHTML = '<canvas></canvas>';
+          document.getElementById('chartLegend').style.display = 'flex';
+          drawHistoryCanvas(cached.scores, cached.labels);
+        } else {
+          document.getElementById('historyChartWrap').innerHTML =
+            '<div style="text-align:center;padding:32px;color:var(--text-muted);">히스토리 데이터가 부족합니다</div>';
+        }
+        const d = new Date(cached.ts);
+        const el = document.getElementById('gaugeUpdateTime');
+        if(el) el.textContent =
+          `업데이트: ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')} (캐시)`;
+        return;
+      }
+    }
+  }catch(e){ /* 캐시 읽기 실패 — API 호출 진행 */ }
+
   try{
     /* 1. Top 50 시가총액 + BTC 120일 히스토리 병렬 조회 */
     const [cmRes, btcHistRes] = await Promise.allSettled([
@@ -893,6 +929,19 @@ async function fetchData(){
     updateUI(index90, beating90.length, altsWith90d.length,
              btc90d, btcDom, index24h, out24h.length, alts.length);
     renderPerformers(perf50, btc90d);
+
+    try{
+      const cacheData = {
+        ts:     Date.now(),
+        uiArgs: [index90, beating90.length, altsWith90d.length,
+                 btc90d, btcDom, index24h, out24h.length, alts.length],
+        perf50:  perf50,
+        btc90d:  btc90d,
+        scores:  historyScores,
+        labels:  historyLabels,
+      };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+    }catch(e){ /* 스토리지 용량 초과 등 — 무시 */ }
 
   }catch(e){
     showError(e.message);
