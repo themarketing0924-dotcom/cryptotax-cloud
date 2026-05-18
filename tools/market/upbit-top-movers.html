@@ -348,48 +348,70 @@ a{text-decoration:none;color:inherit;}
 let allTickers = [];
 let currentTab = 'up';
 let refreshTimer = null;
+let nameMap = null;       // 마켓 목록 캐시 (최초 1회만 요청)
+let krwCodes = null;
 const MEDALS = ['🥇','🥈','🥉'];
+const PROXY = 'https://corsproxy.io/?';
 
-/* ===== 업비트 API ===== */
-async function fetchUpbitData() {
+/* ===== URL 헬퍼 ===== */
+function upbitURL(path) { return 'https://api.upbit.com' + path; }
+
+async function apiFetch(url) {
+  // 직접 요청 → 실패 시 CORS 프록시로 재시도
   try {
-    // 1) KRW 마켓 목록
-    const mRes = await fetch('https://api.upbit.com/v1/market/all?isDetails=true', {
-      headers: {'Accept':'application/json'}
+    const r = await fetch(url, { headers: { Accept: 'application/json' } });
+    if (!r.ok) throw new Error('status ' + r.status);
+    return r.json();
+  } catch (_) {
+    const r2 = await fetch(PROXY + encodeURIComponent(url), {
+      headers: { Accept: 'application/json' }
     });
-    if (!mRes.ok) throw new Error('market list fail');
-    const markets = await mRes.json();
-    const krwMarkets = markets.filter(m => m.market.startsWith('KRW-'));
+    if (!r2.ok) throw new Error('proxy status ' + r2.status);
+    return r2.json();
+  }
+}
 
-    // 2) 티커 (150개씩 나눠서 요청)
-    const codes = krwMarkets.map(m => m.market);
-    const nameMap = {};
-    krwMarkets.forEach(m => { nameMap[m.market] = m.korean_name || m.market.replace('KRW-',''); });
+/* ===== 마켓 목록 (캐시) ===== */
+async function ensureMarkets() {
+  if (nameMap) return;   // 이미 로딩됨
+  const markets = await apiFetch(upbitURL('/v1/market/all?isDetails=true'));
+  const krw = markets.filter(m => m.market.startsWith('KRW-'));
+  nameMap = {};
+  krw.forEach(m => { nameMap[m.market] = m.korean_name || m.market.replace('KRW-', ''); });
+  krwCodes = krw.map(m => m.market);
+}
 
-    const chunkSize = 100;
+/* ===== 업비트 티커 갱신 ===== */
+async function fetchUpbitData() {
+  const el = document.getElementById('lastUpdate');
+  try {
+    await ensureMarkets();
+
+    // 100개씩 분할 병렬 요청
     const chunks = [];
-    for (let i = 0; i < codes.length; i += chunkSize) {
-      chunks.push(codes.slice(i, i + chunkSize));
+    for (let i = 0; i < krwCodes.length; i += 100) {
+      chunks.push(krwCodes.slice(i, i + 100));
     }
+    const results = await Promise.all(
+      chunks.map(c => apiFetch(upbitURL('/v1/ticker?markets=' + c.join(','))))
+    );
 
-    const tickerResults = await Promise.all(chunks.map(chunk =>
-      fetch('https://api.upbit.com/v1/ticker?markets=' + chunk.join(','), {
-        headers: {'Accept':'application/json'}
-      }).then(r => r.json())
-    ));
-
-    allTickers = tickerResults.flat().map(t => ({
+    allTickers = results.flat().map(t => ({
       ...t,
-      koreanName: nameMap[t.market] || t.market.replace('KRW-','')
+      koreanName: nameMap[t.market] || t.market.replace('KRW-', '')
     }));
 
     updateHeroStats();
     renderTable();
-    document.getElementById('lastUpdate').textContent =
-      '🟢 마지막 갱신: ' + new Date().toLocaleTimeString('ko-KR') + ' (60초 자동 갱신)';
-  } catch(e) {
-    document.getElementById('lastUpdate').textContent = '❌ 데이터 로딩 실패 — 잠시 후 다시 시도합니다.';
+    el.textContent = '🟢 마지막 갱신: ' + new Date().toLocaleTimeString('ko-KR') + ' (60초 자동 갱신)';
+  } catch (e) {
     console.error('Upbit fetch error:', e);
+    el.textContent = '❌ 데이터 로딩 실패 — 잠시 후 자동 재시도합니다.';
+    // 테이블에 에러 메시지 표시
+    const tbody = document.getElementById('rankBody');
+    if (!allTickers.length) {
+      tbody.innerHTML = '<tr class="loading-row"><td colspan="6">⚠️ 업비트 API 연결 실패. 잠시 후 자동으로 다시 불러옵니다.</td></tr>';
+    }
   }
 }
 
