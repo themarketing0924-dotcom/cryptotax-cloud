@@ -344,6 +344,18 @@ body > div.tradingview-widget-container > a{display:none!important;}
 .faq-a.open{display:block;}
 .faq-q.active .faq-arrow{transform:rotate(180deg);}
 
+/* BLOG CARDS */
+.blog-cards-section{margin-bottom:28px;}
+.blog-cards-section h3{font-size:1rem;font-weight:800;color:var(--text-primary);margin-bottom:14px;letter-spacing:-.3px;}
+.blog-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:640px){.blog-cards-grid{grid-template-columns:1fr;}}
+.blog-card-link{display:flex;flex-direction:column;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:18px 16px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s;gap:8px;}
+.blog-card-link:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.blog-card-cat{font-size:.72rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;}
+.blog-card-title{font-size:.95rem;font-weight:800;color:var(--text-primary);line-height:1.4;word-break:keep-all;}
+.blog-card-desc{font-size:.82rem;color:var(--text-secondary);line-height:1.6;word-break:keep-all;flex:1;}
+.blog-card-more{font-size:.78rem;font-weight:700;color:var(--orange);margin-top:4px;}
+
 /* CTA BLOCK */
 .cta-block{background:linear-gradient(135deg,#1a0800,#2a1200);
   border:1px solid var(--orange-border);border-radius:16px;
@@ -797,6 +809,31 @@ body > div.tradingview-widget-container > a{display:none!important;}
 </div>
 
 <!-- CTA -->
+<!-- BLOG CARDS -->
+<div class="blog-cards-section">
+  <div class="sec-label"><span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>지금 시장 상황, 세금에 어떤 영향?</div>
+  <div class="blog-cards-grid">
+    <a class="blog-card-link" href="/blog/coin-tax/bitcoin-sell-tax.html">
+      <span class="blog-card-cat">💸 세금 가이드</span>
+      <span class="blog-card-title">비트코인 팔면 세금 얼마? 2027 완전 정복</span>
+      <span class="blog-card-desc">매도 타이밍마다 달라지는 세금. 지금 시장 지수와 연계해 언제 파는 게 절세에 유리한지 계산해보세요.</span>
+      <span class="blog-card-more">자세히 보기 →</span>
+    </a>
+    <a class="blog-card-link" href="/blog/investment/dca-strategy.html">
+      <span class="blog-card-cat">📅 투자 전략</span>
+      <span class="blog-card-title">공포 구간에서 DCA가 정답인 이유</span>
+      <span class="blog-card-desc">공포·탐욕 지수 25 이하일 때 분할 매수가 왜 유리한지, 역대 데이터로 검증한 전략을 확인하세요.</span>
+      <span class="blog-card-more">자세히 보기 →</span>
+    </a>
+    <a class="blog-card-link" href="/blog/coin-tax/2027-guide.html">
+      <span class="blog-card-cat">📋 2027 과세</span>
+      <span class="blog-card-title">2027 코인 세금 총정리 — 코린이 필독</span>
+      <span class="blog-card-desc">알트시즌에 수익이 났다면 반드시 알아야 할 22% 과세 기준과 250만원 공제 활용법을 정리했습니다.</span>
+      <span class="blog-card-more">자세히 보기 →</span>
+    </a>
+  </div>
+</div>
+
 <div class="cta-block">
   <h3>📰 시장 분석 더 알고 싶다면?</h3>
   <p>알트시즌·공포지수·DCA 전략을 쉽게 설명한 무료 블로그 가이드와 세금 계산기</p>
