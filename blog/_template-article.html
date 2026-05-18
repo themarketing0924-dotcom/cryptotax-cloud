@@ -639,10 +639,30 @@ details.faq-item .faq-body {
 
   <!-- ────────────────────────────────────────────
        본문 섹션 시작
+
+       ★ H1 공식: 메인키워드 + 연관키워드 + 후킹(카피라이팅)
+         예) "비트코인 매도 세금 완전 가이드 2027 — 250만원 공제로 세금 0원 만드는 법"
+
+       ★ H2 공식: 키워드 중심 소주제 — generic 제목(개요/핵심정리/실전활용) 금지
+         형식: "[핵심 개념/용어] — [독자 궁금증 해소 또는 행동 유도]"
+         예) "이동평균법이란? — 매수할 때마다 평균단가 재산정하는 법"
+
+       ★ H3 공식: H2 섹션 내 소단락 구분 — 구체적 수치·단계·비교 포함
+         style="font-size:17px;margin:28px 0 10px;color:var(--text);font-weight:700"
+         예) "케이스 1 — 수익 500만원 시 세금 계산"
+         예) "국내 3대 거래소 수수료 비교표"
+
+       ★ 섹션 구조 (H2당 H3 2개 이상 권장):
+         H2 s1 → H3-A → 내용 → H3-B → 내용
+         H2 s2 → H3-A → 내용 (+ 계산기 CTA) → H3-B → 내용
+         H2 s3 → H3-A → 내용 → H3-B → 내용
+
        H2 는 목차 ID(s1, s2 ...) 와 일치시킬 것
   ──────────────────────────────────────────── -->
 
-  <h2 id="s1">섹션 1 제목 — 독자의 첫 번째 궁금증 해소</h2>
+  <h2 id="s1" style="font-size:20px;margin:40px 0 16px">[메인키워드]란? — [독자의 핵심 궁금증]</h2>
+
+  <h3 style="font-size:17px;margin:28px 0 10px;color:var(--text);font-weight:700">[소주제 A] — [구체적 설명]</h3>
 
   <p>본문 단락. 핵심 용어에는 외부 링크를 자연스럽게 삽입하세요.
   예: <a href="https://ko.wikipedia.org/wiki/가상화폐" target="_blank" rel="noopener">가상화폐</a>란
@@ -650,11 +670,9 @@ details.faq-item .faq-body {
   국세청은 <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener">공식 안내</a>를 통해
   과세 기준을 명시하고 있습니다.</p>
 
-  <p>두 번째 단락. 길이는 3~5문장이 적당합니다. 너무 길면 읽기 어렵고, 너무 짧으면 내용이 부족해 보입니다.</p>
+  <h3 style="font-size:17px;margin:28px 0 10px;color:var(--text);font-weight:700">[소주제 B] — [구체적 수치 또는 비교]</h3>
 
-  <h3>소제목 3 — H3는 H2 섹션 내에서만 사용</h3>
-
-  <p>소제목 아래 내용. H3는 H2 섹션 안에서 더 세밀한 분류가 필요할 때 사용합니다.</p>
+  <p>두 번째 단락. H3 소주제 아래 내용. 길이는 3~5문장이 적당합니다.</p>
 
   <ul>
     <li><strong>항목 1:</strong> 설명</li>
@@ -670,7 +688,9 @@ details.faq-item .faq-body {
 
   <!-- ─── -->
 
-  <h2 id="s2">섹션 2 제목 — 구체적인 수치·사례 중심으로</h2>
+  <h2 id="s2" style="font-size:20px;margin:40px 0 16px">[메인키워드] [수치·계산·비교] — [독자가 얻는 것]</h2>
+
+  <h3 style="font-size:17px;margin:28px 0 10px;color:var(--text);font-weight:700">[소주제 A] — 실전 계산 예시</h3>
 
   <p>수치나 통계를 포함한 단락. 예: 2027년부터 연간 <strong>250만 원</strong>을 초과하는 가상자산 양도차익에는
   <strong>22%</strong> 세율이 적용됩니다. 계산 공식: <code>(총 수익 − 250만원) × 22%</code></p>
@@ -711,7 +731,9 @@ details.faq-item .faq-body {
 
   <!-- ─── -->
 
-  <h2 id="s3">섹션 3 제목 — 실천 가이드 / 단계별 방법</h2>
+  <h2 id="s3" style="font-size:20px;margin:40px 0 16px">[메인키워드] 실전 방법 — [단계별 행동 가이드]</h2>
+
+  <h3 style="font-size:17px;margin:28px 0 10px;color:var(--text);font-weight:700">1단계 — [첫 번째 행동]</h3>
 
   <p>단계별 행동 가이드는 순서 있는 목록(ol)으로 작성합니다.</p>
 
