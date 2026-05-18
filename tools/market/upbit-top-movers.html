@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=(t==='light')?'light':'dark';})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>업비트 급등·급락 코인 순위 실시간 2027 | CryptoTax</title>
+<meta name="description" content="업비트 KRW 마켓 24시간 급등·급락 코인 실시간 순위. 오늘 가장 많이 오른 코인, 가장 많이 내린 코인을 한눈에 확인하세요. 60초 자동 갱신.">
+<meta name="keywords" content="업비트 급등 코인, 업비트 급락 코인, 오늘 급등 코인, 코인 등락률 순위, 업비트 실시간 순위, 암호화폐 등락률, 코인 상승 순위 오늘">
+<link rel="canonical" href="https://cryptotax.cloud/tools/market/upbit-top-movers.html">
+<meta property="og:title" content="업비트 급등·급락 코인 순위 실시간 | CryptoTax">
+<meta property="og:description" content="업비트 KRW 마켓 24시간 급등·급락 코인 실시간 순위. 60초 자동 갱신.">
+<meta property="og:url" content="https://cryptotax.cloud/tools/market/upbit-top-movers.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cryptotax.cloud/og-image.png">
+<meta property="og:site_name" content="코인세금계산기 CryptoTax.cloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="업비트 급등·급락 코인 순위 실시간">
+<meta name="twitter:description" content="업비트 KRW 마켓 24시간 급등·급락 코인 실시간 순위. 60초 자동 갱신.">
+<meta name="twitter:image" content="https://cryptotax.cloud/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"WebPage","name":"업비트 급등·급락 코인 순위 실시간 2027","url":"https://cryptotax.cloud/tools/market/upbit-top-movers.html","description":"업비트 KRW 마켓 24시간 급등·급락 코인 실시간 순위. 60초 자동 갱신.","inLanguage":"ko-KR","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://cryptotax.cloud/"},{"@type":"ListItem","position":2,"name":"시장 데이터","item":"https://cryptotax.cloud/tools/"},{"@type":"ListItem","position":3,"name":"급등·급락 순위","item":"https://cryptotax.cloud/tools/market/upbit-top-movers.html"}]}},
+  {"@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"업비트 급등 코인 순위는 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"업비트 공개 API에서 KRW 마켓 전체 코인의 24시간 등락률(signed_change_rate)을 가져와 내림차순 정렬합니다. 60초마다 자동 갱신됩니다."}},
+    {"@type":"Question","name":"급등 코인을 따라 사면 안 되나요?","acceptedAnswer":{"@type":"Answer","text":"급등 후 추격 매수는 고점 매수 위험이 높습니다. 급등 이유(뉴스·이벤트·작전)를 먼저 확인하고, 근거 없는 급등은 빠른 급락으로 이어지는 경우가 많습니다. DCA 전략으로 분할 매수를 권장합니다."}},
+    {"@type":"Question","name":"급등 코인에 세금이 붙나요?","acceptedAnswer":{"@type":"Answer","text":"2027년부터 연간 250만원 초과 수익에 22% 세금이 부과됩니다. 급등 코인으로 큰 수익이 났다면 세금 계산기로 미리 확인하세요."}}
+  ]}
+]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/common.css">
+<style>
+/* ── 디자인 토큰 (market-index.html 동일) ── */
+:root {
+  color-scheme: dark;
+  --bg-base:#0d1117; --bg-surface:#161b22; --bg-elevated:#1c2128; --bg-overlay:rgba(22,27,34,0.95);
+  --text-primary:#e6edf3; --text-secondary:#8b949e; --text-muted:#484f58;
+  --border-default:#30363d; --border-subtle:#21262d;
+  --orange:#FF8C00; --orange-dim:#2a1500; --orange-border:#FF8C0040;
+  --blue:#58a6ff; --blue-dim:#0a1a2a; --blue-border:#58a6ff40;
+  --green:#3fb950; --green-dim:#0a2a0a; --green-border:#3fb95040;
+  --red:#f85149; --red-dim:#2a0a0a; --red-border:#f8514940;
+  --purple:#a855f7; --yellow:#ffd700;
+  --hero-bg:radial-gradient(ellipse at 50% 0%,#FF8C0008 0%,transparent 70%);
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-base:#f6f8fa; --bg-surface:#ffffff; --bg-elevated:#f0f3f6;
+  --text-primary:#1a1f2e; --text-secondary:#57606a; --text-muted:#8c959f;
+  --border-default:#d0d7de; --border-subtle:#e8ecef;
+  --orange-dim:#fff3e0; --blue-dim:#e8f3ff; --green-dim:#e6f9ec; --red-dim:#fef0f0;
+  --hero-bg:radial-gradient(ellipse at 50% 0%,#FF8C0012 0%,transparent 70%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Apple SD Gothic Neo','Pretendard',system-ui,-apple-system,sans-serif;
+  background:var(--bg-base);color:var(--text-primary);line-height:1.6;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+
+/* BREADCRUMB */
+.breadcrumb{max-width:1280px;margin:0 auto;padding:10px 24px;font-size:.8rem;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);}
+.breadcrumb a:hover{color:var(--orange);}
+
+/* HERO */
+.hero{padding:48px 24px 36px;text-align:center;background:var(--hero-bg);}
+.hero-badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+.hbadge{font-size:.78rem;padding:5px 14px;border-radius:20px;font-weight:700;}
+.hbadge.green{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);}
+.hbadge.orange{background:var(--orange-dim);color:var(--orange);border:1px solid var(--orange-border);}
+.hbadge.blue{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:900;line-height:1.2;margin-bottom:14px;letter-spacing:-.03em;word-break:keep-all;}
+.hero h1 .highlight{background:linear-gradient(135deg,#FF8C00,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{color:var(--text-secondary);font-size:clamp(.9rem,2vw,1.05rem);font-weight:500;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto;word-break:keep-all;}
+.hero-stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
+.hero-stat{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:10px;padding:10px 18px;text-align:center;min-width:90px;}
+.hero-stat-val{display:block;font-size:1.2rem;font-weight:900;color:var(--orange);}
+.hero-stat-label{font-size:.68rem;color:var(--text-secondary);}
+.update-line{font-size:.75rem;color:var(--text-muted);font-family:'Courier New',monospace;margin-top:6px;}
+
+/* WRAP */
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px 80px;}
+
+/* SEC LABEL */
+.sec-label{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;padding:4px 0;}
+.sec-icon{width:18px;height:18px;display:flex;align-items:center;justify-content:center;opacity:.7;}
+.sec-icon svg{width:16px;height:16px;stroke:currentColor;}
+
+/* TABS */
+.tab-bar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
+.tab-btn{padding:8px 20px;border-radius:8px;border:1px solid var(--border-default);background:var(--bg-surface);color:var(--text-secondary);font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;}
+.tab-btn:hover{border-color:var(--orange);color:var(--orange);}
+.tab-btn.active.up{background:var(--green-dim);border-color:var(--green-border);color:var(--green);}
+.tab-btn.active.dn{background:var(--red-dim);border-color:var(--red-border);color:var(--red);}
+.tab-btn.active.vol{background:var(--blue-dim);border-color:var(--blue-border);color:var(--blue);}
+
+/* FILTERS */
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.filter-label{font-size:.78rem;color:var(--text-muted);font-weight:600;}
+.filter-select{background:var(--bg-surface);border:1px solid var(--border-default);color:var(--text-primary);border-radius:8px;padding:6px 12px;font-size:.82rem;font-family:inherit;cursor:pointer;}
+.search-input{background:var(--bg-surface);border:1px solid var(--border-default);color:var(--text-primary);border-radius:8px;padding:7px 14px;font-size:.82rem;font-family:inherit;width:180px;outline:none;transition:border-color .2s;}
+.search-input:focus{border-color:var(--orange);}
+.search-input::placeholder{color:var(--text-muted);}
+
+/* RANK TABLE */
+.rank-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+.rank-table thead th{background:var(--bg-elevated);padding:10px 14px;text-align:left;font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--border-default);}
+.rank-table thead th:nth-child(n+3){text-align:right;}
+.rank-table tbody tr{border-bottom:1px solid var(--border-subtle);transition:background .15s;cursor:default;}
+.rank-table tbody tr:hover{background:var(--bg-surface);}
+.rank-table tbody td{padding:12px 14px;vertical-align:middle;}
+.rank-table tbody td:nth-child(n+3){text-align:right;}
+.rank-num{font-size:.8rem;font-weight:700;color:var(--text-muted);width:32px;display:inline-block;text-align:right;}
+.coin-symbol{font-weight:800;font-size:.92rem;color:var(--text-primary);}
+.coin-name{font-size:.75rem;color:var(--text-secondary);margin-top:1px;}
+.price-val{font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;}
+.chg-badge{display:inline-block;padding:3px 8px;border-radius:6px;font-size:.82rem;font-weight:800;font-variant-numeric:tabular-nums;}
+.chg-badge.up{background:var(--green-dim);color:var(--green);}
+.chg-badge.dn{background:var(--red-dim);color:var(--red);}
+.chg-badge.neu{background:var(--bg-elevated);color:var(--text-muted);}
+.vol-val{font-size:.82rem;color:var(--text-secondary);font-variant-numeric:tabular-nums;}
+.rank-medal{font-size:1rem;}
+
+/* LOADING / EMPTY */
+.loading-row td{text-align:center;padding:40px;color:var(--text-muted);}
+.spinner-sm{width:20px;height:20px;border:2px solid var(--border-default);border-top-color:var(--orange);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;margin-right:8px;vertical-align:middle;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* CARD */
+.card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:14px;padding:22px;margin-bottom:20px;}
+
+/* EXPLAIN BOX */
+.explain-box{background:linear-gradient(135deg,var(--orange-dim),transparent);border:1px solid var(--orange-border);border-radius:12px;padding:18px 20px;margin-bottom:20px;}
+.explain-box h3{font-size:.92rem;font-weight:800;color:var(--orange);margin-bottom:8px;}
+.explain-box p{font-size:.85rem;color:var(--text-secondary);line-height:1.75;word-break:keep-all;}
+.explain-box ul{margin-top:8px;padding-left:18px;font-size:.83rem;color:var(--text-secondary);line-height:1.9;}
+
+/* WARN BOX */
+.warn-box{background:var(--red-dim);border:1px solid var(--red-border);border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:.83rem;color:var(--red);font-weight:600;line-height:1.7;word-break:keep-all;}
+
+/* TOOL CTA */
+.tool-cta{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#1a0800,#2a1200);border:1px solid var(--orange-border);border-radius:14px;padding:22px 24px;margin-bottom:20px;}
+[data-theme="light"] .tool-cta{background:linear-gradient(135deg,#fff3e0,#fff8f0);}
+.tool-cta-icon{font-size:2rem;flex-shrink:0;}
+.tool-cta-info h3{font-size:1rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;word-break:keep-all;}
+.tool-cta-info p{font-size:.83rem;color:var(--text-secondary);word-break:keep-all;}
+.tool-cta-btn{flex-shrink:0;background:var(--orange);color:#fff;border-radius:10px;padding:11px 20px;font-size:.85rem;font-weight:800;white-space:nowrap;transition:opacity .2s;}
+.tool-cta-btn:hover{opacity:.85;}
+@media(max-width:600px){.tool-cta{flex-direction:column;text-align:center;}.tool-cta-btn{width:100%;text-align:center;}}
+
+/* QNA */
+.qna-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+@media(max-width:640px){.qna-grid{grid-template-columns:1fr;}}
+.qna-item{background:var(--bg-elevated);border-radius:10px;padding:16px;}
+.qna-item .q{font-size:.88rem;font-weight:800;color:var(--text-primary);margin-bottom:8px;word-break:keep-all;}
+.qna-item .a{font-size:.82rem;color:var(--text-secondary);line-height:1.75;word-break:keep-all;}
+
+/* BLOG CARDS */
+.blog-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:640px){.blog-cards-grid{grid-template-columns:1fr;}}
+.blog-card-link{display:flex;flex-direction:column;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:12px;padding:18px 16px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s;gap:8px;}
+.blog-card-link:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.blog-card-cat{font-size:.72rem;font-weight:700;color:var(--orange);}
+.blog-card-title{font-size:.92rem;font-weight:800;color:var(--text-primary);line-height:1.4;word-break:keep-all;}
+.blog-card-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.6;word-break:keep-all;flex:1;}
+.blog-card-more{font-size:.75rem;font-weight:700;color:var(--orange);}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  .wrap{padding:0 14px 60px;}
+  .rank-table thead th:nth-child(5){display:none;}
+  .rank-table tbody td:nth-child(5){display:none;}
+  .hero{padding:32px 14px 24px;}
+}
+</style>
+</head>
+<body data-no-ticker>
+
+<!-- NAV (common.js 자동 주입) -->
+<nav></nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">홈</a> › <a href="/tools/">시장 데이터</a> › 업비트 급등·급락 순위
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge-row">
+    <span class="hbadge green">🟢 업비트 LIVE</span>
+    <span class="hbadge orange">60초 자동 갱신</span>
+    <span class="hbadge blue">KRW 전체 마켓</span>
+  </div>
+  <h1>업비트 <span class="highlight">급등·급락</span> 코인<br>실시간 순위</h1>
+  <p class="hero-sub">오늘 가장 많이 오른 코인, 가장 많이 내린 코인을 한눈에. 업비트 KRW 마켓 전체 기준 24시간 등락률 순위입니다.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-val" id="statTotal">—</span><span class="hero-stat-label">KRW 상장 코인</span></div>
+    <div class="hero-stat"><span class="hero-stat-val up" id="statTopGain" style="color:var(--green)">—</span><span class="hero-stat-label">TOP 급등</span></div>
+    <div class="hero-stat"><span class="hero-stat-val" id="statTopLoss" style="color:var(--red)">—</span><span class="hero-stat-label">TOP 급락</span></div>
+    <div class="hero-stat"><span class="hero-stat-val" id="statUpCount" style="color:var(--orange)">—</span><span class="hero-stat-label">상승 코인 수</span></div>
+  </div>
+  <p class="update-line" id="lastUpdate">⏳ 데이터 불러오는 중...</p>
+</div>
+
+<div class="wrap">
+
+<!-- 코린이 설명 -->
+<div class="explain-box">
+  <h3>📖 급등·급락 순위를 어떻게 활용하나요?</h3>
+  <p>이 페이지는 업비트 KRW 마켓에 상장된 모든 코인의 <strong>24시간 등락률</strong>을 실시간으로 보여줍니다. 아침에 일어나서 한 번 확인하는 것만으로도 시장 분위기를 10초 만에 파악할 수 있습니다.</p>
+  <ul>
+    <li><strong>급등 순위</strong>: 어떤 섹터·테마가 오늘 주목받는지 파악. 하지만 이미 많이 오른 코인 추격 매수는 위험합니다.</li>
+    <li><strong>급락 순위</strong>: 과도하게 내린 코인에서 반등 기회를 찾거나, 손실 실현으로 절세에 활용 가능합니다.</li>
+    <li><strong>거래량 순위</strong>: 오늘 시장의 관심이 어디에 몰리는지 확인. 거래량 없는 급등은 작전 가능성이 높습니다.</li>
+  </ul>
+</div>
+
+<!-- 경고 -->
+<div class="warn-box">
+  ⚠️ <strong>투자 주의</strong> — 급등 코인 추격 매수는 고점 매수 위험이 있습니다. 이 페이지는 시장 흐름 파악용이며 투자 권유가 아닙니다. 수익 발생 시 2027년부터 22% 세금이 적용됩니다.
+</div>
+
+<!-- TABS -->
+<div class="sec-label">
+  <span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+  실시간 코인 순위
+</div>
+<div class="tab-bar">
+  <button class="tab-btn active up" onclick="switchTab('up',this)">🚀 급등 TOP 30</button>
+  <button class="tab-btn dn" onclick="switchTab('dn',this)">📉 급락 TOP 30</button>
+  <button class="tab-btn vol" onclick="switchTab('vol',this)">💰 거래량 TOP 30</button>
+  <button class="tab-btn" onclick="switchTab('all',this)" style="">전체 보기</button>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <span class="filter-label">표시 개수:</span>
+  <select class="filter-select" id="countSelect" onchange="renderTable()">
+    <option value="10">10개</option>
+    <option value="30" selected>30개</option>
+    <option value="50">50개</option>
+    <option value="999">전체</option>
+  </select>
+  <span class="filter-label">검색:</span>
+  <input class="search-input" id="searchInput" type="text" placeholder="BTC, 비트코인..." oninput="renderTable()">
+</div>
+
+<!-- TABLE -->
+<div class="card" style="padding:0;overflow-x:auto;">
+  <table class="rank-table" id="rankTable">
+    <thead>
+      <tr>
+        <th style="width:40px">#</th>
+        <th>코인</th>
+        <th>현재가 (KRW)</th>
+        <th>24시간 등락률</th>
+        <th>24시간 거래량</th>
+        <th>고가 / 저가</th>
+      </tr>
+    </thead>
+    <tbody id="rankBody">
+      <tr class="loading-row"><td colspan="6"><span class="spinner-sm"></span>업비트 데이터 불러오는 중...</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CTA: 세금 계산 -->
+<div class="tool-cta">
+  <div class="tool-cta-icon">🧮</div>
+  <div class="tool-cta-info">
+    <h3>급등 코인에서 수익 났다면 세금부터 확인하세요</h3>
+    <p>2027년부터 연간 250만원 초과 수익에 22% 세금 부과. 지금 예상 세금을 미리 계산해보세요.</p>
+  </div>
+  <a href="/tools/tax-calculator.html" class="tool-cta-btn">📊 세금 계산하기 →</a>
+</div>
+
+<!-- CTA: 절세 하베스팅 -->
+<div class="tool-cta" style="margin-top:-8px;">
+  <div class="tool-cta-icon">🌿</div>
+  <div class="tool-cta-info">
+    <h3>급락 코인이 있다면 절세 하베스팅 전략을</h3>
+    <p>손실 코인 매도로 수익과 상계해 세금을 줄이는 전략. 12월 31일 전에 꼭 확인하세요.</p>
+  </div>
+  <a href="/tools/tax-loss-harvesting.html" class="tool-cta-btn">🌿 절세 전략 보기 →</a>
+</div>
+
+<!-- 코린이 Q&A -->
+<div class="card">
+  <div class="sec-label" style="margin-bottom:8px;">
+    <span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+    코린이 Q&A — 급등·급락 코인 완전 정복
+  </div>
+  <div class="qna-grid">
+    <div class="qna-item">
+      <div class="q">Q. 급등 코인 순위에 있는 코인, 지금 사도 될까요?</div>
+      <div class="a">이미 10~30% 오른 상태라면 고점 추격 매수는 위험합니다. 급등 이유가 뉴스·이벤트인지, 단순 투기인지 먼저 확인하세요. 거래량이 동반되지 않은 급등은 특히 주의해야 합니다. DCA로 분할 매수를 권장합니다.</div>
+    </div>
+    <div class="qna-item">
+      <div class="q">Q. 급락 코인은 무조건 나쁜 건가요?</div>
+      <div class="a">꼭 그렇지는 않습니다. 시장 전체가 하락할 때 과도하게 내린 대형 코인은 반등 기회가 될 수 있습니다. 또한 손실 난 코인을 연말에 매도하면 수익과 상계해 세금을 줄이는 <strong>절세 하베스팅</strong> 전략에 활용 가능합니다.</div>
+    </div>
+    <div class="qna-item">
+      <div class="q">Q. 거래량 순위는 왜 봐야 하나요?</div>
+      <div class="a">거래량은 시장 관심도의 바로미터입니다. 가격은 올랐지만 거래량이 낮으면 '작전 세력' 가능성이 있습니다. 반대로 거래량이 폭발적으로 늘면 실질적인 시장 참여자가 많다는 신호입니다.</div>
+    </div>
+    <div class="qna-item">
+      <div class="q">Q. 급등 코인으로 수익이 나면 세금을 내야 하나요?</div>
+      <div class="a">2027년부터 연간 250만원 초과 수익에는 22% 세금이 부과됩니다. 예를 들어 급등 코인에서 1,000만원 수익이 났다면 (1,000만원 - 250만원) × 22% = <strong>165만원</strong>의 세금이 발생합니다. 미리 계산해두세요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 관련 블로그 카드 -->
+<div class="sec-label">
+  <span class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+  함께 읽으면 좋은 글
+</div>
+<div class="blog-cards-grid" style="margin-bottom:28px;">
+  <a class="blog-card-link" href="/blog/coin-tax/bitcoin-sell-tax.html">
+    <span class="blog-card-cat">💸 세금 가이드</span>
+    <span class="blog-card-title">급등 코인 팔면 세금 얼마? 2027 완전 정복</span>
+    <span class="blog-card-desc">급등 후 매도 시 발생하는 세금 계산법. 250만원 공제 활용과 이동평균법 취득원가 계산까지.</span>
+    <span class="blog-card-more">자세히 보기 →</span>
+  </a>
+  <a class="blog-card-link" href="/blog/investment/cut-loss-timing.html">
+    <span class="blog-card-cat">📉 투자 전략</span>
+    <span class="blog-card-title">급락 코인 손절 타이밍, 언제가 맞나</span>
+    <span class="blog-card-desc">감정 없이 손절하는 기준선 설정법. 세금 절감과 손절을 동시에 잡는 절세 하베스팅 전략.</span>
+    <span class="blog-card-more">자세히 보기 →</span>
+  </a>
+  <a class="blog-card-link" href="/blog/investment/dca-strategy.html">
+    <span class="blog-card-cat">📅 DCA 전략</span>
+    <span class="blog-card-title">급등·급락 보지 않고 돈 버는 DCA 전략</span>
+    <span class="blog-card-desc">매일 순위를 보지 않아도 꾸준히 수익을 쌓는 적립식 투자법. 코린이 필독 가이드.</span>
+    <span class="blog-card-more">자세히 보기 →</span>
+  </a>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- FOOTER (common.js 자동 주입) -->
+<footer></footer>
+
+<script>
+/* ===== 상태 ===== */
+let allTickers = [];
+let currentTab = 'up';
+let refreshTimer = null;
+const MEDALS = ['🥇','🥈','🥉'];
+
+/* ===== 업비트 API ===== */
+async function fetchUpbitData() {
+  try {
+    // 1) KRW 마켓 목록
+    const mRes = await fetch('https://api.upbit.com/v1/market/all?isDetails=true', {
+      headers: {'Accept':'application/json'}
+    });
+    if (!mRes.ok) throw new Error('market list fail');
+    const markets = await mRes.json();
+    const krwMarkets = markets.filter(m => m.market.startsWith('KRW-'));
+
+    // 2) 티커 (150개씩 나눠서 요청)
+    const codes = krwMarkets.map(m => m.market);
+    const nameMap = {};
+    krwMarkets.forEach(m => { nameMap[m.market] = m.korean_name || m.market.replace('KRW-',''); });
+
+    const chunkSize = 100;
+    const chunks = [];
+    for (let i = 0; i < codes.length; i += chunkSize) {
+      chunks.push(codes.slice(i, i + chunkSize));
+    }
+
+    const tickerResults = await Promise.all(chunks.map(chunk =>
+      fetch('https://api.upbit.com/v1/ticker?markets=' + chunk.join(','), {
+        headers: {'Accept':'application/json'}
+      }).then(r => r.json())
+    ));
+
+    allTickers = tickerResults.flat().map(t => ({
+      ...t,
+      koreanName: nameMap[t.market] || t.market.replace('KRW-','')
+    }));
+
+    updateHeroStats();
+    renderTable();
+    document.getElementById('lastUpdate').textContent =
+      '🟢 마지막 갱신: ' + new Date().toLocaleTimeString('ko-KR') + ' (60초 자동 갱신)';
+  } catch(e) {
+    document.getElementById('lastUpdate').textContent = '❌ 데이터 로딩 실패 — 잠시 후 다시 시도합니다.';
+    console.error('Upbit fetch error:', e);
+  }
+}
+
+/* ===== 헤더 통계 ===== */
+function updateHeroStats() {
+  if (!allTickers.length) return;
+  const sorted = [...allTickers].sort((a,b) => b.signed_change_rate - a.signed_change_rate);
+  const upCount = allTickers.filter(t => t.signed_change_rate > 0).length;
+  const topGain = sorted[0];
+  const topLoss = sorted[sorted.length - 1];
+
+  document.getElementById('statTotal').textContent = allTickers.length;
+  document.getElementById('statTopGain').textContent =
+    topGain ? '+' + (topGain.signed_change_rate * 100).toFixed(1) + '%' : '—';
+  document.getElementById('statTopLoss').textContent =
+    topLoss ? (topLoss.signed_change_rate * 100).toFixed(1) + '%' : '—';
+  document.getElementById('statUpCount').textContent = upCount + '개';
+}
+
+/* ===== 탭 전환 ===== */
+function switchTab(tab, btn) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+}
+
+/* ===== 테이블 렌더 ===== */
+function renderTable() {
+  const tbody = document.getElementById('rankBody');
+  const limit = parseInt(document.getElementById('countSelect').value);
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  if (!allTickers.length) {
+    tbody.innerHTML = '<tr class="loading-row"><td colspan="6"><span class="spinner-sm"></span>업비트 데이터 불러오는 중...</td></tr>';
+    return;
+  }
+
+  let data = [...allTickers];
+
+  // 검색 필터
+  if (query) {
+    data = data.filter(t =>
+      t.market.toLowerCase().includes(query) ||
+      (t.koreanName && t.koreanName.toLowerCase().includes(query))
+    );
+  }
+
+  // 정렬
+  if (currentTab === 'up') {
+    data.sort((a, b) => b.signed_change_rate - a.signed_change_rate);
+  } else if (currentTab === 'dn') {
+    data.sort((a, b) => a.signed_change_rate - b.signed_change_rate);
+  } else if (currentTab === 'vol') {
+    data.sort((a, b) => b.acc_trade_price_24h - a.acc_trade_price_24h);
+  }
+  // 'all' → 시가총액 내림차순 (거래량으로 대체)
+  if (currentTab === 'all') {
+    data.sort((a, b) => b.acc_trade_price_24h - a.acc_trade_price_24h);
+  }
+
+  data = data.slice(0, limit === 999 ? data.length : limit);
+
+  if (!data.length) {
+    tbody.innerHTML = '<tr class="loading-row"><td colspan="6">검색 결과가 없습니다.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map((t, i) => {
+    const symbol = t.market.replace('KRW-', '');
+    const chg = t.signed_change_rate * 100;
+    const chgClass = chg > 0 ? 'up' : chg < 0 ? 'dn' : 'neu';
+    const chgStr = (chg > 0 ? '+' : '') + chg.toFixed(2) + '%';
+    const price = fmtKRW(t.trade_price);
+    const vol = fmtVol(t.acc_trade_price_24h);
+    const high = fmtKRW(t.high_price);
+    const low = fmtKRW(t.low_price);
+    const medal = i < 3 ? MEDALS[i] : '';
+
+    return `<tr>
+      <td><span class="rank-num">${medal || (i + 1)}</span></td>
+      <td>
+        <div class="coin-symbol">${symbol}</div>
+        <div class="coin-name">${t.koreanName || ''}</div>
+      </td>
+      <td><span class="price-val">${price}원</span></td>
+      <td><span class="chg-badge ${chgClass}">${chgStr}</span></td>
+      <td><span class="vol-val">${vol}</span></td>
+      <td><span class="vol-val" style="font-size:.75rem;">${high} / ${low}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+/* ===== 숫자 포맷 ===== */
+function fmtKRW(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(2) + 'M';
+  if (n >= 1000) return n.toLocaleString('ko-KR');
+  if (n >= 1) return n.toFixed(2);
+  if (n >= 0.01) return n.toFixed(4);
+  return n.toFixed(8);
+}
+
+function fmtVol(n) {
+  if (!n) return '—';
+  if (n >= 1e12) return (n / 1e12).toFixed(1) + '조';
+  if (n >= 1e8) return (n / 1e8).toFixed(0) + '억';
+  if (n >= 1e4) return (n / 1e4).toFixed(0) + '만';
+  return n.toLocaleString('ko-KR');
+}
+
+/* ===== 시작 ===== */
+fetchUpbitData();
+refreshTimer = setInterval(fetchUpbitData, 60000);
+</script>
+
+<script src="/assets/js/common.js"></script>
+</body>
+</html>
