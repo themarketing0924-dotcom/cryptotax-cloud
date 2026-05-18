@@ -990,7 +990,15 @@ function setGaugeNeedle(val) {
 /* FEAR & GREED */
 async function loadFG() {
   try {
-    const res = await fetch('https://api.alternative.me/fng/?limit=28&format=json');
+    const FNG_URL = 'https://api.alternative.me/fng/?limit=28&format=json';
+    let res;
+    try {
+      res = await fetch(FNG_URL, {signal: AbortSignal.timeout(6000)});
+      if (!res.ok) throw new Error('fng ' + res.status);
+    } catch(err) {
+      const proxy = 'https://corsproxy.io/?' + encodeURIComponent(FNG_URL);
+      res = await fetch(proxy, {signal: AbortSignal.timeout(8000)});
+    }
     const data = await res.json();
     const latest = data.data[0];
     const val = parseInt(latest.value);
@@ -1096,7 +1104,9 @@ async function loadGlobal() {
 /* BTC 도미넌스 역사 차트 (TradingView Mini Chart) */
 function initDomHistChart() {
   const el = document.getElementById('domHistChart');
-  if(!el || el.dataset.init) return;
+  if(!el) return;
+  el.innerHTML = '';
+  delete el.dataset.init;
   el.dataset.init = '1';
   const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
   const script = document.createElement('script');
@@ -1118,6 +1128,7 @@ function initDomHistChart() {
   });
   el.appendChild(script);
 }
+document.addEventListener('themeChange', function(){ initDomHistChart(); });
 
 /* COINS + BREADTH — Upbit KRW + CryptoCompare top100 */
 async function loadCoinsAndBreadth() {
@@ -1339,6 +1350,8 @@ async function loadAll() {
   const now = new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',hour12:false});
   document.getElementById('lastUpdate').textContent = `✅ 마지막 업데이트: ${now} KST`;
 }
+
+function loadBreadth(){ loadCoinsAndBreadth(); }
 
 loadAll();
 initDomHistChart();
