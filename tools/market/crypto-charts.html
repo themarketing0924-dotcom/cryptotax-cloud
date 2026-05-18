@@ -306,12 +306,7 @@ a{text-decoration:none;color:inherit;}
 .breadcrumb a{color:var(--text-muted);}
 .breadcrumb a:hover{color:var(--orange);}
 
-/* ===== FOOTER ===== */
-footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:28px 20px;text-align:center;}
-.footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
-.footer-links a{color:var(--text-muted);font-size:.82rem;}
-.footer-links a:hover{color:var(--orange);}
-.footer-copy{font-size:.76rem;color:var(--text-muted);}
+/* footer → common.css .ctc-footer 로 처리 */
 
 /* ===== 반응형 ===== */
 @media(max-width:480px){
@@ -641,10 +636,47 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
     <p class="sec-desc">주요 암호화폐 실시간 가격·등락률·거래량 한눈에 확인.</p>
     <div class="card" style="padding:0;overflow:hidden;">
-      <div class="tradingview-widget-container" style="height:600px;">
+      <div class="tradingview-widget-container" style="height:600px;width:100%;">
         <div class="tradingview-widget-container__widget" style="height:600px;width:100%;"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-        {"width":"100%","height":600,"defaultColumn":"overview","defaultScreen":"crypto","market":"crypto","showToolbar":true,"colorTheme":"dark","locale":"kr","isTransparent":true}
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme":"dark","dateRange":"1D","showChart":true,
+          "locale":"kr","isTransparent":false,
+          "showSymbolLogo":true,"showFloatingTooltip":false,
+          "width":"100%","height":600,
+          "tabs":[
+            {
+              "title":"주요 코인",
+              "symbols":[
+                {"s":"BINANCE:BTCUSDT","d":"비트코인 BTC"},
+                {"s":"BINANCE:ETHUSDT","d":"이더리움 ETH"},
+                {"s":"BINANCE:XRPUSDT","d":"리플 XRP"},
+                {"s":"BINANCE:SOLUSDT","d":"솔라나 SOL"},
+                {"s":"BINANCE:BNBUSDT","d":"바이낸스코인 BNB"},
+                {"s":"BINANCE:ADAUSDT","d":"에이다 ADA"},
+                {"s":"BINANCE:DOGEUSDT","d":"도지코인 DOGE"},
+                {"s":"BINANCE:DOTUSDT","d":"폴카닷 DOT"},
+                {"s":"BINANCE:AVAXUSDT","d":"아발란체 AVAX"},
+                {"s":"BINANCE:LINKUSDT","d":"체인링크 LINK"}
+              ],
+              "originalTitle":"Crypto"
+            },
+            {
+              "title":"업비트 KRW",
+              "symbols":[
+                {"s":"UPBIT:BTCKRW","d":"비트코인 KRW"},
+                {"s":"UPBIT:ETHKRW","d":"이더리움 KRW"},
+                {"s":"UPBIT:XRPKRW","d":"리플 KRW"},
+                {"s":"UPBIT:SOLKRW","d":"솔라나 KRW"},
+                {"s":"UPBIT:ADAKRW","d":"에이다 KRW"},
+                {"s":"UPBIT:DOGEKRW","d":"도지코인 KRW"},
+                {"s":"UPBIT:AVAXKRW","d":"아발란체 KRW"},
+                {"s":"UPBIT:LINKRW","d":"체인링크 KRW"}
+              ],
+              "originalTitle":"Upbit KRW"
+            }
+          ]
+        }
         </script>
       </div>
     </div>
@@ -800,17 +832,8 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
 
 </div><!-- /container -->
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="footer-links">
-    <a href="https://cryptotax.cloud/">홈</a>
-    <a href="https://cryptotax.cloud/tools/">계산기 모음</a>
-    <a href="https://cryptotax.cloud/market/">시장 데이터</a>
-    <a href="https://cryptotax.cloud/blog/">블로그</a>
-    <a href="https://cryptotax.cloud/privacy-policy.html">개인정보처리방침</a>
-  </div>
-  <div class="footer-copy">© 2026 CryptoTax.cloud — 차트 데이터는 참고용이며 투자 조언이 아닙니다.</div>
-</footer>
+<!-- ===== FOOTER (common.js 자동 주입) ===== -->
+<footer></footer>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
