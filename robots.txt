@@ -10,6 +10,8 @@ Disallow: /attached_assets/
 Disallow: /.git/
 Disallow: /.local/
 Disallow: /cryptotax-optimized.zip
+Disallow: /img-sys/
+Disallow: /img-sys/*
 Crawl-delay: 1
 
 # ── 구글봇 (Google) ──
