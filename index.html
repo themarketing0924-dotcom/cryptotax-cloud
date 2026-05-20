@@ -93,6 +93,38 @@ if(window.wcs) wcs_do();
   "potentialAction":{"@type":"SearchAction","target":"https://cryptotax.cloud/tools/{search_term}","query-input":"required name=search_term"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"코인 세금 계산기 — CryptoTax.cloud",
+  "url":"https://cryptotax.cloud/",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"웹 브라우저 (Chrome, Safari, Edge, Firefox)",
+  "inLanguage":"ko-KR",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},
+  "featureList":"가상자산 양도소득세 계산, DCA 계산기, 물타기 계산기, 김프 계산기, CSV 세금 계산기, 절세 하베스팅 계산기, 수익률 계산기, 스테이킹 계산기",
+  "description":"2027년 한국 가상자산 양도소득세 22%를 즉시 계산하는 무료 웹 계산기. 업비트·빗썸 CSV 자동 처리, 이동평균법 취득원가 산정 포함.",
+  "screenshot":"https://cryptotax.cloud/og-image.png",
+  "author":{"@type":"Organization","name":"CryptoTax.cloud","url":"https://cryptotax.cloud"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"코인 세금은 언제부터 내야 하나요?","acceptedAnswer":{"@type":"Answer","text":"현행 법률 기준으로 2027년 1월 1일부터 가상자산 양도소득세가 부과됩니다. 다만 2026년 3월 국민의힘이 폐지 법안을 발의하여 국회 통과 여부에 따라 변경될 수 있습니다."}},
+    {"@type":"Question","name":"코인 세율 22%는 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"소득세 20% + 지방소득세 2% = 총 22%입니다. 연간 수익에서 기본공제 250만원을 뺀 금액(과세표준)에 적용됩니다. 수익이 250만원 이하면 세금이 0원입니다."}},
+    {"@type":"Question","name":"업비트에서 거래하면 세금 신고 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"업비트 앱 → 더보기 → 거래내역 다운로드(CSV)로 1년치 거래 내역을 받고, 다음 해 5월 국세청 홈택스에서 종합소득세 신고 시 가상자산 항목에 입력합니다."}},
+    {"@type":"Question","name":"손실이 났을 때도 세금을 내나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 같은 해에 이익 난 코인과 손실 난 코인의 손익을 합산(통산)합니다. 연말에 손실 코인을 매도하면 세금을 줄일 수 있습니다."}},
+    {"@type":"Question","name":"물타기와 DCA의 차이가 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"물타기는 하락 중인 코인에 감정적으로 추가 매수하는 것이고, DCA는 가격과 무관하게 정해진 날짜에 정해진 금액을 꾸준히 투자하는 전략입니다."}},
+    {"@type":"Question","name":"사토시가 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"사토시(Satoshi)는 비트코인의 최소 단위입니다. 1 비트코인 = 1억 사토시입니다. 업비트에서는 최소 5,000원부터 매수 가능합니다."}},
+    {"@type":"Question","name":"김치 프리미엄이란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"국내 거래소의 코인 가격이 해외 거래소보다 높게 형성되는 현상입니다. 역사적으로 20~30%까지 올라간 적도 있습니다."}},
+    {"@type":"Question","name":"이 계산기의 결과가 실제 세금과 다를 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 본 사이트의 계산 결과는 참고용 추정치이며 정확한 세금 계산은 세무사 상담 또는 국세청 공식 채널을 이용하시기 바랍니다."}}
+  ]
+}
+</script>
 <style>
 :root {
   color-scheme: dark;
@@ -1779,9 +1811,6 @@ input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-b
   </div>
 </section>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"코인 세금은 언제부터 내야 하나요?","acceptedAnswer":{"@type":"Answer","text":"현행 법률 기준으로 2027년 1월 1일부터 가상자산 양도소득세가 부과됩니다."}},{"@type":"Question","name":"코인 세율 22%는 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"소득세 20% + 지방소득세 2% = 총 22%입니다."}}]}
-</script>
 
 <!-- ===== 채널 ===== -->
 <section class="section" id="channels">
