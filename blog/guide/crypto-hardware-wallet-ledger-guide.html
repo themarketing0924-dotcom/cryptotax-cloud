@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>레저·트레저 하드웨어 지갑 사용법 2026 — 코린이 완전 가이드 | CryptoTax.cloud</title>
+<meta name="description" content="레저(Ledger), 트레저(Trezor) 하드웨어 지갑 사용법 완전 가이드. 하드웨어 지갑이란 무엇인지, 업비트 출금 방법, 복구 시드 보관법, 세금 신고 시 유의사항까지 코린이도 이해하는 안내입니다.">
+<meta name="keywords" content="레저 지갑 사용법, 트레저 지갑, 하드웨어 지갑 사용법, 코인 하드웨어 지갑, 레저 나노 사용법, 하드웨어 지갑 추천">
+<meta name="robots" content="index, follow">
+<meta name="author" content="CryptoTax.cloud">
+<link rel="canonical" href="https://cryptotax.cloud/blog/guide/crypto-hardware-wallet-ledger-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="레저·트레저 하드웨어 지갑 사용법 2026 — 코린이 완전 가이드">
+<meta property="og:description" content="레저·트레저 하드웨어 지갑 사용법. 업비트 출금, 시드 보관, 세금 신고 유의사항 코린이 완전 가이드.">
+<meta property="og:url" content="https://cryptotax.cloud/blog/guide/crypto-hardware-wallet-ledger-guide.html">
+<meta property="og:image" content="https://cryptotax.cloud/assets/img/blog/crypto-hardware-wallet-ledger-guide-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="코인세금계산기 CryptoTax.cloud">
+<meta property="article:published_time" content="2026-06-10T10:00:00+09:00">
+<meta property="article:modified_time" content="2026-06-10T10:00:00+09:00">
+<meta property="article:author" content="CryptoTax.cloud">
+<meta property="article:section" content="입문가이드">
+<meta property="article:tag" content="하드웨어 지갑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="레저·트레저 하드웨어 지갑 사용법 2026 — 코린이 완전 가이드">
+<meta name="twitter:description" content="레저·트레저 하드웨어 지갑 사용법, 업비트 출금, 시드 보관, 세금 신고 완전 가이드.">
+<meta name="twitter:image" content="https://cryptotax.cloud/assets/img/blog/crypto-hardware-wallet-ledger-guide-hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "레저·트레저 하드웨어 지갑 사용법 2026 — 코린이 완전 가이드",
+  "description": "레저, 트레저 하드웨어 지갑 사용법 완전 가이드. 업비트 출금, 시드 보관, 세금 신고 유의사항까지.",
+  "image": "https://cryptotax.cloud/assets/img/blog/crypto-hardware-wallet-ledger-guide-hero.jpg",
+  "author": {"@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud"},
+  "publisher": {"@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud", "logo": {"@type": "ImageObject", "url": "https://cryptotax.cloud/assets/img/logo.png"}},
+  "datePublished": "2026-06-10",
+  "dateModified": "2026-06-10",
+  "mainEntityOfPage": "https://cryptotax.cloud/blog/guide/crypto-hardware-wallet-ledger-guide.html",
+  "keywords": "레저 지갑, 트레저 지갑, 하드웨어 지갑, 코인 보안, 하드웨어 지갑 사용법"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "하드웨어 지갑이 왜 필요한가요?", "acceptedAnswer": {"@type": "Answer", "text": "거래소는 해킹, 파산, 운영 중단 위험이 있습니다. 하드웨어 지갑에 코인을 보관하면 개인 키(Private Key)가 오프라인 기기에만 저장되어 인터넷 해킹이 불가능합니다. 장기 보유자에게 필수적인 보안 수단입니다."}},
+    {"@type": "Question", "name": "레저와 트레저 중 어떤 것을 사야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "레저(Ledger)는 가장 많이 팔린 하드웨어 지갑으로 지원 코인 수가 가장 많습니다(5,500개+). 트레저(Trezor)는 완전 오픈소스로 보안 투명성이 높습니다. 입문자에게는 레저 나노 X(블루투스 지원) 또는 레저 나노 S Plus를 권장합니다."}},
+    {"@type": "Question", "name": "시드 문구(복구 단어 24개)를 잃어버리면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "시드 문구를 잃어버리면 지갑을 복구할 수 없습니다. 기기가 고장나더라도 시드 문구가 있으면 새 기기에서 복구 가능합니다. 시드 문구는 절대 디지털 기기(사진, 메모장, 클라우드)에 저장하지 말고 종이에 적어 안전한 곳에 보관하세요."}},
+    {"@type": "Question", "name": "하드웨어 지갑 코인 세금 신고는 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "하드웨어 지갑에서의 거래(전송·매도)도 세금 신고 대상입니다. 지갑 주소 트랜잭션 내역을 블록체인 탐색기(Etherscan, Blockchair 등)에서 조회해 거래 내역을 확보하고, 취득원가와 매도 금액을 기록해 신고하세요."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://cryptotax.cloud/"},
+    {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://cryptotax.cloud/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "입문가이드", "item": "https://cryptotax.cloud/blog/guide/"},
+    {"@type": "ListItem", "position": 4, "name": "레저·트레저 하드웨어 지갑 사용법", "item": "https://cryptotax.cloud/blog/guide/crypto-hardware-wallet-ledger-guide.html"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/css/common.css">
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+.article-header-wrap,.article-thumb-wrap,.article-bottom-wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.article-layout{display:grid;grid-template-columns:1fr 220px;gap:40px;max-width:1020px;margin:0 auto;padding:0 20px 60px;align-items:start}
+@media(max-width:768px){.article-layout{grid-template-columns:1fr}.article-sidebar{display:none}}
+.article-main{min-width:0}.article-sidebar{position:sticky;top:80px}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--text-sub);padding:24px 0 16px;flex-wrap:wrap}
+.breadcrumb a{color:var(--text-sub);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}.breadcrumb-sep{color:var(--border)}
+.cat-badge{display:inline-block;background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.3);border-radius:20px;padding:3px 12px;font-size:.78rem;font-weight:700;margin-bottom:14px}
+.article-title{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.3;color:var(--text);margin:0 0 18px;letter-spacing:-0.5px}
+.article-meta{display:flex;align-items:center;gap:16px;font-size:.82rem;color:var(--text-sub);padding-bottom:20px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.article-thumb-wrap{margin-bottom:32px}
+.article-thumb-wrap figure{margin:0;border-radius:12px;overflow:hidden;background:var(--card)}
+.article-thumb-wrap img{width:100%;max-height:440px;object-fit:cover;display:block}
+.article-thumb-wrap figcaption{font-size:.78rem;color:var(--text-sub);padding:8px 12px}
+.key-takeaway{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:12px;padding:20px 24px;margin-bottom:28px}
+.key-takeaway h3{font-size:.95rem;font-weight:800;color:#60a5fa;margin:0 0 10px}
+.key-takeaway ul{margin:0;padding-left:18px;color:var(--text);font-size:.92rem;line-height:1.8}
+.related-inline{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:28px}
+.related-inline p{margin:0 0 6px;font-size:.8rem;color:var(--text-sub);font-weight:600}
+.related-inline a{display:block;font-size:.88rem;color:var(--orange);text-decoration:none;padding:2px 0}.related-inline a:hover{text-decoration:underline}
+.article-toc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:32px}
+.article-toc h3{font-size:.88rem;font-weight:800;color:var(--text-sub);margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px}
+.article-toc ol{margin:0;padding-left:18px}.article-toc li{margin-bottom:4px}
+.article-toc a{font-size:.88rem;color:var(--text);text-decoration:none}.article-toc a:hover{color:var(--orange)}
+.article-body h2{font-size:1.35rem;font-weight:800;color:var(--text);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid rgba(96,165,250,.3)}
+.article-body h3{font-size:1.05rem;font-weight:700;color:var(--text);margin:28px 0 12px}
+.article-body p{color:var(--text);line-height:1.8;margin-bottom:16px;font-size:.97rem}
+.article-body ul,.article-body ol{color:var(--text);padding-left:22px;margin-bottom:16px}
+.article-body li{line-height:1.8;margin-bottom:4px;font-size:.97rem}
+.article-body a{color:var(--orange);text-decoration:none}.article-body a:hover{text-decoration:underline}
+.info-block{border-radius:10px;padding:16px 20px;margin:20px 0;font-size:.92rem;line-height:1.7}
+.info-block.info{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);color:var(--text)}
+.info-block.warn{background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.3);color:var(--text)}
+.info-block.tip{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:var(--text)}
+.info-block strong{font-weight:800}
+.pull-quote{border-left:4px solid #60a5fa;padding:12px 20px;margin:24px 0;background:rgba(96,165,250,.05);border-radius:0 8px 8px 0}
+.pull-quote p{margin:0;font-size:1.05rem;font-style:italic;color:var(--text);line-height:1.7}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+.data-table th{background:rgba(96,165,250,.15);color:#60a5fa;font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid rgba(96,165,250,.3)}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}.data-table tr:hover td{background:rgba(255,255,255,.03)}
+details.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+details.faq-item summary{padding:14px 18px;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.faq-item summary::after{content:'＋';color:var(--orange);font-size:1.1rem;flex-shrink:0}
+details.faq-item[open] summary::after{content:'－'}
+details.faq-item .faq-body{padding:0 18px 16px;color:var(--text);font-size:.92rem;line-height:1.7;border-top:1px solid var(--border)}
+.sidebar-toc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.sidebar-toc h4{font-size:.8rem;font-weight:800;color:var(--text-sub);margin:0 0 10px;text-transform:uppercase}
+.sidebar-toc ol{margin:0;padding-left:16px}.sidebar-toc li{margin-bottom:6px}
+.sidebar-toc a{font-size:.82rem;color:var(--text);text-decoration:none;line-height:1.4;display:block}.sidebar-toc a:hover{color:var(--orange)}
+.sidebar-calc{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:10px;padding:16px;margin-top:16px}
+.sidebar-calc p{font-size:.8rem;color:#60a5fa;font-weight:800;margin:0 0 10px}
+.sidebar-calc a{display:block;font-size:.83rem;color:var(--text);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border)}
+.sidebar-calc a:last-child{border-bottom:none}.sidebar-calc a:hover{color:var(--orange)}
+.affiliate-banner{background:linear-gradient(135deg,rgba(96,165,250,.12),rgba(247,151,30,.08));border:1px solid rgba(96,165,250,.3);border-radius:14px;padding:24px;text-align:center;margin:40px 0}
+.affiliate-banner h3{font-size:1.1rem;font-weight:800;color:var(--text);margin:0 0 8px}
+.affiliate-banner p{font-size:.88rem;color:var(--text-sub);margin:0 0 16px}
+.affiliate-banner a{display:inline-block;background:#60a5fa;color:#fff;font-weight:700;padding:10px 28px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.related-calcs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+@media(max-width:600px){.related-calcs{grid-template-columns:1fr}}
+.related-calc-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;text-decoration:none;transition:border-color .2s}
+.related-calc-card:hover{border-color:var(--orange)}.related-calc-card .rc-icon{font-size:1.6rem;margin-bottom:6px}
+.related-calc-card .rc-title{font-size:.85rem;font-weight:700;color:var(--text)}.related-calc-card .rc-desc{font-size:.75rem;color:var(--text-sub);margin-top:2px}
+.read-more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:600px){.read-more-grid{grid-template-columns:1fr}}
+.read-more-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;transition:border-color .2s;display:block}
+.read-more-card:hover{border-color:var(--orange)}.read-more-card .rm-tag{font-size:.75rem;color:var(--orange);font-weight:700;margin-bottom:4px}
+.read-more-card .rm-title{font-size:.87rem;font-weight:700;color:var(--text);line-height:1.4}
+.sources-list{list-style:none;padding:0;margin:12px 0}
+.sources-list li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.sources-list li:last-child{border-bottom:none}.sources-list a{color:var(--orange);text-decoration:none}.sources-list a:hover{text-decoration:underline}
+.section-label{font-size:.82rem;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:.5px;margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.step-list{counter-reset:steps;list-style:none;padding:0}
+.step-list li{counter-increment:steps;display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:28px;height:28px;background:rgba(96,165,250,.2);color:#60a5fa;font-weight:800;font-size:.85rem;border-radius:50%;flex-shrink:0;margin-top:2px}
+.step-list li .step-content strong{display:block;color:var(--text);font-weight:700;margin-bottom:2px}
+.step-list li .step-content span{font-size:.88rem;color:var(--text-sub);line-height:1.6}
+</style>
+</head>
+<body data-no-ticker>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/"><span class="ctc-nav-logo-icon"><img src="/assets/img/logo-icon-crop.png" alt="CryptoTax 로고" width="30" height="30"></span>CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-right">
+    <div class="ctc-nav-links">
+      <a href="/">← 홈</a><a href="/tools/">💰 계산기</a><a href="/blog/">📰 블로그</a>
+      <a href="/tools/tax-calculator.html" class="ctc-nav-cta">무료 계산</a>
+    </div>
+    <button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div></button>
+    <button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<div class="article-header-wrap">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="/">홈</a><span class="breadcrumb-sep">›</span>
+    <a href="/blog/">블로그</a><span class="breadcrumb-sep">›</span>
+    <a href="/blog/guide/">입문가이드</a><span class="breadcrumb-sep">›</span>
+    <span>레저·트레저 하드웨어 지갑 사용법</span>
+  </nav>
+  <span class="cat-badge">📖 입문가이드</span>
+  <h1 class="article-title">레저·트레저 하드웨어 지갑 사용법 2026<br>— 코린이 완전 가이드</h1>
+  <div class="article-meta">
+    <span>✍️ CryptoTax.cloud</span>
+    <span>📅 2026년 6월 10일</span>
+    <span>⏱️ 읽기 10분</span>
+    <span>🔐 보안 필독</span>
+  </div>
+</div>
+
+<div class="article-thumb-wrap">
+  <figure>
+    <img src="/assets/img/blog/crypto-hardware-wallet-ledger-guide-hero.jpg"
+         onerror="this.parentElement.style.background='linear-gradient(135deg,#0a0a1a,#10102a)';this.style.display='none'"
+         alt="레저 트레저 하드웨어 지갑 사용법" width="760" height="440" loading="eager">
+    <figcaption>하드웨어 지갑 — 코인을 거래소 밖에 안전하게 보관하는 가장 확실한 방법</figcaption>
+  </figure>
+</div>
+
+<div class="article-layout">
+  <main class="article-main">
+    <div class="key-takeaway">
+      <h3>🔐 핵심 요약 — 하드웨어 지갑 5가지 포인트</h3>
+      <ul>
+        <li>하드웨어 지갑 = 개인 키(Private Key)를 인터넷과 분리된 오프라인 기기에 저장</li>
+        <li>거래소 해킹·파산 위험으로부터 코인을 완전히 보호</li>
+        <li>시드 문구(24개 단어) = 지갑의 '마스터 키' — 절대 디지털 기기에 저장 금지</li>
+        <li>레저(Ledger) 나노 X / S Plus, 트레저(Trezor) Model T가 대표 제품</li>
+        <li>하드웨어 지갑 거래도 세금 신고 대상 — 트랜잭션 기록 보관 필수</li>
+      </ul>
+    </div>
+
+    <div class="related-inline">
+      <p>📌 함께 읽으면 좋은 글</p>
+      <a href="/blog/guide/wallet-guide.html">→ 코인 지갑 완전 가이드 — 하드웨어 vs 소프트웨어 차이</a>
+      <a href="/blog/guide/upbit-sell-coin-guide.html">→ 업비트 코인 매도 방법 — 거래소 → 지갑 출금까지</a>
+      <a href="/blog/coin-tax/2027-guide.html">→ 2027 코인 세금 완전정복</a>
+    </div>
+
+    <nav class="article-toc" aria-label="목차">
+      <h3>📋 목차</h3>
+      <ol>
+        <li><a href="#why-hardware-wallet">하드웨어 지갑이 필요한 이유</a></li>
+        <li><a href="#ledger-vs-trezor">레저 vs 트레저 비교</a></li>
+        <li><a href="#setup">하드웨어 지갑 초기 설정</a></li>
+        <li><a href="#seed-backup">시드 문구(24개 단어) 보관법</a></li>
+        <li><a href="#upbit-withdraw">업비트 → 하드웨어 지갑 출금</a></li>
+        <li><a href="#security">보안 주의사항</a></li>
+        <li><a href="#tax">하드웨어 지갑과 세금 신고</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ol>
+    </nav>
+
+    <div class="article-body">
+      <h2 id="why-hardware-wallet">1. 하드웨어 지갑이 필요한 이유</h2>
+      <p>업비트, 빗썸 같은 거래소에 코인을 두는 것은 편리하지만 위험이 있습니다. 거래소는 수탁(Custodial) 서비스로, 실제 코인 소유권은 거래소가 관리합니다. 거래소가 해킹당하거나 파산하면 코인을 잃을 수 있습니다.</p>
+      <div class="info-block warn">
+        <strong>⚠️ 실제 사례:</strong> 2014년 마운트곡스 파산(850,000 BTC 소실), 2022년 FTX 파산(고객 자산 수십억 달러 동결), 2023년 국내 거래소 출금 지연 사례 등. 거래소 위험은 현실입니다.
+      </div>
+      <p>하드웨어 지갑은 개인 키를 인터넷에 연결되지 않은 오프라인 기기(USB 형태)에 저장합니다. 코인 전송 시에만 기기를 연결하고, 평소에는 분리 보관합니다. <strong>"Not your keys, not your coins"</strong> — 개인 키를 직접 관리하는 것이 진정한 코인 소유입니다.</p>
+
+      <h2 id="ledger-vs-trezor">2. 레저 vs 트레저 비교</h2>
+      <table class="data-table">
+        <thead><tr><th>항목</th><th>레저 나노 X</th><th>레저 나노 S Plus</th><th>트레저 Model T</th></tr></thead>
+        <tbody>
+          <tr><td>가격</td><td>약 18만원</td><td>약 8만원</td><td>약 25만원</td></tr>
+          <tr><td>연결</td><td>USB-C + 블루투스</td><td>USB-C</td><td>USB-C</td></tr>
+          <tr><td>지원 코인</td><td>5,500개+</td><td>5,500개+</td><td>1,800개+</td></tr>
+          <tr><td>오픈소스</td><td>부분</td><td>부분</td><td>완전 오픈소스</td></tr>
+          <tr><td>모바일 연동</td><td>지원 (블루투스)</td><td>미지원</td><td>미지원</td></tr>
+          <tr><td>입문자 추천</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+        </tbody>
+      </table>
+      <div class="info-block tip">
+        <strong>✅ 추천:</strong> 입문자라면 <strong>레저 나노 S Plus(약 8만원)</strong>가 가성비 최고입니다. 블루투스가 필요 없다면 나노 S Plus로 충분합니다. 반드시 <a href="https://www.ledger.com" target="_blank" rel="noopener noreferrer">레저 공식 사이트</a> 또는 공식 쇼핑몰에서 구매하세요. 중고품 절대 금지.
+      </div>
+
+      <h2 id="setup">3. 하드웨어 지갑 초기 설정</h2>
+      <ol class="step-list">
+        <li><div class="step-content"><strong>패키지 개봉 확인</strong><span>봉인 스티커가 훼손되지 않았는지 확인합니다. 훼손된 제품은 즉시 반품하세요.</span></div></li>
+        <li><div class="step-content"><strong>Ledger Live 앱 설치</strong><span>컴퓨터 또는 스마트폰에 Ledger Live 앱을 설치합니다. 공식 사이트(ledger.com)에서만 다운로드.</span></div></li>
+        <li><div class="step-content"><strong>새 기기 설정 선택</strong><span>기기를 USB로 연결 후 "새 기기 설정"을 선택합니다. (복구가 아닌 신규 설정)</span></div></li>
+        <li><div class="step-content"><strong>PIN 번호 설정</strong><span>4~8자리 PIN을 설정합니다. PIN은 기기 분실 시 보호 역할을 합니다.</span></div></li>
+        <li><div class="step-content"><strong>시드 문구 기록</strong><span>화면에 순서대로 표시되는 24개 단어를 제공된 종이 카드에 <strong>반드시 오프라인으로</strong> 기록합니다. 사진 촬영 절대 금지.</span></div></li>
+        <li><div class="step-content"><strong>시드 문구 확인</strong><span>기기가 무작위 단어를 다시 물어봅니다. 정확히 입력해야 설정이 완료됩니다.</span></div></li>
+        <li><div class="step-content"><strong>코인 앱 설치</strong><span>Ledger Live에서 비트코인, 이더리움 등 원하는 코인 앱을 기기에 설치합니다.</span></div></li>
+      </ol>
+
+      <h2 id="seed-backup">4. 시드 문구(24개 단어) 보관법</h2>
+      <p>시드 문구는 지갑의 '마스터 열쇠'입니다. 이 24개 단어만 있으면 기기가 분실·고장나도 어느 지갑에서나 복구할 수 있습니다. 반대로, 이 단어를 다른 사람에게 알려주면 코인 전부를 잃습니다.</p>
+      <div class="pull-quote">
+        <p>시드 문구는 절대로 디지털 기기(스마트폰, 컴퓨터, 클라우드, 이메일)에 저장하지 마세요. 종이에 기록해 금고 또는 안전한 장소에 보관하세요.</p>
+      </div>
+      <h3>시드 문구 보관 방법 (권장 → 비권장 순)</h3>
+      <table class="data-table">
+        <thead><tr><th>방법</th><th>안전도</th><th>설명</th></tr></thead>
+        <tbody>
+          <tr><td>스테인리스 금속판 각인</td><td>🔐🔐🔐🔐🔐</td><td>화재·침수에도 안전. Cryptosteel 등 제품 사용</td></tr>
+          <tr><td>종이 2~3곳 분산 보관</td><td>🔐🔐🔐🔐</td><td>집, 은행 금고, 친척 집 등 분산 보관</td></tr>
+          <tr><td>종이 한 곳 보관</td><td>🔐🔐🔐</td><td>분실·화재 위험 있음</td></tr>
+          <tr><td>사진 촬영</td><td>❌</td><td>해킹·클라우드 동기화 위험</td></tr>
+          <tr><td>디지털 메모</td><td>❌</td><td>절대 불가</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="upbit-withdraw">5. 업비트 → 하드웨어 지갑 출금</h2>
+      <ol>
+        <li>Ledger Live에서 해당 코인의 <strong>수신 주소(Receive Address)</strong>를 확인합니다.</li>
+        <li>업비트 앱 → 코인 보유 화면 → <strong>출금</strong> 탭 클릭</li>
+        <li>주소 입력란에 레저 수신 주소를 <strong>복사·붙여넣기</strong> (절대 직접 타이핑 금지)</li>
+        <li>출금 수량 입력 → 출금 수수료 확인</li>
+        <li>2단계 인증(OTP, SMS) 완료 → 출금 신청</li>
+        <li>블록체인 컨펌 후 Ledger Live에서 잔액 확인</li>
+      </ol>
+      <div class="info-block warn">
+        <strong>⚠️ 주의:</strong> 주소를 한 글자라도 잘못 입력하면 코인이 영원히 분실됩니다. 처음에는 <strong>소액(1,000원~10,000원)으로 테스트 전송</strong>을 먼저 해보고 주소가 맞는지 확인한 후 대량 전송하세요.
+      </div>
+
+      <h2 id="security">6. 보안 주의사항</h2>
+      <ul>
+        <li><strong>피싱 사이트 주의:</strong> 레저 공식 사이트는 ledger.com입니다. 검색 광고의 가짜 사이트에 주의하세요.</li>
+        <li><strong>시드 문구 요청 = 사기:</strong> 레저·트레저 지원팀은 절대 시드 문구를 요구하지 않습니다.</li>
+        <li><strong>화면 확인 습관:</strong> 전송 전 기기 화면에서 주소와 금액을 반드시 직접 확인하세요.</li>
+        <li><strong>소프트웨어 업데이트:</strong> Ledger Live와 기기 펌웨어를 항상 최신으로 유지하세요.</li>
+        <li><strong>중고품 구매 금지:</strong> 이미 시드 문구가 노출된 기기일 수 있습니다. 반드시 공식 채널에서 구매하세요.</li>
+      </ul>
+
+      <h2 id="tax">7. 하드웨어 지갑과 세금 신고</h2>
+      <p>하드웨어 지갑에서 코인을 거래(다른 주소로 전송·DeFi 거래·매도)하면 세금 신고 대상이 될 수 있습니다.</p>
+      <h3>하드웨어 지갑 세금 신고 시 주의사항</h3>
+      <ul>
+        <li><strong>거래소 → 지갑 전송:</strong> 단순 이동은 매도가 아니므로 세금 없음</li>
+        <li><strong>지갑 → 지갑 전송:</strong> 본인 지갑 간 이동은 세금 없음</li>
+        <li><strong>지갑에서 코인 매도(거래소로 전송 후 매도):</strong> 취득원가와 매도금액 차이에 22% 과세</li>
+        <li><strong>DeFi 거래(스왑·예치·수확):</strong> 과세 기준 명확화 필요, 세무사 상담 권장</li>
+      </ul>
+      <p>하드웨어 지갑 트랜잭션 내역은 <a href="https://etherscan.io" target="_blank" rel="noopener">Etherscan</a>(이더리움 기반), <a href="https://www.blockchain.com/explorer" target="_blank" rel="noopener">Blockchain Explorer</a>(비트코인 기반) 등에서 조회해 기록을 보관하세요.</p>
+
+      <h2 id="faq">8. 자주 묻는 질문</h2>
+      <details class="faq-item">
+        <summary>하드웨어 지갑은 어디서 사야 안전한가요?</summary>
+        <div class="faq-body">레저는 ledger.com, 트레저는 trezor.io 공식 사이트 또는 공식 인증 판매점에서 구매하세요. 쿠팡, 네이버 등 오픈마켓에서 구매 시 공식 브랜드 스토어 여부를 반드시 확인하고, 개인 판매자 중고품은 절대 구매하지 마세요.</div>
+      </details>
+      <details class="faq-item">
+        <summary>레저 기기를 잃어버리면 코인도 잃어버리나요?</summary>
+        <div class="faq-body">아니요. 시드 문구(24개 단어)만 있으면 새 레저 기기를 구매해 '기기 복구' 옵션으로 완전히 복구할 수 있습니다. 시드 문구 없이 기기만 분실하면 PIN 3회 오류 시 기기가 초기화됩니다. 시드 문구 보관이 핵심입니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>업비트에서 레저 지갑으로 코인을 보내면 세금이 생기나요?</summary>
+        <div class="faq-body">아니요. 거래소에서 본인 하드웨어 지갑으로의 전송은 매도가 아닌 '이동'이므로 세금이 없습니다. 세금은 코인을 실제로 팔아서(매도) 수익이 발생할 때 생깁니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>레저 지갑에서 이더리움과 비트코인을 동시에 보관할 수 있나요?</summary>
+        <div class="faq-body">네, 가능합니다. 하나의 레저 기기에서 수십 종의 코인을 동시에 관리할 수 있습니다. 각 코인별로 Ledger Live에서 앱을 설치하면 독립적인 주소가 생성됩니다.</div>
+      </details>
+    </div>
+
+    <div class="affiliate-banner">
+      <h3>💰 하드웨어 지갑 보유 코인, 세금 계산해보세요</h3>
+      <p>거래소·지갑 모든 거래를 합산해 세금을 계산합니다</p>
+      <a href="/tools/tax-calculator.html">세금 계산기 무료 사용 →</a>
+    </div>
+
+    <p class="section-label">🧮 관련 계산기</p>
+    <div class="related-calcs">
+      <a href="/tools/tax-calculator.html" class="related-calc-card"><div class="rc-icon">💰</div><div class="rc-title">코인 세금 계산기</div><div class="rc-desc">지갑 보유 코인 세금 계산</div></a>
+      <a href="/tools/roi-calculator.html" class="related-calc-card"><div class="rc-icon">📊</div><div class="rc-title">수익률 계산기</div><div class="rc-desc">세전·세후 수익률 계산</div></a>
+      <a href="/tools/csv-tax-calculator.html" class="related-calc-card"><div class="rc-icon">📁</div><div class="rc-title">CSV 세금 계산기</div><div class="rc-desc">거래내역 업로드 자동 계산</div></a>
+    </div>
+
+    <p class="section-label">📚 함께 읽으면 좋은 글</p>
+    <div class="read-more-grid">
+      <a href="/blog/guide/wallet-guide.html" class="read-more-card"><div class="rm-tag">📖 입문</div><div class="rm-title">코인 지갑 완전 가이드</div></a>
+      <a href="/blog/guide/upbit-bithumb-comparison-2026.html" class="read-more-card"><div class="rm-tag">📖 입문</div><div class="rm-title">업비트 vs 빗썸 비교 2026</div></a>
+      <a href="/blog/coin-tax/2027-guide.html" class="read-more-card"><div class="rm-tag">💰 세금</div><div class="rm-title">2027 코인 세금 완전정복</div></a>
+    </div>
+
+    <p class="section-label">🏛️ 공식 출처</p>
+    <ul class="sources-list">
+      <li>🏛️ <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener">국세청 — 가상자산 과세 안내</a></li>
+      <li>🔒 <a href="https://www.ledger.com/academy" target="_blank" rel="noopener">레저 아카데미 — 공식 보안 교육</a></li>
+      <li>🔬 <a href="https://coinlabs.kr/terms" target="_blank" rel="noopener">코인랩스 — 가상자산 보안 용어집</a></li>
+    </ul>
+  </main>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-toc">
+      <h4>목차</h4>
+      <ol>
+        <li><a href="#why-hardware-wallet">필요한 이유</a></li>
+        <li><a href="#ledger-vs-trezor">레저 vs 트레저</a></li>
+        <li><a href="#setup">초기 설정</a></li>
+        <li><a href="#seed-backup">시드 문구 보관</a></li>
+        <li><a href="#upbit-withdraw">업비트 출금</a></li>
+        <li><a href="#security">보안 주의사항</a></li>
+        <li><a href="#tax">세금 신고</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </div>
+    <div class="sidebar-calc">
+      <p>⚡ 빠른 계산기</p>
+      <a href="/tools/tax-calculator.html">💰 세금 계산기</a>
+      <a href="/tools/roi-calculator.html">📊 수익률 계산기</a>
+      <a href="/tools/csv-tax-calculator.html">📁 CSV 세금 계산기</a>
+    </div>
+  </aside>
+</div>
+
+<footer class="main-footer">
+  <div class="footer-links">
+    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
+    <a href="/tools/dca-calculator.html" class="footer-link">📈 DCA</a>
+    <a href="/tools/multa-calculator.html" class="footer-link">💧 물타기</a>
+    <a href="/tools/kimchi-calculator.html" class="footer-link">🌶️ 김프</a>
+    <a href="/tools/csv-tax-calculator.html" class="footer-link">📁 CSV세금</a>
+    <a href="/blog/" class="footer-link">📝 블로그</a>
+  </div>
+  <p class="footer-copy">© 2026 CryptoTax.cloud · 참고용 · 실제 신고는 세무사 상담 권장</p>
+</footer>
+<script src="/assets/js/common.js"></script>
+</body>
+</html>

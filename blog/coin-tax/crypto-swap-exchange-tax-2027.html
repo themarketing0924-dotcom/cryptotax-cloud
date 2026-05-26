@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코인 스왑·교환 세금 2027 — BTC→ETH 바꿀 때 세금 낼까? | CryptoTax.cloud</title>
+<meta name="description" content="코인 스왑·교환 시 세금 2027 완전 가이드. BTC를 ETH로 바꾸면 세금이 발생하는지, 과세 기준, 취득원가 계산, 절세 전략까지 국세청 기준으로 명확하게 안내합니다.">
+<meta name="keywords" content="코인 스왑 세금, 코인 교환 과세, 가상자산 스왑 세금 2027, BTC ETH 교환 세금, 코인 스왑 취득원가">
+<meta name="robots" content="index, follow">
+<meta name="author" content="CryptoTax.cloud">
+<link rel="canonical" href="https://cryptotax.cloud/blog/coin-tax/crypto-swap-exchange-tax-2027.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="코인 스왑·교환 세금 2027 — BTC→ETH 바꿀 때 세금 낼까?">
+<meta property="og:description" content="코인 스왑·교환 시 세금 발생 기준, 취득원가 계산, 절세 전략 2027 완전 가이드.">
+<meta property="og:url" content="https://cryptotax.cloud/blog/coin-tax/crypto-swap-exchange-tax-2027.html">
+<meta property="og:image" content="https://cryptotax.cloud/assets/img/blog/crypto-swap-exchange-tax-2027-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="코인세금계산기 CryptoTax.cloud">
+<meta property="article:published_time" content="2026-06-11T09:00:00+09:00">
+<meta property="article:modified_time" content="2026-06-11T09:00:00+09:00">
+<meta property="article:author" content="CryptoTax.cloud">
+<meta property="article:section" content="코인 세금">
+<meta property="article:tag" content="코인 스왑 세금">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="코인 스왑·교환 세금 2027 — BTC→ETH 바꿀 때 세금 낼까?">
+<meta name="twitter:description" content="코인 스왑 세금 기준, 취득원가, 절세 전략 2027 완전 정리.">
+<meta name="twitter:image" content="https://cryptotax.cloud/assets/img/blog/crypto-swap-exchange-tax-2027-hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "코인 스왑·교환 세금 2027 — BTC→ETH 바꿀 때 세금 낼까?",
+  "description": "코인 스왑·교환 시 세금 2027 완전 가이드. 과세 기준, 취득원가 계산, 절세 전략.",
+  "image": "https://cryptotax.cloud/assets/img/blog/crypto-swap-exchange-tax-2027-hero.jpg",
+  "author": {"@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud"},
+  "publisher": {"@type": "Organization", "name": "CryptoTax.cloud", "url": "https://cryptotax.cloud", "logo": {"@type": "ImageObject", "url": "https://cryptotax.cloud/assets/img/logo.png"}},
+  "datePublished": "2026-06-11",
+  "dateModified": "2026-06-11",
+  "mainEntityOfPage": "https://cryptotax.cloud/blog/coin-tax/crypto-swap-exchange-tax-2027.html",
+  "keywords": "코인 스왑 세금, 코인 교환 과세, 가상자산 스왑 2027"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "BTC를 ETH로 바꾸면(코인 스왑) 세금이 생기나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 2027년 가상자산 과세 시행 이후 코인 스왑(한 코인을 다른 코인으로 교환)도 '양도'로 간주되어 세금 대상입니다. BTC를 ETH로 교환하는 순간 BTC를 원화로 매도한 것과 동일하게 취급됩니다. BTC 취득원가와 교환 시점 BTC 시장가의 차이가 수익(또는 손실)입니다."}},
+    {"@type": "Question", "name": "업비트에서 코인을 다른 코인으로 바꿀 때 세금 계산은 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "업비트에서 BTC를 원화로 팔고, 원화로 ETH를 사는 거래는 명확히 과세됩니다. 업비트는 기본적으로 원화 거래소이므로 BTC→원화→ETH 순서로 처리됩니다. 수익 = BTC 매도금액(원화) − BTC 취득원가. ETH의 취득원가는 해당 시점 ETH 매수 가격입니다."}},
+    {"@type": "Question", "name": "DEX(탈중앙화 거래소)에서 스왑하면 세금 신고를 안 해도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "아니요. DEX(유니스왑, PancakeSwap 등)에서의 스왑도 한국 거주자는 신고 의무가 있습니다. 다만 DEX 거래는 거래소가 국세청에 자동 보고하지 않으므로 본인이 직접 트랜잭션 기록을 보관해 신고해야 합니다."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://cryptotax.cloud/"},
+    {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://cryptotax.cloud/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "코인 세금", "item": "https://cryptotax.cloud/blog/coin-tax/"},
+    {"@type": "ListItem", "position": 4, "name": "코인 스왑·교환 세금 2027", "item": "https://cryptotax.cloud/blog/coin-tax/crypto-swap-exchange-tax-2027.html"}
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/css/common.css">
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+.article-header-wrap,.article-thumb-wrap,.article-bottom-wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.article-layout{display:grid;grid-template-columns:1fr 220px;gap:40px;max-width:1020px;margin:0 auto;padding:0 20px 60px;align-items:start}
+@media(max-width:768px){.article-layout{grid-template-columns:1fr}.article-sidebar{display:none}}
+.article-main{min-width:0}.article-sidebar{position:sticky;top:80px}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--text-sub);padding:24px 0 16px;flex-wrap:wrap}
+.breadcrumb a{color:var(--text-sub);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}.breadcrumb-sep{color:var(--border)}
+.cat-badge{display:inline-block;background:rgba(247,151,30,.15);color:var(--orange);border:1px solid rgba(247,151,30,.3);border-radius:20px;padding:3px 12px;font-size:.78rem;font-weight:700;margin-bottom:14px}
+.article-title{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.3;color:var(--text);margin:0 0 18px;letter-spacing:-0.5px}
+.article-meta{display:flex;align-items:center;gap:16px;font-size:.82rem;color:var(--text-sub);padding-bottom:20px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.article-thumb-wrap{margin-bottom:32px}
+.article-thumb-wrap figure{margin:0;border-radius:12px;overflow:hidden;background:var(--card)}
+.article-thumb-wrap img{width:100%;max-height:440px;object-fit:cover;display:block}
+.article-thumb-wrap figcaption{font-size:.78rem;color:var(--text-sub);padding:8px 12px}
+.key-takeaway{background:rgba(247,151,30,.08);border:1px solid rgba(247,151,30,.25);border-radius:12px;padding:20px 24px;margin-bottom:28px}
+.key-takeaway h3{font-size:.95rem;font-weight:800;color:var(--orange);margin:0 0 10px}
+.key-takeaway ul{margin:0;padding-left:18px;color:var(--text);font-size:.92rem;line-height:1.8}
+.related-inline{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:28px}
+.related-inline p{margin:0 0 6px;font-size:.8rem;color:var(--text-sub);font-weight:600}
+.related-inline a{display:block;font-size:.88rem;color:var(--orange);text-decoration:none;padding:2px 0}.related-inline a:hover{text-decoration:underline}
+.article-toc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:32px}
+.article-toc h3{font-size:.88rem;font-weight:800;color:var(--text-sub);margin:0 0 10px;text-transform:uppercase;letter-spacing:.5px}
+.article-toc ol{margin:0;padding-left:18px}.article-toc li{margin-bottom:4px}
+.article-toc a{font-size:.88rem;color:var(--text);text-decoration:none}.article-toc a:hover{color:var(--orange)}
+.article-body h2{font-size:1.35rem;font-weight:800;color:var(--text);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid rgba(247,151,30,.3)}
+.article-body h3{font-size:1.05rem;font-weight:700;color:var(--text);margin:28px 0 12px}
+.article-body p{color:var(--text);line-height:1.8;margin-bottom:16px;font-size:.97rem}
+.article-body ul,.article-body ol{color:var(--text);padding-left:22px;margin-bottom:16px}
+.article-body li{line-height:1.8;margin-bottom:4px;font-size:.97rem}
+.article-body a{color:var(--orange);text-decoration:none}.article-body a:hover{text-decoration:underline}
+.info-block{border-radius:10px;padding:16px 20px;margin:20px 0;font-size:.92rem;line-height:1.7}
+.info-block.info{background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);color:var(--text)}
+.info-block.warn{background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.3);color:var(--text)}
+.info-block.tip{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:var(--text)}
+.info-block strong{font-weight:800}
+.pull-quote{border-left:4px solid var(--orange);padding:12px 20px;margin:24px 0;background:rgba(247,151,30,.05);border-radius:0 8px 8px 0}
+.pull-quote p{margin:0;font-size:1.05rem;font-style:italic;color:var(--text);line-height:1.7}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+.data-table th{background:rgba(247,151,30,.15);color:var(--orange);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid rgba(247,151,30,.3)}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}.data-table tr:hover td{background:rgba(255,255,255,.03)}
+details.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+details.faq-item summary{padding:14px 18px;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.faq-item summary::after{content:'＋';color:var(--orange);font-size:1.1rem;flex-shrink:0}
+details.faq-item[open] summary::after{content:'－'}
+details.faq-item .faq-body{padding:0 18px 16px;color:var(--text);font-size:.92rem;line-height:1.7;border-top:1px solid var(--border)}
+.sidebar-toc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.sidebar-toc h4{font-size:.8rem;font-weight:800;color:var(--text-sub);margin:0 0 10px;text-transform:uppercase}
+.sidebar-toc ol{margin:0;padding-left:16px}.sidebar-toc li{margin-bottom:6px}
+.sidebar-toc a{font-size:.82rem;color:var(--text);text-decoration:none;line-height:1.4;display:block}.sidebar-toc a:hover{color:var(--orange)}
+.sidebar-calc{background:rgba(247,151,30,.08);border:1px solid rgba(247,151,30,.25);border-radius:10px;padding:16px;margin-top:16px}
+.sidebar-calc p{font-size:.8rem;color:var(--orange);font-weight:800;margin:0 0 10px}
+.sidebar-calc a{display:block;font-size:.83rem;color:var(--text);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--border)}
+.sidebar-calc a:last-child{border-bottom:none}.sidebar-calc a:hover{color:var(--orange)}
+.affiliate-banner{background:linear-gradient(135deg,rgba(247,151,30,.15),rgba(255,215,0,.08));border:1px solid rgba(247,151,30,.3);border-radius:14px;padding:24px;text-align:center;margin:40px 0}
+.affiliate-banner h3{font-size:1.1rem;font-weight:800;color:var(--text);margin:0 0 8px}
+.affiliate-banner p{font-size:.88rem;color:var(--text-sub);margin:0 0 16px}
+.affiliate-banner a{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:10px 28px;border-radius:8px;text-decoration:none;font-size:.95rem}
+.related-calcs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+@media(max-width:600px){.related-calcs{grid-template-columns:1fr}}
+.related-calc-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;text-decoration:none;transition:border-color .2s}
+.related-calc-card:hover{border-color:var(--orange)}.related-calc-card .rc-icon{font-size:1.6rem;margin-bottom:6px}
+.related-calc-card .rc-title{font-size:.85rem;font-weight:700;color:var(--text)}.related-calc-card .rc-desc{font-size:.75rem;color:var(--text-sub);margin-top:2px}
+.read-more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+@media(max-width:600px){.read-more-grid{grid-template-columns:1fr}}
+.read-more-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;transition:border-color .2s;display:block}
+.read-more-card:hover{border-color:var(--orange)}.read-more-card .rm-tag{font-size:.75rem;color:var(--orange);font-weight:700;margin-bottom:4px}
+.read-more-card .rm-title{font-size:.87rem;font-weight:700;color:var(--text);line-height:1.4}
+.sources-list{list-style:none;padding:0;margin:12px 0}
+.sources-list li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.sources-list li:last-child{border-bottom:none}.sources-list a{color:var(--orange);text-decoration:none}.sources-list a:hover{text-decoration:underline}
+.section-label{font-size:.82rem;font-weight:800;color:var(--text-sub);text-transform:uppercase;letter-spacing:.5px;margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+</style>
+</head>
+<body data-no-ticker>
+<nav class="ctc-nav">
+<div class="ctc-nav-inner">
+  <a class="ctc-nav-logo" href="/"><span class="ctc-nav-logo-icon"><img src="/assets/img/logo-icon-crop.png" alt="CryptoTax 로고" width="30" height="30"></span>CryptoTax<span>.cloud</span></a>
+  <div class="ctc-nav-right">
+    <div class="ctc-nav-links">
+      <a href="/">← 홈</a><a href="/tools/">💰 계산기</a><a href="/blog/">📰 블로그</a>
+      <a href="/tools/tax-calculator.html" class="ctc-nav-cta">무료 계산</a>
+    </div>
+    <button class="theme-toggle ctc-theme-icon-only" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="themeIcon">☀️</span><div class="toggle-track"><div class="toggle-thumb"></div></div></button>
+    <button class="hamburger-btn" id="ctcHamburger" onclick="ctcToggleDrawer()" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<div class="article-header-wrap">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="/">홈</a><span class="breadcrumb-sep">›</span>
+    <a href="/blog/">블로그</a><span class="breadcrumb-sep">›</span>
+    <a href="/blog/coin-tax/">코인 세금</a><span class="breadcrumb-sep">›</span>
+    <span>코인 스왑·교환 세금 2027</span>
+  </nav>
+  <span class="cat-badge">💰 코인 세금</span>
+  <h1 class="article-title">코인 스왑·교환 세금 2027<br>— BTC→ETH 바꿀 때 세금 낼까?</h1>
+  <div class="article-meta">
+    <span>✍️ CryptoTax.cloud</span>
+    <span>📅 2026년 6월 11일</span>
+    <span>⏱️ 읽기 8분</span>
+    <span>🔄 2027 과세 대비</span>
+  </div>
+</div>
+
+<div class="article-thumb-wrap">
+  <figure>
+    <img src="/assets/img/blog/crypto-swap-exchange-tax-2027-hero.jpg"
+         onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0a00,#2a1800)';this.style.display='none'"
+         alt="코인 스왑 교환 세금 2027" width="760" height="440" loading="eager">
+    <figcaption>BTC↔ETH 코인 스왑 — 2027년부터 교환 시점에 세금이 발생합니다</figcaption>
+  </figure>
+</div>
+
+<div class="article-layout">
+  <main class="article-main">
+    <div class="key-takeaway">
+      <h3>⚡ 핵심 요약 — 코인 스왑 세금 5가지 원칙</h3>
+      <ul>
+        <li>코인 스왑(교환)은 <strong>'양도(매도)'로 간주</strong> — 세금 발생 가능</li>
+        <li>BTC→ETH 교환 시: BTC 취득원가 vs 교환 시점 BTC 시장가 차이가 수익</li>
+        <li>업비트는 원화 거래소 — BTC→원화→ETH 순서라 각 단계별 과세</li>
+        <li>DEX(탈중앙화 거래소) 스왑도 한국 거주자는 신고 의무</li>
+        <li>연간 250만원 공제 — 스왑 수익과 다른 거래 손익 합산(손익통산) 가능</li>
+      </ul>
+    </div>
+
+    <div class="related-inline">
+      <p>📌 함께 읽으면 좋은 글</p>
+      <a href="/blog/coin-tax/defi-yield-tax-2027.html">→ DeFi 수익 세금 2027 — 예치·이자·LP 토큰 과세 기준</a>
+      <a href="/blog/coin-tax/crypto-airdrop-tax-2027.html">→ 코인 에어드랍 세금 2027 — 무료 코인도 세금 낼까?</a>
+      <a href="/blog/coin-tax/moving-average-cost.html">→ 이동평균법 취득원가 계산 완전 이해</a>
+    </div>
+
+    <nav class="article-toc" aria-label="목차">
+      <h3>📋 목차</h3>
+      <ol>
+        <li><a href="#what-is-swap-tax">코인 스왑에 세금이 발생하는 이유</a></li>
+        <li><a href="#upbit-swap">업비트 코인 교환과 세금</a></li>
+        <li><a href="#dex-swap">DEX 스왑과 세금</a></li>
+        <li><a href="#tax-calc">스왑 세금 계산 예시</a></li>
+        <li><a href="#acquisition-cost">교환 후 새 코인의 취득원가</a></li>
+        <li><a href="#save-tax">스왑 절세 전략</a></li>
+        <li><a href="#record">스왑 거래 기록 방법</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ol>
+    </nav>
+
+    <div class="article-body">
+      <h2 id="what-is-swap-tax">1. 코인 스왑에 세금이 발생하는 이유</h2>
+      <p>많은 투자자들이 "코인을 팔지 않고 다른 코인으로 바꾸는 것뿐인데 왜 세금이 생기냐"고 궁금해합니다. 그 이유는 한국 세법(그리고 대부분 국가 세법)이 가상자산 간 교환을 <strong>'양도(매도) 후 취득'</strong>으로 간주하기 때문입니다.</p>
+      <div class="pull-quote">
+        <p>BTC를 ETH로 교환하는 행위 = BTC를 시장가에 매도하고, 그 금액으로 ETH를 매수한 것과 동일하게 취급</p>
+      </div>
+      <p>따라서 BTC 취득원가보다 교환 시점 BTC 가격이 높으면 그 차액이 수익이 되고, 22% 세율이 적용됩니다. (연 250만원 기본공제 적용)</p>
+      <div class="info-block info">
+        <strong>💡 법적 근거:</strong> <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener">국세청 가상자산 과세 기준</a>에 따르면, 가상자산의 '양도'는 매매뿐 아니라 교환, 양도담보 등도 포함합니다. 즉, 코인 간 스왑도 양도소득 과세 대상입니다.
+      </div>
+
+      <h2 id="upbit-swap">2. 업비트 코인 교환과 세금</h2>
+      <p>업비트, 빗썸은 기본적으로 <strong>원화(KRW) 거래소</strong>입니다. BTC를 ETH로 바꾸려면:</p>
+      <ol>
+        <li>BTC → 원화(KRW) 매도 [1단계: 세금 발생 가능]</li>
+        <li>원화(KRW) → ETH 매수 [2단계: ETH 취득원가 확정]</li>
+      </ol>
+      <p>이 두 단계가 거의 동시에 이루어지지만, 세금 계산 관점에서는 각각 독립적인 거래입니다. BTC 매도 시 수익이 있으면 과세 대상이고, ETH 매수 가격이 새로운 취득원가가 됩니다.</p>
+      <div class="info-block tip">
+        <strong>✅ 참고:</strong> 업비트에는 BTC/ETH 직거래 마켓(BTC 마켓)도 있습니다. 이 경우 BTC→ETH 직접 교환이 이루어지는데, 이 역시 세법상 BTC 양도로 간주합니다.
+      </div>
+
+      <h2 id="dex-swap">3. DEX 스왑과 세금</h2>
+      <p>유니스왑(Uniswap), PancakeSwap 등 탈중앙화 거래소(DEX)에서의 스왑도 세금 관점에서는 동일하게 처리됩니다.</p>
+      <table class="data-table">
+        <thead><tr><th>거래 유형</th><th>세금 발생 여부</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>DEX에서 ETH→USDC 스왑</td><td>O (ETH 양도)</td><td>ETH 취득원가 vs 스왑 시점 ETH 가격 차이</td></tr>
+          <tr><td>LP(유동성 공급) 예치</td><td>일부 논쟁 중</td><td>코인 예치를 양도로 볼지 미확정</td></tr>
+          <tr><td>LP 토큰 → 코인 회수</td><td>일부 논쟁 중</td><td>세무사 상담 권장</td></tr>
+          <tr><td>스테이블코인 → 코인 교환</td><td>O (스테이블코인 양도)</td><td>USDC 취득원가 vs 스왑 시점 시장가</td></tr>
+        </tbody>
+      </table>
+      <div class="info-block warn">
+        <strong>⚠️ DEX 신고 주의:</strong> DEX 거래는 국세청에 자동 보고되지 않습니다. 그러나 블록체인은 모든 거래가 공개 기록으로 남아 있어, 세무조사 시 추적이 가능합니다. <a href="https://www.fsc.go.kr/no010101" target="_blank" rel="noopener">금융위원회 가상자산 규제</a>가 강화될수록 미신고 위험이 커집니다.
+      </div>
+
+      <h2 id="tax-calc">4. 스왑 세금 계산 예시</h2>
+      <h3>시나리오: BTC → ETH 스왑</h3>
+      <table class="data-table">
+        <thead><tr><th>항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>BTC 매수 시기</td><td>2025년 3월</td></tr>
+          <tr><td>BTC 취득원가</td><td>6,000만원 (1 BTC)</td></tr>
+          <tr><td>스왑 시기</td><td>2027년 4월</td></tr>
+          <tr><td>스왑 시점 BTC 시장가</td><td>9,000만원</td></tr>
+          <tr><td>BTC 양도 수익</td><td>9,000만원 − 6,000만원 = 3,000만원</td></tr>
+          <tr><td>기본공제</td><td>250만원 (다른 손익 없다고 가정)</td></tr>
+          <tr><td>과세표준</td><td>3,000만원 − 250만원 = 2,750만원</td></tr>
+          <tr><td><strong>납부 세금</strong></td><td><strong>2,750만원 × 22% = 605만원</strong></td></tr>
+          <tr><td>교환 받은 ETH 취득원가</td><td>스왑 시점 ETH 매수가격 (9,000만원 치 ETH)</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="acquisition-cost">5. 교환 후 새 코인의 취득원가</h2>
+      <p>스왑 후 받은 새 코인(예: ETH)의 취득원가는 <strong>스왑 시점의 시장가(매수 금액)</strong>입니다. 이 취득원가를 정확히 기록해 두어야 나중에 ETH를 매도할 때 세금을 정확히 계산할 수 있습니다.</p>
+      <ul>
+        <li>BTC 9,000만원 치를 ETH로 교환 → ETH 취득원가 = 9,000만원</li>
+        <li>나중에 ETH를 1억 2,000만원에 매도 → 수익 = 3,000만원 → 세금 대상</li>
+      </ul>
+
+      <h2 id="save-tax">6. 스왑 절세 전략</h2>
+      <h3>전략 1: 손실 상태에서 스왑하기</h3>
+      <p>BTC 취득원가보다 스왑 시점 BTC 가격이 낮다면(평가손실), 스왑 시 수익이 아닌 손실이 확정됩니다. 이 손실은 다른 코인 수익과 상계(손익통산)할 수 있습니다.</p>
+      <h3>전략 2: 250만원 공제 고려한 스왑 타이밍</h3>
+      <p>연간 순이익이 250만원 이하가 되도록 스왑 시기를 조정합니다. 스왑 수익이 250만원 이하이면 세금이 0원입니다.</p>
+      <h3>전략 3: 스테이블코인 중간 경유 전략</h3>
+      <p>BTC를 USDT로 먼저 교환한 뒤(BTC 수익 확정), 다음 해에 USDT를 ETH로 교환하면 BTC 수익의 과세연도를 조정할 수 있습니다. 단, USDT 취득원가 계산 시 원화 환산이 필요합니다.</p>
+
+      <h2 id="record">7. 스왑 거래 기록 방법</h2>
+      <ul>
+        <li><strong>업비트·빗썸:</strong> 거래내역 CSV 다운로드 — 스왑(코인 간 거래)도 기록됨</li>
+        <li><strong>DEX 거래:</strong> Etherscan 등 블록체인 탐색기에서 지갑 주소 → 트랜잭션 내역 조회</li>
+        <li><strong>기록 항목:</strong> ① 스왑 날짜, ② 교환한 코인·수량·시장가, ③ 받은 코인·수량·시장가</li>
+        <li><strong>Koinly, CoinTracker</strong> 같은 세금 트래킹 도구 활용 가능 (해외 서비스)</li>
+      </ul>
+      <div class="info-block info">
+        <strong>📋 기록 보관:</strong> 스왑 거래 내역은 거래일로부터 5년간 보관 의무가 있습니다. 블록체인은 영구 기록이므로 지갑 주소만 알면 언제든 조회 가능합니다.
+      </div>
+
+      <h2 id="faq">8. 자주 묻는 질문</h2>
+      <details class="faq-item">
+        <summary>코인을 스왑하면 무조건 세금을 내야 하나요?</summary>
+        <div class="faq-body">수익이 있을 때만 세금이 발생합니다. 스왑 시점 코인 가격이 취득원가보다 낮으면 손실이 확정되어 세금이 없고, 오히려 다른 수익과 상계할 수 있습니다. 또한 연간 총 순이익이 250만원 이하이면 세금이 0원입니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>코인을 USDT(스테이블코인)로 바꾸면 세금이 생기나요?</summary>
+        <div class="faq-body">네, 생깁니다. USDT도 가상자산으로 분류되므로 BTC→USDT 교환은 BTC 양도로 간주합니다. 단, USDT는 달러 기준 가격이 고정되어 있어 USDT→원화 환산 시 환율 변동에 따른 추가 손익이 발생할 수 있습니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>같은 코인을 다른 네트워크로 브리지하면 세금이 생기나요?</summary>
+        <div class="faq-body">브리지(Bridge)는 같은 코인을 다른 블록체인 네트워크로 이동하는 것입니다. 실질적으로 동일한 자산의 이동이라면 과세하지 않는 것이 일반적인 해석이지만, 공식 유권해석이 아직 없습니다. 세무사 상담을 권장합니다.</div>
+      </details>
+    </div>
+
+    <div class="affiliate-banner">
+      <h3>💰 코인 스왑 세금, 직접 계산해보세요</h3>
+      <p>취득원가·교환 시점 시장가 입력 한 번으로 세금을 자동 계산합니다</p>
+      <a href="/tools/tax-calculator.html">세금 계산기 무료 사용 →</a>
+    </div>
+
+    <p class="section-label">🧮 관련 계산기</p>
+    <div class="related-calcs">
+      <a href="/tools/tax-calculator.html" class="related-calc-card"><div class="rc-icon">💰</div><div class="rc-title">코인 세금 계산기</div><div class="rc-desc">스왑 수익 세금 즉시 계산</div></a>
+      <a href="/tools/csv-tax-calculator.html" class="related-calc-card"><div class="rc-icon">📁</div><div class="rc-title">CSV 세금 계산기</div><div class="rc-desc">거래내역 업로드 자동 계산</div></a>
+      <a href="/tools/tax-loss-harvesting.html" class="related-calc-card"><div class="rc-icon">🌿</div><div class="rc-title">절세 하베스팅 계산기</div><div class="rc-desc">손실 상계 절세 효과 계산</div></a>
+    </div>
+
+    <p class="section-label">📚 함께 읽으면 좋은 글</p>
+    <div class="read-more-grid">
+      <a href="/blog/coin-tax/defi-yield-tax-2027.html" class="read-more-card"><div class="rm-tag">💰 세금</div><div class="rm-title">DeFi 수익 세금 2027</div></a>
+      <a href="/blog/coin-tax/crypto-airdrop-tax-2027.html" class="read-more-card"><div class="rm-tag">💰 세금</div><div class="rm-title">에어드랍 세금 2027</div></a>
+      <a href="/blog/coin-tax/moving-average-cost.html" class="read-more-card"><div class="rm-tag">💰 세금</div><div class="rm-title">이동평균법 취득원가 계산</div></a>
+    </div>
+
+    <p class="section-label">🏛️ 공식 출처</p>
+    <ul class="sources-list">
+      <li>🏛️ <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2412" target="_blank" rel="noopener">국세청 — 가상자산 양도·교환 과세 안내</a></li>
+      <li>⚖️ <a href="https://www.fsc.go.kr/no010101" target="_blank" rel="noopener">금융위원회 — 가상자산 관련 법규</a></li>
+      <li>🔬 <a href="https://coinlabs.kr/terms" target="_blank" rel="noopener">코인랩스 — 스왑·DeFi 용어집</a></li>
+    </ul>
+  </main>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-toc">
+      <h4>목차</h4>
+      <ol>
+        <li><a href="#what-is-swap-tax">세금 발생 이유</a></li>
+        <li><a href="#upbit-swap">업비트 교환·세금</a></li>
+        <li><a href="#dex-swap">DEX 스왑·세금</a></li>
+        <li><a href="#tax-calc">세금 계산 예시</a></li>
+        <li><a href="#acquisition-cost">새 코인 취득원가</a></li>
+        <li><a href="#save-tax">절세 전략</a></li>
+        <li><a href="#record">거래 기록 방법</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </div>
+    <div class="sidebar-calc">
+      <p>⚡ 빠른 계산기</p>
+      <a href="/tools/tax-calculator.html">💰 세금 계산기</a>
+      <a href="/tools/csv-tax-calculator.html">📁 CSV 세금 계산기</a>
+      <a href="/tools/tax-loss-harvesting.html">🌿 절세 계산기</a>
+    </div>
+  </aside>
+</div>
+
+<footer class="main-footer">
+  <div class="footer-links">
+    <a href="/tools/tax-calculator.html" class="footer-link">💰 세금계산기</a>
+    <a href="/tools/dca-calculator.html" class="footer-link">📈 DCA</a>
+    <a href="/tools/multa-calculator.html" class="footer-link">💧 물타기</a>
+    <a href="/tools/kimchi-calculator.html" class="footer-link">🌶️ 김프</a>
+    <a href="/tools/csv-tax-calculator.html" class="footer-link">📁 CSV세금</a>
+    <a href="/blog/" class="footer-link">📝 블로그</a>
+  </div>
+  <p class="footer-copy">© 2026 CryptoTax.cloud · 국세청 기준 적용 · 참고용 · 실제 신고는 세무사 상담 권장</p>
+</footer>
+<script src="/assets/js/common.js"></script>
+</body>
+</html>
