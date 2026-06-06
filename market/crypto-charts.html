@@ -1008,17 +1008,19 @@ function toggleFaq(el){
 }
 
 /* ===== TradingView 고급 차트 ===== */
-let tvWidget = null, tvLoaded = false;
-function initTVChart(){
-  if(tvLoaded) return;
-  tvLoaded = true;
-  tvWidget = new TradingView.widget({
+let tvLoaded = false, tvCurrentSymbol = 'BINANCE:BTCUSDT';
+function buildTVChart(symbol){
+  tvCurrentSymbol = symbol || tvCurrentSymbol;
+  const container = document.getElementById('tradingview-chart');
+  container.innerHTML = '';
+  const th = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  new TradingView.widget({
     container_id:'tradingview-chart',
     width:'100%', height:500,
-    symbol:'BINANCE:BTCUSDT',
-    interval:'D',
+    symbol: tvCurrentSymbol,
+    interval:'60',
     timezone:'Asia/Seoul',
-    theme: document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark',
+    theme: th,
     style:'1',
     locale:'kr',
     enable_publishing:false,
@@ -1027,10 +1029,16 @@ function initTVChart(){
     show_popup_button:true,
   });
 }
+function initTVChart(){
+  if(tvLoaded) return;
+  tvLoaded = true;
+  buildTVChart();
+}
 function switchChart(symbol, btn){
   document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  if(tvWidget) tvWidget.setSymbol(symbol, 'D', function(){});
+  if(!tvLoaded) return;
+  buildTVChart(symbol);
 }
 
 /* ===== 버블 기간 탭 ===== */
