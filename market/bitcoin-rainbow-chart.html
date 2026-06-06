@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>비트코인 레인보우 차트 2025 무료 | BTC 고점·저점 타이밍 분석 — CryptoTax.cloud</title>
+<title>비트코인 레인보우 차트 2027 무료 | BTC 고점·저점 타이밍 분석 — CryptoTax.cloud</title>
 <meta name="description" content="비트코인 레인보우 차트로 BTC 매수·매도 타이밍을 분석하세요. 로그 회귀 곡선 기반 장기 가치평가 도구. 한국어 완전 무료 제공.">
 <meta name="keywords" content="비트코인 레인보우 차트, BTC 레인보우 차트, 비트코인 고점, 비트코인 저점, 비트코인 매수 타이밍, 비트코인 장기 전망, 코인 차트 분석">
 <link rel="canonical" href="https://cryptotax.cloud/market/bitcoin-rainbow-chart.html">
@@ -180,7 +180,7 @@ nav{
 .band-result .br-price{font-size:1rem;font-weight:700;margin-top:8px;opacity:.9;}
 
 /* ===== 레인보우 차트 캔버스 ===== */
-.chart-wrap{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--bg-elevated);border:1px solid var(--border);}
+.chart-wrap{position:relative;width:100%;min-height:500px;border-radius:12px;overflow:hidden;background:var(--bg-elevated);border:1px solid var(--border);}
 .chart-wrap canvas{display:block;width:100%;height:auto;}
 .chart-loading{
   position:absolute;inset:0;display:flex;flex-direction:column;
@@ -340,7 +340,7 @@ footer{
 </style>
 <link rel="stylesheet" href="/assets/css/common.css">
 </head>
-<body>
+<body data-no-ticker>
 
 <!-- ===== NAV ===== -->
 <nav>
@@ -436,7 +436,7 @@ footer{
       </div>
       <canvas id="rainbowCanvas"></canvas>
     </div>
-    <p class="chart-note">※ 로그 회귀 곡선 기반 시각화 · 데이터 출처: CoinGecko API · 매일 업데이트</p>
+    <p class="chart-note">※ 로그 회귀 곡선 기반 시각화 · 역사적 가격 출처: CryptoCompare API · 현재가: 업비트 API</p>
 
     <!-- 레전드 -->
     <div class="legend-grid" id="legendGrid"></div>
@@ -564,10 +564,10 @@ footer{
   <div class="card">
     <div class="card-title">🧰 관련 무료 계산기 & 시장 지표</div>
     <div class="tool-links">
-      <a href="https://cryptotax.cloud/market/fear-greed.html" class="tool-link"><span class="icon">😨</span>공포·탐욕 지수</a>
-      <a href="https://cryptotax.cloud/market/dominance.html" class="tool-link"><span class="icon">₿</span>BTC 도미넌스</a>
-      <a href="https://cryptotax.cloud/market/altseason.html" class="tool-link"><span class="icon">🚀</span>알트코인 시즌</a>
-      <a href="https://cryptotax.cloud/market/halving-countdown.html" class="tool-link"><span class="icon">⏱️</span>반감기 카운트다운</a>
+      <a href="https://cryptotax.cloud/market/crypto-charts.html" class="tool-link"><span class="icon">😨</span>공포·탐욕 지수</a>
+      <a href="https://cryptotax.cloud/market/crypto-charts.html" class="tool-link"><span class="icon">₿</span>BTC 도미넌스</a>
+      <a href="https://cryptotax.cloud/market/altcoin-season-index.html" class="tool-link"><span class="icon">🚀</span>알트코인 시즌</a>
+      <a href="https://cryptotax.cloud/blog/investment/bitcoin-halving.html" class="tool-link"><span class="icon">⏱️</span>반감기 완벽 가이드</a>
       <a href="https://cryptotax.cloud/tools/dca-calculator.html" class="tool-link"><span class="icon">📅</span>DCA 적립식 계산기</a>
       <a href="https://cryptotax.cloud/" class="tool-link"><span class="icon">💰</span>코인 세금 계산기</a>
     </div>
@@ -576,8 +576,8 @@ footer{
   <!-- ===== 블로그 가이드 ===== -->
   <div class="card">
     <div class="card-title">📰 관련 가이드</div>
-    <a class="blog-link" href="https://cryptotax.cloud/blog/bitcoin-rainbow-chart-guide.html">🌈 비트코인 레인보우 차트 완전 가이드 — 9개 구간 해석법 →</a>
-    <a class="blog-link" href="https://cryptotax.cloud/blog/dca-strategy.html">📅 비트코인 DCA 전략 완벽 가이드 — 매달 투자하면 얼마? →</a>
+    <a class="blog-link" href="https://cryptotax.cloud/blog/investment/bitcoin-100k-investment-strategy-2026.html">🌈 비트코인 투자 전략 완전 가이드 — 고점·저점 판단법 →</a>
+    <a class="blog-link" href="https://cryptotax.cloud/blog/investment/dca-strategy.html">📅 비트코인 DCA 전략 완벽 가이드 — 매달 투자하면 얼마? →</a>
     <a class="blog-link" href="https://cryptotax.cloud/blog/virtual-asset-tax-2027-guide.html">📖 2027 가상자산 세금 완벽 가이드 →</a>
   </div>
 
