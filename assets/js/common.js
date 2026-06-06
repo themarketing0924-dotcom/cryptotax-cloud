@@ -20,7 +20,7 @@
   if(document.querySelector('script[src*="pagead2.googlesyndication.com"]')) return;
   var s=document.createElement('script');
   s.async=true;
-  s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9721493540498478';
+  s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9120046288749137';
   s.crossOrigin='anonymous';
   document.head.appendChild(s);
 })();
