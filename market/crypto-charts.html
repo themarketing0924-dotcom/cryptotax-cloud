@@ -759,48 +759,16 @@ footer{background:var(--bg-surface);border-top:1px solid var(--border);padding:2
     </div>
     <p class="sec-desc">주요 암호화폐 실시간 가격·등락률·거래량 한눈에 확인.</p>
 
-    <!-- 🔍 코인 검색 차트 (심볼 클릭 → 코인 검색 가능) -->
-    <div class="card" style="padding:0;overflow:hidden;margin-bottom:16px;">
-      <div style="padding:14px 18px 10px;border-bottom:1px solid var(--border);">
-        <span style="font-weight:800;font-size:.95rem;">🔍 코인 검색 차트</span>
-        <span style="font-size:.78rem;color:var(--text-muted);margin-left:8px;">좌측 상단 심볼명 클릭 → 원하는 코인 검색</span>
-      </div>
-      <div class="tradingview-widget-container" style="height:500px;">
-        <div class="tradingview-widget-container__widget" style="height:500px;width:100%;"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-        {
-          "autosize": true,
-          "symbol": "UPBIT:BTCKRW",
-          "interval": "D",
-          "timezone": "Asia/Seoul",
-          "theme": "dark",
-          "style": "1",
-          "locale": "kr",
-          "allow_symbol_change": true,
-          "withdateranges": true,
-          "hide_side_toolbar": false,
-          "details": true,
-          "hotlist": true,
-          "calendar": false,
-          "show_popup_button": true,
-          "popup_width": "1000",
-          "popup_height": "650",
-          "support_host": "https://www.tradingview.com"
-        }
-        </script>
-      </div>
-    </div>
-
-    <!-- 전체 코인 히트맵 (시가총액 순 — BTC 최상위) -->
+    <!-- 코인 스크리너 (시총 상위 주요 코인 — BTC 시작) -->
     <div class="card" style="padding:0;overflow:hidden;">
       <div style="padding:14px 18px 10px;border-bottom:1px solid var(--border);">
-        <span style="font-weight:800;font-size:.95rem;">🗺️ 코인 시세 히트맵</span>
-        <span style="font-size:.78rem;color:var(--text-muted);margin-left:8px;">시가총액 순 정렬 — 크기=시총, 색=등락률</span>
+        <span style="font-weight:800;font-size:.95rem;">📋 코인 스크리너</span>
+        <span style="font-size:.78rem;color:var(--text-muted);margin-left:8px;">시총 상위 주요 코인 실시간 가격·등락률·거래량</span>
       </div>
       <div class="tradingview-widget-container" style="height:600px;">
         <div class="tradingview-widget-container__widget" style="height:600px;width:100%;"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-        {"dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"change","locale":"kr","colorTheme":"dark","hasTopBar":false,"isDataSetEnabled":false,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":600}
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+        {"width":"100%","height":600,"symbolsGroups":[{"name":"시총 상위 코인","originalName":"Top Coins","symbols":[{"name":"BINANCE:BTCUSDT","displayName":"비트코인 BTC"},{"name":"BINANCE:ETHUSDT","displayName":"이더리움 ETH"},{"name":"BINANCE:XRPUSDT","displayName":"리플 XRP"},{"name":"BINANCE:SOLUSDT","displayName":"솔라나 SOL"},{"name":"BINANCE:BNBUSDT","displayName":"BNB"},{"name":"BINANCE:DOGEUSDT","displayName":"도지코인 DOGE"},{"name":"BINANCE:ADAUSDT","displayName":"에이다 ADA"},{"name":"BINANCE:AVAXUSDT","displayName":"아발란체 AVAX"},{"name":"BINANCE:LINKUSDT","displayName":"체인링크 LINK"},{"name":"BINANCE:DOTUSDT","displayName":"폴카닷 DOT"},{"name":"BINANCE:SUIUSDT","displayName":"수이 SUI"},{"name":"BINANCE:UNIUSDT","displayName":"유니스왑 UNI"},{"name":"BINANCE:ARBUSDT","displayName":"아비트럼 ARB"},{"name":"BINANCE:ATOMUSDT","displayName":"코스모스 ATOM"},{"name":"BINANCE:MATICUSDT","displayName":"폴리곤 POL"}]},{"name":"업비트 KRW","originalName":"Upbit KRW","symbols":[{"name":"UPBIT:BTCKRW","displayName":"비트코인 KRW"},{"name":"UPBIT:ETHKRW","displayName":"이더리움 KRW"},{"name":"UPBIT:XRPKRW","displayName":"리플 KRW"},{"name":"UPBIT:SOLKRW","displayName":"솔라나 KRW"},{"name":"UPBIT:BNBKRW","displayName":"BNB KRW"},{"name":"UPBIT:DOGEKRW","displayName":"도지코인 KRW"},{"name":"UPBIT:ADAKRW","displayName":"에이다 KRW"}]}],"showSymbolLogo":true,"isTransparent":false,"colorTheme":"dark","locale":"kr"}
         </script>
       </div>
     </div>
