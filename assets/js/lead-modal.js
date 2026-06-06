@@ -1,0 +1,371 @@
+// ============================================================
+// CryptoTax.cloud — 리드 캡처 모달 (도구 페이지 전용)
+// 트리거: 계산 버튼 클릭 후 1회, 또는 페이지 체류 45초
+// 폼 전송: Google Apps Script (FORM_ENDPOINT 교체 필요)
+// ============================================================
+
+(function(){
+  'use strict';
+
+  // ── 설정 ──────────────────────────────────────────────────
+  var CONFIG = {
+    // ★ Google Apps Script 웹앱 URL로 교체하세요
+    FORM_ENDPOINT: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
+
+    // 쿠키/localStorage 키 — N일간 재표시 안 함
+    STORAGE_KEY: 'ctc_lead_shown',
+    COOLDOWN_DAYS: 7,
+
+    // 자동 트리거 딜레이 (ms) — 0이면 자동 트리거 안 함
+    AUTO_DELAY: 45000,
+
+    // 다운로드 자료 목록
+    RESOURCES: [
+      { id: 'checklist', label: '📋 2027 코인 세금 신고 체크리스트', file: '/downloads/2027-tax-checklist.html' },
+      { id: 'tips',      label: '💡 절세 전략 10가지 핵심 요약',    file: '/downloads/tax-saving-10-tips.html' },
+      { id: 'formula',   label: '🧮 이동평균법 취득원가 계산 공식',  file: '/downloads/moving-avg-formula.html' }
+    ]
+  };
+
+  // ── 쿨다운 체크 ────────────────────────────────────────────
+  function _isCooldown() {
+    try {
+      var v = localStorage.getItem(CONFIG.STORAGE_KEY);
+      if (!v) return false;
+      return (Date.now() - parseInt(v)) < CONFIG.COOLDOWN_DAYS * 86400000;
+    } catch(e) { return false; }
+  }
+
+  function _setCooldown() {
+    try { localStorage.setItem(CONFIG.STORAGE_KEY, Date.now()); } catch(e) {}
+  }
+
+  // ── CSS 주입 ───────────────────────────────────────────────
+  function _injectCSS() {
+    if (document.getElementById('ctc-lead-css')) return;
+    var style = document.createElement('style');
+    style.id = 'ctc-lead-css';
+    style.textContent = `
+/* ── 리드 모달 오버레이 ── */
+#ctcLeadOverlay {
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;opacity:0;transition:opacity .3s;pointer-events:none;
+}
+#ctcLeadOverlay.ctc-lead-open { opacity:1;pointer-events:auto; }
+
+/* ── 모달 박스 ── */
+#ctcLeadBox {
+  background:var(--card,#1a1a1a);
+  border:1px solid var(--orange-border,rgba(247,151,30,.3));
+  border-radius:16px;max-width:480px;width:100%;
+  box-shadow:0 24px 64px rgba(0,0,0,.6);
+  transform:translateY(24px);transition:transform .3s;
+  overflow:hidden;position:relative;
+}
+#ctcLeadOverlay.ctc-lead-open #ctcLeadBox { transform:translateY(0); }
+
+/* ── 모달 헤더 ── */
+.ctc-lead-header {
+  background:linear-gradient(135deg,#f7971e,#e05e00);
+  padding:20px 24px 16px;text-align:center;
+}
+.ctc-lead-header .ctc-lead-icon { font-size:36px;margin-bottom:8px; }
+.ctc-lead-header h2 {
+  font-size:18px;font-weight:700;color:#fff;margin:0 0 4px;line-height:1.3;
+}
+.ctc-lead-header p { font-size:13px;color:rgba(255,255,255,.85);margin:0; }
+
+/* ── 모달 바디 ── */
+.ctc-lead-body { padding:20px 24px 24px; }
+
+/* 자료 선택 */
+.ctc-lead-resources { margin-bottom:16px; }
+.ctc-lead-resources label {
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:8px;cursor:pointer;
+  border:1px solid transparent;transition:border-color .2s,background .2s;
+  font-size:14px;color:var(--text,#f0f0f0);margin-bottom:6px;
+}
+.ctc-lead-resources label:hover { background:rgba(247,151,30,.08);border-color:rgba(247,151,30,.3); }
+.ctc-lead-resources input[type=checkbox] { accent-color:var(--orange,#f7971e);width:16px;height:16px;flex-shrink:0; }
+.ctc-lead-resources label.ctc-res-selected { background:rgba(247,151,30,.1);border-color:var(--orange,#f7971e); }
+
+/* 입력 필드 */
+.ctc-lead-field { margin-bottom:12px; }
+.ctc-lead-field label { display:block;font-size:12px;color:var(--text-sub,#aaa);margin-bottom:4px; }
+.ctc-lead-field input {
+  width:100%;box-sizing:border-box;
+  background:var(--bg,#0a0a0a);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:10px 12px;font-size:14px;
+  color:var(--text,#f0f0f0);outline:none;transition:border-color .2s;
+}
+.ctc-lead-field input:focus { border-color:var(--orange,#f7971e); }
+.ctc-lead-field input::placeholder { color:var(--text-sub,#aaa); }
+
+/* 동의 */
+.ctc-lead-agree {
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:var(--text-sub,#aaa);margin-bottom:16px;cursor:pointer;
+}
+.ctc-lead-agree input { accent-color:var(--orange,#f7971e);margin-top:2px;flex-shrink:0; }
+.ctc-lead-agree a { color:var(--orange,#f7971e);text-decoration:none; }
+
+/* 제출 버튼 */
+#ctcLeadSubmit {
+  width:100%;padding:13px;border:none;border-radius:10px;cursor:pointer;
+  background:linear-gradient(135deg,#f7971e,#e05e00);
+  color:#fff;font-size:15px;font-weight:700;
+  transition:opacity .2s,transform .1s;
+}
+#ctcLeadSubmit:hover { opacity:.92;transform:translateY(-1px); }
+#ctcLeadSubmit:active { transform:translateY(0); }
+#ctcLeadSubmit:disabled { opacity:.5;cursor:not-allowed; }
+
+/* 닫기 버튼 */
+#ctcLeadClose {
+  position:absolute;top:12px;right:14px;
+  background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;line-height:1;padding:4px;
+}
+#ctcLeadClose:hover { color:#fff; }
+
+/* 스킵 */
+.ctc-lead-skip {
+  text-align:center;margin-top:10px;font-size:12px;
+  color:var(--text-sub,#aaa);cursor:pointer;
+}
+.ctc-lead-skip:hover { color:var(--text,#f0f0f0); }
+
+/* 완료 화면 */
+.ctc-lead-done { text-align:center;padding:32px 24px 28px; }
+.ctc-lead-done .ctc-lead-done-icon { font-size:48px;margin-bottom:12px; }
+.ctc-lead-done h3 { font-size:18px;font-weight:700;color:var(--text,#f0f0f0);margin:0 0 8px; }
+.ctc-lead-done p { font-size:14px;color:var(--text-sub,#aaa);margin:0 0 20px; }
+.ctc-lead-dl-list { display:flex;flex-direction:column;gap:8px;margin-bottom:20px; }
+.ctc-lead-dl-btn {
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  padding:11px;border-radius:9px;
+  background:rgba(247,151,30,.12);border:1px solid rgba(247,151,30,.35);
+  color:var(--orange,#f7971e);font-size:14px;font-weight:600;
+  text-decoration:none;transition:background .2s;
+}
+.ctc-lead-dl-btn:hover { background:rgba(247,151,30,.22); }
+
+/* 카카오 채널 버튼 */
+.ctc-lead-kakao {
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  width:100%;padding:12px;border:none;border-radius:9px;cursor:pointer;
+  background:#FEE500;color:#191919;font-size:14px;font-weight:700;
+  transition:opacity .2s;
+}
+.ctc-lead-kakao:hover { opacity:.88; }
+
+/* 에러 */
+.ctc-lead-error {
+  font-size:12px;color:#ff6b6b;margin-top:-8px;margin-bottom:8px;display:none;
+}
+
+/* 라이트모드 */
+[data-theme=light] .ctc-lead-field input,
+body.light-mode .ctc-lead-field input {
+  background:#f6f8fa;border-color:rgba(0,0,0,.15);color:#191919;
+}
+[data-theme=light] .ctc-lead-field input::placeholder,
+body.light-mode .ctc-lead-field input::placeholder { color:#888; }
+`;
+    document.head.appendChild(style);
+  }
+
+  // ── HTML 생성 ──────────────────────────────────────────────
+  function _buildHTML() {
+    var resHTML = CONFIG.RESOURCES.map(function(r) {
+      return '<label><input type="checkbox" name="resource" value="'+r.id+'" checked> '+r.label+'</label>';
+    }).join('');
+
+    return `
+<div id="ctcLeadOverlay" role="dialog" aria-modal="true" aria-labelledby="ctcLeadTitle">
+  <div id="ctcLeadBox">
+    <button id="ctcLeadClose" aria-label="닫기">✕</button>
+
+    <!-- 폼 화면 -->
+    <div id="ctcLeadForm">
+      <div class="ctc-lead-header">
+        <div class="ctc-lead-icon">📥</div>
+        <h2 id="ctcLeadTitle">세금 자료 무료 다운로드</h2>
+        <p>연락처 입력하시면 즉시 다운로드 링크를 보내드립니다</p>
+      </div>
+      <div class="ctc-lead-body">
+        <div class="ctc-lead-resources">${resHTML}</div>
+        <div class="ctc-lead-field">
+          <label for="ctcLeadName">이름 (선택)</label>
+          <input type="text" id="ctcLeadName" placeholder="홍길동" autocomplete="name">
+        </div>
+        <div class="ctc-lead-field">
+          <label for="ctcLeadContact">이메일 또는 휴대폰 <span style="color:#ff6b6b">*</span></label>
+          <input type="text" id="ctcLeadContact" placeholder="example@email.com 또는 010-0000-0000" autocomplete="email">
+        </div>
+        <div class="ctc-lead-error" id="ctcLeadError">연락처를 입력해 주세요.</div>
+        <label class="ctc-lead-agree">
+          <input type="checkbox" id="ctcLeadAgree" checked>
+          <span><a href="/privacy-policy.html" target="_blank">개인정보 수집</a>에 동의합니다. 광고성 정보 수신에 활용될 수 있습니다.</span>
+        </label>
+        <button id="ctcLeadSubmit">무료 자료 받기 →</button>
+        <div class="ctc-lead-skip" id="ctcLeadSkip">지금은 괜찮아요</div>
+      </div>
+    </div>
+
+    <!-- 완료 화면 -->
+    <div id="ctcLeadDone" class="ctc-lead-done" style="display:none">
+      <div class="ctc-lead-done-icon">🎉</div>
+      <h3>자료가 준비됐습니다!</h3>
+      <p>아래 버튼을 클릭해서 바로 다운로드 하세요</p>
+      <div class="ctc-lead-dl-list" id="ctcLeadDlList"></div>
+      <button class="ctc-lead-kakao" onclick="window.open('https://pf.kakao.com/_REPLACE_KAKAO_ID','_blank')">
+        💬 카카오채널 추가하고 세금 소식 받기
+      </button>
+    </div>
+  </div>
+</div>`;
+  }
+
+  // ── 폼 제출 ────────────────────────────────────────────────
+  function _submitForm(data) {
+    // Google Apps Script endpoint가 설정된 경우만 전송
+    if (CONFIG.FORM_ENDPOINT.includes('YOUR_SCRIPT_ID')) {
+      return Promise.resolve({ ok: true }); // 개발 모드: 바로 성공 처리
+    }
+    return fetch(CONFIG.FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  }
+
+  // ── 완료 화면 표시 ─────────────────────────────────────────
+  function _showDone(selectedIds) {
+    document.getElementById('ctcLeadForm').style.display = 'none';
+    var done = document.getElementById('ctcLeadDone');
+    done.style.display = 'block';
+
+    var dlList = document.getElementById('ctcLeadDlList');
+    var items = CONFIG.RESOURCES.filter(function(r) { return selectedIds.indexOf(r.id) !== -1; });
+    if (!items.length) items = CONFIG.RESOURCES;
+
+    dlList.innerHTML = items.map(function(r) {
+      return '<a class="ctc-lead-dl-btn" href="'+r.file+'" target="_blank">⬇️ '+r.label+'</a>';
+    }).join('');
+  }
+
+  // ── 모달 열기/닫기 ─────────────────────────────────────────
+  function _open() {
+    var overlay = document.getElementById('ctcLeadOverlay');
+    if (!overlay) return;
+    overlay.classList.add('ctc-lead-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function _close() {
+    var overlay = document.getElementById('ctcLeadOverlay');
+    if (!overlay) return;
+    overlay.classList.remove('ctc-lead-open');
+    document.body.style.overflow = '';
+    _setCooldown();
+  }
+
+  // ── 초기화 ─────────────────────────────────────────────────
+  function _init() {
+    if (_isCooldown()) return;
+    if (!location.pathname.includes('/tools/')) return;
+
+    _injectCSS();
+
+    var wrap = document.createElement('div');
+    wrap.innerHTML = _buildHTML();
+    document.body.appendChild(wrap.firstElementChild);
+
+    // 이벤트: 닫기
+    document.getElementById('ctcLeadClose').addEventListener('click', _close);
+    document.getElementById('ctcLeadSkip').addEventListener('click', _close);
+    document.getElementById('ctcLeadOverlay').addEventListener('click', function(e) {
+      if (e.target === this) _close();
+    });
+
+    // 이벤트: 체크박스 선택 강조
+    document.querySelectorAll('.ctc-lead-resources input[type=checkbox]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        this.closest('label').classList.toggle('ctc-res-selected', this.checked);
+      });
+      cb.closest('label').classList.add('ctc-res-selected');
+    });
+
+    // 이벤트: 제출
+    document.getElementById('ctcLeadSubmit').addEventListener('click', function() {
+      var contact = document.getElementById('ctcLeadContact').value.trim();
+      var agree   = document.getElementById('ctcLeadAgree').checked;
+      var errEl   = document.getElementById('ctcLeadError');
+
+      if (!contact) {
+        errEl.style.display = 'block';
+        errEl.textContent = '연락처를 입력해 주세요.';
+        return;
+      }
+      if (!agree) {
+        errEl.style.display = 'block';
+        errEl.textContent = '개인정보 수집 동의가 필요합니다.';
+        return;
+      }
+      errEl.style.display = 'none';
+
+      var selectedIds = Array.from(
+        document.querySelectorAll('.ctc-lead-resources input[type=checkbox]:checked')
+      ).map(function(cb) { return cb.value; });
+
+      var btn = document.getElementById('ctcLeadSubmit');
+      btn.disabled = true;
+      btn.textContent = '전송 중...';
+
+      var payload = {
+        name:      document.getElementById('ctcLeadName').value.trim(),
+        contact:   contact,
+        resources: selectedIds.join(','),
+        page:      location.pathname,
+        ua:        navigator.userAgent.slice(0, 80),
+        ts:        new Date().toISOString()
+      };
+
+      _submitForm(payload)
+        .then(function() { _showDone(selectedIds); _setCooldown(); })
+        .catch(function() {
+          // 전송 실패해도 자료는 보여줌 (UX 우선)
+          _showDone(selectedIds);
+          _setCooldown();
+        });
+    });
+
+    // 자동 트리거
+    if (CONFIG.AUTO_DELAY > 0) {
+      setTimeout(function() {
+        if (!document.getElementById('ctcLeadOverlay').classList.contains('ctc-lead-open')) {
+          _open();
+        }
+      }, CONFIG.AUTO_DELAY);
+    }
+
+    // 계산 버튼 클릭 후 트리거 (결과 나온 직후)
+    document.addEventListener('ctcCalculated', function() {
+      setTimeout(_open, 800);
+    }, { once: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+
+  // 외부에서 직접 열 수 있게
+  window.CTC_LeadModal = { open: _open, close: _close };
+
+})();

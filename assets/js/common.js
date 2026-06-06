@@ -684,3 +684,21 @@ if(!window.toggleFaq){
     item.classList.toggle('open');
   };
 }
+
+// ⑩ 리드 캡처 모달 — 도구 페이지 전용 자동 로드
+(function(){
+  if(!location.pathname.includes('/tools/')) return;
+  // btn-calc 클릭 시 ctcCalculated 이벤트 발생 (lead-modal.js 트리거용)
+  document.addEventListener('click', function(e){
+    if(e.target && (e.target.classList.contains('btn-calc') || e.target.closest('.btn-calc'))){
+      setTimeout(function(){
+        document.dispatchEvent(new CustomEvent('ctcCalculated'));
+      }, 900);
+    }
+  }, {once:true});
+  // lead-modal.js 동적 로드
+  var s=document.createElement('script');
+  s.src='/assets/js/lead-modal.js';
+  s.defer=true;
+  document.head.appendChild(s);
+})();

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2027 코인 세금 신고 체크리스트 — CryptoTax.cloud</title>
+<style>
+  @media print {
+    .no-print { display:none !important; }
+    body { background:#fff !important; color:#000 !important; }
+    .page { box-shadow:none !important; margin:0 !important; }
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f5f5f5; color:#1a1a1a; }
+  .page { max-width:680px; margin:0 auto; background:#fff; padding:40px 44px; }
+  .header { border-bottom:3px solid #f7971e; padding-bottom:20px; margin-bottom:28px; }
+  .header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+  .logo { font-size:13px; font-weight:700; color:#f7971e; letter-spacing:.5px; }
+  .badge { background:#fff3e0; color:#e65100; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; }
+  h1 { font-size:24px; font-weight:800; color:#1a1a1a; line-height:1.3; margin-bottom:6px; }
+  .subtitle { font-size:14px; color:#666; }
+  .section { margin-bottom:28px; }
+  .section-title {
+    font-size:13px; font-weight:700; color:#fff; background:#f7971e;
+    padding:6px 14px; border-radius:6px; margin-bottom:12px; display:inline-block;
+  }
+  .checklist { list-style:none; }
+  .checklist li {
+    display:flex; align-items:flex-start; gap:12px;
+    padding:10px 12px; border-radius:8px; margin-bottom:4px;
+    border:1px solid #f0f0f0; transition:background .15s;
+  }
+  .checklist li:hover { background:#fff8f0; }
+  .check-box {
+    width:20px; height:20px; border:2px solid #ddd; border-radius:4px;
+    flex-shrink:0; margin-top:1px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .check-box.done { background:#f7971e; border-color:#f7971e; color:#fff; font-size:12px; }
+  .check-text { font-size:14px; line-height:1.5; flex:1; }
+  .check-text strong { color:#1a1a1a; font-weight:600; }
+  .check-text .note { font-size:12px; color:#888; margin-top:2px; }
+  .check-text .warn { font-size:12px; color:#e53935; margin-top:2px; font-weight:600; }
+  .formula-box {
+    background:#fff8f0; border:1px solid #ffe0b2; border-radius:10px;
+    padding:16px 18px; margin-bottom:28px;
+  }
+  .formula-box h3 { font-size:13px; color:#e65100; font-weight:700; margin-bottom:10px; }
+  .formula-line { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:6px; }
+  .formula-example { font-size:13px; color:#555; }
+  .deadline-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px; }
+  .deadline-card { border:1px solid #f0f0f0; border-radius:10px; padding:14px 16px; }
+  .deadline-card .month { font-size:20px; font-weight:800; color:#f7971e; }
+  .deadline-card .task { font-size:13px; color:#444; margin-top:4px; line-height:1.5; }
+  .deadline-card .date { font-size:12px; color:#888; margin-top:4px; }
+  .footer-note {
+    background:#fafafa; border:1px solid #eee; border-radius:8px;
+    padding:12px 16px; font-size:12px; color:#888; line-height:1.6; margin-top:28px;
+  }
+  .print-btn {
+    display:block; margin:0 auto 20px; padding:12px 32px;
+    background:#f7971e; color:#fff; border:none; border-radius:8px;
+    font-size:15px; font-weight:700; cursor:pointer; transition:opacity .2s;
+  }
+  .print-btn:hover { opacity:.88; }
+  h2.section-main { font-size:15px; font-weight:700; color:#333; margin-bottom:14px; padding-bottom:6px; border-bottom:1px solid #eee; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="no-print" style="text-align:center;padding:20px 0 0;">
+    <button class="print-btn" onclick="window.print()">🖨️ PDF로 저장 / 인쇄</button>
+  </div>
+
+  <div class="header">
+    <div class="header-top">
+      <span class="logo">CryptoTax.cloud</span>
+      <span class="badge">2027년 기준 최신판</span>
+    </div>
+    <h1>코인 세금 신고<br>완전 체크리스트</h1>
+    <p class="subtitle">2027년 가상자산 양도소득세 신고를 위한 단계별 준비 가이드</p>
+  </div>
+
+  <!-- 세금 공식 -->
+  <div class="formula-box">
+    <h3>📐 핵심 계산 공식 (반드시 암기)</h3>
+    <div class="formula-line">세액 = (연간 양도차익 − 250만원) × 22%</div>
+    <div class="formula-example">
+      예시: 비트코인 수익 1,000만원 → (1,000만 − 250만) × 22% = <strong>165만원</strong><br>
+      소득세 20% + 지방소득세 2% = 합산 22% | 취득원가: 이동평균법 적용
+    </div>
+  </div>
+
+  <!-- STEP 1: 거래내역 준비 -->
+  <div class="section">
+    <span class="section-title">STEP 1 · 거래내역 수집</span>
+    <ul class="checklist">
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>업비트 거래내역 CSV 다운로드</strong>
+          <div class="note">앱 → 더보기 → 거래내역 → 기간 설정(1월1일~12월31일) → 다운로드</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>빗썸 거래내역 CSV 다운로드</strong>
+          <div class="note">My Page → 거래내역 → 거래 유형 선택 → 기간 설정 → 내보내기</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>해외 거래소(바이낸스 등) 거래내역</strong>
+          <div class="note">바이낸스: Account → Order History → Export</div>
+          <div class="warn">⚠️ 해외 거래도 반드시 신고 대상입니다</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>메타마스크 / 개인지갑 거래 기록</strong>
+          <div class="note">Etherscan, BSCScan 등에서 주소 조회 후 CSV 다운로드</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>스테이킹·에어드랍·이벤트 수령 기록</strong>
+          <div class="note">수령 시점 원화 환산 가격 기록 필수 (기타소득 과세)</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 2: 취득원가 계산 -->
+  <div class="section">
+    <span class="section-title">STEP 2 · 취득원가 계산</span>
+    <ul class="checklist">
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>이동평균법으로 취득원가 산정</strong>
+          <div class="note">매수 시마다 (기존 총액 + 신규 매수금) ÷ (기존 수량 + 신규 수량)</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>거래 수수료 취득원가 포함 여부 확인</strong>
+          <div class="note">매수 수수료는 취득원가에 가산, 매도 수수료는 필요경비로 공제</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>코인→코인 교환(스왑) 양도 해당 여부</strong>
+          <div class="note">BTC→ETH 교환도 양도로 간주 → 세금 발생 가능</div>
+          <div class="warn">⚠️ 스왑 시점 원화 시세 기록 필수</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 3: 절세 점검 -->
+  <div class="section">
+    <span class="section-title">STEP 3 · 절세 전략 점검</span>
+    <ul class="checklist">
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>손실 코인 매도(Tax-Loss Harvesting) 실행</strong>
+          <div class="note">연말 전 평가손실 코인 매도 → 이익과 상계 → 과세표준 감소</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>250만원 기본공제 활용 확인</strong>
+          <div class="note">연간 수익이 250만원 이하면 세금 0원 → 부분 매도 전략 활용</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>가족 분산 증여 검토 (증여세 한도 내)</strong>
+          <div class="note">배우자 6억원, 자녀 5천만원 10년간 비과세 증여 한도</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 4: 신고 준비 -->
+  <div class="section">
+    <span class="section-title">STEP 4 · 신고 서류 준비</span>
+    <ul class="checklist">
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>거래소별 매수·매도 내역 엑셀 정리</strong>
+          <div class="note">홈택스 신고 양식: 코인명 / 취득일 / 취득가 / 양도일 / 양도가</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>홈택스 종합소득세 신고 (5월)</strong>
+          <div class="note">홈택스 → 세금신고 → 종합소득세 → 가상자산 항목 입력</div>
+          <div class="warn">⚠️ 무신고 가산세 최대 40%, 납부지연 이자 0.022%/일</div>
+        </div>
+      </li>
+      <li>
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''"></div>
+        <div class="check-text">
+          <strong>거래내역 5년 보관 의무</strong>
+          <div class="note">세무조사 대비 거래소 CSV, 계좌 이체 내역 전부 백업</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 일정 -->
+  <h2 class="section-main">📅 2027년 세금 신고 일정</h2>
+  <div class="deadline-grid">
+    <div class="deadline-card">
+      <div class="month">12월</div>
+      <div class="task">Tax-Loss Harvesting 마감<br>연말 절세 매도 실행</div>
+      <div class="date">2026년 12월 31일까지</div>
+    </div>
+    <div class="deadline-card">
+      <div class="month">1월</div>
+      <div class="task">거래내역 최종 정리<br>취득원가 계산 완료</div>
+      <div class="date">2027년 1월 중</div>
+    </div>
+    <div class="deadline-card">
+      <div class="month">5월</div>
+      <div class="task">홈택스 종합소득세 신고<br>세금 납부</div>
+      <div class="date">2027년 5월 1일~31일</div>
+    </div>
+    <div class="deadline-card">
+      <div class="month">상시</div>
+      <div class="task">거래내역 실시간 기록<br>취득원가 업데이트</div>
+      <div class="date">매 거래 후 즉시</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    ※ 본 자료는 참고용 안내이며, 정확한 세금 계산은 세무사 상담 또는 국세청 홈택스를 이용하시기 바랍니다.<br>
+    무료 세금 계산기: <strong>cryptotax.cloud</strong> | 국세청 가상자산 안내: nts.go.kr<br>
+    © 2026 CryptoTax.cloud — 무단 재배포 금지
+  </div>
+
+</div>
+</body>
+</html>
