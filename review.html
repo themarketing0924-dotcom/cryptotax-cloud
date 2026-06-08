@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전체 아티클 목록 — CryptoTax.cloud 작성자 리뷰</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/css/common.css">
+<script>(function(){var t=localStorage.getItem('ctc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+.wrap{max-width:960px;margin:0 auto;padding:40px 20px 80px;}
+.page-header{text-align:center;margin-bottom:48px;}
+.page-header h1{font-size:clamp(22px,4vw,36px);font-weight:900;margin:0 0 8px;}
+.page-header p{color:var(--text-sub);font-size:.95rem;}
+.total-badge{display:inline-block;background:rgba(247,151,30,.15);border:1px solid rgba(247,151,30,.4);color:var(--orange);border-radius:20px;padding:4px 16px;font-size:.85rem;font-weight:700;margin-top:8px;}
+.cat-section{margin-bottom:44px;}
+.cat-title{font-size:1.1rem;font-weight:800;padding:0 0 10px;border-bottom:2px solid;margin:0 0 4px;display:flex;align-items:center;gap:10px;}
+.cat-title .cnt{font-size:.8rem;font-weight:600;opacity:.7;margin-left:auto;}
+.article-list{display:flex;flex-direction:column;gap:0;}
+.art-row{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:2px 12px;padding:11px 14px;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:background .15s;border-radius:6px;}
+.art-row:hover{background:var(--card);}
+.art-title{font-size:.92rem;font-weight:600;line-height:1.45;grid-column:1;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+.date{font-size:.78rem;color:var(--text-sub);grid-column:2;grid-row:1;align-self:center;white-space:nowrap;}
+.art-url{font-size:.72rem;color:var(--text-sub);opacity:.6;grid-column:1/3;font-family:monospace;}
+.badge{font-size:.65rem;font-weight:700;padding:1px 6px;border-radius:4px;white-space:nowrap;}
+.badge.new{background:rgba(255,71,87,.18);color:#ff4757;}
+.badge:not(.new){background:rgba(247,151,30,.15);color:var(--orange);}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+.search-box{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.9rem;width:260px;outline:none;}
+.search-box:focus{border-color:var(--orange);}
+.filter-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.fbtn{padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text-sub);font-size:.8rem;cursor:pointer;transition:.15s;}
+.fbtn.active,.fbtn:hover{background:var(--orange);color:#000;border-color:var(--orange);font-weight:700;}
+@media(max-width:600px){.art-row{grid-template-columns:1fr;}.date{grid-column:1;}.top-bar{flex-direction:column;align-items:flex-start;gap:10px;}.search-box{width:100%;}}
+</style>
+</head>
+<body data-no-ticker>
+<nav class="main-nav">
+  <a href="/" class="nav-logo">₿ CryptoTax.cloud</a>
+  <div class="nav-menu">
+    <a href="/blog/" class="nav-item">📝 블로그 목록</a>
+    <a href="/tools/tax-calculator.html" class="nav-item">💰 세금계산기</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ 라이트</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-header">
+    <h1>📋 전체 아티클 목록</h1>
+    <p>작성된 모든 글을 카테고리별로 확인하세요</p>
+    <span class="total-badge">총 120편</span>
+  </div>
+
+  <div class="top-bar">
+    <input class="search-box" type="text" placeholder="🔍 제목 검색..." id="searchInput" oninput="filterArticles()">
+    <div class="filter-btns">
+      <button class="fbtn active" onclick="filterCat(this,'all')">전체</button>
+      <button class="fbtn" onclick="filterCat(this,'coin-tax')">💎 세금</button>
+      <button class="fbtn" onclick="filterCat(this,'investment')">📈 투자</button>
+      <button class="fbtn" onclick="filterCat(this,'guide')">📖 가이드</button>
+      <button class="fbtn" onclick="filterCat(this,'root')">📄 루트</button>
+    </div>
+  </div>
+
+
+<section class="cat-section">
+  <h2 class="cat-title" style="color:#3b82f6;border-color:#3b82f6;">💎 세금 가이드 (coin-tax) <span class="cnt">46편</span></h2>
+  <div class="article-list">
+    <a href="/blog/coin-tax/coin-tax-appeal-objection-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 세금 이의신청·불복 방법 2027 — 국세청 부과에 이의 제기하는 법</span>
+      <span class="date">2026-06-15</span>
+      <span class="art-url">blog/coin-tax/coin-tax-appeal-objection-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/nft-tax-complete-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>NFT 세금 완전 가이드 2027 — 발행·판매·구매·거래 과세 기준 총정리</span>
+      <span class="date">2026-06-14</span>
+      <span class="art-url">blog/coin-tax/nft-tax-complete-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-mining-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 채굴(마이닝) 세금 신고 방법 2027 완전 가이드</span>
+      <span class="date">2026-06-13</span>
+      <span class="art-url">blog/coin-tax/coin-mining-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/crypto-staking-rewards-tax-detail-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>스테이킹·이자 수익 세금 신고 2027 완전 가이드 — 업비트 스테이킹도 22%?</span>
+      <span class="date">2026-06-13</span>
+      <span class="art-url">blog/coin-tax/crypto-staking-rewards-tax-detail-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/defi-yield-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>디파이(DeFi) 이자수익 세금 2027 완전 가이드 — LP·에어드랍·이자파밍 과세 기준</span>
+      <span class="date">2026-06-12</span>
+      <span class="art-url">blog/coin-tax/defi-yield-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/mining-income-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 채굴 소득 세금 신고 2027 — 채굴 수익에 22% 적용될까?</span>
+      <span class="date">2026-06-12</span>
+      <span class="art-url">blog/coin-tax/mining-income-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/bitcoin-etf-korea-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>비트코인 현물 ETF 세금 2027 한국 — ETF vs 직접투자 세금 비교</span>
+      <span class="date">2026-06-11</span>
+      <span class="art-url">blog/coin-tax/bitcoin-etf-korea-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/crypto-swap-exchange-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 스왑·교환 세금 2027 — BTC→ETH 바꿀 때 세금 낼까?</span>
+      <span class="date">2026-06-11</span>
+      <span class="art-url">blog/coin-tax/crypto-swap-exchange-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/crypto-airdrop-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 에어드랍 세금 2027 — 무료 코인도 세금 내야 할까?</span>
+      <span class="date">2026-06-10</span>
+      <span class="art-url">blog/coin-tax/crypto-airdrop-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/usdt-tether-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>USDT 테더 세금 2027 완전 가이드 — 스테이블코인도 세금 내나?</span>
+      <span class="date">2026-06-10</span>
+      <span class="art-url">blog/coin-tax/usdt-tether-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/crypto-day-trading-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 단타 세금 2027 완전 가이드 — 하루 몇 번 매매해도 22%?</span>
+      <span class="date">2026-06-09</span>
+      <span class="art-url">blog/coin-tax/crypto-day-trading-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/xrp-ripple-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>리플(XRP) 세금 완전 가이드 2027 — 매도·스왑·전송 세금 총정리</span>
+      <span class="date">2026-06-09</span>
+      <span class="art-url">blog/coin-tax/xrp-ripple-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-gift-tax-family-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>가족 간 코인 이체·선물 증여세 완벽 가이드 2027 — 배우자·자녀 증여 세금 총정리</span>
+      <span class="date">2026-06-06</span>
+      <span class="art-url">blog/coin-tax/coin-gift-tax-family-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/nft-tax-report-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>NFT 매매·민팅 세금 신고 방법 2027 — 한국 NFT 과세 완벽 가이드</span>
+      <span class="date">2026-06-05</span>
+      <span class="art-url">blog/coin-tax/nft-tax-report-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-tax-audit-preparation-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>가상자산 세무조사 대비 서류 준비 체크리스트 2027 — 코인 세금 조사 완벽 가이드</span>
+      <span class="date">2026-06-04</span>
+      <span class="art-url">blog/coin-tax/coin-tax-audit-preparation-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/crypto-inheritance-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>가상자산 상속·증여세 완벽 가이드 2027 — 코인 물려줄 때 세금 얼마?</span>
+      <span class="date">2026-06-02</span>
+      <span class="art-url">blog/coin-tax/crypto-inheritance-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/ada-cardano-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>카르다노(ADA) 세금 신고 2027 완전 가이드 — 22% 계산법·절세 전략</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/coin-tax/ada-cardano-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/avax-avalanche-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>아발란체(AVAX) 세금 신고 2027 완전 가이드 — 22% 계산·절세 전략</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/coin-tax/avax-avalanche-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-isa-tax-saving-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>ISA 계좌로 코인 세금 절세 2027 — 가능할까? 한계와 대안 완전 정리</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/coin-tax/coin-isa-tax-saving-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/doge-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>도지코인(DOGE) 세금 신고 2027 완전 가이드 — 22% 계산법·절세 전략</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/coin-tax/doge-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/virtual-asset-user-protection-act-tax-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>가상자산이용자보호법 세금 영향 2026 — 투자자가 꼭 알아야 할 핵심 정리</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/coin-tax/virtual-asset-user-protection-act-tax-2026.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-tax-penalty-underpayment-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 세금 미신고·과소신고 가산세 — 실수로 세금 2배 내는 법 2027</span>
+      <span class="date">2026-05-29</span>
+      <span class="art-url">blog/coin-tax/coin-tax-penalty-underpayment-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/binance-overseas-exchange-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>바이낸스·해외 거래소 코인 세금 신고 완전 가이드 2027</span>
+      <span class="date">2026-05-28</span>
+      <span class="art-url">blog/coin-tax/binance-overseas-exchange-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/ethereum-etf-tax-comparison-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>이더리움 현물 ETF vs 직접투자 세금 비교 — 어떤 게 유리할까? 2027</span>
+      <span class="date">2026-05-27</span>
+      <span class="art-url">blog/coin-tax/ethereum-etf-tax-comparison-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/coin-tax-report-may-june-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>5·6월 코인 세금 신고 준비 완전 가이드 — 지금 해야 할 5가지</span>
+      <span class="date">2026-05-26</span>
+      <span class="art-url">blog/coin-tax/coin-tax-report-may-june-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/us-crypto-regulation-korea-tax-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>미국 암호화폐 규제 완화 — 한국 코인 세금에 미치는 영향 2027</span>
+      <span class="date">2026-05-25</span>
+      <span class="art-url">blog/coin-tax/us-crypto-regulation-korea-tax-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax/altcoin-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">알트코인 세금 2027 완전 가이드 — 솔라나·도지·에이다·아발란체 세금 계산법</span>
+      <span class="date">2026-04-29</span>
+      <span class="art-url">blog/coin-tax/altcoin-tax-guide.html</span>
+    </a>
+    <a href="/blog/coin-tax/bitcoin-sell-tax.html" class="art-row" target="_blank">
+      <span class="art-title">비트코인 매도 세금 2027 — 얼마 팔면 세금 내야 하나? 완전 가이드</span>
+      <span class="date">2026-04-29</span>
+      <span class="art-url">blog/coin-tax/bitcoin-sell-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/ethereum-tax.html" class="art-row" target="_blank">
+      <span class="art-title">이더리움 세금 2027 완전 가이드 — 매도·스왑·스테이킹 과세 기준</span>
+      <span class="date">2026-04-29</span>
+      <span class="art-url">blog/coin-tax/ethereum-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/xrp-tax.html" class="art-row" target="_blank">
+      <span class="art-title">리플(XRP) 세금 신고 2027 완전 가이드 — 계산법·절세 전략</span>
+      <span class="date">2026-04-29</span>
+      <span class="art-url">blog/coin-tax/xrp-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/year-end-tax-checklist.html" class="art-row" target="_blank">
+      <span class="art-title">코인 세금 연말 절세 체크리스트 2026 — 12월 전 반드시 해야 할 5가지</span>
+      <span class="date">2026-04-29</span>
+      <span class="art-url">blog/coin-tax/year-end-tax-checklist.html</span>
+    </a>
+    <a href="/blog/coin-tax/2027-guide.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>2027 코인 세금 완전정복 — 22% 세율·250만원 공제부터 신고까지</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/2027-guide.html</span>
+    </a>
+    <a href="/blog/coin-tax/22-percent-tax.html" class="art-row" target="_blank">
+      <span class="art-title">코인 세금 22% 어떻게 계산하나 — 소득세 20% + 지방소득세 2% 완전 해설</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/22-percent-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/250man-exemption.html" class="art-row" target="_blank">
+      <span class="art-title">코인 세금 250만원 기본공제 완전 이해 — 조건·활용법·주의사항</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/250man-exemption.html</span>
+    </a>
+    <a href="/blog/coin-tax/bithumb-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">빗썸 코인 세금 신고 가이드 2027 — CSV 다운로드와 이동평균법 계산</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/bithumb-tax-guide.html</span>
+    </a>
+    <a href="/blog/coin-tax/corporation-tax.html" class="art-row" target="_blank">
+      <span class="art-title">법인 코인 투자 세금 2027 — 법인세율 vs 개인 22% 비교와 세무 주의사항</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/corporation-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/family-account-tax.html" class="art-row" target="_blank">
+      <span class="art-title">가족 계좌 코인 세금 문제 — 배우자·자녀 명의 코인 과세와 증여세</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/family-account-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/gift-tax.html" class="art-row" target="_blank">
+      <span class="art-title">코인 증여세 2027 완전 가이드 — 가족 증여 공제 한도와 절세 전략</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/gift-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/hometax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">홈택스 코인 세금 신고 방법 — 단계별 완전 가이드 2027</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/hometax-guide.html</span>
+    </a>
+    <a href="/blog/coin-tax/loss-tax-refund.html" class="art-row" target="_blank">
+      <span class="art-title">손실 코인 절세 전략 — Tax-Loss Harvesting 완전 가이드 2027</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/loss-tax-refund.html</span>
+    </a>
+    <a href="/blog/coin-tax/moving-average-cost.html" class="art-row" target="_blank">
+      <span class="art-title">이동평균법 취득원가 계산 완전 이해 — 국세청 인정 방법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/moving-average-cost.html</span>
+    </a>
+    <a href="/blog/coin-tax/nft-tax.html" class="art-row" target="_blank">
+      <span class="art-title">NFT 세금 2027 완전 가이드 — 양도소득세 적용과 절세 전략</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/nft-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/no-report-penalty.html" class="art-row" target="_blank">
+      <span class="art-title">코인 세금 미신고 시 불이익 — 가산세·세무조사 완전 정리</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/no-report-penalty.html</span>
+    </a>
+    <a href="/blog/coin-tax/overseas-exchange-tax.html" class="art-row" target="_blank">
+      <span class="art-title">해외 거래소 코인 세금 신고 방법 — 바이낸스·OKX 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/overseas-exchange-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/staking-tax.html" class="art-row" target="_blank">
+      <span class="art-title">스테이킹 수익 세금 2027 완전 가이드 — 기타소득 과세와 이중과세 주의사항</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/staking-tax.html</span>
+    </a>
+    <a href="/blog/coin-tax/upbit-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 코인 세금 신고 가이드 2027 — 거래 내역 다운로드부터 납부까지</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/coin-tax/upbit-tax-guide.html</span>
+    </a>
+  </div>
+</section>
+
+<section class="cat-section">
+  <h2 class="cat-title" style="color:#f7971e;border-color:#f7971e;">📈 투자전략 (investment) <span class="cnt">32편</span></h2>
+  <div class="article-list">
+    <a href="/blog/investment/solana-investment-outlook-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>솔라나(SOL) 전망·투자 전략 2027 — 이더리움 킬러의 현재와 미래</span>
+      <span class="date">2026-06-14</span>
+      <span class="art-url">blog/investment/solana-investment-outlook-2027.html</span>
+    </a>
+    <a href="/blog/investment/ton-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>TON 텔레그램 코인 투자 전략 2026 — TON 전망과 세후 수익 계산</span>
+      <span class="date">2026-06-13</span>
+      <span class="art-url">blog/investment/ton-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/bitcoin-dominance-alt-timing-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>비트코인 도미넌스로 알트코인 매수 타이밍 잡는 법 2027</span>
+      <span class="date">2026-06-12</span>
+      <span class="art-url">blog/investment/bitcoin-dominance-alt-timing-2027.html</span>
+    </a>
+    <a href="/blog/investment/bnb-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>BNB 바이낸스코인 투자 전략 2026 — 전망 분석과 세후 수익 계산</span>
+      <span class="date">2026-06-11</span>
+      <span class="art-url">blog/investment/bnb-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/xrp-ripple-investment-strategy-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>리플(XRP) 투자 전략 2027 — 전망·매수 타이밍·세후 수익 완전 분석</span>
+      <span class="date">2026-06-11</span>
+      <span class="art-url">blog/investment/xrp-ripple-investment-strategy-2027.html</span>
+    </a>
+    <a href="/blog/investment/bitcoin-200k-target-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>비트코인 20만 달러 가능한가? 2027 전망과 한국 투자자 전략</span>
+      <span class="date">2026-06-09</span>
+      <span class="art-url">blog/investment/bitcoin-200k-target-2027.html</span>
+    </a>
+    <a href="/blog/investment/sui-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>SUI 코인 투자 전략 2026 — 수이 블록체인 전망과 세후 수익 계산</span>
+      <span class="date">2026-06-09</span>
+      <span class="art-url">blog/investment/sui-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/xrp-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>XRP 리플 투자전략 2026 — SEC 판결 이후 전망과 한국 투자자 전략</span>
+      <span class="date">2026-06-05</span>
+      <span class="art-url">blog/investment/xrp-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/ethereum-2026-outlook.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>이더리움 2026 전망 — 스테이킹 수익률·ETF·업그레이드 완전 분석</span>
+      <span class="date">2026-06-03</span>
+      <span class="art-url">blog/investment/ethereum-2026-outlook.html</span>
+    </a>
+    <a href="/blog/investment/bitcoin-dominance-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>비트코인 도미넌스로 알트코인 매매 타이밍 잡기 2026 — BTC.D 실전 전략</span>
+      <span class="date">2026-06-02</span>
+      <span class="art-url">blog/investment/bitcoin-dominance-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/ada-cardano-investment-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>카르다노(ADA) 투자전략 2026 — 전망 분석·DCA·세후 수익 계산</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/investment/ada-cardano-investment-2026.html</span>
+    </a>
+    <a href="/blog/investment/doge-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>도지코인(DOGE) 투자 전략 2026 — 언제 사고 팔아야 할까? 세후 수익 계산</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/investment/doge-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/polygon-pol-investment-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>폴리곤(POL) 투자전략 2026 — 전망 분석·DCA·세후 수익 계산</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/investment/polygon-pol-investment-2026.html</span>
+    </a>
+    <a href="/blog/investment/trx-tron-investment-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>트론(TRX) 투자전략 2026 — 전망 분석·스테이킹 수익·세후 계산</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/investment/trx-tron-investment-2026.html</span>
+    </a>
+    <a href="/blog/investment/solana-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>솔라나(SOL) 2026 투자 전략 — 전망 분석과 세후 수익 계산</span>
+      <span class="date">2026-05-28</span>
+      <span class="art-url">blog/investment/solana-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/altcoin-season-2026-strategy.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>알트시즌 2026 투자 전략 — 알트코인 시즌 지수로 매수 타이밍 잡기</span>
+      <span class="date">2026-05-27</span>
+      <span class="art-url">blog/investment/altcoin-season-2026-strategy.html</span>
+    </a>
+    <a href="/blog/investment/bitcoin-100k-investment-strategy-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>비트코인 10만달러 시대 투자 전략 — 지금 사도 될까? 세금 계산까지</span>
+      <span class="date">2026-05-25</span>
+      <span class="art-url">blog/investment/bitcoin-100k-investment-strategy-2026.html</span>
+    </a>
+    <a href="/blog/investment/bitcoin-halving.html" class="art-row" target="_blank">
+      <span class="art-title">비트코인 반감기 투자 전략 2027 — 반감기 후 가격 전망과 DCA 전략</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/bitcoin-halving.html</span>
+    </a>
+    <a href="/blog/investment/compound-simulation.html" class="art-row" target="_blank">
+      <span class="art-title">코인 복리 시뮬레이션 2027 — 월 투자금별 목표 자산 도달 기간 계산</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/compound-simulation.html</span>
+    </a>
+    <a href="/blog/investment/cut-loss-timing.html" class="art-row" target="_blank">
+      <span class="art-title">코인 손절 타이밍 완전 가이드 2027 — 감정 없이 손절하는 3가지 기준</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/cut-loss-timing.html</span>
+    </a>
+    <a href="/blog/investment/dca-strategy.html" class="art-row" target="_blank">
+      <span class="art-title">DCA 투자 전략 완전 가이드 2027 — 분할매수로 코인 손실 줄이는 법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/dca-strategy.html</span>
+    </a>
+    <a href="/blog/investment/diversification.html" class="art-row" target="_blank">
+      <span class="art-title">코인 분산투자 전략 2027 — 평균단가 낮추기 함정과 포트폴리오 구성법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/diversification.html</span>
+    </a>
+    <a href="/blog/investment/eth-staking.html" class="art-row" target="_blank">
+      <span class="art-title">이더리움 스테이킹 수익률 2027 — 업비트 ETH 스테이킹 vs 직접 비교</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/eth-staking.html</span>
+    </a>
+    <a href="/blog/investment/kimchi-strategy.html" class="art-row" target="_blank">
+      <span class="art-title">김치프리미엄 투자 전략 2027 — 김프 과열·저점 신호 활용 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/kimchi-strategy.html</span>
+    </a>
+    <a href="/blog/investment/multa-timing.html" class="art-row" target="_blank">
+      <span class="art-title">코인 물타기 언제 해야 할까 2027 — 평균단가 낮추기 기준과 위험 신호</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/multa-timing.html</span>
+    </a>
+    <a href="/blog/investment/portfolio.html" class="art-row" target="_blank">
+      <span class="art-title">코인 포트폴리오 구성법 2027 — 비트코인·이더리움·알트코인 비중 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/portfolio.html</span>
+    </a>
+    <a href="/blog/investment/reverse-kimchi.html" class="art-row" target="_blank">
+      <span class="art-title">역프리미엄 저점매수 전략 2027 — 김치 역프 구간 DCA 진입 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/reverse-kimchi.html</span>
+    </a>
+    <a href="/blog/investment/sol-vs-eth-staking.html" class="art-row" target="_blank">
+      <span class="art-title">솔라나 vs 이더리움 스테이킹 비교 2027 — SOL·ETH 수익률과 세금 완전 분석</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/sol-vs-eth-staking.html</span>
+    </a>
+    <a href="/blog/investment/target-price.html" class="art-row" target="_blank">
+      <span class="art-title">코인 목표가 설정법 2027 — 세후 수익 역산 매도 전략 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/target-price.html</span>
+    </a>
+    <a href="/blog/investment/tax-loss-harvesting.html" class="art-row" target="_blank">
+      <span class="art-title">Tax-Loss Harvesting 절세 전략 2027 — 손실 코인으로 세금 줄이는 법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/tax-loss-harvesting.html</span>
+    </a>
+    <a href="/blog/investment/upbit-coin-gather.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 코인모으기 완전 가이드 2027 — DCA 자동 정기매수 설정법과 세금</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/upbit-coin-gather.html</span>
+    </a>
+    <a href="/blog/investment/upbit-fee-save.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 수수료 절약법 2027 — 0.05% 수수료 구조와 연간 비용 최소화 전략</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/investment/upbit-fee-save.html</span>
+    </a>
+  </div>
+</section>
+
+<section class="cat-section">
+  <h2 class="cat-title" style="color:#10b981;border-color:#10b981;">📖 입문가이드 (guide) <span class="cnt">21편</span></h2>
+  <div class="article-list">
+    <a href="/blog/guide/defi-beginner-complete-guide-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>디파이(DeFi) 입문 완전 가이드 2027 — 초보자가 알아야 할 모든 것</span>
+      <span class="date">2026-06-15</span>
+      <span class="art-url">blog/guide/defi-beginner-complete-guide-2027.html</span>
+    </a>
+    <a href="/blog/guide/metamask-wallet-setup-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>메타마스크(MetaMask) 설치 사용법 2027 완전 가이드 — 초보자도 10분 안에</span>
+      <span class="date">2026-06-13</span>
+      <span class="art-url">blog/guide/metamask-wallet-setup-2027.html</span>
+    </a>
+    <a href="/blog/guide/upbit-krw-deposit-withdrawal-guide.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 원화 입출금 방법 완전 가이드 2026 — 수수료·한도·소요시간</span>
+      <span class="date">2026-06-12</span>
+      <span class="art-url">blog/guide/upbit-krw-deposit-withdrawal-guide.html</span>
+    </a>
+    <a href="/blog/guide/crypto-hardware-wallet-ledger-guide.html" class="art-row" target="_blank">
+      <span class="art-title">레저·트레저 하드웨어 지갑 사용법 2026 — 코린이 완전 가이드</span>
+      <span class="date">2026-06-10</span>
+      <span class="art-url">blog/guide/crypto-hardware-wallet-ledger-guide.html</span>
+    </a>
+    <a href="/blog/guide/upbit-overseas-exchange-transfer-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>업비트에서 해외 거래소 코인 이동 방법 2027 — 바이낸스·OKX 완전 가이드</span>
+      <span class="date">2026-06-10</span>
+      <span class="art-url">blog/guide/upbit-overseas-exchange-transfer-2027.html</span>
+    </a>
+    <a href="/blog/guide/upbit-bithumb-comparison-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>업비트 vs 빗썸 2026 완전 비교 — 수수료·코인수·보안·앱 총정리</span>
+      <span class="date">2026-06-06</span>
+      <span class="art-url">blog/guide/upbit-bithumb-comparison-2026.html</span>
+    </a>
+    <a href="/blog/guide/crypto-wallet-type-guide.html" class="art-row" target="_blank">
+      <span class="art-title">코인 지갑 종류 완전 정리 2026 — 하드웨어·소프트웨어·거래소 지갑 비교</span>
+      <span class="date">2026-06-04</span>
+      <span class="art-url">blog/guide/crypto-wallet-type-guide.html</span>
+    </a>
+    <a href="/blog/guide/crypto-tax-glossary-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>가상자산 세금 용어집 2027 — 30가지 핵심 용어 완전 정리</span>
+      <span class="date">2026-05-30</span>
+      <span class="art-url">blog/guide/crypto-tax-glossary-2027.html</span>
+    </a>
+    <a href="/blog/guide/bitcoin-first-buy-upbit-2026.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge">2026</span>비트코인 처음 사는 법 2026 — 업비트에서 1만원으로 시작하기</span>
+      <span class="date">2026-05-29</span>
+      <span class="art-url">blog/guide/bitcoin-first-buy-upbit-2026.html</span>
+    </a>
+    <a href="/blog/guide/upbit-sell-coin-guide.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 코인 매도 방법 완전 가이드 — 초보자도 5분 안에</span>
+      <span class="date">2026-05-26</span>
+      <span class="art-url">blog/guide/upbit-sell-coin-guide.html</span>
+    </a>
+    <a href="/blog/guide/market-indicators.html" class="art-row" target="_blank">
+      <span class="art-title">코인 시장 지표 완전 정복 — 공포·탐욕·도미넌스·알트시즌 초보자 가이드</span>
+      <span class="date">2026-05-07</span>
+      <span class="art-url">blog/guide/market-indicators.html</span>
+    </a>
+    <a href="/blog/guide/beginner-guide.html" class="art-row" target="_blank">
+      <span class="art-title">코린이 코인 투자 입문 가이드 2027 — 업비트 가입부터 세금 신고까지</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/beginner-guide.html</span>
+    </a>
+    <a href="/blog/guide/coin-terms.html" class="art-row" target="_blank">
+      <span class="art-title">코린이 필수 코인 용어 50선 2027 — 불장·김프·물타기·DCA 완전 사전</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/coin-terms.html</span>
+    </a>
+    <a href="/blog/guide/dca-intro.html" class="art-row" target="_blank">
+      <span class="art-title">DCA란 무엇인가? 코린이 입문 가이드 — 달러 코스트 애버리징 완전 이해</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/dca-intro.html</span>
+    </a>
+    <a href="/blog/guide/exchange-fee-compare.html" class="art-row" target="_blank">
+      <span class="art-title">업비트·빗썸·코인원 수수료 비교 2027 — 거래량별 최저 수수료 거래소 추천</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/exchange-fee-compare.html</span>
+    </a>
+    <a href="/blog/guide/kimchi-premium-intro.html" class="art-row" target="_blank">
+      <span class="art-title">김치프리미엄이란? 2027 완전 가이드 — 발생 원인·역프·투자 활용법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/kimchi-premium-intro.html</span>
+    </a>
+    <a href="/blog/guide/satoshi-unit.html" class="art-row" target="_blank">
+      <span class="art-title">사토시 단위 완전 이해 2027 — BTC·사토시 환산과 소액 비트코인 투자법</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/satoshi-unit.html</span>
+    </a>
+    <a href="/blog/guide/tax-timeline.html" class="art-row" target="_blank">
+      <span class="art-title">2027 코인 세금 일정표 — 신고·납부 기한과 가산세 주의사항 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/tax-timeline.html</span>
+    </a>
+    <a href="/blog/guide/upbit-csv-download.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 CSV 다운로드 방법 2027 — 거래내역 파일 세금 신고 활용 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/upbit-csv-download.html</span>
+    </a>
+    <a href="/blog/guide/upbit-signup.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 회원가입 방법 2027 — 본인인증·은행계좌 연결·첫 코인 매수 완전 가이드</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/upbit-signup.html</span>
+    </a>
+    <a href="/blog/guide/wallet-guide.html" class="art-row" target="_blank">
+      <span class="art-title">코인 지갑 완전 가이드 2027 — 핫 월렛 vs 콜드 월렛 보안 선택 기준</span>
+      <span class="date">2026-04-19</span>
+      <span class="art-url">blog/guide/wallet-guide.html</span>
+    </a>
+  </div>
+</section>
+
+<section class="cat-section">
+  <h2 class="cat-title" style="color:#a855f7;border-color:#a855f7;">📄 블로그 루트 <span class="cnt">21편</span></h2>
+  <div class="article-list">
+    <a href="/blog/bitcoin-dca-10years.html" class="art-row" target="_blank">
+      <span class="art-title">비트코인 매달 10만원씩 사면 10년 뒤 얼마? — DCA 적립식 수익 시뮬레이션</span>
+      <span class="date">2026-04-11</span>
+      <span class="art-url">blog/bitcoin-dca-10years.html</span>
+    </a>
+    <a href="/blog/coin-multa-average-price.html" class="art-row" target="_blank">
+      <span class="art-title">코인 물타기 평균단가 계산하는 법 완벽 정리 — 지금 안 하면 손해 (2027)</span>
+      <span class="date">2026-04-11</span>
+      <span class="art-url">blog/coin-multa-average-price.html</span>
+    </a>
+    <a href="/blog/coin-tax-2027-guide.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 세금 2027년 완벽 가이드 — 얼마부터 내야 하나? 22% 계산법 총정리</span>
+      <span class="date">2026-04-11</span>
+      <span class="art-url">blog/coin-tax-2027-guide.html</span>
+    </a>
+    <a href="/blog/kimchi-premium-1000-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">김치프리미엄 1000만원 차익 세금 신고 | 2027년 22% 과세 완벽 가이드</span>
+      <span class="date">2026-04-09</span>
+      <span class="art-url">blog/kimchi-premium-1000-tax-guide.html</span>
+    </a>
+    <a href="/blog/김치프리미엄-1000만원-차익-세금-신고.html" class="art-row" target="_blank">
+      <span class="art-title">김치프리미엄 1000만원 차익 세금 신고 | 2027년 22% 과세 완벽 가이드</span>
+      <span class="date">2026-04-09</span>
+      <span class="art-url">blog/김치프리미엄-1000만원-차익-세금-신고.html</span>
+    </a>
+    <a href="/blog/beginner-guide.html" class="art-row" target="_blank">
+      <span class="art-title">코린이 코인 투자 완전 입문 2026 — 업비트 가입·첫 매수·비트코인까지 10분 완성</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/beginner-guide.html</span>
+    </a>
+    <a href="/blog/binance-trade-history.html" class="art-row" target="_blank">
+      <span class="art-title">바이낸스 거래내역 다운로드 | Trade History 3년치 한 번에</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/binance-trade-history.html</span>
+    </a>
+    <a href="/blog/coin-tax-calculation-5-steps.html" class="art-row" target="_blank">
+      <span class="art-title">코인 세금 계산 방법 5단계 | 매수·매도·수수료 — CryptoTax.cloud</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/coin-tax-calculation-5-steps.html</span>
+    </a>
+    <a href="/blog/coinone-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">코인원 세금 신고 가이드 | 거래내역 조회·CSV 다운로드</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/coinone-tax-guide.html</span>
+    </a>
+    <a href="/blog/metamask-tax-guide.html" class="art-row" target="_blank">
+      <span class="art-title">메타마스크 세금 신고 방법 | DeFi 지갑 거래 추적 도구</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/metamask-tax-guide.html</span>
+    </a>
+    <a href="/blog/ripple-lawsuit-tax.html" class="art-row" target="_blank">
+      <span class="art-title">리플(XRP) SEC 소송 종결 후 세금 신고 | 급등 수익 22% 과세 계산법</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/ripple-lawsuit-tax.html</span>
+    </a>
+    <a href="/blog/solana-staking-tax.html" class="art-row" target="_blank">
+      <span class="art-title">솔라나(SOL) 스테이킹 세금 신고 | 연 6% 보상 과세 계산법 완벽 가이드</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/solana-staking-tax.html</span>
+    </a>
+    <a href="/blog/una-loss-deduction.html" class="art-row" target="_blank">
+      <span class="art-title">루나(LUNA) 손실 세금 공제 | 2027년 이월공제 불가·손익통산만 가능</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/una-loss-deduction.html</span>
+    </a>
+    <a href="/blog/virtual-asset-tax-2027-guide.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>가상자산 세금 2027 완벽 가이드 | 22% 계산·250만원 공제·홈택스 신고까지 — CryptoTax.cloud</span>
+      <span class="date">2026-03-31</span>
+      <span class="art-url">blog/virtual-asset-tax-2027-guide.html</span>
+    </a>
+    <a href="/blog/upbit-csv-download-guide-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>업비트 거래내역 CSV 다운로드 | 2027 세금신고 전 필수 준비 가이드</span>
+      <span class="date">2026-03-28</span>
+      <span class="art-url">blog/upbit-csv-download-guide-2027.html</span>
+    </a>
+    <a href="/blog/upbit-csv-download-guide.html" class="art-row" target="_blank">
+      <span class="art-title">업비트 거래내역 CSV 다운로드 | PC·모바일 단계별 스크린샷 | CryptoTax</span>
+      <span class="date">2026-03-28</span>
+      <span class="art-url">blog/upbit-csv-download-guide.html</span>
+    </a>
+    <a href="/blog/coin-tax-abolition-bill-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>국민의힘 가상자산 과세 폐지 법안 발의 — 2027년 코인 세금 정말 없어지나?</span>
+      <span class="date">2025-05-03</span>
+      <span class="art-url">blog/coin-tax-abolition-bill-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax-deadline-countdown-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>코인 세금 D-246 카운트다운 — 2027년 과세 전 반드시 해야 할 10가지</span>
+      <span class="date">2025-05-03</span>
+      <span class="art-url">blog/coin-tax-deadline-countdown-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax-equity-controversy-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>국내주식은 비과세인데 코인만 과세? 가상자산 형평성 논란 완전 정리 2027</span>
+      <span class="date">2025-05-03</span>
+      <span class="art-url">blog/coin-tax-equity-controversy-2027.html</span>
+    </a>
+    <a href="/blog/coin-tax-loss-offset-guide.html" class="art-row" target="_blank">
+      <span class="art-title">손익통산으로 코인 세금 줄이기 — 손실이 절세가 되는 원리 완전 가이드</span>
+      <span class="date">2025-05-03</span>
+      <span class="art-url">blog/coin-tax-loss-offset-guide.html</span>
+    </a>
+    <a href="/blog/upbit-bithumb-csv-tax-prep-2027.html" class="art-row" target="_blank">
+      <span class="art-title"><span class="badge new">2027</span>업비트·빗썸 거래내역 CSV 완전 활용법 — 2027년 코인 세금 미리 계산하기</span>
+      <span class="date">2025-05-03</span>
+      <span class="art-url">blog/upbit-bithumb-csv-tax-prep-2027.html</span>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<script src="/assets/js/common.js"></script>
+<script>
+function filterArticles() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.art-row').forEach(r => {
+    r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.cat-section').forEach(s => {
+    const visible = [...s.querySelectorAll('.art-row')].some(r => r.style.display !== 'none');
+    s.style.display = visible ? '' : 'none';
+  });
+}
+function filterCat(btn, cat) {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-section').forEach(s => {
+    if (cat === 'all') { s.style.display = ''; return; }
+    const title = s.querySelector('.cat-title').textContent.toLowerCase();
+    s.style.display = title.includes(cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
