@@ -1,32 +1,20 @@
 // ============================================================
-// CryptoTax.cloud — 리드 캡처 모달 (도구 페이지 전용)
-// 트리거: 계산 버튼 클릭 후 1회, 또는 페이지 체류 45초
-// Google Form 연결:
-//   1) https://docs.google.com/forms/d/e/FORM_ID/formResponse
-//   2) CONFIG.GF_ENTRIES 에 각 필드 entry ID 입력
+// CryptoTax.cloud — 리드 캡처 모달
+// 수집처: Google Apps Script → Google 스프레드시트 (직접 저장)
+// 설정: APPS_SCRIPT_URL 에 배포된 스크립트 URL 1개만 입력
 // ============================================================
 
 (function(){
   'use strict';
 
-  // ── 설정 ──────────────────────────────────────────────────
+  // ── 설정 (여기만 수정) ────────────────────────────────────
   var CONFIG = {
-    // ★ Google Form formResponse URL로 교체하세요
-    // 예: 'https://docs.google.com/forms/d/e/1FAIpQLSxxxxxx/formResponse'
-    GF_URL: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse',
-
-    // ★ Google Form 각 필드의 entry ID (Form에서 확인 후 교체)
-    GF_ENTRIES: {
-      name:    'entry.000000001',
-      email:   'entry.000000002',
-      phone:   'entry.000000003',
-      resources: 'entry.000000004',
-      page:    'entry.000000005'
-    },
+    // ★ Google Apps Script 배포 URL로 교체 (아래 setup-guide.txt 참고)
+    APPS_SCRIPT_URL: 'REPLACE_WITH_APPS_SCRIPT_URL',
 
     STORAGE_KEY:   'ctc_lead_shown',
     COOLDOWN_DAYS: 7,
-    AUTO_DELAY:    45000,
+    AUTO_DELAY:    45000,   // ms (0이면 자동 팝업 비활성)
 
     RESOURCES: [
       { id:'checklist', label:'📋 2027 코인 세금 신고 체크리스트', file:'/downloads/2027-tax-checklist.html' },
@@ -111,7 +99,7 @@
 }
 #ctcLeadSubmit:hover{opacity:.92;transform:translateY(-1px);}
 #ctcLeadSubmit:active{transform:translateY(0);}
-#ctcLeadSubmit:disabled{opacity:.5;cursor:not-allowed;}
+#ctcLeadSubmit:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 #ctcLeadClose{
   position:absolute;top:12px;right:14px;
   background:none;border:none;color:rgba(255,255,255,.7);
@@ -120,6 +108,7 @@
 #ctcLeadClose:hover{color:#fff;}
 .ctc-lead-skip{text-align:center;margin-top:10px;font-size:12px;color:var(--text-sub,#aaa);cursor:pointer;}
 .ctc-lead-skip:hover{color:var(--text,#f0f0f0);}
+.ctc-lead-error{font-size:12px;color:#ff6b6b;margin-top:-8px;margin-bottom:8px;display:none;}
 /* 완료 화면 */
 .ctc-lead-done{text-align:center;padding:28px 24px 24px;}
 .ctc-lead-done-icon{font-size:48px;margin-bottom:10px;}
@@ -143,12 +132,6 @@
   transition:opacity .2s;margin-top:8px;
 }
 .ctc-lead-kakao:hover{opacity:.88;}
-.ctc-lead-error{font-size:12px;color:#ff6b6b;margin-top:-8px;margin-bottom:8px;display:none;}
-/* 라이트모드 */
-[data-theme=light] .ctc-lead-field input,
-body.light-mode .ctc-lead-field input{background:#f6f8fa;border-color:rgba(0,0,0,.15);color:#191919;}
-[data-theme=light] .ctc-lead-field input::placeholder,
-body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 /* 인라인 배너 */
 .ctc-lead-banner{
   display:flex;align-items:center;gap:14px;
@@ -167,6 +150,11 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
   color:#fff;font-size:12px;font-weight:700;
   border:none;border-radius:7px;padding:7px 13px;cursor:pointer;white-space:nowrap;
 }
+/* 라이트모드 */
+[data-theme=light] .ctc-lead-field input,
+body.light-mode .ctc-lead-field input{background:#f6f8fa;border-color:rgba(0,0,0,.15);color:#191919;}
+[data-theme=light] .ctc-lead-field input::placeholder,
+body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 `;
     document.head.appendChild(s);
   }
@@ -227,40 +215,36 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 </div>`;
   }
 
-  // ── Google Form 제출 (no-cors iframe 방식) ─────────────────
-  function _submitToGoogleForm(data){
-    if(CONFIG.GF_URL.includes('YOUR_FORM_ID')){
-      return Promise.resolve(); // 개발 모드
+  // ── Google Apps Script 전송 ────────────────────────────────
+  // 보안: API 키 없음. URL만 알면 접근 가능하므로
+  //       Apps Script 쪽에서 referer 검증을 추가하는 것 권장.
+  function _submitLead(data){
+    if(CONFIG.APPS_SCRIPT_URL === 'REPLACE_WITH_APPS_SCRIPT_URL'){
+      // 개발 모드: 콘솔에만 출력
+      console.log('[CTC Lead] 개발 모드 — Apps Script URL 미설정:', data);
+      return Promise.resolve();
     }
-    // Google Form은 CORS 차단 → hidden iframe으로 조용히 전송
-    try{
-      var params=new URLSearchParams();
-      params.append(CONFIG.GF_ENTRIES.name,      data.name);
-      params.append(CONFIG.GF_ENTRIES.email,     data.email);
-      params.append(CONFIG.GF_ENTRIES.phone,     data.phone);
-      params.append(CONFIG.GF_ENTRIES.resources, data.resources);
-      params.append(CONFIG.GF_ENTRIES.page,      data.page);
 
-      var iframe=document.createElement('iframe');
-      iframe.style.display='none';
-      iframe.name='ctcGfSubmit';
-      document.body.appendChild(iframe);
+    // URLSearchParams + no-cors fetch
+    // → Apps Script가 form POST로 수신, 스프레드시트에 기록
+    var body = new URLSearchParams({
+      name:      data.name      || '',
+      email:     data.email     || '',
+      phone:     data.phone     || '',
+      resources: data.resources || '',
+      page:      data.page      || '',
+      source:    'cryptotax.cloud',
+      ts:        new Date().toISOString()
+    });
 
-      var form=document.createElement('form');
-      form.method='POST';
-      form.action=CONFIG.GF_URL;
-      form.target='ctcGfSubmit';
-      form.innerHTML='<input type="hidden" name="'+CONFIG.GF_ENTRIES.name+'" value="'+_esc(data.name)+'">'+
-        '<input type="hidden" name="'+CONFIG.GF_ENTRIES.email+'" value="'+_esc(data.email)+'">'+
-        '<input type="hidden" name="'+CONFIG.GF_ENTRIES.phone+'" value="'+_esc(data.phone)+'">'+
-        '<input type="hidden" name="'+CONFIG.GF_ENTRIES.resources+'" value="'+_esc(data.resources)+'">'+
-        '<input type="hidden" name="'+CONFIG.GF_ENTRIES.page+'" value="'+_esc(data.page)+'">';
-      form.style.display='none';
-      document.body.appendChild(form);
-      form.submit();
-    }catch(e){}
-    return Promise.resolve();
+    return fetch(CONFIG.APPS_SCRIPT_URL, {
+      method:  'POST',
+      mode:    'no-cors',       // Apps Script CORS 우회 (응답 body 없음, 정상)
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    body.toString()
+    }).catch(function(){ /* 네트워크 오류 시 무시 — UX 영향 없음 */ });
   }
+
   function _esc(s){ return String(s||'').replace(/"/g,'&quot;'); }
 
   // ── 완료 화면 ─────────────────────────────────────────────
@@ -274,7 +258,7 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 
     document.getElementById('ctcLeadDlList').innerHTML=items.map(function(r){
       return '<a class="ctc-lead-dl-btn" href="'+r.file+'" target="_blank">'+
-        '<span class="dl-icon">⬇️</span> '+r.label+' PDF 다운로드</a>';
+        '<span class="dl-icon">⬇️</span> '+r.label+' 다운로드</a>';
     }).join('');
   }
 
@@ -324,7 +308,7 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
     wrap.innerHTML=_buildHTML();
     document.body.appendChild(wrap.firstElementChild);
 
-    // 체크박스 이벤트 (미선택 상태 유지 — 선택 시 강조만)
+    // 체크박스 강조
     document.querySelectorAll('.ctc-lead-resources input[type=checkbox]').forEach(function(cb){
       cb.addEventListener('change',function(){
         this.closest('label').classList.toggle('ctc-res-selected',this.checked);
@@ -346,7 +330,6 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
       var agree   = document.getElementById('ctcLeadAgree').checked;
       var errEl   = document.getElementById('ctcLeadError');
 
-      // 유효성 검사
       if(!email && !phone){
         errEl.textContent='이메일 또는 전화번호 중 하나를 입력해 주세요.';
         errEl.style.display='block'; return;
@@ -363,7 +346,7 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 
       var btn=document.getElementById('ctcLeadSubmit');
       btn.disabled=true;
-      btn.textContent='전송 중...';
+      btn.textContent='저장 중...';
 
       var payload={
         name:      name,
@@ -373,9 +356,10 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
         page:      location.pathname
       };
 
-      _submitToGoogleForm(payload)
-        .then(function(){ _showDone(selectedIds); _setCooldown(); })
-        .catch(function(){ _showDone(selectedIds); _setCooldown(); });
+      // 전송 후 즉시 완료 화면 (no-cors라 응답 대기 불필요)
+      _submitLead(payload);
+      _showDone(selectedIds);
+      _setCooldown();
     });
 
     // 배너 주입
