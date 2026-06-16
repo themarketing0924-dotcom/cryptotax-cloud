@@ -781,3 +781,46 @@ article li{margin-bottom:6px;}
 #ctc-tv-ticker .tradingview-widget-container__widget > :not(iframe) {
   display: none !important;
 }
+
+/* ============================================================
+   퍼널 구조 — 아티클 이전/다음 네비 + 관련글 카드 + 도구 CTA
+============================================================ */
+
+/* ── 이전/다음 글 네비게이션 ── */
+.article-pagination{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:48px 0 32px;}
+.page-prev,.page-next{display:flex;flex-direction:column;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:border-color .2s,background .2s,transform .2s;}
+.page-prev:hover,.page-next:hover{border-color:var(--orange);background:rgba(247,151,30,.06);transform:translateY(-2px);}
+.page-prev span,.page-next span{font-size:.72rem;color:var(--text-sub);margin-bottom:5px;letter-spacing:.02em;}
+.page-next{text-align:right;align-items:flex-end;}
+.page-prev strong,.page-next strong{font-size:.88rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:700;}
+
+/* ── 관련글 카드 3개 그리드 ── */
+.related-cards-section{margin-top:40px;}
+.related-cards-section h3{font-size:1rem;font-weight:800;margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+.related-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.rel-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s;}
+.rel-card:hover{border-color:var(--orange);transform:translateY(-3px);}
+.rel-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;}
+.rel-card-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.rel-card:hover .rel-card-thumb img{transform:scale(1.05);}
+.rel-card-body{padding:10px 12px 12px;}
+.rel-card-cat{font-size:.68rem;font-weight:700;color:var(--orange);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+.rel-card-title{font-size:.82rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-weight:600;}
+
+/* ── 도구 CTA 배너 ── */
+.tool-cta-banner{display:flex;align-items:center;gap:20px;padding:20px 24px;background:linear-gradient(135deg,rgba(247,151,30,.12),rgba(247,151,30,.04));border:1px solid rgba(247,151,30,.3);border-radius:14px;margin:32px 0;text-decoration:none;color:var(--text);transition:border-color .2s,background .2s;}
+.tool-cta-banner:hover{border-color:var(--orange);background:rgba(247,151,30,.15);}
+.tool-cta-icon{font-size:2rem;flex-shrink:0;}
+.tool-cta-text{flex:1;}
+.tool-cta-text strong{display:block;font-size:.98rem;font-weight:800;margin-bottom:4px;}
+.tool-cta-text span{font-size:.82rem;color:var(--text-sub);}
+.tool-cta-btn{flex-shrink:0;padding:10px 18px;background:var(--orange);color:#000;font-weight:800;font-size:.85rem;border-radius:8px;white-space:nowrap;}
+
+@media(max-width:640px){
+  .article-pagination{grid-template-columns:1fr;}
+  .page-next{text-align:left;align-items:flex-start;}
+  .related-cards-grid{grid-template-columns:repeat(2,1fr);}
+  .tool-cta-banner{flex-wrap:wrap;}
+  .tool-cta-btn{width:100%;text-align:center;}
+}
+@media(max-width:400px){.related-cards-grid{grid-template-columns:1fr;}}

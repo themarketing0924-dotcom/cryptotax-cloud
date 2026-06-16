@@ -702,3 +702,36 @@ if(!window.toggleFaq){
   s.defer=true;
   document.head.appendChild(s);
 })();
+
+// ============================================================
+// Microsoft Clarity 히트맵 (무료 · 무제한)
+// 사용법: clarity.microsoft.com → 프로젝트 생성 → ID 교체
+// ============================================================
+(function(){
+  if(typeof window === 'undefined') return;
+  var clarityId = 'REPLACE_WITH_CLARITY_ID'; // ← 여기에 ID 입력
+  if(clarityId === 'REPLACE_WITH_CLARITY_ID') return; // ID 미설정 시 비활성
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,'clarity','script',clarityId);
+})();
+
+// ============================================================
+// 체류시간 극대화 — 스크롤 진행률 표시바 (아티클 전용)
+// ============================================================
+(function(){
+  if(!document.querySelector('.article-wrap')) return;
+  var bar = document.createElement('div');
+  bar.id='scroll-progress';
+  bar.style.cssText='position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#f7971e,#ffd700);z-index:9999;transition:width .1s linear;pointer-events:none;';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll',function(){
+    var doc=document.documentElement;
+    var scrollTop=window.scrollY||doc.scrollTop;
+    var scrollHeight=doc.scrollHeight-doc.clientHeight;
+    var pct=scrollHeight>0?(scrollTop/scrollHeight*100).toFixed(1):0;
+    bar.style.width=pct+'%';
+  },{passive:true});
+})();
