@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이동평균법 취득원가 계산 공식 — CryptoTax.cloud</title>
+<style>
+  @media print {
+    .no-print { display:none !important; }
+    body { background:#fff !important; color:#000 !important; }
+    .page { box-shadow:none !important; margin:0 !important; }
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f5f5f5; color:#1a1a1a; }
+  .page { max-width:680px; margin:0 auto; background:#fff; padding:40px 44px; }
+  .header { border-bottom:3px solid #f7971e; padding-bottom:20px; margin-bottom:28px; }
+  .header-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+  .logo { font-size:13px; font-weight:700; color:#f7971e; letter-spacing:.5px; }
+  .badge { background:#fff3e0; color:#e65100; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; }
+  h1 { font-size:24px; font-weight:800; color:#1a1a1a; line-height:1.3; margin-bottom:6px; }
+  .subtitle { font-size:14px; color:#666; }
+  .formula-main {
+    background:#fff8f0; border:2px solid #f7971e; border-radius:12px;
+    padding:22px 24px; margin-bottom:28px; text-align:center;
+  }
+  .formula-main .label { font-size:12px; color:#e65100; font-weight:700; margin-bottom:10px; }
+  .formula-main .eq { font-size:20px; font-weight:800; color:#1a1a1a; line-height:1.5; }
+  .formula-main .eq span { color:#f7971e; }
+  .section { margin-bottom:28px; }
+  .section-title {
+    font-size:13px; font-weight:700; color:#fff; background:#f7971e;
+    padding:6px 14px; border-radius:6px; margin-bottom:14px; display:inline-block;
+  }
+  .step-list { list-style:none; }
+  .step-list li {
+    display:flex; align-items:flex-start; gap:14px;
+    padding:12px 14px; border-radius:8px; margin-bottom:8px;
+    border:1px solid #f0f0f0;
+  }
+  .step-num {
+    width:26px; height:26px; border-radius:50%; background:#f7971e;
+    color:#fff; font-size:13px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .step-text strong { font-size:14px; color:#1a1a1a; display:block; margin-bottom:3px; }
+  .step-text span { font-size:13px; color:#555; line-height:1.5; }
+  .step-text .formula-inline {
+    display:inline-block; background:#f5f5f5; border-radius:4px;
+    padding:2px 8px; font-size:12px; font-family:monospace; color:#333; margin-top:4px;
+  }
+  /* 예시 테이블 */
+  .ex-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:8px; }
+  .ex-table th {
+    background:#f7971e; color:#fff; font-weight:700;
+    padding:8px 10px; text-align:center;
+  }
+  .ex-table td { padding:9px 10px; border-bottom:1px solid #f0f0f0; text-align:center; }
+  .ex-table tr:last-child td { border-bottom:none; }
+  .ex-table tr:nth-child(even) td { background:#fff8f0; }
+  .ex-table .highlight { color:#e65100; font-weight:700; }
+  .ex-note { font-size:12px; color:#888; margin-top:6px; line-height:1.6; }
+  /* 세금 계산 연결 */
+  .tax-box {
+    background:#f0f9ff; border:1px solid #b3e0f7; border-radius:10px;
+    padding:16px 18px; margin-bottom:28px;
+  }
+  .tax-box h3 { font-size:13px; color:#0077b6; font-weight:700; margin-bottom:10px; }
+  .tax-box .tax-eq { font-size:15px; font-weight:700; color:#1a1a1a; margin-bottom:6px; }
+  .tax-box .tax-ex { font-size:13px; color:#555; line-height:1.6; }
+  /* 주의사항 */
+  .warn-list { list-style:none; }
+  .warn-list li {
+    display:flex; gap:10px; padding:9px 12px; border-radius:8px;
+    margin-bottom:6px; background:#fff5f5; border:1px solid #ffd6d6;
+    font-size:13px; color:#c0392b; line-height:1.5;
+  }
+  .warn-list li::before { content:'⚠️'; flex-shrink:0; }
+  .tip-list { list-style:none; margin-top:12px; }
+  .tip-list li {
+    display:flex; gap:10px; padding:9px 12px; border-radius:8px;
+    margin-bottom:6px; background:#f0fff4; border:1px solid #b7ebc8;
+    font-size:13px; color:#1e7c40; line-height:1.5;
+  }
+  .tip-list li::before { content:'✅'; flex-shrink:0; }
+  .footer-note {
+    background:#fafafa; border:1px solid #eee; border-radius:8px;
+    padding:12px 16px; font-size:12px; color:#888; line-height:1.6; margin-top:28px;
+  }
+  .print-btn {
+    display:block; margin:0 auto 20px; padding:12px 32px;
+    background:#f7971e; color:#fff; border:none; border-radius:8px;
+    font-size:15px; font-weight:700; cursor:pointer; transition:opacity .2s;
+  }
+  .print-btn:hover { opacity:.88; }
+  h2.section-main { font-size:15px; font-weight:700; color:#333; margin-bottom:14px; padding-bottom:6px; border-bottom:1px solid #eee; }
+  @media (max-width:480px) {
+    .page { padding:28px 20px; }
+    h1 { font-size:20px; }
+    .formula-main .eq { font-size:16px; }
+    .ex-table { font-size:11px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="no-print" style="text-align:center;padding:20px 0 0;">
+    <button class="print-btn" onclick="window.print()">🖨️ PDF로 저장 / 인쇄</button>
+  </div>
+
+  <div class="header">
+    <div class="header-top">
+      <span class="logo">CryptoTax.cloud</span>
+      <span class="badge">2027년 기준 최신판</span>
+    </div>
+    <h1>이동평균법<br>취득원가 계산 공식</h1>
+    <p class="subtitle">한국 가상자산 세금의 핵심 — 취득원가를 정확히 계산하는 방법</p>
+  </div>
+
+  <!-- 핵심 공식 -->
+  <div class="formula-main">
+    <div class="label">🧮 이동평균법 핵심 공식</div>
+    <div class="eq">
+      새 평균단가 = <span>(기존 보유금액 + 새 매수금액)</span><br>
+      <span style="display:block;margin-top:4px;">÷ (기존 수량 + 새 매수 수량)</span>
+    </div>
+  </div>
+
+  <!-- 계산 순서 -->
+  <div class="section">
+    <span class="section-title">STEP별 계산 순서</span>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>최초 매수 — 평균단가 = 매수가</strong>
+          <span>처음 살 때는 그냥 구매가격이 바로 취득원가입니다.</span>
+          <div class="formula-inline">평균단가 = 총 매수금액 ÷ 매수 수량</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>추가 매수할 때마다 평균 재계산</strong>
+          <span>새로 살 때마다 기존 보유량과 합산해서 평균을 다시 구합니다.</span>
+          <div class="formula-inline">(기존 총액 + 추가 매수금) ÷ (기존 수량 + 추가 수량)</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>매도할 때 양도차익 계산</strong>
+          <span>매도 시점의 평균단가를 취득원가로 사용합니다.</span>
+          <div class="formula-inline">양도차익 = (매도가 − 평균단가) × 매도 수량</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>매도 후 남은 수량의 평균단가는 그대로 유지</strong>
+          <span>매도는 평균단가에 영향을 주지 않습니다. 다음 매수 때만 바뀝니다.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 실전 예시 -->
+  <h2 class="section-main">📊 실전 예시 — 비트코인 4회 거래</h2>
+  <div class="section">
+    <table class="ex-table">
+      <thead>
+        <tr>
+          <th>거래</th>
+          <th>종류</th>
+          <th>수량(BTC)</th>
+          <th>가격(원)</th>
+          <th>평균단가</th>
+          <th>양도차익</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1월</td>
+          <td>매수</td>
+          <td>0.1</td>
+          <td>5,000만</td>
+          <td>5,000만</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>3월</td>
+          <td>추가매수</td>
+          <td>0.1</td>
+          <td>7,000만</td>
+          <td class="highlight">6,000만</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>6월</td>
+          <td>매도</td>
+          <td>0.1</td>
+          <td>8,000만</td>
+          <td>6,000만</td>
+          <td class="highlight">+200만원</td>
+        </tr>
+        <tr>
+          <td>9월</td>
+          <td>추가매수</td>
+          <td>0.2</td>
+          <td>6,500만</td>
+          <td class="highlight">6,333만</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ex-note">
+      ▸ 3월 평균단가: (5,000만×0.1 + 7,000만×0.1) ÷ 0.2 = <strong>6,000만원</strong><br>
+      ▸ 6월 양도차익: (8,000만 − 6,000만) × 0.1 = <strong>200만원</strong><br>
+      ▸ 9월 평균단가: (6,000만×0.1 + 6,500만×0.2) ÷ 0.3 = <strong>약 6,333만원</strong>
+    </div>
+  </div>
+
+  <!-- 세금 연결 -->
+  <div class="tax-box">
+    <h3>💰 취득원가 → 세금 계산 연결</h3>
+    <div class="tax-eq">세액 = (연간 총 양도차익 − 250만원) × 22%</div>
+    <div class="tax-ex">
+      예시: 위 거래에서 연간 양도차익 200만원<br>
+      → 250만원 기본공제 이하 → <strong>세금 0원</strong> (공제액 미초과)<br><br>
+      만약 양도차익이 1,000만원이라면:<br>
+      → (1,000만 − 250만) × 22% = <strong>165만원</strong>
+    </div>
+  </div>
+
+  <!-- 주의사항 -->
+  <div class="section">
+    <span class="section-title">⚠️ 자주 틀리는 실수</span>
+    <ul class="warn-list">
+      <li>코인마다 별도로 평균단가를 관리해야 합니다 (BTC 평균 ≠ ETH 평균)</li>
+      <li>거래소마다 별도 관리 — 업비트 BTC와 빗썸 BTC는 따로 계산</li>
+      <li>수수료를 취득원가에 포함해야 합니다 (매수 수수료만 포함, 매도 수수료는 필요경비)</li>
+      <li>코인→코인 교환(스왑)도 매도로 간주 — 그 시점에 양도차익 계산</li>
+      <li>에어드랍·스테이킹 보상은 수령 시점 시세로 취득원가 설정</li>
+    </ul>
+    <ul class="tip-list">
+      <li>매수할 때마다 바로 평균단가를 업데이트하는 습관이 중요합니다</li>
+      <li>거래소 CSV를 주기적으로 백업해두면 연말 정산이 훨씬 편합니다</li>
+      <li>CryptoTax.cloud 세금 계산기를 쓰면 이동평균이 자동 계산됩니다</li>
+    </ul>
+  </div>
+
+  <!-- 계산기 안내 -->
+  <div style="background:#f7971e;border-radius:10px;padding:16px 18px;text-align:center;margin-bottom:28px;">
+    <div style="font-size:13px;color:rgba(255,255,255,.9);margin-bottom:6px;">더 빠른 방법</div>
+    <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;">
+      이동평균 자동 계산 → CryptoTax.cloud
+    </div>
+    <a href="https://cryptotax.cloud/tools/tax-calculator.html"
+       style="display:inline-block;background:#fff;color:#f7971e;font-weight:800;font-size:14px;
+              padding:9px 24px;border-radius:7px;text-decoration:none;">
+      무료 세금 계산기 →
+    </a>
+  </div>
+
+  <div class="footer-note">
+    ※ 본 자료는 참고용 안내이며, 정확한 세금 계산은 세무사 상담 또는 국세청 홈택스를 이용하시기 바랍니다.<br>
+    무료 세금 계산기: <strong>cryptotax.cloud</strong> | 국세청 가상자산 안내: nts.go.kr<br>
+    © 2026 CryptoTax.cloud — 무단 재배포 금지
+  </div>
+
+</div>
+</body>
+</html>

@@ -12,6 +12,10 @@
     // ★ Google Apps Script 배포 URL로 교체 (아래 setup-guide.txt 참고)
     APPS_SCRIPT_URL: 'REPLACE_WITH_APPS_SCRIPT_URL',
 
+    // ★ 카카오채널 ID 입력 (없으면 빈 문자열 '' 로 두면 버튼 숨김)
+    // 예: 'https://pf.kakao.com/_xmNxoxj' 형태로 입력
+    KAKAO_CHANNEL_URL: '',
+
     STORAGE_KEY:   'ctc_lead_shown',
     COOLDOWN_DAYS: 7,
     AUTO_DELAY:    45000,   // ms (0이면 자동 팝업 비활성)
@@ -207,9 +211,7 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
       <h3>감사합니다! 자료가 준비됐습니다</h3>
       <p>아래 버튼을 눌러 PDF를 바로 다운로드 하세요</p>
       <div class="ctc-lead-dl-list" id="ctcLeadDlList"></div>
-      <button class="ctc-lead-kakao" onclick="window.open('https://pf.kakao.com/_REPLACE_KAKAO_ID','_blank')">
-        💬 카카오채널 추가하고 세금 소식 받기
-      </button>
+      <div id="ctcLeadKakaoWrap"></div>
     </div>
   </div>
 </div>`;
@@ -260,6 +262,18 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
       return '<a class="ctc-lead-dl-btn" href="'+r.file+'" target="_blank">'+
         '<span class="dl-icon">⬇️</span> '+r.label+' 다운로드</a>';
     }).join('');
+
+    // 카카오채널 URL이 설정된 경우에만 버튼 표시
+    var kakaoWrap=document.getElementById('ctcLeadKakaoWrap');
+    if(kakaoWrap){
+      if(CONFIG.KAKAO_CHANNEL_URL && CONFIG.KAKAO_CHANNEL_URL.length>0){
+        kakaoWrap.innerHTML=
+          '<button class="ctc-lead-kakao" onclick="window.open(\''+CONFIG.KAKAO_CHANNEL_URL+'\',\'_blank\')">'+
+          '💬 카카오채널 추가하고 세금 소식 받기</button>';
+      } else {
+        kakaoWrap.innerHTML='';
+      }
+    }
   }
 
   // ── 열기/닫기 ─────────────────────────────────────────────
