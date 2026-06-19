@@ -337,22 +337,25 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
     });
 
     // 제출
-    document.getElementById('ctcLeadSubmit').addEventListener('click',function(){
-      var name    = document.getElementById('ctcLeadName').value.trim();
-      var email   = document.getElementById('ctcLeadEmail').value.trim();
-      var phone   = document.getElementById('ctcLeadPhone').value.trim();
-      var agree   = document.getElementById('ctcLeadAgree').checked;
-      var errEl   = document.getElementById('ctcLeadError');
+    document.getElementById('ctcLeadSubmit').addEventListener('click', async function() {
+      const name  = document.getElementById('ctcLeadName').value;
+      const email = document.getElementById('ctcLeadEmail').value;
+      const phone = document.getElementById('ctcLeadPhone').value;
 
-      if(!email && !phone){
-        errEl.textContent='이메일 또는 전화번호 중 하나를 입력해 주세요.';
-        errEl.style.display='block'; return;
-      }
-      if(!agree){
-        errEl.textContent='개인정보 수집 동의가 필요합니다.';
-        errEl.style.display='block'; return;
-      }
-      errEl.style.display='none';
+      if (!email || !phone) return alert('이메일과 전화번호를 입력해주세요!');
+
+      await fetch('https://hook.eu1.make.com/663vd6nsvhjyg4ii13oe4jqp5sm61ai7', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          time: new Date().toLocaleString('ko-KR')
+        })
+      });
+
+      alert('✅ 등록 완료! 자료를 보내드릴게요.');
 
       var selectedIds=Array.from(
         document.querySelectorAll('.ctc-lead-resources input[type=checkbox]:checked')
@@ -360,7 +363,7 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
 
       var btn=document.getElementById('ctcLeadSubmit');
       btn.disabled=true;
-      btn.textContent='저장 중...';
+      btn.textContent='완료';
 
       var payload={
         name:      name,

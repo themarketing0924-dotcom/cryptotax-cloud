@@ -425,26 +425,23 @@ window.CoinSearch = (function(){
     return wrap;
   }
 
-  window.ctcLeadSubmit=function(){
-    var name=document.getElementById('ctc-lf-name');
-    var email=document.getElementById('ctc-lf-email');
-    var agree=document.getElementById('ctc-lf-agree');
-    var ok=document.getElementById('ctc-lf-ok');
-    if(!name||!email||!agree||!ok) return;
-    if(!name.value.trim()){name.style.borderColor='#e53935';name.focus();return;}
-    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if(!emailRe.test(email.value.trim())){email.style.borderColor='#e53935';email.focus();return;}
-    if(!agree.checked){alert('[필수] 개인정보 수집·이용에 동의해주세요.');return;}
-    // 실제 폼 전송 — Google Form 엔드포인트 또는 서버 교체 가능
-    var data={name:name.value.trim(),email:email.value.trim(),page:window.location.pathname,ts:new Date().toISOString()};
-    // console.log('Lead:', data);
-    var btn=document.querySelector('.ctc-lead-btn');
-    if(btn){btn.disabled=true;btn.textContent='처리 중...';}
-    // 시뮬레이션 성공 (실제 서버 연동 시 fetch 교체)
-    setTimeout(function(){
-      if(btn){btn.style.display='none';}
-      ok.style.display='block';
-    },600);
+  window.ctcLeadSubmit = async function() {
+    const name  = document.getElementById('ctc-lf-name').value;
+    const email = document.getElementById('ctc-lf-email').value;
+
+    if (!email) return alert('이메일을 입력해주세요!');
+
+    await fetch('https://hook.eu1.make.com/engpxh5z5aquo114l7lfds8qhr6feaea', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        time: new Date().toLocaleString('ko-KR')
+      })
+    });
+
+    alert('✅ 등록 완료! 가이드를 보내드릴게요.');
   };
 
   function inject(){
