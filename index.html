@@ -1535,6 +1535,7 @@ input[type="button"],input[type="submit"],.btn,.cta-secondary,.calc-btn,.email-b
   </div>
   <p>이메일 등록 시 위 3가지를 무료로 보내드립니다</p>
   <div class="email-form">
+    <input class="email-input" id="nameInput" type="text" placeholder="이름 (예: 홍길동)">
     <input class="email-input" id="emailInput" type="email" placeholder="your@email.com">
     <button class="email-btn" onclick="submitEmail()">무료로 받기 →</button>
   </div>
@@ -2136,7 +2137,7 @@ function calcNetting(){const amounts=document.querySelectorAll('.net-amount');le
 function toggleFaq(el){const answer=el.nextElementSibling;const isOpen=answer.classList.contains('open');document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('active'));if(!isOpen){answer.classList.add('open');el.classList.add('active');}}
 function copyResult(){const rows=document.querySelectorAll('#resultBox .result-row');let text='=== CryptoTax.cloud 세금 계산 결과 ===\n';rows.forEach(r=>{const l=r.querySelector('.rl');const v=r.querySelector('.rv');if(l&&v)text+=l.textContent+': '+v.textContent+'\n';});text+='\n출처: https://cryptotax.cloud/';navigator.clipboard.writeText(text).then(()=>alert('결과가 클립보드에 복사되었습니다!')).catch(()=>alert('복사 실패 — 직접 선택 후 Ctrl+C 해주세요.'));}
 function shareKakao(){alert('카카오 공유 기능은 Kakao SDK 연동 후 활성화됩니다.\nhttps://cryptotax.cloud/');}
-function submitEmail(){const email=document.getElementById('emailInput').value.trim();const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!re.test(email)){alert('올바른 이메일 주소를 입력해주세요.');return;}alert('감사합니다! 📧\n'+email+'으로 무료 가이드를 보내드리겠습니다.');document.getElementById('emailInput').value='';}
+async function submitEmail(){const name=document.getElementById('nameInput').value.trim();const email=document.getElementById('emailInput').value.trim();const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;if(!name){alert('이름을 입력해주세요.');document.getElementById('nameInput').focus();return;}if(!re.test(email)){alert('올바른 이메일 주소를 입력해주세요.');return;}await fetch('https://hook.eu1.make.com/engpxh5z5aquo114l7lfds8qhr6feaea',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,time:new Date().toLocaleString('ko-KR')})});alert('✅ 등록 완료! 가이드를 보내드릴게요.');document.getElementById('nameInput').value='';document.getElementById('emailInput').value='';}
 window.addEventListener('scroll',()=>{const btn=document.getElementById('scrollTop');if(btn)btn.style.display=window.scrollY>400?'block':'none';const nav=document.querySelector('.nav');if(nav)nav.classList.toggle('scrolled',window.scrollY>40);});
 (function(){const dd=document.getElementById('hero-dday');if(!dd)return;const tax=new Date('2027-01-01');const today=new Date();today.setHours(0,0,0,0);const diff=Math.ceil((tax-today)/(1000*60*60*24));dd.textContent=diff>0?diff:'0';})();
 
