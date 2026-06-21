@@ -1497,13 +1497,10 @@ async function fetchFearGreed(){
 
 async function fetchDominance(){
   try{
-    const res=await fetch('https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD');
+    const res=await fetch('https://api.coingecko.com/api/v3/global');
     if(!res.ok) return;
     const json=await res.json();
-    const coins=json.Data||[];
-    let total=0, btcMcap=0;
-    coins.forEach(c=>{ const m=c.RAW?.USD?.MKTCAP||0; total+=m; if(c.CoinInfo.Name==='BTC') btcMcap=m; });
-    const dom=total>0?(btcMcap/total*100):0;
+    const dom=(json.data&&json.data.market_cap_percentage&&json.data.market_cap_percentage.btc)||0;
     const dv=document.getElementById('dom-val');
     if(dv) dv.textContent=dom.toFixed(1)+'%';
   }catch(e){}
