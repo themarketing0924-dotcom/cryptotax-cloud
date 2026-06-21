@@ -1003,19 +1003,58 @@ function buildLegend(currentPrice){
   }).join('');
 }
 
-/* ===== BTC 역사적 가격 조회 (CryptoCompare 주간 종가) ===== */
+/* ===== BTC 역사적 가격 조회 (Binance 주간 + 2012~2017 하드코딩) ===== */
 async function fetchHistoricalBTC(){
+  // 2012~2017-08 하드코딩 월간 BTC 가격 (USD) — Binance 이전 시대
+  const earlyData = [
+    [+new Date('2012-01-01'), 6.18],
+    [+new Date('2012-04-01'), 4.97],
+    [+new Date('2012-07-01'), 7.10],
+    [+new Date('2012-10-01'), 11.90],
+    [+new Date('2012-12-01'), 13.44],
+    [+new Date('2013-01-01'), 13.51],
+    [+new Date('2013-03-01'), 34.0],
+    [+new Date('2013-04-01'), 139.0],
+    [+new Date('2013-06-01'), 100.0],
+    [+new Date('2013-09-01'), 136.0],
+    [+new Date('2013-11-01'), 680.0],
+    [+new Date('2013-12-01'), 740.0],
+    [+new Date('2014-01-01'), 820.0],
+    [+new Date('2014-03-01'), 570.0],
+    [+new Date('2014-06-01'), 585.0],
+    [+new Date('2014-09-01'), 390.0],
+    [+new Date('2014-12-01'), 310.0],
+    [+new Date('2015-01-01'), 170.0],
+    [+new Date('2015-03-01'), 260.0],
+    [+new Date('2015-06-01'), 240.0],
+    [+new Date('2015-09-01'), 235.0],
+    [+new Date('2015-12-01'), 362.0],
+    [+new Date('2016-01-01'), 434.0],
+    [+new Date('2016-03-01'), 415.0],
+    [+new Date('2016-06-01'), 680.0],
+    [+new Date('2016-07-01'), 660.0],
+    [+new Date('2016-09-01'), 607.0],
+    [+new Date('2016-12-01'), 950.0],
+    [+new Date('2017-01-01'), 998.0],
+    [+new Date('2017-03-01'), 1248.0],
+    [+new Date('2017-06-01'), 2550.0],
+    [+new Date('2017-08-01'), 4350.0],
+  ];
+
   try {
-    // CryptoCompare: aggregate=7 → 7일 단위, limit=2000 → 최대 약 38년치
-    const res = await fetch('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=2000&aggregate=7');
-    if(!res.ok) return;
-    const json = await res.json();
-    const raw = (json.Data && json.Data.Data) ? json.Data.Data : [];
-    // CryptoCompare: time은 unix초 단위, close가 종가
-    historicalPrices = raw
-      .filter(d => d.close > 0)
-      .map(d => [d.time * 1000, d.close]); // → [ms, usd]
-  } catch(e){}
+    // Binance 공개 API — 주간 종가, 최대 500개 (약 9.6년)
+    const res = await fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1w&limit=500');
+    if(!res.ok) throw new Error(res.status);
+    const klines = await res.json();
+    const binanceData = klines.map(k => [parseInt(k[0]), parseFloat(k[4])]);
+    // 하드코딩 구간(~2017-08)과 Binance 구간 병합
+    const cutoff = +new Date('2017-08-20');
+    const earlyFiltered = earlyData.filter(d => d[0] < cutoff);
+    historicalPrices = [...earlyFiltered, ...binanceData];
+  } catch(e) {
+    // API 실패 시 하드코딩 데이터로 폴백
+    historicalPrices = earlyData;
+  }
 }
 
 /* ===== 초기 로드 ===== */
