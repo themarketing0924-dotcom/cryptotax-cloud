@@ -81,33 +81,47 @@ robots.txt                  # 크롤러 설정
 
 ### 새 아티클 발행 전 체크리스트
 ```
-[ ] <title> — 키워드 포함, 30~60자
-[ ] <meta name="description"> — 120~160자, 핵심 키워드 앞에 배치
+[ ] <title> — 키워드 포함, 30~60자 + 후킹 카피 (예: "안 내면 가산세 폭탄")
+[ ] <meta name="description"> — 70~120자, 핵심 키워드 앞에 + 클릭 유도 문구
 [ ] <link rel="canonical"> — 실제 배포 URL로 수정
 [ ] og:title / og:description / og:image 수정
 [ ] article:published_time / article:modified_time 수정 (ISO 8601)
-[ ] JSON-LD Article — headline, datePublished, keywords 수정
+[ ] JSON-LD Article — headline, datePublished, keywords, image 수정
 [ ] JSON-LD FAQPage — 실제 FAQ 3~5개로 교체 (없으면 블록 삭제)
 [ ] JSON-LD BreadcrumbList — 카테고리·슬러그 수정
 [ ] 섬네일 이미지 경로 수정 (/assets/img/blog/[slug]-hero.jpg)
 [ ] <body data-no-ticker> 유지 확인 (TradingView 티커 + 스크롤 애니메이션 비활성화)
 [ ] fade-up 등 스크롤 애니메이션 클래스 미사용 확인
+[ ] 리드 문단 작성 (요약 박스 ❌ → 뉴스 기사형 첫 단락 ✅)
+[ ] H2마다 H3 최소 2개 배치
+[ ] 외부 공신력 링크 본문 내 자연 삽입 (국세청, 금융위, 위키백과 등)
+[ ] 내부 링크 — 연관 아티클·계산기 앵커 텍스트 구체적으로
 [ ] sitemap.xml 에 새 URL 추가
 ```
 
-### 아티클 구조 (BabyPips·닐파텔 정보형 스타일)
+### 아티클 구조 (뉴스 기사·정보형 스타일 — Google SEO 최적)
 1. `<body data-no-ticker>` — TradingView 티커 없음 ★필수.
    **중요:** `data-no-ticker` 는 common.js IntersectionObserver(스크롤 리빌 애니메이션)도 함께 비활성화합니다.
    이 속성이 없으면 아티클 본문 요소에 `.ctc-r` 클래스가 추가되어 레이아웃이 깨질 수 있습니다.
 2. **히어로 섹션 없음** — 전체화면 다크 히어로·CTA 버튼 금지
 3. 아티클 헤더 구조: 브레드크럼 → 카테고리 배지 → H1 → 저자/날짜/읽기시간 메타
 4. 섬네일 이미지: `<figure>` + `<figcaption>`, max-height 440px
-5. 본문 순서: 핵심요약 박스 → 연관 글 3줄 → 목차(TOC) → H2 섹션들 → FAQ(선택)
+5. **본문 순서 (뉴스 기사형):**
+   - **리드 문단** (❌ 요약 박스 금지 — who/what/when/why 담긴 첫 단락, font-size 17px)
+   - 연관 글 인라인 3개 (내부 링크 주스 전달)
+   - 목차 TOC
+   - H2 섹션들 → **H2당 H3 최소 2개** → 외부/내부 링크 자연 삽입
+   - FAQ (선택)
 6. 하단 고정 블록: 제휴배너 → 관련 계산기 3개 → 함께 읽으면 좋은 글 3개 → 공식 출처 3개
 7. `fade-up` 등 스크롤 애니메이션 클래스 사용 금지
 
+### 헤딩 작성 원칙
+- **H1:** 메인키워드 + 연관키워드 + 후킹 카피 (예: "2027 코인 세금 신고 안 하면? 가산세·과태료 완전 정리")
+- **H2:** `[핵심 개념/용어] — [독자 궁금증 또는 행동 유도]` (예: "이동평균법이란? — 매수마다 평균단가 재산정하는 법")  ❌ 금지: "개요", "정리", "알아보기" 같은 모호한 제목
+- **H3:** H2 내 구체적 소주제 — 수치·단계·케이스 비교 포함
+
 ### 콘텐츠 블록 클래스 (템플릿에서 복사)
-- `.key-takeaway` — 핵심 요약 (글 최상단)
+- **리드 문단** — `<p style="font-size:17px;line-height:1.9;...">` (요약 박스 대체 ★)
 - `.related-inline` — 연관 글 인라인 링크
 - `.article-toc` — 목차
 - `.info-block.info / .warn / .tip` — 참고 / 주의 / 팁 박스
