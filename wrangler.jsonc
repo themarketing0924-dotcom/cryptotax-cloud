@@ -1,0 +1,9 @@
+// wrangler.jsonc
+{
+  "name": "cryptotax-cloud",
+  "compatibility_date": "2025-06-27",
+  "account_id": "5648e6a1bfea5dbf4ae78ab1eee4e2f4",
+  "assets": {
+    "directory": "./out"
+  }
+}
