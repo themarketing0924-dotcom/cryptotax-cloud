@@ -1,0 +1,8 @@
+name = "cryptotax-cloud"
+main = "index.html"
+compatibility_date = "2026-06-27"
+
+[assets]
+directory = "."
+# .git 폴더를 배포에서 제외하도록 명시합니다.
+exclude = [".git", ".github", "node_modules"]
