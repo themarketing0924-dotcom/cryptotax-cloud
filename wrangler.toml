@@ -1,6 +1,7 @@
 name = "cryptotax-cloud"
 main = "index.html"
 compatibility_date = "2026-06-27"
+account_id = "5648e6a1bfea5dbf4ae78ab1eee4e2f4"
 
 [assets]
 directory = "."
