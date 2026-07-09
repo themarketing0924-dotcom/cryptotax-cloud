@@ -18,7 +18,7 @@
 
     STORAGE_KEY:   'ctc_lead_shown',
     COOLDOWN_DAYS: 7,
-    AUTO_DELAY:    45000,   // ms (0이면 자동 팝업 비활성)
+    AUTO_DELAY:    0,       // ★ AdSense 정책: 콘텐츠 차단 팝업 금지 → 자동 팝업 비활성
 
     RESOURCES: [
       { id:'checklist', label:'📋 2027 코인 세금 신고 체크리스트', file:'/downloads/2027-tax-checklist.html' },
@@ -390,10 +390,10 @@ body.light-mode .ctc-lead-field input::placeholder{color:#888;}
       },CONFIG.AUTO_DELAY);
     }
 
-    // 계산 완료 이벤트 트리거
-    document.addEventListener('ctcCalculated',function(){
-      setTimeout(_open,800);
-    },{once:true});
+    // 계산 완료 이벤트 트리거 — AdSense 정책으로 비활성
+    // document.addEventListener('ctcCalculated',function(){
+    //   setTimeout(_open,800);
+    // },{once:true});
   }
 
   if(document.readyState==='loading'){
